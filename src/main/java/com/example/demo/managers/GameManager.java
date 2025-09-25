@@ -1,9 +1,6 @@
 package com.example.demo.managers;
 
-import com.example.demo.core.Ball;
-import com.example.demo.core.Brick;
-import com.example.demo.core.Paddle;
-import com.example.demo.core.VARIABLES;
+import com.example.demo.core.*;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,17 +8,23 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import java.util.Random;
 
 public class GameManager extends Pane {
 
     private AnimationTimer timer;
     private String message = "Game Over";
     private Ball ball;
+    private PowerUp powerUp;
     private Paddle paddle;
     private Brick[] bricks;
     private boolean inGame = true;
+    private Random random = new Random();
 
     private GraphicsContext gc;
+
+    private long powerUpStartTime;
+    private final long POWER_UP_DURATION = 5000;
 
     public GameManager() {
         initBoard();
@@ -30,12 +33,10 @@ public class GameManager extends Pane {
     private void initBoard() {
         setPrefSize(VARIABLES.WIDTH, VARIABLES.HEIGHT);
 
-        // Canvas for drawing
         Canvas canvas = new Canvas(VARIABLES.WIDTH, VARIABLES.HEIGHT);
         gc = canvas.getGraphicsContext2D();
         getChildren().add(canvas);
 
-        // Enable key events
         setFocusTraversable(true);
         requestFocus();
         initKeyHandlers();
@@ -63,6 +64,7 @@ public class GameManager extends Pane {
         bricks = new Brick[VARIABLES.N_OF_BRICKS];
         ball = new Ball();
         paddle = new Paddle();
+        powerUp = new PowerUp();
 
         int k = 0;
         for (int i = 0; i < 5; i++) {
@@ -85,9 +87,17 @@ public class GameManager extends Pane {
         if (inGame) {
             ball.move();
             paddle.move();
+            powerUp.move();
             checkCollision();
+            checkPowerUpDuration();
         }
         draw();
+    }
+
+    private void checkPowerUpDuration() {
+        if (System.currentTimeMillis() - powerUpStartTime > POWER_UP_DURATION) {
+            ball.setAccelerated(false);
+        }
     }
 
     private void draw() {
@@ -113,6 +123,11 @@ public class GameManager extends Pane {
                         brick.getWidth(), brick.getHeight());
             }
         }
+
+        if (powerUp.isVisible()) {
+            gc.drawImage(powerUp.getImage(), powerUp.getX(), powerUp.getY(),
+                    powerUp.getWidth() , powerUp.getHeight());
+        }
     }
 
     private void gameFinished() {
@@ -129,10 +144,10 @@ public class GameManager extends Pane {
     }
 
     private void checkCollision() {
-        // Ball fell below bottom
-//        if (ball.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
-//            stopGame();
-//        }
+        // Kiểm tra bóng rơi quá đáy màn hình
+        if (ball.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
+            stopGame();
+        }
 
         // Win condition
         long destroyed = java.util.Arrays.stream(bricks)
@@ -142,7 +157,19 @@ public class GameManager extends Pane {
             stopGame();
         }
 
-        // Paddle collision
+        // Va chạm giữa power-up và thanh đỡ (paddle)
+        if (powerUp.isVisible() && powerUp.getBounds().intersects(paddle.getBounds())) {
+            ball.setAccelerated(true);
+            powerUp.setVisible(false);
+            powerUpStartTime = System.currentTimeMillis();
+        }
+
+        // Kiểm tra nếu power-up rơi quá đáy màn hình
+        if (powerUp.isVisible() && powerUp.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
+            powerUp.setVisible(false);
+        }
+
+        // Va chạm giữa bóng và thanh đỡ
         if (ball.getBounds().intersects(paddle.getBounds())) {
             double paddleLPos = paddle.getBounds().getMinX();
             double ballLPos = ball.getBounds().getMinX();
@@ -170,11 +197,15 @@ public class GameManager extends Pane {
             }
         }
 
-        // Brick collisions (simplified: just reverse Y and destroy brick)
+        // Va chạm với gạch
         for (Brick brick : bricks) {
             if (!brick.isDestroyed() && ball.getBounds().intersects(brick.getBounds())) {
                 brick.setDestroyed(true);
                 ball.setYDir(-ball.getYDir());
+
+                if (random.nextInt(100) < 30) {
+                    powerUp.dropFrom(brick);
+                }
             }
         }
     }

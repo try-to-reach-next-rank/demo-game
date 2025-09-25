@@ -2,6 +2,7 @@ package com.example.demo.core;
 
 public class Ball extends GameObject {
     private int xdir, ydir;
+    private boolean isAccelerated;
 
     public Ball() {
         super("/images/Ball.png", VARIABLES.INIT_BALL_X, VARIABLES.INIT_BALL_Y);
@@ -11,12 +12,15 @@ public class Ball extends GameObject {
     private void initBall() {
         xdir = 1;
         ydir = -1;
+        isAccelerated = false;
         resetState();
     }
 
     public void move() {
-        x += xdir * VARIABLES.SPEED;
-        y += ydir * VARIABLES.SPEED;
+
+        float currentSpeed = isAccelerated ? VARIABLES.SPEED * VARIABLES.ACCELERATED_SPEED_MULTIPLIER : VARIABLES.SPEED;
+        x += xdir * currentSpeed;
+        y += ydir * currentSpeed;
 
         if (x <= 0) {
             setXDir(1);
@@ -33,6 +37,11 @@ public class Ball extends GameObject {
 
     private void resetState() {
         setPosition(VARIABLES.INIT_BALL_X, VARIABLES.INIT_BALL_Y);
+    }
+
+    // Thêm phương thức để bật trạng thái tăng tốc
+    public void setAccelerated(boolean val) {
+        this.isAccelerated = val;
     }
 
     public void setXDir(int x) { xdir = x; }

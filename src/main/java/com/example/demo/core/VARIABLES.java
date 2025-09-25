@@ -12,4 +12,5 @@ public interface VARIABLES {
     public static final int INIT_BALL_X = WIDTH / 2 - 10;
     public static final int INIT_BALL_Y = HEIGHT - 60;
     public static final float SPEED = 0.4F;
+    public static final float ACCELERATED_SPEED_MULTIPLIER = 2.0F;
 }
