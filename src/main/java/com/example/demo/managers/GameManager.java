@@ -48,8 +48,12 @@ public class GameManager extends Pane {
         setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.LEFT) {
                 paddle.setDx(-4);
-            } else if (e.getCode() == KeyCode.RIGHT) {
+            }
+            else if (e.getCode() == KeyCode.RIGHT) {
                 paddle.setDx(4);
+            }
+            else if (e.getCode() == KeyCode.SPACE) {
+                ball.release();
             }
         });
 
@@ -62,8 +66,8 @@ public class GameManager extends Pane {
 
     private void gameInit() {
         bricks = new Brick[VARIABLES.N_OF_BRICKS];
-        ball = new Ball();
         paddle = new Paddle();
+        ball = new Ball(paddle);
         powerUp = new PowerUp();
 
         int k = 0;
@@ -146,7 +150,8 @@ public class GameManager extends Pane {
     private void checkCollision() {
         // Kiểm tra bóng rơi quá đáy màn hình
         if (ball.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
-            stopGame();
+//            stopGame();
+            ball.resetState();
         }
 
         // Win condition
