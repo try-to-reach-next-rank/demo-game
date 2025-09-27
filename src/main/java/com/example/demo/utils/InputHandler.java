@@ -5,15 +5,7 @@ import com.example.demo.core.Paddle;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 
-public class InputHandler {
-
-    private final Paddle paddle;
-    private final Ball ball;
-
-    public InputHandler(Paddle paddle, Ball ball) {
-        this.paddle = paddle;
-        this.ball = ball;
-    }
+public record InputHandler(Paddle paddle, Ball ball) {
 
     public void input(Scene scene) {
         scene.setOnKeyPressed(e -> {

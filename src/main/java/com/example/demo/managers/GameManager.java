@@ -17,7 +17,6 @@ public class GameManager extends Pane {
     private                     AnimationTimer timer;
     private                     String message = "Game Over";
     private                     Ball ball;
-    private                     PowerUp powerUp;
     private                     Paddle paddle;
     private                     Brick[] bricks;
     private boolean             inGame = true;
@@ -43,7 +42,6 @@ public class GameManager extends Pane {
         bricks = new Brick[VARIABLES.N_OF_BRICKS];
         paddle = new Paddle();
         ball = new Ball(paddle);
-        powerUp = new PowerUp();
 
         int k = 0;
         for (int i = 0; i < 5; i++) {
@@ -134,10 +132,6 @@ public class GameManager extends Pane {
         // Win condition
         long destroyed = java.util.Arrays.stream(bricks)
                 .filter(Brick::isDestroyed).count();
-        if (destroyed == VARIABLES.N_OF_BRICKS) {
-            message = "Victory";
-            stopGame();
-        }
 
         // Va chạm giữa power-up và thanh đỡ (paddle)
         for (PowerUp p : activePowerUps) {
@@ -150,12 +144,6 @@ public class GameManager extends Pane {
             if (p.isVisible() && p.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
                 p.setVisible(false);
             }
-        }
-
-
-        // Kiểm tra nếu power-up rơi quá đáy màn hình
-        if (powerUp.isVisible() && powerUp.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
-            powerUp.setVisible(false);
         }
 
         // Va chạm giữa bóng và thanh đỡ
@@ -193,9 +181,16 @@ public class GameManager extends Pane {
                 ball.setYDir(-ball.getYDir());
 
                 if (random.nextInt(100) < 30) {
-                    powerUp.dropFrom(brick);
+                    PowerUp newPU = new PowerUp("ACCELERATE");
+                    newPU.dropFrom(brick);
+                    activePowerUps.add(newPU);
                 }
             }
+        }
+
+        if (destroyed == VARIABLES.N_OF_BRICKS) {
+            message = "Victory";
+            stopGame();
         }
     }
 

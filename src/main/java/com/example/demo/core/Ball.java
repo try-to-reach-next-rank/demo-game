@@ -50,6 +50,8 @@ public class Ball extends GameObject {
         x += xdir * currentSpeed;
         y += ydir * currentSpeed;
 
+        System.out.println(currentSpeed);
+
         if (x <= 0) {
             setXDir(1);
         }
