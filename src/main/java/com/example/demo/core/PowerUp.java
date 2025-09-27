@@ -28,4 +28,8 @@ public class PowerUp extends GameObject {
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
+
+    public String getType() {
+        return type;
+    }
 }

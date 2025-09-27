@@ -1,10 +1,24 @@
 package com.example.demo.core;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class Ball extends GameObject {
-    private int xdir, ydir;
-    private boolean isAccelerated;
-    private boolean stuck;
-    private Paddle paddle;
+    private int                         xdir, ydir;
+    private boolean                     stuck;
+    private final                       Paddle paddle;
+    private final List<ActiveEffect>    activeEffectList = new ArrayList<>();
+
+    private static class ActiveEffect {
+        String type;
+        long expireAt;
+
+        ActiveEffect(String type, long duration) {
+            this.type = type;
+            this.expireAt = System.currentTimeMillis() + duration;
+        }
+    }
 
     public Ball(Paddle paddle) {
         super("/images/Ball.png", VARIABLES.INIT_BALL_X, VARIABLES.INIT_BALL_Y);
@@ -15,8 +29,8 @@ public class Ball extends GameObject {
     private void initBall() {
         xdir = 1;
         ydir = -1;
-        isAccelerated = false;
         stuck = true;
+        activeEffectList.clear();
         resetState();
     }
 
@@ -27,7 +41,12 @@ public class Ball extends GameObject {
             return;
         }
 
-        float currentSpeed = isAccelerated ? VARIABLES.SPEED * VARIABLES.ACCELERATED_SPEED_MULTIPLIER : VARIABLES.SPEED;
+        updatePowerUps();
+
+        float currentSpeed = isAccelerated()
+                ? VARIABLES.SPEED * VARIABLES.ACCELERATED_SPEED_MULTIPLIER
+                : VARIABLES.SPEED;
+
         x += xdir * currentSpeed;
         y += ydir * currentSpeed;
 
@@ -54,18 +73,48 @@ public class Ball extends GameObject {
                     paddle.getY() - getHeight());
         stuck = true;
         ydir = -1;
+        activeEffectList.clear();
     }
 
     public void release() {
         stuck = false;
+        xdir = 1;
+        ydir = -1;
     }
 
-    // Thêm phương thức để bật trạng thái tăng tốc
-    public void setAccelerated(boolean val) {
-        this.isAccelerated = val;
+    public void activatePowerUp(PowerUp p) {
+        String type = p.getType();
+        if (type == null) {
+            return;
+        }
+        switch (type) {
+            case "ACCELERATE":
+                activeEffectList.add(new ActiveEffect("ACCELERATE", 5000)); // 5s
+                break;
+            // More types can be added later:
+            // case "BIG_PADDLE": ...
+            // case "MULTIBALL": ...
+        }
+    }
+
+    public boolean isAccelerated() {
+        // check if any ACCELERATE effect is still active
+        return activeEffectList.stream().anyMatch(e -> e.type.equals("ACCELERATE"));
     }
 
     public void setXDir(int x) { xdir = x; }
     public void setYDir(int y) { ydir = y; }
-    public int getYDir() { return ydir; }
+    public int getYDir() { return ydir;
+}
+
+    public void updatePowerUps() {
+        long now = System.currentTimeMillis();
+        Iterator<ActiveEffect> it = activeEffectList.iterator();
+        while (it.hasNext()) {
+            ActiveEffect e = it.next();
+            if (now > e.expireAt) {
+                it.remove(); // remove expired buff
+            }
+        }
+    }
 }

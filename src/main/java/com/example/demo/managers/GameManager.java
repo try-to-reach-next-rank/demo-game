@@ -4,27 +4,26 @@ import com.example.demo.core.*;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameManager extends Pane {
 
-    private AnimationTimer timer;
-    private String message = "Game Over";
-    private Ball ball;
-    private PowerUp powerUp;
-    private Paddle paddle;
-    private Brick[] bricks;
-    private boolean inGame = true;
-    private Random random = new Random();
-
-    private GraphicsContext gc;
-
-    private long powerUpStartTime;
-    private final long POWER_UP_DURATION = 5000;
+    private                     AnimationTimer timer;
+    private                     String message = "Game Over";
+    private                     Ball ball;
+    private                     PowerUp powerUp;
+    private                     Paddle paddle;
+    private                     Brick[] bricks;
+    private boolean             inGame = true;
+    private final               Random random = new Random();
+    private                     GraphicsContext gc;
+    private final List<PowerUp> activePowerUps = new ArrayList<>();
 
     public GameManager() {
         initBoard();
@@ -32,36 +31,12 @@ public class GameManager extends Pane {
 
     private void initBoard() {
         setPrefSize(VARIABLES.WIDTH, VARIABLES.HEIGHT);
-
         Canvas canvas = new Canvas(VARIABLES.WIDTH, VARIABLES.HEIGHT);
         gc = canvas.getGraphicsContext2D();
         getChildren().add(canvas);
-
         setFocusTraversable(true);
         requestFocus();
-        initKeyHandlers();
-
         gameInit();
-    }
-
-    private void initKeyHandlers() {
-        setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.LEFT) {
-                paddle.setDx(-4);
-            }
-            else if (e.getCode() == KeyCode.RIGHT) {
-                paddle.setDx(4);
-            }
-            else if (e.getCode() == KeyCode.SPACE) {
-                ball.release();
-            }
-        });
-
-        setOnKeyReleased(e -> {
-            if (e.getCode() == KeyCode.LEFT || e.getCode() == KeyCode.RIGHT) {
-                paddle.setDx(0);
-            }
-        });
     }
 
     private void gameInit() {
@@ -91,17 +66,17 @@ public class GameManager extends Pane {
         if (inGame) {
             ball.move();
             paddle.move();
-            powerUp.move();
+
+            for (PowerUp p : activePowerUps) {
+                if (p.isVisible()) {
+                    p.move();
+                }
+            }
+
             checkCollision();
-            checkPowerUpDuration();
+            ball.updatePowerUps();
         }
         draw();
-    }
-
-    private void checkPowerUpDuration() {
-        if (System.currentTimeMillis() - powerUpStartTime > POWER_UP_DURATION) {
-            ball.setAccelerated(false);
-        }
     }
 
     private void draw() {
@@ -119,7 +94,7 @@ public class GameManager extends Pane {
                 ball.getWidth(), ball.getHeight());
 
         gc.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
-                paddle.getWidth(), paddle.getHeight());
+                paddle.getWidth() * 2, paddle.getHeight() * 2);
 
         for (Brick brick : bricks) {
             if (!brick.isDestroyed()) {
@@ -128,9 +103,11 @@ public class GameManager extends Pane {
             }
         }
 
-        if (powerUp.isVisible()) {
-            gc.drawImage(powerUp.getImage(), powerUp.getX(), powerUp.getY(),
-                    powerUp.getWidth() , powerUp.getHeight());
+        for (PowerUp p : activePowerUps) {
+            if (p.isVisible()) {
+                gc.drawImage(p.getImage(), p.getX(), p.getY(),
+                        p.getWidth(), p.getHeight());
+            }
         }
     }
 
@@ -163,11 +140,18 @@ public class GameManager extends Pane {
         }
 
         // Va chạm giữa power-up và thanh đỡ (paddle)
-        if (powerUp.isVisible() && powerUp.getBounds().intersects(paddle.getBounds())) {
-            ball.setAccelerated(true);
-            powerUp.setVisible(false);
-            powerUpStartTime = System.currentTimeMillis();
+        for (PowerUp p : activePowerUps) {
+            if (p.isVisible() && p.getBounds().intersects(paddle.getBounds())) {
+                ball.activatePowerUp(p); // let Ball handle effect
+                p.setVisible(false);
+            }
+
+            // Power-up falls off screen
+            if (p.isVisible() && p.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
+                p.setVisible(false);
+            }
         }
+
 
         // Kiểm tra nếu power-up rơi quá đáy màn hình
         if (powerUp.isVisible() && powerUp.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
@@ -213,5 +197,13 @@ public class GameManager extends Pane {
                 }
             }
         }
+    }
+
+    public Paddle getPaddle() {
+        return paddle;
+    }
+
+    public Ball getBall() {
+        return ball;
     }
 }
