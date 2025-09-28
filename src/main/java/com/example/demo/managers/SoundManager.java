@@ -4,15 +4,18 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+import java.util.*;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SoundManager {
     // tạo ra một đối tượng để quản lý + gọi
     private static final SoundManager instance = new SoundManager();
 
-    private MediaPlayer backgroundMusic;
+    private final Map<String, Media> musicLibrary = new HashMap<>(); // libary of songs
+    private final List<String> musicKey = new ArrayList<>(); //this key was made for easier next/random song handling
+    private int currentTrackIndex = 0; // keep track of next songs (in playlist)
+    private MediaPlayer currentMusicPlayer; // currentl active song
+    //_____________________________
     private final Map<String, AudioClip> soundEffects = new HashMap<>();
 
     private SoundManager() {
@@ -22,22 +25,17 @@ public class SoundManager {
     // tải tất cả âm thanh
     private void loadSounds(){
         try{
-            URL musicUrl = getClass().getResource("/sounds/Soft-Memories.mp3");
+            loadMusic("Soft-Memories", "/sounds/Soft-Memories.mp3");
+            loadMusic("fish-in-the-pool", "/sounds/fish-in-the-pool.mp3");
+            loadMusic("Hametsu-no-Ringo", "/sounds/Hametsu-no-Ringo.mp3");
+            loadMusic("Genshin-Impact-Main-Theme", "/sounds/Genshin-Impact-Main-Theme.mp3");
+            loadMusic("Carefree-Kevin MacLeod", "/sounds/Carefree-Kevin MacLeod.mp3");
 
-            if (musicUrl == null) System.err.println("Couldn't find background music");
-            else {
-                Media backgroundMedia = new Media(musicUrl.toString());
-                backgroundMusic =  new MediaPlayer(backgroundMedia);
-
-                //lặp lại
-                backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
-            }
-
-            loadSoundEffect("brick_hit", "/sounds/brick_hit.mp3");
-            loadSoundEffect("paddle_hit", "/sounds/paddle_hit.mp3");
-            loadSoundEffect("wall_hit", "/sounds/wall_hit.mp3");
-            loadSoundEffect("game_over", "/sounds/game_over.mp3");
-            loadSoundEffect("power_up","/sounds/power_up.mp3");
+            loadSoundEffect("brick_hit", "/sounds/brick_hit.wav");
+            loadSoundEffect("paddle_hit", "/sounds/paddle_hit.wav");
+            loadSoundEffect("wall_hit", "/sounds/wall_hit.wav");
+            loadSoundEffect("game_over", "/sounds/game_over.wav");
+            loadSoundEffect("power_up","/sounds/power_up.wav");
 
         }
         catch (Exception e){
@@ -55,24 +53,67 @@ public class SoundManager {
         }
     }
 
+    private void loadMusic(String name, String path){
+        URL musicUrl = getClass().getResource(path);
+        if (musicUrl == null) System.err.println("Couldn't find music file at path: " + path);
+        else {
+            Media media = new Media(musicUrl.toString());
+            musicLibrary.put(name,media);
+            musicKey.add(name);
+        }
+    }
+
     // trả duy nhất manager instance
     public static SoundManager getInstance(){
         return instance;
     }
 
     //public control init
-    public void playBackgroundMusic(){
-        if(backgroundMusic != null)
-            backgroundMusic.play();
+    public void playMusic(String name){
+        stopMusic(); //stop any music that's currently playing
+
+        Media media = musicLibrary.get(name);
+        if (media == null) {
+            System.err.println("Couldn't find music with name: " + name);
+            return;
+        }
+
+        currentMusicPlayer = new MediaPlayer(media);
+        currentMusicPlayer.setVolume(0.1); //set background music's volume
+
+        currentMusicPlayer.setOnEndOfMedia(() -> playNextMusic()); //After the current sond ends, instantly play next music;
+
+
+        currentMusicPlayer.play();
+
+        currentTrackIndex = musicKey.indexOf(name);
     }
-    public void stopBackgroundMusic(){
-        if(backgroundMusic != null)
-            backgroundMusic.stop();
+
+    public void stopMusic(){
+        if(currentMusicPlayer != null) currentMusicPlayer.stop();
     }
-    public void setBackgroundMusicVolume(double volume){
-        if(backgroundMusic != null)
-            //volume range: 0.0 -> 1.0
-            backgroundMusic.setVolume(volume);
+
+    public void setMusicVolume(double volume){
+        if(currentMusicPlayer != null) {
+            currentMusicPlayer.setVolume(volume); // range: 0.1 -> 1.0
+        }
+    }
+
+    public void playNextMusic(){ // play next song in a playlist
+        if(musicKey.isEmpty()) return;
+
+        currentTrackIndex = (currentTrackIndex + 1) % musicKey.size();
+
+        String nextTrack = musicKey.get(currentTrackIndex);
+        playMusic(nextTrack);
+    }
+
+    public void playRandomMusic(){
+        if(musicKey.isEmpty()) return;
+
+        Collections.shuffle(musicKey);
+        currentTrackIndex = 0;
+        playMusic(musicKey.get(currentTrackIndex));
     }
 
     public void playSound(String name){

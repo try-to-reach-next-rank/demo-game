@@ -56,8 +56,8 @@ public class GameManager extends Pane {
             }
         }
 
-        SoundManager.getInstance().playBackgroundMusic(); //play blackground music
-        SoundManager.getInstance().setBackgroundMusicVolume(0.1); //set background music's volume
+        SoundManager.getInstance().playRandomMusic(); //play blackground music
+
 
         loop();
     }
@@ -145,7 +145,7 @@ public class GameManager extends Pane {
         inGame = false;
         timer.stop();
         // stop background music
-        SoundManager.getInstance().stopBackgroundMusic();
+        SoundManager.getInstance().stopMusic();
     }
 
     // add hiệu ứng vào checkCollision
