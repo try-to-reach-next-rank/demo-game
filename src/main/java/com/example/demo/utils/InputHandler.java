@@ -10,17 +10,19 @@ public record InputHandler(Paddle paddle, Ball ball) {
     public void input(Scene scene) {
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.LEFT) {
-                paddle.setDx(-4);
+                paddle.setDirection(-1);
             } else if (e.getCode() == KeyCode.RIGHT) {
-                paddle.setDx(4);
+                paddle.setDirection(1);
             } else if (e.getCode() == KeyCode.SPACE) {
-                ball.release();
+                if (ball.isStuck()) {
+                    ball.release();
+                }
             }
         });
 
         scene.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.LEFT || e.getCode() == KeyCode.RIGHT) {
-                paddle.setDx(0);
+                paddle.setDirection(0);
             }
         });
     }

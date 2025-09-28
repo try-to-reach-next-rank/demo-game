@@ -8,7 +8,8 @@ import java.util.List;
 import com.example.demo.managers.SoundManager;
 
 public class Ball extends GameObject {
-    private int                         xdir, ydir;
+    private double                      dx, dy;  // continuous velocity
+    private double                      speed;   // base speed (px/sec)
     private boolean                     stuck;
     private final                       Paddle paddle;
     private final List<ActiveEffect>    activeEffectList = new ArrayList<>();
@@ -26,49 +27,60 @@ public class Ball extends GameObject {
     public Ball(Paddle paddle) {
         super("/images/Ball.png", VARIABLES.INIT_BALL_X, VARIABLES.INIT_BALL_Y);
         this.paddle = paddle;
+        this.speed = 300;;
         initBall();
     }
 
     private void initBall() {
-        xdir = 1;
-        ydir = -1;
         stuck = true;
         activeEffectList.clear();
         resetState();
     }
 
-    public void move() {
-        if(stuck) { // make the ball float on top of paddle until launch
-            setPosition(paddle.getX() + paddle.getWidth() / 2.0 - getWidth() / 2.0,
-                        paddle.getY() - getHeight());
+    public void update(double deltaTime) {
+        if (stuck) {
+            // Ball floats above paddle until launch
+            setPosition(
+                    paddle.getX() + paddle.getWidth() / 2.0 - getWidth() / 2.0,
+                    paddle.getY() - getHeight()
+            );
             return;
         }
 
         updatePowerUps();
 
-        float currentSpeed = isAccelerated()
-                ? VARIABLES.SPEED * VARIABLES.ACCELERATED_SPEED_MULTIPLIER
-                : VARIABLES.SPEED;
+        double currentSpeed = isAccelerated()
+                ? speed * VARIABLES.ACCELERATED_SPEED_MULTIPLIER
+                : speed;
 
-        x += xdir * currentSpeed;
-        y += ydir * currentSpeed;
+        double vx = dx * currentSpeed;
+        double vy = dy * currentSpeed;
 
-        System.out.println(currentSpeed);
+        // Move with deltaTime (seconds)
+        x += vx * deltaTime;
+        y += vy * deltaTime;
 
+        System.out.println("Ball released: dx=" + dx + " dy=" + dy);
+
+        // Wall collisions
         if (x <= 0) {
-            setXDir(1);
+            dx = Math.abs(dx); // reflect right
+            x = 0;
             SoundManager.getInstance().playSound("wall_hit");
         }
         if (x >= VARIABLES.WIDTH - getWidth()) {
-            setXDir(-1);
+            dx = -Math.abs(dx); // reflect left
+            x = VARIABLES.WIDTH - getWidth();
             SoundManager.getInstance().playSound("wall_hit");
         }
         if (y <= 0) {
-            setYDir(1);
+            dy = Math.abs(dy); // reflect down
+            y = 0;
             SoundManager.getInstance().playSound("wall_hit");
         }
 
-        if(y >= VARIABLES.HEIGHT) {
+        // Missed paddle
+        if (y >= VARIABLES.HEIGHT) {
             stuck = true;
             resetState();
         }
@@ -77,44 +89,55 @@ public class Ball extends GameObject {
     }
 
     public void resetState() {
-        setPosition(paddle.getX() + paddle.getWidth() / 2 - getWidth() / 2,
-                    paddle.getY() - getHeight());
+        setPosition(
+                paddle.getX() + paddle.getWidth() / 2.0 - getWidth() / 2.0,
+                paddle.getY() - getHeight()
+        );
         stuck = true;
-        ydir = -1;
+        dx = 0;
+        dy = -1; // upwards
         activeEffectList.clear();
     }
 
     public void release() {
-        stuck = false;
-        xdir = 1;
-        ydir = -1;
+        if (stuck) {
+            stuck = false;
+            dx = 0;
+            dy = -1.0;
+        }
+    }
+
+    private void normalize() {
+        double len = Math.sqrt(dx * dx + dy * dy);
+        if (len != 0) {
+            dx /= len;
+            dy /= len;
+        }
+    }
+
+    public void setVelocity(double angle) {
+        dx = Math.cos(angle);
+        dy = -Math.sin(angle); // negative Y = up
+        normalize();
     }
 
     public void activatePowerUp(PowerUp p) {
         String type = p.getType();
-        if (type == null) {
-            return;
-        }
+        if (type == null) return;
+
         switch (type) {
             case "ACCELERATE":
                 activeEffectList.add(new ActiveEffect("ACCELERATE", 5000)); // 5s
                 break;
-            // More types can be added later:
-            // case "BIG_PADDLE": ...
-            // case "MULTIBALL": ...
+            // TODO: add more powerups
         }
     }
 
     public boolean isAccelerated() {
-        // check if any ACCELERATE effect is still active
-        return activeEffectList.stream().anyMatch(e -> e.type.equals("ACCELERATE"));
+        long now = System.currentTimeMillis();
+        return activeEffectList.stream().anyMatch(e -> e.type.equals("ACCELERATE") && now < e.expireAt);
     }
 
-    public void setXDir(int x) { xdir = x; }
-    public void setYDir(int y) { ydir = y; }
-    public int getYDir() { return ydir;}
-
-    // check if ball is stuck to the paddle
     public boolean isStuck() {
         return stuck;
     }
@@ -125,8 +148,24 @@ public class Ball extends GameObject {
         while (it.hasNext()) {
             ActiveEffect e = it.next();
             if (now > e.expireAt) {
-                it.remove(); // remove expired buff
+                it.remove();
             }
         }
+    }
+
+    public double getDx() {
+        return dx;
+    }
+
+    public double getDy() {
+        return dy;
+    }
+
+    public void setDx(double v) {
+        dx = v;
+    }
+
+    public void setDy(double v) {
+        dy = v;
     }
 }

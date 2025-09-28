@@ -14,6 +14,8 @@ public class GameObject {
     protected double        height;
     protected Image         image;
     protected ImageView     imageView;
+    private double          scaleX;
+    private double          scaleY;
 
     public GameObject(String imagePath, double startX, double startY) {
         this.image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
@@ -30,6 +32,13 @@ public class GameObject {
         imageView.setY(y);
     }
 
+    public void setScale(double sx, double sy) {
+        this.scaleX = sx;
+        this.scaleY = sy;
+        imageView.setFitWidth(width * sx);
+        imageView.setFitHeight(height * sy);
+    }
+
     public double getX() { return x; }
     public double getY() { return y; }
     public double getWidth() { return width; }
@@ -39,5 +48,9 @@ public class GameObject {
 
     public Bounds getBounds() {
         return imageView.getBoundsInParent();
+    }
+
+    public void setY(double v) {
+        y = v;
     }
 }

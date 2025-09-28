@@ -58,38 +58,55 @@ public class GameManager extends Pane {
 
         SoundManager.getInstance().playBackgroundMusic(); //play blackground music
         SoundManager.getInstance().setBackgroundMusicVolume(0.1); //set background music's volume
+
+        loop();
+    }
+
+    private void loop() {
+        final double FPS = 60.0;
+        final double UPDATE_INTERVAL = 1e9 / FPS;
+        final long[] lastUpate = {System.nanoTime()};
+
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                doGameCycle();
+                while (now - lastUpate[0] >= UPDATE_INTERVAL) {
+                    update(1.0 / FPS);
+                    lastUpate[0] += UPDATE_INTERVAL;
+                }
+                render();
             }
         };
+
         timer.start();
     }
 
-    private void doGameCycle() {
-        if (inGame) {
-            ball.move();
-            paddle.move();
-
-            for (PowerUp p : activePowerUps) {
-                if (p.isVisible()) {
-                    p.move();
-                }
-            }
-
-            checkCollision();
-            ball.updatePowerUps();
+    private void update(double deltaTime) {
+        if (!inGame) {
+            return;
         }
-        draw();
+
+        ball.update(deltaTime);
+        paddle.update(deltaTime);
+
+        for (PowerUp p : activePowerUps) {
+            if (p.isVisible()) {
+                p.update(deltaTime);
+            }
+        }
+
+        checkCollision();
+        ball.updatePowerUps();
     }
 
-    private void draw() {
-        gc.clearRect(0, 0, VARIABLES.WIDTH, VARIABLES.HEIGHT);
+    private void render() {
+        gc.clearRect(0,0, VARIABLES.WIDTH, VARIABLES.HEIGHT);
 
         if (inGame) {
             drawObjects();
-        } else {
+        }
+
+        else {
             gameFinished();
         }
     }
@@ -99,7 +116,7 @@ public class GameManager extends Pane {
                 ball.getWidth(), ball.getHeight());
 
         gc.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
-                paddle.getWidth() * 2, paddle.getHeight() * 2);
+                paddle.getWidth(), paddle.getHeight());
 
         for (Brick brick : bricks) {
             if (!brick.isDestroyed()) {
@@ -161,7 +178,6 @@ public class GameManager extends Pane {
 
         // Va chạm giữa bóng và thanh đỡ
         if (ball.getBounds().intersects(paddle.getBounds())) {
-
             if (!ball.isStuck()) { // Neglect when ball is first stuck with paddle
                 long currentTime = System.currentTimeMillis(); // take time now
                 if (currentTime > nextPaddleSoundTime) {
@@ -170,39 +186,38 @@ public class GameManager extends Pane {
                 }
             }
 
+            ball.setPosition(ball.getX(), paddle.getBounds().getMinY() - ball.getHeight());
+
             double paddleLPos = paddle.getBounds().getMinX();
-            double ballLPos = ball.getBounds().getMinX();
+            double ballCenterX = ball.getBounds().getMinX() + ball.getWidth() / 2.0;
+            double hitPos = (ballCenterX - paddleLPos) / paddle.getWidth();
 
-            double first = paddleLPos + paddle.getWidth() * 0.2;
-            double second = paddleLPos + paddle.getWidth() * 0.4;
-            double third = paddleLPos + paddle.getWidth() * 0.6;
-            double fourth = paddleLPos + paddle.getWidth() * 0.8;
-
-            if (ballLPos < first) {
-                ball.setXDir(-1);
-                ball.setYDir(-1);
-            } else if (ballLPos < second) {
-                ball.setXDir(-1);
-                ball.setYDir(-ball.getYDir());
-            } else if (ballLPos < third) {
-                ball.setXDir(0);
-                ball.setYDir(-1);
-            } else if (ballLPos < fourth) {
-                ball.setXDir(1);
-                ball.setYDir(-ball.getYDir());
-            } else {
-                ball.setXDir(1);
-                ball.setYDir(-1);
-            }
+            double angle = Math.toRadians(150 * (1 - hitPos) + 30 * hitPos);
+            ball.setVelocity(angle);
         }
 
         // Va chạm với gạch
         for (Brick brick : bricks) {
             if (!brick.isDestroyed() && ball.getBounds().intersects(brick.getBounds())) {
                 brick.setDestroyed(true);
-                ball.setYDir(-ball.getYDir());
                 // adding brick_hit SFX
                 SoundManager.getInstance().playSound("brick_hit");
+
+                double overlapLeft   = ball.getBounds().getMaxX() - brick.getBounds().getMinX();
+                double overlapRight  = brick.getBounds().getMaxX() - ball.getBounds().getMinX();
+                double overlapTop    = ball.getBounds().getMaxY() - brick.getBounds().getMinY();
+                double overlapBottom = brick.getBounds().getMaxY() - ball.getBounds().getMinY();
+
+                boolean ballFromLeft   = overlapLeft < overlapRight && overlapLeft < overlapTop && overlapLeft < overlapBottom;
+                boolean ballFromRight  = overlapRight < overlapLeft && overlapRight < overlapTop && overlapRight < overlapBottom;
+                boolean ballFromTop    = overlapTop < overlapBottom && overlapTop < overlapLeft && overlapTop < overlapRight;
+                boolean ballFromBottom = overlapBottom < overlapTop && overlapBottom < overlapLeft && overlapBottom < overlapRight;
+
+                if (ballFromLeft || ballFromRight) {
+                    ball.setDx(-ball.getDx()); // flip X
+                } else if (ballFromTop || ballFromBottom) {
+                    ball.setDy(-ball.getDy()); // flip Y
+                }
 
                 if (random.nextInt(100) < 30) {
                     PowerUp newPU = new PowerUp("ACCELERATE");

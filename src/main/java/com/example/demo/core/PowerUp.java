@@ -3,6 +3,7 @@ package com.example.demo.core;
 public class PowerUp extends GameObject {
     private String type;
     private boolean visible;
+    private double speed = 150.0;
 
     public PowerUp(String type){
         super("/images/fastup.png", 0, 0);
@@ -15,10 +16,14 @@ public class PowerUp extends GameObject {
         this.visible = true;
     }
 
-    public void move(){
+    public void update(double deltaTime) {
         if (visible) {
-            y += VARIABLES.SPEED * 2.0F;
+            y += speed * deltaTime;
             setPosition(x, y);
+
+            if (y > VARIABLES.HEIGHT) {
+                visible = false;
+            }
         }
     }
 
