@@ -1,5 +1,6 @@
 package com.example.demo.managers;
 
+import com.almasb.fxgl.audio.Sound;
 import com.example.demo.core.*;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.example.demo.managers.SoundManager;
+
 public class GameManager extends Pane {
 
     private                     AnimationTimer timer;
@@ -23,6 +26,8 @@ public class GameManager extends Pane {
     private final               Random random = new Random();
     private                     GraphicsContext gc;
     private final List<PowerUp> activePowerUps = new ArrayList<>();
+    private static final long paddleSoundCooldown = 200L;
+    private long nextPaddleSoundTime = 0;
 
     public GameManager() {
         initBoard();
@@ -51,6 +56,8 @@ public class GameManager extends Pane {
             }
         }
 
+        SoundManager.getInstance().playBackgroundMusic(); //play blackground music
+        SoundManager.getInstance().setBackgroundMusicVolume(0.1); //set background music's volume
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -120,12 +127,17 @@ public class GameManager extends Pane {
     private void stopGame() {
         inGame = false;
         timer.stop();
+        // stop background music
+        SoundManager.getInstance().stopBackgroundMusic();
     }
 
+    // add hiệu ứng vào checkCollision
     private void checkCollision() {
         // Kiểm tra bóng rơi quá đáy màn hình
         if (ball.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
-//            stopGame();
+            // stopGame();
+            // add game over sfx
+            SoundManager.getInstance().playSound("game_over");
             ball.resetState();
         }
 
@@ -136,6 +148,7 @@ public class GameManager extends Pane {
         // Va chạm giữa power-up và thanh đỡ (paddle)
         for (PowerUp p : activePowerUps) {
             if (p.isVisible() && p.getBounds().intersects(paddle.getBounds())) {
+                SoundManager.getInstance().playSound("power_up"); // adding power_up SFX
                 ball.activatePowerUp(p); // let Ball handle effect
                 p.setVisible(false);
             }
@@ -148,6 +161,15 @@ public class GameManager extends Pane {
 
         // Va chạm giữa bóng và thanh đỡ
         if (ball.getBounds().intersects(paddle.getBounds())) {
+
+            if (!ball.isStuck()) { // Neglect when ball is first stuck with paddle
+                long currentTime = System.currentTimeMillis(); // take time now
+                if (currentTime > nextPaddleSoundTime) {
+                    SoundManager.getInstance().playSound("paddle_hit"); // adding paddle_hit SFX
+                    nextPaddleSoundTime = currentTime + paddleSoundCooldown;
+                }
+            }
+
             double paddleLPos = paddle.getBounds().getMinX();
             double ballLPos = ball.getBounds().getMinX();
 
@@ -179,6 +201,8 @@ public class GameManager extends Pane {
             if (!brick.isDestroyed() && ball.getBounds().intersects(brick.getBounds())) {
                 brick.setDestroyed(true);
                 ball.setYDir(-ball.getYDir());
+                // adding brick_hit SFX
+                SoundManager.getInstance().playSound("brick_hit");
 
                 if (random.nextInt(100) < 30) {
                     PowerUp newPU = new PowerUp("ACCELERATE");

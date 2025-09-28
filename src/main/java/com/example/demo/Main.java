@@ -5,6 +5,7 @@ import com.example.demo.core.VARIABLES;
 import com.example.demo.utils.InputHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -15,6 +16,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(gameManager, VARIABLES.WIDTH, VARIABLES.HEIGHT);
 
+        stage.getIcons().add(new Image(getClass().getResource("/images/icon.png").toExternalForm())); //add window's icon
         stage.setTitle("Brick Breaker");
         stage.setScene(scene);
         stage.setResizable(false);

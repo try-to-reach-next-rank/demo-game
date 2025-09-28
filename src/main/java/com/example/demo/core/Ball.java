@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+// adding sfx into ball.java
+import com.example.demo.managers.SoundManager;
+
 public class Ball extends GameObject {
     private int                         xdir, ydir;
     private boolean                     stuck;
@@ -54,12 +57,15 @@ public class Ball extends GameObject {
 
         if (x <= 0) {
             setXDir(1);
+            SoundManager.getInstance().playSound("wall_hit");
         }
         if (x >= VARIABLES.WIDTH - getWidth()) {
             setXDir(-1);
+            SoundManager.getInstance().playSound("wall_hit");
         }
         if (y <= 0) {
             setYDir(1);
+            SoundManager.getInstance().playSound("wall_hit");
         }
 
         if(y >= VARIABLES.HEIGHT) {
@@ -106,8 +112,12 @@ public class Ball extends GameObject {
 
     public void setXDir(int x) { xdir = x; }
     public void setYDir(int y) { ydir = y; }
-    public int getYDir() { return ydir;
-}
+    public int getYDir() { return ydir;}
+
+    // check if ball is stuck to the paddle
+    public boolean isStuck() {
+        return stuck;
+    }
 
     public void updatePowerUps() {
         long now = System.currentTimeMillis();
