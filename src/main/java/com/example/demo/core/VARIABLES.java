@@ -1,7 +1,7 @@
 package com.example.demo.core;
 
 public interface VARIABLES {
-    public static final int N_OF_BRICKS = 30;
+    public static final int N_OF_BRICKS = 150;
     public static final int WIDTH = 600;
     public static final int HEIGHT = 800;
     public static final int BOTTOM_EDGE = HEIGHT;
@@ -18,4 +18,13 @@ public interface VARIABLES {
     public static final int HEIGHT_OF_WALLS = 16;
     public static final int N_OF_WALLS_LEFT_RIGHT = HEIGHT / HEIGHT_OF_WALLS;
     public static final int N_OF_WALLS_TOP = WIDTH / WIDTH_OF_WALLS;
+
+    public static final int BRICKS_PER_ROW = 15;
+    public static final int PADDING_X = 6;
+    public static final int PADDING_Y = 6;
+
+    public static final int WIDTH_OF_BRICKS = 32;
+    public static final int HEIGHT_OF_BRICKS = 16;
+    public static final int FIRST_X_OF_BRICKS = WIDTH_OF_WALLS + PADDING_X/2;
+    public static final int FIRST_Y_OF_BRICKS = HEIGHT_OF_WALLS + PADDING_Y/2;
 }

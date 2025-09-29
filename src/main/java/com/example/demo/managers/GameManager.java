@@ -56,13 +56,15 @@ public class GameManager extends Pane {
         leftWalls = new  Wall[VARIABLES.N_OF_WALLS_LEFT_RIGHT];
         topWalls = new Wall[VARIABLES.N_OF_WALLS_TOP];
 
-        int k = 0;
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 6; j++) {
-                bricks[k] = new Brick(j * 40 + 30, i * 20 + 50);
-                k++;
-            }
+        //khởi tạo gạch
+        for (int i = 0; i < VARIABLES.N_OF_BRICKS; i++) {
+            int row = i / VARIABLES.BRICKS_PER_ROW;
+            int col = i % VARIABLES.BRICKS_PER_ROW;
+            int x = VARIABLES.FIRST_X_OF_BRICKS + col * (VARIABLES.WIDTH_OF_BRICKS + VARIABLES.PADDING_X);
+            int y = VARIABLES.FIRST_Y_OF_BRICKS + row * (VARIABLES.HEIGHT_OF_BRICKS + VARIABLES.PADDING_Y);
+            bricks[i] = new Brick(x, y);
         }
+
 
         for (int i = 0; i < rightWalls.length; i++) {
             leftWalls[i] = new Wall(0, i * VARIABLES.HEIGHT_OF_WALLS);
@@ -263,6 +265,7 @@ public class GameManager extends Pane {
             stopGame();
         }
     }
+
 
     public Paddle getPaddle() {
         return paddle;

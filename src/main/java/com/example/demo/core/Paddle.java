@@ -14,9 +14,9 @@ public class Paddle extends GameObject {
         x += direction * speed * deltaTime;
 
         // Clamp inside screen
-        if (x < 0) x = 0;
-        if (x > VARIABLES.WIDTH - getWidth()) {
-            x = VARIABLES.WIDTH - getWidth();
+        if (x < VARIABLES.HEIGHT_OF_WALLS) x = VARIABLES.HEIGHT_OF_WALLS;
+        if (x > VARIABLES.WIDTH - getWidth() - VARIABLES.WIDTH_OF_WALLS) {
+            x = VARIABLES.WIDTH - getWidth() - VARIABLES.WIDTH_OF_WALLS;
         }
 
         setPosition(x, y);
