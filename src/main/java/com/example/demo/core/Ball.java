@@ -27,7 +27,7 @@ public class Ball extends GameObject {
     public Ball(Paddle paddle) {
         super("/images/Ball.png", VARIABLES.INIT_BALL_X, VARIABLES.INIT_BALL_Y);
         this.paddle = paddle;
-        this.speed = 300;;
+        this.speed = 300;
         initBall();
     }
 
@@ -63,19 +63,19 @@ public class Ball extends GameObject {
         System.out.println("Ball released: dx=" + dx + " dy=" + dy);
 
         // Wall collisions
-        if (x <= 0) {
+        if (x <= VARIABLES.WIDTH_OF_WALLS) {
             dx = Math.abs(dx); // reflect right
-            x = 0;
+            x = VARIABLES.WIDTH_OF_WALLS;
             SoundManager.getInstance().playSound("wall_hit");
         }
-        if (x >= VARIABLES.WIDTH - getWidth()) {
+        if (x >= VARIABLES.WIDTH - getWidth() - VARIABLES.WIDTH_OF_WALLS) {
             dx = -Math.abs(dx); // reflect left
-            x = VARIABLES.WIDTH - getWidth();
+            x = VARIABLES.WIDTH - getWidth() - VARIABLES.WIDTH_OF_WALLS;
             SoundManager.getInstance().playSound("wall_hit");
         }
-        if (y <= 0) {
-            dy = Math.abs(dy); // reflect down
-            y = 0;
+        if (y <= VARIABLES.HEIGHT_OF_WALLS) {
+            dy = Math.abs(dy); // reflect dow
+            y = VARIABLES.HEIGHT_OF_WALLS;
             SoundManager.getInstance().playSound("wall_hit");
         }
 

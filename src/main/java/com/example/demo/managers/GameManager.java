@@ -29,6 +29,10 @@ public class GameManager extends Pane {
     private static final long paddleSoundCooldown = 200L;
     private long nextPaddleSoundTime = 0;
 
+    private Wall[]                rightWalls;
+    private Wall[]                leftWalls;
+    private Wall[]                topWalls;
+
     public GameManager() {
         initBoard();
     }
@@ -48,11 +52,23 @@ public class GameManager extends Pane {
         paddle = new Paddle();
         ball = new Ball(paddle);
 
+        rightWalls = new Wall[VARIABLES.N_OF_WALLS_LEFT_RIGHT];
+        leftWalls = new  Wall[VARIABLES.N_OF_WALLS_LEFT_RIGHT];
+        topWalls = new Wall[VARIABLES.N_OF_WALLS_TOP];
+
         int k = 0;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 6; j++) {
                 bricks[k] = new Brick(j * 40 + 30, i * 20 + 50);
                 k++;
+            }
+        }
+
+        for (int i = 0; i < rightWalls.length; i++) {
+            leftWalls[i] = new Wall(0, i * VARIABLES.HEIGHT_OF_WALLS);
+            rightWalls[i] = new Wall(VARIABLES.WIDTH - VARIABLES.WIDTH_OF_WALLS, i * VARIABLES.HEIGHT_OF_WALLS);
+            if (i < VARIABLES.N_OF_WALLS_TOP) {
+                topWalls[i] = new Wall(i * VARIABLES.WIDTH_OF_WALLS, 0);
             }
         }
 
@@ -130,6 +146,21 @@ public class GameManager extends Pane {
                 gc.drawImage(p.getImage(), p.getX(), p.getY(),
                         p.getWidth(), p.getHeight());
             }
+        }
+        //in tường
+        for (Wall wall : rightWalls){
+            gc.drawImage(wall.getImage(), wall.getX(), wall.getY(),
+                    wall.getWidth(), wall.getHeight());
+        }
+
+        for (Wall wall : leftWalls){
+            gc.drawImage(wall.getImage(), wall.getX(), wall.getY(),
+                    wall.getWidth(), wall.getHeight());
+        }
+
+        for (Wall wall : topWalls){
+            gc.drawImage(wall.getImage(), wall.getX(), wall.getY(),
+                    wall.getWidth(), wall.getHeight());
         }
     }
 
