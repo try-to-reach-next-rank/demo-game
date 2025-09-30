@@ -18,10 +18,10 @@ public class GameObject {
     private double          scaleY;
 
     public GameObject(String imagePath, double startX, double startY) {
-        this.image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
+        this.image     = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
         this.imageView = new ImageView(image);
-        this.width = image.getWidth();
-        this.height = image.getHeight();
+        this.width     = image.getWidth();
+        this.height    = image.getHeight();
         setPosition(startX, startY);
     }
 

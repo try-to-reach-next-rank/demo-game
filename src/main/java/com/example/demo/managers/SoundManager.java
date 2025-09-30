@@ -8,15 +8,14 @@ import java.util.*;
 import java.net.URL;
 
 public class SoundManager {
-    // tạo ra một đối tượng để quản lý + gọi
+        // tạo ra một đối tượng để quản lý + gọi
     private static final SoundManager instance = new SoundManager();
 
-    private final Map<String, Media> musicLibrary = new HashMap<>(); // libary of songs
-    private final List<String> musicKey = new ArrayList<>(); //this key was made for easier next/random song handling
-    private int currentTrackIndex = 0; // keep track of next songs (in playlist)
-    private MediaPlayer currentMusicPlayer; // currentl active song
-    //_____________________________
-    private final Map<String, AudioClip> soundEffects = new HashMap<>();
+    private final Map<String, Media> musicLibrary = new HashMap<>();      // libary of songs
+    private final List<String> musicKey = new ArrayList<>();              //this key was made for easier next/random song handling
+    private int currentTrackIndex = 0;                                    // keep track of next songs (in playlist)
+    private MediaPlayer currentMusicPlayer;                               // currentl active song
+    private final Map<String, AudioClip> soundEffects = new HashMap<>();  // map of sound effects
 
     private SoundManager() {
         loadSounds();
