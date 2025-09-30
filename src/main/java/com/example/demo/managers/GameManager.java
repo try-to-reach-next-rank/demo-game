@@ -28,10 +28,7 @@ public class GameManager extends Pane {
     private final List<PowerUp> activePowerUps = new ArrayList<>();
     private static final long paddleSoundCooldown = 200L;
     private long nextPaddleSoundTime = 0;
-
-    private Wall[]                rightWalls;
-    private Wall[]                leftWalls;
-    private Wall[]                topWalls;
+    private List<Wall> walls = new ArrayList();
 
     public GameManager() {
         initBoard();
@@ -52,9 +49,23 @@ public class GameManager extends Pane {
         paddle = new Paddle();
         ball = new Ball(paddle);
 
-        rightWalls = new Wall[VARIABLES.N_OF_WALLS_LEFT_RIGHT];
-        leftWalls = new  Wall[VARIABLES.N_OF_WALLS_LEFT_RIGHT];
-        topWalls = new Wall[VARIABLES.N_OF_WALLS_TOP];
+        walls.clear();
+
+        // Left walls
+        for (int i = 0; i < VARIABLES.N_OF_WALLS_LEFT_RIGHT; i++) {
+            walls.add(new Wall(Wall.Side.LEFT, 0, i * VARIABLES.HEIGHT_OF_WALLS, VARIABLES.WIDTH_OF_WALLS, VARIABLES.HEIGHT_OF_WALLS));
+        }
+
+        // Right walls
+        for (int i = 0; i < VARIABLES.N_OF_WALLS_LEFT_RIGHT; i++) {
+            walls.add(new Wall(Wall.Side.RIGHT, VARIABLES.WIDTH - VARIABLES.WIDTH_OF_WALLS, i * VARIABLES.HEIGHT_OF_WALLS, VARIABLES.WIDTH_OF_WALLS, VARIABLES.HEIGHT_OF_WALLS));
+        }
+
+        // Top walls
+        for (int i = 0; i < VARIABLES.N_OF_WALLS_TOP; i++) {
+            walls.add(new Wall(Wall.Side.TOP, i * VARIABLES.WIDTH_OF_WALLS, 0, VARIABLES.WIDTH_OF_WALLS, VARIABLES.HEIGHT_OF_WALLS));
+        }
+
 
         //khởi tạo gạch
         for (int i = 0; i < VARIABLES.N_OF_BRICKS; i++) {
@@ -63,15 +74,6 @@ public class GameManager extends Pane {
             int x = VARIABLES.FIRST_X_OF_BRICKS + col * (VARIABLES.WIDTH_OF_BRICKS + VARIABLES.PADDING_X);
             int y = VARIABLES.FIRST_Y_OF_BRICKS + row * (VARIABLES.HEIGHT_OF_BRICKS + VARIABLES.PADDING_Y);
             bricks[i] = new Brick(x, y);
-        }
-
-
-        for (int i = 0; i < rightWalls.length; i++) {
-            leftWalls[i] = new Wall(0, i * VARIABLES.HEIGHT_OF_WALLS);
-            rightWalls[i] = new Wall(VARIABLES.WIDTH - VARIABLES.WIDTH_OF_WALLS, i * VARIABLES.HEIGHT_OF_WALLS);
-            if (i < VARIABLES.N_OF_WALLS_TOP) {
-                topWalls[i] = new Wall(i * VARIABLES.WIDTH_OF_WALLS, 0);
-            }
         }
 
         SoundManager.getInstance().playRandomMusic(); //play blackground music
@@ -150,17 +152,7 @@ public class GameManager extends Pane {
             }
         }
         //in tường
-        for (Wall wall : rightWalls){
-            gc.drawImage(wall.getImage(), wall.getX(), wall.getY(),
-                    wall.getWidth(), wall.getHeight());
-        }
-
-        for (Wall wall : leftWalls){
-            gc.drawImage(wall.getImage(), wall.getX(), wall.getY(),
-                    wall.getWidth(), wall.getHeight());
-        }
-
-        for (Wall wall : topWalls){
+        for (Wall wall : walls){
             gc.drawImage(wall.getImage(), wall.getX(), wall.getY(),
                     wall.getWidth(), wall.getHeight());
         }
@@ -181,12 +173,22 @@ public class GameManager extends Pane {
         SoundManager.getInstance().stopMusic();
     }
 
+    private Collision buildCollision(GameObject a, GameObject b) {
+        if (a == b) return null;
+        if(!a.getBounds().intersects(b.getBounds())) return null;
+
+        double overlapX = Math.min(a.getBounds().getMaxX(), b.getBounds().getMaxX())
+                - Math.max(a.getBounds().getMinX(), b.getBounds().getMinX());
+        double overlapY = Math.min(a.getBounds().getMaxY(), b.getBounds().getMaxY())
+                - Math.max(a.getBounds().getMinY(), b.getBounds().getMinY());
+
+        return new Collision(a, b, System.nanoTime(), overlapX, overlapY);
+    }
+
     // add hiệu ứng vào checkCollision
     private void checkCollision() {
         // Kiểm tra bóng rơi quá đáy màn hình
         if (ball.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
-            // stopGame();
-            // add game over sfx
             SoundManager.getInstance().playSound("game_over");
             ball.resetState();
         }
@@ -197,25 +199,26 @@ public class GameManager extends Pane {
 
         // Va chạm giữa power-up và thanh đỡ (paddle)
         for (PowerUp p : activePowerUps) {
-            if (p.isVisible() && p.getBounds().intersects(paddle.getBounds())) {
-                SoundManager.getInstance().playSound("power_up"); // adding power_up SFX
-                ball.activatePowerUp(p); // let Ball handle effect
+            Collision c = buildCollision(p, paddle);
+            if (c != null && p.isVisible()) {
+                SoundManager.getInstance().playSound("power_up");
+                ball.activatePowerUp(p);
                 p.setVisible(false);
             }
 
-            // Power-up falls off screen
             if (p.isVisible() && p.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
                 p.setVisible(false);
             }
         }
 
         // Va chạm giữa bóng và thanh đỡ
-        if (ball.getBounds().intersects(paddle.getBounds())) {
-            if (!ball.isStuck()) { // Neglect when ball is first stuck with paddle
-                long currentTime = System.currentTimeMillis(); // take time now
-                if (currentTime > nextPaddleSoundTime) {
-                    SoundManager.getInstance().playSound("paddle_hit"); // adding paddle_hit SFX
-                    nextPaddleSoundTime = currentTime + paddleSoundCooldown;
+        Collision paddleCollision = buildCollision(ball, paddle);
+        if (paddleCollision != null) {
+            if (!ball.isStuck()) {
+                long now = System.currentTimeMillis();
+                if (now > nextPaddleSoundTime) {
+                    SoundManager.getInstance().playSound("paddle_hit");
+                    nextPaddleSoundTime = now + paddleSoundCooldown;
                 }
             }
 
@@ -229,27 +232,36 @@ public class GameManager extends Pane {
             ball.setVelocity(angle);
         }
 
+        for(Wall wall : walls) {
+            Collision c = buildCollision(ball, wall);
+            if (c != null) {
+                SoundManager.getInstance().playSound("wall_hit");
+                switch (wall.getSide()) {
+                    case LEFT:
+                        ball.setDx(Math.abs(ball.getDx()));
+                        break;
+                    case RIGHT:
+                        ball.setDx(-Math.abs(ball.getDx()));
+                        break;
+                    case TOP:
+                        ball.setDy(Math.abs(ball.getDy()));
+                        break;
+                }
+            }
+        }
+
         // Va chạm với gạch
         for (Brick brick : bricks) {
-            if (!brick.isDestroyed() && ball.getBounds().intersects(brick.getBounds())) {
+            Collision c = buildCollision(ball, brick);
+            if (c != null && !brick.isDestroyed()) {
                 brick.setDestroyed(true);
-                // adding brick_hit SFX
                 SoundManager.getInstance().playSound("brick_hit");
 
-                double overlapLeft   = ball.getBounds().getMaxX() - brick.getBounds().getMinX();
-                double overlapRight  = brick.getBounds().getMaxX() - ball.getBounds().getMinX();
-                double overlapTop    = ball.getBounds().getMaxY() - brick.getBounds().getMinY();
-                double overlapBottom = brick.getBounds().getMaxY() - ball.getBounds().getMinY();
-
-                boolean ballFromLeft   = overlapLeft < overlapRight && overlapLeft < overlapTop && overlapLeft < overlapBottom;
-                boolean ballFromRight  = overlapRight < overlapLeft && overlapRight < overlapTop && overlapRight < overlapBottom;
-                boolean ballFromTop    = overlapTop < overlapBottom && overlapTop < overlapLeft && overlapTop < overlapRight;
-                boolean ballFromBottom = overlapBottom < overlapTop && overlapBottom < overlapLeft && overlapBottom < overlapRight;
-
-                if (ballFromLeft || ballFromRight) {
-                    ball.setDx(-ball.getDx()); // flip X
-                } else if (ballFromTop || ballFromBottom) {
-                    ball.setDy(-ball.getDy()); // flip Y
+                boolean ballFromSide = c.getOverlapX() < c.getOverlapY();
+                if (ballFromSide) {
+                    ball.setDx(-ball.getDx());
+                } else {
+                    ball.setDy(-ball.getDy());
                 }
 
                 if (random.nextInt(100) < 30) {
