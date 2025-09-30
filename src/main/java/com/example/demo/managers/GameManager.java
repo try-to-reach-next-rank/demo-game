@@ -1,6 +1,6 @@
 package com.example.demo.managers;
 
-import com.almasb.fxgl.audio.Sound;
+import com.almasb.fxgl.audio.Sound; // Giữ lại nếu bạn đang sử dụng FXGL
 import com.example.demo.core.*;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
@@ -12,8 +12,12 @@ import javafx.scene.text.Font;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Iterator;
 
+// Import các lớp quản lý map mới
 import com.example.demo.managers.SoundManager;
+import com.example.demo.managers.MapManager;
+import com.example.demo.core.MapData;
 
 public class GameManager extends Pane {
 
@@ -30,6 +34,10 @@ public class GameManager extends Pane {
     private long nextPaddleSoundTime = 0;
     private List<Wall> walls = new ArrayList();
 
+    // THUỘC TÍNH MỚI CHO VIỆC QUẢN LÝ MAP VÀ LEVEL
+    private final MapManager    mapManager = new MapManager();
+    private int                 currentLevel = 1;
+
     public GameManager() {
         initBoard();
     }
@@ -41,45 +49,51 @@ public class GameManager extends Pane {
         getChildren().add(canvas);
         setFocusTraversable(true);
         requestFocus();
+
+        // Khởi tạo các đối tượng và tải level
         gameInit();
     }
 
     private void gameInit() {
-        bricks = new Brick[VARIABLES.N_OF_BRICKS];
         paddle = new Paddle();
         ball = new Ball(paddle);
 
-        walls.clear();
+        // Tải Level 1 bằng MapManager (thay thế logic khởi tạo gạch/tường cũ)
+        loadLevel(currentLevel);
 
-        // Left walls
-        for (int i = 0; i < VARIABLES.N_OF_WALLS_LEFT_RIGHT; i++) {
-            walls.add(new Wall(Wall.Side.LEFT, 0, i * VARIABLES.HEIGHT_OF_WALLS, VARIABLES.WIDTH_OF_WALLS, VARIABLES.HEIGHT_OF_WALLS));
-        }
-
-        // Right walls
-        for (int i = 0; i < VARIABLES.N_OF_WALLS_LEFT_RIGHT; i++) {
-            walls.add(new Wall(Wall.Side.RIGHT, VARIABLES.WIDTH - VARIABLES.WIDTH_OF_WALLS, i * VARIABLES.HEIGHT_OF_WALLS, VARIABLES.WIDTH_OF_WALLS, VARIABLES.HEIGHT_OF_WALLS));
-        }
-
-        // Top walls
-        for (int i = 0; i < VARIABLES.N_OF_WALLS_TOP; i++) {
-            walls.add(new Wall(Wall.Side.TOP, i * VARIABLES.WIDTH_OF_WALLS, 0, VARIABLES.WIDTH_OF_WALLS, VARIABLES.HEIGHT_OF_WALLS));
-        }
-
-
-        //khởi tạo gạch
-        for (int i = 0; i < VARIABLES.N_OF_BRICKS; i++) {
-            int row = i / VARIABLES.BRICKS_PER_ROW;
-            int col = i % VARIABLES.BRICKS_PER_ROW;
-            int x = VARIABLES.FIRST_X_OF_BRICKS + col * (VARIABLES.WIDTH_OF_BRICKS + VARIABLES.PADDING_X);
-            int y = VARIABLES.FIRST_Y_OF_BRICKS + row * (VARIABLES.HEIGHT_OF_BRICKS + VARIABLES.PADDING_Y);
-            bricks[i] = new Brick(x, y);
-        }
-
-        SoundManager.getInstance().playRandomMusic(); //play blackground music
-
+        SoundManager.getInstance().playRandomMusic(); //play background music
 
         loop();
+    }
+
+    /**
+     * Tải map mới dựa trên số level.
+     * Level 1-3: Map cố định. Level 4 trở đi: Map ngẫu nhiên.
+     */
+    private void loadLevel(int level) {
+        MapData mapData;
+
+        if (level <= 3) {
+            mapData = mapManager.loadMap(level);
+        } else {
+            // Sử dụng map ngẫu nhiên cho các level sau level cố định
+            mapData = mapManager.loadMapFromMatrix(mapManager.createRandomMatrix());
+        }
+
+        // 1. Cập nhật Tường
+        walls.clear();
+        walls.addAll(mapData.walls());
+
+        // 2. Cập nhật Gạch
+        List<Brick> brickList = mapData.bricks();
+        bricks = brickList.toArray(new Brick[0]); // Chuyển List thành Array
+
+        // 3. Xóa Power-up cũ
+        activePowerUps.clear();
+
+        // 4. Reset Ball và Paddle
+        ball.resetState();
+        paddle.resetState();
     }
 
     private void loop() {
@@ -109,7 +123,10 @@ public class GameManager extends Pane {
         ball.update(deltaTime);
         paddle.update(deltaTime);
 
-        for (PowerUp p : activePowerUps) {
+        // Cập nhật vị trí PowerUp
+        Iterator<PowerUp> puIterator = activePowerUps.iterator();
+        while (puIterator.hasNext()) {
+            PowerUp p = puIterator.next();
             if (p.isVisible()) {
                 p.update(deltaTime);
             }
@@ -125,19 +142,21 @@ public class GameManager extends Pane {
         if (inGame) {
             drawObjects();
         }
-
         else {
             gameFinished();
         }
     }
 
     private void drawObjects() {
+        // Vẽ bóng
         gc.drawImage(ball.getImage(), ball.getX(), ball.getY(),
                 ball.getWidth(), ball.getHeight());
 
+        // Vẽ thanh đỡ
         gc.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
                 paddle.getWidth(), paddle.getHeight());
 
+        // Vẽ gạch
         for (Brick brick : bricks) {
             if (!brick.isDestroyed()) {
                 gc.drawImage(brick.getImage(), brick.getX(), brick.getY(),
@@ -145,13 +164,15 @@ public class GameManager extends Pane {
             }
         }
 
+        // Vẽ PowerUp
         for (PowerUp p : activePowerUps) {
             if (p.isVisible()) {
                 gc.drawImage(p.getImage(), p.getX(), p.getY(),
                         p.getWidth(), p.getHeight());
             }
         }
-        //in tường
+
+        // Vẽ tường
         for (Wall wall : walls){
             gc.drawImage(wall.getImage(), wall.getX(), wall.getY(),
                     wall.getWidth(), wall.getHeight());
@@ -185,20 +206,22 @@ public class GameManager extends Pane {
         return new Collision(a, b, System.nanoTime(), overlapX, overlapY);
     }
 
-    // add hiệu ứng vào checkCollision
     private void checkCollision() {
         // Kiểm tra bóng rơi quá đáy màn hình
         if (ball.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
             SoundManager.getInstance().playSound("game_over");
+            // Logic tạm thời: Reset bi khi rớt. Bạn nên thêm logic mạng (lives) tại đây.
             ball.resetState();
         }
 
-        // Win condition
+        // Đếm gạch đã phá
         long destroyed = java.util.Arrays.stream(bricks)
                 .filter(Brick::isDestroyed).count();
 
         // Va chạm giữa power-up và thanh đỡ (paddle)
-        for (PowerUp p : activePowerUps) {
+        Iterator<PowerUp> puIterator = activePowerUps.iterator();
+        while(puIterator.hasNext()) {
+            PowerUp p = puIterator.next();
             Collision c = buildCollision(p, paddle);
             if (c != null && p.isVisible()) {
                 SoundManager.getInstance().playSound("power_up");
@@ -232,6 +255,7 @@ public class GameManager extends Pane {
             ball.setVelocity(angle);
         }
 
+        // Va chạm với tường
         for(Wall wall : walls) {
             Collision c = buildCollision(ball, wall);
             if (c != null) {
@@ -272,9 +296,22 @@ public class GameManager extends Pane {
             }
         }
 
-        if (destroyed == VARIABLES.N_OF_BRICKS) {
-            message = "Victory";
-            stopGame();
+        // Logic Chuyển Level (Win condition)
+        if (bricks.length > 0 && destroyed == bricks.length) {
+            currentLevel++;
+
+            // Tải level tiếp theo
+            loadLevel(currentLevel);
+
+            if (currentLevel <= 3) {
+                message = "Level " + currentLevel;
+            } else {
+                message = "Random Level " + (currentLevel - 3);
+            }
+
+            SoundManager.getInstance().playSound("level_up");
+
+            // Không gọi stopGame() để tiếp tục chơi
         }
     }
 
