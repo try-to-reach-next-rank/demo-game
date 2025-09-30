@@ -278,7 +278,8 @@ public class GameManager extends Pane {
         for (Brick brick : bricks) {
             Collision c = buildCollision(ball, brick);
             if (c != null && !brick.isDestroyed()) {
-                brick.setDestroyed(true);
+               // brick.setDestroyed(true); xóa gạch cũ thay bằng giảm máu 1 lần
+                brick.takeDamage();
                 SoundManager.getInstance().playSound("brick_hit");
 
                 boolean ballFromSide = c.getOverlapX() < c.getOverlapY();

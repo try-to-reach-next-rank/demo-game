@@ -23,6 +23,7 @@ public interface VARIABLES {
     public static final int PADDING_X = 6;
     public static final int PADDING_Y = 6;
 
+    public static final int MAXHEALTH_OF_BRICKS = 5;
     public static final int WIDTH_OF_BRICKS = 32;
     public static final int HEIGHT_OF_BRICKS = 16;
     public static final int FIRST_X_OF_BRICKS = WIDTH_OF_WALLS + PADDING_X/2;
