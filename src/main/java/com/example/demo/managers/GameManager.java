@@ -30,9 +30,9 @@ public class GameManager extends Pane {
     private final               Random random = new Random();
     private                     GraphicsContext gc;
     private final List<PowerUp> activePowerUps = new ArrayList<>();
-    private static final long paddleSoundCooldown = 200L;
-    private long nextPaddleSoundTime = 0;
-    private List<Wall> walls = new ArrayList();
+    private static final long   paddleSoundCooldown = 200L;
+    private long                nextPaddleSoundTime = 0;
+    private List<Wall>          walls = new ArrayList();
 
     // THUỘC TÍNH MỚI CHO VIỆC QUẢN LÝ MAP VÀ LEVEL
     private final MapManager    mapManager = new MapManager();
@@ -252,7 +252,7 @@ public class GameManager extends Pane {
             double hitPos = (ballCenterX - paddleLPos) / paddle.getWidth();
 
             double angle = Math.toRadians(150 * (1 - hitPos) + 30 * hitPos);
-            ball.setVelocity(angle);
+            ball.setVelocity(new Vector2D(Math.cos(angle), -Math.sin(angle)));
         }
 
         // Va chạm với tường
@@ -260,15 +260,16 @@ public class GameManager extends Pane {
             Collision c = buildCollision(ball, wall);
             if (c != null) {
                 SoundManager.getInstance().playSound("wall_hit");
+                Vector2D v = ball.getVelocity();
                 switch (wall.getSide()) {
                     case LEFT:
-                        ball.setDx(Math.abs(ball.getDx()));
+                        ball.setVelocity(new Vector2D(Math.abs(v.x), v.y));
                         break;
                     case RIGHT:
-                        ball.setDx(-Math.abs(ball.getDx()));
+                        ball.setVelocity(new Vector2D(-Math.abs(v.x), v.y));
                         break;
                     case TOP:
-                        ball.setDy(Math.abs(ball.getDy()));
+                        ball.setVelocity(new Vector2D(v.x, Math.abs(v.y)));
                         break;
                 }
             }
@@ -283,10 +284,12 @@ public class GameManager extends Pane {
                 SoundManager.getInstance().playSound("brick_hit");
 
                 boolean ballFromSide = c.getOverlapX() < c.getOverlapY();
+                Vector2D v = ball.getVelocity();
+
                 if (ballFromSide) {
-                    ball.setDx(-ball.getDx());
+                    ball.setVelocity(new Vector2D(-v.x, v.y));
                 } else {
-                    ball.setDy(-ball.getDy());
+                    ball.setVelocity(new Vector2D(v.x, -v.y));
                 }
 
                 if (brick.isDestroyed() && random.nextInt(100) < 30) {
