@@ -9,7 +9,7 @@ import com.example.demo.managers.SoundManager;
 
 public class Ball extends GameObject {
     private double                      dx, dy;  // continuous velocity
-    private double                      speed;   // base speed (px/sec)
+    private final double                speed;   // base speed (px/sec)
     private boolean                     stuck;
     private final                       Paddle paddle;
     private final List<ActiveEffect>    activeEffectList = new ArrayList<>();
@@ -61,23 +61,6 @@ public class Ball extends GameObject {
         y += vy * deltaTime;
 
         System.out.println("Ball released: dx=" + dx + " dy=" + dy);
-
-        // Wall collisions
-        if (x <= VARIABLES.WIDTH_OF_WALLS) {
-            dx = Math.abs(dx); // reflect right
-            x = VARIABLES.WIDTH_OF_WALLS;
-            SoundManager.getInstance().playSound("wall_hit");
-        }
-        if (x >= VARIABLES.WIDTH - getWidth() - VARIABLES.WIDTH_OF_WALLS) {
-            dx = -Math.abs(dx); // reflect left
-            x = VARIABLES.WIDTH - getWidth() - VARIABLES.WIDTH_OF_WALLS;
-            SoundManager.getInstance().playSound("wall_hit");
-        }
-        if (y <= VARIABLES.HEIGHT_OF_WALLS) {
-            dy = Math.abs(dy); // reflect dow
-            y = VARIABLES.HEIGHT_OF_WALLS;
-            SoundManager.getInstance().playSound("wall_hit");
-        }
 
         // Missed paddle
         if (y >= VARIABLES.HEIGHT) {

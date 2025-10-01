@@ -24,11 +24,11 @@ public class SoundManager {
     // tải tất cả âm thanh
     private void loadSounds(){
         try{
-            loadMusic("Soft-Memories", "/sounds/Soft-Memories.mp3");
-            loadMusic("fish-in-the-pool", "/sounds/fish-in-the-pool.mp3");
             loadMusic("Hametsu-no-Ringo", "/sounds/Hametsu-no-Ringo.mp3");
-            loadMusic("Genshin-Impact-Main-Theme", "/sounds/Genshin-Impact-Main-Theme.mp3");
-            loadMusic("Carefree-Kevin MacLeod", "/sounds/Carefree-Kevin MacLeod.mp3");
+            loadMusic("An-Impromptu-Piece", "/sounds/An-Impromptu-Piece.mp3");
+            loadMusic("Gerty-on-a-Rainy-Day", "/sounds/Gerty-on-a-Rainy-Day.mp3");
+            loadMusic("You-Far-Away", "/sounds/You-Far-Away.mp3");
+            loadMusic("Engraved-Star", "/sounds/Engraved-Star.mp3");
 
             loadSoundEffect("brick_hit", "/sounds/brick_hit.wav");
             loadSoundEffect("paddle_hit", "/sounds/paddle_hit.wav");
@@ -78,7 +78,7 @@ public class SoundManager {
         }
 
         currentMusicPlayer = new MediaPlayer(media);
-        currentMusicPlayer.setVolume(0.1); //set background music's volume
+        currentMusicPlayer.setVolume(0.5); //set background music's volume
 
         currentMusicPlayer.setOnEndOfMedia(() -> playNextMusic()); //After the current sond ends, instantly play next music;
 

@@ -1,6 +1,7 @@
 package com.example.demo.core;
 
 import javafx.geometry.Bounds;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -17,12 +18,40 @@ public class GameObject {
     private double          scaleX;
     private double          scaleY;
 
-    public GameObject(String imagePath, double startX, double startY) {
-        this.image     = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
-        this.imageView = new ImageView(image);
-        this.width     = image.getWidth();
-        this.height    = image.getHeight();
+    public GameObject(String imagePath, double startX, double startY) { // this constructor uses imagepath to create new image
+        setImagePath(imagePath);
         setPosition(startX, startY);
+    }
+
+    public GameObject(Image image, double startX, double startY) { // this constructor uses preloaded images
+        setImage(image);
+        setPosition(startX, startY);
+    }
+
+    public void setImagePath(String imagePath){
+        this.image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
+        this.imageView = new ImageView(image);
+        this.width = image.getWidth();
+        this.height = image.getHeight();
+    }
+
+    // Sets the image from a preloaded Image object
+    public void setImage(Image image){ //set image
+        this.image = image;
+
+        // Creating imageview if not yet created
+        if (this.imageView == null) {
+            this.imageView = new ImageView(image);
+        } else {
+            this.imageView.setImage(image);
+        }
+
+        this.width = image.getWidth();
+        this.height = image.getHeight();
+
+        if (this.scaleX != 0 && this.scaleY != 0) {
+            setScale(this.scaleX, this.scaleY);
+        }
     }
 
     public void setPosition(double x, double y) {
@@ -48,6 +77,11 @@ public class GameObject {
 
     public Bounds getBounds() {
         return imageView.getBoundsInParent();
+    }
+
+    public boolean checkCollision(GameObject other) {
+        if(this == other) return false; // ignore self
+        return this.getBounds().intersects(other.getBounds());
     }
 
     public void setY(double v) {

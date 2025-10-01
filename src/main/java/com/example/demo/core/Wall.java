@@ -1,14 +1,20 @@
 package com.example.demo.core;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+public class Wall extends GameObject {
+    public enum Side { LEFT, RIGHT, TOP }
 
-import java.util.Objects;
+    private final Side side;
 
-public class Wall extends GameObject{
-        public Wall(double startX, double startY) {
-            super("/images/Wall.png", startX, startY);
-        }
+    public Wall(Side side, double x, double y, double width, double height) {
+        super("/images/Wall.png", x, y); // optional: could just use a colored rect
+        this.width = width;
+        this.height = height;
+        this.side = side;
+        imageView.setFitWidth(width);
+        imageView.setFitHeight(height);
+    }
+
+    public Side getSide() {
+        return side;
+    }
 }
