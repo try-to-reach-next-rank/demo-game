@@ -280,8 +280,13 @@ public class GameManager extends Pane {
             Collision c = buildCollision(ball, brick);
             if (c != null && !brick.isDestroyed()) {
                // brick.setDestroyed(true); xóa gạch cũ thay bằng giảm máu 1 lần
-                brick.takeDamage();
-                SoundManager.getInstance().playSound("brick_hit");
+                //gọi sound từ function phá gạch
+                String soundToPlay = brick.takeDamage();
+
+                if (soundToPlay != null) {
+                    if("explosion_hit".equals(soundToPlay)) handleExplosion(brick);
+                    SoundManager.getInstance().playSound(soundToPlay);
+                }
 
                 boolean ballFromSide = c.getOverlapX() < c.getOverlapY();
                 Vector2D v = ball.getVelocity();
@@ -319,7 +324,35 @@ public class GameManager extends Pane {
         }
     }
 
+    private void handleExplosion(Brick sourceBrick) {
+        // tọa độ tâm của vụ nổ
+        double centerX = sourceBrick.getX() + sourceBrick.getWidth() / 2;
+        double centerY = sourceBrick.getY() + sourceBrick.getHeight() / 2;
 
+        // Bán kính vụ nổ ( điều chỉnh giá trị 2.5)
+        double radius = sourceBrick.getWidth() * 2.5;
+
+        // Duyệt qua tất cả các viên gạch
+        for (Brick otherBrick : bricks) {
+            // Bỏ qua self và những viên đã bị phá hủy
+            if (otherBrick == sourceBrick || otherBrick.isDestroyed()) {
+                continue;
+            }
+
+            // Tâm gạch tiếp theo
+            double otherCenterX = otherBrick.getX() + otherBrick.getWidth() / 2;
+            double otherCenterY = otherBrick.getY() + otherBrick.getHeight() / 2;
+
+            // Tính khoảng cách 2 gạch
+            double distance = Math.sqrt(Math.pow(centerX - otherCenterX, 2) + Math.pow(centerY - otherCenterY, 2));
+
+            // Nếu nằm trong bán kính vụ nổ = gọi takeDamage
+            if (distance <= radius) {
+                    otherBrick.takeDamage();
+                }
+            }
+        }
+        
     public Paddle getPaddle() {
         return paddle;
     }
