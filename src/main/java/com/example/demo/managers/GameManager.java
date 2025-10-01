@@ -289,7 +289,7 @@ public class GameManager extends Pane {
                     ball.setDy(-ball.getDy());
                 }
 
-                if (random.nextInt(100) < 30) {
+                if (brick.isDestroyed() && random.nextInt(100) < 30) {
                     PowerUp newPU = new PowerUp("ACCELERATE");
                     newPU.dropFrom(brick);
                     activePowerUps.add(newPU);
