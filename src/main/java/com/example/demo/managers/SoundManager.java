@@ -35,7 +35,7 @@ public class SoundManager {
             loadSoundEffect("wall_hit", "/sounds/wall_hit.wav");
             loadSoundEffect("game_over", "/sounds/game_over.wav");
             loadSoundEffect("power_up","/sounds/power_up.wav");
-
+            loadSoundEffect("explosion_hit","/sounds/explosion_hit.wav");
         }
         catch (Exception e){
             System.err.println("Error when loading sounds: " + e.getMessage());
@@ -82,9 +82,7 @@ public class SoundManager {
 
         currentMusicPlayer.setOnEndOfMedia(() -> playNextMusic()); //After the current sond ends, instantly play next music;
 
-
         currentMusicPlayer.play();
-
         currentTrackIndex = musicKey.indexOf(name);
     }
 

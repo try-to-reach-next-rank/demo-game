@@ -1,5 +1,6 @@
 package com.example.demo.managers;
-
+import com.example.demo.core.SteelBrick;
+import com.example.demo.core.ExplosionBrick;
 import com.example.demo.core.Brick;
 import com.example.demo.core.Wall;
 import com.example.demo.core.VARIABLES;
@@ -54,11 +55,12 @@ public class MapManager {
                 double x = MATRIX_START_X + c * CELL_W;
                 double y = MATRIX_START_Y + r * CELL_H;
 
-                if (matrix[r][c] == 1) { // Gạch (có thể phá hủy)
+                if (matrix[r][c] == 1) { // Brick
                     bricks.add(new Brick((int)x, (int)y));
-                } else if (matrix[r][c] == 2) { // Tường (không phá hủy)
-                    // Dùng kích thước Brick/Cell cho tường được sinh từ Ma trận
-                    walls.add(new Wall(Wall.Side.TOP, x, y, VARIABLES.WIDTH_OF_BRICKS, VARIABLES.HEIGHT_OF_BRICKS));
+                } else if (matrix[r][c] == 2) { // SteelBrick
+                    bricks.add(new SteelBrick((int)x, (int)y));
+                } else if (matrix[r][c] == 3) { // ExplosionBrick
+                    bricks.add(new ExplosionBrick((int)x, (int)y));
                 }
             }
         }
@@ -84,7 +86,7 @@ public class MapManager {
         return walls;
     }
 
-    // --- Các hàm khởi tạo Ma trận cho từng Level (0: Trống, 1: Gạch, 2: Tường) ---
+    // --- Các hàm khởi tạo Ma trận cho từng Level (0: Trống, 1: Gạch, 2: Gạch Thép, 3: Gạch nổ) ---
 
     // 1. Level 1: Nửa trên là Gạch (1)
     public int[][] createMap1Matrix() {
@@ -146,7 +148,7 @@ public class MapManager {
 
                             // Kiểm tra: nằm trong bounds VÀ là ô trống (0)
                             if (nr >= 0 && nr < MATRIX_ROWS && nc >= 0 && nc < MATRIX_COLS && map[nr][nc] == 0) {
-                                map[nr][nc] = 2; // Đặt Tường
+                                map[nr][nc] = 2; // Đặt Gạch thép
                             }
                         }
                     }
@@ -219,9 +221,11 @@ public class MapManager {
         for (int r = 0; r < MATRIX_ROWS / 2; r++) { // Chỉ tạo ở nửa trên
             for (int c = 0; c < MATRIX_COLS; c++) {
                 int type = rand.nextInt(10);
+
                 if (type < 4) map[r][c] = 1; // 40% Gạch
                 else if (type < 5) map[r][c] = 2; // 10% Tường
-                // Còn lại 50% là 0 (Trống)
+                else if (type < 8 ) map[r][c] = 3; // 30% Nổ
+                // Còn lại 20% là 0 (Trống)
             }
         }
         return map;

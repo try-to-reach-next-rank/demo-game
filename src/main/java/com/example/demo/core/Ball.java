@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-// adding sfx into ball.java
-import com.example.demo.managers.SoundManager;
-
 public class Ball extends GameObject {
-    private double                      dx, dy;  // continuous velocity
     private final double                speed;   // base speed (px/sec)
     private boolean                     stuck;
     private final                       Paddle paddle;
     private final List<ActiveEffect>    activeEffectList = new ArrayList<>();
+    private Vector2D                    velocity;
 
     private static class ActiveEffect {
         String type;
@@ -32,6 +29,7 @@ public class Ball extends GameObject {
     }
 
     private void initBall() {
+        velocity = new Vector2D(0, -1);
         stuck = true;
         activeEffectList.clear();
         resetState();
@@ -53,14 +51,11 @@ public class Ball extends GameObject {
                 ? speed * VARIABLES.ACCELERATED_SPEED_MULTIPLIER
                 : speed;
 
-        double vx = dx * currentSpeed;
-        double vy = dy * currentSpeed;
+        Vector2D step = velocity.normalize().multiply(currentSpeed * deltaTime);
+        x += step.x;
+        y += step.y;
 
-        // Move with deltaTime (seconds)
-        x += vx * deltaTime;
-        y += vy * deltaTime;
-
-        System.out.println("Ball released: dx=" + dx + " dy=" + dy);
+        System.out.println("Ball released: velocity=" + velocity);
 
         // Missed paddle
         if (y >= VARIABLES.HEIGHT) {
@@ -77,31 +72,15 @@ public class Ball extends GameObject {
                 paddle.getY() - getHeight()
         );
         stuck = true;
-        dx = 0;
-        dy = -1; // upwards
+        velocity = new Vector2D(0, -1);
         activeEffectList.clear();
     }
 
     public void release() {
         if (stuck) {
             stuck = false;
-            dx = 0;
-            dy = -1.0;
+            velocity = new Vector2D(0, -1);
         }
-    }
-
-    private void normalize() {
-        double len = Math.sqrt(dx * dx + dy * dy);
-        if (len != 0) {
-            dx /= len;
-            dy /= len;
-        }
-    }
-
-    public void setVelocity(double angle) {
-        dx = Math.cos(angle);
-        dy = -Math.sin(angle); // negative Y = up
-        normalize();
     }
 
     public void activatePowerUp(PowerUp p) {
@@ -136,19 +115,6 @@ public class Ball extends GameObject {
         }
     }
 
-    public double getDx() {
-        return dx;
-    }
-
-    public double getDy() {
-        return dy;
-    }
-
-    public void setDx(double v) {
-        dx = v;
-    }
-
-    public void setDy(double v) {
-        dy = v;
-    }
+    public Vector2D getVelocity() { return velocity; }
+    public void setVelocity(Vector2D v) { velocity = v.normalize(); }
 }
