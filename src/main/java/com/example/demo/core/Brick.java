@@ -67,27 +67,6 @@ public class Brick extends GameObject {
         setImage(getImageFromHealth(this.health));
     }
 
-    private static Image getImageFromHealth(int health){
-        if(health > 0) return BRICK_TEXTURES.get(health - 1); //if index is 0, health = 1;
-        return BRICK_TEXTURES.get(0);
-    }
-
-    private int getHealthFromImage(Image image){
-        return BRICK_TEXTURES.indexOf(image) + 1; //if index = 4, health = 5;
-    }
-
-    public void takeDamage() {
-        if (health > 0) {
-            health--;
-            if (health <= 0) setDestroyed(true);
-            else updateImage();
-        }
-    }
-
-    private void updateImage() {
-        setImage(getImageFromHealth(this.health));
-    }
-
     public boolean isDestroyed() {
         return destroyed;
     }

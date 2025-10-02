@@ -1,16 +1,16 @@
 package com.example.demo.effects;
 
+import com.example.demo.core.Vector2D;
 import com.example.demo.utils.Timer;
 
 public abstract class VisualEffect implements Effect {
-    protected double x, y;
-    protected boolean active;
-    protected final Timer timer;
+    protected Vector2D      position;
+    protected boolean       active;
+    protected final Timer   timer;
 
     // Constructor
     public VisualEffect(double x, double y, double durationSeconds) {
-        this.x = x;
-        this.y = y;
+        position = new Vector2D(x, y);
         this.timer = new Timer();
         this.timer.start(durationSeconds);
         this.active = true;
@@ -45,17 +45,19 @@ public abstract class VisualEffect implements Effect {
     }
 
     // Position getters and setters
-    public double getX() {
-        return this.x;
+    public Vector2D getPosition() {
+        return this.position;
     }
 
-    public double getY() {
-        return this.y;
+    public void setPosition(Vector2D position) {
+        this.position = position;
     }
 
-    public void setPosition(double x, double y) {
-        this.x = x;
-        this.y = y;
+    // Reset effect to use again
+    public void reset(double x, double y, double durationSeconds) {
+        setPosition(new Vector2D(x, y));
+        this.timer.start(durationSeconds);
+        activate();
     }
 
     // Abstract methods to be implemented by subclasses

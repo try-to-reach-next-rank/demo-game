@@ -275,25 +275,6 @@ public class GameManager extends Pane {
             }
         }
 
-        // Va chạm với tường
-        for(Wall wall : walls) {
-            Collision c = buildCollision(ball, wall);
-            if (c != null) {
-                SoundManager.getInstance().playSound("wall_hit");
-                switch (wall.getSide()) {
-                    case LEFT:
-                        ball.setDx(Math.abs(ball.getDx()));
-                        break;
-                    case RIGHT:
-                        ball.setDx(-Math.abs(ball.getDx()));
-                        break;
-                    case TOP:
-                        ball.setDy(Math.abs(ball.getDy()));
-                        break;
-                }
-            }
-        }
-
         // Va chạm với gạch
         for (Brick brick : bricks) {
             Collision c = buildCollision(ball, brick);
