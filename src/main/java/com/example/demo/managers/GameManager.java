@@ -66,16 +66,16 @@ public class GameManager extends Pane {
         loadLevel(currentLevel);
 
         SoundManager.getInstance().playRandomMusic(); //play background music
+        if(currentLevel == 1) {
+            parallaxLayers.add(new ParallaxLayer("/images/layer1.png", 0.25));
 
-        parallaxLayers.add(new ParallaxLayer("/images/layer1.png", 0.25));
-
-        parallaxLayers.add(new ParallaxLayer("/images/layer2.png", 0.50));
+            parallaxLayers.add(new ParallaxLayer("/images/layer2.png", 0.50));
 
 
-        parallaxLayers.add(new ParallaxLayer("/images/layer3.png", 0.75));
+            parallaxLayers.add(new ParallaxLayer("/images/layer3.png", 0.75));
 
-        parallaxLayers.add(new ParallaxLayer("/images/layer4.png", 1.00));
-
+            parallaxLayers.add(new ParallaxLayer("/images/layer4.png", 1.00));
+        }
         loop();
     }
 
