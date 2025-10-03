@@ -18,6 +18,7 @@ import java.util.Iterator;
 import com.example.demo.managers.SoundManager;
 import com.example.demo.managers.MapManager;
 import com.example.demo.core.MapData;
+import com.example.demo.core.ParallaxLayer;
 
 public class GameManager extends Pane {
 
@@ -37,6 +38,9 @@ public class GameManager extends Pane {
     // THUỘC TÍNH MỚI CHO VIỆC QUẢN LÝ MAP VÀ LEVEL
     private final MapManager    mapManager = new MapManager();
     private int                 currentLevel = 1;
+
+    private List<ParallaxLayer> parallaxLayers = new ArrayList<>();
+    private final double MAX_PARALLAX_OFFSET = 300.0;
 
     public GameManager() {
         initBoard();
@@ -62,6 +66,15 @@ public class GameManager extends Pane {
         loadLevel(currentLevel);
 
         SoundManager.getInstance().playRandomMusic(); //play background music
+
+        parallaxLayers.add(new ParallaxLayer("/images/layer1.png", 0.25));
+
+        parallaxLayers.add(new ParallaxLayer("/images/layer2.png", 0.50));
+
+
+        parallaxLayers.add(new ParallaxLayer("/images/layer3.png", 0.75));
+
+        parallaxLayers.add(new ParallaxLayer("/images/layer4.png", 1.00));
 
         loop();
     }
@@ -122,7 +135,27 @@ public class GameManager extends Pane {
 
         ball.update(deltaTime);
         paddle.update(deltaTime);
+        if (!parallaxLayers.isEmpty()) {
+            // 1. Tính toán vị trí chuẩn hóa của Paddle (normalized Paddle X)
+            double paddleMinX = VARIABLES.WIDTH_OF_WALLS;
+            double paddleMaxX = VARIABLES.WIDTH - VARIABLES.WIDTH_OF_WALLS - paddle.getWidth();
+            double paddleRange = paddleMaxX - paddleMinX;
 
+            double normalizedPaddleX = (paddle.getX() - paddleMinX) / paddleRange;
+            // Giới hạn giá trị trong khoảng [0, 1]
+            normalizedPaddleX = Math.max(0.0, Math.min(1.0, normalizedPaddleX));
+
+            // 2. Cập nhật và Áp dụng Parallax/Animation cho từng Layer
+            for (ParallaxLayer layer : parallaxLayers) {
+
+                // A. Kích hoạt Animation (Chuyển khung hình nếu layer là động)
+                layer.update(deltaTime);
+
+                // B. Tính toán và Áp dụng Parallax (Thay đổi vị trí X)
+                double newX = layer.getParallaxX(MAX_PARALLAX_OFFSET, normalizedPaddleX);
+                layer.setXOffset(newX);
+            }
+        }
         // Cập nhật vị trí PowerUp
         Iterator<PowerUp> puIterator = activePowerUps.iterator();
         while (puIterator.hasNext()) {
@@ -149,6 +182,12 @@ public class GameManager extends Pane {
 
     private void drawObjects() {
         // Vẽ bóng
+
+        for (ParallaxLayer layer : parallaxLayers) {
+            gc.drawImage(layer.getImage(), layer.getX(), layer.getY(),
+                    layer.getWidth(), layer.getHeight());
+        }
+
         gc.drawImage(ball.getImage(), ball.getX(), ball.getY(),
                 ball.getWidth(), ball.getHeight());
 
@@ -352,7 +391,7 @@ public class GameManager extends Pane {
                 }
             }
         }
-        
+
     public Paddle getPaddle() {
         return paddle;
     }
