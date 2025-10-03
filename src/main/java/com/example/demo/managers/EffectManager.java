@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.example.demo.effects.Effect;
+import com.example.demo.effects.EffectFactory;
+import com.example.demo.effects.VisualEffect;
 
 import javafx.scene.canvas.GraphicsContext;
 
@@ -13,7 +14,7 @@ public class EffectManager {
     private static final EffectManager instance = new EffectManager();
 
     // List of active effects
-    private final List<Effect> allEffects = new ArrayList<>();
+    private final List<VisualEffect> activeEffects = new ArrayList<>();
     
     // Private constructor to prevent instantiation
     private EffectManager() {}
@@ -23,37 +24,32 @@ public class EffectManager {
         return instance;
     }
 
-    // Add a new effect
-    public void addEffect(Effect effect) {
-        allEffects.add(effect);
-    }
-
-    // Remove an effect
-    public void removeEffect(Effect effect) {
-        if (allEffects.contains(effect)) {
-            allEffects.remove(effect);
-        } else {
-            // throw new Illegal
-        }
+    // Spawn effect by key
+    public void spawnEffect(String name, double x, double y, double durationSeconds) {
+        // If effect has already existed and being inactive
+        // Add key to each effect
+        
+        // Add new effect
+        VisualEffect newEffect = (VisualEffect) EffectFactory.getInstance().getEffect(name, x, y, durationSeconds);
+        activeEffects.add(newEffect);
     }
 
     // Update all effects
-    public void updateEffects() {
-        Iterator<Effect> iterator = allEffects.iterator();
-
+    public void update(double deltaTime) {
+        Iterator<VisualEffect> iterator = activeEffects.iterator();
         while (iterator.hasNext()) {
-            Effect effect = iterator.next();
-
-            // If effect is active, update it
-            // if (effect.isActive()) {
-            //     effect.update();
-            // }
+            VisualEffect effect = iterator.next();
+            if (effect.isActive()) {
+                effect.update(deltaTime);
+            } else {
+                iterator.remove(); // Remove inactive effects
+            }
         }
     }
 
     // Draw all effects
-    public void drawEffects(GraphicsContext gc) {
-        for (Effect effect : allEffects) {
+    public void draw(GraphicsContext gc) {
+        for (VisualEffect effect : activeEffects) {
             if (effect.isActive()) {
                 effect.draw(gc);
             }
@@ -61,7 +57,7 @@ public class EffectManager {
     }
 
     // Clear all effects
-    public void clearEffects() {
-        allEffects.clear();
+    public void clear() {
+        activeEffects.clear();
     }
 }

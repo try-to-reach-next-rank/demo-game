@@ -5,6 +5,8 @@ import com.example.demo.utils.Timer;
 
 public abstract class VisualEffect implements Effect {
     protected Vector2D      position;
+    protected double        width  = -1;
+    protected double        height = -1;
     protected boolean       active;
     protected final Timer   timer;
 
@@ -51,6 +53,12 @@ public abstract class VisualEffect implements Effect {
 
     public void setPosition(Vector2D position) {
         this.position = position;
+    }
+
+    // Size setters
+    public void setSize(double width, double height) {
+        this.width = width;
+        this.height = height;
     }
 
     // Reset effect to use again

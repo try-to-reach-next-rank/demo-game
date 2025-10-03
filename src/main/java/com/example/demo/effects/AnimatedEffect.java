@@ -2,7 +2,7 @@ package com.example.demo.effects;
 
 import javafx.scene.canvas.GraphicsContext;
 
-import com.example.demo.utils.Animation;
+import com.example.demo.animation.Animation;
 import com.example.demo.core.VARIABLES;
 
 public abstract class AnimatedEffect extends VisualEffect {
@@ -26,11 +26,9 @@ public abstract class AnimatedEffect extends VisualEffect {
 
     // Update the animation
     @Override
-    public void update() {
+    public void update(double deltaTime) {
         if (!isActive() || animation == null) return;
 
-        double fps = VARIABLES.FPS;
-        double deltaTime = 1.0 / fps;
         animation.update(deltaTime);
 
         // Deactivate the effect if the timer has finished
@@ -46,9 +44,15 @@ public abstract class AnimatedEffect extends VisualEffect {
         if (!isActive() || animation == null) return;
 
         // If current frame is null, skip drawing
-        if (animation.getCurrentFrame() == null) return;
+        var frame = animation.getCurrentFrame();
 
-        gc.drawImage(animation.getCurrentFrame(), this.position.x, this.position.y);
+        if (frame == null) return;
+
+        double drawWidth  = (width  > 0) ? width  : frame.getWidth();
+        double drawHeight = (height > 0) ? height : frame.getHeight();
+
+
+        gc.drawImage(frame, this.position.x, this.position.y, drawWidth, drawHeight);
     }
     
     // Reset to reuse
@@ -62,13 +66,13 @@ public abstract class AnimatedEffect extends VisualEffect {
     }
 
     // Reset to reuse with new animation
-    public void reset(double x, double y, double durationSeconds, Animation animation) {
-        reset(x, y, durationSeconds);
-        this.animation = animation;
+    // public void reset(double x, double y, double durationSeconds, Animation animation) {
+    //     reset(x, y, durationSeconds);
+    //     this.animation = animation;
 
-        if (this.animation != null) {
-            this.animation.reset();
-            this.animation.start();
-        }
-    }
+    //     if (this.animation != null) {
+    //         this.animation.reset();
+    //         this.animation.start();
+    //     }
+    // }
 }

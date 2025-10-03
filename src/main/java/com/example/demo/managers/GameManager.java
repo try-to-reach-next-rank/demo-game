@@ -1,6 +1,7 @@
 package com.example.demo.managers;
 
 import com.almasb.fxgl.audio.Sound; // Giữ lại nếu bạn đang sử dụng FXGL
+import com.almasb.fxgl.dsl.components.Effect;
 import com.example.demo.core.*;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
@@ -94,10 +95,13 @@ public class GameManager extends Pane {
         // 4. Reset Ball và Paddle
         ball.resetState();
         paddle.resetState();
+
+        // 5. Reset effects
+        EffectManager.getInstance().clear();
     }
 
     private void loop() {
-        final double FPS = 60.0;
+        final double FPS = VARIABLES.FPS;
         final double UPDATE_INTERVAL = 1e9 / FPS;
         final long[] lastUpate = {System.nanoTime()};
 
@@ -134,6 +138,9 @@ public class GameManager extends Pane {
 
         checkCollision();
         ball.updatePowerUps();
+
+        // Update effects
+        EffectManager.getInstance().update(deltaTime);
     }
 
     private void render() {
@@ -141,6 +148,7 @@ public class GameManager extends Pane {
 
         if (inGame) {
             drawObjects();
+            drawEffects();
         }
         else {
             gameFinished();
@@ -179,6 +187,10 @@ public class GameManager extends Pane {
         }
     }
 
+    private void drawEffects() {
+        EffectManager.getInstance().draw(gc);
+    }
+
     private void gameFinished() {
         gc.setFill(Color.BLACK);
         gc.setFont(new Font("Verdana", 18));
@@ -192,6 +204,9 @@ public class GameManager extends Pane {
         timer.stop();
         // stop background music
         SoundManager.getInstance().stopMusic();
+
+        // Clear all effects
+        EffectManager.getInstance().clear();
     }
 
     private Collision buildCollision(GameObject a, GameObject b) {
@@ -287,6 +302,14 @@ public class GameManager extends Pane {
                     if("explosion_hit".equals(soundToPlay)) handleExplosion(brick);
                     SoundManager.getInstance().playSound(soundToPlay);
                 }
+
+                // Spawn effect when ball hits brick
+                // Calculate center of the brick
+                double centerX = brick.getX() + brick.getWidth() / 2;
+                double centerY = brick.getY() + brick.getHeight() / 2;
+                // Spawn explosion effect at the center of the brick
+                EffectManager.getInstance().spawnEffect("explosion", centerX, centerY, 0.5);
+
 
                 boolean ballFromSide = c.getOverlapX() < c.getOverlapY();
                 Vector2D v = ball.getVelocity();

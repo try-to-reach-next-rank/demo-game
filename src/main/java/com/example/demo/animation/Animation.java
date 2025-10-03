@@ -1,4 +1,4 @@
-package com.example.demo.utils;
+package com.example.demo.animation;
 
 import javafx.scene.image.Image;
 
@@ -42,6 +42,11 @@ public class Animation {
                 }
             }
         }
+    }
+
+    // Get frames array (used for cloning)
+    public Image[] getFrames() {
+        return frames;
     }
 
     // Get the current frame to be drawn
