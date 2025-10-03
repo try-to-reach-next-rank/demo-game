@@ -32,7 +32,9 @@ public class GameManager extends Pane {
     private final List<PowerUp> activePowerUps = new ArrayList<>();
     private static final long   paddleSoundCooldown = 200L;
     private long                nextPaddleSoundTime = 0;
-    private List<Wall>          walls = new ArrayList();
+    private final List<Wall>    walls = new ArrayList<>();
+    private UIManager           uiManager = new UIManager();
+    private DialogueBox         dialogueBox = new DialogueBox();
 
     // THUỘC TÍNH MỚI CHO VIỆC QUẢN LÝ MAP VÀ LEVEL
     private final MapManager    mapManager = new MapManager();
@@ -57,6 +59,12 @@ public class GameManager extends Pane {
     private void gameInit() {
         paddle = new Paddle();
         ball = new Ball(paddle);
+        uiManager.add(dialogueBox);
+        dialogueBox.start(new String[] {
+                "This is a test from the developers... :3",
+                "Someone is literally spending time reading this",
+                "This dialogue can only show short text ¯\\_(ツ)_/¯"
+        });
 
         // Tải Level 1 bằng MapManager (thay thế logic khởi tạo gạch/tường cũ)
         loadLevel(currentLevel);
@@ -120,20 +128,22 @@ public class GameManager extends Pane {
             return;
         }
 
-        ball.update(deltaTime);
-        paddle.update(deltaTime);
+        uiManager.update(deltaTime);
 
-        // Cập nhật vị trí PowerUp
-        Iterator<PowerUp> puIterator = activePowerUps.iterator();
-        while (puIterator.hasNext()) {
-            PowerUp p = puIterator.next();
-            if (p.isVisible()) {
-                p.update(deltaTime);
+        if(!uiManager.hasActiveUI() && inGame) {
+            ball.update(deltaTime);
+            paddle.update(deltaTime);
+
+            // Cập nhật vị trí PowerUp
+            for (PowerUp p : activePowerUps) {
+                if (p.isVisible()) {
+                    p.update(deltaTime);
+                }
             }
-        }
 
-        checkCollision();
-        ball.updatePowerUps();
+            checkCollision();
+            ball.updatePowerUps();
+        }
     }
 
     private void render() {
@@ -145,6 +155,8 @@ public class GameManager extends Pane {
         else {
             gameFinished();
         }
+
+        uiManager.render(gc, VARIABLES.WIDTH, VARIABLES.HEIGHT);
     }
 
     private void drawObjects() {
@@ -319,12 +331,15 @@ public class GameManager extends Pane {
         }
     }
 
-
     public Paddle getPaddle() {
         return paddle;
     }
 
     public Ball getBall() {
         return ball;
+    }
+
+    public UIManager getUIManager() {
+        return uiManager;
     }
 }
