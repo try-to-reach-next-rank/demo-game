@@ -1,5 +1,6 @@
 package com.example.demo.animation;
 
+import java.util.Objects;
 import com.example.demo.core.VARIABLES;
 
 import javafx.scene.image.Image;
@@ -36,7 +37,12 @@ public class AnimationLoader {
             String imagePath = String.format("%s/frame_%d.png", resourcePath, i);
         
             try {
-                frames[i] = new Image(imagePath);
+                frames[i] = new Image(
+                    Objects.requireNonNull(
+                        getClass().getResourceAsStream(imagePath)
+                    )
+                );
+
                 if (frames[i].isError()) {
                     System.err.println("Failed to load frame: " + imagePath);
                 }

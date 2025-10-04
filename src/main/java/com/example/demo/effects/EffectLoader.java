@@ -36,9 +36,13 @@ public class EffectLoader {
 
         VisualEffect effect;
 
+        // Calculate center position
+        double centerX = x - this.width / 2.0;
+        double centerY = y - this.height / 2.0;
+
         switch(animationKey) {
             case "explosion":
-                effect = new ExplosionEffect(x, y, durationSeconds, cloneAnimation);
+                effect = new ExplosionEffect(centerX, centerY, durationSeconds, cloneAnimation);
                 break;
             // Add more effects here as needed
 
@@ -48,7 +52,7 @@ public class EffectLoader {
 
         // Set size if specified
         if (width > 0 && height > 0) {
-            effect.setSize(x, y);
+            effect.setSize(this.width, this.height);
         }
 
         return effect;

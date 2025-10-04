@@ -308,7 +308,7 @@ public class GameManager extends Pane {
                 double centerX = brick.getX() + brick.getWidth() / 2;
                 double centerY = brick.getY() + brick.getHeight() / 2;
                 // Spawn explosion effect at the center of the brick
-                EffectManager.getInstance().spawnEffect("explosion", centerX, centerY, 0.5);
+                EffectManager.getInstance().spawnEffect("explosion", centerX, centerY, 0.25);
 
 
                 boolean ballFromSide = c.getOverlapX() < c.getOverlapY();
