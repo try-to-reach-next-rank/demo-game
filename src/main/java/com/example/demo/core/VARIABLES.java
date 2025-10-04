@@ -1,6 +1,10 @@
 package com.example.demo.core;
 
-public interface VARIABLES {
+public final class VARIABLES {
+    // Private constructor to prevent initialization
+    private VARIABLES() {}
+
+
     public static final int N_OF_BRICKS = 150;
     public static final int WIDTH = 600;
     public static final int HEIGHT = 800;
@@ -28,4 +32,6 @@ public interface VARIABLES {
     public static final int HEIGHT_OF_BRICKS = 16;
     public static final int FIRST_X_OF_BRICKS = WIDTH_OF_WALLS + PADDING_X/2;
     public static final int FIRST_Y_OF_BRICKS = HEIGHT_OF_WALLS + PADDING_Y/2;
+
+    public static final double FPS = 60.0;
 }

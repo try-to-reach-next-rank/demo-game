@@ -55,7 +55,7 @@ public class Ball extends GameObject {
         x += step.x;
         y += step.y;
 
-        System.out.println("Ball released: velocity=" + velocity);
+        System.out.printf("[INFO] Ball released: velocity = (%.2f, %.2f)%n", velocity.x, velocity.y);
 
         // Missed paddle
         if (y >= VARIABLES.HEIGHT) {
