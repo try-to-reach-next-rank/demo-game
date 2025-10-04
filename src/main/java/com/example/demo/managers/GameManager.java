@@ -34,7 +34,9 @@ public class GameManager extends Pane {
     private final List<PowerUp> activePowerUps = new ArrayList<>();
     private static final long   paddleSoundCooldown = 200L;
     private long                nextPaddleSoundTime = 0;
-    private List<Wall>          walls = new ArrayList();
+    private final List<Wall>    walls = new ArrayList<>();
+    private UIManager           uiManager = new UIManager();
+    private DialogueBox         dialogueBox = new DialogueBox();
 
     // THUỘC TÍNH MỚI CHO VIỆC QUẢN LÝ MAP VÀ LEVEL
     private final MapManager    mapManager = new MapManager();
@@ -62,6 +64,12 @@ public class GameManager extends Pane {
     private void gameInit() {
         paddle = new Paddle();
         ball = new Ball(paddle);
+        uiManager.add(dialogueBox);
+        dialogueBox.start(new String[] {
+                "This is a test from the developers... :3",
+                "Someone is literally spending time reading this",
+                "This dialogue can only show short text ¯\\_(ツ)_/¯"
+        });
 
         // Tải Level 1 bằng MapManager (thay thế logic khởi tạo gạch/tường cũ)
         loadLevel(currentLevel);
@@ -137,8 +145,11 @@ public class GameManager extends Pane {
             return;
         }
 
-        ball.update(deltaTime);
-        paddle.update(deltaTime);
+        uiManager.update(deltaTime);
+
+        if(!uiManager.hasActiveUI() && inGame) {
+            ball.update(deltaTime);
+            paddle.update(deltaTime);
         if (!parallaxLayers.isEmpty()) {
             // 1. Tính toán vị trí chuẩn hóa của Paddle (normalized Paddle X)
             double paddleMinX = VARIABLES.WIDTH_OF_WALLS;
@@ -160,20 +171,19 @@ public class GameManager extends Pane {
                 layer.setXOffset(newX);
             }
         }
-        // Cập nhật vị trí PowerUp
-        Iterator<PowerUp> puIterator = activePowerUps.iterator();
-        while (puIterator.hasNext()) {
-            PowerUp p = puIterator.next();
-            if (p.isVisible()) {
-                p.update(deltaTime);
+            // Cập nhật vị trí PowerUp
+            for (PowerUp p : activePowerUps) {
+                if (p.isVisible()) {
+                    p.update(deltaTime);
+                }
             }
-        }
 
-        checkCollision();
-        ball.updatePowerUps();
+            checkCollision();
+            ball.updatePowerUps();
 
         // Update effects
         EffectManager.getInstance().update(deltaTime);
+        }
     }
 
     private void render() {
@@ -186,6 +196,8 @@ public class GameManager extends Pane {
         else {
             gameFinished();
         }
+
+        uiManager.render(gc, VARIABLES.WIDTH, VARIABLES.HEIGHT);
     }
 
     private void drawObjects() {
@@ -385,7 +397,6 @@ public class GameManager extends Pane {
             // Không gọi stopGame() để tiếp tục chơi
         }
     }
-
     private void handleExplosion(Brick sourceBrick) {
         // tọa độ tâm của vụ nổ
         double centerX = sourceBrick.getX() + sourceBrick.getWidth() / 2;
@@ -421,5 +432,9 @@ public class GameManager extends Pane {
 
     public Ball getBall() {
         return ball;
+    }
+
+    public UIManager getUIManager() {
+        return uiManager;
     }
 }

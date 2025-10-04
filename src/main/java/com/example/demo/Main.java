@@ -25,7 +25,19 @@ public class Main extends Application {
         InputHandler inputHandler = new InputHandler(
             gameManager.getPaddle(), gameManager.getBall()
         );
-        inputHandler.input(scene);
+        scene.setOnKeyPressed(e -> {
+            if (gameManager.getUIManager().hasActiveUI()) {
+                gameManager.getUIManager().handleInput(e.getCode());
+            } else {
+                inputHandler.handleKeyPressed(e.getCode());
+            }
+        });
+
+        scene.setOnKeyReleased(e -> {
+            if (!gameManager.getUIManager().hasActiveUI()) {
+                inputHandler.handleKeyReleased(e.getCode());
+            }
+        });
 
         gameManager.requestFocus();
     }
