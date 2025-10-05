@@ -82,4 +82,32 @@ public class Brick extends GameObject {
     public void setHealth(int health) {
         this.health = health;
     }
+
+    public void handleExplosion(Brick sourceBrick, Brick[] bricks) {
+        double centerX = sourceBrick.getX() + sourceBrick.getWidth() / 2;
+        double centerY = sourceBrick.getY() + sourceBrick.getHeight() / 2;
+
+        // Bán kính vụ nổ ( điều chỉnh giá trị 2.5)
+        double radius = sourceBrick.getWidth() * 2.5;
+
+        // Duyệt qua tất cả các viên gạch
+        for (Brick otherBrick : bricks) {
+            // Bỏ qua self và những viên đã bị phá hủy
+            if (otherBrick == sourceBrick || otherBrick.isDestroyed()) {
+                continue;
+            }
+
+            // Tâm gạch tiếp theo
+            double otherCenterX = otherBrick.getX() + otherBrick.getWidth() / 2;
+            double otherCenterY = otherBrick.getY() + otherBrick.getHeight() / 2;
+
+            // Tính khoảng cách 2 gạch
+            double distance = Math.sqrt(Math.pow(centerX - otherCenterX, 2) + Math.pow(centerY - otherCenterY, 2));
+
+            // Nếu nằm trong bán kính vụ nổ = gọi takeDamage
+            if (distance <= radius) {
+                otherBrick.takeDamage();
+            }
+        }
+    }
 }

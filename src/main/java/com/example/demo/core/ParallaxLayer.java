@@ -6,53 +6,58 @@ import java.util.List;
 import java.util.Objects;
 
 public class ParallaxLayer extends GameObject {
-
-    private  double initialWidth;
-    private final double scrollRatio;
+    private final double            scrollRatio;
+    private double                  wrapWidth;
 
     // THUỘC TÍNH ANIMATION
-    protected List<Image> animationFrames = null;
-    protected int currentFrameIndex = 0;
-    protected double timeSinceLastFrame = 0.0;
-    private final double FRAME_DURATION = 0.2; // 5 FPS - Tốc độ chuyển khung hình
+    protected List<Image>           animationFrames = null;
+    protected int                   currentFrameIndex = 0;
+    protected double                timeSinceLastFrame = 0.0;
+    private final double            FRAME_DURATION = 0.2; // 5 FPS - Tốc độ chuyển khung hình
 
     // Constructor 1: Cho Layer TĨNH (Chỉ có 1 ảnh)
+
+    /**
+     *
+     * width is default to original image width
+     */
     public ParallaxLayer(String imagePath, double ratio) {
         super(imagePath, 0, 0);
         this.scrollRatio = ratio;
+        this.wrapWidth = this.width;
         setupDimensions();
     }
 
     // Constructor 2: Cho Layer ĐỘNG (Nhiều ảnh)
     public ParallaxLayer(String[] imagePaths, double ratio) {
-        // Gọi constructor của GameObject với khung hình đầu tiên (giải quyết lỗi thiếu super())
         super(imagePaths[0], 0, 0);
         this.scrollRatio = ratio;
-
-        // Tải các khung hình còn lại và lưu vào list
         this.animationFrames = new ArrayList<>();
-        // Thêm khung hình đầu tiên đã được tải
         this.animationFrames.add(this.image);
-
         for (int i = 1; i < imagePaths.length; i++) {
             this.animationFrames.add(new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePaths[i]))));
         }
+        this.wrapWidth = this.width;
         setupDimensions();
     }
 
     // Khởi tạo kích thước chung
     private void setupDimensions() {
-        this.initialWidth = this.width;
         this.height = VARIABLES.HEIGHT;
         this.imageView.setFitHeight(this.height);
-        this.imageView.setFitWidth(this.initialWidth);
-        this.width = this.initialWidth;
+        this.imageView.setFitWidth(this.wrapWidth);
+        this.width = this.wrapWidth;
     }
 
-    // Logic Parallax (Không đổi)
-    public double getParallaxX(double totalMaxOffset, double normalizedPaddleX) {
-        double layerMaxOffset = totalMaxOffset * this.scrollRatio;
-        return -normalizedPaddleX * layerMaxOffset;
+    public void update(double deltaTime) {
+        if(animationFrames == null || animationFrames.size() <= 1) return;
+        timeSinceLastFrame += deltaTime;
+
+        if (this.timeSinceLastFrame >= FRAME_DURATION) {
+            this.currentFrameIndex = (currentFrameIndex + 1) % animationFrames.size();
+            this.image = animationFrames.get(currentFrameIndex);
+            this.timeSinceLastFrame -= FRAME_DURATION;
+        }
     }
 
     public void setXOffset(double offset) {
@@ -60,17 +65,17 @@ public class ParallaxLayer extends GameObject {
         setPosition(this.x, this.y);
     }
 
-    // PHƯƠNG THỨC MỚI: Cập nhật Animation
-    public void update(double deltaTime) {
-        // Chỉ chạy animation nếu có nhiều khung hình
-        if (animationFrames != null && animationFrames.size() > 1) {
-            this.timeSinceLastFrame += deltaTime;
+    public double getXOffset() {
+        return x;
+    }
 
-            if (this.timeSinceLastFrame >= FRAME_DURATION) {
-                this.currentFrameIndex = (this.currentFrameIndex + 1) % this.animationFrames.size();
-                this.image = this.animationFrames.get(this.currentFrameIndex);
-                this.timeSinceLastFrame -= FRAME_DURATION;
-            }
-        }
+    public void setWrapWidth(double wrapWidth) {
+        this.wrapWidth = wrapWidth;
+        this.imageView.setFitWidth(this.wrapWidth);
+        this.width = this.wrapWidth;
+    }
+
+    public double getWrapWidth() {
+        return wrapWidth;
     }
 }
