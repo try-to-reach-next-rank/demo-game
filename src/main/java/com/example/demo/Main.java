@@ -1,8 +1,8 @@
 package com.example.demo;
 
-import com.example.demo.Model.GameManager;
-import com.example.demo.Controller.core.VARIABLES;
-import com.example.demo.Controller.utils.InputHandler;
+import com.example.demo.model.GameManager;
+import com.example.demo.controller.core.VARIABLES;
+import com.example.demo.controller.utils.InputHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
