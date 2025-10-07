@@ -1,14 +1,14 @@
 package com.example.demo.view.animation;
 
 import java.util.Objects;
-import com.example.demo.controller.core.VARIABLES;
+import com.example.demo.model.utils.GlobalVar;
 
 import javafx.scene.image.Image;
 
 public class AnimationLoader {
     private String  resourcePath;
     private int     frameCount;
-    private double  frameDuration = 1.0 / VARIABLES.FPS;
+    private double  frameDuration = 1.0 / GlobalVar.FPS;
     private boolean loop          = false;
 
     // Constructor

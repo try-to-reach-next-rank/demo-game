@@ -1,7 +1,7 @@
 package com.example.demo.view.effects;
 
-import com.example.demo.controller.core.Vector2D;
-import com.example.demo.controller.utils.Timer;
+import com.example.demo.model.utils.Vector2D;
+import com.example.demo.model.utils.Timer;
 
 public abstract class VisualEffect implements Effect {
     protected Vector2D      position;

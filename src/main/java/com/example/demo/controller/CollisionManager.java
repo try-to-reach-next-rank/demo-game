@@ -1,6 +1,10 @@
-package com.example.demo.model;
+package com.example.demo.controller;
 
-import com.example.demo.controller.core.*;
+import com.example.demo.model.core.*;
+import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.utils.Sound;
+import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.model.utils.Vector2D;
 
 import java.util.List;
 import java.util.Random;
@@ -12,8 +16,8 @@ public class CollisionManager {
 
     public void update(Ball ball, Paddle paddle, Brick[] bricks, List<PowerUp> powerUps, List<Wall> walls) {
         // ball-floor check
-        if (ball.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) {
-            SoundManager.getInstance().playSound("game_over");
+        if (ball.getBounds().getMaxY() > GlobalVar.BOTTOM_EDGE) {
+            Sound.getInstance().playSound("game_over");
             ball.resetState();
         }
 
@@ -21,11 +25,11 @@ public class CollisionManager {
         for (PowerUp p : powerUps) {
             if (!p.isVisible()) continue;
             if (p.getBounds().intersects(paddle.getBounds())) {
-                SoundManager.getInstance().playSound("power_up");
+                Sound.getInstance().playSound("power_up");
                 ball.activatePowerUp(p);
                 p.setVisible(false);
             }
-            if (p.getBounds().getMaxY() > VARIABLES.BOTTOM_EDGE) p.setVisible(false);
+            if (p.getBounds().getMaxY() > GlobalVar.BOTTOM_EDGE) p.setVisible(false);
         }
 
         // ball vs paddle
@@ -47,7 +51,7 @@ public class CollisionManager {
                     if ("explosion_hit".equals(sound)) {
                         brick.handleExplosion(brick, bricks); // TODO: add different types of bricks
                     }
-                    SoundManager.getInstance().playSound(sound);
+                    Sound.getInstance().playSound(sound);
                 }
                 // bounce
                 Vector2D v = ball.getVelocity();
@@ -78,7 +82,7 @@ public class CollisionManager {
         if (!ball.isStuck()) {
             long now = System.currentTimeMillis();
             if (now > nextPaddleSoundTime) {
-                SoundManager.getInstance().playSound("paddle_hit");
+                Sound.getInstance().playSound("paddle_hit");
                 nextPaddleSoundTime = now + paddleSoundCooldown;
             }
         }
@@ -103,6 +107,6 @@ public class CollisionManager {
                 ball.setVelocity(new Vector2D(v.x, Math.abs(v.y)));
                 break;
         }
-        SoundManager.getInstance().playSound("wall_hit");
+        Sound.getInstance().playSound("wall_hit");
     }
 }

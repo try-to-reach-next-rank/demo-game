@@ -1,4 +1,8 @@
-package com.example.demo.controller.core;
+package com.example.demo.model.core;
+
+import com.example.demo.model.utils.GameVar;
+import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.model.utils.Vector2D;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +13,7 @@ public class Ball extends GameObject {
     private boolean                     stuck;
     private final                       Paddle paddle;
     private final List<ActiveEffect>    activeEffectList = new ArrayList<>();
-    private Vector2D                    velocity;
+    private Vector2D velocity;
 
     private static class ActiveEffect {
         String type;
@@ -22,7 +26,7 @@ public class Ball extends GameObject {
     }
 
     public Ball(Paddle paddle) {
-        super("/images/Ball.png", VARIABLES.INIT_BALL_X, VARIABLES.INIT_BALL_Y);
+        super("/images/Ball.png", GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
         this.paddle = paddle;
         this.speed = 300;
         initBall();
@@ -48,7 +52,7 @@ public class Ball extends GameObject {
         updatePowerUps();
 
         double currentSpeed = isAccelerated()
-                ? speed * VARIABLES.ACCELERATED_SPEED_MULTIPLIER
+                ? speed * GameVar.ACCELERATED_SPEED_MULTIPLIER
                 : speed;
 
         Vector2D step = velocity.normalize().multiply(currentSpeed * deltaTime);
@@ -58,7 +62,7 @@ public class Ball extends GameObject {
         System.out.printf("[INFO] Ball released: velocity = (%.2f, %.2f)%n", velocity.x, velocity.y);
 
         // Missed paddle
-        if (y >= VARIABLES.HEIGHT) {
+        if (y >= GlobalVar.HEIGHT) {
             stuck = true;
             resetState();
         }

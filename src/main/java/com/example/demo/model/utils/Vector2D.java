@@ -1,4 +1,4 @@
-package com.example.demo.controller.core;
+package com.example.demo.model.utils;
 
 public class Vector2D {
     public double x,y;

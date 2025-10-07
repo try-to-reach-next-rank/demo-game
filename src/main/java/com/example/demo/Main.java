@@ -1,8 +1,8 @@
 package com.example.demo;
 
-import com.example.demo.model.GameManager;
-import com.example.demo.controller.core.VARIABLES;
-import com.example.demo.controller.utils.InputHandler;
+import com.example.demo.controller.GameManager;
+import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.model.utils.Input;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         GameManager gameManager = new GameManager();
 
-        Scene scene = new Scene(gameManager, VARIABLES.WIDTH, VARIABLES.HEIGHT);
+        Scene scene = new Scene(gameManager, GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
         stage.getIcons().add(new Image(getClass().getResource("/images/icon.png").toExternalForm())); //add window's icon
         stage.setTitle("Brick Breaker");
@@ -22,20 +22,20 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.show();
 
-        InputHandler inputHandler = new InputHandler(
+        Input input = new Input(
             gameManager.getPaddle(), gameManager.getBall()
         );
         scene.setOnKeyPressed(e -> {
             if (gameManager.getUIManager().hasActiveUI()) {
                 gameManager.getUIManager().handleInput(e.getCode());
             } else {
-                inputHandler.handleKeyPressed(e.getCode());
+                input.handleKeyPressed(e.getCode());
             }
         });
 
         scene.setOnKeyReleased(e -> {
             if (!gameManager.getUIManager().hasActiveUI()) {
-                inputHandler.handleKeyReleased(e.getCode());
+                input.handleKeyReleased(e.getCode());
             }
         });
 

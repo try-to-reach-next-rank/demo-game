@@ -1,6 +1,6 @@
-package com.example.demo.model;
+package com.example.demo.view;
 
-import com.example.demo.controller.core.UIComponent;
+import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 
@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UIManager {
+    /*
+    TODO Separate this class to be:
+    - screen state:     tracks which ui screen is currently active, player score,...
+    - renderer:         reads screenState and draws appropriate UI elements
+    - menu controller:  handle input on ui screen, updating ui screen state and telling ui renderer to refresh
+     */
     private final List<UIComponent> componentList = new ArrayList<>();
 
     public void add(UIComponent uiComponent) {

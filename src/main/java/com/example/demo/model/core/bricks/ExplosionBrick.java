@@ -1,10 +1,10 @@
-package com.example.demo.controller.core;
+package com.example.demo.model.core.bricks;
 
 import javafx.scene.image.Image;
 
 import java.util.Objects;
 
-public class ExplosionBrick extends Brick{
+public class ExplosionBrick extends Brick {
         private static final Image EXPLOSION_TEXTURE;
 
         static {

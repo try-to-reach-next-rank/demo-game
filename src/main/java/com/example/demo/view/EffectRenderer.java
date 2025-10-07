@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.view;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,18 +9,23 @@ import com.example.demo.view.effects.VisualEffect;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public class EffectManager {
+public class EffectRenderer {
+    /*
+    TODO: split this class into
+    - effect state manager: tracks active effects in the game, duration, applies game logic
+    - renderer:             reads state manager to know which visual effect to draw and how
+     */
     // Singleton instance
-    private static final EffectManager instance = new EffectManager();
+    private static final EffectRenderer instance = new EffectRenderer();
 
     // List of active effects
     private final List<VisualEffect> activeEffects = new ArrayList<>();
     
     // Private constructor to prevent instantiation
-    private EffectManager() {}
+    private EffectRenderer() {}
 
     // Get the singleton instance
-    public static EffectManager getInstance() {
+    public static EffectRenderer getInstance() {
         return instance;
     }
 

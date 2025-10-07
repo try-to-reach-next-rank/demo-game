@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.utils;
 
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
@@ -7,9 +7,9 @@ import javafx.scene.media.MediaPlayer;
 import java.util.*;
 import java.net.URL;
 
-public class SoundManager {
+public class Sound {
         // tạo ra một đối tượng để quản lý + gọi
-    private static final SoundManager instance = new SoundManager();
+    private static final Sound instance = new Sound();
 
     private final Map<String, Media> musicLibrary = new HashMap<>();      // libary of songs
     private final List<String> musicKey = new ArrayList<>();              //this key was made for easier next/random song handling
@@ -17,7 +17,7 @@ public class SoundManager {
     private MediaPlayer currentMusicPlayer;                               // currentl active song
     private final Map<String, AudioClip> soundEffects = new HashMap<>();  // map of sound effects
 
-    private SoundManager() {
+    private Sound() {
         loadSounds();
     }
 
@@ -63,7 +63,7 @@ public class SoundManager {
     }
 
     // trả duy nhất manager instance
-    public static SoundManager getInstance(){
+    public static Sound getInstance(){
         return instance;
     }
 

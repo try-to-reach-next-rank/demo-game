@@ -1,5 +1,8 @@
-package com.example.demo.controller.core;
+package com.example.demo.model.core.bricks;
 
+import com.example.demo.model.core.GameObject;
+import com.example.demo.model.utils.GameVar;
+import com.example.demo.model.utils.GlobalVar;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -9,7 +12,7 @@ import java.util.Random;
 
 public class Brick extends GameObject {
     private boolean destroyed;
-    private static final int MAX_HEALTH = VARIABLES.MAXHEALTH_OF_BRICKS;
+    private static final int MAX_HEALTH = GameVar.MAXHEALTH_OF_BRICKS;
     private static final List<Image> BRICK_TEXTURES = new ArrayList<>(); // The list is ordered [1hp, 2hp, 3hp, 4hp, 5hp]
     private int health;
 

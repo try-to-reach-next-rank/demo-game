@@ -1,4 +1,4 @@
-package com.example.demo.controller.core;
+package com.example.demo.model.core;
 
 import javafx.geometry.Bounds;
 import javafx.scene.image.Image;

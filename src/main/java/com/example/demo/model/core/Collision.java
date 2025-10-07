@@ -1,4 +1,4 @@
-package com.example.demo.controller.core;
+package com.example.demo.model.core;
 
 public record Collision(GameObject a, GameObject b, double time, double OverlapX, double OverlapY) {
     public boolean involves(GameObject obj) {

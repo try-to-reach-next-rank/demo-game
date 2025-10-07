@@ -1,4 +1,4 @@
-package com.example.demo.controller.core;
+package com.example.demo.model.core.bricks;
 
 import javafx.scene.image.Image;
 import java.util.Objects;

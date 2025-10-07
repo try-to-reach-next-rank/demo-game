@@ -1,4 +1,4 @@
-package com.example.demo.controller.utils;
+package com.example.demo.model.utils;
 
 public class Timer {
     private long    startTimeNano;    // In nanoseconds

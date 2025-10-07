@@ -1,4 +1,4 @@
-package com.example.demo.controller.core;
+package com.example.demo.model.core;
 
 public class Wall extends GameObject {
     public enum Side { LEFT, RIGHT, TOP }

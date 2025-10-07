@@ -11,7 +11,12 @@ module com.example.demo {
 
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;
-    exports com.example.demo.controller.utils;
-    exports com.example.demo.model;
-    exports com.example.demo.controller.core;
+    exports com.example.demo.model.utils;
+    exports com.example.demo.controller;
+    exports com.example.demo.model.core;
+    exports com.example.demo.model.core.bricks;
+    exports com.example.demo.view;
+    exports com.example.demo.view.ui;
+    exports com.example.demo.model.states;
+    exports com.example.demo.view.graphics;
 }

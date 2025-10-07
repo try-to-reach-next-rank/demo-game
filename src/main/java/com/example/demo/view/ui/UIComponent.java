@@ -1,4 +1,4 @@
-package com.example.demo.controller.core;
+package com.example.demo.view.ui;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;

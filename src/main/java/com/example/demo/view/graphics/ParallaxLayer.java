@@ -1,5 +1,7 @@
-package com.example.demo.controller.core;
+package com.example.demo.view.graphics;
 
+import com.example.demo.model.core.GameObject;
+import com.example.demo.model.utils.GlobalVar;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +45,7 @@ public class ParallaxLayer extends GameObject {
 
     // Khởi tạo kích thước chung
     private void setupDimensions() {
-        this.height = VARIABLES.HEIGHT;
+        this.height = GlobalVar.HEIGHT;
         this.imageView.setFitHeight(this.height);
         this.imageView.setFitWidth(this.wrapWidth);
         this.width = this.wrapWidth;

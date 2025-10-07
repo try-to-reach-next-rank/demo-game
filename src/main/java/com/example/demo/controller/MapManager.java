@@ -1,10 +1,11 @@
-package com.example.demo.model;
-import com.example.demo.controller.core.SteelBrick;
-import com.example.demo.controller.core.ExplosionBrick;
-import com.example.demo.controller.core.Brick;
-import com.example.demo.controller.core.Wall;
-import com.example.demo.controller.core.VARIABLES;
-import com.example.demo.controller.core.MapData;
+package com.example.demo.controller;
+import com.example.demo.model.core.bricks.SteelBrick;
+import com.example.demo.model.core.bricks.ExplosionBrick;
+import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.Wall;
+import com.example.demo.model.utils.GameVar;
+import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.model.states.MapData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,17 +14,17 @@ import java.util.Random;
 public class MapManager {
 
     // Kích thước ô trong ma trận (tương đương 1 Brick/Wall + Padding)
-    private final int CELL_W = VARIABLES.WIDTH_OF_BRICKS + VARIABLES.PADDING_X;
-    private final int CELL_H = VARIABLES.HEIGHT_OF_BRICKS + VARIABLES.PADDING_Y;
+    private final int CELL_W = GameVar.WIDTH_OF_BRICKS + GameVar.PADDING_X;
+    private final int CELL_H = GameVar.HEIGHT_OF_BRICKS + GameVar.PADDING_Y;
 
     // Kích thước Ma trận (số lượng ô)
-    private final int MATRIX_COLS = VARIABLES.BRICKS_PER_ROW; // 15
+    private final int MATRIX_COLS = GameVar.BRICKS_PER_ROW; // 15
     // Ước tính số hàng có thể chứa trong khu vực chơi giữa tường biên trên và dưới
-    private final int MATRIX_ROWS = (VARIABLES.HEIGHT - VARIABLES.HEIGHT_OF_WALLS * 2) / CELL_H; // ~35-36 hàng
+    private final int MATRIX_ROWS = (GlobalVar.HEIGHT - GameVar.HEIGHT_OF_WALLS * 2) / CELL_H; // ~35-36 hàng
 
     // Tọa độ bắt đầu của ma trận (sau tường biên)
-    private final int MATRIX_START_X = VARIABLES.WIDTH_OF_WALLS;
-    private final int MATRIX_START_Y = VARIABLES.HEIGHT_OF_WALLS;
+    private final int MATRIX_START_X = GameVar.WIDTH_OF_WALLS;
+    private final int MATRIX_START_Y = GameVar.HEIGHT_OF_WALLS;
 
     private final Random rand = new Random();
 
@@ -72,16 +73,16 @@ public class MapManager {
         List<Wall> walls = new ArrayList<>();
 
         // Tường trái, phải, trên
-        for (int i = 0; i < VARIABLES.N_OF_WALLS_LEFT_RIGHT; i++) {
+        for (int i = 0; i < GameVar.N_OF_WALLS_LEFT_RIGHT; i++) {
             // Tường Trái
-            walls.add(new Wall(Wall.Side.LEFT, 0, i * VARIABLES.HEIGHT_OF_WALLS, VARIABLES.WIDTH_OF_WALLS, VARIABLES.HEIGHT_OF_WALLS));
+            walls.add(new Wall(Wall.Side.LEFT, 0, i * GameVar.HEIGHT_OF_WALLS, GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
             // Tường Phải
-            walls.add(new Wall(Wall.Side.RIGHT, VARIABLES.WIDTH - VARIABLES.WIDTH_OF_WALLS, i * VARIABLES.HEIGHT_OF_WALLS, VARIABLES.WIDTH_OF_WALLS, VARIABLES.HEIGHT_OF_WALLS));
+            walls.add(new Wall(Wall.Side.RIGHT, GlobalVar.WIDTH - GameVar.WIDTH_OF_WALLS, i * GameVar.HEIGHT_OF_WALLS, GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
         }
 
         // Tường trên
-        for (int i = 0; i < VARIABLES.N_OF_WALLS_TOP; i++) {
-            walls.add(new Wall(Wall.Side.TOP, i * VARIABLES.WIDTH_OF_WALLS, 0, VARIABLES.WIDTH_OF_WALLS, VARIABLES.HEIGHT_OF_WALLS));
+        for (int i = 0; i < GameVar.N_OF_WALLS_TOP; i++) {
+            walls.add(new Wall(Wall.Side.TOP, i * GameVar.WIDTH_OF_WALLS, 0, GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
         }
         return walls;
     }
@@ -93,7 +94,7 @@ public class MapManager {
         int[][] map = new int[MATRIX_ROWS][MATRIX_COLS];
 
         // Số hàng tương ứng với Y <= 400 (nửa trên)
-        final int HALF_SCREEN_ROWS = (VARIABLES.HEIGHT / 2 - MATRIX_START_Y) / CELL_H;
+        final int HALF_SCREEN_ROWS = (GlobalVar.HEIGHT / 2 - MATRIX_START_Y) / CELL_H;
 
         for (int r = 0; r < HALF_SCREEN_ROWS; r++) {
             for (int c = 0; c < MATRIX_COLS; c++) {

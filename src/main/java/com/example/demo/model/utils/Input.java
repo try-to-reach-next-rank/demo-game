@@ -1,10 +1,10 @@
-package com.example.demo.controller.utils;
+package com.example.demo.model.utils;
 
-import com.example.demo.controller.core.Ball;
-import com.example.demo.controller.core.Paddle;
+import com.example.demo.model.core.Ball;
+import com.example.demo.model.core.Paddle;
 import javafx.scene.input.KeyCode;
 
-public record InputHandler(Paddle paddle, Ball ball) {
+public record Input(Paddle paddle, Ball ball) {
 
     public void handleKeyPressed(KeyCode code) {
         if (code == KeyCode.LEFT) {

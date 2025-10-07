@@ -1,7 +1,7 @@
-package com.example.demo.model;
+package com.example.demo.view;
 
-import com.example.demo.controller.core.ParallaxLayer;
-import com.example.demo.controller.core.VARIABLES;
+import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.view.graphics.ParallaxLayer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -24,7 +24,7 @@ public class RenderManager {
             double h = layer.getHeight();
 
             gc.drawImage(img, x, 0, w, h);
-            if(x + w < VARIABLES.WIDTH) {
+            if(x + w < GlobalVar.WIDTH) {
                 gc.drawImage(img, x + w, 0, w, h);
             }
         }

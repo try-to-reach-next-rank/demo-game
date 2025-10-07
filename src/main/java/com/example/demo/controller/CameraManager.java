@@ -1,6 +1,6 @@
-package com.example.demo.model;
+package com.example.demo.controller;
 
-import com.example.demo.controller.core.ParallaxLayer;
+import com.example.demo.view.graphics.ParallaxLayer;
 
 import java.util.List;
 

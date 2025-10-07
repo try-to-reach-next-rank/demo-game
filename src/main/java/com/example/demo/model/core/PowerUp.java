@@ -1,4 +1,7 @@
-package com.example.demo.controller.core;
+package com.example.demo.model.core;
+
+import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.utils.GlobalVar;
 
 public class PowerUp extends GameObject {
     private String type;
@@ -21,7 +24,7 @@ public class PowerUp extends GameObject {
             y += speed * deltaTime;
             setPosition(x, y);
 
-            if (y > VARIABLES.HEIGHT) {
+            if (y > GlobalVar.HEIGHT) {
                 visible = false;
             }
         }

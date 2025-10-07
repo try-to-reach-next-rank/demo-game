@@ -1,6 +1,14 @@
-package com.example.demo.model;
+package com.example.demo.controller;
 
-import com.example.demo.controller.core.*;
+import com.example.demo.model.core.*;
+import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.states.MapData;
+import com.example.demo.model.utils.GameVar;
+import com.example.demo.model.utils.Sound;
+import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.view.*;
+import com.example.demo.view.graphics.ParallaxLayer;
+import com.example.demo.view.ui.DialogueBox;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -26,11 +34,11 @@ public class GameManager extends Pane {
     private                     GraphicsContext gc;
     private final List<PowerUp> activePowerUps = new ArrayList<>();
     private final List<Wall>    walls = new ArrayList<>();
-    private final UIManager     uiManager = new UIManager();
+    private final UIManager uiManager = new UIManager();
     private final DialogueBox dialogueBox = new DialogueBox();
     private final CameraManager cameraManager = new CameraManager(0.15, 8.0, new double[]{1.0, 0.6, 0.35, 0.2});
     private final CollisionManager collisionManager = new CollisionManager();
-    private final RenderManager renderManager = new RenderManager(VARIABLES.WIDTH, VARIABLES.HEIGHT);
+    private final RenderManager renderManager = new RenderManager(GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
     // THUỘC TÍNH MỚI CHO VIỆC QUẢN LÝ MAP VÀ LEVEL
     private final MapManager    mapManager = new MapManager();
@@ -42,8 +50,8 @@ public class GameManager extends Pane {
     }
 
     private void initBoard() {
-        setPrefSize(VARIABLES.WIDTH, VARIABLES.HEIGHT);
-        Canvas canvas = new Canvas(VARIABLES.WIDTH, VARIABLES.HEIGHT);
+        setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
+        Canvas canvas = new Canvas(GlobalVar.WIDTH, GlobalVar.HEIGHT);
         gc = canvas.getGraphicsContext2D();
         getChildren().add(canvas);
         setFocusTraversable(true);
@@ -66,7 +74,7 @@ public class GameManager extends Pane {
         // Tải Level 1 bằng MapManager (thay thế logic khởi tạo gạch/tường cũ)
         loadLevel(currentLevel);
 
-        SoundManager.getInstance().playRandomMusic(); //play background music
+        Sound.getInstance().playRandomMusic(); //play background music
         if(currentLevel == 1) {
             ParallaxLayer l1 = new ParallaxLayer("/images/layer1.png", 0.25);
             ParallaxLayer l2 = new ParallaxLayer("/images/layer2.png", 0.50);
@@ -74,10 +82,10 @@ public class GameManager extends Pane {
             ParallaxLayer l4 = new ParallaxLayer("/images/layer4.png", 1.00);
 
             // make them wider than screen to avoid gaps
-            l1.setWrapWidth(VARIABLES.WIDTH * 1.5);
-            l2.setWrapWidth(VARIABLES.WIDTH * 1.6);
-            l3.setWrapWidth(VARIABLES.WIDTH * 1.7);
-            l4.setWrapWidth(VARIABLES.WIDTH * 1.8);
+            l1.setWrapWidth(GlobalVar.WIDTH * 1.5);
+            l2.setWrapWidth(GlobalVar.WIDTH * 1.6);
+            l3.setWrapWidth(GlobalVar.WIDTH * 1.7);
+            l4.setWrapWidth(GlobalVar.WIDTH * 1.8);
 
             parallaxLayers.add(l1);
             parallaxLayers.add(l2);
@@ -117,11 +125,11 @@ public class GameManager extends Pane {
         paddle.resetState();
 
         // 5. Reset effects
-        EffectManager.getInstance().clear();
+        EffectRenderer.getInstance().clear();
     }
 
     private void loop() {
-        final double FPS = VARIABLES.FPS;
+        final double FPS = GlobalVar.FPS;
         final double UPDATE_INTERVAL = 1e9 / FPS;
         final long[] lastUpate = {System.nanoTime()};
 
@@ -151,14 +159,14 @@ public class GameManager extends Pane {
             paddle.update(deltaTime);
         if (!parallaxLayers.isEmpty()) {
             // 1. Tính toán vị trí chuẩn hóa của Paddle (normalized Paddle X)
-            double paddleMinX = VARIABLES.WIDTH_OF_WALLS;
-            double paddleMaxX = VARIABLES.WIDTH - VARIABLES.WIDTH_OF_WALLS - paddle.getWidth();
+            double paddleMinX = GameVar.WIDTH_OF_WALLS;
+            double paddleMaxX = GlobalVar.WIDTH - GameVar.WIDTH_OF_WALLS - paddle.getWidth();
             double paddleRange = paddleMaxX - paddleMinX;
 
             double normalizedPaddleX = (paddle.getX() - paddleMinX) / paddleRange;
             normalizedPaddleX = Math.max(0.0, Math.min(1.0, normalizedPaddleX));
 
-            cameraManager.update(normalizedPaddleX, VARIABLES.WIDTH, parallaxLayers, deltaTime);
+            cameraManager.update(normalizedPaddleX, GlobalVar.WIDTH, parallaxLayers, deltaTime);
 
             // update animation frames for each layer (separate responsibility)
             for (ParallaxLayer layer : parallaxLayers) {
@@ -176,12 +184,12 @@ public class GameManager extends Pane {
             ball.updatePowerUps();
 
         // Update effects
-        EffectManager.getInstance().update(deltaTime);
+        EffectRenderer.getInstance().update(deltaTime);
         }
     }
 
     private void render() {
-        gc.clearRect(0,0, VARIABLES.WIDTH, VARIABLES.HEIGHT);
+        gc.clearRect(0,0, GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
         if (inGame) {
             drawObjects();
@@ -191,7 +199,7 @@ public class GameManager extends Pane {
             gameFinished();
         }
 
-        uiManager.render(gc, VARIABLES.WIDTH, VARIABLES.HEIGHT);
+        uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
     }
 
     private void drawObjects() {
@@ -228,7 +236,7 @@ public class GameManager extends Pane {
     }
 
     private void drawEffects() {
-        EffectManager.getInstance().draw(gc);
+        EffectRenderer.getInstance().draw(gc);
     }
 
     private void gameFinished() {
@@ -236,18 +244,18 @@ public class GameManager extends Pane {
         gc.setFont(new Font("Verdana", 18));
         String message = "Game Over";
         gc.fillText(message,
-                (VARIABLES.WIDTH - message.length() * 10) / 2.0,
-                VARIABLES.HEIGHT / 2.0);
+                (GlobalVar.WIDTH - message.length() * 10) / 2.0,
+                GlobalVar.HEIGHT / 2.0);
     }
 
     private void stopGame() {
         inGame = false;
         timer.stop();
         // stop background music
-        SoundManager.getInstance().stopMusic();
+        Sound.getInstance().stopMusic();
 
         // Clear all effects
-        EffectManager.getInstance().clear();
+        EffectRenderer.getInstance().clear();
     }
 
     public Paddle getPaddle() {

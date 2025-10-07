@@ -1,4 +1,7 @@
-package com.example.demo.controller.core;
+package com.example.demo.model.states;
+
+import com.example.demo.model.core.Wall;
+import com.example.demo.model.core.bricks.Brick;
 
 import java.util.List;
 

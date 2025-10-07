@@ -1,11 +1,14 @@
-package com.example.demo.controller.core;
+package com.example.demo.model.core;
+
+import com.example.demo.model.utils.GameVar;
+import com.example.demo.model.utils.GlobalVar;
 
 public class Paddle extends GameObject {
     private int direction;          // -1 = left, 0 = stop, 1 = right
     private double speed = 400.0;   // pixels per second (tweakable)
 
     public Paddle() {
-        super("/images/Paddle.png", VARIABLES.INIT_PADDLE_X, VARIABLES.INIT_PADDLE_Y);
+        super("/images/Paddle.png", GameVar.INIT_PADDLE_X, GameVar.INIT_PADDLE_Y);
         resetState();
     }
 
@@ -14,16 +17,16 @@ public class Paddle extends GameObject {
         x += direction * speed * deltaTime;
 
         // Clamp inside screen
-        if (x < VARIABLES.HEIGHT_OF_WALLS) x = VARIABLES.HEIGHT_OF_WALLS;
-        if (x > VARIABLES.WIDTH - getWidth() - VARIABLES.WIDTH_OF_WALLS) {
-            x = VARIABLES.WIDTH - getWidth() - VARIABLES.WIDTH_OF_WALLS;
+        if (x < GameVar.HEIGHT_OF_WALLS) x = GameVar.HEIGHT_OF_WALLS;
+        if (x > GlobalVar.WIDTH - getWidth() - GameVar.WIDTH_OF_WALLS) {
+            x = GlobalVar.WIDTH - getWidth() - GameVar.WIDTH_OF_WALLS;
         }
 
         setPosition(x, y);
     }
 
     public void resetState() {
-        setPosition(VARIABLES.INIT_PADDLE_X, VARIABLES.INIT_PADDLE_Y);
+        setPosition(GameVar.INIT_PADDLE_X, GameVar.INIT_PADDLE_Y);
     }
 
     /** Set paddle movement direction: -1 = left, 1 = right, 0 = stop */
