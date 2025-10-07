@@ -34,6 +34,11 @@ public class EffectFactory {
                 new EffectLoader("explosion").setSize(64, 64)
             );
 
+            effects.put(
+                "explosion2",
+                new EffectLoader("explosion2").setSize(32, 32)
+            );
+
             // Add more effects here as needed
 
         } catch (Exception e) {
