@@ -30,6 +30,7 @@ public class Sound {
             loadMusic("You-Far-Away", "/sounds/You-Far-Away.mp3");
             loadMusic("Engraved-Star", "/sounds/Engraved-Star.mp3");
 
+            loadSoundEffect("dialogue-sound", "/sounds/dialogue-sound.wav");
             loadSoundEffect("brick_hit", "/sounds/brick_hit.wav");
             loadSoundEffect("paddle_hit", "/sounds/paddle_hit.wav");
             loadSoundEffect("wall_hit", "/sounds/wall_hit.wav");
@@ -68,7 +69,7 @@ public class Sound {
     }
 
     //public control init
-    public void playMusic(String name){
+    public void playMusic(String name) {
         stopMusic(); //stop any music that's currently playing
 
         Media media = musicLibrary.get(name);
@@ -86,11 +87,29 @@ public class Sound {
         currentTrackIndex = musicKey.indexOf(name);
     }
 
+    public void loopMusic(String name) {
+        stopMusic();
+
+        Media media = musicLibrary.get(name);
+        if (media == null) {
+            System.err.println("Couldn't find music to loop with name: " + name);
+            return;
+        }
+
+        currentMusicPlayer = new MediaPlayer(media);
+        currentMusicPlayer.setVolume(0.5);
+
+        currentMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE); //loop music
+
+        currentMusicPlayer.play();
+        currentTrackIndex = musicKey.indexOf(name);
+    }
+
     public void stopMusic(){
         if(currentMusicPlayer != null) currentMusicPlayer.stop();
     }
 
-    public void setMusicVolume(double volume){
+    public void setMusicVolume(double volume) {
         if(currentMusicPlayer != null) {
             currentMusicPlayer.setVolume(volume); // range: 0.1 -> 1.0
         }
@@ -117,6 +136,27 @@ public class Sound {
         AudioClip clip = soundEffects.get(name);
         if (clip == null) System.err.println("Couldn't find sfx according to its name: " + name);
         else clip.play();
+    }
+
+    public void loopSound(String name) {
+        AudioClip clip = soundEffects.get(name);
+        if (clip == null) {
+            System.err.println("Couldn't find sfx to loop with name: " + name);
+            return;
+        }
+
+        clip.setCycleCount(AudioClip.INDEFINITE);
+        clip.play();
+    }
+
+    public void stopSound(String name) {
+        AudioClip clip = soundEffects.get(name);
+        if (clip != null) {
+            clip.stop();
+            clip.setCycleCount(1);
+        } else {
+            System.err.println("Couldn't find sfx to stop with name: " + name);
+        }
     }
 
 }
