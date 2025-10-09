@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import com.example.demo.model.utils.Sound;
 
 public class DialogueBox extends UIComponent {
     private String[] lines;
@@ -28,6 +29,8 @@ public class DialogueBox extends UIComponent {
         charIndex = 0;
         timePerChar = 0;
         lineComplete = false;
+
+        Sound.getInstance().loopSound("dialogue-sound"); // start sound when text is initiated
     }
 
     @Override
@@ -44,6 +47,8 @@ public class DialogueBox extends UIComponent {
 
         if (charIndex >= lines[currentLine].length()) {
             lineComplete = true;
+
+            Sound.getInstance().stopSound("dialogue-sound"); // stop sound when line is finished
         }
     }
 
@@ -68,6 +73,7 @@ public class DialogueBox extends UIComponent {
         if (!active) return;
 
         if (code == KeyCode.SPACE || code == KeyCode.ENTER) {
+            Sound.getInstance().stopSound("dialogue-sound"); // stop sound of previous dialogue box
             if (!lineComplete) {
                 // instantly show full line
                 displayedText = lines[currentLine];

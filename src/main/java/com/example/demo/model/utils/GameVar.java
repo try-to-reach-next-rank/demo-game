@@ -17,11 +17,11 @@ public class GameVar {
     public static final int N_OF_WALLS_LEFT_RIGHT = HEIGHT / HEIGHT_OF_WALLS;
     public static final int N_OF_WALLS_TOP = WIDTH / WIDTH_OF_WALLS;
 
-    public static final int BRICKS_PER_ROW = 15;
+    public static final int BRICKS_PER_ROW = 20;
     public static final int PADDING_X = 6;
     public static final int PADDING_Y = 6;
 
     public static final int MAXHEALTH_OF_BRICKS = 5;
-    public static final int WIDTH_OF_BRICKS = 32;
-    public static final int HEIGHT_OF_BRICKS = 16;
+    public static final int WIDTH_OF_BRICKS = 23;
+    public static final int HEIGHT_OF_BRICKS = 12;
 }
