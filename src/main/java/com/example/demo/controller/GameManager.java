@@ -12,12 +12,14 @@ import com.example.demo.view.ui.DialogueBox;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 // Import các lớp quản lý map mới
@@ -42,8 +44,12 @@ public class GameManager extends Pane {
 
     // THUỘC TÍNH MỚI CHO VIỆC QUẢN LÝ MAP VÀ LEVEL
     private final MapManager    mapManager = new MapManager();
-    private int                 currentLevel = 3;
+    private int                 currentLevel = 1;
     private final List<ParallaxLayer> parallaxLayers = new ArrayList<>();
+
+    // CHEATCODE
+    private final StringBuilder keySequence = new StringBuilder();
+    private static final String SECRET_CODE = "PHUC"; // your easter egg sequence
 
     public GameManager() {
         initBoard();
@@ -57,6 +63,31 @@ public class GameManager extends Pane {
         setFocusTraversable(true);
         requestFocus();
 
+        // TEST WITH CHEATCODE & REUSABALITY OF dialogueBox
+        setOnKeyPressed(e -> {
+            KeyCode code = e.getCode();
+            if (code == null) return;
+
+            // Convert to uppercase character if it's a letter
+            String key = code.getName().toUpperCase();
+
+            // Add to rolling sequence (only keep last few chars)
+            keySequence.append(key);
+            if (keySequence.length() > SECRET_CODE.length()) {
+                keySequence.delete(0, keySequence.length() - SECRET_CODE.length());
+            }
+
+            // Check if sequence matches
+            if (keySequence.toString().equals(SECRET_CODE)) {
+                // Trigger your easter egg
+                dialogueBox.start(new DialogueBox.DialogueLine[]{
+                        new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.EGG, "You found the secret!"),
+                        new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Whoa, how did you unlock this?")
+                });
+                keySequence.setLength(0); // reset after success
+            }
+        });
+
         // Khởi tạo các đối tượng và tải level
         gameInit();
     }
@@ -65,10 +96,11 @@ public class GameManager extends Pane {
         paddle = new Paddle();
         ball = new Ball(paddle);
         uiManager.add(dialogueBox);
-        dialogueBox.start(new String[] {
-                "This is a test from the developers... :3",
-                "Someone is literally spending time reading this",
-                "This dialogue can only show short text ¯\\_(ツ)_/¯"
+        dialogueBox.start(new DialogueBox.DialogueLine[] {
+                new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.EGG, "Hey there! Are you... a ball?"),
+                new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Yeah! And you’re an egg ?"),
+                new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.EGG, "Haha, maybe. Anyway, nice to meet you."),
+                new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Let’s fight")
         });
 
         // Tải Level 1 bằng MapManager (thay thế logic khởi tạo gạch/tường cũ)
@@ -148,11 +180,11 @@ public class GameManager extends Pane {
     }
 
     private void update(double deltaTime) {
+        uiManager.update(deltaTime);
+
         if (!inGame) {
             return;
         }
-
-        uiManager.update(deltaTime);
 
         if(!uiManager.hasActiveUI() && inGame) {
             ball.update(deltaTime);
@@ -173,15 +205,15 @@ public class GameManager extends Pane {
                 layer.update(deltaTime);
             }
         }
-            // Cập nhật vị trí PowerUp
-            for (PowerUp p : activePowerUps) {
-                if (p.isVisible()) {
-                    p.update(deltaTime);
-                }
+        // Cập nhật vị trí PowerUp
+        for (PowerUp p : activePowerUps) {
+            if (p.isVisible()) {
+                p.update(deltaTime);
             }
+        }
 
-            collisionManager.update(ball, paddle, bricks, activePowerUps, walls);
-            ball.updatePowerUps();
+        collisionManager.update(ball, paddle, bricks, activePowerUps, walls);
+        ball.updatePowerUps();
 
         // Update effects
         EffectRenderer.getInstance().update(deltaTime);
@@ -242,11 +274,19 @@ public class GameManager extends Pane {
     private void gameFinished() {
         gc.setFill(Color.BLACK);
         gc.setFont(new Font("Verdana", 18));
-        String message = "Game Over";
-        gc.fillText(message,
-                (GlobalVar.WIDTH - message.length() * 10) / 2.0,
-                GlobalVar.HEIGHT / 2.0);
+
+        // Make sure dialogue box is active
+        if (!uiManager.contains(dialogueBox)) {
+            uiManager.add(dialogueBox);
+        }
+
+        // Restart dialogue sequence
+        dialogueBox.start(new DialogueBox.DialogueLine[]{
+                new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.EGG, "Round two? Let's go!"),
+                new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Bring it on!")
+        });
     }
+
 
     private void stopGame() {
         inGame = false;

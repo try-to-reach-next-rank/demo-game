@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.view.ui.DialogueBox;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -47,5 +48,9 @@ public class UIManager {
 
     public boolean hasActiveUI() {
         return componentList.stream().anyMatch(UIComponent::isActive);
+    }
+
+    public boolean contains(UIComponent uiComponent) {
+        return componentList.contains(uiComponent);
     }
 }
