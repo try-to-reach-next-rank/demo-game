@@ -42,7 +42,7 @@ public class GameManager extends Pane {
 
     // THUỘC TÍNH MỚI CHO VIỆC QUẢN LÝ MAP VÀ LEVEL
     private final MapManager    mapManager = new MapManager();
-    private int                 currentLevel = 3;
+    private int                 currentLevel = 1;
     private final List<ParallaxLayer> parallaxLayers = new ArrayList<>();
 
     public GameManager() {
