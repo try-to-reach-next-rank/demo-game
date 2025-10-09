@@ -10,6 +10,7 @@ import com.example.demo.view.*;
 import com.example.demo.view.graphics.ParallaxLayer;
 import com.example.demo.view.ui.DialogueBox;
 import javafx.animation.AnimationTimer;
+import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -309,4 +310,5 @@ public class GameManager extends Pane {
     public UIManager getUIManager() {
         return uiManager;
     }
+
 }

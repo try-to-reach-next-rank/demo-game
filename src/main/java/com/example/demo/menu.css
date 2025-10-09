@@ -1,0 +1,25 @@
+/* menu.css */
+.root {
+    -fx-font-family: "Segoe UI", "Arial";
+}
+
+.text {
+    -fx-fill: #ffffff;
+}
+
+.button {
+    -fx-font-size: 16px;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 6;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#f4f4f4, #dcdcdc);
+}
+
+.button.selected {
+    -fx-background-color: linear-gradient(#4a90e2, #2a6cff);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 6, 0.0, 0, 2);
+}
