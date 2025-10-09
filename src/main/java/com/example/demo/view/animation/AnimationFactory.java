@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class AnimationFactory {
     private static final AnimationFactory       instance    = new AnimationFactory();
-    private final Map<String, AnimationLoader>  animations  = new HashMap<>();
+    private final Map<String, Animation>  animations  = new HashMap<>();
 
     // Constructor
     AnimationFactory() {
@@ -23,7 +23,7 @@ public class AnimationFactory {
             throw new IllegalArgumentException("Animation key not found: " + key);
         }
 
-        return animations.get(key).load();
+        return animations.get(key);
     }
     
     // Load all animations
@@ -31,7 +31,12 @@ public class AnimationFactory {
         try {
             animations.put(
                 "explosion", 
-                new AnimationLoader("/images/effects/explosion", 24)
+                new AnimationLoader("/images/effects/explosion", 24).load()
+            );
+
+            animations.put(
+                "explosion2", 
+                new AnimationLoader("/images/effects/explosion2", 32).load()
             );
 
             // Add more animations here as needed

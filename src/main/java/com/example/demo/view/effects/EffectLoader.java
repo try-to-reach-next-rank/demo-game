@@ -44,6 +44,11 @@ public class EffectLoader {
             case "explosion":
                 effect = new ExplosionEffect(centerX, centerY, durationSeconds, cloneAnimation);
                 break;
+
+            case "explosion2":
+                effect = new ExplosionEffect(centerX, centerY, durationSeconds, cloneAnimation);
+                break;
+
             // Add more effects here as needed
 
             default:
