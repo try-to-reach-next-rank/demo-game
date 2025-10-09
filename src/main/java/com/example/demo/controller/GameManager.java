@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.interfaces.GameDataProvider;
 import com.example.demo.model.states.MapData;
 import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.Sound;
@@ -23,22 +24,21 @@ import java.util.Random;
 // Import các lớp quản lý map mới
 
 
-public class GameManager extends Pane {
+public class GameManager extends Pane implements GameDataProvider {
 
-    private                     AnimationTimer timer;
-    private Ball ball;
-    private Paddle paddle;
-    private                     Brick[] bricks;
-    private boolean             inGame = true;
-    private final               Random random = new Random();
-    private                     GraphicsContext gc;
-    private final List<PowerUp> activePowerUps = new ArrayList<>();
-    private final List<Wall>    walls = new ArrayList<>();
-    private final UIManager uiManager = new UIManager();
-    private final DialogueBox dialogueBox = new DialogueBox();
-    private final CameraManager cameraManager = new CameraManager(0.15, 8.0, new double[]{1.0, 0.6, 0.35, 0.2});
-    private final CollisionManager collisionManager = new CollisionManager();
-    private final RenderManager renderManager = new RenderManager(GlobalVar.WIDTH, GlobalVar.HEIGHT);
+    private       AnimationTimer    timer;
+    private       Ball              ball;
+    private       Paddle            paddle;
+    private       Brick[]           bricks;
+    private       boolean           inGame           = true;
+    private       GraphicsContext   gc;
+    private final Random            random           = new Random();
+    private final List<PowerUp>     activePowerUps   = new ArrayList<>();
+    private final List<Wall>        walls            = new ArrayList<>();
+    private final UIManager         uiManager        = new UIManager();
+    private final DialogueBox       dialogueBox      = new DialogueBox();
+    private final CameraManager     cameraManager    = new CameraManager(0.15, 8.0, new double[]{1.0, 0.6, 0.35, 0.2});
+    private final CollisionManager  collisionManager = new CollisionManager();
 
     // THUỘC TÍNH MỚI CHO VIỆC QUẢN LÝ MAP VÀ LEVEL
     private final MapManager    mapManager = new MapManager();
@@ -53,6 +53,7 @@ public class GameManager extends Pane {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
         Canvas canvas = new Canvas(GlobalVar.WIDTH, GlobalVar.HEIGHT);
         gc = canvas.getGraphicsContext2D();
+        Renderer.getInstance(this).setGraphicsContext(gc);
         getChildren().add(canvas);
         setFocusTraversable(true);
         requestFocus();
@@ -189,63 +190,15 @@ public class GameManager extends Pane {
     }
 
     private void render() {
-        gc.clearRect(0,0, GlobalVar.WIDTH, GlobalVar.HEIGHT);
+        Renderer renderer = Renderer.getInstance();
 
+        renderer.clear();
         if (inGame) {
-            drawObjects();
-            drawEffects();
+            renderer.drawInGame();
         }
         else {
-            gameFinished();
+            renderer.drawGameOver();
         }
-
-        uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
-    }
-
-    private void drawObjects() {
-        renderManager.drawParallax(gc, parallaxLayers);
-
-        gc.drawImage(ball.getImage(), ball.getX(), ball.getY(),
-                ball.getWidth(), ball.getHeight());
-
-        // Vẽ thanh đỡ
-        gc.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
-                paddle.getWidth(), paddle.getHeight());
-
-        // Vẽ gạch
-        for (Brick brick : bricks) {
-            if (!brick.isDestroyed()) {
-                gc.drawImage(brick.getImage(), brick.getX(), brick.getY(),
-                        brick.getWidth(), brick.getHeight());
-            }
-        }
-
-        // Vẽ PowerUp
-        for (PowerUp p : activePowerUps) {
-            if (p.isVisible()) {
-                gc.drawImage(p.getImage(), p.getX(), p.getY(),
-                        p.getWidth(), p.getHeight());
-            }
-        }
-
-        // Vẽ tường
-        for (Wall wall : walls){
-            gc.drawImage(wall.getImage(), wall.getX(), wall.getY(),
-                    wall.getWidth(), wall.getHeight());
-        }
-    }
-
-    private void drawEffects() {
-        EffectRenderer.getInstance().draw(gc);
-    }
-
-    private void gameFinished() {
-        gc.setFill(Color.BLACK);
-        gc.setFont(new Font("Verdana", 18));
-        String message = "Game Over";
-        gc.fillText(message,
-                (GlobalVar.WIDTH - message.length() * 10) / 2.0,
-                GlobalVar.HEIGHT / 2.0);
     }
 
     private void stopGame() {
@@ -268,5 +221,30 @@ public class GameManager extends Pane {
 
     public UIManager getUIManager() {
         return uiManager;
+    }
+
+	@Override
+	public Brick[] getBricks() {
+        return bricks;
+    }
+
+	@Override
+	public List<Wall> getWalls() {
+        return walls;
+    }
+
+	@Override
+	public List<PowerUp> getPowerUps() {
+        return activePowerUps;
+    }
+
+	@Override
+	public UIManager getUiManager() {
+        return uiManager;
+    }
+
+	@Override
+	public List<ParallaxLayer> getParallaxLayers() {
+        return parallaxLayers;
     }
 }
