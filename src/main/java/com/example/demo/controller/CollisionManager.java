@@ -1,139 +1,153 @@
 package com.example.demo.controller;
 
+import com.example.demo.engine.GameWorld;
+import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.bricks.Brick;
-import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.Vector2D;
+import com.example.demo.system.BallSystem;
+import com.example.demo.system.BrickSystem;
+import com.example.demo.system.PowerUpSystem;
 import com.example.demo.view.EffectRenderer;
 
 import java.util.List;
-import java.util.Random;
 
-public class CollisionManager {
-    private final Random        random = new Random();
-    private static final long   paddleSoundCooldown = 200L; // TODO: make it in the VARIABLES
-    private long                nextPaddleSoundTime = 0;
+/**
+ * CollisionManager detects collisions and delegates resolution
+ * to the appropriate System (BallSystem, BrickSystem, PowerUpSystem).
+ *
+ * It no longer directly mutates the models.
+ */
+public class CollisionManager implements Updatable {
 
-    public void update(Ball ball, Paddle paddle, Brick[] bricks, List<PowerUp> powerUps, List<Wall> walls) {
-        // ball-floor check
+    private static final long PADDLE_SOUND_COOLDOWN = 150; // ms
+    private long nextPaddleSoundTime = 0L;
+
+    private final GameWorld world;
+    private final BallSystem ballSystem;
+    private final BrickSystem brickSystem;
+    private final PowerUpSystem powerUpSystem;
+
+    public CollisionManager(GameWorld world, BallSystem ballSystem,
+                            BrickSystem brickSystem, PowerUpSystem powerUpSystem) {
+        this.world = world;
+        this.ballSystem = ballSystem;
+        this.brickSystem = brickSystem;
+        this.powerUpSystem = powerUpSystem;
+    }
+
+    @Override
+    public void update(double deltaTime) {
+        Ball ball = world.getBall();
+        Paddle paddle = world.getPaddle();
+        Brick[] bricks = world.getBricks();
+        List<PowerUp> powerUps = world.getPowerUps();
+        List<Wall> walls = world.getWalls();
+
+        if (ball == null || paddle == null) return;
+
         handleBallFloorCollision(ball);
-
-        // powerups vs paddle
-        handlePaddlePowerUpCollisions(ball, paddle, powerUps);
-
-        // ball vs paddle
+        handlePaddlePowerUpCollisions(paddle, powerUps);
         handleBallPaddleCollision(ball, paddle);
-
-        // ball vs walls
         handleBallWallCollisions(ball, walls);
-
-        // ball vs bricks
-        handleBallBrickCollisions(ball, bricks, powerUps);
-
+        handleBallBrickCollisions(ball, bricks);
     }
 
-    private Collision buildCollision(GameObject a, GameObject b) {
-        if (a == b) return null;
-        if (!a.getBounds().intersects(b.getBounds())) return null;
-        double overlapX = Math.min(a.getBounds().getMaxX(), b.getBounds().getMaxX()) -
-                Math.max(a.getBounds().getMinX(), b.getBounds().getMinX());
-        double overlapY = Math.min(a.getBounds().getMaxY(), b.getBounds().getMaxY()) -
-                Math.max(a.getBounds().getMinY(), b.getBounds().getMinY());
-        return new Collision(a, b, System.nanoTime(), overlapX, overlapY);
-    }
+    // ------------------------------------------------------------------------
+    //  Collision Handling Methods
+    // ------------------------------------------------------------------------
 
     private void handleBallFloorCollision(Ball ball) {
         if (ball.getBounds().getMaxY() > GlobalVar.BOTTOM_EDGE) {
             Sound.getInstance().playSound("game_over");
-            ball.resetState();
+            ballSystem.resetBall(ball); // delegate to BallSystem
         }
     }
 
-    private void handlePaddlePowerUpCollisions(Ball ball, Paddle paddle, List<PowerUp> powerUps) {
+    private void handlePaddlePowerUpCollisions(Paddle paddle, List<PowerUp> powerUps) {
+        if (powerUps == null) return;
+
         for (PowerUp p : powerUps) {
             if (!p.isVisible()) continue;
             if (p.getBounds().intersects(paddle.getBounds())) {
-                Sound.getInstance().playSound("power_up");
-                ball.activatePowerUp(p);
+                powerUpSystem.activate(p); // delegate to PowerUpSystem
                 p.setVisible(false);
             }
-            if (p.getBounds().getMaxY() > GlobalVar.BOTTOM_EDGE) p.setVisible(false);
+            if (p.getBounds().getMaxY() > GlobalVar.BOTTOM_EDGE) {
+                p.setVisible(false);
+            }
         }
     }
 
     private void handleBallPaddleCollision(Ball ball, Paddle paddle) {
-        Collision c = buildCollision(ball, paddle);
-        if (c == null) return;
-        
+        if (!ball.getBounds().intersects(paddle.getBounds())) return;
+
         if (!ball.isStuck()) {
             long now = System.currentTimeMillis();
             if (now > nextPaddleSoundTime) {
                 Sound.getInstance().playSound("paddle_hit");
-                nextPaddleSoundTime = now + paddleSoundCooldown;
+                nextPaddleSoundTime = now + PADDLE_SOUND_COOLDOWN;
             }
         }
-        ball.setPosition(ball.getX(), paddle.getBounds().getMinY() - ball.getHeight());
-        double paddleLPos = paddle.getBounds().getMinX();
-        double ballCenterX = ball.getBounds().getMinX() + ball.getWidth() / 2.0;
-        double hitPos = (ballCenterX - paddleLPos) / paddle.getWidth();
-        double angle = Math.toRadians(150 * (1 - hitPos) + 30 * hitPos);
-        ball.setVelocity(new Vector2D(Math.cos(angle), -Math.sin(angle)));
+
+        ballSystem.bounceFromPaddle(paddle); // delegate to BallSystem
     }
 
     private void handleBallWallCollisions(Ball ball, List<Wall> walls) {
+        if (walls == null) return;
+
         for (Wall wall : walls) {
-            Collision c = buildCollision(ball, wall);
-            if (c == null) continue;
-        
-            Vector2D v = ball.getVelocity();
-            switch (wall.getSide()) {
-                case LEFT:
-                    ball.setVelocity(new Vector2D(Math.abs(v.x), v.y));
-                    EffectRenderer.getInstance().spawnEffect("explosion2", ball.getX(), ball.getY() + ball.getHeight() / 2, 0.3);
-                    break;
-                case RIGHT:
-                    ball.setVelocity(new Vector2D(-Math.abs(v.x), v.y));
-                    EffectRenderer.getInstance().spawnEffect("explosion2", ball.getX() + ball.getWidth() / 2, ball.getY() + ball.getHeight() / 2, 0.3);
-                    break;
-                case TOP:
-                    ball.setVelocity(new Vector2D(v.x, Math.abs(v.y)));
-                    EffectRenderer.getInstance().spawnEffect("explosion2", ball.getX() + ball.getWidth(), ball.getY() + ball.getHeight() / 2, 0.3);
-                    break;
-            }
+            if (!ball.getBounds().intersects(wall.getBounds())) continue;
+
+            ballSystem.bounceFromWall(ball, wall); // delegate to BallSystem
             Sound.getInstance().playSound("wall_hit");
+
+            // simple effect (View layer responsibility)
+            EffectRenderer.getInstance().spawnEffect(
+                    "explosion2",
+                    ball.getX() + ball.getWidth() / 2,
+                    ball.getY() + ball.getHeight() / 2,
+                    0.3
+            );
+            System.out.printf("Wall %s: (%.1f, %.1f, %.1f, %.1f)%n",
+                    wall.getSide(), wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight());
         }
     }
 
-    private void handleBallBrickCollisions(Ball ball, Brick[] bricks, List<PowerUp> powerUps) {
+    private void handleBallBrickCollisions(Ball ball, Brick[] bricks) {
+        if (bricks == null) return;
+
         for (Brick brick : bricks) {
-            Collision c = buildCollision(ball, brick);
-            if (c != null && !brick.isDestroyed()) {
-                String sound = brick.takeDamage();
-                if (sound != null) {
-                    if ("explosion_hit".equals(sound)) {
-                        brick.handleExplosion(brick, bricks); // TODO: add different types of bricks
-                    }
-                    Sound.getInstance().playSound(sound);
-                }
-                // bounce
-                Vector2D v = ball.getVelocity();
-                boolean fromSide = c.getOverlapX() < c.getOverlapY();
-                if (fromSide) ball.setVelocity(new Vector2D(-v.x, v.y));
-                else ball.setVelocity(new Vector2D(v.x, -v.y));
+            if (brick.isDestroyed()) continue;
+            if (!ball.getBounds().intersects(brick.getBounds())) continue;
 
-                if (brick.isDestroyed()) {
-                    double centerX = brick.getX() + brick.getWidth() / 2;
-                    double centerY = brick.getY() + brick.getWidth() / 2;
-                    EffectRenderer.getInstance().spawnEffect("explosion", centerX, centerY, 0.3);
+            // delegate to BrickSystem to apply damage, explosion, and power-up drop
+            brickSystem.onBallHitBrick(ball, brick);
 
-                    if (random.nextInt(100) < 30) {
-                        PowerUp newPU = new PowerUp("ACCELERATE");
-                        newPU.dropFrom(brick);
-                        powerUps.add(newPU);
-                    }   
-                }
-            }
+            // bounce depending on overlap direction
+            Vector2D v = ball.getVelocity();
+            double overlapX = overlapX(ball, brick);
+            double overlapY = overlapY(ball, brick);
+            boolean fromSide = overlapX < overlapY;
+
+            if (fromSide) ball.setVelocity(new Vector2D(-v.x, v.y));
+            else ball.setVelocity(new Vector2D(v.x, -v.y));
         }
+    }
+
+    // ------------------------------------------------------------------------
+    //  Small geometry helpers
+    // ------------------------------------------------------------------------
+
+    private double overlapX(GameObject a, GameObject b) {
+        return Math.min(a.getBounds().getMaxX(), b.getBounds().getMaxX()) -
+                Math.max(a.getBounds().getMinX(), b.getBounds().getMinX());
+    }
+
+    private double overlapY(GameObject a, GameObject b) {
+        return Math.min(a.getBounds().getMaxY(), b.getBounds().getMaxY()) -
+                Math.max(a.getBounds().getMinY(), b.getBounds().getMinY());
     }
 }

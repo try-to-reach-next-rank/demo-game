@@ -6,6 +6,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import com.example.demo.model.utils.Sound;
+import javafx.scene.text.Text;
 
 public class DialogueBox extends UIComponent {
 
@@ -114,15 +115,21 @@ public class DialogueBox extends UIComponent {
         gc.setFill(Color.WHITE);
         gc.setFont(font);
 
-        double textY = height - boxH - margin + 90; // inside the box vertically
-        double textX;
+        gc.setFill(Color.WHITE);
+        gc.setFont(font);
 
-        if (line.speaker == DialogueLine.Speaker.BALL)
-            textX = margin + 160; // inside left side
-        else
-            textX = width - margin - 460; // inside right side
+// Text box padding
+        double textPadding = 20;
+        double textMaxWidth = width - margin * 2 - 200; // leaves room for images
 
-        gc.fillText(displayedText, textX, textY);
+        double textY = height - boxH - margin + 60;
+        double textX = (line.speaker == DialogueLine.Speaker.BALL)
+                ? margin + 160
+                : width - margin - textMaxWidth - 160;
+
+// draw wrapped text
+        drawWrappedText(gc, displayedText, textX, textY, textMaxWidth, 26);
+
     }
 
 
@@ -146,4 +153,32 @@ public class DialogueBox extends UIComponent {
     }
 
     public boolean isActive() { return active; }
+
+    private void drawWrappedText(GraphicsContext gc, String text, double x, double y, double maxWidth, double lineHeight) {
+        Font font = gc.getFont();
+        String[] words = text.split(" ");
+        StringBuilder line = new StringBuilder();
+        double curY = y;
+
+        for (String word : words) {
+            String testLine = line + word + " ";
+
+            // Measure width using JavaFX Text node
+            Text helper = new Text(testLine);
+            helper.setFont(font);
+            double testWidth = helper.getLayoutBounds().getWidth();
+
+            if (testWidth > maxWidth && line.length() > 0) {
+                gc.fillText(line.toString(), x, curY);
+                line = new StringBuilder(word + " ");
+                curY += lineHeight;
+            } else {
+                line.append(word).append(" ");
+            }
+        }
+
+        if (!line.isEmpty()) {
+            gc.fillText(line.toString(), x, curY);
+        }
+    }
 }
