@@ -58,6 +58,8 @@ public class GameManager extends Pane {
         setFocusTraversable(true);
         requestFocus();
 
+        // Lấy các lệnh từ intro.txt rồi gọi dialogue tương ứng thông qua dialogueBox
+        dialogueSystem = new DialogueSystem("/dialogue/intro.txt", dialogueBox);
         setupSecretCodeEasterEgg();
 
         uiManager.add(dialogueBox);
@@ -109,7 +111,7 @@ public class GameManager extends Pane {
         if (world.getCurrentLevel() == 1) initParallax();
 
         // --- INTRO ---
-        dialogueSystem =  new DialogueSystem("/Dialogue/intro.txt");
+
         dialogueSystem.start();
         Sound.getInstance().playRandomMusic();
         loop();
