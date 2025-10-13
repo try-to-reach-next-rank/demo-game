@@ -42,6 +42,7 @@ public class GameManager extends Pane {
     private CameraManager cameraManager;
     private CollisionManager collisionManager;
     private BrickSystem brickSystem;
+    private DialogueSystem dialogueSystem; /** new dialogue system for running dialogue through txt*/
     private final RenderManager renderManager = new RenderManager(GlobalVar.WIDTH, GlobalVar.HEIGHT);
     private final List<ParallaxLayer> parallaxLayers = new ArrayList<>();
 
@@ -57,6 +58,8 @@ public class GameManager extends Pane {
         setFocusTraversable(true);
         requestFocus();
 
+        // Lấy các lệnh từ intro.txt rồi gọi dialogue tương ứng thông qua dialogueBox
+        dialogueSystem = new DialogueSystem("/dialogue/intro.txt", dialogueBox);
         setupSecretCodeEasterEgg();
 
         uiManager.add(dialogueBox);
@@ -107,13 +110,9 @@ public class GameManager extends Pane {
         // --- Setup parallax for first level ---
         if (world.getCurrentLevel() == 1) initParallax();
 
-        // --- Initial dialogue (example) ---
-        dialogueBox.start(new DialogueBox.DialogueLine[]{
-                new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.EGG, "Hey there! Are you... a ball?"),
-                new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Yeah! And you’re an egg?"),
-                new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "You did not make me a banh mi trung!")
-        });
+        // --- INTRO ---
 
+        dialogueSystem.start();
         Sound.getInstance().playRandomMusic();
         loop();
     }

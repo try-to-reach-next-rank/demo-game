@@ -19,6 +19,16 @@ public class DialogueBox extends UIComponent {
             this.speaker = speaker;
             this.text = text;
         }
+
+        public static Speaker getByName(String name) {
+            for (Speaker speaker : Speaker.values()) {
+                if (speaker.name().equalsIgnoreCase(name)) {
+                    return speaker;
+                }
+            }
+            // If the loop finishes, the name was invalid. Throw an error.
+            throw new IllegalArgumentException("No enum constant for speaker " + name);
+        }
     }
 
     private DialogueLine[] lines;
