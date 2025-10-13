@@ -77,7 +77,7 @@ public class GameManager extends Pane {
         // --- Create core systems (Controller layer) ---
         BallSystem ballSystem = new BallSystem(ball, paddle);
         PaddleSystem paddleSystem = new PaddleSystem(paddle);
-        PowerUpSystem powerUpSystem = new PowerUpSystem(ball, world.getPowerUps());
+        PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
 
         // --- Load map and build bricks/walls ---
         loadLevel(world.getCurrentLevel());

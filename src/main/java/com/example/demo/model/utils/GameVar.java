@@ -24,4 +24,10 @@ public class GameVar {
     public static final int MAXHEALTH_OF_BRICKS = 5;
     public static final int WIDTH_OF_BRICKS = 23;
     public static final int HEIGHT_OF_BRICKS = 12;
+
+    public static final String ACCELERATE = "ACCELERATE";
+    public static final String STRONGER = "STRONGER";
+    public static final String BIGGERPADDLE = "BIGGERPADDLE";
+    public static final String STOPTIME = "STOPTIME";
+    public static final String[] powerUps = {ACCELERATE, STRONGER, STOPTIME, BIGGERPADDLE};
 }

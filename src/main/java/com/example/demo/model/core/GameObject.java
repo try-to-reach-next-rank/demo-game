@@ -15,6 +15,10 @@ public abstract class GameObject {
     protected double height;
     protected Image image;
     protected ImageView imageView;
+
+    private double baseWidth;
+    private double baseHeight;
+
     private double scaleX = 1.0;
     private double scaleY = 1.0;
     private boolean visible = true;
@@ -34,6 +38,8 @@ public abstract class GameObject {
         this.imageView = new ImageView(image);
         this.width = image.getWidth();
         this.height = image.getHeight();
+        this.baseWidth = width;
+        this.baseHeight = height;
     }
 
     public void setImage(Image image) {
@@ -45,6 +51,8 @@ public abstract class GameObject {
         }
         this.width = image.getWidth();
         this.height = image.getHeight();
+        this.baseWidth = width;
+        this.baseHeight = height;
         applyScale();
     }
 
@@ -63,11 +71,21 @@ public abstract class GameObject {
         applyScale();
     }
 
+    /**
+     * Reset về kích thước gốc.
+     */
+    public void resetScale() {
+        this.scaleX = 1.0;
+        this.scaleY = 1.0;
+        applyScale();
+    }
+
+    /**
+     * Áp dụng scale: cập nhật kích thước vật lý và hiển thị.
+     */
     private void applyScale() {
-        if (imageView != null) {
-            imageView.setFitWidth(width * scaleX);
-            imageView.setFitHeight(height * scaleY);
-        }
+        this.width = baseWidth * scaleX;
+        this.height = baseHeight * scaleY;
     }
 
     public double getX() { return x; }
@@ -75,6 +93,8 @@ public abstract class GameObject {
     public double getWidth() { return width; }
     public double getHeight() { return height; }
     public Image getImage() { return image; }
+    public ImageView getImageView() { return imageView; }
+
     public boolean isVisible() { return visible; }
     public void setVisible(boolean visible) {
         this.visible = visible;

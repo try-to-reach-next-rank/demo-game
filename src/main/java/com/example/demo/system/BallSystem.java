@@ -18,6 +18,8 @@ public class BallSystem implements Updatable {
 
     @Override
     public void update(double deltaTime) {
+        if (ball.isStopTime()) return;
+
         if (ball.isStuck()) {
             // Keep the ball above the paddle
             ball.setPosition(

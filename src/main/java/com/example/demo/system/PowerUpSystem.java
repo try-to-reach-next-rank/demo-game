@@ -2,7 +2,9 @@ package com.example.demo.system;
 
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
+import com.example.demo.model.core.Paddle;
 import com.example.demo.model.core.PowerUp;
+import com.example.demo.model.utils.GameVar;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,9 +14,11 @@ public class PowerUpSystem implements Updatable {
     private final List<PowerUp> activePowerUps = new ArrayList<>();
     private final List<PowerUp> worldPowerUps;
     private final Ball ball;
+    private final Paddle paddle;
 
-    public PowerUpSystem(Ball ball, List<PowerUp> worldPowerUps) {
+    public PowerUpSystem(Ball ball, Paddle paddle, List<PowerUp> worldPowerUps) {
         this.ball = ball;
+        this.paddle = paddle;
         this.worldPowerUps = worldPowerUps;
     }
 
@@ -24,9 +28,11 @@ public class PowerUpSystem implements Updatable {
         activePowerUps.add(powerUp);
 
         switch (powerUp.getType()) {
-            case "ACCELERATE" -> ball.setAccelerated(true);
-            // more types can go here (e.g. MULTI_BALL, SHIELD, etc.)
-        }
+            case GameVar.ACCELERATE -> ball.setAccelerated(true);
+            case GameVar.STRONGER -> ball.setStronger(true);
+            case GameVar.STOPTIME -> ball.setStopTime(true);
+            case GameVar.BIGGERPADDLE -> paddle.setBiggerPaddle(true);
+         }
     }
 
     @Override
@@ -44,7 +50,10 @@ public class PowerUpSystem implements Updatable {
             PowerUp p = it.next();
             if (p.hasExpired()) {
                 switch (p.getType()) {
-                    case "ACCELERATE" -> ball.setAccelerated(false);
+                    case GameVar.ACCELERATE -> ball.setAccelerated(false);
+                    case GameVar.STRONGER -> ball.setStronger(false);
+                    case GameVar.STOPTIME -> ball.setStopTime(false);
+                    case GameVar.BIGGERPADDLE -> paddle.setBiggerPaddle(false);
                 }
                 p.deactivate();
                 it.remove();

@@ -4,6 +4,8 @@ import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.PowerUp;
 import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.utils.GameRandom;
+import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.view.EffectRenderer;
@@ -66,8 +68,8 @@ public class BrickSystem implements Updatable {
      * Spawns a power-up at the destroyed brick's location.
      */
     private void maybeSpawnPowerUp(Brick brick) {
-        if (random.nextInt(100) < 30) { // 30% chance
-            PowerUp powerUp = new PowerUp("ACCELERATE");
+        if (random.nextInt(100) < 99) { // 30% chance
+            PowerUp powerUp = new PowerUp(GameVar.powerUps[GameRandom.nextInt(4)]);
             powerUp.dropFrom(brick);
             powerUps.add(powerUp);
         }

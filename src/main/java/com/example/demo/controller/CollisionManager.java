@@ -131,7 +131,7 @@ public class CollisionManager implements Updatable {
             double overlapX = overlapX(ball, brick);
             double overlapY = overlapY(ball, brick);
             boolean fromSide = overlapX < overlapY;
-
+            if (ball.isStronger()) continue;
             if (fromSide) ball.setVelocity(new Vector2D(-v.x, v.y));
             else ball.setVelocity(new Vector2D(v.x, -v.y));
         }
