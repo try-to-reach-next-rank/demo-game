@@ -127,12 +127,12 @@ public class GameManager extends Pane {
             case 1 -> mapManager.loadMap(1);
             case 2 -> mapManager.loadMap(2);
             case 3 -> mapManager.loadMap(3);
-            default -> mapManager.loadMapFromMatrix(mapManager.createMap1Matrix());
+            default -> mapManager.loadMap(1);
         };
         world.getWalls().clear();
-        world.getWalls().addAll(mapData.walls());
+        world.getWalls().addAll(mapData.getWalls());
 
-        List<Brick> bricks = mapData.bricks();
+        List<Brick> bricks = mapData.getBricks();
         world.setBricks(bricks.toArray(new Brick[0]));
         world.resetForNewLevel();
     }

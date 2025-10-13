@@ -21,20 +21,7 @@ import javafx.util.Duration;
 
 import java.util.*;
 
-/**
- * MenuView — final revised:
- * - Loads /images/hand.png as hand icon; uses one Image for left and flipped for right.
- * - Loads background frames from /images/bg/frame_0.png ... frame_N.png and animates them.
- * - If no frames, uses a gradient Region background.
- * - Supports mouse hover -> selection, keyboard (UP/DOWN/ENTER/SPACE).
- * - Shows two hands at the selected row and pulses the selected button.
- *
- * Place resources:
- *  - hand: src/main/resources/images/hand.png
- *  - bg frames: src/main/resources/images/bg/frame_0.png ... frame_n.png (optional)
- *
- * Controller (MenuControll) must expose: onPlay(), onGuide(), onSettings(), onExit()
- */
+
 public class MenuView {
     private final MenuControll controller;
     private final StackPane rootStack;
