@@ -18,14 +18,13 @@ public class BallSystem implements Updatable {
 
     @Override
     public void update(double deltaTime) {
-        if (ball.isStopTime()) return;
+        if (ball.isStopTime()){
+            return;
+        }
 
         if (ball.isStuck()) {
             // Keep the ball above the paddle
-            ball.setPosition(
-                    paddle.getX() + paddle.getWidth() / 2.0 - ball.getWidth() / 2.0,
-                    paddle.getY() - ball.getHeight()
-            );
+            ball.alignWithPaddle(0, 0.1);
             return;
         }
 
@@ -55,15 +54,15 @@ public class BallSystem implements Updatable {
         double ballCenterX = ball.getBounds().getMinX() + ball.getWidth() / 2.0;
         double hitPos = (ballCenterX - paddleLPos) / paddle.getWidth();
         double angle = Math.toRadians(150 * (1 - hitPos) + 30 * hitPos);
-        ball.setVelocity(new Vector2D(Math.cos(angle), -Math.sin(angle)));
+        ball.setVelocity(Math.cos(angle), -Math.sin(angle));
     }
 
     public void bounceFromWall(Ball ball, Wall wall) {
         Vector2D v = ball.getVelocity();
         switch (wall.getSide()) {
-            case LEFT -> ball.setVelocity(new Vector2D(Math.abs(v.x), v.y));
-            case RIGHT -> ball.setVelocity(new Vector2D(-Math.abs(v.x), v.y));
-            case TOP -> ball.setVelocity(new Vector2D(v.x, Math.abs(v.y)));
+            case LEFT -> ball.setVelocity(Math.abs(v.x), v.y);
+            case RIGHT -> ball.setVelocity(-Math.abs(v.x), v.y);
+            case TOP -> ball.setVelocity(v.x, Math.abs(v.y));
         }
     }
 }
