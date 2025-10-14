@@ -2,8 +2,10 @@ package com.example.demo.view;
 
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.view.graphics.ParallaxLayer;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
 
 import java.util.List;
 
@@ -17,16 +19,18 @@ public class RenderManager {
     }
 
     public void drawParallax(GraphicsContext gc, List<ParallaxLayer> layers) {
-        for(ParallaxLayer layer : layers) {
-            Image img = layer.getImage();
-            double x = layer.getX();
-            double w = layer.getWidth();
-            double h = layer.getHeight();
+        if (layers == null || layers.isEmpty()) return;
 
-            gc.drawImage(img, x, 0, w, h);
-            if(x + w < GlobalVar.WIDTH) {
-                gc.drawImage(img, x + w, 0, w, h);
-            }
+        for (ParallaxLayer layer : layers) {
+            if (layer == null) continue;
+
+            double x = layer.getXOffset();
+            double w = layer.getWrapWidth();
+
+            if (x + w < 0 || x > GlobalVar.WIDTH)
+                continue;
+
+            layer.render(gc);
         }
     }
 }

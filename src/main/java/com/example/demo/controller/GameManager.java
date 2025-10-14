@@ -13,6 +13,7 @@ import com.example.demo.view.ui.DialogueBox;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -59,7 +60,7 @@ public class GameManager extends Pane {
         requestFocus();
 
         // Lấy các lệnh từ intro.txt rồi gọi dialogue tương ứng thông qua dialogueBox
-        dialogueSystem = new DialogueSystem("/dialogue/intro.txt", dialogueBox);
+        dialogueSystem = new DialogueSystem("/Dialogue/intro.txt", dialogueBox);
         setupSecretCodeEasterEgg();
 
         uiManager.add(dialogueBox);
@@ -103,7 +104,6 @@ public class GameManager extends Pane {
 
         // --- Register renderables (View layer) ---
         Renderer renderer = new Renderer(world);
-        renderables.add((gc) -> renderManager.drawParallax(gc, parallaxLayers)); // background first
         renderables.add(renderer);                                               // then the world
         renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
 
@@ -159,18 +159,28 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     private void loop() {
-        final double FPS = GlobalVar.FPS;
-        final double UPDATE_INTERVAL = 1e9 / FPS;
-        final long[] lastUpdate = {System.nanoTime()};
-
         timer = new AnimationTimer() {
+            private long lastTime = System.nanoTime();
+            private double fpsTimer = 0;
+            private int frames = 0;
+
             @Override
             public void handle(long now) {
-                while (now - lastUpdate[0] >= UPDATE_INTERVAL) {
-                    update(1.0 / FPS);
-                    lastUpdate[0] += (long) UPDATE_INTERVAL;
-                }
+                double deltaTime = (now - lastTime) / 1e9;
+                lastTime = now;
+
+                if (deltaTime > 0.05) deltaTime = 0.05;
+
+                update(deltaTime);
                 render();
+
+                fpsTimer += deltaTime;
+                frames++;
+                if (fpsTimer >= 1.0) {
+                    System.out.println("FPS: " + frames);
+                    fpsTimer = 0;
+                    frames = 0;
+                }
             }
         };
         timer.start();
@@ -190,6 +200,9 @@ public class GameManager extends Pane {
 
     private void render() {
         gc.clearRect(0, 0, GlobalVar.WIDTH, GlobalVar.HEIGHT);
+
+        renderManager.drawParallax(gc, parallaxLayers);
+
         for (Renderable r : renderables) r.render(gc);
         uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
     }

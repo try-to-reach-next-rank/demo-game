@@ -1,83 +1,93 @@
 package com.example.demo.view.graphics;
 
-import com.example.demo.model.core.GameObject;
+import com.example.demo.engine.Renderable;
+import com.example.demo.engine.Updatable;
 import com.example.demo.model.utils.GlobalVar;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ParallaxLayer extends GameObject {
-    private final double            scrollRatio;
-    private double                  wrapWidth;
+/**
+ * ParallaxLayer: lightweight, GPU-stable version for Canvas rendering.
+ * Does NOT use ImageView or scene graph nodes.
+ */
+public class ParallaxLayer implements Updatable, Renderable {
+    private final double scrollRatio;
+    private double xOffset = 0.0;
+    private double wrapWidth;
 
-    // THUỘC TÍNH ANIMATION
-    protected List<Image>           animationFrames = null;
-    protected int                   currentFrameIndex = 0;
-    protected double                timeSinceLastFrame = 0.0;
-    private final double            FRAME_DURATION = 0.2; // 5 FPS - Tốc độ chuyển khung hình
+    // Animation
+    private final List<Image> frames;
+    private int currentFrameIndex = 0;
+    private double timeSinceLastFrame = 0.0;
+    private static final double FRAME_DURATION = 0.2; // 5 FPS
 
-    // Constructor 1: Cho Layer TĨNH (Chỉ có 1 ảnh)
-
-    /**
-     *
-     * width is default to original image width
-     */
     public ParallaxLayer(String imagePath, double ratio) {
-        super(imagePath, 0, 0);
         this.scrollRatio = ratio;
-        this.wrapWidth = this.width;
-        setupDimensions();
+        this.frames = new ArrayList<>();
+        this.frames.add(loadImage(imagePath));
+        this.wrapWidth = this.frames.get(0).getWidth();
     }
 
-    // Constructor 2: Cho Layer ĐỘNG (Nhiều ảnh)
     public ParallaxLayer(String[] imagePaths, double ratio) {
-        super(imagePaths[0], 0, 0);
         this.scrollRatio = ratio;
-        this.animationFrames = new ArrayList<>();
-        this.animationFrames.add(this.image);
-        for (int i = 1; i < imagePaths.length; i++) {
-            this.animationFrames.add(new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePaths[i]))));
+        this.frames = new ArrayList<>();
+        for (String path : imagePaths) {
+            this.frames.add(loadImage(path));
         }
-        this.wrapWidth = this.width;
-        setupDimensions();
+        this.wrapWidth = this.frames.get(0).getWidth();
     }
 
-    // Khởi tạo kích thước chung
-    private void setupDimensions() {
-        this.height = GlobalVar.HEIGHT;
-        this.imageView.setFitHeight(this.height);
-        this.imageView.setFitWidth(this.wrapWidth);
-        this.width = this.wrapWidth;
+    private Image loadImage(String path) {
+        return new Image(
+                Objects.requireNonNull(getClass().getResourceAsStream(path)),
+                GlobalVar.WIDTH, GlobalVar.HEIGHT, false, true
+        );
     }
 
+    @Override
     public void update(double deltaTime) {
-        if(animationFrames == null || animationFrames.size() <= 1) return;
+        if (frames.size() <= 1) return;
         timeSinceLastFrame += deltaTime;
-
-        if (this.timeSinceLastFrame >= FRAME_DURATION) {
-            this.currentFrameIndex = (currentFrameIndex + 1) % animationFrames.size();
-            this.image = animationFrames.get(currentFrameIndex);
-            this.timeSinceLastFrame -= FRAME_DURATION;
+        if (timeSinceLastFrame >= FRAME_DURATION) {
+            currentFrameIndex = (currentFrameIndex + 1) % frames.size();
+            timeSinceLastFrame -= FRAME_DURATION;
         }
+    }
+
+    @Override
+    public void render(GraphicsContext gc) {
+        Image frame = frames.get(currentFrameIndex);
+        double imgWidth = frame.getWidth();
+
+        // draw twice for seamless wrap
+        double drawX = xOffset % imgWidth;
+        if (drawX > 0) drawX -= imgWidth;
+
+        gc.drawImage(frame, drawX, 0);
+        gc.drawImage(frame, drawX + imgWidth, 0);
     }
 
     public void setXOffset(double offset) {
-        this.x = offset;
-        setPosition(this.x, this.y);
+        this.xOffset = offset;
     }
 
     public double getXOffset() {
-        return x;
+        return xOffset;
     }
 
     public void setWrapWidth(double wrapWidth) {
         this.wrapWidth = wrapWidth;
-        this.imageView.setFitWidth(this.wrapWidth);
-        this.width = this.wrapWidth;
     }
 
     public double getWrapWidth() {
         return wrapWidth;
+    }
+
+    public double getScrollRatio() {
+        return scrollRatio;
     }
 }
