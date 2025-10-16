@@ -9,4 +9,5 @@ public final class GlobalVar {
     public static final int     BOTTOM_EDGE = HEIGHT;
 
     public static final double  FPS         = 60.0;
+    public static final String  SECRET_CODE = "PHUC";
 }

@@ -5,11 +5,6 @@ import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Input;
 import javafx.application.Application;
 
-import com.example.demo.controller.MenuControll;
-import com.example.demo.model.states.MenuModel;
-import com.example.demo.view.MenuView;
-
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;

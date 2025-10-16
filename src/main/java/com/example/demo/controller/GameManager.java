@@ -3,14 +3,15 @@ package com.example.demo.controller;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.bricks.Brick;
-import com.example.demo.model.states.MapData;
+import com.example.demo.model.map.MapData;
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
-import com.example.demo.controller.system.*;
+import com.example.demo.model.system.*;
 import com.example.demo.model.utils.dialogue.DialogueSystem;
 import com.example.demo.view.*;
-import com.example.demo.view.graphics.ParallaxLayer;
+import com.example.demo.model.map.ParallaxLayer;
 import com.example.demo.model.utils.dialogue.DialogueBox;
+import com.example.demo.view.graphics.ParallaxSystem;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -21,7 +22,8 @@ import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+import static com.example.demo.model.utils.GlobalVar.SECRET_CODE;
 
 public class GameManager extends Pane {
 
@@ -39,16 +41,13 @@ public class GameManager extends Pane {
     private final DialogueBox dialogueBox = new DialogueBox();
 
     private final MapManager mapManager = new MapManager();
-    private CameraManager cameraManager;
     private CollisionManager collisionManager;
     private BrickSystem brickSystem;
     private DialogueSystem dialogueSystem; /** new dialogue system for running dialogue through txt*/
-    private final RenderManager renderManager = new RenderManager(GlobalVar.WIDTH, GlobalVar.HEIGHT);
-    private final List<ParallaxLayer> parallaxLayers = new ArrayList<>(); // TODO: parallax should manage this, not game manager
+    private ParallaxSystem parallaxSystem;
 
     private boolean inGame = true;
     private final StringBuilder keySequence = new StringBuilder();
-    private static final String SECRET_CODE = "PHUC"; // TODO: put this in global var
 
     public GameManager() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
@@ -87,8 +86,6 @@ public class GameManager extends Pane {
         brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
 
         // --- Create managers (controllers) --- // TODO: maybe simplify or get rid of this
-        cameraManager = new CameraManager(world, parallaxLayers, 0.15, 8.0,
-                new double[]{1.0, 0.6, 0.35, 0.2});
         collisionManager = new CollisionManager(world, ballSystem, brickSystem, powerUpSystem);
 
         // --- Register update systems ---
@@ -97,8 +94,7 @@ public class GameManager extends Pane {
                 ballSystem,
                 powerUpSystem,
                 brickSystem,
-                collisionManager,
-                cameraManager
+                collisionManager
         ));
 
         // --- Register renderables (View layer) ---
@@ -140,17 +136,12 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     private void initParallax() { // TODO: put this in parallax, not game manager
-        ParallaxLayer l1 = new ParallaxLayer("/images/layer1.png", 0.25);
-        ParallaxLayer l2 = new ParallaxLayer("/images/layer2.png", 0.50);
-        ParallaxLayer l3 = new ParallaxLayer("/images/layer3.png", 0.75);
-        ParallaxLayer l4 = new ParallaxLayer("/images/layer4.png", 1.00);
+        parallaxSystem = new ParallaxSystem(world, 0.15, 8.0, new double[] {1.0, 0.6, 0.35, 0.2});
 
-        l1.setWrapWidth(GlobalVar.WIDTH * 1.5);
-        l2.setWrapWidth(GlobalVar.WIDTH * 1.6);
-        l3.setWrapWidth(GlobalVar.WIDTH * 1.7);
-        l4.setWrapWidth(GlobalVar.WIDTH * 1.8);
-
-        parallaxLayers.addAll(List.of(l1, l2, l3, l4));
+        parallaxSystem.addLayer(new ParallaxLayer("/images/layer1.png", 0.25));
+        parallaxSystem.addLayer(new ParallaxLayer("/images/layer2.png", 0.5));
+        parallaxSystem.addLayer(new ParallaxLayer("/images/layer3.png", 0.75));
+        parallaxSystem.addLayer(new ParallaxLayer("/images/layer4.png", 1.0));
     }
 
     // -------------------------------------------------------------------------
@@ -193,6 +184,8 @@ public class GameManager extends Pane {
         uiManager.update(deltaTime);
         if (!inGame || uiManager.hasActiveUI()) return;
 
+        parallaxSystem.update(deltaTime);
+
         for (Updatable system : updatables) system.update(deltaTime);
         EffectRenderer.getInstance().update(deltaTime);
     }
@@ -200,7 +193,7 @@ public class GameManager extends Pane {
     private void render() {
         gc.clearRect(0, 0, GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
-        renderManager.drawParallax(gc, parallaxLayers);
+        parallaxSystem.render(gc);
 
         for (Renderable r : renderables) r.render(gc);
         uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
@@ -253,4 +246,12 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     public UIManager getUIManager() { return uiManager; }
+
+    public Paddle getPaddle() {
+        return world.getPaddle();
+    }
+
+    public Ball getBall() {
+        return world.getBall();
+    }
 }

@@ -1,11 +1,9 @@
-package com.example.demo.model.states;
+package com.example.demo.model.map;
 
 import com.example.demo.model.core.Wall;
 import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.GlobalVar;
-import com.example.demo.view.graphics.BrickTextureProvider;
-import javafx.scene.image.Image;
 
 import java.util.*;
 

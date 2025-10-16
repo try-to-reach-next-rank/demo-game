@@ -1,4 +1,4 @@
-package com.example.demo.model.states;
+package com.example.demo.model.map;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

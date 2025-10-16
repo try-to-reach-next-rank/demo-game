@@ -1,4 +1,4 @@
-package com.example.demo.controller.system;
+package com.example.demo.model.system;
 
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Paddle;

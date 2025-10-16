@@ -1,4 +1,4 @@
-package com.example.demo.view.graphics;
+package com.example.demo.model.map;
 
 import com.example.demo.engine.Renderable;
 import com.example.demo.engine.Updatable;
@@ -73,10 +73,6 @@ public class ParallaxLayer implements Updatable, Renderable {
 
     public void setXOffset(double offset) {
         this.xOffset = offset;
-    }
-
-    public double getXOffset() {
-        return xOffset;
     }
 
     public void setWrapWidth(double wrapWidth) {

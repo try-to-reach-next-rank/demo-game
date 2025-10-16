@@ -30,4 +30,6 @@ public class GameVar {
     public static final String BIGGERPADDLE = "BIGGERPADDLE";
     public static final String STOPTIME = "STOPTIME";
     public static final String[] powerUps = {ACCELERATE, STRONGER, STOPTIME, BIGGERPADDLE};
+
+    public static final long PADDLE_SOUND_COOLDOWN = 150; // ms
 }

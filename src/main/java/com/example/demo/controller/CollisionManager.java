@@ -7,12 +7,14 @@ import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.Vector2D;
-import com.example.demo.controller.system.BallSystem;
-import com.example.demo.controller.system.BrickSystem;
-import com.example.demo.controller.system.PowerUpSystem;
+import com.example.demo.model.system.BallSystem;
+import com.example.demo.model.system.BrickSystem;
+import com.example.demo.model.system.PowerUpSystem;
 import com.example.demo.view.EffectRenderer;
 
 import java.util.List;
+
+import static com.example.demo.model.utils.GameVar.PADDLE_SOUND_COOLDOWN;
 
 /**
  * CollisionManager detects collisions and delegates resolution
@@ -21,8 +23,6 @@ import java.util.List;
  * It no longer directly mutates the models.
  */
 public class CollisionManager implements Updatable {
-
-    private static final long PADDLE_SOUND_COOLDOWN = 150; // ms
     private long nextPaddleSoundTime = 0L;
 
     private final GameWorld world;
