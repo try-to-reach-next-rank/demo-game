@@ -1,7 +1,5 @@
-package com.example.demo.system;
+package com.example.demo.model.utils.dialogue;
 
-import com.example.demo.model.utils.DialogueLoader;
-import com.example.demo.view.ui.DialogueBox;
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.List;

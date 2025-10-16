@@ -1,6 +1,5 @@
 package com.example.demo.view;
 
-import com.example.demo.view.ui.DialogueBox;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;

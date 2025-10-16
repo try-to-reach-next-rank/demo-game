@@ -1,4 +1,4 @@
-package com.example.demo.model.utils;
+package com.example.demo.model.utils.dialogue;
 
 import java.io.BufferedReader;
 import java.io.IOException;

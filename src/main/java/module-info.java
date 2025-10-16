@@ -22,4 +22,5 @@ module com.example.demo {
     exports com.example.demo.view.ui;
     exports com.example.demo.model.states;
     exports com.example.demo.view.graphics;
+    exports com.example.demo.model.utils.dialogue;
 }

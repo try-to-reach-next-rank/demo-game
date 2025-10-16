@@ -6,14 +6,14 @@ import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.states.MapData;
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
-import com.example.demo.system.*;
+import com.example.demo.controller.system.*;
+import com.example.demo.model.utils.dialogue.DialogueSystem;
 import com.example.demo.view.*;
 import com.example.demo.view.graphics.ParallaxLayer;
-import com.example.demo.view.ui.DialogueBox;
+import com.example.demo.model.utils.dialogue.DialogueBox;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -37,7 +37,6 @@ public class GameManager extends Pane {
 
     private final UIManager uiManager = new UIManager();
     private final DialogueBox dialogueBox = new DialogueBox();
-    private final Random random = new Random();
 
     private final MapManager mapManager = new MapManager();
     private CameraManager cameraManager;
@@ -45,11 +44,11 @@ public class GameManager extends Pane {
     private BrickSystem brickSystem;
     private DialogueSystem dialogueSystem; /** new dialogue system for running dialogue through txt*/
     private final RenderManager renderManager = new RenderManager(GlobalVar.WIDTH, GlobalVar.HEIGHT);
-    private final List<ParallaxLayer> parallaxLayers = new ArrayList<>();
+    private final List<ParallaxLayer> parallaxLayers = new ArrayList<>(); // TODO: parallax should manage this, not game manager
 
     private boolean inGame = true;
     private final StringBuilder keySequence = new StringBuilder();
-    private static final String SECRET_CODE = "PHUC";
+    private static final String SECRET_CODE = "PHUC"; // TODO: put this in global var
 
     public GameManager() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
@@ -87,7 +86,7 @@ public class GameManager extends Pane {
         loadLevel(world.getCurrentLevel());
         brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
 
-        // --- Create managers (controllers) ---
+        // --- Create managers (controllers) --- // TODO: maybe simplify or get rid of this
         cameraManager = new CameraManager(world, parallaxLayers, 0.15, 8.0,
                 new double[]{1.0, 0.6, 0.35, 0.2});
         collisionManager = new CollisionManager(world, ballSystem, brickSystem, powerUpSystem);
@@ -121,7 +120,7 @@ public class GameManager extends Pane {
     //  Level Management
     // -------------------------------------------------------------------------
 
-    private void loadLevel(int level) {
+    private void loadLevel(int level) { // TODO: put this in map
         MapData mapData = switch (level) {
             case 1 -> mapManager.loadMap(1);
             case 2 -> mapManager.loadMap(2);
@@ -140,7 +139,7 @@ public class GameManager extends Pane {
     //  Parallax Setup
     // -------------------------------------------------------------------------
 
-    private void initParallax() {
+    private void initParallax() { // TODO: put this in parallax, not game manager
         ParallaxLayer l1 = new ParallaxLayer("/images/layer1.png", 0.25);
         ParallaxLayer l2 = new ParallaxLayer("/images/layer2.png", 0.50);
         ParallaxLayer l3 = new ParallaxLayer("/images/layer3.png", 0.75);
@@ -211,7 +210,7 @@ public class GameManager extends Pane {
     //  Misc
     // -------------------------------------------------------------------------
 
-    private void setupSecretCodeEasterEgg() {
+    private void setupSecretCodeEasterEgg() { // TODO:put this in input
         setOnKeyPressed(e -> {
             KeyCode code = e.getCode();
             if (code == null) return;
@@ -253,7 +252,5 @@ public class GameManager extends Pane {
     //  Accessors
     // -------------------------------------------------------------------------
 
-    public Paddle getPaddle() { return world.getPaddle(); }
-    public Ball getBall() { return world.getBall(); }
     public UIManager getUIManager() { return uiManager; }
 }

@@ -7,9 +7,9 @@ import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.Vector2D;
-import com.example.demo.system.BallSystem;
-import com.example.demo.system.BrickSystem;
-import com.example.demo.system.PowerUpSystem;
+import com.example.demo.controller.system.BallSystem;
+import com.example.demo.controller.system.BrickSystem;
+import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.view.EffectRenderer;
 
 import java.util.List;
