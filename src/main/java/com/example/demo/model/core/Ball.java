@@ -1,5 +1,6 @@
 package com.example.demo.model.core;
 
+import com.example.demo.model.state.BallData;
 import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.Vector2D;
 
@@ -34,7 +35,19 @@ public class Ball extends GameObject {
         }
     }
 
+    // Thêm vào lớp Ball.java
+    public void applyState(BallData data) {
+        if (data == null) return;
+        this.setPosition(data.getX(), data.getY());
+        this.setVelocity(data.getVelocityX(), data.getVelocityY());
+        this.setStuck(data.isStuck());
+    }
+
     // Getters and setters
+    public void setStuck(boolean stuck) {
+        this.stuck = stuck;
+    }
+
     public Vector2D getVelocity() { return velocity; }
     public void setVelocity(Vector2D v) {
         this.velocity = v.normalize(); }

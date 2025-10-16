@@ -1,6 +1,8 @@
 package com.example.demo.model.core.bricks;
 
 import com.example.demo.model.core.GameObject;
+import com.example.demo.model.state.BrickData;
+import com.example.demo.view.graphics.BrickTextureProvider;
 import javafx.scene.image.Image;
 
 /**
@@ -15,6 +17,19 @@ public class Brick extends GameObject {
         super(image, x, y);
         this.health = health;
         this.destroyed = false;
+    }
+
+    // Thêm vào lớp Brick.java
+    public void applyState(BrickData data) {
+        if (data == null) return;
+        this.setHealth(data.getHealth());
+        this.setDestroyed(data.isDestroyed());
+
+        // Nếu gạch được "hồi sinh", cập nhật lại texture
+        if (!this.isDestroyed()) {
+            Image newTexture = BrickTextureProvider.getTextureForHealth(this.getHealth());
+            this.setImage(newTexture);
+        }
     }
 
     public int getHealth() { return health; }

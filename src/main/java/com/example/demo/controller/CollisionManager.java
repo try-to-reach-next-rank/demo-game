@@ -125,6 +125,7 @@ public class CollisionManager implements Updatable {
 
             // delegate to BrickSystem to apply damage, explosion, and power-up drop
             brickSystem.onBallHitBrick(ball, brick);
+            Sound.getInstance().playSound("brick_hit");
 
             // bounce depending on overlap direction
             Vector2D v = ball.getVelocity();

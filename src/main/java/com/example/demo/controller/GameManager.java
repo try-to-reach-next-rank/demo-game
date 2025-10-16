@@ -4,17 +4,20 @@ import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.map.MapData;
+import com.example.demo.model.state.*;
+import com.example.demo.model.system.*;
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
-import com.example.demo.model.system.*;
+import com.example.demo.model.utils.dialogue.DialogueBox;
 import com.example.demo.model.utils.dialogue.DialogueSystem;
 import com.example.demo.view.*;
-import com.example.demo.model.map.ParallaxLayer;
-import com.example.demo.model.utils.dialogue.DialogueBox;
+import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.view.graphics.ParallaxSystem;
+import com.example.demo.model.map.ParallaxLayer;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -23,6 +26,7 @@ import javafx.scene.text.Font;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.demo.model.utils.GlobalVar.SAVE_FILE_NAME;
 import static com.example.demo.model.utils.GlobalVar.SECRET_CODE;
 
 public class GameManager extends Pane {
@@ -106,7 +110,6 @@ public class GameManager extends Pane {
         if (world.getCurrentLevel() == 1) initParallax();
 
         // --- INTRO ---
-
         dialogueSystem.start();
         Sound.getInstance().playRandomMusic();
         loop();
@@ -123,12 +126,67 @@ public class GameManager extends Pane {
             case 3 -> mapManager.loadMap(3);
             default -> mapManager.loadMap(1);
         };
+
         world.getWalls().clear();
         world.getWalls().addAll(mapData.getWalls());
 
         List<Brick> bricks = mapData.getBricks();
         world.setBricks(bricks.toArray(new Brick[0]));
         world.resetForNewLevel();
+    }
+
+    private void saveGame() {
+        System.out.println("Bắt đầu lưu game...");
+        // construct gameState để thu thập toàn bộ trạng thái game
+        GameState gameState = new GameState(world);
+        // 1 dòng để lưu
+        SaveManager.save(gameState, SAVE_FILE_NAME);
+    }
+
+    private void loadGame() {
+        System.out.println("Bắt đầu tải game...");
+        // 1 dòng để tải
+        GameState loadedState = SaveManager.load(SAVE_FILE_NAME, GameState.class);
+        // Kiểm tra và gọi hàm áp dụng trạng thái
+        if (loadedState != null) {
+            applyState(loadedState);
+            System.out.println("Tải game thành công!");
+        } else {
+            System.out.println("Không có file lưu hoặc file lỗi.");
+        }
+    }
+
+    private void applyState(GameState loadedState) {
+        // KHU VỰC 1: THIẾT LẬP NỀN TẢNG
+        loadLevel(loadedState.getCurrentLevel());
+
+        // KHU VỰC 2: RA LỆNH CHO CÁC ĐỐI TƯỢNG TỰ CẬP NHẬT
+        Ball ball = world.getBall();
+        Paddle paddle = world.getPaddle();
+        Brick[] bricks = world.getBricks();
+
+        paddle.applyState(loadedState.getPaddleData());
+        ball.applyState(loadedState.getBallData());
+
+        for (BrickData brickData : loadedState.getBricksData()) {
+            int id = brickData.getId();
+            if (id >= 0 && id < bricks.length) {
+                bricks[id].applyState(brickData);
+            }
+        }
+
+        // KHU VỰC 3: XỬ LÝ CÁC MỐI QUAN HỆ VÀ DANH SÁCH
+        if (ball.isStuck()) {
+            ball.alignWithPaddle(10, 1.0);
+        }
+
+        world.getPowerUps().clear();
+        for (PowerUpData powerUpData : loadedState.getPowerUpsData()) {
+            PowerUp p = new PowerUp(powerUpData.getType());
+            p.setPosition(powerUpData.getX(), powerUpData.getY());
+            p.setVisible(powerUpData.isVisible());
+            world.getPowerUps().add(p);
+        }
     }
 
     // -------------------------------------------------------------------------
@@ -208,12 +266,20 @@ public class GameManager extends Pane {
             KeyCode code = e.getCode();
             if (code == null) return;
 
+            // Phím tắt để Lưu (F5) và Tải (F9) game
+            if (code == KeyCode.F5) {
+                saveGame();
+            }
+            if (code == KeyCode.F9) {
+                loadGame();
+            }
+
+            // Logic cho secret code
             String key = code.getName().toUpperCase();
             keySequence.append(key);
             if (keySequence.length() > SECRET_CODE.length()) {
                 keySequence.delete(0, keySequence.length() - SECRET_CODE.length());
             }
-
             if (keySequence.toString().equals(SECRET_CODE)) {
                 dialogueBox.start(new DialogueBox.DialogueLine[]{
                         new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.EGG, "You found the secret!"),
@@ -250,7 +316,6 @@ public class GameManager extends Pane {
     public Paddle getPaddle() {
         return world.getPaddle();
     }
-
     public Ball getBall() {
         return world.getBall();
     }

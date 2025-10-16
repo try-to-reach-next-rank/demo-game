@@ -1,5 +1,6 @@
 package com.example.demo.model.core;
 
+import com.example.demo.model.state.PaddleData;
 import com.example.demo.model.utils.GameVar;
 
 public class Paddle extends GameObject {
@@ -17,6 +18,11 @@ public class Paddle extends GameObject {
         resetScale();
         direction = 0;
         biggerPaddle = false;
+    }
+
+    public void applyState(PaddleData data) {
+        if (data == null) return;
+        this.setPosition(data.getX(), data.getY());
     }
 
     // Accessors and mutators
