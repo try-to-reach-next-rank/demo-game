@@ -1,5 +1,6 @@
 package com.example.demo.model.utils;
 
+import com.example.demo.model.map.SettingsModel;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -8,20 +9,29 @@ import java.util.*;
 import java.net.URL;
 
 public class Sound {
-        // tạo ra một đối tượng để quản lý + gọi
+    // Singleton instance
     private static final Sound instance = new Sound();
 
-    private final Map<String, Media> musicLibrary = new HashMap<>();      // libary of songs
-    private final List<String> musicKey = new ArrayList<>();              //this key was made for easier next/random song handling
-    private int currentTrackIndex = 0;                                    // keep track of next songs (in playlist)
-    private MediaPlayer currentMusicPlayer;                               // currentl active song
-    private final Map<String, AudioClip> soundEffects = new HashMap<>();  // map of sound effects
+    // Music management
+    private final Map<String, Media> musicLibrary = new HashMap<>();
+    private final List<String> musicKey = new ArrayList<>();
+    private int currentTrackIndex = 0;
+    private MediaPlayer currentMusicPlayer;
+
+    // Sound effects management
+    private final Map<String, AudioClip> soundEffects = new HashMap<>();
+
+    // Settings integration - THÊM CÁC FIELD NÀY
+    private SettingsModel settings;
+    private double musicVolume = 0.5;
+    private double effectVolume = 1.0;
+    private boolean musicEnabled = true;
+    private boolean effectEnabled = true;
 
     private Sound() {
         loadSounds();
     }
 
-    // tải tất cả âm thanh
     private void loadSounds(){
         try{
             loadMusic("Hametsu-no-Ringo", "/sounds/Hametsu-no-Ringo.mp3");
@@ -49,7 +59,7 @@ public class Sound {
         if (sfxUrl == null) System.err.println("Couldn't find SFX at path: " + path);
         else{
             AudioClip clip = new AudioClip(sfxUrl.toString());
-            soundEffects.put(name,clip);
+            soundEffects.put(name, clip);
         }
     }
 
@@ -58,19 +68,79 @@ public class Sound {
         if (musicUrl == null) System.err.println("Couldn't find music file at path: " + path);
         else {
             Media media = new Media(musicUrl.toString());
-            musicLibrary.put(name,media);
+            musicLibrary.put(name, media);
             musicKey.add(name);
         }
     }
 
-    // trả duy nhất manager instance
     public static Sound getInstance(){
         return instance;
     }
 
-    //public control init
+    // ============ SETTINGS INTEGRATION - THÊM CÁC METHOD NÀY ============
+
+    /**
+     * Kết nối với SettingsModel để đồng bộ volume và enable/disable
+     * Được gọi tự động từ SettingsModel constructor
+     */
+    public void bindSettings(SettingsModel settings) {
+        this.settings = settings;
+
+        // Đồng bộ giá trị ban đầu
+        this.musicVolume = settings.getMusicVolume();
+        this.effectVolume = settings.getEffectVolume();
+        this.musicEnabled = settings.isMusicEnabled();
+        this.effectEnabled = settings.isEffectEnabled();
+
+        // Áp dụng ngay lập tức
+        applyMusicVolume();
+        applyEffectVolume();
+
+        // Listeners để tự động cập nhật khi settings thay đổi
+        settings.musicVolumeProperty().addListener((obs, oldVal, newVal) -> {
+            this.musicVolume = newVal.doubleValue();
+            applyMusicVolume();
+        });
+
+        settings.effectVolumeProperty().addListener((obs, oldVal, newVal) -> {
+            this.effectVolume = newVal.doubleValue();
+            applyEffectVolume();
+        });
+
+        settings.musicEnabledProperty().addListener((obs, oldVal, newVal) -> {
+            this.musicEnabled = newVal;
+            applyMusicVolume();
+        });
+
+        settings.effectEnabledProperty().addListener((obs, oldVal, newVal) -> {
+            this.effectEnabled = newVal;
+            applyEffectVolume();
+        });
+    }
+
+    /**
+     * Áp dụng music volume vào MediaPlayer hiện tại
+     */
+    private void applyMusicVolume() {
+        if (currentMusicPlayer != null) {
+            currentMusicPlayer.setVolume(musicEnabled ? musicVolume : 0.0);
+        }
+    }
+
+    /**
+     * Áp dụng effect volume vào tất cả AudioClips
+     */
+    private void applyEffectVolume() {
+        double volume = effectEnabled ? effectVolume : 0.0;
+        for (AudioClip clip : soundEffects.values()) {
+            clip.setVolume(volume);
+        }
+    }
+
+    // ============ MUSIC METHODS - SỬA CÁC METHOD NÀY ============
+
     public void playMusic(String name) {
-        stopMusic(); //stop any music that's currently playing
+        stopMusic();
 
         Media media = musicLibrary.get(name);
         if (media == null) {
@@ -79,11 +149,10 @@ public class Sound {
         }
 
         currentMusicPlayer = new MediaPlayer(media);
-        currentMusicPlayer.setVolume(0.5); //set background music's volume
-
-        currentMusicPlayer.setOnEndOfMedia(() -> playNextMusic()); //After the current sond ends, instantly play next music;
-
+        currentMusicPlayer.setVolume(musicEnabled ? musicVolume : 0.0); // SỬA: thay 0.5
+        currentMusicPlayer.setOnEndOfMedia(() -> playNextMusic());
         currentMusicPlayer.play();
+
         currentTrackIndex = musicKey.indexOf(name);
     }
 
@@ -97,29 +166,48 @@ public class Sound {
         }
 
         currentMusicPlayer = new MediaPlayer(media);
-        currentMusicPlayer.setVolume(0.5);
-
-        currentMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE); //loop music
-
+        currentMusicPlayer.setVolume(musicEnabled ? musicVolume : 0.0); // SỬA: thay 0.5
+        currentMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         currentMusicPlayer.play();
+
         currentTrackIndex = musicKey.indexOf(name);
     }
 
     public void stopMusic(){
-        if(currentMusicPlayer != null) currentMusicPlayer.stop();
-    }
-
-    public void setMusicVolume(double volume) {
         if(currentMusicPlayer != null) {
-            currentMusicPlayer.setVolume(volume); // range: 0.1 -> 1.0
+            currentMusicPlayer.stop();
+            currentMusicPlayer.dispose(); // THÊM: tránh memory leak
+            currentMusicPlayer = null;
         }
     }
 
-    public void playNextMusic(){ // play next song in a playlist
+    // THÊM METHOD MỚI
+    public void pauseMusic() {
+        if(currentMusicPlayer != null) {
+            currentMusicPlayer.pause();
+        }
+    }
+
+    // THÊM METHOD MỚI
+    public void resumeMusic() {
+        if(currentMusicPlayer != null && musicEnabled) {
+            currentMusicPlayer.play();
+        }
+    }
+
+    /**
+     * @deprecated Use SettingsModel to control volume instead
+     */
+    @Deprecated
+    public void setMusicVolume(double volume) {
+        this.musicVolume = volume;
+        applyMusicVolume();
+    }
+
+    public void playNextMusic(){
         if(musicKey.isEmpty()) return;
 
         currentTrackIndex = (currentTrackIndex + 1) % musicKey.size();
-
         String nextTrack = musicKey.get(currentTrackIndex);
         playMusic(nextTrack);
     }
@@ -132,19 +220,30 @@ public class Sound {
         playMusic(musicKey.get(currentTrackIndex));
     }
 
+    // ============ SOUND EFFECT METHODS - SỬA CÁC METHOD NÀY ============
+
     public void playSound(String name){
+        if (!effectEnabled) return; // THÊM: check enable
+
         AudioClip clip = soundEffects.get(name);
-        if (clip == null) System.err.println("Couldn't find sfx according to its name: " + name);
-        else clip.play();
+        if (clip == null) {
+            System.err.println("Couldn't find sfx according to its name: " + name);
+        } else {
+            clip.setVolume(effectVolume); // THÊM: set volume
+            clip.play();
+        }
     }
 
     public void loopSound(String name) {
+        if (!effectEnabled) return; // THÊM: check enable
+
         AudioClip clip = soundEffects.get(name);
         if (clip == null) {
             System.err.println("Couldn't find sfx to loop with name: " + name);
             return;
         }
 
+        clip.setVolume(effectVolume); // THÊM: set volume
         clip.setCycleCount(AudioClip.INDEFINITE);
         clip.play();
     }
@@ -159,4 +258,36 @@ public class Sound {
         }
     }
 
+    // THÊM METHOD MỚI (OPTIONAL - hữu ích khi cleanup)
+    public void stopAllSounds() {
+        for (AudioClip clip : soundEffects.values()) {
+            clip.stop();
+            clip.setCycleCount(1);
+        }
+    }
+
+    // ============ GETTERS (OPTIONAL - để debug) ============
+
+    public double getMusicVolume() {
+        return musicVolume;
+    }
+
+    public double getEffectVolume() {
+        return effectVolume;
+    }
+
+    public boolean isMusicEnabled() {
+        return musicEnabled;
+    }
+
+    public boolean isEffectEnabled() {
+        return effectEnabled;
+    }
+
+    public String getCurrentTrackName() {
+        if (currentTrackIndex >= 0 && currentTrackIndex < musicKey.size()) {
+            return musicKey.get(currentTrackIndex);
+        }
+        return null;
+    }
 }

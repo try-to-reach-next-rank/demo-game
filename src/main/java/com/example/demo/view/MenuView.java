@@ -5,6 +5,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -15,6 +17,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -24,7 +29,7 @@ import java.util.*;
 
 public class MenuView {
     private final MenuControll controller;
-    private final StackPane rootStack;
+    private static StackPane rootStack = null;
     private final VBox uiBox;
 
     private final List<Button> buttons = new ArrayList<>();
@@ -45,6 +50,9 @@ public class MenuView {
     private Image handImage = null;
 
     private static final int DEFAULT_BG_FRAMES = 6;
+
+    private boolean usingMouse = false;
+    private boolean usingKeyboard = false;
 
     public MenuView(MenuControll controller) {
         this.controller = controller;
@@ -120,10 +128,10 @@ public class MenuView {
             // fallback gradient background: place a Region behind ui
             Region bgRegion = new Region();
             BackgroundFill fill = new BackgroundFill(
-                    new javafx.scene.paint.LinearGradient(0, 0, 0, 1, true,
-                            javafx.scene.paint.CycleMethod.NO_CYCLE,
-                            new javafx.scene.paint.Stop(0, Color.web("#0b3a62")),
-                            new javafx.scene.paint.Stop(1, Color.web("#04263a"))),
+                    new LinearGradient(0, 0, 0, 1, true,
+                            CycleMethod.NO_CYCLE,
+                            new Stop(0, Color.web("#0b3a62")),
+                            new Stop(1, Color.web("#04263a"))),
                     CornerRadii.EMPTY, Insets.EMPTY);
             bgRegion.setBackground(new Background(fill));
             // bind size to stack
@@ -162,7 +170,7 @@ public class MenuView {
         title.setFont(Font.font(34));
         title.setFill(Color.WHITE);
 
-        VBox menuBox = new VBox(12);
+        VBox menuBox = new VBox(28);
         menuBox.setAlignment(Pos.CENTER);
 
         // add rows; controller methods called on action
@@ -180,7 +188,7 @@ public class MenuView {
         });
     }
 
-    private void addMenuRow(String label, javafx.event.EventHandler<javafx.event.ActionEvent> handler, VBox parent) {
+    private void addMenuRow(String label, EventHandler<ActionEvent> handler, VBox parent) {
         ImageView left = new ImageView();
         ImageView right = new ImageView();
         if (handImage != null) {
@@ -206,8 +214,10 @@ public class MenuView {
 
         // mouse hover selects this row
         b.setOnMouseEntered(e -> {
+            usingMouse = true;
+            usingKeyboard = false;
             int idx = buttons.indexOf(b);
-            if (idx >= 0) {
+            if (idx >= 0 && usingMouse) {
                 selectedIndex = idx;
                 updateSelectionVisuals();
             }
@@ -235,12 +245,12 @@ public class MenuView {
                 l.setVisible(true);
                 r.setVisible(true);
                 btn.setStyle("-fx-background-color: linear-gradient(#6aa0ff, #2a6cff); -fx-text-fill: white; -fx-font-weight: bold;");
-                startPulse(btn);
+                //startPulse(btn);
             } else {
                 l.setVisible(false);
                 r.setVisible(false);
                 btn.setStyle("");
-                stopPulse(btn);
+                //stopPulse(btn);
             }
         }
     }
@@ -279,6 +289,8 @@ public class MenuView {
         updateSelectionVisuals();
 
         scene.setOnKeyPressed(ev -> {
+            usingKeyboard = true;
+            usingMouse = false;
             KeyCode k = ev.getCode();
             if (k == KeyCode.UP) {
                 selectedIndex = (selectedIndex - 1 + buttons.size()) % buttons.size();
@@ -294,6 +306,7 @@ public class MenuView {
             }
         });
 
+
         // keep visuals updated when focus changes
         scene.focusOwnerProperty().addListener((obs, oldV, newV) -> updateSelectionVisuals());
     }
@@ -301,7 +314,7 @@ public class MenuView {
     // -------------------------
     // Public API
     // -------------------------
-    public Node getRoot() {
+    public static Node getRoot() {
         return rootStack;
     }
 
