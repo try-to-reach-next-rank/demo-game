@@ -6,7 +6,7 @@
   },
   "ballData": {
     "x": 259.0,
-    "y": 499.1455679673178,
+    "y": 542.2763882823263,
     "velocityX": 0.0,
     "velocityY": 1.0,
     "isStuck": false
@@ -14,8 +14,8 @@
   "powerUpsData": [
     {
       "x": 249.5,
-      "y": 430.066825,
-      "type": "ACCELERATE",
+      "y": 451.4549499999998,
+      "type": "STOPTIME",
       "visible": true
     }
   ],

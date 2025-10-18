@@ -96,7 +96,11 @@ public class SettingsView {
         backButton.setFocusTraversable(false);
         backButton.setFont(Font.font(18));
         backButton.setStyle("-fx-background-color: linear-gradient(#6aa0ff, #2a6cff); -fx-text-fill: white; -fx-font-weight: bold;");
-        backButton.setOnAction(e -> controller.backToMenu());
+        backButton.setOnAction(e -> {
+            System.out.println("🟢 Button clicked!");
+            controller.backToMenu();
+        });
+
 
         // Add pulse animation on hover
         backButton.setOnMouseEntered(e -> startPulse());

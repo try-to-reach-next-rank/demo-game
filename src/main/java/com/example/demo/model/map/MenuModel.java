@@ -4,7 +4,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
 public class MenuModel {
-    public enum Screen { MENU, SELECT, PLAY, PAUSE, SETTINGS, GUIDE, EXIT, STATE1, STATE2, STATE3 }
+    public enum Screen { MENU, SELECT, PLAY, PAUSE, SETTINGS,  EXIT, STATE1, STATE2, STATE3 }
 
     private final ObjectProperty<Screen> currentScreen = new SimpleObjectProperty<>(Screen.MENU);
 

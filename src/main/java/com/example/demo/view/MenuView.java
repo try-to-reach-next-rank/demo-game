@@ -2,9 +2,7 @@ package com.example.demo.view;
 
 import com.example.demo.controller.MenuControll;
 import javafx.animation.KeyFrame;
-import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -26,7 +24,6 @@ import javafx.util.Duration;
 
 import java.util.*;
 
-
 public class MenuView {
     private final MenuControll controller;
     private static StackPane rootStack = null;
@@ -35,7 +32,6 @@ public class MenuView {
     private final List<Button> buttons = new ArrayList<>();
     private final List<ImageView> leftHands = new ArrayList<>();
     private final List<ImageView> rightHands = new ArrayList<>();
-    private final Map<Button, ScaleTransition> activePulses = new HashMap<>();
 
     private int selectedIndex = 0;
 
@@ -46,13 +42,9 @@ public class MenuView {
     private int bgFrameIndex = 0;
     private Duration bgFrameDuration = Duration.millis(140);
 
-    // single hand image
+    // hand image
     private Image handImage = null;
-
     private static final int DEFAULT_BG_FRAMES = 6;
-
-    private boolean usingMouse = false;
-    private boolean usingKeyboard = false;
 
     public MenuView(MenuControll controller) {
         this.controller = controller;
@@ -61,7 +53,7 @@ public class MenuView {
         this.uiBox.setPadding(new Insets(28));
         this.uiBox.setAlignment(Pos.CENTER);
 
-        // load resources (hand + bg frames)
+        // load resources
         loadHandImage("/images/hand.png");
         loadBgFrames("/images/bg/frame_", DEFAULT_BG_FRAMES);
 
@@ -69,12 +61,10 @@ public class MenuView {
         setupBackground();
         buildUI();
 
-        // stack order: background view (bgView/gradient region) at index 0, UI on top
         rootStack.getChildren().addAll(bgView, uiBox);
         StackPane.setAlignment(bgView, Pos.CENTER);
         StackPane.setAlignment(uiBox, Pos.CENTER);
 
-        // bind bgView size to root size so it always fills the Scene
         bgView.fitWidthProperty().bind(rootStack.widthProperty());
         bgView.fitHeightProperty().bind(rootStack.heightProperty());
 
@@ -94,7 +84,6 @@ public class MenuView {
             }
         } catch (Exception ex) {
             System.err.println("[MenuView] error loading hand image: " + ex.getMessage());
-            handImage = null;
         }
     }
 
@@ -107,7 +96,6 @@ public class MenuView {
                 if (url != null) {
                     bgFrames.add(new Image(url.toExternalForm(), true));
                 } else {
-                    // missing frame is OK — just report
                     System.err.println("[MenuView] bg frame missing: " + path);
                 }
             } catch (Exception ex) {
@@ -122,10 +110,9 @@ public class MenuView {
     private void setupBackground() {
         if (!bgFrames.isEmpty()) {
             bgView.setPreserveRatio(false);
-            if (!bgFrames.isEmpty()) bgView.setImage(bgFrames.get(0));
+            bgView.setImage(bgFrames.get(0));
             startBgAnimation();
         } else {
-            // fallback gradient background: place a Region behind ui
             Region bgRegion = new Region();
             BackgroundFill fill = new BackgroundFill(
                     new LinearGradient(0, 0, 0, 1, true,
@@ -134,12 +121,9 @@ public class MenuView {
                             new Stop(1, Color.web("#04263a"))),
                     CornerRadii.EMPTY, Insets.EMPTY);
             bgRegion.setBackground(new Background(fill));
-            // bind size to stack
             bgRegion.prefWidthProperty().bind(rootStack.widthProperty());
             bgRegion.prefHeightProperty().bind(rootStack.heightProperty());
-            // place region behind bgView (so we need to add region into stack and hide bgView)
             bgView.setImage(null);
-            // put bgRegion as first child
             rootStack.getChildren().add(0, bgRegion);
             StackPane.setAlignment(bgRegion, Pos.CENTER);
         }
@@ -173,19 +157,11 @@ public class MenuView {
         VBox menuBox = new VBox(28);
         menuBox.setAlignment(Pos.CENTER);
 
-        // add rows; controller methods called on action
         addMenuRow("Play", e -> controller.isPlaying(), menuBox);
-        addMenuRow("Guide", e -> controller.isGuide(), menuBox);
         addMenuRow("Settings", e -> controller.isSettings(), menuBox);
         addMenuRow("Exit", e -> controller.isExit(), menuBox);
 
         uiBox.getChildren().addAll(title, menuBox);
-
-        // layout tweaks: ensure buttons widths match and hands align
-        // compute max button width after layout pass
-        uiBox.widthProperty().addListener((obs, oldV, newV) -> {
-            // nothing special here, button sizes are explicit (minWidth)
-        });
     }
 
     private void addMenuRow(String label, EventHandler<ActionEvent> handler, VBox parent) {
@@ -194,7 +170,7 @@ public class MenuView {
         if (handImage != null) {
             left.setImage(handImage);
             right.setImage(handImage);
-            right.setScaleX(-1); // flip horizontally for right-hand
+            right.setScaleX(-1);
         }
         left.setFitWidth(28);
         left.setFitHeight(28);
@@ -212,16 +188,22 @@ public class MenuView {
         b.setFont(Font.font(18));
         b.setOnAction(handler);
 
-        // mouse hover selects this row
+        // --- unify hover + keyboard ---
         b.setOnMouseEntered(e -> {
-            usingMouse = true;
-            usingKeyboard = false;
             int idx = buttons.indexOf(b);
-            if (idx >= 0 && usingMouse) {
+            if (idx >= 0) {
                 selectedIndex = idx;
                 updateSelectionVisuals();
             }
         });
+
+        b.setStyle("""
+            -fx-background-color: linear-gradient(#6aa0ff, #2a6cff);
+            -fx-text-fill: white;
+            -fx-font-weight: bold;
+            -fx-scale-x: 1;
+            -fx-scale-y: 1;
+        """);
 
         HBox row = new HBox(12);
         row.setAlignment(Pos.CENTER);
@@ -234,63 +216,45 @@ public class MenuView {
     }
 
     // -------------------------
-    // Selection visuals & pulse
+    // Unified selection visuals
     // -------------------------
     private void updateSelectionVisuals() {
         for (int i = 0; i < buttons.size(); ++i) {
             Button btn = buttons.get(i);
             ImageView l = leftHands.get(i);
             ImageView r = rightHands.get(i);
-            if (i == selectedIndex) {
-                l.setVisible(true);
-                r.setVisible(true);
-                btn.setStyle("-fx-background-color: linear-gradient(#6aa0ff, #2a6cff); -fx-text-fill: white; -fx-font-weight: bold;");
-                //startPulse(btn);
+            boolean isSelected = (i == selectedIndex);
+
+            l.setVisible(isSelected);
+            r.setVisible(isSelected);
+
+            if (isSelected) {
+                btn.setStyle("""
+                    -fx-background-color: linear-gradient(#6aa0ff, #2a6cff);
+                    -fx-text-fill: white;
+                    -fx-font-weight: bold;
+                    -fx-scale-x: 1.06;
+                    -fx-scale-y: 1.06;
+                """);
             } else {
-                l.setVisible(false);
-                r.setVisible(false);
-                btn.setStyle("");
-                //stopPulse(btn);
+                btn.setStyle("""
+                    -fx-background-color: transparent;
+                    -fx-text-fill: white;
+                    -fx-font-weight: normal;
+                    -fx-scale-x: 1;
+                    -fx-scale-y: 1;
+                """);
             }
         }
     }
 
-    private void startPulse(Button b) {
-        // stop pulses for others
-        for (Button other : new ArrayList<>(activePulses.keySet())) {
-            if (other != b) stopPulse(other);
-        }
-        if (activePulses.containsKey(b)) return;
-        ScaleTransition st = new ScaleTransition(Duration.millis(420), b);
-        st.setFromX(1.0);
-        st.setFromY(1.0);
-        st.setToX(1.06);
-        st.setToY(1.06);
-        st.setCycleCount(Timeline.INDEFINITE);
-        st.setAutoReverse(true);
-        st.play();
-        activePulses.put(b, st);
-    }
-
-    private void stopPulse(Button b) {
-        ScaleTransition st = activePulses.remove(b);
-        if (st != null) {
-            st.stop();
-            b.setScaleX(1.0);
-            b.setScaleY(1.0);
-        }
-    }
-
     // -------------------------
-    // Keyboard navigation API
+    // Keyboard navigation
     // -------------------------
     public void enableKeyboard(Scene scene) {
-        // ensure initial visuals
         updateSelectionVisuals();
 
         scene.setOnKeyPressed(ev -> {
-            usingKeyboard = true;
-            usingMouse = false;
             KeyCode k = ev.getCode();
             if (k == KeyCode.UP) {
                 selectedIndex = (selectedIndex - 1 + buttons.size()) % buttons.size();
@@ -305,10 +269,6 @@ public class MenuView {
                 ev.consume();
             }
         });
-
-
-        // keep visuals updated when focus changes
-        scene.focusOwnerProperty().addListener((obs, oldV, newV) -> updateSelectionVisuals());
     }
 
     // -------------------------

@@ -14,6 +14,7 @@ public class SettingsControllers {
 
     public void backToMenu() {
         menuModel.setCurrentScreen(MenuModel.Screen.MENU);
+        System.out.println("✅ backToMenu() called!");
     }
 
     public SettingsModel getModel() {
