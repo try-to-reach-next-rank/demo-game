@@ -2,6 +2,7 @@ package com.example.demo.engine;
 
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.system.PowerUpSystem;
 import com.example.demo.view.EffectRenderer;
 
 import java.util.ArrayList;
@@ -19,6 +20,15 @@ public class GameWorld {
     private final List<PowerUp> powerUps = new ArrayList<>();
     private final List<Wall> walls = new ArrayList<>();
     private int currentLevel = 1;
+    private PowerUpSystem powerUpSystem;
+
+    public PowerUpSystem getPowerUpSystem() {
+        return powerUpSystem;
+    }
+
+    public void setPowerUpSystem(PowerUpSystem powerUpSystem) {
+        this.powerUpSystem = powerUpSystem;
+    }
 
     public Ball getBall() { return ball; }
     public void setBall(Ball ball) { this.ball = ball; }
