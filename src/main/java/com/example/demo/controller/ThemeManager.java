@@ -1,14 +1,11 @@
 package com.example.demo.controller;
 
 import javafx.animation.KeyFrame;
-import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
@@ -19,74 +16,120 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ThemeManager quản lý background (animated hoặc gradient) và resources chung
+ */
 public class ThemeManager {
-    private static ThemeManager instance;
-
     private final List<Image> bgFrames = new ArrayList<>();
+    private final ImageView bgView = new ImageView();
     private Timeline bgTimeline;
     private int bgFrameIndex = 0;
     private Duration bgFrameDuration = Duration.millis(140);
 
-    private ThemeManager() {
-        loadBgFrames("/images/bg/frame_", 6);
+    private Image handImage = null;
+    private String cssPath = "/styles/menu.css";
+
+    private static final int DEFAULT_BG_FRAMES = 6;
+
+    public ThemeManager() {
+        loadHandImage("/images/hand.png");
+        loadBgFrames("/images/bg/frame_", DEFAULT_BG_FRAMES);
     }
 
-    public static ThemeManager getInstance() {
-        if (instance == null) {
-            instance = new ThemeManager();
+    // -------------------------
+    // Resource Loading
+    // -------------------------
+
+    private void loadHandImage(String resourcePath) {
+        try {
+            var url = getClass().getResource(resourcePath);
+            if (url != null) {
+                handImage = new Image(url.toExternalForm(), true);
+            } else {
+                System.err.println("[ThemeManager] hand image not found at " + resourcePath);
+            }
+        } catch (Exception ex) {
+            System.err.println("[ThemeManager] error loading hand image: " + ex.getMessage());
         }
-        return instance;
     }
 
-    // -------------------------------
-    // Background animation management
-    // -------------------------------
     private void loadBgFrames(String basePath, int count) {
         bgFrames.clear();
-        for (int i = 0; i < count; ++i) {
+        for (int i = 0; i < count; i++) {
             String path = basePath + i + ".png";
             try {
                 var url = getClass().getResource(path);
                 if (url != null) {
                     bgFrames.add(new Image(url.toExternalForm(), true));
                 } else {
-                    System.err.println("[ThemeManager] Missing bg frame: " + path);
+                    System.err.println("[ThemeManager] bg frame missing: " + path);
                 }
             } catch (Exception ex) {
-                System.err.println("[ThemeManager] Error loading " + path + ": " + ex.getMessage());
+                System.err.println("[ThemeManager] error loading frame " + path + ": " + ex.getMessage());
             }
         }
     }
 
-    public void applyBackground(StackPane rootStack) {
-        ImageView bgView = new ImageView();
-        bgView.setPreserveRatio(false);
-        bgView.fitWidthProperty().bind(rootStack.widthProperty());
-        bgView.fitHeightProperty().bind(rootStack.heightProperty());
-        rootStack.getChildren().add(0, bgView);
+    // -------------------------
+    // Background Setup
+    // -------------------------
 
+    /**
+     * Setup background cho StackPane. Tự động chọn animated nếu có frames,
+     * hoặc fallback sang gradient.
+     */
+    public void setupBackground(StackPane rootStack) {
         if (!bgFrames.isEmpty()) {
-            bgView.setImage(bgFrames.get(0));
-            startBgAnimation(bgView);
+            setupAnimatedBackground(rootStack);
         } else {
-            Region bgRegion = new Region();
-            BackgroundFill fill = new BackgroundFill(
-                    new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
-                            new Stop(0, Color.web("#0b3a62")),
-                            new Stop(1, Color.web("#04263a"))),
-                    CornerRadii.EMPTY, Insets.EMPTY);
-            bgRegion.setBackground(new Background(fill));
-            bgRegion.prefWidthProperty().bind(rootStack.widthProperty());
-            bgRegion.prefHeightProperty().bind(rootStack.heightProperty());
-            rootStack.getChildren().add(0, bgRegion);
+            setupGradientBackground(rootStack);
         }
     }
 
-    private void startBgAnimation(ImageView bgView) {
+    private void setupAnimatedBackground(StackPane rootStack) {
+        bgView.setPreserveRatio(false);
+        bgView.setImage(bgFrames.get(0));
+
+        // Bind size to container
+        bgView.fitWidthProperty().bind(rootStack.widthProperty());
+        bgView.fitHeightProperty().bind(rootStack.heightProperty());
+
+        rootStack.getChildren().add(0, bgView);
+        StackPane.setAlignment(bgView, Pos.CENTER);
+
+        startBgAnimation();
+    }
+
+    private void setupGradientBackground(StackPane rootStack) {
+        Region bgRegion = new Region();
+        BackgroundFill fill = new BackgroundFill(
+                new LinearGradient(0, 0, 0, 1, true,
+                        CycleMethod.NO_CYCLE,
+                        new Stop(0, Color.web("#0b3a62")),
+                        new Stop(1, Color.web("#04263a"))),
+                CornerRadii.EMPTY,
+                Insets.EMPTY
+        );
+        bgRegion.setBackground(new Background(fill));
+
+        bgRegion.prefWidthProperty().bind(rootStack.widthProperty());
+        bgRegion.prefHeightProperty().bind(rootStack.heightProperty());
+
+        rootStack.getChildren().add(0, bgRegion);
+        StackPane.setAlignment(bgRegion, Pos.CENTER);
+    }
+
+    // -------------------------
+    // Background Animation
+    // -------------------------
+
+    private void startBgAnimation() {
         if (bgFrames.isEmpty()) return;
         if (bgTimeline != null) bgTimeline.stop();
 
         bgFrameIndex = 0;
+        bgView.setImage(bgFrames.get(0));
+
         bgTimeline = new Timeline(new KeyFrame(bgFrameDuration, e -> {
             bgFrameIndex = (bgFrameIndex + 1) % bgFrames.size();
             bgView.setImage(bgFrames.get(bgFrameIndex));
@@ -95,50 +138,56 @@ public class ThemeManager {
         bgTimeline.play();
     }
 
-    // -------------------------------
-    // Keyboard navigation
-    // -------------------------------
-    public void enableKeyboard(Scene scene, List<Node> buttons, Runnable onEscape) {
-        if (buttons == null || buttons.isEmpty()) return;
-
-        final int[] selectedIndex = {0};
-        final ScaleTransition[] pulse = {null};
-
-        scene.setOnKeyPressed(ev -> {
-            KeyCode key = ev.getCode();
-            if (key == KeyCode.UP) {
-                selectedIndex[0] = (selectedIndex[0] - 1 + buttons.size()) % buttons.size();
-                playPulse(buttons.get(selectedIndex[0]), pulse);
-                ev.consume();
-            } else if (key == KeyCode.DOWN) {
-                selectedIndex[0] = (selectedIndex[0] + 1) % buttons.size();
-                playPulse(buttons.get(selectedIndex[0]), pulse);
-                ev.consume();
-            } else if (key == KeyCode.ENTER) {
-                buttons.get(selectedIndex[0]).fireEvent(
-                        new javafx.event.ActionEvent(buttons.get(selectedIndex[0]), null)
-                );
-                ev.consume();
-            } else if (key == KeyCode.ESCAPE && onEscape != null) {
-                onEscape.run();
-                ev.consume();
-            }
-        });
+    public void stopBgAnimation() {
+        if (bgTimeline != null) {
+            bgTimeline.stop();
+        }
     }
 
-    private void playPulse(Node node, ScaleTransition[] pulse) {
-        if (pulse[0] != null) {
-            pulse[0].stop();
+    // -------------------------
+    // CSS Management
+    // -------------------------
+
+    /**
+     * Apply CSS stylesheet cho node
+     */
+    public void applyCss(Region node) {
+        try {
+            String css = getClass().getResource(cssPath).toExternalForm();
+            node.getStylesheets().add(css);
+        } catch (Exception e) {
+            System.err.println("[ThemeManager] Failed to load CSS: " + e.getMessage());
         }
-        node.setScaleX(1.0);
-        node.setScaleY(1.0);
-        pulse[0] = new ScaleTransition(Duration.millis(420), node);
-        pulse[0].setFromX(1.0);
-        pulse[0].setFromY(1.0);
-        pulse[0].setToX(1.06);
-        pulse[0].setToY(1.06);
-        pulse[0].setCycleCount(Timeline.INDEFINITE);
-        pulse[0].setAutoReverse(true);
-        pulse[0].play();
+    }
+
+    // -------------------------
+    // Getters & Setters
+    // -------------------------
+
+    public Image getHandImage() {
+        return handImage;
+    }
+
+    public void setBgFrameDuration(Duration duration) {
+        if (duration != null && !duration.equals(bgFrameDuration)) {
+            bgFrameDuration = duration;
+            if (bgTimeline != null && bgTimeline.getStatus() == javafx.animation.Animation.Status.RUNNING) {
+                startBgAnimation();
+            }
+        }
+    }
+
+    public void registerBgFrames(List<Image> frames) {
+        bgFrames.clear();
+        if (frames != null) {
+            bgFrames.addAll(frames);
+        }
+        if (!bgFrames.isEmpty()) {
+            startBgAnimation();
+        }
+    }
+
+    public void setCssPath(String path) {
+        this.cssPath = path;
     }
 }
