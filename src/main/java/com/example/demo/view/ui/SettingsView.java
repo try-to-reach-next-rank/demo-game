@@ -1,25 +1,35 @@
 package com.example.demo.view.ui;
 
 import com.example.demo.controller.SettingsControllers;
+import javafx.animation.Animation;
+import javafx.animation.ScaleTransition;
+import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import javafx.animation.ScaleTransition;
 
 public class SettingsView {
     private final SettingsControllers controller;
     private final StackPane rootStack;
     private final VBox uiBox;
+
+    // visual pieces similar to MenuView
     private Button backButton;
-    private ScaleTransition activeButtonPulse;
+    private ScaleTransition activePulse;
+    private Image handImage = null;
+    private ImageView leftHand;
+    private ImageView rightHand;
 
     public SettingsView(SettingsControllers controller) {
         this.controller = controller;
@@ -28,8 +38,28 @@ public class SettingsView {
         this.uiBox.setPadding(new Insets(28));
         this.uiBox.setAlignment(Pos.CENTER);
 
+        loadHandImage("/images/hand.png");         // if present in resources
         setupBackground();
         buildUI();
+
+        // load same stylesheet as MenuView to ensure identical look
+        try {
+            String css = getClass().getResource("/styles/menu.css").toExternalForm();
+            rootStack.getStylesheets().add(css);
+        } catch (Exception ignored) {}
+
+        // ensure hands are initially hidden
+        if (leftHand != null) leftHand.setVisible(false);
+        if (rightHand != null) rightHand.setVisible(false);
+    }
+
+    private void loadHandImage(String path) {
+        try {
+            var url = getClass().getResource(path);
+            if (url != null) {
+                handImage = new Image(url.toExternalForm(), true);
+            }
+        } catch (Exception ignored) {}
     }
 
     private void setupBackground() {
@@ -90,49 +120,134 @@ public class SettingsView {
         settingsGrid.add(musicToggle, 0, 2, 2, 1);
         settingsGrid.add(effectsToggle, 0, 3, 2, 1);
 
-        // Back Button
+        // Create left/right hand imageviews (like MenuView)
+        leftHand = new ImageView();
+        rightHand = new ImageView();
+        if (handImage != null) {
+            leftHand.setImage(handImage);
+            rightHand.setImage(handImage);
+            rightHand.setScaleX(-1);
+            leftHand.setFitWidth(28);
+            leftHand.setFitHeight(28);
+            leftHand.setPreserveRatio(true);
+            rightHand.setFitWidth(28);
+            rightHand.setFitHeight(28);
+            rightHand.setPreserveRatio(true);
+            leftHand.setVisible(false);
+            rightHand.setVisible(false);
+        } else {
+            leftHand = null;
+            rightHand = null;
+        }
+
+        // Back Button styled similarly (but we avoid inline style so css controls most)
         backButton = new Button("Back to Menu");
+        backButton.getStyleClass().add("menu-button"); // custom class so CSS can style consistently
         backButton.setMinWidth(220);
         backButton.setFocusTraversable(false);
         backButton.setFont(Font.font(18));
-        backButton.setStyle("-fx-background-color: linear-gradient(#6aa0ff, #2a6cff); -fx-text-fill: white; -fx-font-weight: bold;");
         backButton.setOnAction(e -> controller.backToMenu());
 
-        // Add pulse animation on hover
-        backButton.setOnMouseEntered(e -> startPulse());
-        backButton.setOnMouseExited(e -> stopPulse());
+        // Hover animation (same small scale on hover as MenuView)
+        addHoverAnimation(backButton);
 
-        uiBox.getChildren().addAll(title, settingsGrid, backButton);
+        // Mouse interactions: hovering should show hands + start pulse
+        backButton.setOnMouseEntered(e -> {
+            if (leftHand != null && rightHand != null) {
+                leftHand.setVisible(true);
+                rightHand.setVisible(true);
+            }
+            startPulse(backButton);
+        });
+        backButton.setOnMouseExited(e -> {
+            if (leftHand != null && rightHand != null) {
+                leftHand.setVisible(false);
+                rightHand.setVisible(false);
+            }
+            stopPulse(backButton);
+        });
+
+        // Build row HBox with hands like MenuView's rows
+        HBox row = new HBox(12);
+        row.setAlignment(Pos.CENTER);
+        if (leftHand != null) row.getChildren().add(leftHand);
+        row.getChildren().add(backButton);
+        if (rightHand != null) row.getChildren().add(rightHand);
+
+        uiBox.getChildren().addAll(title, settingsGrid, row);
         rootStack.getChildren().add(uiBox);
     }
 
-    private void startPulse() {
-        if (activeButtonPulse != null) {
-            activeButtonPulse.stop();
-        }
-        activeButtonPulse = new ScaleTransition(Duration.millis(420), backButton);
-        activeButtonPulse.setFromX(1.0);
-        activeButtonPulse.setFromY(1.0);
-        activeButtonPulse.setToX(1.06);
-        activeButtonPulse.setToY(1.06);
-        activeButtonPulse.setCycleCount(ScaleTransition.INDEFINITE);
-        activeButtonPulse.setAutoReverse(true);
-        activeButtonPulse.play();
+    // hover micro-animation (same as MenuView.addHoverAnimation)
+    private void addHoverAnimation(Button b) {
+        b.setOnMouseEntered(e -> {
+            // small instant scale to give tactile feel
+            ScaleTransition st = new ScaleTransition(Duration.millis(160), b);
+            st.setToX(1.03);
+            st.setToY(1.03);
+            st.play();
+        });
+
+        b.setOnMouseExited(e -> {
+            ScaleTransition st = new ScaleTransition(Duration.millis(160), b);
+            st.setToX(1.0);
+            st.setToY(1.0);
+            st.play();
+        });
     }
 
-    private void stopPulse() {
-        if (activeButtonPulse != null) {
-            activeButtonPulse.stop();
-            backButton.setScaleX(1.0);
-            backButton.setScaleY(1.0);
-        }
+    // pulse logic: matches MenuView's behaviour for single button
+    private void startPulse(Button b) {
+        // if already running, do nothing
+        if (activePulse != null && activePulse.getStatus() == Animation.Status.RUNNING) return;
+
+        // add "selected" style class so CSS appearance matches
+        if (!b.getStyleClass().contains("selected")) b.getStyleClass().add("selected");
+
+        activePulse = new ScaleTransition(Duration.millis(420), b);
+        activePulse.setFromX(1.0);
+        activePulse.setFromY(1.0);
+        activePulse.setToX(1.06);
+        activePulse.setToY(1.06);
+        activePulse.setCycleCount(Timeline.INDEFINITE);
+        activePulse.setAutoReverse(true);
+        activePulse.play();
     }
 
+    private void stopPulse(Button b) {
+        if (activePulse != null) {
+            activePulse.stop();
+            activePulse = null;
+        }
+        b.setScaleX(1.0);
+        b.setScaleY(1.0);
+        b.getStyleClass().removeAll("selected");
+    }
+
+    // keyboard: Enter and Escape
     public void enableKeyboard(Scene scene) {
+        // ensure button visuals reflect focus/keyboard (if you want to auto-start pulse when scene opens)
         scene.setOnKeyPressed(ev -> {
-            if (ev.getCode() == KeyCode.ESCAPE) {
+            if (ev.getCode() == KeyCode.ENTER) {
+                // simulate pressing the back button (and visual)
+                startPulse(backButton);
+                backButton.fire();
+                ev.consume();
+            } else if (ev.getCode() == KeyCode.ESCAPE) {
                 controller.backToMenu();
                 ev.consume();
+            }
+        });
+
+        // when focus changes, keep visuals consistent
+        scene.focusOwnerProperty().addListener((obs, oldV, newV) -> {
+            // if focus is the button, ensure selected style/pulse
+            if (newV == backButton) {
+                startPulse(backButton);
+                if (leftHand != null) { leftHand.setVisible(true); rightHand.setVisible(true); }
+            } else {
+                stopPulse(backButton);
+                if (leftHand != null) { leftHand.setVisible(false); rightHand.setVisible(false); }
             }
         });
     }

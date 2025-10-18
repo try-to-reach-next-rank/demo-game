@@ -7,9 +7,6 @@ import com.example.demo.model.utils.GlobalVar;
 
 import java.util.*;
 
-/**
- * Record để đóng gói danh sách gạch và tường của một level.
- */
 public class MapData{
     private final List<Brick> bricks;
     private final List<Wall> walls;
