@@ -48,6 +48,8 @@ public class GameManager extends Pane {
     private BrickSystem brickSystem;
     private DialogueSystem dialogueSystem; /** new dialogue system for running dialogue through txt*/
     private ParallaxSystem parallaxSystem;
+    private PowerUpSystem powerUpSystem;
+
 
     private boolean inGame = true;
     private final StringBuilder keySequence = new StringBuilder();
@@ -85,7 +87,12 @@ public class GameManager extends Pane {
         // --- Create core systems (Controller layer) ---
         BallSystem ballSystem = new BallSystem(ball, paddle);
         PaddleSystem paddleSystem = new PaddleSystem(paddle);
-        PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
+        // FROM: PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
+        // to:
+        this.powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
+
+        // Give the GameWorld the reference to the PowerUpSystem
+        world.setPowerUpSystem(this.powerUpSystem);
 
         // --- Load map and build bricks/walls ---
         loadLevel(world.getCurrentLevel());
@@ -182,12 +189,25 @@ public class GameManager extends Pane {
             ball.alignWithPaddle(10, 1.0);
         }
 
+        // falling Power-Ups
         world.getPowerUps().clear();
         for (PowerUpData powerUpData : loadedState.getPowerUpsData()) {
             PowerUp p = new PowerUp(powerUpData.getType());
             p.setPosition(powerUpData.getX(), powerUpData.getY());
             p.setVisible(powerUpData.isVisible());
             world.getPowerUps().add(p);
+        }
+
+        // Active Power-ups
+        PowerUpSystem currentPowerUpSystem = world.getPowerUpSystem(); // Get it from the world
+        if (currentPowerUpSystem != null) {
+            currentPowerUpSystem.reset(); // Reset the system
+
+            if (loadedState.getActivePowerUpsData() != null) {
+                for (ActivePowerUpData activeData : loadedState.getActivePowerUpsData()) {
+                    currentPowerUpSystem.activateFromSave(activeData);
+                }
+            }
         }
     }
 

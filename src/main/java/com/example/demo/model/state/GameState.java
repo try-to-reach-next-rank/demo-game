@@ -3,6 +3,7 @@ package com.example.demo.model.state;
 import com.example.demo.engine.GameWorld; // Import GameWorld
 import com.example.demo.model.core.PowerUp;
 import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.system.PowerUpSystem;
 import com.example.demo.model.utils.GameVar;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class GameState {
     private PaddleData paddleData;
     private BallData ballData;
     private List<PowerUpData> powerUpsData;
+    private List<ActivePowerUpData> activePowerUpsData;
     private List<BrickData> bricksData;
 
     //private int[][] bricksHealthMatrix; // dạng ma trận máu brick cho dễ nhìn
@@ -25,14 +27,13 @@ public class GameState {
     public GameState() {
         powerUpsData = new ArrayList<>();
         bricksData = new ArrayList<>();
+        activePowerUpsData = new ArrayList<>();
     }
 
     // === CONSTRUCTOR MỚI: Tự động thu thập toàn bộ trạng thái game ===
     public GameState(GameWorld world) {
-        // Level
+        // Level, Paddle và Ball
         this.currentLevel = world.getCurrentLevel();
-
-        // Paddle và Ball
         this.paddleData = new PaddleData(world.getPaddle());
         this.ballData = new BallData(world.getBall());
 
@@ -43,6 +44,21 @@ public class GameState {
                 this.powerUpsData.add(new PowerUpData(p));
             }
         }
+
+        // Active Power-ups
+        this.activePowerUpsData = new ArrayList<>();
+        PowerUpSystem powerUpSystem = world.getPowerUpSystem();
+        if (powerUpSystem != null) {
+            for (PowerUp activePowerUp : powerUpSystem.getActivePowerUps()) {
+                if (activePowerUp.isActive()) {
+                    ActivePowerUpData activeData = new ActivePowerUpData();
+                    activeData.setType(activePowerUp.getType());
+                    activeData.setRemainingDuration(activePowerUp.getRemainingDuration());
+                    this.activePowerUpsData.add(activeData);
+                }
+            }
+        }
+
 
         /**
          * Đây là hàm cũ cái này sẽ tạo dâta dạng 1 chiều khá khó nhìn
@@ -87,6 +103,15 @@ public class GameState {
 //    public void setBricksHealthMatrix(int[][] bricksHealthMatrix) {
 //        this.bricksHealthMatrix = bricksHealthMatrix;
 //    }
+
+
+    public List<ActivePowerUpData> getActivePowerUpsData() {
+        return activePowerUpsData;
+    }
+
+    public void setActivePowerUpsData(List<ActivePowerUpData> activePowerUpsData) {
+        this.activePowerUpsData = activePowerUpsData;
+    }
 
     public int getCurrentLevel() { return currentLevel; }
     public void setCurrentLevel(int currentLevel) { this.currentLevel = currentLevel; }

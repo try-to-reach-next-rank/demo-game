@@ -32,6 +32,22 @@ public class PowerUp extends GameObject {
         expireAt = System.currentTimeMillis() + durationMillis;
     }
 
+    public void activateWithRemainingDuration(long remainingDuration) {
+        if (remainingDuration > 0) {
+            active = true;
+            expireAt = System.currentTimeMillis() + remainingDuration;
+        }
+    }
+
+    public long getRemainingDuration() {
+        if (!isActive()) {
+            return 0;
+        }
+        // Calculate remaining time, ensuring it's not negative
+        long remaining = expireAt - System.currentTimeMillis();
+        return Math.max(0, remaining);
+    }
+
     public boolean hasExpired() {
         return active && System.currentTimeMillis() > expireAt;
     }
