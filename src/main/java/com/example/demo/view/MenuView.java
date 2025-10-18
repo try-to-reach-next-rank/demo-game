@@ -180,7 +180,6 @@ public class MenuView {
 
         // add rows; controller methods called on action
         addMenuRow("Play", e -> controller.isPlaying(), menuBox);
-        addMenuRow("Guide", e -> controller.isGuide(), menuBox);
         addMenuRow("Settings", e -> controller.isSettings(), menuBox);
         addMenuRow("Exit", e -> controller.isExit(), menuBox);
 

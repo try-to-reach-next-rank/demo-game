@@ -20,10 +20,6 @@ public class MenuControll {
         System.out.println("Select profile");
     }
 
-    public void isGuide() {
-        model.setCurrentScreen(MenuModel.Screen.GUIDE);
-        System.out.println("Just arkanoid");
-    }
 
     public void isPause() {
         model.setCurrentScreen(MenuModel.Screen.PAUSE);
