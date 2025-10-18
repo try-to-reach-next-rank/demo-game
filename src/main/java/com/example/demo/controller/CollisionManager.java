@@ -111,8 +111,6 @@ public class CollisionManager implements Updatable {
                     ball.getY() + ball.getHeight() / 2,
                     1.0
             );
-            System.out.printf("Wall %s: (%.1f, %.1f, %.1f, %.1f)%n",
-                    wall.getSide(), wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight());
         }
     }
 

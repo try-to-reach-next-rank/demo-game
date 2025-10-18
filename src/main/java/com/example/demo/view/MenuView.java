@@ -1,10 +1,11 @@
 package com.example.demo.view;
 
 import com.example.demo.controller.MenuControll;
+import com.example.demo.model.utils.Sound;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -38,6 +39,7 @@ public class MenuView {
     private final Map<Button, ScaleTransition> activePulses = new HashMap<>();
 
     private int selectedIndex = 0;
+    private int lastSelectedIndex = -1;
 
     // background animation
     private final List<Image> bgFrames = new ArrayList<>();
@@ -51,8 +53,8 @@ public class MenuView {
 
     private static final int DEFAULT_BG_FRAMES = 6;
 
-    private boolean usingMouse = false;
-    private boolean usingKeyboard = false;
+//    private boolean usingMouse = false;
+//    private boolean usingKeyboard = false;
 
     public MenuView(MenuControll controller) {
         this.controller = controller;
@@ -77,6 +79,9 @@ public class MenuView {
         // bind bgView size to root size so it always fills the Scene
         bgView.fitWidthProperty().bind(rootStack.widthProperty());
         bgView.fitHeightProperty().bind(rootStack.heightProperty());
+
+        String css = getClass().getResource("/styles/menu.css").toExternalForm();
+        rootStack.getStylesheets().add(css);
 
         updateSelectionVisuals();
     }
@@ -188,6 +193,22 @@ public class MenuView {
         });
     }
 
+    private void addHoverAnimation(Button b) {
+        b.setOnMouseEntered(e -> {
+            ScaleTransition st = new ScaleTransition(Duration.millis(180), b);
+            st.setToX(1.05);
+            st.setToY(1.05);
+            st.play();
+        });
+
+        b.setOnMouseExited(e -> {
+            ScaleTransition st = new ScaleTransition(Duration.millis(180), b);
+            st.setToX(1.0);
+            st.setToY(1.0);
+            st.play();
+        });
+    }
+
     private void addMenuRow(String label, EventHandler<ActionEvent> handler, VBox parent) {
         ImageView left = new ImageView();
         ImageView right = new ImageView();
@@ -213,15 +234,7 @@ public class MenuView {
         b.setOnAction(handler);
 
         // mouse hover selects this row
-        b.setOnMouseEntered(e -> {
-            usingMouse = true;
-            usingKeyboard = false;
-            int idx = buttons.indexOf(b);
-            if (idx >= 0 && usingMouse) {
-                selectedIndex = idx;
-                updateSelectionVisuals();
-            }
-        });
+        addHoverAnimation(b);
 
         HBox row = new HBox(12);
         row.setAlignment(Pos.CENTER);
@@ -237,22 +250,29 @@ public class MenuView {
     // Selection visuals & pulse
     // -------------------------
     private void updateSelectionVisuals() {
-        for (int i = 0; i < buttons.size(); ++i) {
-            Button btn = buttons.get(i);
-            ImageView l = leftHands.get(i);
-            ImageView r = rightHands.get(i);
-            if (i == selectedIndex) {
-                l.setVisible(true);
-                r.setVisible(true);
-                btn.setStyle("-fx-background-color: linear-gradient(#6aa0ff, #2a6cff); -fx-text-fill: white; -fx-font-weight: bold;");
-                //startPulse(btn);
-            } else {
-                l.setVisible(false);
-                r.setVisible(false);
-                btn.setStyle("");
-                //stopPulse(btn);
-            }
+        if (buttons.isEmpty()) return;
+
+        // remove highlight from previous
+        if (lastSelectedIndex >= 0 && lastSelectedIndex < buttons.size()) {
+            Button prevBtn = buttons.get(lastSelectedIndex);
+            prevBtn.getStyleClass().remove("selected");
+            leftHands.get(lastSelectedIndex).setVisible(false);
+            rightHands.get(lastSelectedIndex).setVisible(false);
+            stopPulse(prevBtn);
         }
+
+        // add highlight to current
+        if (selectedIndex >= 0 && selectedIndex < buttons.size()) {
+            Button currBtn = buttons.get(selectedIndex);
+            if (!currBtn.getStyleClass().contains("selected")) {
+                currBtn.getStyleClass().add("selected");
+            }
+            leftHands.get(selectedIndex).setVisible(true);
+            rightHands.get(selectedIndex).setVisible(true);
+            startPulse(currBtn);
+        }
+
+        lastSelectedIndex = selectedIndex;
     }
 
     private void startPulse(Button b) {
@@ -289,20 +309,23 @@ public class MenuView {
         updateSelectionVisuals();
 
         scene.setOnKeyPressed(ev -> {
-            usingKeyboard = true;
-            usingMouse = false;
+            int prevSelectedIndex = selectedIndex;
             KeyCode k = ev.getCode();
             if (k == KeyCode.UP) {
                 selectedIndex = (selectedIndex - 1 + buttons.size()) % buttons.size();
-                updateSelectionVisuals();
                 ev.consume();
             } else if (k == KeyCode.DOWN) {
                 selectedIndex = (selectedIndex + 1) % buttons.size();
+            } else if (k == KeyCode.ENTER) {
+                if (selectedIndex >= 0 && selectedIndex < buttons.size()) {
+                    buttons.get(selectedIndex).fire();
+                }
+                ev.consume();
+            }
+
+            if (prevSelectedIndex != selectedIndex) {
                 updateSelectionVisuals();
-                ev.consume();
-            } else if (k == KeyCode.ENTER || k == KeyCode.SPACE) {
-                buttons.get(selectedIndex).fire();
-                ev.consume();
+                // TODO: add a sound here nhe nhuen :3333
             }
         });
 
@@ -319,9 +342,10 @@ public class MenuView {
     }
 
     public void setBgFrameDuration(Duration d) {
-        if (d != null) {
+        if (d != null && !d.equals(bgFrameDuration)) {
             bgFrameDuration = d;
-            if (bgTimeline != null) startBgAnimation();
+            if (bgTimeline != null && bgTimeline.getStatus() == Animation.Status.RUNNING)
+                startBgAnimation();
         }
     }
 

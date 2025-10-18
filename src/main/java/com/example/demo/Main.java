@@ -24,6 +24,8 @@ public class Main extends Application {
     private MenuView menuView;
     private SettingsView settingsView;
 
+    private Scene menuScene;
+    private Scene settingsScene;
     private Scene currentScene;
     private Stage primaryStage;
 
@@ -43,18 +45,22 @@ public class Main extends Application {
         menuView = new MenuView(menuController);
         settingsView = new SettingsView(settingsController);
 
+        menuScene = new Scene((Parent) menuView.getRoot(), GlobalVar.WIDTH, GlobalVar.HEIGHT);
+        settingsScene = new Scene((Parent) settingsView.getRoot(), GlobalVar.WIDTH, GlobalVar.HEIGHT);
+
+        menuView.enableKeyboard(menuScene);
+        settingsView.enableKeyboard(settingsScene);
+
         // Listen changes
         menuModel.currentScreenProperty().addListener((obs, oldScreen, newScreen) -> {
             switchScreen(newScreen);
         });
 
         // Bắt đầu với Menu
-        currentScene = new Scene((Parent) menuView.getRoot(), GlobalVar.WIDTH, GlobalVar.HEIGHT);
-        menuView.enableKeyboard(currentScene);
-
+        currentScene = menuScene;
         stage.getIcons().add(new Image(getClass().getResource("/images/icon.png").toExternalForm()));
         stage.setTitle("Brick Breaker");
-        stage.setScene(currentScene);
+        stage.setScene(menuScene);
         stage.setResizable(false);
         stage.show();
 
@@ -83,21 +89,14 @@ public class Main extends Application {
     }
 
     private void showMenu() {
-        if (menuView.getRoot().getScene() != currentScene) {
-            currentScene = new Scene((Parent) menuView.getRoot(), GlobalVar.WIDTH, GlobalVar.HEIGHT);
-            menuView.enableKeyboard(currentScene);
-            primaryStage.setScene(currentScene);
-        }
-
+        primaryStage.setScene(menuScene);
         Sound.getInstance().stopMusic();
         Sound.getInstance().loopMusic("Hametsu-no-Ringo");
         menuView.getRoot().requestFocus();
     }
 
     private void showSettings() {
-        currentScene = new Scene((Parent) settingsView.getRoot(), GlobalVar.WIDTH, GlobalVar.HEIGHT);
-        settingsView.enableKeyboard(currentScene);
-        primaryStage.setScene(currentScene);
+        primaryStage.setScene(settingsScene);
         settingsView.getRoot().requestFocus();
     }
 
