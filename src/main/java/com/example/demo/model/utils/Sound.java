@@ -57,7 +57,7 @@ public class Sound {
     private void loadSoundEffect(String name, String path){
         URL sfxUrl = getClass().getResource(path);
         if (sfxUrl == null) System.err.println("Couldn't find SFX at path: " + path);
-        else{
+        else {
             AudioClip clip = new AudioClip(sfxUrl.toString());
             soundEffects.put(name, clip);
         }

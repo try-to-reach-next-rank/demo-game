@@ -1,68 +1,79 @@
 package com.example.demo.view;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-import com.example.demo.view.effects.EffectFactory;
-import com.example.demo.view.effects.VisualEffect;
+import com.example.demo.controller.AssetManager;
+import com.example.demo.engine.Effect;
+import com.example.demo.model.core.VisualEffect;
+import com.example.demo.model.core.effects.AnimatedEffect;
 
 import javafx.scene.canvas.GraphicsContext;
 
 public class EffectRenderer {
-    /*
-    TODO: split this class into
-    - effect state manager: tracks active effects in the game, duration, applies game logic
-    - renderer:             reads state manager to know which visual effect to draw and how
-     */
-    // Singleton instance
+    private final AssetManager assetManager = AssetManager.getInstance();
     private static final EffectRenderer instance = new EffectRenderer();
 
-    // List of active effects
     private final List<VisualEffect> activeEffects = new ArrayList<>();
-    
-    // Private constructor to prevent instantiation
-    private EffectRenderer() {}
+    private final Map<String, VisualEffect> allEffectsMap = new HashMap<>();
 
-    // Get the singleton instance
+    private EffectRenderer() {
+        init();
+    }
+
     public static EffectRenderer getInstance() {
         return instance;
     }
 
-    // Spawn effect by key
-    public void spawnEffect(String name, double x, double y, double durationSeconds) {
-        // If effect has already existed and being inactive
-        // Add key to each effect
-        
-        // Add new effect
-        VisualEffect newEffect = (VisualEffect) EffectFactory.getInstance().getEffect(name, x, y, durationSeconds);
-        activeEffects.add(newEffect);
+    private void init() {
+        add("explosion1", new AnimatedEffect("explosion1"));
+        add("explosion2", new AnimatedEffect("explosion2"));
     }
 
-    // Update all effects
+    public void spawn(String name, double x, double y, double duration) {
+        VisualEffect template = allEffectsMap.get(name);
+        if (template == null) {
+            // Log here
+            return;
+        }
+
+        VisualEffect effect = template.clone();
+
+        effect.activate(x, y, duration);
+        activeEffects.add(effect);
+    }
+
     public void update(double deltaTime) {
-        Iterator<VisualEffect> iterator = activeEffects.iterator();
-        while (iterator.hasNext()) {
-            VisualEffect effect = iterator.next();
-            if (effect.isActive()) {
-                effect.update(deltaTime);
-            } else {
-                iterator.remove(); // Remove inactive effects
+        Iterator<VisualEffect> it = activeEffects.iterator();
+        while (it.hasNext()) {
+            VisualEffect effect = it.next();
+            effect.update(deltaTime);
+            if (!effect.isActive()) {
+                it.remove();
             }
         }
     }
 
-    // Draw all effects
-    public void draw(GraphicsContext gc) {
+    public void render(GraphicsContext gc) {
         for (VisualEffect effect : activeEffects) {
-            if (effect.isActive()) {
-                effect.draw(gc);
-            }
+            effect.render(gc);
         }
     }
 
-    // Clear all effects
     public void clear() {
         activeEffects.clear();
+
+        for (VisualEffect effect : allEffectsMap.values()) {
+            if (effect.isActive()) {
+                effect.deactivate();
+            }
+        }
+    }
+
+    private void add(String effectKey, VisualEffect effect) {
+        allEffectsMap.put(effectKey, effect);
     }
 }

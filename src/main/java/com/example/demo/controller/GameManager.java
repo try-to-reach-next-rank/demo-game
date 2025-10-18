@@ -12,7 +12,6 @@ import com.example.demo.model.utils.dialogue.DialogueBox;
 import com.example.demo.model.utils.dialogue.DialogueSystem;
 import com.example.demo.view.*;
 import com.example.demo.view.graphics.BrickTextureProvider;
-import com.example.demo.view.graphics.ParallaxSystem;
 import com.example.demo.model.map.ParallaxLayer;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
@@ -74,6 +73,9 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     private void initGame() {
+        // --- Load all resources ---
+        AssetManager.getInstance().loadAll();
+
         // --- Create base entities (Model layer) ---
         Paddle paddle = new Paddle();
         Ball ball = new Ball(paddle);

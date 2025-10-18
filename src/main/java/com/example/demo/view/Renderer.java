@@ -58,6 +58,6 @@ public class Renderer implements Renderable {
         }
 
         // 6. Draw Effects (delegated to the singleton EffectRenderer)
-        EffectRenderer.getInstance().draw(gc);
+        EffectRenderer.getInstance().render(gc);
     }
 }

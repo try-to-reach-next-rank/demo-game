@@ -1,6 +1,7 @@
 package com.example.demo.model.core;
 
 import com.example.demo.model.state.BallData;
+import com.example.demo.controller.AssetManager;
 import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.Vector2D;
 
@@ -15,7 +16,7 @@ public class Ball extends GameObject {
     private boolean stopTime;
 
     public Ball(Paddle paddle) {
-        super("/images/Ball.png", GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
+        super(AssetManager.getInstance().getImage("ball"), GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
         this.paddle = paddle;
         resetState();
     }

@@ -105,11 +105,11 @@ public class CollisionManager implements Updatable {
             Sound.getInstance().playSound("wall_hit");
 
             // simple effect (View layer responsibility)
-            EffectRenderer.getInstance().spawnEffect(
+            EffectRenderer.getInstance().spawn(
                     "explosion2",
                     ball.getX() + ball.getWidth() / 2,
                     ball.getY() + ball.getHeight() / 2,
-                    0.3
+                    1.0
             );
             System.out.printf("Wall %s: (%.1f, %.1f, %.1f, %.1f)%n",
                     wall.getSide(), wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight());
