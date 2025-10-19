@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.map.MenuModel;
-import com.example.demo.model.map.SettingsModel;
+import com.example.demo.model.menu.MenuModel;
+import com.example.demo.model.menu.SettingsModel;
 
 public class SettingsControllers {
     private final SettingsModel model;

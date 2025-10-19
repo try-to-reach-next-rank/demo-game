@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.map.MenuModel;
+import com.example.demo.model.menu.MenuModel;
 import javafx.application.Platform;
 
 public class MenuControll {
