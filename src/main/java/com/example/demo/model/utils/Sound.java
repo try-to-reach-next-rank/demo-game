@@ -1,6 +1,6 @@
 package com.example.demo.model.utils;
 
-import com.example.demo.model.map.SettingsModel;
+import com.example.demo.model.menu.SettingsModel;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
