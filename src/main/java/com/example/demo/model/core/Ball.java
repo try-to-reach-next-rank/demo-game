@@ -6,7 +6,7 @@ import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.Vector2D;
 
 public class Ball extends GameObject {
-    private final double baseSpeed = 300.0;
+    private final double baseSpeed = GameVar.BASE_SPEED_BALL;
     private boolean stuck;
     private Vector2D velocity;
     private final Paddle paddle;
