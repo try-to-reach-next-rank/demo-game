@@ -1,6 +1,5 @@
 package com.example.demo.model.menu;
 
-import com.example.demo.model.menu.SaveSlot;
 import com.example.demo.repository.SaveDataRepository;
 import com.example.demo.model.state.BrickData;
 import java.util.List;
