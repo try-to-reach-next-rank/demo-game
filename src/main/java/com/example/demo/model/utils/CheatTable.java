@@ -62,11 +62,6 @@ public class CheatTable extends UIComponent {
         title.activate(titleX, titleY);
         title.render(gc);
 
-//        gc.setFill(Color.YELLOW);
-//        gc.setFont(titleFont);
-//        gc.setTextAlign(TextAlignment.CENTER);
-//        gc.fillText("CHEAT MENU", width / 2, boxY + 45);
-
         //Buttons
         gc.setFont(optionFont);
         gc.setTextAlign(TextAlignment.LEFT);
