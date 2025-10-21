@@ -14,6 +14,7 @@ public class Ball extends GameObject {
     private boolean accelerated;
     private boolean stronger;
     private boolean stopTime;
+    private double elapsedTime = 0;
 
     public Ball(Paddle paddle) {
         super(AssetManager.getInstance().getImage("ball"), GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
@@ -88,5 +89,8 @@ public class Ball extends GameObject {
         if (x > maxX) x = maxX;
         setPosition(x, y);
     }
+
+    public double getElapsedTime(){ return elapsedTime; }
+    public void setElapsedTime(double x){ elapsedTime = x; }
 
 }
