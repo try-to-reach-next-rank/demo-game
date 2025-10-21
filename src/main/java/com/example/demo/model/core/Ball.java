@@ -22,6 +22,22 @@ public class Ball extends GameObject {
         resetState();
     }
 
+    public void toggleStopTime() {
+        this.stopTime = !this.stopTime;
+        System.out.println("toggle Stop Time - Is the ball stop: " + this.stopTime);
+    }
+
+    public void toggleAccelerated() {
+        this.accelerated = !this.accelerated;
+        System.out.println("toggle Accelerated - Is the ball accelerated: " + this.accelerated);
+    }
+
+    public void toggleStronger() {
+        this.stronger = !this.stronger;
+        System.out.println("toggle Stronger - Is the ball stronger: " + this.stronger);
+    }
+
+
     public void resetState() {
         alignWithPaddle(10, 1.0);
         stuck = true;
