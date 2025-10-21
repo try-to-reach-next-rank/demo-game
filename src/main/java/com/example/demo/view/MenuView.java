@@ -3,14 +3,20 @@ package com.example.demo.view;
 import com.example.demo.controller.ButtonManager;
 import com.example.demo.controller.MenuControll;
 import com.example.demo.controller.ThemeManager;
+import com.example.demo.model.core.effects.GlowTextEffect;
+import javafx.animation.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.util.*;
 
@@ -44,25 +50,20 @@ public class MenuView {
     }
 
     private void buildUI() {
-        Text title = new Text("My Awesome Game");
-        title.setFont(Font.font(34));
-        title.setFill(Color.WHITE);
+        GlowTextEffect glowTitle = new GlowTextEffect();
+        glowTitle.activate(0, 0, 100000); // start shimmering
+
+        Text titleNode = glowTitle.getNode(); // this is the one that glows
 
         VBox menuBox = new VBox(28);
         menuBox.setAlignment(Pos.CENTER);
-
-        // Tạo buttons - code ngắn gọn hơn rất nhiều!
-        menuBox.getChildren().add(
-                buttonManager.createButtonRow("Play", e -> controller.isPlaying())
-        );
-        menuBox.getChildren().add(
-                buttonManager.createButtonRow("Settings", e -> controller.isSettings())
-        );
-        menuBox.getChildren().add(
+        menuBox.getChildren().addAll(
+                buttonManager.createButtonRow("Play", e -> controller.isPlaying()),
+                buttonManager.createButtonRow("Settings", e -> controller.isSettings()),
                 buttonManager.createButtonRow("Exit", e -> controller.isExit())
         );
 
-        uiBox.getChildren().addAll(title, menuBox);
+        uiBox.getChildren().addAll(titleNode, menuBox);
     }
 
     public void enableKeyboard(Scene scene) {
