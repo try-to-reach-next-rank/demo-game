@@ -49,9 +49,9 @@ public class MapManager {
                 double y = startY + r * (brickH + padY);
 
                 int health = MapData.resolveHealth(type);
-                Image texture = BrickTextureProvider.getTextureForHealth(health);
+                String imageKey = BrickTextureProvider.getTextureForHealth(health);
 
-                bricks.add(new Brick(texture, x, y, health));
+                bricks.add(new Brick(imageKey, x, y, health));
             }
         }
         return new MapData(bricks, walls);

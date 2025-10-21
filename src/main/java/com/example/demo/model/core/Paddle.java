@@ -9,7 +9,7 @@ public class Paddle extends GameObject {
     private boolean biggerPaddle;
 
     public Paddle() {
-        super("/images/Paddle.png", GameVar.INIT_PADDLE_X, GameVar.INIT_PADDLE_Y);
+        super("paddle", GameVar.INIT_PADDLE_X, GameVar.INIT_PADDLE_Y);
         resetState();
     }
 

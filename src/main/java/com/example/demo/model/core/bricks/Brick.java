@@ -13,8 +13,8 @@ public class Brick extends GameObject {
     private int health;
     private boolean destroyed;
 
-    public Brick(Image image, double x, double y, int health) {
-        super(image, x, y);
+    public Brick(String imageKey, double x, double y, int health) {
+        super(imageKey, x, y);
         this.health = health;
         this.destroyed = false;
     }
@@ -27,8 +27,8 @@ public class Brick extends GameObject {
 
         // Nếu gạch được "hồi sinh", cập nhật lại texture
         if (!this.isDestroyed()) {
-            Image newTexture = BrickTextureProvider.getTextureForHealth(this.getHealth());
-            this.setImage(newTexture);
+            String newImageKey = BrickTextureProvider.getTextureForHealth(this.getHealth());
+            this.setImageKey(newImageKey);
         }
     }
 

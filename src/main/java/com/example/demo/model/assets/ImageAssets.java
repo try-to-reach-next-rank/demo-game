@@ -20,9 +20,19 @@ public class ImageAssets implements AssetLoader {
         );
     }
 
-    private static final Map<String, String> assets = Map.of(
-        "ball", "/images/Ball.png",
-        "explosion_spritesheet1", "/images/explosion/explosion1.png",
-        "explosion_spritesheet2", "/images/explosion/explosion2.png"
-    );
+    private static final Map<String, String> assets = new HashMap<>();
+
+    static {
+        assets.put("ball", "/images/Ball.png");
+        assets.put("paddle", "/images/Paddle.png");
+        assets.put("bricks_1", "/images/Bricks.png");
+        assets.put("bricks_2", "/images/Bricks2.png");
+        assets.put("bricks_3", "/images/Bricks3.png");
+        assets.put("bricks_4", "/images/Bricks4.png");
+        assets.put("bricks_5", "/images/Bricks5.png");
+        assets.put("wall", "/images/Wall.png");
+        assets.put("powerup", "/images/fastup.png");
+        assets.put("explosion_spritesheet1", "/images/explosion/explosion1.png");
+        assets.put("explosion_spritesheet2", "/images/explosion/explosion2.png");
+    };
 }

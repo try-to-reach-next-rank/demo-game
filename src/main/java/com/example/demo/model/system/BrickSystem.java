@@ -56,10 +56,10 @@ public class BrickSystem implements Updatable {
 
         if (health <= 0) {
             brick.setDestroyed(true);
-//            Sound.getInstance().playSound("brick_break"); TODO: maybe add brick break sound
+            // Sound.getInstance().playSound("brick_break"); TODO: maybe add brick break sound
         } else {
-            Image newTexture = BrickTextureProvider.getTextureForHealth(health);
-            brick.setImage(newTexture);
+            String newImageKey = BrickTextureProvider.getTextureForHealth(health);
+            brick.setImageKey(newImageKey);
             Sound.getInstance().playSound("brick_hit");
         }
     }

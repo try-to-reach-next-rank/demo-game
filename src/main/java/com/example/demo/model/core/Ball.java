@@ -16,7 +16,7 @@ public class Ball extends GameObject {
     private boolean stopTime;
 
     public Ball(Paddle paddle) {
-        super(AssetManager.getInstance().getImage("ball"), GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
+        super("ball", GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
         this.paddle = paddle;
         resetState();
     }

@@ -5,7 +5,7 @@ public class Wall extends GameObject {
     private final Side side;
 
     public Wall(Side side, double x, double y, double width, double height) {
-        super("/images/Wall.png", x, y);
+        super("wall", x, y);
         this.side = side;
         setSize(width, height);
     }
@@ -13,15 +13,6 @@ public class Wall extends GameObject {
     private void setSize(double width, double height) {
         this.width = width;
         this.height = height;
-
-        if (imageView != null) {
-            imageView.setX(x);
-            imageView.setY(y);
-            imageView.setFitWidth(width);
-            imageView.setFitHeight(height);
-            imageView.setVisible(true);
-            imageView.autosize(); // force update of bounds
-        }
     }
 
     public Side getSide() {

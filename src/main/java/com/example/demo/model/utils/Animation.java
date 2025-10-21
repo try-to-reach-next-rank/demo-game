@@ -76,11 +76,16 @@ public class Animation {
         gc.drawImage(
             spriteSheet,
             sx, sy, frameWidth, frameHeight,    // Source
-            x - w / 2 , y - h / 2, w, h                          // Destination
+            x - w / 2 , y - h / 2, w, h         // Destination
         );
     }
 
     // --- Builder ---
+    public Animation setRows(int rows) {
+        this.rows = rows;
+        return this;
+    }
+
     public Animation setRenderSize(double width, double height) {
         this.renderWidth = width;
         this.renderHeight = height;

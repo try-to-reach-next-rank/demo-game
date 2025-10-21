@@ -7,48 +7,36 @@ import javafx.scene.image.ImageView;
 
 import java.util.Objects;
 
-public abstract class GameObject {
+import com.example.demo.controller.AssetManager;
 
+public abstract class GameObject {
     protected double x;
     protected double y;
     protected double width;
     protected double height;
-    protected Image image;
-    protected ImageView imageView;
+    protected String imageKey;
+    protected Image  image;
+    protected boolean visible = true;
 
     private double baseWidth;
     private double baseHeight;
 
     private double scaleX = 1.0;
     private double scaleY = 1.0;
-    private boolean visible = true;
 
-    public GameObject(String imagePath, double startX, double startY) {
-        setImagePath(imagePath);
+    public GameObject(String imageKey, double startX, double startY) {
+        setImageKey(imageKey);
         setPosition(startX, startY);
     }
 
-    public GameObject(Image image, double startX, double startY) {
-        setImage(image);
-        setPosition(startX, startY);
-    }
-
-    public void setImagePath(String imagePath) {
-        this.image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
-        this.imageView = new ImageView(image);
-        this.width = image.getWidth();
-        this.height = image.getHeight();
-        this.baseWidth = width;
-        this.baseHeight = height;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-        if (this.imageView == null) {
-            this.imageView = new ImageView(image);
-        } else {
-            this.imageView.setImage(image);
+    public void setImageKey(String imageKey) {
+        this.image = AssetManager.getInstance().getImage(imageKey);
+        if (this.image == null) {
+            System.err.println("Image not found for key: " + imageKey);
+            return;
         }
+
+        this.imageKey = imageKey;
         this.width = image.getWidth();
         this.height = image.getHeight();
         this.baseWidth = width;
@@ -59,10 +47,6 @@ public abstract class GameObject {
     public void setPosition(double x, double y) {
         this.x = x;
         this.y = y;
-        if (imageView != null) {
-            imageView.setX(x);
-            imageView.setY(y);
-        }
     }
 
     public void setScale(double sx, double sy) {
@@ -93,12 +77,10 @@ public abstract class GameObject {
     public double getWidth() { return width; }
     public double getHeight() { return height; }
     public Image getImage() { return image; }
-    public ImageView getImageView() { return imageView; }
 
     public boolean isVisible() { return visible; }
     public void setVisible(boolean visible) {
         this.visible = visible;
-        if (imageView != null) imageView.setVisible(visible);
     }
 
     public Bounds getBounds() {
