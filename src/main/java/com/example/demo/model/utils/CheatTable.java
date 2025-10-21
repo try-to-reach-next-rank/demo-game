@@ -1,15 +1,18 @@
 package com.example.demo.model.utils;
 
 import com.example.demo.controller.GameManager;
+import com.example.demo.model.core.effects.GlowTextEffect;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
 public class CheatTable extends UIComponent {
     private final GameManager gameManager;
+    private final GlowTextEffect title;
     // Danh sách các tùy chọn cheat
     private final String[] options = {
             "Toggle Stop Time",
@@ -19,15 +22,17 @@ public class CheatTable extends UIComponent {
             "Load Previous Map"        // Quay lại map trước
     };
 
-    public CheatTable(GameManager gameManager) {
-        this.gameManager = gameManager;
-    }
-
     private int selectedIndex = 0;
 
     // Fonts để vẽ
     private final Font titleFont = new Font("Verdana", 24);
     private final Font optionFont = new Font("Verdana", 18);
+
+    public CheatTable(GameManager gameManager) {
+        this.gameManager = gameManager;
+        Text cheatMenuText = new Text("CHEAT MENU");
+        this.title = new GlowTextEffect(cheatMenuText, titleFont);
+    }
 
     @Override
     public void update(double deltaTime) {
@@ -52,10 +57,15 @@ public class CheatTable extends UIComponent {
         gc.strokeRoundRect(boxX, boxY, boxWidth, boxHeight, 15, 15);
 
         //Drawing title
-        gc.setFill(Color.YELLOW);
-        gc.setFont(titleFont);
-        gc.setTextAlign(TextAlignment.CENTER);
-        gc.fillText("CHEAT MENU", width / 2, boxY + 45);
+        double titleX = boxX + 50;
+        double titleY = boxY + 45;
+        title.activate(titleX, titleY);
+        title.render(gc);
+
+//        gc.setFill(Color.YELLOW);
+//        gc.setFont(titleFont);
+//        gc.setTextAlign(TextAlignment.CENTER);
+//        gc.fillText("CHEAT MENU", width / 2, boxY + 45);
 
         //Buttons
         gc.setFont(optionFont);
