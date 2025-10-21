@@ -314,21 +314,6 @@ public class GameManager extends Pane {
             KeyCode code = e.getCode();
             if (code == null) return;
 
-
-            // Nếu CheatTable đang mở, nó sẽ nhận input
-            if (cheatTable != null && cheatTable.isActive()) {
-                cheatTable.handleInput(code);
-                return;
-            }
-
-            // Nếu Dialogue đang mở
-            if (dialogueBox.isActive()) {
-                dialogueBox.handleInput(code);
-                return;
-            }
-
-            //  XỬ LÝ PHÍM NÓNG (KHI KHÔNG CÓ UI NÀO MỞ) ---
-
             // Phím `~` (BACK_QUOTE) bây giờ CHỈ dùng để MỞ menu
             if (code == KeyCode.BACK_QUOTE) {
                 if (cheatTable != null) {
@@ -361,7 +346,7 @@ public class GameManager extends Pane {
                 if (this.cheatTable == null) {
                     System.out.println("!!! CHEAT MENU UNLOCKED !!!");
                     this.cheatTable = new CheatTable(this);
-                    this.uiManager.add(this.cheatTable); // THÊM VÀO UIMANAGER
+                        this.uiManager.add(this.cheatTable); // THÊM VÀO UIMANAGER
                 }
 
                 dialogueBox.start(new DialogueBox.DialogueLine[]{
