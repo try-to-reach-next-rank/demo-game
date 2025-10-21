@@ -19,7 +19,7 @@ public class GameWorld {
     private Brick[] bricks = new Brick[0];
     private final List<PowerUp> powerUps = new ArrayList<>();
     private final List<Wall> walls = new ArrayList<>();
-    private int currentLevel = 1;
+    private int currentLevel = 2;
     private PowerUpSystem powerUpSystem;
 
     public PowerUpSystem getPowerUpSystem() {

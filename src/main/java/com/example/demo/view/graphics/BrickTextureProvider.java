@@ -9,6 +9,8 @@ import java.util.Objects;
 public class BrickTextureProvider {
     private static final int MAX_HEALTH = GameVar.MAXHEALTH_OF_BRICKS;
     private static final List<Image> TEXTURES = new ArrayList<>();
+    public static final Image TEXTURES_OF_STEELBRICK = new Image(Objects.requireNonNull(
+            BrickTextureProvider.class.getResourceAsStream("/images/SteelBricks.png")));
 
     static {
         for (int i = 1; i <= MAX_HEALTH; i++) {
@@ -23,10 +25,10 @@ public class BrickTextureProvider {
     }
 
     public static Image getTextureForHealth(int health) {
+        if (health >= Integer.MAX_VALUE) return TEXTURES_OF_STEELBRICK;
         if (health < 1 || health > MAX_HEALTH) health = 1;
         return TEXTURES.get(health - 1);
     }
-
     public static int getMaxHealth() {
         return MAX_HEALTH;
     }

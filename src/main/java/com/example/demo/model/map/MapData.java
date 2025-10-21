@@ -24,21 +24,6 @@ public class MapData {
         return walls;
     }
 
-    private final static int CELL_W = GameVar.WIDTH_OF_BRICKS + GameVar.PADDING_X;
-    private final static int CELL_H = GameVar.HEIGHT_OF_BRICKS + GameVar.PADDING_Y;
-
-    // Compute the usable width/height inside walls
-    private final static int USABLE_WIDTH = GlobalVar.WIDTH - 2 * GameVar.WIDTH_OF_WALLS;
-    private final static int USABLE_HEIGHT = GlobalVar.HEIGHT - GameVar.HEIGHT_OF_WALLS * 2;
-
-    // Brick grid starts just *inside* top and left walls
-    private final static int MATRIX_START_X = USABLE_WIDTH + GameVar.PADDING_X / 2;
-    private final static int MATRIX_START_Y = USABLE_HEIGHT + GameVar.PADDING_X / 2;
-
-    // Number of columns and rows that actually fit inside
-    private final static int MATRIX_COLS = USABLE_WIDTH / CELL_W;
-    private final static int MATRIX_ROWS = (GlobalVar.HEIGHT / 2 - MATRIX_START_Y) / CELL_H;
-
     private final Random rand = new Random();
 
     // ---------------------------------------------------------------------
@@ -66,19 +51,6 @@ public class MapData {
         }
         System.out.println("Walls created: " + walls.size());
         return walls;
-    }
-
-    // ---------------------------------------------------------------------
-    //  Map Matrix Definitions
-    // ---------------------------------------------------------------------
-
-    // 1 = weak brick, 2 = medium, 3 = strong
-    public static int resolveHealth(int cellValue) {
-        return switch (cellValue) {
-            case 2 -> 3;  // stronger brick
-            case 3 -> 5;  // even stronger
-            default -> 1; // default weak
-        };
     }
 
 
