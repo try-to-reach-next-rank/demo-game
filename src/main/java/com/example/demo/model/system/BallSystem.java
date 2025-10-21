@@ -4,6 +4,7 @@ import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
 import com.example.demo.model.core.Wall;
+import com.example.demo.model.utils.GameRandom;
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Vector2D;
 
@@ -18,9 +19,20 @@ public class BallSystem implements Updatable {
 
     @Override
     public void update(double deltaTime) {
-        if (ball.isStopTime()){
-            return;
+        if (ball.isStopTime()) {
+            ball.setElapsedTime(ball.getElapsedTime() + deltaTime);
+            if (ball.getElapsedTime() >= 0.5) {
+                ball.setElapsedTime(0);
+                double angle = GameRandom.nextDouble() * 2 * Math.PI;
+                double vx = Math.cos(angle);
+                double vy = Math.sin(angle);
+                if (ball.getY() >= paddle.getY() - 100) {
+                    vy = -Math.abs(vy);
+                }
+                ball.setVelocity(vx, vy);
+            }
         }
+
 
         if (ball.isStuck()) {
             // Keep the ball above the paddle

@@ -45,14 +45,27 @@ public abstract class GameObject {
     public void setImage(Image image) {
         this.image = image;
         if (this.imageView == null) {
-            this.imageView = new ImageView(image);
+            if (image != null) {
+                this.imageView = new ImageView(image);
+            }
         } else {
             this.imageView.setImage(image);
         }
-        this.width = image.getWidth();
-        this.height = image.getHeight();
-        this.baseWidth = width;
-        this.baseHeight = height;
+
+        if (image != null) {
+            // only access image metadata if image is not null
+            this.width = image.getWidth();
+            this.height = image.getHeight();
+            this.baseWidth = width;
+            this.baseHeight = height;
+        } else {
+            // fallback to zero so we don't keep stale values when image is missing
+            this.width = 0;
+            this.height = 0;
+            this.baseWidth = 0;
+            this.baseHeight = 0;
+        }
+
         applyScale();
     }
 
