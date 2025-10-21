@@ -1,0 +1,2133 @@
+{
+  "currentLevel": 1,
+  "paddleData": {
+    "x": 250.0,
+    "y": 770.0
+  },
+  "ballData": {
+    "x": 259.0,
+    "y": 246.67275909781645,
+    "velocityX": 6.123233995736766E-17,
+    "velocityY": 1.0,
+    "isStuck": false
+  },
+  "powerUpsData": [
+    {
+      "x": 249.5,
+      "y": 653.4544449999997,
+      "type": "BIGGERPADDLE",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 626.1591999999998,
+      "type": "ACCELERATE",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 598.7939950000001,
+      "type": "ACCELERATE",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 572.8159000000003,
+      "type": "STRONGER",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 545.175115,
+      "type": "ACCELERATE",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 518.893285,
+      "type": "STRONGER",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 490.3035849999998,
+      "type": "STRONGER",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 464.95524999999986,
+      "type": "ACCELERATE",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 437.4653199999998,
+      "type": "STRONGER",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 410.51788,
+      "type": "STRONGER",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 383.03137,
+      "type": "ACCELERATE",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 356.84613999999993,
+      "type": "BIGGERPADDLE",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 329.1474399999999,
+      "type": "STOPTIME",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 302.7116199999999,
+      "type": "STRONGER",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 275.4350350000001,
+      "type": "STOPTIME",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 248.66050000000004,
+      "type": "STRONGER",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 221.17502500000003,
+      "type": "STOPTIME",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 193.68634000000006,
+      "type": "STRONGER",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 166.10065000000006,
+      "type": "STRONGER",
+      "visible": true
+    },
+    {
+      "x": 249.5,
+      "y": 140.75317,
+      "type": "ACCELERATE",
+      "visible": true
+    }
+  ],
+  "bricksData": [
+    {
+      "id": 0,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 1,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 2,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 3,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 4,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 5,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 6,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 7,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 8,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 9,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 10,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 11,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 12,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 13,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 14,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 15,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 16,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 17,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 18,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 19,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 20,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 21,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 22,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 23,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 24,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 25,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 26,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 27,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 28,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 29,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 30,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 31,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 32,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 33,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 34,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 35,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 36,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 37,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 38,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 39,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 40,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 41,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 42,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 43,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 44,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 45,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 46,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 47,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 48,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 49,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 50,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 51,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 52,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 53,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 54,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 55,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 56,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 57,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 58,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 59,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 60,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 61,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 62,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 63,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 64,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 65,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 66,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 67,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 68,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 69,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 70,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 71,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 72,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 73,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 74,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 75,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 76,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 77,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 78,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 79,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 80,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 81,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 82,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 83,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 84,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 85,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 86,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 87,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 88,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 89,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 90,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 91,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 92,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 93,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 94,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 95,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 96,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 97,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 98,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 99,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 100,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 101,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 102,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 103,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 104,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 105,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 106,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 107,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 108,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 109,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 110,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 111,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 112,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 113,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 114,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 115,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 116,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 117,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 118,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 119,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 120,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 121,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 122,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 123,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 124,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 125,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 126,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 127,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 128,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 129,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 130,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 131,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 132,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 133,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 134,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 135,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 136,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 137,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 138,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 139,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 140,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 141,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 142,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 143,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 144,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 145,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 146,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 147,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 148,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 149,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 150,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 151,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 152,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 153,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 154,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 155,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 156,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 157,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 158,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 159,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 160,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 161,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 162,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 163,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 164,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 165,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 166,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 167,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 168,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 169,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 170,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 171,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 172,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 173,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 174,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 175,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 176,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 177,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 178,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 179,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 180,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 181,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 182,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 183,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 184,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 185,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 186,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 187,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 188,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 189,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 190,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 191,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 192,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 193,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 194,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 195,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 196,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 197,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 198,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 199,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 200,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 201,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 202,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 203,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 204,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 205,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 206,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 207,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 208,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 209,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 210,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 211,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 212,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 213,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 214,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 215,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 216,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 217,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 218,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 219,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 220,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 221,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 222,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 223,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 224,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 225,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 226,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 227,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 228,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 229,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 230,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 231,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 232,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 233,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 234,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 235,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 236,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 237,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 238,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 239,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 240,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 241,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 242,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 243,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 244,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 245,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 246,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 247,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 248,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 249,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 250,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 251,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 252,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 253,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 254,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 255,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 256,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 257,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 258,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 259,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 260,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 261,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 262,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 263,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 264,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 265,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 266,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 267,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 268,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 269,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 270,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 271,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 272,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 273,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 274,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 275,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 276,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 277,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 278,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 279,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 280,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 281,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 282,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 283,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 284,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 285,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 286,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 287,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 288,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 289,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 290,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 291,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 292,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 293,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 294,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 295,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 296,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 297,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 298,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 299,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 300,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 301,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 302,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 303,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 304,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 305,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 306,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 307,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 308,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 309,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 310,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 311,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 312,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 313,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 314,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 315,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 316,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 317,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 318,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 319,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 320,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 321,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 322,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 323,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 324,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 325,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 326,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 327,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 328,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 329,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 330,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 331,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 332,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 333,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 334,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 335,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 336,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 337,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 338,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 339,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 340,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 341,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 342,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 343,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 344,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 345,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 346,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 347,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 348,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 349,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 350,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 351,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 352,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 353,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 354,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 355,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 356,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 357,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 358,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 359,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 360,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 361,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 362,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 363,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 364,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 365,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 366,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 367,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 368,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 369,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 370,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 371,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 372,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 373,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 374,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 375,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 376,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 377,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 378,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 379,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 380,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 381,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 382,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 383,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 384,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 385,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 386,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 387,
+      "health": 0,
+      "isDestroyed": true
+    },
+    {
+      "id": 388,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 389,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 390,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 391,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 392,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 393,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 394,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 395,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 396,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 397,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 398,
+      "health": 1,
+      "isDestroyed": false
+    }
+  ]
+}

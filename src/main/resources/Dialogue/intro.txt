@@ -1,0 +1,9 @@
+# Kịch bản intro
+# +background de thay doi background
+# -text "NHANVAT": "SENTENCE"
+# +background: /images/intro_background.png
+-text EGG: here u know this just been added randomly?
+
+-text EGG: Hey there! Are you... a ball?
+
+-text BALL: You did not make me a banh mi trung!
