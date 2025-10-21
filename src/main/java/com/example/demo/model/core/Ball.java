@@ -6,7 +6,7 @@ import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.Vector2D;
 
 public class Ball extends GameObject {
-    private final double baseSpeed = 300.0;
+    private final double baseSpeed = GameVar.BASE_SPEED_BALL;
     private boolean stuck;
     private Vector2D velocity;
     private final Paddle paddle;
@@ -14,12 +14,29 @@ public class Ball extends GameObject {
     private boolean accelerated;
     private boolean stronger;
     private boolean stopTime;
+    private double elapsedTime = 0;
 
     public Ball(Paddle paddle) {
         super("ball", GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
         this.paddle = paddle;
         resetState();
     }
+
+    public void toggleStopTime() {
+        this.stopTime = !this.stopTime;
+        System.out.println("toggle Stop Time - Is the ball stop: " + this.stopTime);
+    }
+
+    public void toggleAccelerated() {
+        this.accelerated = !this.accelerated;
+        System.out.println("toggle Accelerated - Is the ball accelerated: " + this.accelerated);
+    }
+
+    public void toggleStronger() {
+        this.stronger = !this.stronger;
+        System.out.println("toggle Stronger - Is the ball stronger: " + this.stronger);
+    }
+
 
     public void resetState() {
         alignWithPaddle(10, 1.0);
@@ -88,5 +105,8 @@ public class Ball extends GameObject {
         if (x > maxX) x = maxX;
         setPosition(x, y);
     }
+
+    public double getElapsedTime(){ return elapsedTime; }
+    public void setElapsedTime(double x){ elapsedTime = x; }
 
 }

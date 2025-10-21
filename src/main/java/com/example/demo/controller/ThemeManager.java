@@ -105,8 +105,8 @@ public class ThemeManager {
         BackgroundFill fill = new BackgroundFill(
                 new LinearGradient(0, 0, 0, 1, true,
                         CycleMethod.NO_CYCLE,
-                        new Stop(0, Color.web("#0b3a62")),
-                        new Stop(1, Color.web("#04263a"))),
+                        new Stop(0, Color.web("#000000")),
+                        new Stop(1, Color.web("#000000"))),
                 CornerRadii.EMPTY,
                 Insets.EMPTY
         );

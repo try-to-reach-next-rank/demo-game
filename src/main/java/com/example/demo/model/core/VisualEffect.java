@@ -45,6 +45,10 @@ public abstract class VisualEffect implements Effect {
         onActivate();
     }
 
+    public void activate(double x, double y) {
+        activate(x, y, this.durationSeconds);
+    }
+
     protected void onActivate() {
         // Default do nothing
     }

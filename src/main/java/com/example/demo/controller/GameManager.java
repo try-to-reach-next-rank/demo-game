@@ -6,6 +6,7 @@ import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.map.MapData;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
+import com.example.demo.model.utils.CheatTable;
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.dialogue.DialogueBox;
@@ -49,6 +50,7 @@ public class GameManager extends Pane {
     private DialogueSystem dialogueSystem; /** new dialogue system for running dialogue through txt*/
     private ParallaxSystem parallaxSystem;
     private PowerUpSystem powerUpSystem;
+    private CheatTable cheatTable;
 
 
     private boolean inGame = true;
@@ -142,6 +144,30 @@ public class GameManager extends Pane {
         List<Brick> bricks = mapData.getBricks();
         world.setBricks(bricks.toArray(new Brick[0]));
         world.resetForNewLevel();
+    }
+
+    public void loadNextLevel() {
+        int currentLevel = world.getCurrentLevel();
+        int nextLevel = currentLevel + 1;
+
+        if (nextLevel > 3) {
+            nextLevel = 1; // Quay vòng
+        }
+
+        world.setCurrentLevel(nextLevel); // Giả sử GameWorld có hàm này
+        loadLevel(nextLevel);
+    }
+
+    public void loadPreviousLevel() {
+        int currentLevel = world.getCurrentLevel();
+        int prevLevel = currentLevel - 1;
+
+        if (prevLevel < 1) {
+            prevLevel = 3; // Quay vòng
+        }
+
+        world.setCurrentLevel(prevLevel);
+        loadLevel(prevLevel);
     }
 
     private void saveGame() {
@@ -283,17 +309,29 @@ public class GameManager extends Pane {
     //  Misc
     // -------------------------------------------------------------------------
 
-    private void setupSecretCodeEasterEgg() { // TODO:put this in input
+    private void setupSecretCodeEasterEgg() {
         setOnKeyPressed(e -> {
             KeyCode code = e.getCode();
             if (code == null) return;
 
-            // Phím tắt để Lưu (F5) và Tải (F9) game
+            // Phím `~` (BACK_QUOTE) bây giờ CHỈ dùng để MỞ menu
+            if (code == KeyCode.BACK_QUOTE) {
+                if (cheatTable != null) {
+                    cheatTable.show(); // Chỉ mở
+                } else {
+                    System.out.println("   (Cheat menu not unlocked yet)");
+                }
+                e.consume();
+                return;
+            }
+
             if (code == KeyCode.F5) {
                 saveGame();
+                return;
             }
             if (code == KeyCode.F9) {
                 loadGame();
+                return;
             }
 
             // Logic cho secret code
@@ -302,13 +340,24 @@ public class GameManager extends Pane {
             if (keySequence.length() > SECRET_CODE.length()) {
                 keySequence.delete(0, keySequence.length() - SECRET_CODE.length());
             }
+
             if (keySequence.toString().equals(SECRET_CODE)) {
+
+                if (this.cheatTable == null) {
+                    System.out.println("!!! CHEAT MENU UNLOCKED !!!");
+                    this.cheatTable = new CheatTable(this);
+                        this.uiManager.add(this.cheatTable); // THÊM VÀO UIMANAGER
+                }
+
                 dialogueBox.start(new DialogueBox.DialogueLine[]{
                         new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.EGG, "You found the secret!"),
-                        new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Whoa, how did you unlock this?")
+                        new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Cheat menu unlocked. Press ~ to open.")
                 });
+
                 keySequence.setLength(0);
+                return;
             }
+
         });
     }
 

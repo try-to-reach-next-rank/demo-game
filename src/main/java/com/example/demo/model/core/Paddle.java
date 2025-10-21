@@ -5,7 +5,7 @@ import com.example.demo.model.utils.GameVar;
 
 public class Paddle extends GameObject {
     private int direction;          // -1 = left, 0 = stop, 1 = right
-    private final double speed = 400.0;   // base speed (pixels/second)
+    private final double speed = GameVar.BASE_SPEED_PADDLE;   // base speed (pixels/second)
     private boolean biggerPaddle;
 
     public Paddle() {
