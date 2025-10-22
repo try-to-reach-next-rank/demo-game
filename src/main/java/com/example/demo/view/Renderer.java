@@ -48,7 +48,7 @@ public class Renderer implements Renderable {
         // 4. Draw PowerUps
         for (PowerUp p : world.getPowerUps()) {
             if (p.isVisible()) {
-                gc.drawImage(p.getImage(), p.getX(), p.getY(), p.getWidth(), p.getHeight());
+                p.getAnimation().render(gc, p.getX(), p.getY(), p.getWidth(), p.getHeight());
             }
         }
 

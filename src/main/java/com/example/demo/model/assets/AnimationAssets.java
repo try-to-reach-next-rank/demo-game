@@ -22,56 +22,105 @@ public class AnimationAssets implements AssetLoader {
             Animation anim = new Animation(
                 img, data.frameWidth, data.frameHeight, data.totalFrames
             ).setLoop(data.loop)
-             .setRenderSize(data.renderWidth, data.renderHeight);
+             .setRenderSize(data.renderWidth, data.renderHeight)
+             .setRows(data.rows);
 
             manager.addAnimation(key, anim);
         });
     }
 
     private static final Map<String, AnimationData> assets = Map.of(
-            "explosion1", 
-            new AnimationData(
-                "explosion_spritesheet1", // Image Key
-                96, 96,
-                24,
-                false,
-                64, 64
-        ),
-            "explosion2", 
-            new AnimationData(
-                "explosion_spritesheet2", // Image Key
-                32, 32,
-                32,
-                false,
-                32, 32
-            )
+        // --- Explosion spritesheet ---
+        "explosion1", 
+        AnimationData.builder("explosion_spritesheet1", 96, 96, 24)
+            .loop(false)
+            .renderSize(64, 64)
+            .rows(0),
+
+        "explosion2", 
+        AnimationData.builder("explosion_spritesheet2", 32, 32, 32)
+            .loop(false)
+            .renderSize(32, 32)
+            .rows(0),
+
+        // --- Power up spritesheet ---
+        // "test", 
+        // AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+        //     .loop(true)
+        //     .renderSize(46, 21)
+        //     .rows(1),
+
+        "powerup_accelerate", 
+        AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            .loop(true)
+            .renderSize(46, 21)
+            .rows(0),
+
+        "powerup_stronger", 
+        AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            .loop(true)
+            .renderSize(46, 21)
+            .rows(1),
+
+        "powerup_stoptime", 
+        AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            .loop(true)
+            .renderSize(46, 21)
+            .rows(2),
+
+        "powerup_biggerpaddle", 
+        AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            .loop(true)
+            .renderSize(46, 21)
+            .rows(2),
+
+        "phuc", 
+        AnimationData.builder("powerup", 32, 32, 1)
+            .loop(true)
+            .renderSize(10, 10)
     );
 
     private static class AnimationData {
-        private final String    imageKey;
-        private final double    frameWidth;
-        private final double    frameHeight;
-        private final int       totalFrames;
-        private final boolean   loop;
-        private final double    renderWidth;
-        private final double    renderHeight;
+        private String    imageKey;
+        private double    frameWidth;
+        private double    frameHeight;
+        private int       totalFrames;
+        private double    renderWidth;
+        private double    renderHeight;
+        private int       rows            = 0;
+        private int       startFrameIndex = 0;
+        private boolean   loop            = false;
 
-        public AnimationData(
-            String imageKey,
-            double frameWidth,
-            double frameHeight,
-            int totalFrames,
-            boolean loop,
-            double renderWidth,
-            double renderHeight
-        ) {
+        private AnimationData(String imageKey, double frameWidth, double frameHeight, int totalFrames) {
             this.imageKey        = imageKey;
             this.frameWidth      = frameWidth;
             this.frameHeight     = frameHeight;
             this.totalFrames     = totalFrames;
-            this.loop            = loop;
-            this.renderWidth     = renderWidth;
-            this.renderHeight    = renderHeight;
+        }
+
+        private static AnimationData builder(String imageKey, double frameWidth, double frameHeight, int totalFrames) {
+            return new AnimationData(imageKey, frameWidth, frameHeight, totalFrames);
+        }
+
+        private AnimationData loop(boolean loop) {
+            this.loop = loop;
+            return this;
+        } 
+
+        private AnimationData renderSize(double renderWidth, double renderHeight) {
+            this.renderWidth = renderWidth;
+            this.renderHeight = renderHeight;
+            return this;
+        }
+
+        private AnimationData rows(int rows) {
+            this.rows = rows;
+            return this;
+        }
+
+        private AnimationData startFrame(int index) {
+            this.startFrameIndex = index;
+            return this;
         }
     }
 }

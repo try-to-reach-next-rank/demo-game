@@ -34,5 +34,10 @@ public class ImageAssets implements AssetLoader {
         assets.put("powerup", "/images/fastup.png");
         assets.put("explosion_spritesheet1", "/images/explosion/explosion1.png");
         assets.put("explosion_spritesheet2", "/images/explosion/explosion2.png");
+        assets.put("explosion_spritesheet", "/images/explosion/explosion.png");
+
+
+        // Test
+        assets.put("powerup_spritesheet", "/images/asset/powerups.png");
     };
 }

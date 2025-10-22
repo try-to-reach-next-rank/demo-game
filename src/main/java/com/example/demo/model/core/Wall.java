@@ -1,6 +1,8 @@
 package com.example.demo.model.core;
 
-public class Wall extends GameObject {
+import com.example.demo.model.core.gameobjects.ImageObject;
+
+public class Wall extends ImageObject {
     public enum Side { LEFT, RIGHT, TOP }
     private final Side side;
 

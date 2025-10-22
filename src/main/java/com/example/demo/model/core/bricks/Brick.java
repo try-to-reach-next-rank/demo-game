@@ -1,6 +1,6 @@
 package com.example.demo.model.core.bricks;
 
-import com.example.demo.model.core.GameObject;
+import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.view.graphics.BrickTextureProvider;
 import javafx.scene.image.Image;
@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
  * Pure data class representing a brick in the game.
  * Contains only state and basic getters/setters.
  */
-public class Brick extends GameObject {
+public class Brick extends ImageObject {
     private int health;
     private boolean destroyed;
 

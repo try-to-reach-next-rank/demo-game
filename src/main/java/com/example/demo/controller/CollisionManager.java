@@ -4,6 +4,7 @@ import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.Vector2D;

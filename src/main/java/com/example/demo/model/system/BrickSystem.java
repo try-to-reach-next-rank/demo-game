@@ -81,7 +81,7 @@ public class BrickSystem implements Updatable {
     private void spawnDestructionEffect(Brick brick) {
         double centerX = brick.getX() + brick.getWidth() / 2;
         double centerY = brick.getY() + brick.getHeight();
-        EffectRenderer.getInstance().spawn("explosion1", centerX, centerY, 5);
+        EffectRenderer.getInstance().spawn("explosion1", centerX, centerY, 0.5);
     }
 
     /**

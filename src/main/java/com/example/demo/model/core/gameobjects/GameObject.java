@@ -1,4 +1,4 @@
-package com.example.demo.model.core;
+package com.example.demo.model.core.gameobjects;
 
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
@@ -14,34 +14,16 @@ public abstract class GameObject {
     protected double y;
     protected double width;
     protected double height;
-    protected String imageKey;
-    protected Image  image;
     protected boolean visible = true;
 
-    private double baseWidth;
-    private double baseHeight;
+    protected double baseWidth;
+    protected double baseHeight;
 
-    private double scaleX = 1.0;
-    private double scaleY = 1.0;
+    protected double scaleX = 1.0;
+    protected double scaleY = 1.0;
 
-    public GameObject(String imageKey, double startX, double startY) {
-        setImageKey(imageKey);
+    public GameObject(double startX, double startY) {
         setPosition(startX, startY);
-    }
-
-    public void setImageKey(String imageKey) {
-        this.image = AssetManager.getInstance().getImage(imageKey);
-        if (this.image == null) {
-            System.err.println("Image not found for key: " + imageKey);
-            return;
-        }
-
-        this.imageKey = imageKey;
-        this.width = image.getWidth();
-        this.height = image.getHeight();
-        this.baseWidth = width;
-        this.baseHeight = height;
-        applyScale();
     }
 
     public void setPosition(double x, double y) {
@@ -67,7 +49,7 @@ public abstract class GameObject {
     /**
      * Áp dụng scale: cập nhật kích thước vật lý và hiển thị.
      */
-    private void applyScale() {
+    protected void applyScale() {
         this.width = baseWidth * scaleX;
         this.height = baseHeight * scaleY;
     }
@@ -76,12 +58,9 @@ public abstract class GameObject {
     public double getY() { return y; }
     public double getWidth() { return width; }
     public double getHeight() { return height; }
-    public Image getImage() { return image; }
 
     public boolean isVisible() { return visible; }
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
+    public void setVisible(boolean visible) { this.visible = visible; }
 
     public Bounds getBounds() {
         return new BoundingBox(x, y, width, height);

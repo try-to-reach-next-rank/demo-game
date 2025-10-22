@@ -1,11 +1,12 @@
 package com.example.demo.model.core;
 
+import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BallData;
 import com.example.demo.controller.AssetManager;
 import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.Vector2D;
 
-public class Ball extends GameObject {
+public class Ball extends ImageObject {
     private final double baseSpeed = GameVar.BASE_SPEED_BALL;
     private boolean stuck;
     private Vector2D velocity;
