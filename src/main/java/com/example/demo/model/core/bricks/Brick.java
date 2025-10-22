@@ -19,7 +19,6 @@ public class Brick extends GameObject {
         this.destroyed = false;
     }
 
-    // Thêm vào lớp Brick.java
     public void applyState(BrickData data) {
         if (data == null) return;
         this.setHealth(data.getHealth());
