@@ -1,5 +1,6 @@
 package com.example.demo.model.utils.dialogue;
 
+import com.example.demo.controller.AssetManager;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -40,16 +41,29 @@ public class DialogueBox extends UIComponent {
     private double timePerChar = 0;
 
     private Image eggImage, ballImage;
-    private final Font font = new Font("Verdana", 20);
+    private final Font font;
 
     private double eggY = 0, ballY = 0, timer = 0;
 
     public DialogueBox() {
-        var eggUrl = getClass().getResource("/images/egg.png");
-        var ballUrl = getClass().getResource("/images/Ball.png");
+        var am = AssetManager.getInstance();
+        var eggImg = am.getImage("/images/egg.png");
+        var ballImg = am.getImage("/images/Ball.png");
 
-        if (eggUrl != null) eggImage = new Image(eggUrl.toExternalForm(), 130, 130, true, true);
-        if (ballUrl != null) ballImage = new Image(ballUrl.toExternalForm(), 130, 130, true, true);
+        if (eggImg != null) eggImage = eggImg;
+        else {
+            var eggUrl = getClass().getResource("/images/egg.png");
+            if (eggUrl != null) eggImage = new Image(eggUrl.toExternalForm(), 130, 130, true, true);
+        }
+
+        if (ballImg != null) ballImage = ballImg;
+        else {
+            var ballUrl = getClass().getResource("/images/Ball.png");
+            if (ballUrl != null) ballImage = new Image(ballUrl.toExternalForm(), 130, 130, true, true);
+        }
+
+        // Use a cached font from AssetManager (or fallback)
+        this.font = am.getFont("Verdana", 20);
     }
 
     public void start(DialogueLine[] lines) {
