@@ -21,8 +21,8 @@ public class PaddleSystem implements Updatable {
         double newX = paddle.getX() + paddle.getDirection() * paddle.getSpeed() * deltaTime;
 
         // Clamp inside screen bounds
-        if (newX < GameVar.HEIGHT_OF_WALLS) {
-            newX = GameVar.HEIGHT_OF_WALLS;
+        if (newX < GameVar.WIDTH_OF_WALLS) {
+            newX = GameVar.WIDTH_OF_WALLS;
         } else if (newX > GlobalVar.WIDTH - paddle.getWidth() - GameVar.WIDTH_OF_WALLS) {
             newX = GlobalVar.WIDTH - paddle.getWidth() - GameVar.WIDTH_OF_WALLS;
         }

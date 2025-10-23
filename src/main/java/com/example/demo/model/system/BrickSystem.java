@@ -57,11 +57,32 @@ public class BrickSystem implements Updatable {
 
         if (health <= 0) {
             brick.setDestroyed(true);
-//            Sound.getInstance().playSound("brick_break"); TODO: maybe add brick break sound
+            notifyBrickDestroyed(brick);
         } else {
+            notifyBrickDamaged(brick, health);
+        }
+    }
+
+    protected void notifyBrickDestroyed(Brick brick) {
+        if (isFxInitialized()) {
+            // Sound.getInstance().playSound("brick_break");
+        }
+    }
+
+    protected void notifyBrickDamaged(Brick brick, int health) {
+        if (isFxInitialized()) {
             Image newTexture = BrickTextureProvider.getTextureForHealth(health);
             brick.setImage(newTexture);
             Sound.getInstance().playSound("brick_hit");
+        }
+    }
+
+    private boolean isFxInitialized() {
+        try {
+            javafx.application.Platform.runLater(() -> {});
+            return true;
+        } catch (IllegalStateException e) {
+            return false;
         }
     }
 
@@ -82,7 +103,9 @@ public class BrickSystem implements Updatable {
     private void spawnDestructionEffect(Brick brick) {
         double centerX = brick.getX() + brick.getWidth() / 2;
         double centerY = brick.getY() + brick.getHeight();
-        EffectRenderer.getInstance().spawn("explosion1", centerX, centerY, 5);
+        if (isFxInitialized()) {
+            EffectRenderer.getInstance().spawn("explosion1", centerX, centerY, 5);
+        }
     }
 
     /**
