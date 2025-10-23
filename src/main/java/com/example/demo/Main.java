@@ -66,7 +66,6 @@ public class Main extends Application {
 
         // --- Load all resources ---
         AssetManager.getInstance().loadAll();
-        Sound.getInstance().initialize();
 
         // --- Nhạc nền ---
         Sound.getInstance().loopMusic("Hametsu-no-Ringo");

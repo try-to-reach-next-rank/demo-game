@@ -13,11 +13,6 @@ public class Sound {
     // Singleton instance
     private static final Sound instance = new Sound();
 
-    // Music management
-    private Map<String, Media> musicLibrary = new HashMap<>();
-    private List<String> musicKey = new ArrayList<>();
-    private Map<String, AudioClip> soundEffects = new HashMap<>();
-
     private int currentTrackIndex = 0;
     private MediaPlayer currentMusicPlayer;
 
@@ -36,15 +31,6 @@ public class Sound {
     }
 
     // ============ SETTINGS INTEGRATION - THÊM CÁC METHOD NÀY ============
-
-    // Lấy từ SoundAssets
-    public void initialize() {
-        AssetManager assets = AssetManager.getInstance();
-        this.musicLibrary = assets.getMusics();
-        this.soundEffects = assets.getSounds();
-        this.musicKey = new ArrayList<>(this.musicLibrary.keySet());
-        System.out.println("Sound system initialized with " + this.musicLibrary.size() + " music tracks.");
-    }
 
     /**
      * Kết nối với SettingsModel để đồng bộ volume và enable/disable
@@ -99,7 +85,7 @@ public class Sound {
      */
     private void applyEffectVolume() {
         double volume = effectEnabled ? effectVolume : 0.0;
-        for (AudioClip clip : soundEffects.values()) {
+        for (AudioClip clip : AssetManager.getInstance().getSounds().values()) {
             clip.setVolume(volume);
         }
     }
@@ -109,7 +95,7 @@ public class Sound {
     public void playMusic(String name) {
         stopMusic();
 
-        Media media = musicLibrary.get(name);
+        Media media = AssetManager.getInstance().getMusic(name);
         if (media == null) {
             System.err.println("Couldn't find music with name: " + name);
             return;
@@ -120,13 +106,13 @@ public class Sound {
         currentMusicPlayer.setOnEndOfMedia(() -> playNextMusic());
         currentMusicPlayer.play();
 
-        currentTrackIndex = musicKey.indexOf(name);
+        currentTrackIndex = new ArrayList<>(AssetManager.getInstance().getMusics().keySet()).indexOf(name);
     }
 
     public void loopMusic(String name) {
         stopMusic();
 
-        Media media = musicLibrary.get(name);
+        Media media = AssetManager.getInstance().getMusic(name);
         if (media == null) {
             System.err.println("Couldn't find music to loop with name: " + name);
             return;
@@ -137,7 +123,7 @@ public class Sound {
         currentMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         currentMusicPlayer.play();
 
-        currentTrackIndex = musicKey.indexOf(name);
+        currentTrackIndex = new ArrayList<>(AssetManager.getInstance().getMusics().keySet()).indexOf(name);
     }
 
     public void stopMusic(){
@@ -172,6 +158,7 @@ public class Sound {
     }
 
     public void playNextMusic(){
+        List<String> musicKey = new ArrayList<>(AssetManager.getInstance().getMusics().keySet());
         if(musicKey.isEmpty()) return;
 
         currentTrackIndex = (currentTrackIndex + 1) % musicKey.size();
@@ -180,6 +167,7 @@ public class Sound {
     }
 
     public void playRandomMusic(){
+        List<String> musicKey = new ArrayList<>(AssetManager.getInstance().getMusics().keySet());
         if(musicKey.isEmpty()) return;
 
         Collections.shuffle(musicKey);
@@ -192,7 +180,7 @@ public class Sound {
     public void playSound(String name){
         if (!effectEnabled) return; // THÊM: check enable
 
-        AudioClip clip = soundEffects.get(name);
+        AudioClip clip = AssetManager.getInstance().getSound(name);
         if (clip == null) {
             System.err.println("Couldn't find sfx according to its name: " + name);
         } else {
@@ -204,7 +192,7 @@ public class Sound {
     public void loopSound(String name) {
         if (!effectEnabled) return; // THÊM: check enable
 
-        AudioClip clip = soundEffects.get(name);
+        AudioClip clip = AssetManager.getInstance().getSound(name);
         if (clip == null) {
             System.err.println("Couldn't find sfx to loop with name: " + name);
             return;
@@ -216,7 +204,7 @@ public class Sound {
     }
 
     public void stopSound(String name) {
-        AudioClip clip = soundEffects.get(name);
+        AudioClip clip = AssetManager.getInstance().getSound(name);
         if (clip != null) {
             clip.stop();
             clip.setCycleCount(1);
@@ -227,7 +215,7 @@ public class Sound {
 
     // THÊM METHOD MỚI (OPTIONAL - hữu ích khi cleanup)
     public void stopAllSounds() {
-        for (AudioClip clip : soundEffects.values()) {
+        for (AudioClip clip : AssetManager.getInstance().getSounds().values()) {
             clip.stop();
             clip.setCycleCount(1);
         }
@@ -252,6 +240,7 @@ public class Sound {
     }
 
     public String getCurrentTrackName() {
+        List<String> musicKey = new ArrayList<>(AssetManager.getInstance().getMusics().keySet());
         if (currentTrackIndex >= 0 && currentTrackIndex < musicKey.size()) {
             return musicKey.get(currentTrackIndex);
         }
