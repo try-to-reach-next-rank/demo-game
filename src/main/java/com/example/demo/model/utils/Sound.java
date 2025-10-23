@@ -1,5 +1,6 @@
 package com.example.demo.model.utils;
 
+import com.example.demo.controller.AssetManager;
 import com.example.demo.model.menu.SettingsModel;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
@@ -13,13 +14,12 @@ public class Sound {
     private static final Sound instance = new Sound();
 
     // Music management
-    private final Map<String, Media> musicLibrary = new HashMap<>();
-    private final List<String> musicKey = new ArrayList<>();
+    private Map<String, Media> musicLibrary = new HashMap<>();
+    private List<String> musicKey = new ArrayList<>();
+    private Map<String, AudioClip> soundEffects = new HashMap<>();
+
     private int currentTrackIndex = 0;
     private MediaPlayer currentMusicPlayer;
-
-    // Sound effects management
-    private final Map<String, AudioClip> soundEffects = new HashMap<>();
 
     // Settings integration - THÊM CÁC FIELD NÀY
     private SettingsModel settings;
@@ -29,48 +29,6 @@ public class Sound {
     private boolean effectEnabled = true;
 
     private Sound() {
-        loadSounds();
-    }
-
-    private void loadSounds(){
-        try{
-            loadMusic("Hametsu-no-Ringo", "/sounds/Hametsu-no-Ringo.mp3");
-            loadMusic("An-Impromptu-Piece", "/sounds/An-Impromptu-Piece.mp3");
-            loadMusic("Gerty-on-a-Rainy-Day", "/sounds/Gerty-on-a-Rainy-Day.mp3");
-            loadMusic("You-Far-Away", "/sounds/You-Far-Away.mp3");
-            loadMusic("Engraved-Star", "/sounds/Engraved-Star.mp3");
-
-            loadSoundEffect("dialogue-sound", "/sounds/dialogue-sound.wav");
-            loadSoundEffect("brick_hit", "/sounds/brick_hit.wav");
-            loadSoundEffect("paddle_hit", "/sounds/paddle_hit.wav");
-            loadSoundEffect("wall_hit", "/sounds/wall_hit.wav");
-            loadSoundEffect("game_over", "/sounds/game_over.wav");
-            loadSoundEffect("power_up","/sounds/power_up.wav");
-            loadSoundEffect("explosion_hit","/sounds/explosion_hit.wav");
-        }
-        catch (Exception e){
-            System.err.println("Error when loading sounds: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    private void loadSoundEffect(String name, String path){
-        URL sfxUrl = getClass().getResource(path);
-        if (sfxUrl == null) System.err.println("Couldn't find SFX at path: " + path);
-        else {
-            AudioClip clip = new AudioClip(sfxUrl.toString());
-            soundEffects.put(name, clip);
-        }
-    }
-
-    private void loadMusic(String name, String path){
-        URL musicUrl = getClass().getResource(path);
-        if (musicUrl == null) System.err.println("Couldn't find music file at path: " + path);
-        else {
-            Media media = new Media(musicUrl.toString());
-            musicLibrary.put(name, media);
-            musicKey.add(name);
-        }
     }
 
     public static Sound getInstance(){
@@ -78,6 +36,15 @@ public class Sound {
     }
 
     // ============ SETTINGS INTEGRATION - THÊM CÁC METHOD NÀY ============
+
+    // Lấy từ SoundAssets
+    public void initialize() {
+        AssetManager assets = AssetManager.getInstance();
+        this.musicLibrary = assets.getMusics();
+        this.soundEffects = assets.getSounds();
+        this.musicKey = new ArrayList<>(this.musicLibrary.keySet());
+        System.out.println("Sound system initialized with " + this.musicLibrary.size() + " music tracks.");
+    }
 
     /**
      * Kết nối với SettingsModel để đồng bộ volume và enable/disable

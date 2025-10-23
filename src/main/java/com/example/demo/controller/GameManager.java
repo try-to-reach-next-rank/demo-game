@@ -80,9 +80,6 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     private void initGame() {
-        // --- Load all resources ---
-        AssetManager.getInstance().loadAll();
-
         // --- Create base entities (Model layer) ---
         Paddle paddle = new Paddle();
         Ball ball = new Ball(paddle);

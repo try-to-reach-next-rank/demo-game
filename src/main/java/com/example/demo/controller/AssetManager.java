@@ -89,6 +89,14 @@ public class AssetManager {
         musics.put(key, music);
     }
 
+    public Map<String, AudioClip> getSounds() {
+        return sounds;
+    }
+
+    public Map<String, Media> getMusics() {
+        return musics;
+    }
+
     public Font getFont(String name, int size) {
         String key = name + "#" + size;
         return fonts.computeIfAbsent(key, k -> new Font(name, size));
