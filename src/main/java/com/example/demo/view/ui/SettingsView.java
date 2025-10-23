@@ -2,6 +2,7 @@ package com.example.demo.view.ui;
 
 import com.example.demo.controller.SettingsControllers;
 import com.example.demo.controller.ButtonManager;
+import com.example.demo.controller.Stage;
 import com.example.demo.controller.ThemeManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,7 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class SettingsView {
+public class SettingsView  implements Stage {
     private final SettingsControllers controller;
     private final ThemeManager themeManager;
     private final ButtonManager buttonManager;
@@ -40,7 +41,8 @@ public class SettingsView {
         StackPane.setAlignment(uiBox, Pos.CENTER);
     }
 
-    private void buildUI() {
+    @Override
+     public void buildUI() {
         Text title = new Text("Audio Settings");
         title.setFont(Font.font(34));
         title.setFill(Color.WHITE);
@@ -53,7 +55,6 @@ public class SettingsView {
                 "Back to Menu",
                 e -> controller.backToMenu()
         );
-
         uiBox.getChildren().addAll(title, settingsGrid, backRow);
     }
 

@@ -2,6 +2,7 @@ package com.example.demo.view;
 
 import com.example.demo.controller.ButtonManager;
 import com.example.demo.controller.MenuControll;
+import com.example.demo.controller.Stage;
 import com.example.demo.controller.ThemeManager;
 import com.example.demo.model.core.effects.GlowTextEffect;
 import javafx.animation.*;
@@ -21,7 +22,7 @@ import javafx.util.Duration;
 import java.util.*;
 
 
-public class MenuView {
+public class MenuView implements Stage {
     private final MenuControll controller;
     private final ThemeManager themeManager;
     private final ButtonManager buttonManager;
@@ -49,7 +50,8 @@ public class MenuView {
         StackPane.setAlignment(uiBox, Pos.CENTER);
     }
 
-    private void buildUI() {
+    @Override
+    public void buildUI() {
         GlowTextEffect glowTitle = new GlowTextEffect();
         glowTitle.activate(0, 0, 100000); // start shimmering
 

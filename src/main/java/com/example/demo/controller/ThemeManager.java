@@ -20,14 +20,14 @@ import java.util.List;
  * ThemeManager quản lý background (animated hoặc gradient) và resources chung
  */
 public class ThemeManager {
-    private final List<Image> bgFrames = new ArrayList<>();
-    private final ImageView bgView = new ImageView();
-    private Timeline bgTimeline;
-    private int bgFrameIndex = 0;
-    private Duration bgFrameDuration = Duration.millis(140);
+    private static final List<Image> bgFrames = new ArrayList<>();
+    private static final ImageView bgView = new ImageView();
+    private static Timeline bgTimeline;
+    private static int bgFrameIndex = 0;
+    private static Duration bgFrameDuration = Duration.millis(140);
 
     private Image handImage = null;
-    private String cssPath = "/styles/menu.css";
+    private static String cssPath = "/styles/menu.css";
 
     private static final int DEFAULT_BG_FRAMES = 6;
 
@@ -78,7 +78,7 @@ public class ThemeManager {
      * Setup background cho StackPane. Tự động chọn animated nếu có frames,
      * hoặc fallback sang gradient.
      */
-    public void setupBackground(StackPane rootStack) {
+    public static void setupBackground(StackPane rootStack) {
         if (!bgFrames.isEmpty()) {
             setupAnimatedBackground(rootStack);
         } else {
@@ -86,7 +86,7 @@ public class ThemeManager {
         }
     }
 
-    private void setupAnimatedBackground(StackPane rootStack) {
+    private static void setupAnimatedBackground(StackPane rootStack) {
         bgView.setPreserveRatio(false);
         bgView.setImage(bgFrames.get(0));
 
@@ -100,7 +100,7 @@ public class ThemeManager {
         startBgAnimation();
     }
 
-    private void setupGradientBackground(StackPane rootStack) {
+    private static void setupGradientBackground(StackPane rootStack) {
         Region bgRegion = new Region();
         BackgroundFill fill = new BackgroundFill(
                 new LinearGradient(0, 0, 0, 1, true,
@@ -123,7 +123,7 @@ public class ThemeManager {
     // Background Animation
     // -------------------------
 
-    private void startBgAnimation() {
+    private static void startBgAnimation() {
         if (bgFrames.isEmpty()) return;
         if (bgTimeline != null) bgTimeline.stop();
 
@@ -151,9 +151,9 @@ public class ThemeManager {
     /**
      * Apply CSS stylesheet cho node
      */
-    public void applyCss(Region node) {
+    public static void applyCss(Region node) {
         try {
-            String css = getClass().getResource(cssPath).toExternalForm();
+            String css = ThemeManager.class.getResource(cssPath).toExternalForm();
             node.getStylesheets().add(css);
         } catch (Exception e) {
             System.err.println("[ThemeManager] Failed to load CSS: " + e.getMessage());
