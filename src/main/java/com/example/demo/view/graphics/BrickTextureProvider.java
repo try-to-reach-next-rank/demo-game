@@ -18,10 +18,10 @@ public class BrickTextureProvider {
     }
 
     public static String getTextureForHealth(int health) {
+        if (health >= Integer.MAX_VALUE) return "steel_bricks";
         if (health < 1 || health > MAX_HEALTH) health = 1;
         return IMAGEKEYS.get(health - 1);
     }
-
     public static int getMaxHealth() {
         return MAX_HEALTH;
     }

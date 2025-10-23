@@ -51,6 +51,7 @@ public class BrickSystem implements Updatable {
      * Applies damage to a brick and updates its texture.
      */
     public void applyDamage(Brick brick) {
+        if (brick.getHealth() == Integer.MAX_VALUE) return;
         int health = brick.getHealth() - 1;
         brick.setHealth(health);
 

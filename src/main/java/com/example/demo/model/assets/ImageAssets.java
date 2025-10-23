@@ -25,6 +25,7 @@ public class ImageAssets implements AssetLoader {
     static {
         assets.put("ball", "/images/Ball.png");
         assets.put("paddle", "/images/Paddle.png");
+        assets.put("steel_bricks", "/images/SteelBricks.png");
         assets.put("bricks_1", "/images/Bricks.png");
         assets.put("bricks_2", "/images/Bricks2.png");
         assets.put("bricks_3", "/images/Bricks3.png");

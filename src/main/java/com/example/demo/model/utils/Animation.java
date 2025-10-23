@@ -66,12 +66,6 @@ public class Animation {
 
     public void render(GraphicsContext gc, double x, double y, double w, double h) {
         if (finished) return;
-        
-        // int col = currentFrame / rows;
-        // int row = currentFrame % rows;
-
-        // double sx = col * frameWidth;
-        // double sy = row * frameHeight;
 
         double sx = currentFrame * frameWidth;
         double sy = rows * frameHeight;

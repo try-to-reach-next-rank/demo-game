@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.map.MapData;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
@@ -50,6 +51,8 @@ public class GameManager extends Pane {
     private DialogueSystem dialogueSystem; /** new dialogue system for running dialogue through txt*/
     private ParallaxSystem parallaxSystem;
     private PowerUpSystem powerUpSystem;
+    private Renderer renderer;
+    private final TransitionEffect transitionEffect = new TransitionEffect(2.0); // 1.5s duration
     private CheatTable cheatTable;
 
 
@@ -113,12 +116,12 @@ public class GameManager extends Pane {
         ));
 
         // --- Register renderables (View layer) ---
-        Renderer renderer = new Renderer(world);
+        this.renderer = new Renderer(world);
         renderables.add(renderer);                                               // then the world
         renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
 
         // --- Setup parallax for first level ---
-        if (world.getCurrentLevel() == 1) initParallax();
+        if (world.getCurrentLevel() == 2) initParallax();
 
         // --- INTRO ---
         dialogueSystem.start();
@@ -131,19 +134,38 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     private void loadLevel(int level) { // TODO: put this in map
-        MapData mapData = switch (level) {
-            case 1 -> mapManager.loadMap(1);
-            case 2 -> mapManager.loadMap(2);
-            case 3 -> mapManager.loadMap(3);
-            default -> mapManager.loadMap(1);
-        };
+        inGame = false;
+        transitionEffect.start(
+                // midpoint -> when screen is fully black
+                () -> {
+                    MapData mapData = switch (level) {
+                        case 1 -> mapManager.loadMap(1);
+                        case 2 -> mapManager.loadMap(2);
+                        case 3 -> mapManager.loadMap(3);
+                        default -> mapManager.loadMap(1);
+                    };
 
-        world.getWalls().clear();
-        world.getWalls().addAll(mapData.getWalls());
+                    world.getWalls().clear();
+                    world.getWalls().addAll(mapData.getWalls());
 
-        List<Brick> bricks = mapData.getBricks();
-        world.setBricks(bricks.toArray(new Brick[0]));
-        world.resetForNewLevel();
+                    List<Brick> bricks = mapData.getBricks();
+                    world.setBricks(bricks.toArray(new Brick[0]));
+                    world.resetForNewLevel();
+
+                    renderer.reset();
+                    this.brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
+
+                    if (parallaxSystem == null && world.getCurrentLevel() == 1) initParallax();
+                },
+
+                // end -> fade finished, resume gameplay + dialogue
+                () -> {
+                    inGame = true;
+                    MapData mapData = mapManager.loadMap(level);
+                    System.out.println("Loaded map: " + level + " with " + mapData.getBricks().size() + " bricks");
+                    dialogueSystem.start();
+                }
+        );
     }
 
     public void loadNextLevel() {
@@ -287,22 +309,40 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     private void update(double deltaTime) {
+        // Always update transition effect and UI
+        transitionEffect.update(deltaTime);
         uiManager.update(deltaTime);
+
+        // Only skip gameplay logic, not transitions
         if (!inGame || uiManager.hasActiveUI()) return;
 
-        parallaxSystem.update(deltaTime);
+        // Continue updating gameplay systems
+        if (parallaxSystem != null)
+            parallaxSystem.update(deltaTime);
 
-        for (Updatable system : updatables) system.update(deltaTime);
+        for (Updatable system : updatables)
+            system.update(deltaTime);
+
         EffectRenderer.getInstance().update(deltaTime);
     }
+
 
     private void render() {
         gc.clearRect(0, 0, GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
-        parallaxSystem.render(gc);
+        if (parallaxSystem != null)
+            parallaxSystem.render(gc);
 
-        for (Renderable r : renderables) r.render(gc);
-        uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
+        for (Renderable r : renderables)
+            r.render(gc);
+
+        // UI always rendered, but optionally hide when transition is active
+        if (!transitionEffect.isActive() && uiManager.hasActiveUI()) {
+            uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
+        }
+
+        // Transition overlay on top
+        transitionEffect.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
     }
 
     // -------------------------------------------------------------------------
