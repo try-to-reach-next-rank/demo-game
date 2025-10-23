@@ -121,19 +121,51 @@ public class CollisionManager implements Updatable {
             if (brick.isDestroyed()) continue;
             if (!ball.getBounds().intersects(brick.getBounds())) continue;
 
-            // delegate to BrickSystem to apply damage, explosion, and power-up drop
+            //Nếu là cùng gạch đã va gần đây => bỏ qua
+            if (ball.getLastHitBrick() == brick) continue;
+
+            //Ghi nhận gạch vừa va
+            ball.setLastHitBrick(brick);
+
             brickSystem.onBallHitBrick(ball, brick);
             Sound.getInstance().playSound("brick_hit");
 
-            // bounce depending on overlap direction
             Vector2D v = ball.getVelocity();
             double overlapX = overlapX(ball, brick);
             double overlapY = overlapY(ball, brick);
             boolean fromSide = overlapX < overlapY;
-            if (ball.isStronger()) continue;
-            if (fromSide) ball.setVelocity(-v.x, v.y);
-            else ball.setVelocity(v.x, -v.y);
+
+            if (!ball.isStronger()) {
+                if (fromSide) ball.setVelocity(-v.x, v.y);
+                else ball.setVelocity(v.x, -v.y);
+            }
+
+            //Đẩy bóng ra khỏi vùng chồng lấn để tránh va tiếp
+            if (fromSide) {
+                if (v.x > 0)
+                    ball.setPosition(ball.getX() - overlapX, ball.getY());
+                else
+                    ball.setPosition(ball.getX() + overlapX, ball.getY());
+            } else {
+                if (v.y > 0)
+                    ball.setPosition(ball.getX(), ball.getY() - overlapY);
+                else
+                    ball.setPosition(ball.getX(), ball.getY() + overlapY);
+            }
+
+            break; // chỉ xử lý một gạch mỗi frame
         }
+
+        //Nếu bóng không còn va gạch nào → reset lại lastHitBrick
+        boolean stillColliding = false;
+        for (Brick brick : bricks) {
+            if (brick.isDestroyed()) continue;
+            if (ball.getBounds().intersects(brick.getBounds())) {
+                stillColliding = true;
+                break;
+            }
+        }
+        if (!stillColliding) ball.setLastHitBrick(null);
     }
 
     // ------------------------------------------------------------------------

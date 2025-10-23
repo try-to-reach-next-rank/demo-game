@@ -1,5 +1,6 @@
 package com.example.demo.model.core;
 
+import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.state.BallData;
 import com.example.demo.controller.AssetManager;
 import com.example.demo.model.utils.GameVar;
@@ -15,6 +16,9 @@ public class Ball extends GameObject {
     private boolean stronger;
     private boolean stopTime;
     private double elapsedTime = 0;
+
+    private Brick lastHitBrick;
+
 
     public Ball(Paddle paddle) {
         super(AssetManager.getInstance().getImage("ball"), GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
@@ -93,4 +97,11 @@ public class Ball extends GameObject {
     public double getElapsedTime(){ return elapsedTime; }
     public void setElapsedTime(double x){ elapsedTime = x; }
 
+    public Brick getLastHitBrick() {
+        return lastHitBrick;
+    }
+
+    public void setLastHitBrick(Brick brick) {
+        this.lastHitBrick = brick;
+    }
 }

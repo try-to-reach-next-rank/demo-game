@@ -116,7 +116,7 @@ public class GameManager extends Pane {
         renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
 
         // --- Setup parallax for first level ---
-        if (world.getCurrentLevel() == 2) initParallax();
+        if (world.getCurrentLevel() == 1) initParallax();
 
         // --- INTRO ---
         dialogueSystem.start();
