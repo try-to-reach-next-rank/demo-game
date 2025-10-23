@@ -1,59 +1,76 @@
 package com.example.demo.model.core;
 
 import com.example.demo.model.utils.Vector2D;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BallTest {
 
-    private Paddle paddle;
-    private Ball ball;
+    @Test
+    void initialStateAfterConstruction() {
+        // Use test-friendly Paddle constructor (no JavaFX images)
+        Paddle paddle = new Paddle();
+        // position it somewhere predictable
+        paddle.setPosition(100.0, 400.0);
 
-    @BeforeEach
-    void setUp() {
-        paddle = new Paddle();
-        ball = new Ball(paddle);
+        Ball ball = new Ball(paddle);
+
+        assertTrue(ball.isStuck(), "Ball should start stuck after construction/resetState");
+        assertEquals(300.0, ball.getBaseSpeed(), 1e-9, "Base speed should match expected constant");
+        assertNotNull(ball.getVelocity(), "Velocity must be initialized");
+        assertEquals(0.0, ball.getVelocity().x, 1e-6);
+        assertEquals(-1.0, ball.getVelocity().y, 1e-6);
     }
 
     @Test
-    void testInitialStateAndReset() {
-        // Constructor calls resetState(), so ball should start stuck with normalized velocity
-        assertTrue(ball.isStuck(), "Ball should be stuck after initialization/reset");
-        Vector2D vel = ball.getVelocity();
-        assertNotNull(vel, "Velocity should not be null after reset");
+    void releaseShouldUnstickAndSetUpwardVelocity() {
+        Paddle paddle = new Paddle();
+        paddle.setPosition(0.0, 0.0);
 
-        double magnitude = Math.hypot(vel.x, vel.y);
-        assertEquals(1.0, magnitude, 1e-6, "Velocity should be normalized (magnitude == 1)");
-    }
-
-    @Test
-    void testReleaseSetsStuckFalseAndVelocity() {
-        // Ensure release changes stuck flag and sets velocity to (0, -1)
+        Ball ball = new Ball(paddle);
         assertTrue(ball.isStuck());
-        ball.release();
-        assertFalse(ball.isStuck(), "Ball should not be stuck after release");
 
-        Vector2D vel = ball.getVelocity();
-        assertNotNull(vel);
-        assertEquals(0.0, vel.x, 1e-6, "After release, velocity.x should be 0");
-        assertEquals(-1.0, vel.y, 1e-6, "After release, velocity.y should be -1");
+        ball.release();
+        assertFalse(ball.isStuck(), "Ball.release() should unset stuck flag");
+        assertEquals(0.0, ball.getVelocity().x, 1e-6);
+        assertEquals(-1.0, ball.getVelocity().y, 1e-6);
     }
 
     @Test
-    void testAlignWithPaddlePositionsBallCorrectly() {
-        // Place paddle at a known position and align ball with it
-        double offsetY = 10.0;
-        paddle.setPosition(200.0, 400.0);
+    void setVelocityWithVectorShouldNormalize() {
+        Paddle paddle = new Paddle();
+        Ball ball = new Ball(paddle);
 
-        // call alignWithPaddle with lerpFactor = 1.0 so it snaps to target
-        ball.alignWithPaddle(offsetY, 1.0);
-
-        double expectedX = paddle.getX() + paddle.getWidth() / 2.0 - ball.getWidth() / 2.0;
-        double expectedY = paddle.getY() - ball.getHeight() - offsetY;
-
-        assertEquals(expectedX, ball.getX(), 1e-6, "Ball X should be centered on paddle");
-        assertEquals(expectedY, ball.getY(), 1e-6, "Ball Y should be offset above the paddle by offsetY");
+        ball.setVelocity(new Vector2D(3, 4)); // magnitude 5 -> normalized (0.6, 0.8)
+        assertEquals(0.6, ball.getVelocity().x, 1e-6);
+        assertEquals(0.8, ball.getVelocity().y, 1e-6);
     }
+
+    @Test
+    void setVelocityWithComponentsShouldAssignDirectly() {
+        Paddle paddle = new Paddle();
+        Ball ball = new Ball(paddle);
+
+        // ensure velocity object exists and then set components
+        ball.setVelocity(0, -1);
+        ball.setVelocity(2, 0);
+        assertEquals(2.0, ball.getVelocity().x, 1e-6);
+        assertEquals(0.0, ball.getVelocity().y, 1e-6);
+    }
+
+    @Test
+    void alignWithPaddleShouldClampToPaddleBounds() {
+        Paddle paddle = new Paddle();
+        paddle.setPosition(0.0, 100.0);
+
+        Ball ball = new Ball(paddle);
+        ball.x = 10000.0; // đặt ngoài phạm vi paddle để buộc clamp
+
+        ball.alignWithPaddle(10, 0.5); // dùng lerpFactor < 1.0 để giữ lại x hiện tại
+
+        double expectedMaxX = paddle.getX() + paddle.getWidth() - ball.getWidth();
+        assertEquals(expectedMaxX, ball.getX(), 1e-6, "Ball.x should be clamped to paddle's maxX");
+    }
+
 }
