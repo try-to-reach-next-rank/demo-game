@@ -7,9 +7,13 @@ public class Wall extends ImageObject {
     private final Side side;
 
     public Wall(Side side, double x, double y, double width, double height) {
-        super("wall", x, y);
+        super(side == Side.TOP ? "wall_top" : "wall_side", x, y);
         this.side = side;
-        setSize(width, height);
+        if (side == Side.TOP) {
+            setSize(height, width);
+        } else {
+            setSize(width, height);
+        }
     }
 
     private void setSize(double width, double height) {

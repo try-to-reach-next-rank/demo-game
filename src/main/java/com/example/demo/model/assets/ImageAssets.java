@@ -12,7 +12,7 @@ import com.example.demo.engine.AssetLoader;
 public class ImageAssets implements AssetLoader {
     @Override
     public void loadInto(AssetManager manager) {
-        assets.forEach((key, path) ->
+        ASSETS.forEach((key, path) ->
             manager.addImage(
                 key, 
                 new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)))
@@ -20,25 +20,37 @@ public class ImageAssets implements AssetLoader {
         );
     }
 
-    private static final Map<String, String> assets = new HashMap<>();
+    private static final Map<String, String> ASSETS = new HashMap<>();
 
     static {
-        assets.put("ball", "/images/Ball.png");
-        assets.put("paddle", "/images/Paddle.png");
-        assets.put("steel_bricks", "/images/SteelBricks.png");
-        assets.put("bricks_1", "/images/Bricks.png");
-        assets.put("bricks_2", "/images/Bricks2.png");
-        assets.put("bricks_3", "/images/Bricks3.png");
-        assets.put("bricks_4", "/images/Bricks4.png");
-        assets.put("bricks_5", "/images/Bricks5.png");
-        assets.put("wall", "/images/Wall.png");
-        assets.put("powerup", "/images/fastup.png");
-        assets.put("explosion_spritesheet1", "/images/explosion/explosion1.png");
-        assets.put("explosion_spritesheet2", "/images/explosion/explosion2.png");
-        assets.put("explosion_spritesheet", "/images/explosion/explosion.png");
+        // --- Images ---
+        // Ball image
+        ASSETS.put("ball", "/images/Ball.png");
+        
+        // Paddle image
+        ASSETS.put("paddle", "/images/Paddle.png");
+        
+        // Bricks images
+        ASSETS.put("steel_bricks", "/images/SteelBricks.png");
+        ASSETS.put("bricks_1", "/images/Bricks.png");
+        ASSETS.put("bricks_2", "/images/Bricks2.png");
+        ASSETS.put("bricks_3", "/images/Bricks3.png");
+        ASSETS.put("bricks_4", "/images/Bricks4.png");
+        ASSETS.put("bricks_5", "/images/Bricks5.png");
+        
+        // Wall image
+        // ASSETS.put("wall", "/images/Wall.png");
+        ASSETS.put("wall_sidep", "/images/wall/Wall.png");
+        ASSETS.put("wall_top", "/images/wall/WallRotated.png");
+        
+        // Power up image // TODO: Delete this later
+        ASSETS.put("powerup", "/images/fastup.png");
+        
+        // --- Sprite sheet ---
+        // Explosion sprite sheet
+        ASSETS.put("explosion_spritesheet", "/images/explosion/explosion.png");
 
-
-        // Test
-        assets.put("powerup_spritesheet", "/images/asset/powerups.png");
+        // Power up sprite sheet
+        ASSETS.put("powerup_spritesheet", "/images/asset/powerups.png");
     };
 }

@@ -1,5 +1,6 @@
 package com.example.demo.model.assets;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ import javafx.scene.image.Image;
 public class AnimationAssets implements AssetLoader {
     @Override
     public void loadInto(AssetManager manager) {
-        assets.forEach((key, data) -> {
+        ASSETS.forEach((key, data) -> {
             Image img = AssetManager.getInstance().getImage(data.imageKey);
             if (img == null) {
                 System.err.println("[ERROR] Image for animation '" + key + "' not found: " + data.imageKey);
@@ -29,56 +30,66 @@ public class AnimationAssets implements AssetLoader {
         });
     }
 
-    private static final Map<String, AnimationData> assets = Map.of(
+    private static final Map<String, AnimationData> ASSETS = new HashMap<>();
+    
+    static {
         // --- Explosion spritesheet ---
-        "explosion1", 
-        AnimationData.builder("explosion_spritesheet1", 96, 96, 24)
-            .loop(false)
-            .renderSize(64, 64)
-            .rows(0),
+        ASSETS.put(
+            "explosion1", 
+            AnimationData.builder("explosion_spritesheet", 96, 96, 24)
+                .loop(false)
+                .renderSize(64, 64)
+                .rows(0)
+        );
 
-        "explosion2", 
-        AnimationData.builder("explosion_spritesheet2", 32, 32, 32)
-            .loop(false)
-            .renderSize(32, 32)
-            .rows(0),
+        ASSETS.put(
+            "explosion2", 
+            AnimationData.builder("explosion_spritesheet", 96, 96, 32)
+                .loop(false)
+                .renderSize(32, 32)
+                .rows(1)
+        );
 
         // --- Power up spritesheet ---
-        // "test", 
-        // AnimationData.builder("powerup_spritesheet", 46, 21, 8)
-        //     .loop(true)
-        //     .renderSize(46, 21)
-        //     .rows(1),
+        ASSETS.put(
+            "powerup_accelerate", 
+            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+                .loop(true)
+                .renderSize(46, 21)
+                .rows(0)
+        );
 
-        "powerup_accelerate", 
-        AnimationData.builder("powerup_spritesheet", 46, 21, 8)
-            .loop(true)
-            .renderSize(46, 21)
-            .rows(0),
+        ASSETS.put(
+            "powerup_stronger", 
+            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+                .loop(true)
+                .renderSize(46, 21)
+                .rows(1)
+        );
 
-        "powerup_stronger", 
-        AnimationData.builder("powerup_spritesheet", 46, 21, 8)
-            .loop(true)
-            .renderSize(46, 21)
-            .rows(1),
+        ASSETS.put(
+            "powerup_stoptime", 
+            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+                .loop(true)
+                .renderSize(46, 21)
+                .rows(2)
+        );
 
-        "powerup_stoptime", 
-        AnimationData.builder("powerup_spritesheet", 46, 21, 8)
-            .loop(true)
-            .renderSize(46, 21)
-            .rows(2),
+        ASSETS.put(
+            "powerup_biggerpaddle", 
+            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+                .loop(true)
+                .renderSize(46, 21)
+                .rows(2)
+        );
 
-        "powerup_biggerpaddle", 
-        AnimationData.builder("powerup_spritesheet", 46, 21, 8)
-            .loop(true)
-            .renderSize(46, 21)
-            .rows(2),
-
-        "phuc", 
-        AnimationData.builder("powerup", 32, 32, 1)
-            .loop(true)
-            .renderSize(10, 10)
-    );
+        ASSETS.put(
+            "phuc", 
+            AnimationData.builder("powerup", 32, 32, 1)
+                .loop(true)
+                .renderSize(10, 10)
+        );
+    };
 
     private static class AnimationData {
         private String    imageKey;
