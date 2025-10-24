@@ -1,12 +1,6 @@
 {
-<<<<<<< HEAD
-  "musicVolume": 0.4490260957311284,
-  "effectVolume": 0.3795309168443497,
-  "musicEnabled": true,
-=======
   "musicVolume": 0.8694807459491384,
   "effectVolume": 0.36493579808288396,
   "musicEnabled": false,
->>>>>>> 262a6efb47d7f359829d807d7c35d90979bb7ac0
   "effectEnabled": true
 }

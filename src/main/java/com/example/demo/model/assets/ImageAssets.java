@@ -40,7 +40,7 @@ public class ImageAssets implements AssetLoader {
         
         // Wall image
         // ASSETS.put("wall", "/images/Wall.png");
-        ASSETS.put("wall_sidep", "/images/wall/Wall.png");
+        ASSETS.put("wall_side", "/images/wall/Wall.png");
         ASSETS.put("wall_top", "/images/wall/WallRotated.png");
         
         // Power up image // TODO: Delete this later
