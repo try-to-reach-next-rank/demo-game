@@ -31,12 +31,12 @@ public class ImageAssets implements AssetLoader {
         ASSETS.put("paddle", "/images/Paddle.png");
         
         // Bricks images
-        ASSETS.put("steel_bricks", "/images/SteelBricks.png");
-        ASSETS.put("bricks_1", "/images/Bricks.png");
-        ASSETS.put("bricks_2", "/images/Bricks2.png");
-        ASSETS.put("bricks_3", "/images/Bricks3.png");
-        ASSETS.put("bricks_4", "/images/Bricks4.png");
-        ASSETS.put("bricks_5", "/images/Bricks5.png");
+        ASSETS.put("steel_bricks", "/images/bricks/SteelBricks.png");
+        ASSETS.put("bricks_1", "/images/bricks/Bricks.png");
+        ASSETS.put("bricks_2", "/images/bricks/Bricks2.png");
+        ASSETS.put("bricks_3", "/images/bricks/Bricks3.png");
+        ASSETS.put("bricks_4", "/images/bricks/Bricks4.png");
+        ASSETS.put("bricks_5", "/images/bricks/Bricks5.png");
         
         // Wall image
         // ASSETS.put("wall", "/images/Wall.png");

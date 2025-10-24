@@ -13,9 +13,9 @@ public class GameVar {
     public static final float ACCELERATED_SPEED_MULTIPLIER = 2.0F;
 
     public static final int WIDTH_OF_WALLS = 12;
-    public static final int HEIGHT_OF_WALLS = 400;
+    public static final int HEIGHT_OF_WALLS = 200;
     public static final int N_OF_WALLS_LEFT_RIGHT = HEIGHT / HEIGHT_OF_WALLS;
-    public static final int N_OF_WALLS_TOP = WIDTH / WIDTH_OF_WALLS;
+    public static final int N_OF_WALLS_TOP = WIDTH / HEIGHT_OF_WALLS;
 
     public static final int BRICKS_PER_ROW = 20;
     public static final int PADDING_X = 0;
@@ -41,7 +41,7 @@ public class GameVar {
 
     // Compute the usable width/height inside walls
     private final static int USABLE_WIDTH = GlobalVar.WIDTH - 2 * GameVar.WIDTH_OF_WALLS;
-    private final static int USABLE_HEIGHT = GlobalVar.HEIGHT - GameVar.HEIGHT_OF_WALLS * 2;
+    private final static int USABLE_HEIGHT = GlobalVar.HEIGHT - GameVar.WIDTH_OF_WALLS;
 
 
     // Number of columns and rows that actually fit inside

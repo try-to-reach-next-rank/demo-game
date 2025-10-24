@@ -41,12 +41,12 @@ public class MapData {
         for (int i = 0; i < GameVar.N_OF_WALLS_LEFT_RIGHT; i++) {
             walls.add(new Wall(Wall.Side.LEFT, 0, i * GameVar.HEIGHT_OF_WALLS,
                     GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
-            walls.add(new Wall(Wall.Side.RIGHT, GlobalVar.WIDTH - GameVar.WIDTH_OF_WALLS,
-                    i * GameVar.HEIGHT_OF_WALLS, GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
+            walls.add(new Wall(Wall.Side.RIGHT, GlobalVar.WIDTH - GameVar.WIDTH_OF_WALLS, i * GameVar.HEIGHT_OF_WALLS,
+                    GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
         }
 
         for (int i = 0; i < GameVar.N_OF_WALLS_TOP; i++) {
-            walls.add(new Wall(Wall.Side.TOP, i * GameVar.WIDTH_OF_WALLS, 0,
+            walls.add(new Wall(Wall.Side.TOP, i * GameVar.HEIGHT_OF_WALLS, 0,
                     GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
         }
         System.out.println("Walls created: " + walls.size());
