@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.controller.AssetManager;
 import com.example.demo.controller.GameManager;
 import com.example.demo.controller.MenuControll;
 import com.example.demo.controller.SettingsControllers;
@@ -62,6 +63,9 @@ public class Main extends Application {
         stage.setScene(mainScene);
         stage.setResizable(false);
         stage.show();
+
+        // --- Load all resources ---
+        AssetManager.getInstance().loadAll();
 
         // --- Nhạc nền ---
         Sound.getInstance().loopMusic("Hametsu-no-Ringo");
