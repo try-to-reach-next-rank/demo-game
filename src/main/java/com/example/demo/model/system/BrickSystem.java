@@ -2,8 +2,8 @@ package com.example.demo.model.system;
 
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
+import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.utils.GameRandom;
 import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.Sound;

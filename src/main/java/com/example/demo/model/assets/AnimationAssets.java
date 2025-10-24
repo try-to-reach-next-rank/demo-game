@@ -53,41 +53,34 @@ public class AnimationAssets implements AssetLoader {
         // --- Power up spritesheet ---
         ASSETS.put(
             "powerup_accelerate", 
-            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
                 .loop(true)
-                .renderSize(46, 21)
+                .renderSize(32, 16)
                 .rows(0)
         );
 
         ASSETS.put(
             "powerup_stronger", 
-            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
                 .loop(true)
-                .renderSize(46, 21)
+                .renderSize(32, 16)
                 .rows(1)
         );
 
         ASSETS.put(
             "powerup_stoptime", 
-            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
                 .loop(true)
-                .renderSize(46, 21)
+                .renderSize(32, 16)
                 .rows(2)
         );
 
         ASSETS.put(
             "powerup_biggerpaddle", 
-            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
                 .loop(true)
-                .renderSize(46, 21)
-                .rows(2)
-        );
-
-        ASSETS.put(
-            "phuc", 
-            AnimationData.builder("powerup", 32, 32, 1)
-                .loop(true)
-                .renderSize(10, 10)
+                .renderSize(32, 16)
+                .rows(3)
         );
     };
 
