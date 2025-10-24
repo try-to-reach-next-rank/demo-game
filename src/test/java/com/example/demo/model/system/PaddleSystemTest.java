@@ -83,11 +83,7 @@ class PaddleSystemTest {
         };
 
         PaddleSystem system = new PaddleSystem(paddle);
-
-        // Act
         system.reset();
-
-        // Assert
         assertTrue(resetCalled.get(), "PaddleSystem.reset() should call paddle.resetState()");
     }
 

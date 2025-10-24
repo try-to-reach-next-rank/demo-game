@@ -38,7 +38,7 @@ public class BrickSystem implements Updatable {
     public void onBallHitBrick(Ball ball, Brick brick) {
         if (brick.isDestroyed()) return;
 
-        applyDamage(brick);
+        applyDamage(brick, ball.isStronger());
 
         // Check destruction and trigger effects
         if (brick.isDestroyed()) {
@@ -50,9 +50,10 @@ public class BrickSystem implements Updatable {
     /**
      * Applies damage to a brick and updates its texture.
      */
-    public void applyDamage(Brick brick) {
+    public void applyDamage(Brick brick, boolean isStronger) {
         if (brick.getHealth() == Integer.MAX_VALUE) return;
-        int health = brick.getHealth() - 1;
+        int deltaHealth = (isStronger) ? 5 : 1;
+        int health = brick.getHealth() - deltaHealth;
         brick.setHealth(health);
 
         if (health <= 0) {
@@ -124,7 +125,7 @@ public class BrickSystem implements Updatable {
             double distance = Math.sqrt(Math.pow(cx - ocx, 2) + Math.pow(cy - ocy, 2));
 
             if (distance <= radius) {
-                applyDamage(other);
+                applyDamage(other, true);
             }
         }
     }

@@ -24,7 +24,7 @@ class BrickSystemTest {
         BrickSystem system = new BrickSystem(bricks, powerUps);
 
         // Act
-        system.applyDamage(brick);
+        system.applyDamage(brick, false);
 
         // Assert: health decreased to 0 and brick marked destroyed
         assertEquals(0, brick.getHealth(), "Health should be reduced to 0 when damaged from 1");
@@ -44,7 +44,7 @@ class BrickSystemTest {
         BrickSystem system = new BrickSystem(bricks, powerUps);
 
         // Act
-        system.applyDamage(brick);
+        system.applyDamage(brick, false);
 
         // Assert: health decremented by 1, not destroyed
         assertEquals(2, brick.getHealth(), "Health should be decremented by 1 for non-lethal damage");

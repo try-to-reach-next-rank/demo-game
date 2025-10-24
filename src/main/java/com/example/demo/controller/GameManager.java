@@ -6,6 +6,7 @@ import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.map.MapData;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
+import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.dialogue.DialogueBox;
@@ -116,7 +117,7 @@ public class GameManager extends Pane {
         renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
 
         // --- Setup parallax for first level ---
-        if (world.getCurrentLevel() == 1) initParallax();
+        if (world.getCurrentLevel() == GameVar.START_LEVEL) initParallax();
 
         // --- INTRO ---
         dialogueSystem.start();

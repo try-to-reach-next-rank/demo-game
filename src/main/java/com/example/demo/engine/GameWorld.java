@@ -3,6 +3,7 @@ package com.example.demo.engine;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.system.PowerUpSystem;
+import com.example.demo.model.utils.GameVar;
 import com.example.demo.view.EffectRenderer;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class GameWorld {
     private Brick[] bricks = new Brick[0];
     private final List<PowerUp> powerUps = new ArrayList<>();
     private final List<Wall> walls = new ArrayList<>();
-    private int currentLevel = 1;
+    private int currentLevel = GameVar.START_LEVEL;
     private PowerUpSystem powerUpSystem;
 
     public PowerUpSystem getPowerUpSystem() {

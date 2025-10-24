@@ -2,6 +2,8 @@ package com.example.demo.model.utils;
 import static com.example.demo.model.utils.GlobalVar.*;
 
 public class GameVar {
+    public static final int START_LEVEL = 1;
+
     private GameVar() {}
 
     public static final int INIT_PADDLE_X = WIDTH / 2 - 50;

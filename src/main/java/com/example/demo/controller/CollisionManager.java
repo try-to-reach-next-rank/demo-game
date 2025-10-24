@@ -139,20 +139,7 @@ public class CollisionManager implements Updatable {
                 if (fromSide) ball.setVelocity(-v.x, v.y);
                 else ball.setVelocity(v.x, -v.y);
             }
-
-            //Đẩy bóng ra khỏi vùng chồng lấn để tránh va tiếp
-            if (fromSide) {
-                if (v.x > 0)
-                    ball.setPosition(ball.getX() - overlapX, ball.getY());
-                else
-                    ball.setPosition(ball.getX() + overlapX, ball.getY());
-            } else {
-                if (v.y > 0)
-                    ball.setPosition(ball.getX(), ball.getY() - overlapY);
-                else
-                    ball.setPosition(ball.getX(), ball.getY() + overlapY);
-            }
-
+            
             break; // chỉ xử lý một gạch mỗi frame
         }
 
