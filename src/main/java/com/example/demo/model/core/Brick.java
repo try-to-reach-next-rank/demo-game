@@ -1,4 +1,4 @@
-package com.example.demo.model.core.bricks;
+package com.example.demo.model.core;
 
 import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BrickData;
@@ -37,4 +37,10 @@ public class Brick extends ImageObject {
 
     public boolean isDestroyed() { return destroyed; }
     public void setDestroyed(boolean destroyed) { this.destroyed = destroyed; }
+
+    @Override
+    public boolean isStatic() {
+        // TODO: Upgrade this later
+        return false;
+    }
 }

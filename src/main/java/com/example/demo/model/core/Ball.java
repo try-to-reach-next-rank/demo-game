@@ -110,4 +110,9 @@ public class Ball extends ImageObject {
     public double getElapsedTime(){ return elapsedTime; }
     public void setElapsedTime(double x){ elapsedTime = x; }
 
+    @Override
+    public boolean isStatic() {
+        return false;
+    }
+
 }

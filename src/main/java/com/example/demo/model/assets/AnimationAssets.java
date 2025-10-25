@@ -24,7 +24,8 @@ public class AnimationAssets implements AssetLoader {
                 img, data.frameWidth, data.frameHeight, data.totalFrames
             ).setLoop(data.loop)
              .setRenderSize(data.renderWidth, data.renderHeight)
-             .setRows(data.rows);
+             .setRows(data.rows)
+             .setDuration(data.durationSeconds);
 
             manager.addAnimation(key, anim);
         });
@@ -53,41 +54,38 @@ public class AnimationAssets implements AssetLoader {
         // --- Power up spritesheet ---
         ASSETS.put(
             "powerup_accelerate", 
-            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
                 .loop(true)
-                .renderSize(46, 21)
+                .renderSize(32, 16)
                 .rows(0)
+                .duration(5.0)
         );
 
         ASSETS.put(
             "powerup_stronger", 
-            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
                 .loop(true)
-                .renderSize(46, 21)
+                .renderSize(32, 16)
                 .rows(1)
+                .duration(2.0)
         );
 
         ASSETS.put(
             "powerup_stoptime", 
-            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
                 .loop(true)
-                .renderSize(46, 21)
+                .renderSize(32, 16)
                 .rows(2)
+                .duration(10.0)
         );
 
         ASSETS.put(
             "powerup_biggerpaddle", 
-            AnimationData.builder("powerup_spritesheet", 46, 21, 8)
+            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
                 .loop(true)
-                .renderSize(46, 21)
-                .rows(2)
-        );
-
-        ASSETS.put(
-            "phuc", 
-            AnimationData.builder("powerup", 32, 32, 1)
-                .loop(true)
-                .renderSize(10, 10)
+                .renderSize(32, 16)
+                .rows(3)
+                .duration(1.0)
         );
     };
 
@@ -98,6 +96,7 @@ public class AnimationAssets implements AssetLoader {
         private int       totalFrames;
         private double    renderWidth;
         private double    renderHeight;
+        private double    durationSeconds = 1.0; // Default Animation run 1 sec
         private int       rows            = 0;
         private int       startFrameIndex = 0;
         private boolean   loop            = false;
@@ -126,6 +125,11 @@ public class AnimationAssets implements AssetLoader {
 
         private AnimationData rows(int rows) {
             this.rows = rows;
+            return this;
+        }
+
+        private AnimationData duration(double durationSeconds) {
+            this.durationSeconds = durationSeconds;
             return this;
         }
 

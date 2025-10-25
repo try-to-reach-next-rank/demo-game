@@ -67,4 +67,6 @@ public abstract class GameObject {
     public Bounds getBounds() {
         return new BoundingBox(x, y, width, height);
     }
+
+    public abstract boolean isStatic();
 }

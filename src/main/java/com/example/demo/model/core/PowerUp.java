@@ -1,7 +1,6 @@
 package com.example.demo.model.core;
 
 import com.example.demo.controller.AssetManager;
-import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.gameobjects.AnimatedObject;
 import com.example.demo.model.utils.Animation;
 import com.example.demo.model.utils.GlobalVar;
@@ -63,4 +62,9 @@ public class PowerUp extends AnimatedObject {
     public boolean isVisible() { return visible; }
     public void setVisible(boolean visible) { this.visible = visible; }
     public String getType() { return type; }
+
+    @Override
+    public boolean isStatic() {
+        return false;
+    }
 }

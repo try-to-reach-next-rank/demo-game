@@ -39,18 +39,15 @@ public class ImageAssets implements AssetLoader {
         ASSETS.put("bricks_5", "/images/bricks/Bricks5.png");
         
         // Wall image
-        // ASSETS.put("wall", "/images/Wall.png");
         ASSETS.put("wall_side", "/images/wall/Wall.png");
         ASSETS.put("wall_top", "/images/wall/WallRotated.png");
-        
-        // Power up image // TODO: Delete this later
-        ASSETS.put("powerup", "/images/fastup.png");
+
         
         // --- Sprite sheet ---
         // Explosion sprite sheet
-        ASSETS.put("explosion_spritesheet", "/images/explosion/explosion.png");
+        ASSETS.put("explosion_spritesheet", "/images/explosion/Explosion.png");
 
         // Power up sprite sheet
-        ASSETS.put("powerup_spritesheet", "/images/asset/powerups.png");
+        ASSETS.put("powerup_spritesheet", "/images/powerup/PowerUps.png");
     };
 }

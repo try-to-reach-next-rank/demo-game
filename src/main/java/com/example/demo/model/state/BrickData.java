@@ -1,6 +1,6 @@
 package com.example.demo.model.state;
 
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.Brick;
 
 public class BrickData {
     private int id;
