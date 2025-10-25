@@ -12,7 +12,7 @@ public class MenuControll {
     }
 
     public void isPlaying(){
-        model.setCurrentScreen(MenuModel.Screen.PLAY);
+        model.setCurrentScreen(MenuModel.Screen.SELECT);
         System.out.println("playing");
     }
     public void isSelecting() {

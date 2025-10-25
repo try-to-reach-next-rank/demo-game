@@ -3,12 +3,20 @@ package com.example.demo;
 import com.example.demo.controller.GameManager;
 import com.example.demo.controller.MenuControll;
 import com.example.demo.controller.SettingsControllers;
+<<<<<<< Updated upstream
 import com.example.demo.model.map.MenuModel;
 import com.example.demo.model.map.SettingsModel;
+=======
+import com.example.demo.controller.SlotSelectionController;
+import com.example.demo.model.menu.MenuModel;
+import com.example.demo.model.menu.SettingsModel;
+import com.example.demo.model.state.GameState;
+>>>>>>> Stashed changes
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Input;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.view.MenuView;
+import com.example.demo.view.SlotSelectionView;
 import com.example.demo.view.ui.SettingsView;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -24,6 +32,9 @@ public class Main extends Application {
     private MenuView menuView;
     private SettingsView settingsView;
 
+    private SlotSelectionView slotSelectionView;
+    private SlotSelectionController slotSelectionController;
+
     private StackPane mainRoot;
     private Scene mainScene;
     private Stage primaryStage;
@@ -36,6 +47,8 @@ public class Main extends Application {
         menuModel = new MenuModel();
         settingsModel = new SettingsModel();
 
+        initSlotSelection();
+
         // --- Khởi tạo Controllers ---
         MenuControll menuController = new MenuControll(menuModel);
         SettingsControllers settingsController = new SettingsControllers(settingsModel, menuModel);
@@ -45,7 +58,7 @@ public class Main extends Application {
         settingsView = new SettingsView(settingsController);
 
         // --- Tạo root chính chứa các màn hình ---
-        mainRoot = new StackPane(menuView.getRoot()); // bắt đầu với menu
+        mainRoot = new StackPane(menuView.getRoot());
         mainScene = new Scene(mainRoot, GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
         // --- Gắn sự kiện bàn phím cho menu ---
@@ -69,11 +82,12 @@ public class Main extends Application {
 
     // --- Chuyển giữa các màn hình ---
     private void switchScreen(MenuModel.Screen screen) {
-        mainRoot.getChildren().clear(); // xoá nội dung cũ trước khi thêm mới
+        mainRoot.getChildren().clear();
 
         switch (screen) {
             case MENU -> showMenu();
             case SETTINGS -> showSettings();
+            case SELECT -> showSlotSelection();
             case PLAY -> showGame();
             case EXIT -> primaryStage.close();
         }
@@ -96,7 +110,6 @@ public class Main extends Application {
     }
 
     private void showGame() {
-        gameManager = new GameManager();
         Input input = new Input(gameManager.getPaddle(), gameManager.getBall());
 
         mainRoot.getChildren().add(gameManager);
@@ -116,6 +129,55 @@ public class Main extends Application {
         });
 
         gameManager.requestFocus();
+    }
+
+    private void showSlotSelection() {
+        mainRoot.getChildren().add(slotSelectionView.getRoot());
+        slotSelectionView.enableKeyboard(mainScene);
+        slotSelectionView.getRoot().requestFocus();
+    }
+
+    // ========== FIXED METHODS ==========
+
+    private void startNewGame(int slotNumber) {
+        System.out.println("Starting NEW GAME in slot " + slotNumber);
+
+        gameManager = new GameManager();
+        gameManager.setNewGame(true);  // ← QUAN TRỌNG: Đánh dấu là New Game
+        gameManager.setCurrentSlot(slotNumber);
+
+        menuModel.setCurrentScreen(MenuModel.Screen.PLAY);
+    }
+
+    private void continueGame(int slotNumber, GameState gameState) {
+        System.out.println("LOADING GAME from slot " + slotNumber);
+
+        gameManager = new GameManager();
+        gameManager.setNewGame(false);  // ← QUAN TRỌNG: Đánh dấu là Load Game
+        gameManager.setCurrentSlot(slotNumber);
+        gameManager.applyState(gameState);  // Apply sau khi set slot
+
+        menuModel.setCurrentScreen(MenuModel.Screen.PLAY);
+    }
+
+    private void initSlotSelection() {
+        slotSelectionController = new SlotSelectionController();
+        slotSelectionView = new SlotSelectionView(slotSelectionController);
+
+        // Setup callbacks
+        slotSelectionController.setOnBackToMenu(() -> {
+            menuModel.setCurrentScreen(MenuModel.Screen.MENU);
+        });
+
+        slotSelectionController.setOnStartGame((slotNumber, gameState) -> {
+            if (gameState == null) {
+                // New game → chạy intro dialogue
+                startNewGame(slotNumber);
+            } else {
+                // Continue game → KHÔNG chạy intro dialogue
+                continueGame(slotNumber, gameState);
+            }
+        });
     }
 
     public static void main(String[] args) {

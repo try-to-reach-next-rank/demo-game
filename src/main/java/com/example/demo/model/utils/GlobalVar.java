@@ -10,5 +10,10 @@ public final class GlobalVar {
 
     public static final double  FPS         = 60.0;
     public static final String  SECRET_CODE = "PHUC";
+<<<<<<< Updated upstream
     public static final String  SAVE_FILE_NAME = "src/main/resources/Saves/gamestate.json";
+=======
+    public static final String  SAVE_FILE_NAME = "src/main/resources/Saves/slot_1.json";
+    public static final String SETTINGS_FILE_PATH = "src/main/resources/Saves/settings.json";
+>>>>>>> Stashed changes
 }

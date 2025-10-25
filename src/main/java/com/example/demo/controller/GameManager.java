@@ -10,6 +10,7 @@ import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.dialogue.DialogueBox;
 import com.example.demo.model.utils.dialogue.DialogueSystem;
+import com.example.demo.repository.SaveDataRepository;
 import com.example.demo.view.*;
 import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.view.graphics.ParallaxSystem;
@@ -47,11 +48,28 @@ public class GameManager extends Pane {
     private final MapManager mapManager = new MapManager();
     private CollisionManager collisionManager;
     private BrickSystem brickSystem;
-    private DialogueSystem dialogueSystem; /** new dialogue system for running dialogue through txt*/
+    private DialogueSystem dialogueSystem;
     private ParallaxSystem parallaxSystem;
+<<<<<<< Updated upstream
+=======
+    private PowerUpSystem powerUpSystem;
+
+    private int currentSlotNumber = -1;
+    private boolean isNewGame = true; // Flag để phân biệt New Game vs Load Game
+>>>>>>> Stashed changes
 
     private boolean inGame = true;
     private final StringBuilder keySequence = new StringBuilder();
+
+    public void setCurrentSlot(int slotNumber) {
+        this.currentSlotNumber = slotNumber;
+        System.out.println("Current Slot Number: " + this.currentSlotNumber);
+    }
+
+    // Thêm method để set trạng thái New Game
+    public void setNewGame(boolean isNewGame) {
+        this.isNewGame = isNewGame;
+    }
 
     public GameManager() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
@@ -61,7 +79,6 @@ public class GameManager extends Pane {
         setFocusTraversable(true);
         requestFocus();
 
-        // Lấy các lệnh từ intro.txt rồi gọi dialogue tương ứng thông qua dialogueBox
         dialogueSystem = new DialogueSystem("/Dialogue/intro.txt", dialogueBox);
         setupSecretCodeEasterEgg();
 
@@ -83,13 +100,19 @@ public class GameManager extends Pane {
         // --- Create core systems (Controller layer) ---
         BallSystem ballSystem = new BallSystem(ball, paddle);
         PaddleSystem paddleSystem = new PaddleSystem(paddle);
+<<<<<<< Updated upstream
         PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
+=======
+        this.powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
+
+        world.setPowerUpSystem(this.powerUpSystem);
+>>>>>>> Stashed changes
 
         // --- Load map and build bricks/walls ---
         loadLevel(world.getCurrentLevel());
         brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
 
-        // --- Create managers (controllers) --- // TODO: maybe simplify or get rid of this
+        // --- Create managers (controllers) ---
         collisionManager = new CollisionManager(world, ballSystem, brickSystem, powerUpSystem);
 
         // --- Register update systems ---
@@ -103,15 +126,24 @@ public class GameManager extends Pane {
 
         // --- Register renderables (View layer) ---
         Renderer renderer = new Renderer(world);
-        renderables.add(renderer);                                               // then the world
-        renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
+        renderables.add(renderer);
+        renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT));
 
         // --- Setup parallax for first level ---
         if (world.getCurrentLevel() == 1) initParallax();
 
-        // --- INTRO ---
-        dialogueSystem.start();
         Sound.getInstance().playRandomMusic();
+
+        // Load game nếu KHÔNG phải New Game
+        if (!isNewGame) {
+            loadGame();
+        }
+
+        // CHỈ chạy intro dialogue nếu là New Game
+        if (isNewGame) {
+            dialogueSystem.start();
+        }
+
         loop();
     }
 
@@ -119,7 +151,7 @@ public class GameManager extends Pane {
     //  Level Management
     // -------------------------------------------------------------------------
 
-    private void loadLevel(int level) { // TODO: put this in map
+    private void loadLevel(int level) {
         MapData mapData = switch (level) {
             case 1 -> mapManager.loadMap(1);
             case 2 -> mapManager.loadMap(2);
@@ -135,28 +167,43 @@ public class GameManager extends Pane {
         world.resetForNewLevel();
     }
 
+    // -------------------------------------------------------------------------
+    //  Save/Load
+    // -------------------------------------------------------------------------
+
     private void saveGame() {
-        System.out.println("Bắt đầu lưu game...");
-        // construct gameState để thu thập toàn bộ trạng thái game
+        if (currentSlotNumber == -1) {
+            System.err.println("No slot selected, cannot save!");
+            return;
+        }
+
+        System.out.println("Saving game to slot " + currentSlotNumber + "...");
         GameState gameState = new GameState(world);
-        // 1 dòng để lưu
-        SaveManager.save(gameState, SAVE_FILE_NAME);
+
+        SaveDataRepository repository = new SaveDataRepository();
+        repository.saveSlot(currentSlotNumber, gameState);
     }
 
     private void loadGame() {
-        System.out.println("Bắt đầu tải game...");
-        // 1 dòng để tải
-        GameState loadedState = SaveManager.load(SAVE_FILE_NAME, GameState.class);
-        // Kiểm tra và gọi hàm áp dụng trạng thái
+        if (currentSlotNumber == -1) {
+            System.out.println("Không có slot được chọn");
+            return;
+        }
+
+        System.out.println("Bắt đầu tải game từ slot " + currentSlotNumber + "...");
+
+        SaveDataRepository repository = new SaveDataRepository();
+        GameState loadedState = repository.loadSlot(currentSlotNumber);
+
         if (loadedState != null) {
             applyState(loadedState);
-            System.out.println("Tải game thành công!");
+            System.out.println("Tải game thành công từ slot " + currentSlotNumber + "!");
         } else {
-            System.out.println("Không có file lưu hoặc file lỗi.");
+            System.out.println("Không tìm thấy save game ở slot " + currentSlotNumber);
         }
     }
 
-    private void applyState(GameState loadedState) {
+    public void applyState(GameState loadedState) {
         // KHU VỰC 1: THIẾT LẬP NỀN TẢNG
         loadLevel(loadedState.getCurrentLevel());
 
@@ -187,13 +234,28 @@ public class GameManager extends Pane {
             p.setVisible(powerUpData.isVisible());
             world.getPowerUps().add(p);
         }
+<<<<<<< Updated upstream
+=======
+
+        // Active Power-ups
+        PowerUpSystem currentPowerUpSystem = world.getPowerUpSystem();
+        if (currentPowerUpSystem != null) {
+            currentPowerUpSystem.reset();
+
+            if (loadedState.getActivePowerUpsData() != null) {
+                for (ActivePowerUpData activeData : loadedState.getActivePowerUpsData()) {
+                    currentPowerUpSystem.activateFromSave(activeData);
+                }
+            }
+        }
+>>>>>>> Stashed changes
     }
 
     // -------------------------------------------------------------------------
     //  Parallax Setup
     // -------------------------------------------------------------------------
 
-    private void initParallax() { // TODO: put this in parallax, not game manager
+    private void initParallax() {
         parallaxSystem = new ParallaxSystem(world, 0.15, 8.0, new double[] {1.0, 0.6, 0.35, 0.2});
 
         parallaxSystem.addLayer(new ParallaxLayer("/images/layer1.png", 0.25));
@@ -261,7 +323,7 @@ public class GameManager extends Pane {
     //  Misc
     // -------------------------------------------------------------------------
 
-    private void setupSecretCodeEasterEgg() { // TODO:put this in input
+    private void setupSecretCodeEasterEgg() {
         setOnKeyPressed(e -> {
             KeyCode code = e.getCode();
             if (code == null) return;
@@ -271,7 +333,15 @@ public class GameManager extends Pane {
                 saveGame();
             }
             if (code == KeyCode.F9) {
-                loadGame();
+                // Khi ấn F9, load lại từ slot hiện tại
+                SaveDataRepository repository = new SaveDataRepository();
+                GameState loadedState = repository.loadSlot(currentSlotNumber);
+                if (loadedState != null) {
+                    applyState(loadedState);
+                    System.out.println("Tải game thành công!");
+                } else {
+                    System.out.println("Không có file lưu.");
+                }
             }
 
             // Logic cho secret code
@@ -316,6 +386,7 @@ public class GameManager extends Pane {
     public Paddle getPaddle() {
         return world.getPaddle();
     }
+
     public Ball getBall() {
         return world.getBall();
     }

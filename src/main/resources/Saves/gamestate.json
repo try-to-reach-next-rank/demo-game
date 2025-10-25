@@ -1,33 +1,53 @@
 {
-  "currentLevel": 1,
+  "currentLevel": 2,
   "paddleData": {
-    "x": 250.0,
+    "x": 518.3632399999999,
     "y": 770.0
   },
   "ballData": {
+<<<<<<< Updated upstream
     "x": 259.0,
     "y": 542.2763882823263,
     "velocityX": 0.0,
     "velocityY": 1.0,
+=======
+    "x": 471.6006574877866,
+    "y": 555.7889880499615,
+    "velocityX": -0.2508576339489461,
+    "velocityY": -0.9680239911745662,
+>>>>>>> Stashed changes
     "isStuck": false
   },
   "powerUpsData": [
     {
+<<<<<<< Updated upstream
       "x": 249.5,
       "y": 451.4549499999998,
       "type": "STOPTIME",
       "visible": true
+=======
+      "x": 510.0,
+      "y": 724.412885,
+      "type": "STRONGER",
+      "visible": true
+    }
+  ],
+  "activePowerUpsData": [
+    {
+      "type": "ACCELERATE",
+      "remainingDuration": 4922
+>>>>>>> Stashed changes
     }
   ],
   "bricksData": [
     {
       "id": 0,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 1,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -37,17 +57,17 @@
     },
     {
       "id": 3,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 4,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 5,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
@@ -57,92 +77,96 @@
     },
     {
       "id": 7,
+<<<<<<< Updated upstream
       "health": 1,
+=======
+      "health": 3,
+>>>>>>> Stashed changes
       "isDestroyed": false
     },
     {
       "id": 8,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 9,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 10,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 11,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 12,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 13,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 14,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 15,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 16,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 17,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 18,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 19,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 20,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 21,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 22,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 23,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 24,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
@@ -152,7 +176,11 @@
     },
     {
       "id": 26,
+<<<<<<< Updated upstream
       "health": 1,
+=======
+      "health": 2,
+>>>>>>> Stashed changes
       "isDestroyed": false
     },
     {
@@ -177,17 +205,17 @@
     },
     {
       "id": 31,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 32,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 33,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -197,12 +225,12 @@
     },
     {
       "id": 35,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 36,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
@@ -212,47 +240,51 @@
     },
     {
       "id": 38,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 39,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 40,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 41,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 42,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 43,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 44,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 45,
+<<<<<<< Updated upstream
       "health": 1,
+=======
+      "health": 2,
+>>>>>>> Stashed changes
       "isDestroyed": false
     },
     {
       "id": 46,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -262,7 +294,7 @@
     },
     {
       "id": 48,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
@@ -272,22 +304,22 @@
     },
     {
       "id": 50,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 51,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 52,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 53,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -297,7 +329,7 @@
     },
     {
       "id": 55,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
@@ -322,7 +354,7 @@
     },
     {
       "id": 60,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -332,7 +364,7 @@
     },
     {
       "id": 62,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
@@ -342,48 +374,52 @@
     },
     {
       "id": 64,
+<<<<<<< Updated upstream
       "health": 1,
+=======
+      "health": 3,
+>>>>>>> Stashed changes
       "isDestroyed": false
     },
     {
       "id": 65,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 66,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 67,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 68,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 69,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 70,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 71,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 72,
-      "health": 1,
-      "isDestroyed": false
+      "health": 0,
+      "isDestroyed": true
     },
     {
       "id": 73,
@@ -397,22 +433,22 @@
     },
     {
       "id": 75,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 76,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 77,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 78,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -422,32 +458,36 @@
     },
     {
       "id": 80,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 81,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 82,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 83,
+<<<<<<< Updated upstream
       "health": 1,
+=======
+      "health": 5,
+>>>>>>> Stashed changes
       "isDestroyed": false
     },
     {
       "id": 84,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 85,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -467,27 +507,27 @@
     },
     {
       "id": 89,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 90,
-      "health": 1,
-      "isDestroyed": false
+      "health": 0,
+      "isDestroyed": true
     },
     {
       "id": 91,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 92,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 93,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -497,27 +537,27 @@
     },
     {
       "id": 95,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 96,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 97,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 98,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 99,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
@@ -532,36 +572,41 @@
     },
     {
       "id": 102,
+<<<<<<< Updated upstream
       "health": 1,
+=======
+      "health": 4,
+>>>>>>> Stashed changes
       "isDestroyed": false
     },
     {
       "id": 103,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 104,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 105,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 106,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 107,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 108,
+<<<<<<< Updated upstream
       "health": 1,
       "isDestroyed": false
     },
@@ -629,15 +674,84 @@
       "id": 121,
       "health": 1,
       "isDestroyed": false
+=======
+      "health": 0,
+      "isDestroyed": true
+>>>>>>> Stashed changes
+    },
+    {
+      "id": 109,
+      "health": 2147483647,
+      "isDestroyed": false
+    },
+    {
+      "id": 110,
+      "health": 2147483647,
+      "isDestroyed": false
+    },
+    {
+      "id": 111,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 112,
+      "health": 2,
+      "isDestroyed": false
+    },
+    {
+      "id": 113,
+      "health": 5,
+      "isDestroyed": false
+    },
+    {
+      "id": 114,
+      "health": 2,
+      "isDestroyed": false
+    },
+    {
+      "id": 115,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 116,
+      "health": 5,
+      "isDestroyed": false
+    },
+    {
+      "id": 117,
+      "health": 2,
+      "isDestroyed": false
+    },
+    {
+      "id": 118,
+      "health": 5,
+      "isDestroyed": false
+    },
+    {
+      "id": 119,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 120,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 121,
+      "health": 2,
+      "isDestroyed": false
     },
     {
       "id": 122,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 123,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -647,27 +761,27 @@
     },
     {
       "id": 125,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 126,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 127,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 128,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 129,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -677,12 +791,12 @@
     },
     {
       "id": 131,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 132,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -692,17 +806,17 @@
     },
     {
       "id": 134,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 135,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 136,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -717,32 +831,36 @@
     },
     {
       "id": 139,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 140,
+<<<<<<< Updated upstream
       "health": 1,
+=======
+      "health": 3,
+>>>>>>> Stashed changes
       "isDestroyed": false
     },
     {
       "id": 141,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 142,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 143,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 144,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -752,102 +870,106 @@
     },
     {
       "id": 146,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 147,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 148,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 149,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 150,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 151,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 152,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 153,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 154,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 155,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 156,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 157,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 158,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 159,
+<<<<<<< Updated upstream
       "health": 1,
+=======
+      "health": 3,
+>>>>>>> Stashed changes
       "isDestroyed": false
     },
     {
       "id": 160,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 161,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 162,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 163,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 164,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 165,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -857,58 +979,68 @@
     },
     {
       "id": 167,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 168,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 169,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 170,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 171,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 172,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 173,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 174,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 175,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 176,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 177,
+<<<<<<< Updated upstream
       "health": 1,
       "isDestroyed": false
+    },
+    {
+      "id": 178,
+      "health": 1,
+      "isDestroyed": false
+=======
+      "health": 0,
+      "isDestroyed": true
+>>>>>>> Stashed changes
     },
     {
       "id": 178,
@@ -917,16 +1049,17 @@
     },
     {
       "id": 179,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 180,
-      "health": 1,
+      "health": 2147483647,
       "isDestroyed": false
     },
     {
       "id": 181,
+<<<<<<< Updated upstream
       "health": 1,
       "isDestroyed": false
     },
@@ -2013,6 +2146,9 @@
     {
       "id": 398,
       "health": 1,
+=======
+      "health": 2147483647,
+>>>>>>> Stashed changes
       "isDestroyed": false
     }
   ]
