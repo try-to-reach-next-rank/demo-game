@@ -134,6 +134,10 @@ public class CollisionManager implements Updatable {
             if (ball.isStronger()) continue;
             if (fromSide) ball.setVelocity(-v.x, v.y);
             else ball.setVelocity(v.x, -v.y);
+
+            resolveBallBrickOverlap(ball, brick);
+
+            break;
         }
     }
 
@@ -150,4 +154,25 @@ public class CollisionManager implements Updatable {
         return Math.min(a.getBounds().getMaxY(), b.getBounds().getMaxY()) -
                 Math.max(a.getBounds().getMinY(), b.getBounds().getMinY());
     }
+
+    private void resolveBallBrickOverlap(Ball ball, Brick brick) {
+        var ballBounds = ball.getBounds();
+        var brickBounds = brick.getBounds();
+        double overlapX = overlapX(ball, brick);
+        double overlapY = overlapY(ball, brick);
+
+        // Push ball out along the smaller overlap axis
+        if (overlapX < overlapY) {
+            if (ballBounds.getCenterX() < brickBounds.getCenterX())
+                ball.setX(ball.getX() - overlapX);
+            else
+                ball.setX(ball.getX() + overlapX);
+        } else {
+            if (ballBounds.getCenterY() < brickBounds.getCenterY())
+                ball.setY(ball.getY() - overlapY);
+            else
+                ball.setY(ball.getY() + overlapY);
+        }
+    }
+
 }
