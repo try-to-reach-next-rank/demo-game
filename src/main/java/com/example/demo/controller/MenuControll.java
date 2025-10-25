@@ -15,6 +15,7 @@ public class MenuControll {
         model.setCurrentScreen(MenuModel.Screen.PLAY);
         System.out.println("playing");
     }
+
     public void isSelecting() {
         model.setCurrentScreen(MenuModel.Screen.SELECT);
         System.out.println("Select profile");

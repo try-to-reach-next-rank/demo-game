@@ -81,19 +81,14 @@ public class GameManager extends Pane {
         getChildren().add(canvas);
         setFocusTraversable(true);
         requestFocus();
-
-        dialogueSystem = new DialogueSystem("/Dialogue/intro.txt", dialogueBox);
-        setupSecretCodeEasterEgg();
-
-        uiManager.add(dialogueBox);
-        initGame();
+        //initGame();
     }
 
     // -------------------------------------------------------------------------
     //  Game Initialization
     // -------------------------------------------------------------------------
 
-    private void initGame() {
+    public void initGame() {
         // --- Load all resources ---
         AssetManager.getInstance().loadAll();
 
@@ -139,13 +134,14 @@ public class GameManager extends Pane {
         Sound.getInstance().playRandomMusic();
 
         // --- LOAD GAME if not New Game ---
-        if (!isNewGame) {
-            loadGame();
-        }
-
-        // --- INTRO DIALOGUE only for New Game ---
         if (isNewGame) {
+            dialogueSystem = new DialogueSystem("/Dialogue/intro.txt", dialogueBox);
+            setupSecretCodeEasterEgg();
+            uiManager.add(dialogueBox);
             dialogueSystem.start();
+        }
+        else {
+            loadGame();
         }
 
         loop();
