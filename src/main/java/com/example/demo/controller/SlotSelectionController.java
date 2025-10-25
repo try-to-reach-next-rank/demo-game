@@ -43,7 +43,7 @@ public class SlotSelectionController {
     public void handleNewGame(int slotNumber) {
         System.out.println("[SlotSelectionController] Starting new game in slot " + slotNumber);
         if (onStartGame != null) {
-            onStartGame.startGame(slotNumber, null);
+            onStartGame.startGame(slotNumber, null);  // ← null = New Game
         }
     }
 
@@ -57,7 +57,7 @@ public class SlotSelectionController {
         }
 
         if (onStartGame != null) {
-            onStartGame.startGame(slotNumber, gameState);
+            onStartGame.startGame(slotNumber, gameState);  // ← có gameState = Load Game
         }
     }
 

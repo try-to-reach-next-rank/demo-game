@@ -19,8 +19,6 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 /**
  * View cho Slot Selection Menu
  * Hiển thị 2 save slots với mini map preview
@@ -50,7 +48,6 @@ public class SlotSelectionView {
     /**
      * Setup toàn bộ UI
      */
-
     private void buildUI() {
         // Setup background
         ThemeManager.setupBackground(rootStack);
@@ -112,6 +109,8 @@ public class SlotSelectionView {
             if (component.getDeleteButton() != null) {
                 component.getDeleteButton().setOnAction(e -> {
                     controller.handleDeleteSlot(slot.getSlotNumber());
+                    // Refresh UI sau khi delete
+                    refreshSlots();
                 });
             }
         }
@@ -268,6 +267,8 @@ public class SlotSelectionView {
                 controller.handleContinueGame(slot.getSlotNumber());
             } else if (selectedButtonIndex == 1) {
                 controller.handleDeleteSlot(slot.getSlotNumber());
+                // Refresh UI sau khi delete
+                refreshSlots();
             }
         }
     }
@@ -311,6 +312,3 @@ public class SlotSelectionView {
         themeManager.stopBgAnimation();
     }
 }
-
-
-

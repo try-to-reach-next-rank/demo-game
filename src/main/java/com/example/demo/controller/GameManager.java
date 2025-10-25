@@ -11,13 +11,12 @@ import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.dialogue.DialogueBox;
 import com.example.demo.model.utils.dialogue.DialogueSystem;
+import com.example.demo.repository.SaveDataRepository;
 import com.example.demo.view.*;
-import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.model.map.ParallaxLayer;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -26,7 +25,6 @@ import javafx.scene.text.Font;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.demo.model.utils.GlobalVar.SAVE_FILE_NAME;
 import static com.example.demo.model.utils.GlobalVar.SECRET_CODE;
 
 public class GameManager extends Pane {
@@ -47,13 +45,34 @@ public class GameManager extends Pane {
     private final MapManager mapManager = new MapManager();
     private CollisionManager collisionManager;
     private BrickSystem brickSystem;
-    private DialogueSystem dialogueSystem; /** new dialogue system for running dialogue through txt*/
+    private DialogueSystem dialogueSystem;
     private ParallaxSystem parallaxSystem;
     private PowerUpSystem powerUpSystem;
 
+    // === SLOT & NEW GAME FLAGS ===
+    private int currentSlotNumber = -1;
+    private boolean isNewGame = true;
 
     private boolean inGame = true;
     private final StringBuilder keySequence = new StringBuilder();
+
+    // -------------------------------------------------------------------------
+    //  Setters for Slot & Game Type
+    // -------------------------------------------------------------------------
+
+    public void setCurrentSlot(int slotNumber) {
+        this.currentSlotNumber = slotNumber;
+        System.out.println("[GameManager] Current Slot: " + this.currentSlotNumber);
+    }
+
+    public void setNewGame(boolean isNewGame) {
+        this.isNewGame = isNewGame;
+        System.out.println("[GameManager] Is New Game: " + this.isNewGame);
+    }
+
+    // -------------------------------------------------------------------------
+    //  Constructor
+    // -------------------------------------------------------------------------
 
     public GameManager() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
@@ -63,7 +82,6 @@ public class GameManager extends Pane {
         setFocusTraversable(true);
         requestFocus();
 
-        // Lấy các lệnh từ intro.txt rồi gọi dialogue tương ứng thông qua dialogueBox
         dialogueSystem = new DialogueSystem("/Dialogue/intro.txt", dialogueBox);
         setupSecretCodeEasterEgg();
 
@@ -88,18 +106,15 @@ public class GameManager extends Pane {
         // --- Create core systems (Controller layer) ---
         BallSystem ballSystem = new BallSystem(ball, paddle);
         PaddleSystem paddleSystem = new PaddleSystem(paddle);
-        // FROM: PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
-        // to:
         this.powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
 
-        // Give the GameWorld the reference to the PowerUpSystem
         world.setPowerUpSystem(this.powerUpSystem);
 
         // --- Load map and build bricks/walls ---
         loadLevel(world.getCurrentLevel());
         brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
 
-        // --- Create managers (controllers) --- // TODO: maybe simplify or get rid of this
+        // --- Create managers (controllers) ---
         collisionManager = new CollisionManager(world, ballSystem, brickSystem, powerUpSystem);
 
         // --- Register update systems ---
@@ -113,15 +128,26 @@ public class GameManager extends Pane {
 
         // --- Register renderables (View layer) ---
         Renderer renderer = new Renderer(world);
-        renderables.add(renderer);                                               // then the world
-        renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
+        renderables.add(renderer);
+        renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT));
 
-        // --- Setup parallax for first level ---
-        if (world.getCurrentLevel() == GameVar.START_LEVEL) initParallax();
+        // --- Setup parallax for level 2 ---
+        if (world.getCurrentLevel() == GameVar.START_LEVEL) {
+            initParallax();
+        }
 
-        // --- INTRO ---
-        dialogueSystem.start();
         Sound.getInstance().playRandomMusic();
+
+        // --- LOAD GAME if not New Game ---
+        if (!isNewGame) {
+            loadGame();
+        }
+
+        // --- INTRO DIALOGUE only for New Game ---
+        if (isNewGame) {
+            dialogueSystem.start();
+        }
+
         loop();
     }
 
@@ -129,7 +155,7 @@ public class GameManager extends Pane {
     //  Level Management
     // -------------------------------------------------------------------------
 
-    private void loadLevel(int level) { // TODO: put this in map
+    private void loadLevel(int level) {
         MapData mapData = switch (level) {
             case 1 -> mapManager.loadMap(1);
             case 2 -> mapManager.loadMap(2);
@@ -145,32 +171,48 @@ public class GameManager extends Pane {
         world.resetForNewLevel();
     }
 
+    // -------------------------------------------------------------------------
+    //  Save/Load with Repository
+    // -------------------------------------------------------------------------
+
     private void saveGame() {
-        System.out.println("Bắt đầu lưu game...");
-        // construct gameState để thu thập toàn bộ trạng thái game
+        if (currentSlotNumber == -1) {
+            System.err.println("[GameManager] No slot selected, cannot save!");
+            return;
+        }
+
+        System.out.println("[GameManager] Saving to slot " + currentSlotNumber + "...");
         GameState gameState = new GameState(world);
-        // 1 dòng để lưu
-        SaveManager.save(gameState, SAVE_FILE_NAME);
+
+        SaveDataRepository repository = new SaveDataRepository();
+        repository.saveSlot(currentSlotNumber, gameState);
+        System.out.println("[GameManager] Save complete!");
     }
 
     private void loadGame() {
-        System.out.println("Bắt đầu tải game...");
-        // 1 dòng để tải
-        GameState loadedState = SaveManager.load(SAVE_FILE_NAME, GameState.class);
-        // Kiểm tra và gọi hàm áp dụng trạng thái
+        if (currentSlotNumber == -1) {
+            System.out.println("[GameManager] No slot selected");
+            return;
+        }
+
+        System.out.println("[GameManager] Loading from slot " + currentSlotNumber + "...");
+
+        SaveDataRepository repository = new SaveDataRepository();
+        GameState loadedState = repository.loadSlot(currentSlotNumber);
+
         if (loadedState != null) {
             applyState(loadedState);
-            System.out.println("Tải game thành công!");
+            System.out.println("[GameManager] Load complete!");
         } else {
-            System.out.println("Không có file lưu hoặc file lỗi.");
+            System.out.println("[GameManager] No save data found in slot " + currentSlotNumber);
         }
     }
 
-    private void applyState(GameState loadedState) {
-        // KHU VỰC 1: THIẾT LẬP NỀN TẢNG
+    public void applyState(GameState loadedState) {
+        // SECTION 1: Setup Level
         loadLevel(loadedState.getCurrentLevel());
 
-        // KHU VỰC 2: RA LỆNH CHO CÁC ĐỐI TƯỢNG TỰ CẬP NHẬT
+        // SECTION 2: Apply Entity States
         Ball ball = world.getBall();
         Paddle paddle = world.getPaddle();
         Brick[] bricks = world.getBricks();
@@ -185,12 +227,12 @@ public class GameManager extends Pane {
             }
         }
 
-        // KHU VỰC 3: XỬ LÝ CÁC MỐI QUAN HỆ VÀ DANH SÁCH
+        // SECTION 3: Apply Relationships
         if (ball.isStuck()) {
             ball.alignWithPaddle(10, 1.0);
         }
 
-        // falling Power-Ups
+        // Falling Power-Ups
         world.getPowerUps().clear();
         for (PowerUpData powerUpData : loadedState.getPowerUpsData()) {
             PowerUp p = new PowerUp(powerUpData.getType());
@@ -200,9 +242,9 @@ public class GameManager extends Pane {
         }
 
         // Active Power-ups
-        PowerUpSystem currentPowerUpSystem = world.getPowerUpSystem(); // Get it from the world
+        PowerUpSystem currentPowerUpSystem = world.getPowerUpSystem();
         if (currentPowerUpSystem != null) {
-            currentPowerUpSystem.reset(); // Reset the system
+            currentPowerUpSystem.reset();
 
             if (loadedState.getActivePowerUpsData() != null) {
                 for (ActivePowerUpData activeData : loadedState.getActivePowerUpsData()) {
@@ -216,7 +258,7 @@ public class GameManager extends Pane {
     //  Parallax Setup
     // -------------------------------------------------------------------------
 
-    private void initParallax() { // TODO: put this in parallax, not game manager
+    private void initParallax() {
         parallaxSystem = new ParallaxSystem(world, 0.15, 8.0, new double[] {1.0, 0.6, 0.35, 0.2});
 
         parallaxSystem.addLayer(new ParallaxLayer("/images/layer1.png", 0.25));
@@ -265,7 +307,9 @@ public class GameManager extends Pane {
         uiManager.update(deltaTime);
         if (!inGame || uiManager.hasActiveUI()) return;
 
-        parallaxSystem.update(deltaTime);
+        if (parallaxSystem != null) {
+            parallaxSystem.update(deltaTime);
+        }
 
         for (Updatable system : updatables) system.update(deltaTime);
         EffectRenderer.getInstance().update(deltaTime);
@@ -274,7 +318,9 @@ public class GameManager extends Pane {
     private void render() {
         gc.clearRect(0, 0, GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
-        parallaxSystem.render(gc);
+        if (parallaxSystem != null) {
+            parallaxSystem.render(gc);
+        }
 
         for (Renderable r : renderables) r.render(gc);
         uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
@@ -284,12 +330,12 @@ public class GameManager extends Pane {
     //  Misc
     // -------------------------------------------------------------------------
 
-    private void setupSecretCodeEasterEgg() { // TODO:put this in input
+    private void setupSecretCodeEasterEgg() {
         setOnKeyPressed(e -> {
             KeyCode code = e.getCode();
             if (code == null) return;
 
-            // Phím tắt để Lưu (F5) và Tải (F9) game
+            // Save (F5) and Load (F9) shortcuts
             if (code == KeyCode.F5) {
                 saveGame();
             }
@@ -297,7 +343,7 @@ public class GameManager extends Pane {
                 loadGame();
             }
 
-            // Logic cho secret code
+            // Secret code logic
             String key = code.getName().toUpperCase();
             keySequence.append(key);
             if (keySequence.length() > SECRET_CODE.length()) {
@@ -339,6 +385,7 @@ public class GameManager extends Pane {
     public Paddle getPaddle() {
         return world.getPaddle();
     }
+
     public Ball getBall() {
         return world.getBall();
     }

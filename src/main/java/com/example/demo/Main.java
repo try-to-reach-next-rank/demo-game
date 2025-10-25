@@ -3,12 +3,15 @@ package com.example.demo;
 import com.example.demo.controller.GameManager;
 import com.example.demo.controller.MenuControll;
 import com.example.demo.controller.SettingsControllers;
+import com.example.demo.controller.SlotSelectionController;
 import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.menu.SettingsModel;
+import com.example.demo.model.state.GameState;
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Input;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.view.MenuView;
+import com.example.demo.view.SlotSelectionView;
 import com.example.demo.view.ui.SettingsView;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -23,6 +26,8 @@ public class Main extends Application {
     private GameManager gameManager;
     private MenuView menuView;
     private SettingsView settingsView;
+    private SlotSelectionView slotSelectionView;
+    private SlotSelectionController slotSelectionController;
 
     private StackPane mainRoot;
     private Scene mainScene;
@@ -36,6 +41,9 @@ public class Main extends Application {
         menuModel = new MenuModel();
         settingsModel = new SettingsModel();
 
+        // --- Khởi tạo Slot Selection trước ---
+        initSlotSelection();
+
         // --- Khởi tạo Controllers ---
         MenuControll menuController = new MenuControll(menuModel);
         SettingsControllers settingsController = new SettingsControllers(settingsModel, menuModel);
@@ -45,7 +53,7 @@ public class Main extends Application {
         settingsView = new SettingsView(settingsController);
 
         // --- Tạo root chính chứa các màn hình ---
-        mainRoot = new StackPane(menuView.getRoot()); // bắt đầu với menu
+        mainRoot = new StackPane(menuView.getRoot());
         mainScene = new Scene(mainRoot, GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
         // --- Gắn sự kiện bàn phím cho menu ---
@@ -67,13 +75,42 @@ public class Main extends Application {
         Sound.getInstance().loopMusic("Hametsu-no-Ringo");
     }
 
-    // --- Chuyển giữa các màn hình ---
+    // -------------------------------------------------------------------------
+    //  Slot Selection Initialization
+    // -------------------------------------------------------------------------
+
+    private void initSlotSelection() {
+        slotSelectionController = new SlotSelectionController();
+        slotSelectionView = new SlotSelectionView(slotSelectionController);
+
+        // Setup callback: Quay về menu
+        slotSelectionController.setOnBackToMenu(() -> {
+            menuModel.setCurrentScreen(MenuModel.Screen.MENU);
+        });
+
+        // Setup callback: Start game từ slot
+        slotSelectionController.setOnStartGame((slotNumber, gameState) -> {
+            if (gameState == null) {
+                // NEW GAME
+                startNewGame(slotNumber);
+            } else {
+                // LOAD GAME
+                continueGame(slotNumber, gameState);
+            }
+        });
+    }
+
+    // -------------------------------------------------------------------------
+    //  Screen Switching
+    // -------------------------------------------------------------------------
+
     private void switchScreen(MenuModel.Screen screen) {
-        mainRoot.getChildren().clear(); // xoá nội dung cũ trước khi thêm mới
+        mainRoot.getChildren().clear();
 
         switch (screen) {
             case MENU -> showMenu();
             case SETTINGS -> showSettings();
+            case SELECT -> showSlotSelection();  // ← Hiện slot selection
             case PLAY -> showGame();
             case EXIT -> primaryStage.close();
         }
@@ -95,8 +132,13 @@ public class Main extends Application {
         settingsView.getRoot().requestFocus();
     }
 
+    private void showSlotSelection() {
+        mainRoot.getChildren().add(slotSelectionView.getRoot());
+        slotSelectionView.enableKeyboard(mainScene);
+        slotSelectionView.getRoot().requestFocus();
+    }
+
     private void showGame() {
-        gameManager = new GameManager();
         Input input = new Input(gameManager.getPaddle(), gameManager.getBall());
 
         mainRoot.getChildren().add(gameManager);
@@ -116,6 +158,31 @@ public class Main extends Application {
         });
 
         gameManager.requestFocus();
+    }
+
+    // -------------------------------------------------------------------------
+    //  Game Start Methods
+    // -------------------------------------------------------------------------
+
+    private void startNewGame(int slotNumber) {
+        System.out.println("=== STARTING NEW GAME in slot " + slotNumber + " ===");
+
+        gameManager = new GameManager();
+        gameManager.setNewGame(true);           // ← Đánh dấu New Game
+        gameManager.setCurrentSlot(slotNumber); // ← Set slot
+
+        menuModel.setCurrentScreen(MenuModel.Screen.PLAY);
+    }
+
+    private void continueGame(int slotNumber, GameState gameState) {
+        System.out.println("=== LOADING GAME from slot " + slotNumber + " ===");
+
+        gameManager = new GameManager();
+        gameManager.setNewGame(false);          // ← Đánh dấu Load Game
+        gameManager.setCurrentSlot(slotNumber); // ← Set slot
+        gameManager.applyState(gameState);      // ← Apply saved state
+
+        menuModel.setCurrentScreen(MenuModel.Screen.PLAY);
     }
 
     public static void main(String[] args) {

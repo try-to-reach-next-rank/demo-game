@@ -60,7 +60,7 @@ public class MenuView implements Stage {
         VBox menuBox = new VBox(28);
         menuBox.setAlignment(Pos.CENTER);
         menuBox.getChildren().addAll(
-                buttonManager.createButtonRow("Play", e -> controller.isPlaying()),
+                buttonManager.createButtonRow("Play", e -> controller.isSelecting()),
                 buttonManager.createButtonRow("Settings", e -> controller.isSettings()),
                 buttonManager.createButtonRow("Exit", e -> controller.isExit())
         );
