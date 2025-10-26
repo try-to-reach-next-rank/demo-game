@@ -285,6 +285,19 @@ public class ButtonManager {
     }
 
     public void setSelectedIndex(int index) {
+        if (index < 0) {
+            if (lastSelectedIndex >= 0 && lastSelectedIndex < buttons.size()) {
+                Button prev = buttons.get(lastSelectedIndex);
+                prev.getStyleClass().remove("selected");
+                leftHands.get(lastSelectedIndex).setVisible(false);
+                rightHands.get(lastSelectedIndex).setVisible(false);
+                stopPulse(prev);
+            }
+
+            lastSelectedIndex = -1;
+            selectedIndex = -1;
+            return;
+        }
         if (index >= 0 && index < buttons.size()) {
             selectedIndex = index;
             updateSelectionVisuals();

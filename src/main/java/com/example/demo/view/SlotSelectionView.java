@@ -1,9 +1,10 @@
 package com.example.demo.view;
 
 import com.example.demo.controller.SlotSelectionController;
+import com.example.demo.controller.Stage;
 import com.example.demo.controller.ThemeManager;
+import com.example.demo.controller.ButtonManager;
 import com.example.demo.model.menu.SaveSlot;
-import com.example.demo.view.SlotComponent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -21,152 +22,145 @@ import java.util.List;
 
 /**
  * View cho Slot Selection Menu
- * Hiển thị 2 save slots với mini map preview
+ * Mỗi slot là button lớn, chứa mini map và action buttons bên trong
+ * Mouse: click trực tiếp vào action buttons
+ * Keyboard: chọn slot (LEFT/RIGHT) → ENTER để vào button mode → chọn button (LEFT/RIGHT) → ENTER để execute
  */
-public class SlotSelectionView {
+public class SlotSelectionView implements Stage {
     private final SlotSelectionController controller;
     private final ThemeManager themeManager;
+    private final ButtonManager buttonManager;
 
-    private final StackPane rootStack;
+    private static StackPane rootStack = null;
     private final VBox uiBox;
+    private VBox slotsBox;
 
-    // Slot components
+    // Navigation state
     private List<SlotComponent> slotComponents;
-    private int selectedSlotIndex = 0;  // 0 = slot 1, 1 = slot 2
-    private int selectedButtonIndex = -1;  // -1 = chọn slot, 0/1 = chọn button
+    private int selectedSlotIndex = 0;
+    private int selectedButtonIndex = -1; // -1 = selecting slot, 0+ = selecting button inside slot
 
     public SlotSelectionView(SlotSelectionController controller) {
         this.controller = controller;
-        this.themeManager = new ThemeManager();
         this.rootStack = new StackPane();
         this.uiBox = new VBox(30);
+        this.uiBox.setPadding(new Insets(40));
+        this.uiBox.setAlignment(Pos.CENTER);
         this.slotComponents = new ArrayList<>();
 
-        buildUI();
-    }
-
-    /**
-     * Setup toàn bộ UI
-     */
-    private void buildUI() {
-        // Setup background
+        // 1. Setup theme
+        this.themeManager = new ThemeManager();
         ThemeManager.setupBackground(rootStack);
         ThemeManager.applyCss(rootStack);
 
-        // Setup UI container
-        uiBox.setAlignment(Pos.CENTER);
-        uiBox.setPadding(new Insets(40));
+        // 2. Setup buttons
+        this.buttonManager = new ButtonManager(themeManager.getHandImage());
+        buildUI();
 
-        // Title
+        // 3. Stack layout
+        rootStack.getChildren().add(uiBox);
+        StackPane.setAlignment(uiBox, Pos.CENTER);
+    }
+
+    @Override
+    public void buildUI() {
         Text title = new Text("Select Save Slot");
         title.setFont(Font.font(38));
         title.setFill(Color.WHITE);
 
-        // Slots container (horizontal layout)
-        HBox slotsBox = new HBox(40);
+        slotsBox = new VBox(40);
         slotsBox.setAlignment(Pos.CENTER);
 
-        // Load slots từ controller
+        // Load slots
         List<SaveSlot> slots = controller.getAllSlots();
-
         for (SaveSlot slot : slots) {
-            SlotComponent component = new SlotComponent(slot);
-            slotComponents.add(component);
-            slotsBox.getChildren().add(component);
+            SlotComponent slotComp = new SlotComponent(slot);
+            slotComponents.add(slotComp);
+            slotsBox.getChildren().add(slotComp);
 
-            // Attach button handlers
-            attachButtonHandlers(component);
+            setupSlotButtons(slotComp);
+
+            int slotIndex = slotComponents.size() - 1;
+            slotComp.setOnAction(e -> {
+                selectedSlotIndex = slotIndex;
+                selectedButtonIndex = -1;
+                updateSelectionVisuals();
+            });
         }
 
         uiBox.getChildren().addAll(title, slotsBox);
-        rootStack.getChildren().add(uiBox);
-
-        // Initial selection visual
         updateSelectionVisuals();
     }
 
     /**
-     * Attach event handlers cho buttons của component
+     * Setup action buttons bên trong slot
      */
-    private void attachButtonHandlers(SlotComponent component) {
-        SaveSlot slot = component.getSlot();
+    private void setupSlotButtons(SlotComponent slotComp) {
+        SaveSlot slot = slotComp.getSlot();
+        HBox buttonBox = slotComp.getButtonBox();
 
         if (slot.isEmpty()) {
-            // Empty slot: New Game button
-            if (component.getNewGameButton() != null) {
-                component.getNewGameButton().setOnAction(e -> {
-                    controller.handleNewGame(slot.getSlotNumber());
-                });
-            }
+            // Empty slot: New Game
+            HBox btnRow = buttonManager.createButtonRow("New Game", e ->
+                    controller.handleNewGame(slot.getSlotNumber())
+            );
+            btnRow.setOnMouseClicked(e -> e.consume());
+            buttonBox.getChildren().add(btnRow);
         } else {
-            // Occupied slot: Play và Delete buttons
-            if (component.getPlayButton() != null) {
-                component.getPlayButton().setOnAction(e -> {
-                    controller.handleContinueGame(slot.getSlotNumber());
-                });
-            }
+            // Occupied slot: Play + Delete
+            HBox playRow = buttonManager.createButtonRow("Play", e ->
+                    controller.handleContinueGame(slot.getSlotNumber())
+            );
+            playRow.setOnMouseClicked(e -> e.consume());
 
-            if (component.getDeleteButton() != null) {
-                component.getDeleteButton().setOnAction(e -> {
-                    controller.handleDeleteSlot(slot.getSlotNumber());
-                    // Refresh UI sau khi delete
-                    refreshSlots();
-                });
-            }
+            HBox deleteRow = buttonManager.createButtonRow("Delete", e -> {
+                controller.handleDeleteSlot(slot.getSlotNumber());
+                refreshSlots();
+            });
+            deleteRow.setOnMouseClicked(e -> e.consume());
+
+            buttonBox.getChildren().addAll(playRow, deleteRow);
         }
     }
 
     /**
-     * Update visual feedback cho selection
+     * Update visual feedback
      */
     private void updateSelectionVisuals() {
-        // Reset all slots
+        // Update slot highlight
         for (int i = 0; i < slotComponents.size(); i++) {
-            SlotComponent component = slotComponents.get(i);
+            slotComponents.get(i).setSelected(i == selectedSlotIndex);
+        }
 
-            if (i == selectedSlotIndex) {
-                // Selected slot
-                component.setStyle(component.getStyle() +
-                        "-fx-border-color: #00ff88;" +
-                        "-fx-border-width: 3;" +
-                        "-fx-effect: dropshadow(gaussian, #00ff88, 15, 0.7, 0, 0);"
-                );
-
-                // Highlight buttons nếu đang chọn button
-                if (selectedButtonIndex >= 0) {
-                    highlightButton(component, selectedButtonIndex);
-                }
-            } else {
-                // Non-selected slot
-                component.setStyle(component.getStyle() +
-                        "-fx-border-color: #2a6cff;" +
-                        "-fx-border-width: 2;"
-                );
-            }
+        // Update button highlight
+        if (selectedButtonIndex >= 0 && selectedSlotIndex >= 0) {
+            int globalIndex = getGlobalButtonIndex(selectedSlotIndex, selectedButtonIndex);
+            buttonManager.setSelectedIndex(globalIndex);
+        } else {
+            // Không chọn button nào → clear toàn bộ hiệu ứng
+            buttonManager.setSelectedIndex(-1);
         }
     }
 
     /**
-     * Highlight button trong selected slot
+     * Tính global button index từ slot và local button index
      */
-    private void highlightButton(SlotComponent component, int buttonIndex) {
-        SaveSlot slot = component.getSlot();
-
-        if (slot.isEmpty()) {
-            // Chỉ có 1 button: New Game
-            if (component.getNewGameButton() != null) {
-                component.getNewGameButton().getStyleClass().add("selected");
-            }
-        } else {
-            // 2 buttons: Play và Delete
-            if (buttonIndex == 0 && component.getPlayButton() != null) {
-                component.getPlayButton().getStyleClass().add("selected");
-                component.getDeleteButton().getStyleClass().remove("selected");
-            } else if (buttonIndex == 1 && component.getDeleteButton() != null) {
-                component.getDeleteButton().getStyleClass().add("selected");
-                component.getPlayButton().getStyleClass().remove("selected");
-            }
+    private int getGlobalButtonIndex(int slotIdx, int localBtnIdx) {
+        int globalIdx = 0;
+        for (int i = 0; i < slotIdx; i++) {
+            SaveSlot slot = slotComponents.get(i).getSlot();
+            globalIdx += slot.isEmpty() ? 1 : 2;
         }
+        return globalIdx + localBtnIdx;
+    }
+
+    /**
+     * Lấy số buttons trong slot hiện tại
+     */
+    private int getButtonCountInSlot(int slotIdx) {
+        if (slotIdx < 0 || slotIdx >= slotComponents.size()) return 0;
+        SaveSlot slot = slotComponents.get(slotIdx).getSlot();
+        return slot.isEmpty() ? 1 : 2;
     }
 
     /**
@@ -175,77 +169,60 @@ public class SlotSelectionView {
     public void enableKeyboard(Scene scene) {
         scene.setOnKeyPressed(ev -> {
             KeyCode key = ev.getCode();
-
-            if (selectedButtonIndex == -1) {
-                // Mode: Selecting slot
+            if (selectedButtonIndex == -1)
                 handleSlotNavigation(key);
-            } else {
-                // Mode: Selecting button
+            else
                 handleButtonNavigation(key);
-            }
-
             ev.consume();
         });
     }
 
     /**
-     * Handle keyboard navigation giữa slots
+     *Handle keyboard navigation giữa slots
      */
     private void handleSlotNavigation(KeyCode key) {
         switch (key) {
             case LEFT:
-                selectedSlotIndex = (selectedSlotIndex - 1 + slotComponents.size())
-                        % slotComponents.size();
+                selectedSlotIndex = (selectedSlotIndex - 1 + slotComponents.size()) % slotComponents.size();
                 updateSelectionVisuals();
                 break;
-
             case RIGHT:
                 selectedSlotIndex = (selectedSlotIndex + 1) % slotComponents.size();
                 updateSelectionVisuals();
                 break;
-
             case ENTER:
-                // Enter slot → switch to button selection mode
                 selectedButtonIndex = 0;
                 updateSelectionVisuals();
                 break;
-
             case ESCAPE:
-                // Back to main menu
                 controller.handleBackToMenu();
                 break;
         }
     }
 
     /**
-     * Handle keyboard navigation giữa buttons
+     * Handle keyboard navigation giữa buttons bên trong slot
      */
-    private void handleButtonNavigation(KeyCode key) {
-        SlotComponent selectedComponent = slotComponents.get(selectedSlotIndex);
-        SaveSlot selectedSlot = selectedComponent.getSlot();
 
+    private void handleButtonNavigation(KeyCode key) {
+        int count = getButtonCountInSlot(selectedSlotIndex);
         switch (key) {
             case LEFT:
-                if (!selectedSlot.isEmpty()) {
-                    selectedButtonIndex = 0;  // Play button
+                if (count > 1) {
+                    selectedButtonIndex = (selectedButtonIndex - 1 + count) % count;
                     updateSelectionVisuals();
                 }
                 break;
-
             case RIGHT:
-                if (!selectedSlot.isEmpty()) {
-                    selectedButtonIndex = 1;  // Delete button
+                if (count > 1) {
+                    selectedButtonIndex = (selectedButtonIndex + 1) % count;
                     updateSelectionVisuals();
                 }
                 break;
-
             case ENTER:
-                // Execute button action
-                executeSelectedButton(selectedComponent);
+                executeSelectedButton();
                 break;
-
             case ESCAPE:
-                // Back to slot selection mode
                 selectedButtonIndex = -1;
                 updateSelectionVisuals();
                 break;
@@ -255,59 +232,44 @@ public class SlotSelectionView {
     /**
      * Execute action của button đang được select
      */
-    private void executeSelectedButton(SlotComponent component) {
-        SaveSlot slot = component.getSlot();
-
-        if (slot.isEmpty()) {
-            // New Game
-            controller.handleNewGame(slot.getSlotNumber());
-        } else {
-            // Play hoặc Delete
-            if (selectedButtonIndex == 0) {
-                controller.handleContinueGame(slot.getSlotNumber());
-            } else if (selectedButtonIndex == 1) {
-                controller.handleDeleteSlot(slot.getSlotNumber());
-                // Refresh UI sau khi delete
-                refreshSlots();
-            }
-        }
+    private void executeSelectedButton() {
+        int globalIndex = getGlobalButtonIndex(selectedSlotIndex, selectedButtonIndex);
+        if (globalIndex >= 0 && globalIndex < buttonManager.getButtons().size())
+            buttonManager.getButtons().get(globalIndex).fire();
     }
 
     /**
      * Refresh slots sau khi delete/create
      */
     public void refreshSlots() {
-        // Reload slots từ controller
         List<SaveSlot> slots = controller.getAllSlots();
-
-        // Clear old components
-        HBox slotsBox = (HBox) uiBox.getChildren().get(1);
         slotsBox.getChildren().clear();
         slotComponents.clear();
+        buttonManager.clearAll();
 
-        // Recreate components
         for (SaveSlot slot : slots) {
-            SlotComponent component = new SlotComponent(slot);
-            slotComponents.add(component);
-            slotsBox.getChildren().add(component);
-            attachButtonHandlers(component);
+            SlotComponent comp = new SlotComponent(slot);
+            slotComponents.add(comp);
+            slotsBox.getChildren().add(comp);
+            setupSlotButtons(comp);
+
+            int slotIndex = slotComponents.size() - 1;
+            comp.setOnAction(e -> {
+                selectedSlotIndex = slotIndex;
+                selectedButtonIndex = -1;
+                updateSelectionVisuals();
+            });
         }
 
-        // Reset selection
+        selectedSlotIndex = 0;
         selectedButtonIndex = -1;
         updateSelectionVisuals();
     }
 
-    /**
-     * Lấy root node cho Scene
-     */
-    public Node getRoot() {
+    public static Node getRoot() {
         return rootStack;
     }
 
-    /**
-     * Stop background animation
-     */
     public void stopBgAnimation() {
         themeManager.stopBgAnimation();
     }

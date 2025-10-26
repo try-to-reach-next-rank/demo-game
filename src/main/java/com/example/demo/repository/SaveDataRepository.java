@@ -14,7 +14,7 @@ import java.time.ZoneId;
 import java.util.List;
 
 public class SaveDataRepository {
-    private static final String SAVE_DIR = "F:\\Baitaplon\\demo-game\\src\\main\\resources\\Saves\\";
+    private static final String SAVE_DIR = "src\\main\\resources\\Saves\\";
 
     public SaveDataRepository() {
         createSaveDirectoryIfNotExists();
