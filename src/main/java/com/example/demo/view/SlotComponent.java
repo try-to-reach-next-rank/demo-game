@@ -55,25 +55,6 @@ public class SlotComponent extends Button {
 
         setSelected(false);
 
-        // Hover effect
-        this.setOnMouseEntered(e -> {
-            if (!this.getStyleClass().contains("selected")) {
-                this.setStyle(
-                        "-fx-background-color: rgba(255, 255, 255, 0.08);" +
-                                "-fx-background-radius: 10;" +
-                                "-fx-padding: 20;" +
-                                "-fx-border-color: #4a9eff;" +
-                                "-fx-border-width: 2;" +
-                                "-fx-border-radius: 10;"
-                );
-            }
-        });
-
-        this.setOnMouseExited(e -> {
-            if (!this.getStyleClass().contains("selected")) {
-                setSelected(false);
-            }
-        });
     }
 
     private void setupMiniMap() {
@@ -157,7 +138,7 @@ public class SlotComponent extends Button {
                             "-fx-border-color: #00ff88;" +
                             "-fx-border-width: 3;" +
                             "-fx-border-radius: 10;" +
-                            "-fx-effect: dropshadow(gaussian, #00ff88, 15, 0.7, 0, 0);"
+                            "-fx-effect: dropshadow(gaussian, #00ff88, 15, 0.5, 0, 0);"
             );
         } else {
             this.getStyleClass().remove("selected");

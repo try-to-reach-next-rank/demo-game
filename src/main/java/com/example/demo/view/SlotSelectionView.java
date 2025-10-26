@@ -47,6 +47,9 @@ public class SlotSelectionView implements Stage {
         this.uiBox.setPadding(new Insets(40));
         this.uiBox.setAlignment(Pos.CENTER);
         this.slotComponents = new ArrayList<>();
+        this.rootStack.getStylesheets().add(
+                getClass().getResource("/styles/slot.css").toExternalForm()
+        );
 
         // 1. Setup theme
         this.themeManager = new ThemeManager();
@@ -182,11 +185,11 @@ public class SlotSelectionView implements Stage {
      */
     private void handleSlotNavigation(KeyCode key) {
         switch (key) {
-            case LEFT:
+            case DOWN:
                 selectedSlotIndex = (selectedSlotIndex - 1 + slotComponents.size()) % slotComponents.size();
                 updateSelectionVisuals();
                 break;
-            case RIGHT:
+            case UP:
                 selectedSlotIndex = (selectedSlotIndex + 1) % slotComponents.size();
                 updateSelectionVisuals();
                 break;
