@@ -9,7 +9,8 @@ module com.example.demo {
     requires javafx.media;
     requires javafx.graphics;
     requires com.google.gson;
-    
+    requires org.slf4j;
+
     opens com.example.demo to javafx.fxml;
     opens com.example.demo.model.state to com.google.gson;
     //  opens com.example.demo  to com.google.gson;

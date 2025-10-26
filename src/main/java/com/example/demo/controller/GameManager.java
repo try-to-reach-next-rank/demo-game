@@ -12,16 +12,16 @@ import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.dialogue.DialogueBox;
 import com.example.demo.model.utils.dialogue.DialogueSystem;
 import com.example.demo.view.*;
-import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.model.map.ParallaxLayer;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +36,8 @@ public class GameManager extends Pane {
 
     // === MODEL ===
     private final GameWorld world = new GameWorld();
+
+    private static final Logger log = LoggerFactory.getLogger(GameManager.class);
 
     // === SYSTEMS ===
     private final List<Updatable> updatables = new ArrayList<>();
@@ -158,7 +160,7 @@ public class GameManager extends Pane {
                 () -> {
                     inGame = true;
                     MapData mapData = mapManager.loadMap(level);
-                    System.out.println("Loaded map: " + level + " with " + mapData.getBricks().size() + " bricks");
+                    log.info("Loaded map: {} with {} bricks", level, mapData.getBricks().size());
                     dialogueSystem.start();
                 }
         );
@@ -189,7 +191,7 @@ public class GameManager extends Pane {
     }
 
     private void saveGame() {
-        System.out.println("Bắt đầu lưu game...");
+        log.info("Bắt đầu lưu game...");
         // construct gameState để thu thập toàn bộ trạng thái game
         GameState gameState = new GameState(world);
         // 1 dòng để lưu
@@ -197,15 +199,15 @@ public class GameManager extends Pane {
     }
 
     private void loadGame() {
-        System.out.println("Bắt đầu tải game...");
+        log.info("Bắt đầu tải game...");
         // 1 dòng để tải
         GameState loadedState = SaveManager.load(SAVE_FILE_NAME, GameState.class);
         // Kiểm tra và gọi hàm áp dụng trạng thái
         if (loadedState != null) {
             applyState(loadedState);
-            System.out.println("Tải game thành công!");
+            log.info("Tải game thành công!");
         } else {
-            System.out.println("Không có file lưu hoặc file lỗi.");
+            log.info("Không có file lưu hoặc file lỗi.");
         }
     }
 
@@ -291,7 +293,7 @@ public class GameManager extends Pane {
                 fpsTimer += deltaTime;
                 frames++;
                 if (fpsTimer >= 1.0) {
-                    System.out.println("FPS: " + frames);
+                    log.info("FPS: {}", frames);
                     fpsTimer = 0;
                     frames = 0;
                 }
@@ -355,7 +357,7 @@ public class GameManager extends Pane {
                 if (cheatTable != null) {
                     cheatTable.show(); // Chỉ mở
                 } else {
-                    System.out.println("   (Cheat menu not unlocked yet)");
+                    log.info("(Cheat menu not unlocked yet)");
                 }
                 e.consume();
                 return;
@@ -380,7 +382,7 @@ public class GameManager extends Pane {
             if (keySequence.toString().equals(SECRET_CODE)) {
 
                 if (this.cheatTable == null) {
-                    System.out.println("!!! CHEAT MENU UNLOCKED !!!");
+                    log.info("!!! CHEAT MENU UNLOCKED !!!");
                     this.cheatTable = new CheatTable(this);
                         this.uiManager.add(this.cheatTable); // THÊM VÀO UIMANAGER
                 }
