@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 public class Brick extends ImageObject {
     private int health;
     private boolean destroyed;
+    private boolean revealed = false;
 
     public Brick(String imageKey, double x, double y, int health) {
         super(imageKey, x, y);
@@ -38,9 +39,13 @@ public class Brick extends ImageObject {
     public boolean isDestroyed() { return destroyed; }
     public void setDestroyed(boolean destroyed) { this.destroyed = destroyed; }
 
+    public boolean isRevealed() { return revealed; }
+    public void setRevealed(boolean revealed) { this.revealed = revealed; }
+
+    // For renderer
     @Override
-    public boolean isStatic() {
-        // TODO: Upgrade this later
-        return false;
+    public boolean isVisible() {
+        // Render if ready to reveal or not destroy
+        return super.isVisible() && isRevealed() && !isDestroyed();
     }
 }

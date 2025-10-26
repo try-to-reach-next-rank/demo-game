@@ -1,5 +1,6 @@
 package com.example.demo.controller.core;
 
+import com.example.demo.controller.EffectManager;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.*;
@@ -10,7 +11,6 @@ import com.example.demo.model.utils.Vector2D;
 import com.example.demo.model.system.BallSystem;
 import com.example.demo.model.system.BrickSystem;
 import com.example.demo.model.system.PowerUpSystem;
-import com.example.demo.view.EffectRenderer;
 
 import java.util.List;
 
@@ -105,7 +105,7 @@ public class CollisionManager implements Updatable {
             Sound.getInstance().playSound("wall_hit");
 
             // simple effect (View layer responsibility)
-            EffectRenderer.getInstance().spawn(
+            EffectManager.getInstance().spawn(
                     "explosion2",
                     ball.getX() + ball.getWidth() / 2,
                     ball.getY() + ball.getHeight() / 2,

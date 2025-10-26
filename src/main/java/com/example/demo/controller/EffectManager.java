@@ -1,4 +1,4 @@
-package com.example.demo.view;
+package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,23 +7,24 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.demo.controller.view.AssetManager;
+import com.example.demo.engine.Effect;
 import com.example.demo.model.core.VisualEffect;
 import com.example.demo.model.core.effects.AnimatedEffect;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public class EffectRenderer {
+public class EffectManager {
     private final AssetManager assetManager = AssetManager.getInstance();
-    private static final EffectRenderer instance = new EffectRenderer();
+    private static final EffectManager instance = new EffectManager();
 
     private final List<VisualEffect> activeEffects = new ArrayList<>();
     private final Map<String, VisualEffect> allEffectsMap = new HashMap<>();
 
-    private EffectRenderer() {
+    private EffectManager() {
         init();
     }
 
-    public static EffectRenderer getInstance() {
+    public static EffectManager getInstance() {
         return instance;
     }
 
@@ -56,10 +57,8 @@ public class EffectRenderer {
         }
     }
 
-    public void render(GraphicsContext gc) {
-        for (VisualEffect effect : activeEffects) {
-            effect.render(gc);
-        }
+    public List<VisualEffect> getActiveEffects() {
+        return this.activeEffects;
     }
 
     public void clear() {

@@ -1,5 +1,6 @@
 package com.example.demo.controller.core;
 
+import com.example.demo.controller.EffectManager;
 import com.example.demo.controller.map.LoadLevel;
 import com.example.demo.controller.map.LoadTransition;
 import com.example.demo.controller.map.MapManager;
@@ -297,7 +298,7 @@ public class GameManager extends Pane {
         for (Updatable system : updatables)
             system.update(deltaTime);
 
-        EffectRenderer.getInstance().update(deltaTime);
+        EffectManager.getInstance().update(deltaTime);
     }
 
 
@@ -331,7 +332,11 @@ public class GameManager extends Pane {
             // Phím `~` (BACK_QUOTE) bây giờ CHỈ dùng để MỞ menu
             if (code == KeyCode.BACK_QUOTE) {
                 if (cheatTable != null) {
-                    cheatTable.show(); // Chỉ mở
+
+                    // TODO: THIS IS PHUC TEST
+                    if (cheatTable.isActive()) cheatTable.hide();
+                    else cheatTable.show();
+                    // cheatTable.show(); // Chỉ mở
                 } else {
                     log.info("(Cheat menu not unlocked yet)");
                 }
@@ -389,7 +394,7 @@ public class GameManager extends Pane {
         inGame = false;
         if (timer != null) timer.stop();
         Sound.getInstance().stopMusic();
-        EffectRenderer.getInstance().clear();
+        EffectManager.getInstance().clear();
     }
 
     // -------------------------------------------------------------------------

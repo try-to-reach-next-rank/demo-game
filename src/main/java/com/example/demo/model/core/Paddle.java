@@ -33,9 +33,4 @@ public class Paddle extends ImageObject {
 
     public boolean getBiggerPaddle() { return this.biggerPaddle; }
     public void setBiggerPaddle(boolean biggerPaddle){ this.biggerPaddle = biggerPaddle; }
-
-    @Override
-    public boolean isStatic() {
-        return false;
-    }
 }

@@ -1,8 +1,9 @@
 package com.example.demo.engine;
 
+import com.example.demo.controller.EffectManager;
 import com.example.demo.model.core.*;
+import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.system.PowerUpSystem;
-import com.example.demo.view.EffectRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,16 @@ public class GameWorld {
         powerUps.clear();
         if (ball != null) ball.resetState();
         if (paddle != null) paddle.resetState();
-        EffectRenderer.getInstance().clear();
+        EffectManager.getInstance().clear();
+    }
+
+    public List<GameObject> getAllObjects() {
+        List<GameObject> all = new ArrayList<>();
+        if (paddle != null) all.add(paddle);
+        if (ball != null) all.add(ball);
+        if (bricks != null) for (Brick b : bricks) all.add(b);
+        if (walls != null) all.addAll(walls);
+        if (powerUps != null) all.addAll(powerUps);
+        return all;    
     }
 }

@@ -8,13 +8,14 @@ public abstract class GameObject {
     protected double y;
     protected double width;
     protected double height;
-    protected boolean visible = true;
 
     protected double baseWidth;
     protected double baseHeight;
 
     protected double scaleX = 1.0;
     protected double scaleY = 1.0;
+
+    private boolean visible = true;
 
     public GameObject(double startX, double startY) {
         setPosition(startX, startY);
@@ -61,6 +62,4 @@ public abstract class GameObject {
     public Bounds getBounds() {
         return new BoundingBox(x, y, width, height);
     }
-
-    public abstract boolean isStatic();
 }

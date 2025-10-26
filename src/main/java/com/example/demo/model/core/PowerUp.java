@@ -5,7 +5,6 @@ import com.example.demo.model.utils.GlobalVar;
 
 public class PowerUp extends AnimatedObject {
     private final String type;
-    private boolean visible;
     private final double fallSpeed = 150.0;
     private boolean active = false;
     private long expireAt = -1;
@@ -18,13 +17,13 @@ public class PowerUp extends AnimatedObject {
 
     public void dropFrom(Brick brick) {
         setPosition(brick.getX() + brick.getWidth() / 2, brick.getY() + brick.getHeight() / 2);
-        visible = true;
+        setVisible(true);
     }
 
     public void fall(double deltaTime) {
-        if (!visible) return;
+        if (!isVisible()) return;
         y += fallSpeed * deltaTime;
-        if (y > GlobalVar.HEIGHT) visible = false;
+        if (y > GlobalVar.HEIGHT) setVisible(false);
     }
 
     public void activate(long durationMillis) {
@@ -57,12 +56,5 @@ public class PowerUp extends AnimatedObject {
     }
 
     public void deactivate() { active = false; }
-    public boolean isVisible() { return visible; }
-    public void setVisible(boolean visible) { this.visible = visible; }
     public String getType() { return type; }
-
-    @Override
-    public boolean isStatic() {
-        return false;
-    }
 }
