@@ -2,8 +2,8 @@ package com.example.demo.view;
 
 import com.example.demo.controller.SlotSelectionController;
 import com.example.demo.controller.Stage;
-import com.example.demo.controller.ThemeManager;
-import com.example.demo.controller.ButtonManager;
+import com.example.demo.controller.view.ThemeManager;
+import com.example.demo.controller.view.ButtonManager;
 import com.example.demo.model.menu.SaveSlot;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
