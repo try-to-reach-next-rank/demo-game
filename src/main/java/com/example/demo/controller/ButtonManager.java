@@ -83,6 +83,12 @@ public class ButtonManager {
             updateSelectionVisuals();
         });
 
+        button.setOnMouseExited(e -> {
+            hideHands(buttonIndex);
+            stopPulse(button);
+            button.getStyleClass().remove("selected");
+        });
+
         HBox row = new HBox(12);
         row.setAlignment(Pos.CENTER);
         row.getChildren().addAll(left, button, right);

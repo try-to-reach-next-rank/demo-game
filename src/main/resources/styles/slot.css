@@ -1,0 +1,64 @@
+/*
+ * slot-component.css
+ * Stylesheet chỉ dành cho SlotComponent (Nút lưu)
+ */
+
+/* =========================================================================
+ * 1. Base Style (.slot-component) 
+ * Trạng thái mặc định (setSelected(false) VÀ không hover)
+ * ========================================================================= */
+.slot-component {
+    /* Nền & bo góc (rounded/oval): rgba(255, 255, 255, 0.05) và radius 10 */
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+
+    /* Viền & bo góc: #2a6cff, width 2, radius 10 */
+    -fx-border-color: #2a6cff; 
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+
+    /* Loại bỏ text mặc định và focus border */
+    -fx-text-fill: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-focus-traversable: false;
+}
+
+/* =========================================================================
+ * 2. Hover Effect (.slot-component.hover:not(.selected))
+ * Áp dụng khi SlotComponent có class "hover" và KHÔNG có class "selected"
+ * ========================================================================= */
+.slot-component.hover:not(.selected) {
+    /* Nền sáng hơn: rgba(255, 255, 255, 0.08) */
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+
+    /* Viền hover: #4a9eff */
+    -fx-border-color: #4a9eff;
+    /* Giữ nguyên các thuộc tính khác như radius và width (2) */
+}
+
+/* =========================================================================
+ * 3. Selected State (.slot-component.selected)
+ * Khi được chọn (setSelected(true))
+ * ========================================================================= */
+.slot-component.selected {
+    /* Giữ nguyên nền */
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    
+    /* Viền chọn: Màu xanh lá cây (#00ff88) và độ dày 3px */
+    -fx-border-color: #00ff88; 
+    -fx-border-width: 3;
+    -fx-border-radius: 10;
+
+    /* Hiệu ứng đổ bóng */
+    -fx-effect: dropshadow(gaussian, #00ff88, 15, 0.7, 0, 0); 
+}
+
+/* =========================================================================
+ * 4. Style cho Mini Map (Canvas)
+ * Áp dụng hiệu ứng dropshadow (đổ bóng) cho Canvas
+ * ========================================================================= */
+.mini-map {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);
+}

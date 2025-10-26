@@ -64,6 +64,7 @@ public class SaveDataRepository {
         }
 
         GameState state = loadSlot(slotNumber);
+
         return state != null ? state.getBricksData() : null;
     }
 
