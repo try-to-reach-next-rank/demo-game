@@ -162,7 +162,11 @@ public class GameManager extends Pane {
             dialogueSystem.start();
         }
         else {
+            dialogueSystem = new DialogueSystem("/Dialogue/continue.txt", dialogueBox);
             loadGame();
+            setupSecretCodeEasterEgg();
+            uiManager.add(dialogueBox);
+            dialogueSystem.start();
         }
 
         loop();
@@ -378,7 +382,6 @@ public class GameManager extends Pane {
             KeyCode code = e.getCode();
             if (code == null) return;
 
-
             // Phím `~` (BACK_QUOTE) bây giờ CHỈ dùng để MỞ menu
             if (code == KeyCode.BACK_QUOTE) {
                 if (cheatTable != null) {
@@ -390,7 +393,6 @@ public class GameManager extends Pane {
                 return;
             }
 
-
             if (code == KeyCode.F5) {
                 saveGame();
                 return;
@@ -400,8 +402,9 @@ public class GameManager extends Pane {
                 return;
             }
 
-            // Secret code logic
+            // Logic cho secret code
             String key = code.getName().toUpperCase();
+            log.info(key);
             keySequence.append(key);
             if (keySequence.length() > SECRET_CODE.length()) {
                 keySequence.delete(0, keySequence.length() - SECRET_CODE.length());
@@ -412,7 +415,7 @@ public class GameManager extends Pane {
                 if (this.cheatTable == null) {
                     log.info("!!! CHEAT MENU UNLOCKED !!!");
                     this.cheatTable = new CheatTable(this);
-                        this.uiManager.add(this.cheatTable); // THÊM VÀO UIMANAGER
+                    this.uiManager.add(this.cheatTable); // THÊM VÀO UIMANAGER
                 }
 
                 dialogueBox.start(new DialogueBox.DialogueLine[]{
