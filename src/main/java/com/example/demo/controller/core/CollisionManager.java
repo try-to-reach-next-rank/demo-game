@@ -1,9 +1,9 @@
-package com.example.demo.controller;
+package com.example.demo.controller.core;
 
 import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.*;
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.Vector2D;
@@ -121,38 +121,23 @@ public class CollisionManager implements Updatable {
             if (brick.isDestroyed()) continue;
             if (!ball.getBounds().intersects(brick.getBounds())) continue;
 
-            //Nếu là cùng gạch đã va gần đây => bỏ qua
-            if (ball.getLastHitBrick() == brick) continue;
-
-            //Ghi nhận gạch vừa va
-            ball.setLastHitBrick(brick);
-
-            brickSystem.onBallHitBrick(ball, brick);
+            // delegate to BrickSystem to apply damage, explosion, and power-up drop
+            brickSystem.onBallHitBrick(brick);
             Sound.getInstance().playSound("brick_hit");
 
+            // bounce depending on overlap direction
             Vector2D v = ball.getVelocity();
             double overlapX = overlapX(ball, brick);
             double overlapY = overlapY(ball, brick);
             boolean fromSide = overlapX < overlapY;
+            if (ball.isStronger()) continue;
+            if (fromSide) ball.setVelocity(-v.x, v.y);
+            else ball.setVelocity(v.x, -v.y);
 
-            if (!ball.isStronger()) {
-                if (fromSide) ball.setVelocity(-v.x, v.y);
-                else ball.setVelocity(v.x, -v.y);
-            }
-            
-            break; // chỉ xử lý một gạch mỗi frame
-        }
+            resolveBallBrickOverlap(ball, brick);
 
-        //Nếu bóng không còn va gạch nào → reset lại lastHitBrick
-        boolean stillColliding = false;
-        for (Brick brick : bricks) {
-            if (brick.isDestroyed()) continue;
-            if (ball.getBounds().intersects(brick.getBounds())) {
-                stillColliding = true;
-                break;
-            }
+            break;
         }
-        if (!stillColliding) ball.setLastHitBrick(null);
     }
 
     // ------------------------------------------------------------------------
@@ -168,4 +153,25 @@ public class CollisionManager implements Updatable {
         return Math.min(a.getBounds().getMaxY(), b.getBounds().getMaxY()) -
                 Math.max(a.getBounds().getMinY(), b.getBounds().getMinY());
     }
+
+    private void resolveBallBrickOverlap(Ball ball, Brick brick) {
+        var ballBounds = ball.getBounds();
+        var brickBounds = brick.getBounds();
+        double overlapX = overlapX(ball, brick);
+        double overlapY = overlapY(ball, brick);
+
+        // Push ball out along the smaller overlap axis
+        if (overlapX < overlapY) {
+            if (ballBounds.getCenterX() < brickBounds.getCenterX())
+                ball.setX(ball.getX() - overlapX);
+            else
+                ball.setX(ball.getX() + overlapX);
+        } else {
+            if (ballBounds.getCenterY() < brickBounds.getCenterY())
+                ball.setY(ball.getY() - overlapY);
+            else
+                ball.setY(ball.getY() + overlapY);
+        }
+    }
+
 }

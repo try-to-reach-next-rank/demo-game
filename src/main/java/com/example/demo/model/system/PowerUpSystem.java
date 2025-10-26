@@ -42,6 +42,7 @@ public class PowerUpSystem implements Updatable {
             for (PowerUp p : worldPowerUps) {
                 if (p.isVisible()) {
                     p.fall(deltaTime);
+                    p.updateAnimation(deltaTime);
                 }
             }
         }

@@ -1,12 +1,20 @@
-package com.example.demo.controller;
+package com.example.demo.controller.core;
 
+import com.example.demo.controller.map.LoadLevel;
+import com.example.demo.controller.map.LoadTransition;
+import com.example.demo.controller.map.MapManager;
+import com.example.demo.controller.view.AssetManager;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.map.MapData;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
+
 import com.example.demo.model.utils.GameVar;
+
+import com.example.demo.model.utils.CheatTable;
+
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.dialogue.DialogueBox;
@@ -21,6 +29,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +45,8 @@ public class GameManager extends Pane {
     // === MODEL ===
     private final GameWorld world = new GameWorld();
 
+    private static final Logger log = LoggerFactory.getLogger(GameManager.class);
+
     // === SYSTEMS ===
     private final List<Updatable> updatables = new ArrayList<>();
     private final List<Renderable> renderables = new ArrayList<>();
@@ -48,6 +60,10 @@ public class GameManager extends Pane {
     private DialogueSystem dialogueSystem;
     private ParallaxSystem parallaxSystem;
     private PowerUpSystem powerUpSystem;
+    private Renderer renderer;
+    private LoadTransition loadTransition;
+    private final TransitionEffect transitionEffect = new TransitionEffect(2.0); // 1.5s duration
+    private CheatTable cheatTable;
 
     // === SLOT & NEW GAME FLAGS ===
     private int currentSlotNumber = -1;
@@ -88,9 +104,10 @@ public class GameManager extends Pane {
     //  Game Initialization
     // -------------------------------------------------------------------------
 
+
     public void initGame() {
         // --- Load all resources ---
-        AssetManager.getInstance().loadAll();
+
 
         // --- Create base entities (Model layer) ---
         Paddle paddle = new Paddle();
@@ -104,6 +121,10 @@ public class GameManager extends Pane {
         this.powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
 
         world.setPowerUpSystem(this.powerUpSystem);
+
+        this.renderer = new Renderer(world);
+        LoadLevel loadLevel = new LoadLevel(mapManager, world, renderer);
+        loadTransition = new LoadTransition(world, transitionEffect, loadLevel, dialogueSystem);
 
         // --- Load map and build bricks/walls ---
         loadLevel(world.getCurrentLevel());
@@ -121,10 +142,10 @@ public class GameManager extends Pane {
                 collisionManager
         ));
 
-        // --- Register renderables (View layer) ---
-        Renderer renderer = new Renderer(world);
-        renderables.add(renderer);
-        renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT));
+
+        renderables.add(renderer);                                               // then the world
+        renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
+
 
         // --- Setup parallax for level 2 ---
         if (world.getCurrentLevel() == GameVar.START_LEVEL) {
@@ -151,20 +172,34 @@ public class GameManager extends Pane {
     //  Level Management
     // -------------------------------------------------------------------------
 
-    private void loadLevel(int level) {
-        MapData mapData = switch (level) {
-            case 1 -> mapManager.loadMap(1);
-            case 2 -> mapManager.loadMap(2);
-            case 3 -> mapManager.loadMap(3);
-            default -> mapManager.loadMap(1);
-        };
 
-        world.getWalls().clear();
-        world.getWalls().addAll(mapData.getWalls());
+    private void loadLevel(int level) { // TODO: put this in map
+        loadTransition.startLevel(level);
+    }
 
-        List<Brick> bricks = mapData.getBricks();
-        world.setBricks(bricks.toArray(new Brick[0]));
-        world.resetForNewLevel();
+
+    public void loadNextLevel() {
+        int currentLevel = world.getCurrentLevel();
+        int nextLevel = currentLevel + 1;
+
+        if (nextLevel > 3) {
+            nextLevel = 1; // Quay vòng
+        }
+
+        world.setCurrentLevel(nextLevel); // Giả sử GameWorld có hàm này
+        loadLevel(nextLevel);
+    }
+
+    public void loadPreviousLevel() {
+        int currentLevel = world.getCurrentLevel();
+        int prevLevel = currentLevel - 1;
+
+        if (prevLevel < 1) {
+            prevLevel = 3; // Quay vòng
+        }
+
+        world.setCurrentLevel(prevLevel);
+        loadLevel(prevLevel);
     }
 
     // -------------------------------------------------------------------------
@@ -172,12 +207,10 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     private void saveGame() {
-        if (currentSlotNumber == -1) {
-            System.err.println("[GameManager] No slot selected, cannot save!");
-            return;
-        }
 
-        System.out.println("[GameManager] Saving to slot " + currentSlotNumber + "...");
+        log.info("Bắt đầu lưu game...");
+        // construct gameState để thu thập toàn bộ trạng thái game
+
         GameState gameState = new GameState(world);
 
         SaveDataRepository repository = new SaveDataRepository();
@@ -186,21 +219,18 @@ public class GameManager extends Pane {
     }
 
     private void loadGame() {
-        if (currentSlotNumber == -1) {
-            System.out.println("[GameManager] No slot selected");
-            return;
-        }
 
-        System.out.println("[GameManager] Loading from slot " + currentSlotNumber + "...");
+        log.info("[GameManager] Loading from slot " + currentSlotNumber + "...");
 
         SaveDataRepository repository = new SaveDataRepository();
         GameState loadedState = repository.loadSlot(currentSlotNumber);
 
         if (loadedState != null) {
             applyState(loadedState);
-            System.out.println("[GameManager] Load complete!");
+            log.info("Tải game thành công!");
         } else {
-            System.out.println("[GameManager] No save data found in slot " + currentSlotNumber);
+            log.info("Không có file lưu hoặc file lỗi.");
+
         }
     }
 
@@ -286,7 +316,7 @@ public class GameManager extends Pane {
                 fpsTimer += deltaTime;
                 frames++;
                 if (fpsTimer >= 1.0) {
-                    System.out.println("FPS: " + frames);
+                    log.info("FPS: {}", frames);
                     fpsTimer = 0;
                     frames = 0;
                 }
@@ -300,26 +330,43 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     private void update(double deltaTime) {
+        // Always update transition effect and UI
+        transitionEffect.update(deltaTime);
         uiManager.update(deltaTime);
+
+        // Only skip gameplay logic, not transitions
         if (!inGame || uiManager.hasActiveUI()) return;
 
-        if (parallaxSystem != null) {
-            parallaxSystem.update(deltaTime);
-        }
 
-        for (Updatable system : updatables) system.update(deltaTime);
+        // Continue updating gameplay systems
+        if (parallaxSystem != null)
+            parallaxSystem.update(deltaTime);
+
+        for (Updatable system : updatables)
+            system.update(deltaTime);
+
+
         EffectRenderer.getInstance().update(deltaTime);
     }
+
 
     private void render() {
         gc.clearRect(0, 0, GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
-        if (parallaxSystem != null) {
+
+        if (parallaxSystem != null)
             parallaxSystem.render(gc);
+
+        for (Renderable r : renderables)
+            r.render(gc);
+
+        // UI always rendered, but optionally hide when transition is active
+        if (!transitionEffect.isActive() && uiManager.hasActiveUI()) {
+            uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
         }
 
-        for (Renderable r : renderables) r.render(gc);
-        uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
+        // Transition overlay on top
+        transitionEffect.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
     }
 
     // -------------------------------------------------------------------------
@@ -331,12 +378,26 @@ public class GameManager extends Pane {
             KeyCode code = e.getCode();
             if (code == null) return;
 
-            // Save (F5) and Load (F9) shortcuts
+
+            // Phím `~` (BACK_QUOTE) bây giờ CHỈ dùng để MỞ menu
+            if (code == KeyCode.BACK_QUOTE) {
+                if (cheatTable != null) {
+                    cheatTable.show(); // Chỉ mở
+                } else {
+                    log.info("(Cheat menu not unlocked yet)");
+                }
+                e.consume();
+                return;
+            }
+
+
             if (code == KeyCode.F5) {
                 saveGame();
+                return;
             }
             if (code == KeyCode.F9) {
                 loadGame();
+                return;
             }
 
             // Secret code logic
@@ -345,17 +406,28 @@ public class GameManager extends Pane {
             if (keySequence.length() > SECRET_CODE.length()) {
                 keySequence.delete(0, keySequence.length() - SECRET_CODE.length());
             }
+
             if (keySequence.toString().equals(SECRET_CODE)) {
+
+                if (this.cheatTable == null) {
+                    log.info("!!! CHEAT MENU UNLOCKED !!!");
+                    this.cheatTable = new CheatTable(this);
+                        this.uiManager.add(this.cheatTable); // THÊM VÀO UIMANAGER
+                }
+
                 dialogueBox.start(new DialogueBox.DialogueLine[]{
                         new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.EGG, "You found the secret!"),
-                        new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Whoa, how did you unlock this?")
+                        new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Cheat menu unlocked. Press ~ to open.")
                 });
+
                 keySequence.setLength(0);
+                return;
             }
+
         });
     }
 
-    private void gameFinished() {
+    private void gameFinished() { // TODO: cheat menu uses this to trigger win condition
         gc.setFill(Color.BLACK);
         gc.setFont(new Font("Verdana", 18));
         if (!uiManager.contains(dialogueBox)) uiManager.add(dialogueBox);
@@ -365,7 +437,7 @@ public class GameManager extends Pane {
         });
     }
 
-    private void stopGame() {
+    private void stopGame() { // TODO: pause uses this
         inGame = false;
         if (timer != null) timer.stop();
         Sound.getInstance().stopMusic();

@@ -1,7 +1,7 @@
 package com.example.demo.model.map;
 
+import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.Wall;
-import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.GlobalVar;
 
@@ -41,12 +41,12 @@ public class MapData {
         for (int i = 0; i < GameVar.N_OF_WALLS_LEFT_RIGHT; i++) {
             walls.add(new Wall(Wall.Side.LEFT, 0, i * GameVar.HEIGHT_OF_WALLS,
                     GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
-            walls.add(new Wall(Wall.Side.RIGHT, GlobalVar.WIDTH - GameVar.WIDTH_OF_WALLS,
-                    i * GameVar.HEIGHT_OF_WALLS, GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
+            walls.add(new Wall(Wall.Side.RIGHT, GlobalVar.WIDTH - GameVar.WIDTH_OF_WALLS, i * GameVar.HEIGHT_OF_WALLS,
+                    GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
         }
 
         for (int i = 0; i < GameVar.N_OF_WALLS_TOP; i++) {
-            walls.add(new Wall(Wall.Side.TOP, i * GameVar.WIDTH_OF_WALLS, 0,
+            walls.add(new Wall(Wall.Side.TOP, i * GameVar.HEIGHT_OF_WALLS, 0,
                     GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
         }
         System.out.println("Walls created: " + walls.size());
@@ -56,7 +56,7 @@ public class MapData {
 
     public static int[][] createMap1Matrix() {
         int[][] map = {
-                {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
@@ -74,7 +74,7 @@ public class MapData {
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0}
+                {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0}
         };
         return map;
     }
@@ -89,8 +89,8 @@ public class MapData {
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
                 {2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0},
                 {0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0},
-                {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0},
-                {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0},
+                {0, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0},
+                {0, 0, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0},
                 {0, 0, 0, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 2, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 2, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0},

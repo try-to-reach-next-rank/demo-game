@@ -1,25 +1,18 @@
 package com.example.demo.view;
 
-import com.example.demo.controller.ButtonManager;
-import com.example.demo.controller.MenuControll;
 import com.example.demo.controller.Stage;
-import com.example.demo.controller.ThemeManager;
+
+import com.example.demo.controller.view.ButtonManager;
+import com.example.demo.controller.map.MenuControll;
+import com.example.demo.controller.view.ThemeManager;
+
 import com.example.demo.model.core.effects.GlowTextEffect;
-import javafx.animation.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
-
-import java.util.*;
 
 
 public class MenuView implements Stage {

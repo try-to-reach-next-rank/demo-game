@@ -7,7 +7,8 @@ import javafx.scene.image.Image;
 
 public class Animation {
     private final Image spriteSheet;
-    private final double frameWidth, frameHeight;
+    private final double frameWidth;
+    private final double frameHeight;
     private final int totalFrames;
 
     private boolean loop;
@@ -65,22 +66,24 @@ public class Animation {
 
     public void render(GraphicsContext gc, double x, double y, double w, double h) {
         if (finished) return;
-        
-        int col = currentFrame / rows;
-        int row = currentFrame % rows;
 
-        double sx = col * frameWidth;
-        double sy = row * frameHeight;
+        double sx = currentFrame * frameWidth;
+        double sy = rows * frameHeight;
 
         // Default render at the center
         gc.drawImage(
             spriteSheet,
             sx, sy, frameWidth, frameHeight,    // Source
-            x - w / 2 , y - h / 2, w, h                          // Destination
+            x - w / 2 , y - h / 2, w, h         // Destination
         );
     }
 
     // --- Builder ---
+    public Animation setRows(int rows) {
+        this.rows = rows;
+        return this;
+    }
+
     public Animation setRenderSize(double width, double height) {
         this.renderWidth = width;
         this.renderHeight = height;

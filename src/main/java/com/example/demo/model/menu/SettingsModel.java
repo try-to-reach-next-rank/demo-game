@@ -5,7 +5,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import com.example.demo.model.state.SettingsState;
-import com.example.demo.controller.SaveManager;
+import com.example.demo.controller.core.SaveManager;
 import com.example.demo.model.utils.Sound;
 
 import static com.example.demo.model.utils.GlobalVar.SETTINGS_FILE_PATH;

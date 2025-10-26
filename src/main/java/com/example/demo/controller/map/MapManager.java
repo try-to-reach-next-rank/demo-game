@@ -1,12 +1,11 @@
-package com.example.demo.controller;
+package com.example.demo.controller.map;
 
+import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.Wall;
-import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.map.MapData;
 import com.example.demo.model.utils.GameRandom;
 import com.example.demo.model.utils.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;
-import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,9 +41,10 @@ public class MapManager {
                 double x = GameVar.MATRIX_START_X + c * (GameVar.WIDTH_OF_BRICKS + GameVar.PADDING_X);
                 double y = GameVar.MATRIX_START_Y + r * (GameVar.HEIGHT_OF_BRICKS + GameVar.PADDING_Y);
 
-                int HEALTH = (matrix[r][c] == 2) ? Integer.MAX_VALUE : (GameRandom.nextInt(5) + 1);
-                Image IMAGE = BrickTextureProvider.getTextureForHealth(HEALTH);
-                bricks.add(new Brick(IMAGE, x, y , HEALTH));
+                int health = (matrix[r][c] == 2) ? Integer.MAX_VALUE : (GameRandom.nextInt(5) + 1);
+                String imageKey = BrickTextureProvider.getTextureForHealth(health);
+
+                bricks.add(new Brick(imageKey, x, y, health));
             }
         }
         return new MapData(bricks, walls);

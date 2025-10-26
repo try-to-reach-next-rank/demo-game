@@ -1,8 +1,6 @@
 package com.example.demo.engine;
 
-import java.util.Map;
-
-import com.example.demo.controller.AssetManager;
+import com.example.demo.controller.view.AssetManager;
 
 public interface AssetLoader<T> {
     void loadInto(AssetManager assetManager);

@@ -1,12 +1,11 @@
 package com.example.demo.model.core;
 
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BallData;
-import com.example.demo.controller.AssetManager;
 import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.Vector2D;
 
-public class Ball extends GameObject {
+public class Ball extends ImageObject {
     private final double baseSpeed = GameVar.BASE_SPEED_BALL;
     private boolean stuck;
     private Vector2D velocity;
@@ -17,14 +16,27 @@ public class Ball extends GameObject {
     private boolean stopTime;
     private double elapsedTime = 0;
 
-    private Brick lastHitBrick;
-
-
     public Ball(Paddle paddle) {
-        super(AssetManager.getInstance().getImage("ball"), GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
+        super("ball", GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
         this.paddle = paddle;
         resetState();
     }
+
+    public void toggleStopTime() {
+        this.stopTime = !this.stopTime;
+        System.out.println("toggle Stop Time - Is the ball stop: " + this.stopTime);
+    }
+
+    public void toggleAccelerated() {
+        this.accelerated = !this.accelerated;
+        System.out.println("toggle Accelerated - Is the ball accelerated: " + this.accelerated);
+    }
+
+    public void toggleStronger() {
+        this.stronger = !this.stronger;
+        System.out.println("toggle Stronger - Is the ball stronger: " + this.stronger);
+    }
+
 
     public void resetState() {
         alignWithPaddle(10, 1.0);
@@ -97,11 +109,9 @@ public class Ball extends GameObject {
     public double getElapsedTime(){ return elapsedTime; }
     public void setElapsedTime(double x){ elapsedTime = x; }
 
-    public Brick getLastHitBrick() {
-        return lastHitBrick;
+    @Override
+    public boolean isStatic() {
+        return false;
     }
 
-    public void setLastHitBrick(Brick brick) {
-        this.lastHitBrick = brick;
-    }
 }

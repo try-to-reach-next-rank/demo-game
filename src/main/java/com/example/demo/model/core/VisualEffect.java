@@ -1,8 +1,6 @@
 package com.example.demo.model.core;
 
-import com.example.demo.controller.AssetManager;
 import com.example.demo.engine.Effect;
-import com.example.demo.model.utils.Animation;
 import com.example.demo.model.utils.Timer;
 
 import javafx.scene.canvas.GraphicsContext;
@@ -43,6 +41,10 @@ public abstract class VisualEffect implements Effect {
         this.timer.start(durationSeconds);
         this.active = true;
         onActivate();
+    }
+
+    public void activate(double x, double y) {
+        activate(x, y, this.durationSeconds);
     }
 
     protected void onActivate() {

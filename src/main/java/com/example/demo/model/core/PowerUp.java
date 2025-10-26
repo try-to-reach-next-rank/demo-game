@@ -1,9 +1,9 @@
 package com.example.demo.model.core;
 
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.gameobjects.AnimatedObject;
 import com.example.demo.model.utils.GlobalVar;
 
-public class PowerUp extends GameObject {
+public class PowerUp extends AnimatedObject {
     private final String type;
     private boolean visible;
     private final double fallSpeed = 150.0;
@@ -11,19 +11,19 @@ public class PowerUp extends GameObject {
     private long expireAt = -1;
 
     public PowerUp(String type) {
-        super("/images/fastup.png", 0, 0);
+        super("powerup_" + type.toLowerCase() , 0, 0);
+        System.out.println("Type: " + type);
         this.type = type;
     }
 
     public void dropFrom(Brick brick) {
-        setPosition(brick.getX(), brick.getY());
+        setPosition(brick.getX() + brick.getWidth() / 2, brick.getY() + brick.getHeight() / 2);
         visible = true;
     }
 
     public void fall(double deltaTime) {
         if (!visible) return;
         y += fallSpeed * deltaTime;
-        setPosition(x, y);
         if (y > GlobalVar.HEIGHT) visible = false;
     }
 
@@ -60,4 +60,9 @@ public class PowerUp extends GameObject {
     public boolean isVisible() { return visible; }
     public void setVisible(boolean visible) { this.visible = visible; }
     public String getType() { return type; }
+
+    @Override
+    public boolean isStatic() {
+        return false;
+    }
 }
