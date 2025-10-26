@@ -143,7 +143,7 @@ public class DialogueBox extends UIComponent {
         gc.setFill(Color.WHITE);
         gc.setFont(font);
 
-// Text box padding
+        // Text box padding
         double textPadding = 20;
         double textMaxWidth = width - margin * 2 - 200; // leaves room for images
 
@@ -152,9 +152,8 @@ public class DialogueBox extends UIComponent {
                 ? margin + 160
                 : width - margin - textMaxWidth - 160;
 
-// draw wrapped text
+        // Draw wrapped text
         drawWrappedText(gc, displayedText, textX, textY, textMaxWidth, 26);
-
     }
 
 

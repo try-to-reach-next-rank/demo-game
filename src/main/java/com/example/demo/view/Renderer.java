@@ -1,6 +1,6 @@
 package com.example.demo.view;
 
-import com.example.demo.controller.EffectManager;
+import com.example.demo.controller.view.EffectManager;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Renderable;
 import com.example.demo.model.core.Brick;

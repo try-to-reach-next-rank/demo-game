@@ -22,8 +22,4 @@ public class BrickTextureProvider {
         if (health < 1 || health > MAX_HEALTH) health = 1;
         return IMAGEKEYS.get(health - 1);
     }
-
-    public static int getMaxHealth() {
-        return MAX_HEALTH;
-    }
 }

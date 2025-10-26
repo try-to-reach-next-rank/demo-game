@@ -1,9 +1,9 @@
 package com.example.demo.controller.core;
 
-import com.example.demo.controller.EffectManager;
 import com.example.demo.controller.map.LoadLevel;
 import com.example.demo.controller.map.LoadTransition;
 import com.example.demo.controller.map.MapManager;
+import com.example.demo.controller.view.EffectManager;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
@@ -12,6 +12,7 @@ import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
 import com.example.demo.model.utils.CheatTable;
 import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.model.utils.Logging;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.dialogue.DialogueBox;
 import com.example.demo.model.utils.dialogue.DialogueSystem;
@@ -24,8 +25,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import static com.example.demo.model.utils.Logging.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,6 @@ public class GameManager extends Pane {
 
     // === MODEL ===
     private final GameWorld world = new GameWorld();
-
-    private static final Logger log = LoggerFactory.getLogger(GameManager.class);
 
     // === SYSTEMS ===
     private final List<Updatable> updatables = new ArrayList<>();
@@ -168,7 +167,7 @@ public class GameManager extends Pane {
     }
 
     private void saveGame() {
-        log.info("Bắt đầu lưu game...");
+        info("Bắt đầu lưu game...");
         // construct gameState để thu thập toàn bộ trạng thái game
         GameState gameState = new GameState(world);
         // 1 dòng để lưu
@@ -176,15 +175,15 @@ public class GameManager extends Pane {
     }
 
     private void loadGame() {
-        log.info("Bắt đầu tải game...");
+        info("Bắt đầu tải game...");
         // 1 dòng để tải
         GameState loadedState = SaveManager.load(SAVE_FILE_NAME, GameState.class);
         // Kiểm tra và gọi hàm áp dụng trạng thái
         if (loadedState != null) {
             applyState(loadedState);
-            log.info("Tải game thành công!");
+            info("Tải game thành công!");
         } else {
-            log.info("Không có file lưu hoặc file lỗi.");
+            info("Không có file lưu hoặc file lỗi.");
         }
     }
 
@@ -270,7 +269,7 @@ public class GameManager extends Pane {
                 fpsTimer += deltaTime;
                 frames++;
                 if (fpsTimer >= 1.0) {
-                    log.info("FPS: {}", frames);
+                    info("FPS: {}", frames);
                     fpsTimer = 0;
                     frames = 0;
                 }
@@ -338,7 +337,7 @@ public class GameManager extends Pane {
                     else cheatTable.show();
                     // cheatTable.show(); // Chỉ mở
                 } else {
-                    log.info("(Cheat menu not unlocked yet)");
+                    info("(Cheat menu not unlocked yet)");
                 }
                 e.consume();
                 return;
@@ -363,7 +362,7 @@ public class GameManager extends Pane {
             if (keySequence.toString().equals(SECRET_CODE)) {
 
                 if (this.cheatTable == null) {
-                    log.info("!!! CHEAT MENU UNLOCKED !!!");
+                    Logging.info("!!! CHEAT MENU UNLOCKED !!!");
                     this.cheatTable = new CheatTable(this);
                         this.uiManager.add(this.cheatTable); // THÊM VÀO UIMANAGER
                 }

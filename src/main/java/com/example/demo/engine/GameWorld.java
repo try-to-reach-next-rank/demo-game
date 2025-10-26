@@ -1,6 +1,6 @@
 package com.example.demo.engine;
 
-import com.example.demo.controller.EffectManager;
+import com.example.demo.controller.view.EffectManager;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.system.PowerUpSystem;

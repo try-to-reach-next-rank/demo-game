@@ -1,6 +1,6 @@
 package com.example.demo.model.system;
 
-import com.example.demo.controller.EffectManager;
+import com.example.demo.controller.view.EffectManager;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.PowerUp;
