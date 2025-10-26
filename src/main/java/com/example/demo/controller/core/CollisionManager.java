@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.core;
 
 import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
@@ -122,7 +122,7 @@ public class CollisionManager implements Updatable {
             if (!ball.getBounds().intersects(brick.getBounds())) continue;
 
             // delegate to BrickSystem to apply damage, explosion, and power-up drop
-            brickSystem.onBallHitBrick(ball, brick);
+            brickSystem.onBallHitBrick(brick);
             Sound.getInstance().playSound("brick_hit");
 
             // bounce depending on overlap direction

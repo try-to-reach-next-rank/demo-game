@@ -1,15 +1,12 @@
 package com.example.demo.model.assets;
 
-import com.example.demo.controller.AssetManager;
+import com.example.demo.controller.view.AssetManager;
 import com.example.demo.engine.AssetLoader;
-import com.example.demo.model.utils.Sound;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class SoundAssets implements AssetLoader {

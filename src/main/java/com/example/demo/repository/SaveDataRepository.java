@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.controller.SaveManager;
+import com.example.demo.controller.core.SaveManager;
 import com.example.demo.model.state.GameState;
 import com.example.demo.model.state.BrickData;
 

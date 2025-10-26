@@ -1,7 +1,6 @@
 package com.example.demo.model.system;
 
 import com.example.demo.engine.Updatable;
-import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.PowerUp;
 import com.example.demo.model.utils.GameRandom;
@@ -9,7 +8,6 @@ import com.example.demo.model.utils.GameVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.view.EffectRenderer;
-import javafx.scene.image.Image;
 
 import java.util.List;
 import java.util.Random;
@@ -35,7 +33,7 @@ public class BrickSystem implements Updatable {
     /**
      * Handles a collision between a ball and a brick.
      */
-    public void onBallHitBrick(Ball ball, Brick brick) {
+    public void onBallHitBrick(Brick brick) {
         if (brick.isDestroyed()) return;
 
         applyDamage(brick);
@@ -83,26 +81,5 @@ public class BrickSystem implements Updatable {
         double centerX = brick.getX() + brick.getWidth() / 2;
         double centerY = brick.getY() + brick.getHeight();
         EffectRenderer.getInstance().spawn("explosion1", centerX, centerY, 0.5);
-    }
-
-    /**
-     * Applies explosion logic from a source brick.
-     */
-    public void handleExplosion(Brick sourceBrick) {
-        double cx = sourceBrick.getX() + sourceBrick.getWidth() / 2;
-        double cy = sourceBrick.getY() + sourceBrick.getHeight() / 2;
-        double radius = sourceBrick.getWidth() * 2.5;
-
-        for (Brick other : bricks) {
-            if (other == sourceBrick || other.isDestroyed()) continue;
-
-            double ocx = other.getX() + other.getWidth() / 2;
-            double ocy = other.getY() + other.getHeight() / 2;
-            double distance = Math.sqrt(Math.pow(cx - ocx, 2) + Math.pow(cy - ocy, 2));
-
-            if (distance <= radius) {
-                applyDamage(other);
-            }
-        }
     }
 }

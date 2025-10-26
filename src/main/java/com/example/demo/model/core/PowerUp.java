@@ -1,8 +1,6 @@
 package com.example.demo.model.core;
 
-import com.example.demo.controller.AssetManager;
 import com.example.demo.model.core.gameobjects.AnimatedObject;
-import com.example.demo.model.utils.Animation;
 import com.example.demo.model.utils.GlobalVar;
 
 public class PowerUp extends AnimatedObject {

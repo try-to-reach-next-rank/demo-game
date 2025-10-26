@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import javafx.scene.image.Image;
 
-import com.example.demo.controller.AssetManager;
+import com.example.demo.controller.view.AssetManager;
 import com.example.demo.engine.AssetLoader;
 
 public class ImageAssets implements AssetLoader {

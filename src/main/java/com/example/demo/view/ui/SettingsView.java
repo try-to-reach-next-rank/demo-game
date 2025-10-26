@@ -1,8 +1,8 @@
 package com.example.demo.view.ui;
 
-import com.example.demo.controller.SettingsControllers;
-import com.example.demo.controller.ButtonManager;
-import com.example.demo.controller.ThemeManager;
+import com.example.demo.controller.view.SettingsControllers;
+import com.example.demo.controller.view.ButtonManager;
+import com.example.demo.controller.view.ThemeManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;

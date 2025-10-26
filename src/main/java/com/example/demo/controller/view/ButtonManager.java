@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.view;
 
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;

@@ -1,13 +1,12 @@
 package com.example.demo.model.utils;
 
-import com.example.demo.controller.AssetManager;
+import com.example.demo.controller.view.AssetManager;
 import com.example.demo.model.menu.SettingsModel;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.util.*;
-import java.net.URL;
 
 public class Sound {
     // Singleton instance

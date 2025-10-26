@@ -1,9 +1,9 @@
 package com.example.demo;
 
-import com.example.demo.controller.AssetManager;
-import com.example.demo.controller.GameManager;
-import com.example.demo.controller.MenuControll;
-import com.example.demo.controller.SettingsControllers;
+import com.example.demo.controller.view.AssetManager;
+import com.example.demo.controller.core.GameManager;
+import com.example.demo.controller.map.MenuControll;
+import com.example.demo.controller.view.SettingsControllers;
 import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.menu.SettingsModel;
 import com.example.demo.model.utils.GlobalVar;

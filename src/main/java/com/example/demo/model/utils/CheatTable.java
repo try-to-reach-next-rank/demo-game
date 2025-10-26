@@ -1,6 +1,6 @@
 package com.example.demo.model.utils;
 
-import com.example.demo.controller.GameManager;
+import com.example.demo.controller.core.GameManager;
 import com.example.demo.model.core.effects.GlowTextEffect;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;

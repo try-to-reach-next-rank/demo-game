@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.map;
 
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.Wall;
@@ -6,7 +6,6 @@ import com.example.demo.model.map.MapData;
 import com.example.demo.model.utils.GameRandom;
 import com.example.demo.model.utils.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;
-import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.List;

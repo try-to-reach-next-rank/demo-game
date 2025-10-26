@@ -2,12 +2,6 @@ package com.example.demo.model.core.gameobjects;
 
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.util.Objects;
-
-import com.example.demo.controller.AssetManager;
 
 public abstract class GameObject {
     protected double x;

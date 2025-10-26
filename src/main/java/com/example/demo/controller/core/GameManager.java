@@ -1,5 +1,8 @@
-package com.example.demo.controller;
+package com.example.demo.controller.core;
 
+import com.example.demo.controller.map.LoadLevel;
+import com.example.demo.controller.map.LoadTransition;
+import com.example.demo.controller.map.MapManager;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
@@ -53,6 +56,7 @@ public class GameManager extends Pane {
     private ParallaxSystem parallaxSystem;
     private PowerUpSystem powerUpSystem;
     private Renderer renderer;
+    private LoadTransition loadTransition;
     private final TransitionEffect transitionEffect = new TransitionEffect(2.0); // 1.5s duration
     private CheatTable cheatTable;
 
@@ -97,6 +101,10 @@ public class GameManager extends Pane {
         // Give the GameWorld the reference to the PowerUpSystem
         world.setPowerUpSystem(this.powerUpSystem);
 
+        this.renderer = new Renderer(world);
+        LoadLevel loadLevel = new LoadLevel(mapManager, world, renderer);
+        loadTransition = new LoadTransition(world, transitionEffect, loadLevel, dialogueSystem);
+
         // --- Load map and build bricks/walls ---
         loadLevel(world.getCurrentLevel());
         brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
@@ -114,7 +122,6 @@ public class GameManager extends Pane {
         ));
 
         // --- Register renderables (View layer) ---
-        this.renderer = new Renderer(world);
         renderables.add(renderer);                                               // then the world
         renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
 
@@ -132,38 +139,7 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     private void loadLevel(int level) { // TODO: put this in map
-        inGame = false;
-        transitionEffect.start(
-                // midpoint -> when screen is fully black
-                () -> {
-                    MapData mapData = switch (level) {
-                        case 1 -> mapManager.loadMap(1);
-                        case 2 -> mapManager.loadMap(2);
-                        case 3 -> mapManager.loadMap(3);
-                        default -> mapManager.loadMap(1);
-                    };
-
-                    world.getWalls().clear();
-                    world.getWalls().addAll(mapData.getWalls());
-
-                    List<Brick> bricks = mapData.getBricks();
-                    world.setBricks(bricks.toArray(new Brick[0]));
-                    world.resetForNewLevel();
-
-                    renderer.reset();
-                    this.brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
-
-                    if (parallaxSystem == null && world.getCurrentLevel() == 1) initParallax();
-                },
-
-                // end -> fade finished, resume gameplay + dialogue
-                () -> {
-                    inGame = true;
-                    MapData mapData = mapManager.loadMap(level);
-                    log.info("Loaded map: {} with {} bricks", level, mapData.getBricks().size());
-                    dialogueSystem.start();
-                }
-        );
+        loadTransition.startLevel(level);
     }
 
     public void loadNextLevel() {
@@ -399,7 +375,7 @@ public class GameManager extends Pane {
         });
     }
 
-    private void gameFinished() {
+    private void gameFinished() { // TODO: cheat menu uses this to trigger win condition
         gc.setFill(Color.BLACK);
         gc.setFont(new Font("Verdana", 18));
         if (!uiManager.contains(dialogueBox)) uiManager.add(dialogueBox);
@@ -409,7 +385,7 @@ public class GameManager extends Pane {
         });
     }
 
-    private void stopGame() {
+    private void stopGame() { // TODO: pause uses this
         inGame = false;
         if (timer != null) timer.stop();
         Sound.getInstance().stopMusic();

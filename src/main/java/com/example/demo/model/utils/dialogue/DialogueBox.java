@@ -1,6 +1,6 @@
 package com.example.demo.model.utils.dialogue;
 
-import com.example.demo.controller.AssetManager;
+import com.example.demo.controller.view.AssetManager;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
