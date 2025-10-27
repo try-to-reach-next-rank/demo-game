@@ -1,6 +1,6 @@
 package com.example.demo.view;
 
-import com.example.demo.controller.EffectManager;
+import com.example.demo.controller.view.EffectManager;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Renderable;
 import com.example.demo.model.core.Brick;
@@ -11,7 +11,6 @@ import com.example.demo.model.core.gameobjects.ImageObject;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
-import java.util.Set;
 
 public class Renderer implements Renderable {
     private final GameWorld world;
