@@ -54,6 +54,8 @@ public abstract class GameObject {
     public void setY(double y) { this.y = y; }
     public double getWidth() { return width; }
     public double getHeight() { return height; }
+    public void setWidth(double width) { this.width = width; }
+    public void setHeight(double height) { this.height = height; }
 
     public boolean isVisible() { return visible; }
     public void setVisible(boolean visible) { this.visible = visible; }
