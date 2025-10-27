@@ -1,6 +1,7 @@
 package com.example.demo.model.system;
 
 import com.example.demo.engine.Updatable;
+import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.PowerUp;
 import com.example.demo.model.utils.GameRandom;
@@ -33,10 +34,10 @@ public class BrickSystem implements Updatable {
     /**
      * Handles a collision between a ball and a brick.
      */
-    public void onBallHitBrick(Brick brick) {
+    public void onBallHitBrick(Brick brick, Ball ball) {
         if (brick.isDestroyed()) return;
-
-        applyDamage(brick);
+        if (ball == null) return;
+        applyDamage(brick, ball.isStronger());
 
         // Check destruction and trigger effects
         if (brick.isDestroyed()) {
@@ -48,9 +49,10 @@ public class BrickSystem implements Updatable {
     /**
      * Applies damage to a brick and updates its texture.
      */
-    public void applyDamage(Brick brick) {
+    public void applyDamage(Brick brick, boolean isStronger) {
         if (brick.getHealth() == Integer.MAX_VALUE) return;
-        int health = brick.getHealth() - 1;
+        int power = (isStronger) ? GameVar.MAXPOWER : GameVar.MINPOWER;
+        int health = brick.getHealth() - power;
         brick.setHealth(health);
 
         if (health <= 0) {

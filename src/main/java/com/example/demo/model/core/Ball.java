@@ -16,6 +16,8 @@ public class Ball extends ImageObject {
     private boolean stopTime;
     private double elapsedTime = 0;
 
+    private Brick lastBrick;
+
     public Ball(Paddle paddle) {
         super("ball", GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
         this.paddle = paddle;
@@ -112,6 +114,13 @@ public class Ball extends ImageObject {
     @Override
     public boolean isStatic() {
         return false;
+    }
+
+    public Brick getLastBrick(){
+        return lastBrick;
+    }
+    public void setLastBrick(Brick brick){
+        lastBrick = brick;
     }
 
 }

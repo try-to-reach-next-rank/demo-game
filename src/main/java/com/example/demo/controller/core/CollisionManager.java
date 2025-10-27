@@ -120,9 +120,10 @@ public class CollisionManager implements Updatable {
         for (Brick brick : bricks) {
             if (brick.isDestroyed()) continue;
             if (!ball.getBounds().intersects(brick.getBounds())) continue;
+            if (ball.getLastBrick() == brick) continue;
 
             // delegate to BrickSystem to apply damage, explosion, and power-up drop
-            brickSystem.onBallHitBrick(brick);
+            brickSystem.onBallHitBrick(brick, ball);
             Sound.getInstance().playSound("brick_hit");
 
             // bounce depending on overlap direction
@@ -137,6 +138,13 @@ public class CollisionManager implements Updatable {
             resolveBallBrickOverlap(ball, brick);
 
             break;
+        }
+
+        for (Brick brick : bricks){
+            if (ball.getBounds().intersects(brick.getBounds())){
+                break;
+            }
+            ball.setLastBrick(null);
         }
     }
 

@@ -3,6 +3,8 @@ import static com.example.demo.model.utils.GlobalVar.*;
 
 public class GameVar {
     public static final int START_LEVEL = 1;
+    public static final int MAXPOWER = 5;
+    public static final int MINPOWER = 1;
 
     private GameVar() {}
 

@@ -65,7 +65,7 @@ class BallTest {
         paddle.setPosition(0.0, 100.0);
 
         Ball ball = new Ball(paddle);
-        ball.x = 10000.0; // đặt ngoài phạm vi paddle để buộc clamp
+        ball.setPosition(10000.0, ball.getY()); // đặt ngoài phạm vi paddle để buộc clamp
 
         ball.alignWithPaddle(10, 0.5); // dùng lerpFactor < 1.0 để giữ lại x hiện tại
 

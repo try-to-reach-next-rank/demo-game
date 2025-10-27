@@ -1,6 +1,5 @@
-package com.example.demo.model.core.bricks;
+package com.example.demo.model.core;
 
-import com.example.demo.model.utils.GameVar;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

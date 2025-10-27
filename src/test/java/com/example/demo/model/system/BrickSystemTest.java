@@ -1,7 +1,7 @@
 package com.example.demo.model.system;
 
 import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.Brick;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ class BrickSystemTest {
         BrickSystem system = new BrickSystem(bricks, powerUps);
 
         // Act: try to hit an already destroyed brick
-        system.onBallHitBrick(null, brick);
+        system.onBallHitBrick(null, null);
 
         // Assert: state unchanged
         assertEquals(2, brick.getHealth(), "Health should remain unchanged for already destroyed brick");
