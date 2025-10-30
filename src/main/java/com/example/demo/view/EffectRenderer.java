@@ -10,6 +10,7 @@ import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.core.VisualEffect;
 import com.example.demo.model.core.effects.AnimatedEffect;
 
+import com.example.demo.model.utils.var.GameVar;
 import javafx.scene.canvas.GraphicsContext;
 
 public class EffectRenderer {
@@ -28,8 +29,8 @@ public class EffectRenderer {
     }
 
     private void init() {
-        add("explosion1", new AnimatedEffect("explosion1"));
-        add("explosion2", new AnimatedEffect("explosion2"));
+        add(GameVar.EXPLOSION1_EFFECT_KEY, new AnimatedEffect(GameVar.EXPLOSION1_EFFECT_KEY));
+        add(GameVar.EXPLOSION2_EFFECT_KEY, new AnimatedEffect(GameVar.EXPLOSION2_EFFECT_KEY));
     }
 
     public void spawn(String name, double x, double y, double duration) {

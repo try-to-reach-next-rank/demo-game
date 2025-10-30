@@ -36,7 +36,7 @@ public class AnimationAssets implements AssetLoader {
     static {
         // --- Explosion spritesheet ---
         ASSETS.put(
-            "explosion1", 
+            GameVar.EXPLOSION1_EFFECT_KEY,
             AnimationData.builder(GameVar.EXPLOSION_SHEET_KEY,
                     GameVar.EXPLOSION1_FRAME_WIDTH,
                     GameVar.EXPLOSION1_FRAME_HEIGHT,
@@ -48,7 +48,7 @@ public class AnimationAssets implements AssetLoader {
         );
 
         ASSETS.put(
-            "explosion2", 
+            GameVar.EXPLOSION2_EFFECT_KEY,
             AnimationData.builder(GameVar.EXPLOSION_SHEET_KEY,
                     GameVar.EXPLOSION2_FRAME_WIDTH,
                     GameVar.EXPLOSION2_FRAME_HEIGHT,
@@ -61,7 +61,7 @@ public class AnimationAssets implements AssetLoader {
 
         // --- Power up spritesheet ---
         ASSETS.put(
-            "powerup_accelerate",
+            GameVar.POWERUP_ACC_EFFECT_KEY,
             AnimationData.builder(GameVar.POWERUP_SHEET_KEY,
                             GameVar.POWERUP_FRAME_WIDTH,
                             GameVar.POWERUP_FRAME_HEIGHT,
@@ -73,7 +73,7 @@ public class AnimationAssets implements AssetLoader {
         );
 
         ASSETS.put(
-            "powerup_stronger",
+            GameVar.POWERUP_STRONGER_EFFECT_KEY,
             AnimationData.builder(GameVar.POWERUP_SHEET_KEY,
                             GameVar.POWERUP_FRAME_WIDTH,
                             GameVar.POWERUP_FRAME_HEIGHT,
@@ -85,7 +85,7 @@ public class AnimationAssets implements AssetLoader {
         );
 
         ASSETS.put(
-            "powerup_stoptime", 
+            GameVar.POWERUP_STOP_TIME_EFFECT_KEY,
             AnimationData.builder(GameVar.POWERUP_SHEET_KEY,
                     GameVar.POWERUP_FRAME_WIDTH,
                     GameVar.POWERUP_FRAME_HEIGHT,
@@ -97,7 +97,7 @@ public class AnimationAssets implements AssetLoader {
         );
 
         ASSETS.put(
-            "powerup_biggerpaddle", 
+            GameVar.POWERUP_BIGGER_PADDLE_EFFECT_KEY,
             AnimationData.builder(GameVar.POWERUP_SHEET_KEY,
                     GameVar.POWERUP_FRAME_WIDTH,
                     GameVar.POWERUP_FRAME_HEIGHT,

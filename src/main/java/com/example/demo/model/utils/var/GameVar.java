@@ -60,6 +60,10 @@ public final class GameVar {
     public static final double EFFECT_DURATION       = 0.5;           // seconds
     public static final String EXPLOSION1_EFFECT_KEY = "explosion1";
     public static final String EXPLOSION2_EFFECT_KEY = "explosion2";
+    public static final String POWERUP_ACC_EFFECT_KEY = "powerup_accelerate";
+    public static final String POWERUP_STRONGER_EFFECT_KEY = "powerup_stronger";
+    public static final String POWERUP_STOP_TIME_EFFECT_KEY = "powerup_stoptime";
+    public static final String POWERUP_BIGGER_PADDLE_EFFECT_KEY = "powerup_biggerpaddle";
 
     // BALL SYSTEM
     public static final double BALL_ELAPSED_TIME = 0.5; // seconds
