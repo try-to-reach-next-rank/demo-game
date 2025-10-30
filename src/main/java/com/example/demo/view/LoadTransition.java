@@ -1,4 +1,4 @@
-package com.example.demo.controller.map;
+package com.example.demo.view;
 
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.effects.TransitionEffect;

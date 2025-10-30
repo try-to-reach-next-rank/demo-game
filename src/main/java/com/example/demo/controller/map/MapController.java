@@ -14,7 +14,7 @@ import java.util.List;
  * MapManager is responsible for constructing the initial game world (bricks + walls)
  * based on predefined map matrices. It now uses BrickTextureProvider and the new Brick data model.
  */
-public class MapManager {
+public class MapController {
 
 
     public MapData loadMap(int level) {

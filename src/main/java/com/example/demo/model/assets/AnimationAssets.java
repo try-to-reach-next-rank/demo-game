@@ -3,7 +3,6 @@ package com.example.demo.model.assets;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.demo.controller.view.AssetManager;
 import com.example.demo.engine.AssetLoader;
 import com.example.demo.model.utils.Animation;
 import com.example.demo.model.utils.var.AssetPaths;

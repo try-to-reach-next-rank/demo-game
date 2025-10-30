@@ -1,6 +1,5 @@
 package com.example.demo.model.assets;
 
-import com.example.demo.controller.view.AssetManager;
 import com.example.demo.engine.AssetLoader;
 import com.example.demo.model.utils.var.AssetPaths;
 import javafx.scene.media.AudioClip;

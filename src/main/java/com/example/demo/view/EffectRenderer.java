@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.example.demo.controller.view.AssetManager;
+import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.core.VisualEffect;
 import com.example.demo.model.core.effects.AnimatedEffect;
 

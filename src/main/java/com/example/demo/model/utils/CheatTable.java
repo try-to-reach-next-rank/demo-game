@@ -1,6 +1,6 @@
 package com.example.demo.model.utils;
 
-import com.example.demo.controller.core.GameManager;
+import com.example.demo.controller.core.GameController;
 import com.example.demo.model.core.effects.GlowTextEffect;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
 public class CheatTable extends UIComponent {
-    private final GameManager gameManager;
+    private final GameController gameManager;
     private final GlowTextEffect title;
     // Danh sách các tùy chọn cheat
     private final String[] options = {
@@ -28,7 +28,7 @@ public class CheatTable extends UIComponent {
     private final Font titleFont = new Font("Verdana", 24);
     private final Font optionFont = new Font("Verdana", 18);
 
-    public CheatTable(GameManager gameManager) {
+    public CheatTable(GameController gameManager) {
         this.gameManager = gameManager;
         Text cheatMenuText = new Text("CHEAT MENU");
         this.title = new GlowTextEffect(cheatMenuText, titleFont);

@@ -1,9 +1,9 @@
 package com.example.demo.view.ui;
 
-import com.example.demo.controller.Stage;
-import com.example.demo.controller.view.SettingsControllers;
-import com.example.demo.controller.view.ButtonManager;
-import com.example.demo.controller.view.ThemeManager;
+import com.example.demo.controller.view.SettingsController;
+import com.example.demo.controller.view.ButtonController;
+import com.example.demo.controller.view.ThemeController;
+import com.example.demo.engine.Stage;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,13 +16,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class SettingsView  implements Stage {
-    private final SettingsControllers controller;
-    private final ThemeManager themeManager;
-    private final ButtonManager buttonManager;
+    private final SettingsController controller;
+    private final ThemeController themeManager;
+    private final ButtonController buttonManager;
     private final StackPane rootStack;
     private final VBox uiBox;
 
-    public SettingsView(SettingsControllers controller) {
+    public SettingsView(SettingsController controller) {
         this.controller = controller;
         this.rootStack = new StackPane();
         this.uiBox = new VBox(20);
@@ -30,12 +30,12 @@ public class SettingsView  implements Stage {
         this.uiBox.setAlignment(Pos.CENTER);
 
         // Setup theme
-        this.themeManager = new ThemeManager();
+        this.themeManager = new ThemeController();
         themeManager.setupBackground(rootStack);
         themeManager.applyCss(rootStack);
 
         // Setup buttons
-        this.buttonManager = new ButtonManager(themeManager.getHandImage());
+        this.buttonManager = new ButtonController(themeManager.getHandImage());
         buildUI();
 
         rootStack.getChildren().add(uiBox);

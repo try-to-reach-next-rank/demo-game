@@ -22,7 +22,7 @@ import static com.example.demo.model.utils.var.GameVar.PADDLE_SOUND_COOLDOWN;
  *
  * It no longer directly mutates the models.
  */
-public class CollisionManager implements Updatable {
+public class CollisionController implements Updatable {
     private long nextPaddleSoundTime = 0L;
 
     private final GameWorld world;
@@ -30,7 +30,7 @@ public class CollisionManager implements Updatable {
     private final BrickSystem brickSystem;
     private final PowerUpSystem powerUpSystem;
 
-    public CollisionManager(GameWorld world, BallSystem ballSystem,
+    public CollisionController(GameWorld world, BallSystem ballSystem,
                             BrickSystem brickSystem, PowerUpSystem powerUpSystem) {
         this.world = world;
         this.ballSystem = ballSystem;

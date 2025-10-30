@@ -1,11 +1,11 @@
 package com.example.demo;
 
 
-import com.example.demo.controller.SlotSelectionController;
-import com.example.demo.controller.view.AssetManager;
-import com.example.demo.controller.core.GameManager;
-import com.example.demo.controller.map.MenuControll;
-import com.example.demo.controller.view.SettingsControllers;
+import com.example.demo.controller.core.GameController;
+import com.example.demo.controller.map.MenuController;
+import com.example.demo.controller.view.SettingsController;
+import com.example.demo.controller.view.SlotSelectionController;
+import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.menu.SettingsModel;
 import com.example.demo.model.state.GameState;
@@ -25,7 +25,7 @@ public class Main extends Application {
     private MenuModel menuModel;
     private SettingsModel settingsModel;
 
-    private GameManager gameManager;
+    private GameController gameManager;
     private MenuView menuView;
     private SettingsView settingsView;
     private SlotSelectionView slotSelectionView;
@@ -47,8 +47,8 @@ public class Main extends Application {
         initSlotSelection();
 
         // --- Khởi tạo Controllers ---
-        MenuControll menuController = new MenuControll(menuModel);
-        SettingsControllers settingsController = new SettingsControllers(settingsModel, menuModel);
+        MenuController menuController = new MenuController(menuModel);
+        SettingsController settingsController = new SettingsController(settingsModel, menuModel);
 
         // --- Khởi tạo Views ---
         menuView = new MenuView(menuController);
@@ -172,7 +172,7 @@ public class Main extends Application {
     private void startNewGame(int slotNumber) {
         System.out.println("=== STARTING NEW GAME in slot " + slotNumber + " ===");
 
-        gameManager = new GameManager();
+        gameManager = new GameController();
         gameManager.setNewGame(true);           // ← Đánh dấu New Game
         gameManager.setCurrentSlot(slotNumber);
         gameManager.initGame();
@@ -183,7 +183,7 @@ public class Main extends Application {
     private void continueGame(int slotNumber, GameState gameState) {
         System.out.println("=== LOADING GAME from slot " + slotNumber + " ===");
 
-        gameManager = new GameManager();
+        gameManager = new GameController();
         gameManager.setNewGame(false);          // ← Đánh dấu Load Game
         gameManager.setCurrentSlot(slotNumber); // ← Set slot
         gameManager.initGame();

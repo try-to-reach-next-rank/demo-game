@@ -1,9 +1,8 @@
 package com.example.demo.controller.core;
 
-import com.example.demo.controller.map.LoadLevel;
-import com.example.demo.controller.map.LoadTransition;
-import com.example.demo.controller.map.MapManager;
+import com.example.demo.controller.map.MapController;
 import com.example.demo.engine.*;
+import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.state.*;
@@ -33,7 +32,7 @@ import java.util.List;
 
 import static com.example.demo.model.utils.var.GlobalVar.SECRET_CODE;
 
-public class GameManager extends Pane {
+public class GameController extends Pane {
 
     private AnimationTimer timer;
     private final GraphicsContext gc;
@@ -41,7 +40,7 @@ public class GameManager extends Pane {
     // === MODEL ===
     private final GameWorld world = new GameWorld();
 
-    private static final Logger log = LoggerFactory.getLogger(GameManager.class);
+    private static final Logger log = LoggerFactory.getLogger(GameController.class);
 
     // === SYSTEMS ===
     private final List<Updatable> updatables = new ArrayList<>();
@@ -50,8 +49,8 @@ public class GameManager extends Pane {
     private final UIManager uiManager = new UIManager();
     private final DialogueBox dialogueBox = new DialogueBox();
 
-    private final MapManager mapManager = new MapManager();
-    private CollisionManager collisionManager;
+    private final MapController mapManager = new MapController();
+    private CollisionController collisionManager;
     private BrickSystem brickSystem;
     private DialogueSystem dialogueSystem;
     private ParallaxSystem parallaxSystem;
@@ -86,7 +85,7 @@ public class GameManager extends Pane {
     //  Constructor
     // -------------------------------------------------------------------------
 
-    public GameManager() {
+    public GameController() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
         Canvas canvas = new Canvas(GlobalVar.WIDTH, GlobalVar.HEIGHT);
         gc = canvas.getGraphicsContext2D();
@@ -127,7 +126,7 @@ public class GameManager extends Pane {
         brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
 
         // --- Create managers (controllers) ---
-        collisionManager = new CollisionManager(world, ballSystem, brickSystem, powerUpSystem);
+        collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
 
         // --- Register update systems ---
         updatables.addAll(List.of(

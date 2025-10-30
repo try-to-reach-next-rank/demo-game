@@ -3,11 +3,11 @@ package com.example.demo.controller.map;
 import com.example.demo.model.menu.MenuModel;
 import javafx.application.Platform;
 
-public class MenuControll {
+public class MenuController {
 
     private final MenuModel model;
 
-    public MenuControll(MenuModel model) {
+    public MenuController(MenuModel model) {
         this.model = model;
     }
 

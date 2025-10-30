@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * ThemeManager quản lý background (animated hoặc gradient) và resources chung
  */
-public class ThemeManager {
+public class ThemeController {
     private static final List<Image> bgFrames = new ArrayList<>();
     private static final ImageView bgView = new ImageView();
     private static Timeline bgTimeline;
@@ -31,7 +31,7 @@ public class ThemeManager {
 
     private static final int DEFAULT_BG_FRAMES = 6;
 
-    public ThemeManager() {
+    public ThemeController() {
         loadHandImage("/images/hand.png");
         loadBgFrames("/images/bg/frame_", DEFAULT_BG_FRAMES);
     }
@@ -153,7 +153,7 @@ public class ThemeManager {
      */
     public static void applyCss(Region node) {
         try {
-            String css = ThemeManager.class.getResource(cssPath).toExternalForm();
+            String css = ThemeController.class.getResource(cssPath).toExternalForm();
             node.getStylesheets().add(css);
         } catch (Exception e) {
             System.err.println("[ThemeManager] Failed to load CSS: " + e.getMessage());

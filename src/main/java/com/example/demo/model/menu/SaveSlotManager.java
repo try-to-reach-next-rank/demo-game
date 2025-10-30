@@ -2,7 +2,7 @@ package com.example.demo.model.menu;
 
 import com.example.demo.repository.SaveDataRepository;
 import com.example.demo.model.state.BrickData;
-import com.example.demo.controller.core.SaveManager;
+import com.example.demo.controller.core.SaveController;
 import java.util.List;
 import java.util.Arrays;
 

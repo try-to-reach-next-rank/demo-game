@@ -1,11 +1,9 @@
 package com.example.demo.view;
 
-import com.example.demo.controller.Stage;
-
-import com.example.demo.controller.view.ButtonManager;
-import com.example.demo.controller.map.MenuControll;
-import com.example.demo.controller.view.ThemeManager;
-
+import com.example.demo.controller.view.ButtonController;
+import com.example.demo.controller.map.MenuController;
+import com.example.demo.controller.view.ThemeController;
+import com.example.demo.engine.Stage;
 import com.example.demo.model.core.effects.GlowTextEffect;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,13 +14,13 @@ import javafx.scene.text.Text;
 
 
 public class MenuView implements Stage {
-    private final MenuControll controller;
-    private final ThemeManager themeManager;
-    private final ButtonManager buttonManager;
+    private final MenuController controller;
+    private final ThemeController themeManager;
+    private final ButtonController buttonManager;
     private static StackPane rootStack = null;
     private final VBox uiBox;
 
-    public MenuView(MenuControll controller) {
+    public MenuView(MenuController controller) {
         this.controller = controller;
         this.rootStack = new StackPane();
         this.uiBox = new VBox(18);
@@ -30,12 +28,12 @@ public class MenuView implements Stage {
         this.uiBox.setAlignment(Pos.CENTER);
 
         // 1. Setup theme
-        this.themeManager = new ThemeManager();
+        this.themeManager = new ThemeController();
         themeManager.setupBackground(rootStack);
         themeManager.applyCss(rootStack);
 
         // 2. Setup buttons
-        this.buttonManager = new ButtonManager(themeManager.getHandImage());
+        this.buttonManager = new ButtonController(themeManager.getHandImage());
         buildUI();
 
         // 3. Stack layout

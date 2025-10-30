@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import com.example.demo.controller.view.AssetManager;
+import javafx.scene.image.Image;
+
 import com.example.demo.engine.AssetLoader;
 
 import com.example.demo.model.utils.var.AssetPaths;

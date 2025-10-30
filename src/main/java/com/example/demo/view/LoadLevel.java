@@ -1,16 +1,16 @@
-package com.example.demo.controller.map;
+package com.example.demo.view;
 
+import com.example.demo.controller.map.MapController;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.map.MapData;
-import com.example.demo.view.Renderer;
 
 public class LoadLevel {
-    private final MapManager mapManager;
+    private final MapController mapManager;
     private final GameWorld world;
     private final Renderer renderer;
 
-    public LoadLevel(MapManager mapManager, GameWorld world, Renderer renderer) {
+    public LoadLevel(MapController mapManager, GameWorld world, Renderer renderer) {
         this.mapManager = mapManager;
         this.world = world;
         this.renderer = renderer;
