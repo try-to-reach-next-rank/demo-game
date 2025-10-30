@@ -1,7 +1,9 @@
 package com.example.demo.view;
 
+import com.example.demo.controller.view.ButtonManager;
 import com.example.demo.model.menu.SaveSlot;
 import com.example.demo.model.state.BrickData;
+import com.example.demo.view.ui.UIComponent;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -18,7 +20,7 @@ import java.util.List;
  * SlotComponent - Toàn bộ slot là 1 button lớn
  * Bên trong chứa mini map và action buttons
  */
-public class SlotComponent extends Button {
+public class SlotComponent extends Button{
     private final SaveSlot slot;
     private final Canvas miniMapCanvas;
     private final VBox content;

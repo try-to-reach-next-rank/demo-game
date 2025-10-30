@@ -105,4 +105,9 @@ public class SaveSlotManager {
     public SaveDataRepository getRepository() {
         return repository;
     }
+
+    public void reloadAll() {
+        loadAllSlots();
+    }
+
 }

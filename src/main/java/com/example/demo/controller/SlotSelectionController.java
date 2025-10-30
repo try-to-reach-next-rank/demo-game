@@ -77,4 +77,11 @@ public class SlotSelectionController {
             onBackToMenu.run();
         }
     }
+
+    public void refreshSlots() {
+        slotManager.reloadAll();
+    }
+
+
+
 }

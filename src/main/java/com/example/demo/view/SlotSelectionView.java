@@ -245,6 +245,7 @@ public class SlotSelectionView implements Stage {
      * Refresh slots sau khi delete/create
      */
     public void refreshSlots() {
+        controller.refreshSlots();
         List<SaveSlot> slots = controller.getAllSlots();
         slotsBox.getChildren().clear();
         slotComponents.clear();

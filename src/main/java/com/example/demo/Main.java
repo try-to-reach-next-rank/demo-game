@@ -138,6 +138,7 @@ public class Main extends Application {
     }
 
     private void showSlotSelection() {
+        slotSelectionView.refreshSlots();
         mainRoot.getChildren().add(slotSelectionView.getRoot());
         slotSelectionView.enableKeyboard(mainScene);
         slotSelectionView.getRoot().requestFocus();
@@ -162,6 +163,7 @@ public class Main extends Application {
             }
         });
 
+
         gameManager.requestFocus();
     }
 
@@ -175,7 +177,11 @@ public class Main extends Application {
         gameManager = new GameManager();
         gameManager.setNewGame(true);           // ← Đánh dấu New Game
         gameManager.setCurrentSlot(slotNumber);
+        gameManager.setOnBackToMenu(() -> {
+            menuModel.setCurrentScreen(MenuModel.Screen.MENU);
+        });
         gameManager.initGame();
+
 
         menuModel.setCurrentScreen(MenuModel.Screen.PLAY);
     }
@@ -186,6 +192,7 @@ public class Main extends Application {
         gameManager = new GameManager();
         gameManager.setNewGame(false);          // ← Đánh dấu Load Game
         gameManager.setCurrentSlot(slotNumber); // ← Set slot
+        gameManager.setOnBackToMenu(() -> menuModel.setCurrentScreen(MenuModel.Screen.MENU));
         gameManager.initGame();
         gameManager.applyState(gameState);      // ← Apply saved state
 

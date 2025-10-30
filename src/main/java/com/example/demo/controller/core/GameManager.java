@@ -4,16 +4,19 @@ import com.example.demo.controller.map.LoadLevel;
 import com.example.demo.controller.map.LoadTransition;
 import com.example.demo.controller.map.MapManager;
 import com.example.demo.controller.view.AssetManager;
+import com.example.demo.controller.map.MenuControll;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.map.MapData;
+import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
 
 import com.example.demo.model.utils.GameVar;
 
 import com.example.demo.model.utils.CheatTable;
+import com.example.demo.model.utils.PauseTable;
 
 import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.utils.Sound;
@@ -23,6 +26,7 @@ import com.example.demo.repository.SaveDataRepository;
 import com.example.demo.view.*;
 import com.example.demo.model.map.ParallaxLayer;
 import javafx.animation.AnimationTimer;
+import javafx.animation.PauseTransition;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -64,6 +68,10 @@ public class GameManager extends Pane {
     private LoadTransition loadTransition;
     private final TransitionEffect transitionEffect = new TransitionEffect(2.0); // 1.5s duration
     private CheatTable cheatTable;
+    private PauseTable pauseTable;
+
+    private Runnable onBackToMenu;
+
 
     // === SLOT & NEW GAME FLAGS ===
     private int currentSlotNumber = -1;
@@ -158,6 +166,7 @@ public class GameManager extends Pane {
         if (isNewGame) {
             dialogueSystem = new DialogueSystem("/Dialogue/intro.txt", dialogueBox);
             setupSecretCodeEasterEgg();
+            SetupPause();
             uiManager.add(dialogueBox);
             dialogueSystem.start();
         }
@@ -165,6 +174,7 @@ public class GameManager extends Pane {
             dialogueSystem = new DialogueSystem("/Dialogue/continue.txt", dialogueBox);
             loadGame();
             setupSecretCodeEasterEgg();
+            SetupPause();
             uiManager.add(dialogueBox);
             dialogueSystem.start();
         }
@@ -177,7 +187,7 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
 
-    private void loadLevel(int level) { // TODO: put this in map
+    private void loadLevel(int level) { // TODO: put this in map\
         loadTransition.startLevel(level);
     }
 
@@ -210,7 +220,7 @@ public class GameManager extends Pane {
     //  Save/Load with Repository
     // -------------------------------------------------------------------------
 
-    private void saveGame() {
+    public void saveGame() {
 
         log.info("Bắt đầu lưu game...");
         // construct gameState để thu thập toàn bộ trạng thái game
@@ -221,6 +231,7 @@ public class GameManager extends Pane {
         repository.saveSlot(currentSlotNumber, gameState);
         System.out.println("[GameManager] Save complete!");
     }
+
 
     private void loadGame() {
 
@@ -237,6 +248,7 @@ public class GameManager extends Pane {
 
         }
     }
+
 
     public void applyState(GameState loadedState) {
         // SECTION 1: Setup Level
@@ -430,6 +442,23 @@ public class GameManager extends Pane {
         });
     }
 
+    private void SetupPause () {
+        setOnKeyPressed(e -> {
+            KeyCode code = e.getCode();
+            if (code == null) return;
+            pauseTable = new PauseTable(this);
+            this.uiManager.add(this.pauseTable);
+
+            // Phím F1 de mo pause
+            if (code == KeyCode.F1) {
+                pauseTable.show();
+                e.consume();
+                return;
+            }
+        });
+    }
+
+
     private void gameFinished() { // TODO: cheat menu uses this to trigger win condition
         gc.setFill(Color.BLACK);
         gc.setFont(new Font("Verdana", 18));
@@ -445,6 +474,14 @@ public class GameManager extends Pane {
         if (timer != null) timer.stop();
         Sound.getInstance().stopMusic();
         EffectRenderer.getInstance().clear();
+    }
+
+    public void setOnBackToMenu(Runnable callback) {
+        this.onBackToMenu = callback;
+    }
+
+    public void backToMenu() {
+        onBackToMenu.run();
     }
 
     // -------------------------------------------------------------------------
