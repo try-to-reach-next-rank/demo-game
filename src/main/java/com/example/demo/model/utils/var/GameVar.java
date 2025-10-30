@@ -56,6 +56,36 @@ public final class GameVar {
     public static final double BALL_INIT_DIR_X        = 0.0;    // Default X velocity direction
     public static final double BALL_INIT_DIR_Y        = -1.0;   // Default Y velocity direction
 
+    // EFFECT
+    public static final double EFFECT_DURATION       = 0.5;           // seconds
+    public static final String EXPLOSION1_EFFECT_KEY = "explosion1";
+    public static final String EXPLOSION2_EFFECT_KEY = "explosion2";
+
+    // BALL SYSTEM
+    public static final double BALL_ELAPSED_TIME = 0.5; // seconds
+    public static final double BALL_PADDLE_OFFSET_Y = 100.0;
+    public static final double BALL_ALIGN_WITH_PADDLE_OFFSET_Y = 0.0;
+    public static final double BALL_ALIGN_WITH_PADDLE_LERPFACTOR = 0.1;
+    public static final double BALL_ACCELERATION_FACTOR = 1.5;
+    public static final int    BALL_BOUNCE_ANGLE_LEFT = 150;
+    public static final int    BALL_BOUNCE_ANGLE_RIGHT = 30;
+
+    // BRICK SYSTEM
+    public static final int POWERUP_SPAWN_CHANCE = 100;   // TODO: Make this to 30%
+
+    // PADDLE SYSTEM
+    public static final double PADDLE_BIGGER_SCALE_X = 2.0;
+    public static final double PADDLE_BIGGER_SCALE_Y = 1.0;
+
+    // PARALLAX SYSTEM
+    public static final double PARALLAX_CAMERA_TARGET_MIN   = 0.0;
+    public static final double PARALLAX_CAMERA_TARGET_MAX   = 1.0;
+    public static final double PARALLAX_CAMERA_DELTA_X      = 0.0005;
+    public static final double PARALLAX_NORMALIZE_DENOM_MIN = 1.0;
+
+    // POWERUP SYSTEM
+    public static final long POWERUP_ACTIVATE_DURATION = 5000;
+
     // MAP
     public static final int PADDING_X = 0;
     public static final int PADDING_Y = 0;

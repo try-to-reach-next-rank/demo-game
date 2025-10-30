@@ -44,8 +44,14 @@ public abstract class GameObject {
      * Áp dụng scale: cập nhật kích thước vật lý và hiển thị.
      */
     protected void applyScale() {
+        double centerX = x + width / 2;
+        double centerY = y + height / 2;
+
         this.width = baseWidth * scaleX;
         this.height = baseHeight * scaleY;
+
+        this.x = centerX - width / 2;
+        this.y = centerY - height / 2;
     }
 
     public double getX() { return x; }

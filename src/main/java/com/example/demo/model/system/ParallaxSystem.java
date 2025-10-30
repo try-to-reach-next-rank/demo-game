@@ -45,15 +45,15 @@ public class ParallaxSystem implements Updatable, Renderable {
         // === Normalize paddle X ===
         double paddleMinX = GameVar.WIDTH_OF_WALLS;
         double paddleMaxX = GlobalVar.WIDTH - GameVar.WIDTH_OF_WALLS - world.getPaddle().getWidth();
-        double normalizedPaddleX = (world.getPaddle().getX() - paddleMinX) / Math.max(1.0, paddleMaxX - paddleMinX);
-        cameraTargetX = Math.max(0.0, Math.min(1.0, normalizedPaddleX));
+        double normalizedPaddleX = (world.getPaddle().getX() - paddleMinX) / Math.max(GameVar.PARALLAX_NORMALIZE_DENOM_MIN, paddleMaxX - paddleMinX);
+        cameraTargetX = Math.max(GameVar.PARALLAX_CAMERA_TARGET_MIN, Math.min(GameVar.PARALLAX_CAMERA_TARGET_MAX, normalizedPaddleX));
 
         // === Smooth camera motion ===
         double alpha = 1.0 - Math.exp(-smoothing * deltaTime);
         cameraCurrentX += (cameraTargetX - cameraCurrentX) * alpha;
 
         // === Skip if not moved ===
-        if (Math.abs(cameraCurrentX - lastCameraX) < 0.0005) return;
+        if (Math.abs(cameraCurrentX - lastCameraX) < GameVar.PARALLAX_CAMERA_DELTA_X) return;
         lastCameraX = cameraCurrentX;
 
         // === Update parallax offsets ===

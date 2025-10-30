@@ -25,7 +25,7 @@ public class PowerUpSystem implements Updatable {
 
     public void activate(PowerUp powerUp) {
         if (powerUp == null) return;
-        powerUp.activate(5000);
+        powerUp.activate(GameVar.POWERUP_ACTIVATE_DURATION);
         activePowerUps.add(powerUp);
 
         switch (powerUp.getType()) {

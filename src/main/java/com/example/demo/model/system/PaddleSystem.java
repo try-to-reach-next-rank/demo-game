@@ -15,7 +15,7 @@ public class PaddleSystem implements Updatable {
     @Override
     public void update(double deltaTime) {
 
-        if (paddle.getBiggerPaddle()) paddle.setScale(2, 1);
+        if (paddle.getBiggerPaddle()) paddle.setScale(GameVar.PADDLE_BIGGER_SCALE_X, GameVar.PADDLE_BIGGER_SCALE_Y);
         else paddle.resetScale();
 
         double newX = paddle.getX() + paddle.getDirection() * paddle.getSpeed() * deltaTime;
