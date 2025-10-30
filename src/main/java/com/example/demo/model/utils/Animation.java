@@ -1,7 +1,6 @@
 package com.example.demo.model.utils;
 
-import java.util.Objects;
-
+import com.example.demo.model.utils.var.GlobalVar;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 

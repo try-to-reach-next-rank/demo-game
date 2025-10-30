@@ -9,7 +9,7 @@ import com.example.demo.controller.view.SettingsControllers;
 import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.menu.SettingsModel;
 import com.example.demo.model.state.GameState;
-import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.model.utils.var.GlobalVar;
 import com.example.demo.model.utils.Input;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.view.MenuView;

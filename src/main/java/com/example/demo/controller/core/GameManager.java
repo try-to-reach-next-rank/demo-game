@@ -3,19 +3,15 @@ package com.example.demo.controller.core;
 import com.example.demo.controller.map.LoadLevel;
 import com.example.demo.controller.map.LoadTransition;
 import com.example.demo.controller.map.MapManager;
-import com.example.demo.controller.view.AssetManager;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
-import com.example.demo.model.map.MapData;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
 
-import com.example.demo.model.utils.GameVar;
-
+import com.example.demo.model.utils.var.GameVar;
 import com.example.demo.model.utils.CheatTable;
-
-import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.model.utils.var.GlobalVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.dialogue.DialogueBox;
 import com.example.demo.model.utils.dialogue.DialogueSystem;
@@ -35,7 +31,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.demo.model.utils.GlobalVar.SECRET_CODE;
+import static com.example.demo.model.utils.var.GlobalVar.SECRET_CODE;
 
 public class GameManager extends Pane {
 

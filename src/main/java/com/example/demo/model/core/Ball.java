@@ -2,7 +2,7 @@ package com.example.demo.model.core;
 
 import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BallData;
-import com.example.demo.model.utils.GameVar;
+import com.example.demo.model.utils.var.GameVar;
 import com.example.demo.model.utils.Vector2D;
 
 public class Ball extends ImageObject {

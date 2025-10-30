@@ -4,7 +4,6 @@ import com.example.demo.engine.GameWorld; // Import GameWorld
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.PowerUp;
 import com.example.demo.model.system.PowerUpSystem;
-import com.example.demo.model.utils.GameVar;
 
 import java.util.ArrayList;
 import java.util.List;

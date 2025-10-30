@@ -1472,3 +1472,4 @@
 11:26:49.764 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 66
 11:26:49.856 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - RIGHT
 11:26:50.772 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 63
+16:22:09.962 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 63

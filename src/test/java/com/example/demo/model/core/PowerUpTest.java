@@ -1,7 +1,7 @@
 package com.example.demo.model.core;
 
-import com.example.demo.model.utils.GameVar;
-import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.model.utils.var.GameVar;
+import com.example.demo.model.utils.var.GlobalVar;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

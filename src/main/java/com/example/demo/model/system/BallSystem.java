@@ -5,7 +5,7 @@ import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
 import com.example.demo.model.core.Wall;
 import com.example.demo.model.utils.GameRandom;
-import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.model.utils.var.GlobalVar;
 import com.example.demo.model.utils.Vector2D;
 
 public class BallSystem implements Updatable {
