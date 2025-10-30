@@ -107,10 +107,10 @@ public class CollisionController implements Updatable {
 
             // simple effect (View layer responsibility)
             EffectRenderer.getInstance().spawn(
-                    "explosion2",
+                    GameVar.EXPLOSION2_EFFECT_KEY,
                     ball.getX() + ball.getWidth() / 2,
                     ball.getY() + ball.getHeight() / 2,
-                    1.0
+                    GameVar.EFFECT_DURATION
             );
         }
     }
