@@ -6238,3 +6238,415 @@
 20:57:27.226 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 79
 20:57:28.228 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 107
 20:57:29.241 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 92
+21:00:53.442 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Loading from slot 1...
+21:00:53.444 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Tải game thành công!
+21:00:54.666 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 90
+21:00:55.655 INFO  [JavaFX Application Thread] c.e.d.controller.map.LoadTransition - Loaded map: 1 with 124 bricks
+21:00:55.672 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 100
+21:00:56.680 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 97
+21:00:57.684 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 101
+21:00:58.696 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:00:59.701 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 96
+21:03:30.759 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Loading from slot 1...
+21:03:30.765 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] State applied successfully without transition.
+21:03:30.765 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Tải game thành công!
+21:03:30.775 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] State applied successfully without transition.
+21:03:31.903 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 90
+21:03:32.907 INFO  [JavaFX Application Thread] c.e.d.controller.map.LoadTransition - Loaded map: 1 with 124 bricks
+21:03:32.916 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:03:33.940 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 102
+21:03:34.956 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 86
+21:03:35.964 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 91
+21:03:36.971 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 115
+21:03:37.974 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 111
+21:03:38.982 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 107
+21:03:39.992 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 102
+21:03:41.004 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 88
+21:03:42.012 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 81
+21:03:43.019 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 96
+21:03:44.022 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 107
+21:03:45.033 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 130
+21:03:46.040 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 128
+21:03:47.045 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 126
+21:03:48.052 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 132
+21:04:07.651 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Loading from slot 1...
+21:04:07.653 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Tải game thành công!
+21:04:08.786 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 89
+21:04:09.772 INFO  [JavaFX Application Thread] c.e.d.controller.map.LoadTransition - Loaded map: 1 with 124 bricks
+21:04:09.791 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 96
+21:04:10.802 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:04:11.803 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 97
+21:04:12.813 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 104
+21:04:13.826 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 90
+21:04:14.834 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:04:15.840 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 119
+21:04:16.849 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 123
+21:04:17.852 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 123
+21:04:18.859 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 116
+21:04:19.873 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 108
+21:04:27.583 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Loading from slot 1...
+21:04:27.585 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Tải game thành công!
+21:04:28.701 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 80
+21:04:29.689 INFO  [JavaFX Application Thread] c.e.d.controller.map.LoadTransition - Loaded map: 1 with 124 bricks
+21:04:29.723 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:04:30.730 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 94
+21:04:31.737 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:04:31.782 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Bắt đầu lưu game...
+21:04:32.919 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 125
+21:04:43.545 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Loading from slot 1...
+21:04:43.547 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Tải game thành công!
+21:04:44.753 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 79
+21:04:45.758 INFO  [JavaFX Application Thread] c.e.d.controller.map.LoadTransition - Loaded map: 1 with 124 bricks
+21:04:45.772 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 94
+21:04:46.779 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 93
+21:04:47.788 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 104
+21:04:48.796 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 86
+21:04:49.804 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 76
+21:04:50.811 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 103
+21:04:51.820 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 101
+21:04:52.828 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 109
+21:04:53.836 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 89
+21:04:54.844 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 81
+21:04:55.850 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 86
+21:04:56.855 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 87
+21:04:57.868 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:04:58.876 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 77
+21:04:59.884 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 76
+21:05:00.892 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 76
+21:05:01.900 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 82
+21:05:02.908 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 90
+21:05:03.987 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 4830
+21:05:04.988 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 6880
+21:05:05.988 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 6456
+21:05:06.987 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 7135
+21:07:00.332 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 3586
+21:07:01.338 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 145
+21:07:02.341 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 207
+21:07:03.350 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 206
+21:07:04.351 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 204
+21:07:05.354 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 214
+21:07:06.358 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 216
+21:07:07.364 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 216
+21:07:08.364 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 209
+21:07:09.367 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 182
+21:07:10.370 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 204
+21:07:11.386 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 198
+21:07:12.483 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 166
+21:07:13.484 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 191
+21:07:14.486 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 195
+21:07:15.494 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 207
+21:07:16.505 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 147
+21:07:17.511 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 206
+21:07:18.550 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 193
+21:07:19.556 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 213
+21:07:20.556 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 169
+21:07:21.596 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 193
+21:07:22.597 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 206
+21:07:23.610 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 210
+21:07:24.613 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 191
+21:07:25.736 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 187
+21:07:26.745 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 189
+21:07:27.749 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 204
+21:07:28.753 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 205
+21:07:29.756 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 207
+21:07:30.757 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 207
+21:07:31.760 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 202
+21:07:32.764 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 190
+21:07:33.768 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 206
+21:07:34.772 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 185
+21:07:35.772 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 208
+21:07:36.772 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 207
+21:07:37.776 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 210
+21:07:38.780 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 204
+21:07:39.784 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 187
+21:07:40.790 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 210
+21:07:41.799 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 206
+21:07:42.860 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 179
+21:07:43.865 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 199
+21:07:44.871 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 224
+21:07:45.877 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 217
+21:07:57.666 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Loading from slot 1...
+21:07:57.668 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Tải game thành công!
+21:07:58.815 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 91
+21:07:59.819 INFO  [JavaFX Application Thread] c.e.d.controller.map.LoadTransition - Loaded map: 1 with 124 bricks
+21:07:59.835 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 96
+21:07:59.863 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:08:00.799 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - P
+21:08:00.843 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 79
+21:08:01.046 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - H
+21:08:01.210 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - U
+21:08:01.303 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - C
+21:08:01.303 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - !!! CHEAT MENU UNLOCKED !!!
+21:08:01.851 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 84
+21:08:02.605 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:08:02.854 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 108
+21:08:02.959 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:08:03.260 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:08:03.867 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 95
+21:08:04.255 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:04.764 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:04.795 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:04.826 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:04.857 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:04.874 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 71
+21:08:04.892 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:04.921 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:04.954 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:04.984 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:05.015 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:05.065 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:05.094 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:05.124 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:08:05.878 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 102
+21:08:06.885 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 108
+21:08:07.895 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:08:08.906 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 81
+21:08:09.912 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 96
+21:08:10.923 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 82
+21:08:11.931 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 96
+21:08:12.939 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 83
+21:08:13.946 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 97
+21:08:14.150 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:08:14.439 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - ESC
+21:08:14.951 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 103
+21:08:15.962 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:08:16.969 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:08:17.588 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - ESC
+21:08:17.979 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 83
+21:08:18.987 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 80
+21:08:19.787 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:08:19.992 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 101
+21:08:21.002 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 97
+21:08:21.775 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:08:22.005 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 94
+21:08:23.015 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 105
+21:08:24.027 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 83
+21:08:24.389 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - ESC
+21:08:25.032 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 100
+21:08:26.036 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 95
+21:08:27.052 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 93
+21:08:27.443 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - ESC
+21:08:28.053 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:08:28.406 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - ESC
+21:08:29.065 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 89
+21:08:29.410 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:08:29.745 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:08:30.072 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:08:44.824 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Loading from slot 1...
+21:08:44.826 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Tải game thành công!
+21:08:45.994 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 86
+21:08:46.234 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:08:46.649 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:08:46.988 INFO  [JavaFX Application Thread] c.e.d.controller.map.LoadTransition - Loaded map: 1 with 124 bricks
+21:08:46.996 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:08:47.743 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:08:48.011 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 110
+21:08:49.020 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 87
+21:08:50.027 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 92
+21:08:51.035 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:08:52.043 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 112
+21:08:53.051 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 65
+21:08:54.059 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 76
+21:08:55.068 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:08:55.069 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 76
+21:08:56.076 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 92
+21:08:57.079 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 78
+21:08:58.090 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 97
+21:08:59.094 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:09:00.108 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 100
+21:09:01.116 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 67
+21:09:02.121 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 83
+21:09:03.131 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:09:04.138 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 82
+21:09:05.144 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 102
+21:09:06.155 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 112
+21:09:07.157 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 87
+21:09:08.171 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 105
+21:09:09.179 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 94
+21:09:10.184 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 103
+21:09:11.193 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 102
+21:09:12.203 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 100
+21:09:13.208 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 91
+21:09:14.217 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 105
+21:09:15.227 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 105
+21:09:16.227 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 117
+21:09:17.243 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 82
+21:09:18.251 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 75
+21:09:19.255 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 79
+21:09:20.261 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 100
+21:09:21.271 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:09:22.280 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 102
+21:09:23.291 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 106
+21:09:24.295 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 112
+21:09:25.303 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 94
+21:09:26.313 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 109
+21:09:27.318 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 102
+21:09:28.322 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 122
+21:09:29.323 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 108
+21:09:30.324 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 110
+21:09:31.339 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 112
+21:09:32.345 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 106
+21:09:33.353 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 104
+21:09:34.364 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 84
+21:09:35.370 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:09:36.378 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 111
+21:09:37.387 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 107
+21:09:38.396 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 95
+21:09:39.403 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 105
+21:09:40.408 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 102
+21:09:41.419 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 96
+21:09:42.427 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 76
+21:09:43.431 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 90
+21:09:44.437 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 125
+21:10:23.297 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Loading from slot 1...
+21:10:23.299 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Tải game thành công!
+21:10:24.422 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 97
+21:10:25.218 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:10:25.426 INFO  [JavaFX Application Thread] c.e.d.controller.map.LoadTransition - Loaded map: 1 with 124 bricks
+21:10:25.433 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:10:26.433 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 101
+21:10:27.435 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 103
+21:10:28.443 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 89
+21:10:29.458 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 107
+21:10:30.463 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 111
+21:10:31.473 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 94
+21:10:32.479 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 90
+21:10:33.489 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 101
+21:10:34.492 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 94
+21:10:35.504 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 104
+21:10:36.510 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 102
+21:10:37.521 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 105
+21:10:38.525 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 112
+21:10:39.529 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 107
+21:10:40.543 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 104
+21:10:41.547 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 102
+21:10:42.561 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 91
+21:10:43.563 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:10:44.579 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:10:45.583 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 87
+21:10:46.594 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 106
+21:10:47.601 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 92
+21:10:48.609 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 90
+21:10:49.630 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 81
+21:10:50.640 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 100
+21:10:51.649 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 111
+21:10:52.658 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 86
+21:10:53.674 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 92
+21:10:54.689 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 114
+21:10:55.702 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 84
+21:10:56.719 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 85
+21:10:57.725 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 117
+21:10:58.753 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 94
+21:10:59.770 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 83
+21:11:00.785 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 85
+21:11:01.788 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 70
+21:11:02.833 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 91
+21:11:03.842 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 103
+21:11:04.848 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 81
+21:11:05.857 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 79
+21:11:06.865 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 82
+21:11:07.869 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 85
+21:11:08.881 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 104
+21:11:09.889 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 80
+21:11:11.025 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 73
+21:11:12.030 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 82
+21:11:13.041 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 103
+21:11:14.049 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:11:15.058 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 84
+21:11:16.065 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 96
+21:11:17.074 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 97
+21:11:18.078 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 103
+21:11:19.153 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 89
+21:11:27.693 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Loading from slot 1...
+21:11:27.696 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Tải game thành công!
+21:11:28.823 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 82
+21:11:28.876 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:11:29.059 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:11:29.810 INFO  [JavaFX Application Thread] c.e.d.controller.map.LoadTransition - Loaded map: 1 with 124 bricks
+21:11:29.839 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 82
+21:11:30.848 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 79
+21:11:31.849 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 87
+21:11:32.860 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 137
+21:11:33.873 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 115
+21:11:34.881 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 95
+21:11:35.886 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 101
+21:11:36.893 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 84
+21:11:37.128 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:11:37.902 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 123
+21:11:38.913 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 118
+21:11:39.615 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:11:39.915 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 103
+21:11:40.114 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:11:40.162 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:11:40.193 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:11:40.224 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:11:40.255 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:11:40.284 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:11:40.316 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:11:40.384 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:11:40.794 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:11:40.924 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 100
+21:11:41.929 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 110
+21:11:42.941 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 126
+21:11:43.947 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 108
+21:11:44.960 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 93
+21:11:45.767 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:11:45.968 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 77
+21:11:46.972 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 120
+21:13:35.537 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Loading from slot 1...
+21:13:35.540 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Tải game thành công!
+21:13:36.707 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 86
+21:13:37.707 INFO  [JavaFX Application Thread] c.e.d.controller.map.LoadTransition - Loaded map: 1 with 124 bricks
+21:13:37.722 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 97
+21:13:38.728 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 98
+21:13:39.740 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 104
+21:13:39.843 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:13:40.419 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:13:40.746 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 94
+21:13:40.928 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:13:40.958 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:13:40.995 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:13:41.020 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:13:41.051 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:13:41.082 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:13:41.755 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:13:41.758 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:13:42.067 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:13:42.491 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:13:42.675 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:13:42.763 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 86
+21:13:42.837 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:13:42.978 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:13:43.142 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:13:43.274 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:13:43.769 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 92
+21:13:44.776 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 104
+21:13:44.821 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:16:37.497 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Loading from slot 1...
+21:16:37.499 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - Tải game thành công!
+21:16:38.638 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 91
+21:16:39.640 INFO  [JavaFX Application Thread] c.e.d.controller.map.LoadTransition - Loaded map: 1 with 124 bricks
+21:16:39.651 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 97
+21:16:39.879 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:16:40.664 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 81
+21:16:40.977 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:16:41.477 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:16:41.508 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:16:41.556 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:16:41.587 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:16:41.618 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:16:41.648 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:16:41.672 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 99
+21:16:41.681 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:16:41.716 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - LEFT
+21:16:41.926 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - SPACE
+21:16:42.538 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:16:43.968 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Game resumed
+21:16:44.103 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 83
+21:16:44.920 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:16:45.245 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Game resumed
+21:16:45.402 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 104
+21:16:45.588 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - F1
+21:16:45.950 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - [GameManager] Game resumed
+21:16:46.742 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 107
+21:16:47.753 INFO  [JavaFX Application Thread] c.e.demo.controller.core.GameManager - FPS: 110

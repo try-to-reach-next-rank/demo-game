@@ -168,7 +168,6 @@ public class GameManager extends Pane {
         if (isNewGame) {
             dialogueSystem = new DialogueSystem("/Dialogue/intro.txt", dialogueBox);
             setupSecretCodeEasterEgg();
-            SetupPause();
             uiManager.add(dialogueBox);
             dialogueSystem.start();
         }
@@ -176,7 +175,6 @@ public class GameManager extends Pane {
             dialogueSystem = new DialogueSystem("/Dialogue/continue.txt", dialogueBox);
             loadGame();
             setupSecretCodeEasterEgg();
-            SetupPause();
             uiManager.add(dialogueBox);
             dialogueSystem.start();
         }
@@ -392,6 +390,20 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     private void setupSecretCodeEasterEgg() {
+
+        /** Phần này là pause Menu
+         *
+         */
+
+
+        pauseTable = new PauseTable(this);
+
+        StackPane view = pauseTable.getView();
+        view.prefWidthProperty().bind(widthProperty());
+        view.prefHeightProperty().bind(heightProperty());
+        getChildren().add(view);
+        pauseTable.hide();
+
         setOnKeyPressed(e -> {
             KeyCode code = e.getCode();
             if (code == null) return;
@@ -400,7 +412,8 @@ public class GameManager extends Pane {
             if (code == KeyCode.BACK_QUOTE) {
                 if (cheatTable != null) {
                     cheatTable.show(); // Chỉ mở
-                } else {
+                }
+                else {
                     log.info("(Cheat menu not unlocked yet)");
                 }
                 e.consume();
@@ -415,6 +428,13 @@ public class GameManager extends Pane {
                 loadGame();
                 return;
             }
+            if(code == KeyCode.F1) {
+                pauseTable.show();
+                stopGame();
+            }
+
+
+
 
             // Logic cho secret code
             String key = code.getName().toUpperCase();
@@ -444,22 +464,7 @@ public class GameManager extends Pane {
         });
     }
 
-    private void SetupPause() {
-        pauseTable = new PauseTable(this);
 
-        StackPane view = pauseTable.getView();
-        view.prefWidthProperty().bind(widthProperty());
-        view.prefHeightProperty().bind(heightProperty());
-        getChildren().add(view);
-        pauseTable.hide();
-        setOnKeyPressed(e -> {
-            KeyCode code = e.getCode();
-            if (code == KeyCode.F1) {
-                pauseTable.show();
-                e.consume();
-            }
-        });
-    }
 
 
 
@@ -480,6 +485,16 @@ public class GameManager extends Pane {
         Sound.getInstance().stopMusic();
         EffectRenderer.getInstance().clear();
     }
+
+    public void resumeGame() {
+        if (!inGame) {
+            inGame = true;
+            if (timer != null) timer.start();
+            Sound.getInstance().resumeMusic();
+            log.info("[GameManager] Game resumed");
+        }
+    }
+
 
     public void setOnBackToMenu(Runnable callback) {
         this.onBackToMenu = callback;

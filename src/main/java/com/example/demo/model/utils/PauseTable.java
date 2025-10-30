@@ -29,6 +29,7 @@ public class PauseTable extends UIComponent {
 
         container.getChildren().add(buttonManager.createButtonRow("Resume", e -> {
             hide();
+            gameManager.resumeGame();
             System.out.println("Resume game");
         }));
 
