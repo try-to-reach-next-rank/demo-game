@@ -1,4 +1,6 @@
 package com.example.demo.model.utils.var;
+import javafx.scene.paint.Color;
+
 import static com.example.demo.model.utils.var.GlobalVar.HEIGHT;
 import static com.example.demo.model.utils.var.GlobalVar.WIDTH;
 
@@ -9,52 +11,49 @@ public final class GameVar {
 
     private GameVar() {}
 
+    // PADDLE
     public static final int INIT_PADDLE_X = WIDTH / 2 - 50;
     public static final int INIT_PADDLE_Y = HEIGHT - 30;
 
-    public static final int INIT_BALL_X                    = WIDTH / 2 - 10;
-    public static final int INIT_BALL_Y                    = HEIGHT - 60;
-    public static final float SPEED                        = 0.4F;
-    public static final float ACCELERATED_SPEED_MULTIPLIER = 2.0F;
-
+    // WALL
     public static final int WIDTH_OF_WALLS        = 12;
     public static final int HEIGHT_OF_WALLS       = 200;
     public static final int N_OF_WALLS_LEFT_RIGHT = HEIGHT / HEIGHT_OF_WALLS;
     public static final int N_OF_WALLS_TOP        = WIDTH / HEIGHT_OF_WALLS;
 
-    public static final int BRICKS_PER_ROW = 20;
-    public static final int PADDING_X      = 0;
-    public static final int PADDING_Y      = 0;
-
+    // BRICK
     public static final int MAXHEALTH_OF_BRICKS = 5;
     public static final int WIDTH_OF_BRICKS     = 30;
     public static final int HEIGHT_OF_BRICKS    = 16;
 
+    // POWER UP
     public static final String ACCELERATE   = "ACCELERATE";
     public static final String STRONGER     = "STRONGER";
     public static final String BIGGERPADDLE = "BIGGERPADDLE";
     public static final String STOPTIME     = "STOPTIME";
     public static final String[] powerUps   = {ACCELERATE, STRONGER, STOPTIME, BIGGERPADDLE};
 
-    public static final long PADDLE_SOUND_COOLDOWN = 150;  // ms
-
+    // BALL
+    public static final int INIT_BALL_X = WIDTH / 2 - 10;
+    public static final int INIT_BALL_Y = HEIGHT - 60;
     public static final float BASE_SPEED_BALL   = 300F;
     public static final float BASE_SPEED_PADDLE = 400F;
+    public static final double BALL_OFFSET_Y          = 10.0;   // Distance above paddle when stuck
+    public static final double BALL_ALIGN_LERP_FACTOR = 1.0;    // Instant align when resetting
+    public static final double BALL_INIT_DIR_X        = 0.0;    // Default X velocity direction
+    public static final double BALL_INIT_DIR_Y        = -1.0;   // Default Y velocity direction
 
+    // MAP
+    public static final int PADDING_X = 0;
+    public static final int PADDING_Y = 0;
     private final static int CELL_W = GameVar.WIDTH_OF_BRICKS + GameVar.PADDING_X;
-    private final static int CELL_H = GameVar.HEIGHT_OF_BRICKS + GameVar.PADDING_Y;
-
-    // Compute the usable width/height inside walls
-    private final static int USABLE_WIDTH  = WIDTH - 2 * GameVar.WIDTH_OF_WALLS;
-    private final static int USABLE_HEIGHT = HEIGHT - GameVar.WIDTH_OF_WALLS;
-
-    // Number of columns and rows that actually fit inside
+    private final static int USABLE_WIDTH = WIDTH - 2 * GameVar.WIDTH_OF_WALLS;
     public final static int MATRIX_COLS = USABLE_WIDTH / CELL_W;
-    public final static int MATRIX_ROWS = (USABLE_HEIGHT / 2) / CELL_H;
-
-    // Brick grid starts just *inside* top and left walls
     public final static int MATRIX_START_X = WIDTH_OF_WALLS + (USABLE_WIDTH - MATRIX_COLS * (WIDTH_OF_BRICKS + PADDING_X))/2 + WIDTH_OF_BRICKS/2;
     public final static int MATRIX_START_Y = MATRIX_START_X;
+
+    // SOUND
+    public static final long PADDLE_SOUND_COOLDOWN = 150;  // ms
 
     // ANIMATION ASSETS
     public static final String EXPLOSION_SHEET_KEY   = "explosion_spritesheet";
@@ -96,5 +95,24 @@ public final class GameVar {
     public static final double POWERUP_STOPTIME_DURATION     = 10.0;
     public static final double POWERUP_BIGGERPADDLE_DURATION = 1.0;
 
+    // GLOW TEXT
+    public static final double GLOW_FONT_SIZE = 48.0;
 
+    public static final double GLOW_ANIMATION_DURATION = 2.5;  // seconds
+    public static final double GLOW_OFFSET_START       = 0.0;
+    public static final double GLOW_OFFSET_END         = 1.0;
+
+    public static final double[] GLOW_GRADIENT_STOPS = {
+            0.0, 0.30, 0.40, 0.50, 0.60, 0.70, 1.0
+    };
+
+    public static final Color GLOW_COLOR_BASE      = Color.web("#555555");
+    public static final Color GLOW_COLOR_CYAN      = Color.web("#00b8ff");
+    public static final Color GLOW_COLOR_HIGHLIGHT = Color.web("#ffffff");
+
+    // TRANSITION EFFECT
+    public static final double TRANSITION_MIN_DURATION = 0.01;  // seconds
+    public static final double TRANSITION_HALF_FACTOR   = 2.0;
+    public static final double TRANSITION_OPACITY_FULL  = 1.0;
+    public static final Color  TRANSITION_DEFAULT_COLOR = Color.BLACK;
 }

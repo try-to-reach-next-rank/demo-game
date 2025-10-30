@@ -41,17 +41,17 @@ public class Ball extends ImageObject {
 
 
     public void resetState() {
-        alignWithPaddle(10, 1.0);
+        alignWithPaddle(GameVar.BALL_OFFSET_Y, GameVar.BALL_ALIGN_LERP_FACTOR);
         stuck = true;
         accelerated = false;
         stronger = false;
-        velocity = new Vector2D(0, -1);
+        velocity = new Vector2D(GameVar.BALL_INIT_DIR_X, GameVar.BALL_INIT_DIR_Y);
     }
 
     public void release() {
         if (stuck) {
             stuck = false;
-            setVelocity(0, -1);
+            setVelocity(GameVar.BALL_INIT_DIR_X, GameVar.BALL_INIT_DIR_Y);
         }
     }
 

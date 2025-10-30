@@ -62,24 +62,27 @@ public class AnimationAssets implements AssetLoader {
 
         // --- Power up spritesheet ---
         ASSETS.put(
-            "powerup_accelerate", 
-            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
-                .loop(true)
-                .renderSize(32, 16)
-                .rows(0)
-                .duration(5.0)
+            "powerup_accelerate",
+            AnimationData.builder(GameVar.POWERUP_SHEET_KEY,
+                            GameVar.POWERUP_FRAME_WIDTH,
+                            GameVar.POWERUP_FRAME_HEIGHT,
+                            GameVar.POWERUP_TOTAL_FRAMES)
+                    .loop(GameVar.POWERUP_LOOP)
+                    .renderSize(GameVar.POWERUP_RENDER_WIDTH, GameVar.POWERUP_RENDER_HEIGHT)
+                    .rows(GameVar.POWERUP_ACCELERATE_ROW)
+                    .duration(GameVar.POWERUP_ACCELERATE_DURATION)
         );
 
         ASSETS.put(
-            "powerup_stronger", 
+            "powerup_stronger",
             AnimationData.builder(GameVar.POWERUP_SHEET_KEY,
-                    GameVar.POWERUP_FRAME_WIDTH,
-                    GameVar.POWERUP_FRAME_HEIGHT,
-                    GameVar.POWERUP_TOTAL_FRAMES)
-                .loop(GameVar.POWERUP_LOOP)
-                .renderSize(GameVar.POWERUP_RENDER_WIDTH, GameVar.POWERUP_RENDER_HEIGHT)
-                .rows(GameVar.POWERUP_ACCELERATE_ROW)
-                .duration(GameVar.POWERUP_ACCELERATE_DURATION)
+                            GameVar.POWERUP_FRAME_WIDTH,
+                            GameVar.POWERUP_FRAME_HEIGHT,
+                            GameVar.POWERUP_TOTAL_FRAMES)
+                    .loop(GameVar.POWERUP_LOOP)
+                    .renderSize(GameVar.POWERUP_RENDER_WIDTH, GameVar.POWERUP_RENDER_HEIGHT)
+                    .rows(GameVar.POWERUP_STRONGER_ROW)
+                    .duration(GameVar.POWERUP_STRONGER_DURATION)
         );
 
         ASSETS.put(
