@@ -14,6 +14,9 @@ public final class GameVar {
     public static final double MAX_DELTA_TIME = 0.05;
     public static final double TRANSITION_DURATION = 2.0;
 
+    // THEME
+    public static final int DEFAULT_BG_FRAMES = 6;
+
     // PARALLAX
     public static final double PARALLAX_BASE_SPEED = 0.15;
     public static final double PARALLAX_DEPTH = 8.0;

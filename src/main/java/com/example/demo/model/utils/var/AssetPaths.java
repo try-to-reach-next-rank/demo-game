@@ -2,6 +2,10 @@ package com.example.demo.model.utils.var;
 
 public final class AssetPaths {
     private AssetPaths() {}
+    // THEME
+    public static final String CSS_PATH_MENU = "/styles/menu.css";
+    public static final String HAND = "/images/hand.png";
+
     // PARALLAX
     public static final String LAYER1 = "/images/layer1.png";
     public static final String LAYER2 = "/images/layer2.png";

@@ -1,5 +1,7 @@
 package com.example.demo.controller.view;
 
+import com.example.demo.model.utils.var.AssetPaths;
+import com.example.demo.model.utils.var.GameVar;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
@@ -27,13 +29,10 @@ public class ThemeController {
     private static Duration bgFrameDuration = Duration.millis(140);
 
     private Image handImage = null;
-    private static String cssPath = "/styles/menu.css";
-
-    private static final int DEFAULT_BG_FRAMES = 6;
 
     public ThemeController() {
-        loadHandImage("/images/hand.png");
-        loadBgFrames("/images/bg/frame_", DEFAULT_BG_FRAMES);
+        loadHandImage(AssetPaths.HAND);
+        loadBgFrames("/images/bg/frame_", GameVar.DEFAULT_BG_FRAMES);
     }
 
     // -------------------------
@@ -89,8 +88,6 @@ public class ThemeController {
     private static void setupAnimatedBackground(StackPane rootStack) {
         bgView.setPreserveRatio(false);
         bgView.setImage(bgFrames.get(0));
-
-        // Bind size to container
         bgView.fitWidthProperty().bind(rootStack.widthProperty());
         bgView.fitHeightProperty().bind(rootStack.heightProperty());
 
@@ -114,7 +111,6 @@ public class ThemeController {
 
         bgRegion.prefWidthProperty().bind(rootStack.widthProperty());
         bgRegion.prefHeightProperty().bind(rootStack.heightProperty());
-
         rootStack.getChildren().add(0, bgRegion);
         StackPane.setAlignment(bgRegion, Pos.CENTER);
     }
@@ -153,7 +149,7 @@ public class ThemeController {
      */
     public static void applyCss(Region node) {
         try {
-            String css = ThemeController.class.getResource(cssPath).toExternalForm();
+            String css = ThemeController.class.getResource(AssetPaths.CSS_PATH_MENU).toExternalForm();
             node.getStylesheets().add(css);
         } catch (Exception e) {
             System.err.println("[ThemeManager] Failed to load CSS: " + e.getMessage());
@@ -166,28 +162,5 @@ public class ThemeController {
 
     public Image getHandImage() {
         return handImage;
-    }
-
-    public void setBgFrameDuration(Duration duration) {
-        if (duration != null && !duration.equals(bgFrameDuration)) {
-            bgFrameDuration = duration;
-            if (bgTimeline != null && bgTimeline.getStatus() == javafx.animation.Animation.Status.RUNNING) {
-                startBgAnimation();
-            }
-        }
-    }
-
-    public void registerBgFrames(List<Image> frames) {
-        bgFrames.clear();
-        if (frames != null) {
-            bgFrames.addAll(frames);
-        }
-        if (!bgFrames.isEmpty()) {
-            startBgAnimation();
-        }
-    }
-
-    public void setCssPath(String path) {
-        this.cssPath = path;
     }
 }
