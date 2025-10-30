@@ -1,12 +1,12 @@
 {
   "currentLevel": 1,
   "paddleData": {
-    "x": 12.0,
+    "x": 250.0,
     "y": 770.0
   },
   "ballData": {
     "x": 284.0,
-    "y": 578.6428599999996,
+    "y": 536.8296100000001,
     "velocityX": 0.0,
     "velocityY": 1.0,
     "isStuck": false
@@ -21,7 +21,7 @@
     },
     {
       "id": 1,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -31,7 +31,7 @@
     },
     {
       "id": 3,
-      "health": 5,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -41,22 +41,22 @@
     },
     {
       "id": 5,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 6,
-      "health": 3,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 7,
-      "health": 3,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 8,
-      "health": 4,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -66,27 +66,27 @@
     },
     {
       "id": 10,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 11,
-      "health": 3,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 12,
-      "health": 4,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 13,
-      "health": 4,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 14,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
@@ -96,7 +96,7 @@
     },
     {
       "id": 16,
-      "health": 5,
+      "health": 1,
       "isDestroyed": false
     },
     {
@@ -106,22 +106,22 @@
     },
     {
       "id": 18,
-      "health": 3,
-      "isDestroyed": false
-    },
-    {
-      "id": 19,
-      "health": 5,
-      "isDestroyed": false
-    },
-    {
-      "id": 20,
       "health": 2,
       "isDestroyed": false
     },
     {
+      "id": 19,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 20,
+      "health": 4,
+      "isDestroyed": false
+    },
+    {
       "id": 21,
-      "health": 3,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -131,32 +131,32 @@
     },
     {
       "id": 23,
-      "health": 3,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 24,
-      "health": 3,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 25,
-      "health": 3,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 26,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 27,
-      "health": 4,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 28,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -171,17 +171,17 @@
     },
     {
       "id": 31,
-      "health": 3,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 32,
-      "health": 5,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 33,
-      "health": 5,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -191,32 +191,32 @@
     },
     {
       "id": 35,
-      "health": 1,
-      "isDestroyed": false
-    },
-    {
-      "id": 36,
-      "health": 3,
-      "isDestroyed": false
-    },
-    {
-      "id": 37,
-      "health": 2,
-      "isDestroyed": false
-    },
-    {
-      "id": 38,
       "health": 4,
       "isDestroyed": false
     },
     {
+      "id": 36,
+      "health": 4,
+      "isDestroyed": false
+    },
+    {
+      "id": 37,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 38,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
       "id": 39,
-      "health": 5,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 40,
-      "health": 3,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -231,12 +231,12 @@
     },
     {
       "id": 43,
-      "health": 3,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 44,
-      "health": 4,
+      "health": 1,
       "isDestroyed": false
     },
     {
@@ -246,37 +246,37 @@
     },
     {
       "id": 46,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 47,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 48,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 49,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 50,
-      "health": 5,
-      "isDestroyed": false
-    },
-    {
-      "id": 51,
       "health": 3,
       "isDestroyed": false
     },
     {
+      "id": 49,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 50,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 51,
+      "health": 5,
+      "isDestroyed": false
+    },
+    {
       "id": 52,
-      "health": 4,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -286,7 +286,7 @@
     },
     {
       "id": 54,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -306,62 +306,62 @@
     },
     {
       "id": 58,
-      "health": 2,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 59,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 60,
-      "health": 3,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 61,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 62,
-      "health": 5,
-      "isDestroyed": false
-    },
-    {
-      "id": 63,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 64,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 65,
-      "health": 2,
-      "isDestroyed": false
-    },
-    {
-      "id": 66,
       "health": 3,
       "isDestroyed": false
     },
     {
-      "id": 67,
+      "id": 62,
       "health": 4,
       "isDestroyed": false
     },
     {
-      "id": 68,
+      "id": 63,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 64,
+      "health": 2,
+      "isDestroyed": false
+    },
+    {
+      "id": 65,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 66,
       "health": 5,
       "isDestroyed": false
     },
     {
+      "id": 67,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 68,
+      "health": 4,
+      "isDestroyed": false
+    },
+    {
       "id": 69,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
@@ -371,27 +371,27 @@
     },
     {
       "id": 71,
-      "health": 3,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 72,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 73,
-      "health": 5,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 74,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 75,
-      "health": 5,
+      "health": 2,
       "isDestroyed": false
     },
     {
@@ -406,22 +406,22 @@
     },
     {
       "id": 78,
-      "health": 3,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 79,
-      "health": 2,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 80,
-      "health": 4,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 81,
-      "health": 3,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -431,57 +431,57 @@
     },
     {
       "id": 83,
-      "health": 5,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 84,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 85,
-      "health": 3,
-      "isDestroyed": false
-    },
-    {
-      "id": 86,
-      "health": 2,
-      "isDestroyed": false
-    },
-    {
-      "id": 87,
       "health": 5,
       "isDestroyed": false
     },
     {
+      "id": 85,
+      "health": 5,
+      "isDestroyed": false
+    },
+    {
+      "id": 86,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 87,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
       "id": 88,
-      "health": 4,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 89,
-      "health": 3,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 90,
-      "health": 3,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 91,
-      "health": 3,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 92,
-      "health": 3,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 93,
-      "health": 2,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -491,17 +491,17 @@
     },
     {
       "id": 95,
-      "health": 1,
-      "isDestroyed": false
-    },
-    {
-      "id": 96,
       "health": 5,
       "isDestroyed": false
     },
     {
-      "id": 97,
+      "id": 96,
       "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 97,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -511,17 +511,17 @@
     },
     {
       "id": 99,
-      "health": 3,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 100,
-      "health": 4,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 101,
-      "health": 5,
+      "health": 1,
       "isDestroyed": false
     },
     {
@@ -536,22 +536,22 @@
     },
     {
       "id": 104,
-      "health": 1,
-      "isDestroyed": false
-    },
-    {
-      "id": 105,
       "health": 5,
       "isDestroyed": false
     },
     {
+      "id": 105,
+      "health": 4,
+      "isDestroyed": false
+    },
+    {
       "id": 106,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 107,
-      "health": 3,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -561,27 +561,27 @@
     },
     {
       "id": 109,
-      "health": 4,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 110,
-      "health": 3,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 111,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 112,
-      "health": 3,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 113,
-      "health": 4,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -591,17 +591,17 @@
     },
     {
       "id": 115,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 116,
-      "health": 5,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 117,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -611,27 +611,27 @@
     },
     {
       "id": 119,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 120,
-      "health": 3,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 121,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 122,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 123,
-      "health": 2,
+      "health": 1,
       "isDestroyed": false
     }
   ]

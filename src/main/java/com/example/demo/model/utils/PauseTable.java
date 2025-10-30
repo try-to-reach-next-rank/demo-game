@@ -1,35 +1,74 @@
 package com.example.demo.model.utils;
 
 import com.example.demo.controller.core.GameManager;
-import com.example.demo.model.core.effects.GlowTextEffect;
+import com.example.demo.controller.view.ButtonManager;
 import com.example.demo.view.ui.UIComponent;
-import javafx.scene.canvas.GraphicsContext;
+import com.example.demo.controller.view.ThemeManager;
+import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+
 
 public class PauseTable extends UIComponent {
-    private final GameManager gameManager;
-    private final GlowTextEffect title;
-    // Danh sách các tùy chọn
-    private final String[] options = {
-            "Resume",
-            "Back Without Save",
-            "Save And Quit",
-    };
-
-    private int selectedIndex = 0;
-
-    // Fonts để vẽ
-    private final Font titleFont = new Font("Verdana", 24);
-    private final Font optionFont = new Font("Verdana", 18);
+    private final ButtonManager buttonManager;
+    private final VBox container;
+    private final ThemeManager themeManager;
+    private final StackPane wrapper;
 
     public PauseTable(GameManager gameManager) {
-        this.gameManager = gameManager;
-        Text cheatMenuText = new Text("PAUSE MENU");
-        this.title = new GlowTextEffect(cheatMenuText, titleFont);
+
+        this.themeManager = new ThemeManager();
+        this.buttonManager = new ButtonManager(themeManager.getHandImage());
+
+
+        container = new VBox(16);
+        container.setAlignment(Pos.CENTER);
+        container.setStyle("-fx-background-color: rgba(0,0,0,0.8); -fx-padding: 30; -fx-background-radius: 15;");
+
+
+        container.getChildren().add(buttonManager.createButtonRow("Resume", e -> {
+            hide();
+            System.out.println("Resume game");
+        }));
+
+        container.getChildren().add(buttonManager.createButtonRow("Back Without Save", e -> {
+            System.out.println("Back Without Save");
+            gameManager.backToMenu();
+        }));
+
+        container.getChildren().add(buttonManager.createButtonRow("Save And Quit", e -> {
+            System.out.println("Save And Quit");
+            gameManager.saveGame();
+            gameManager.backToMenu();
+        }));
+
+
+        wrapper = new StackPane(container);
+        wrapper.setAlignment(Pos.CENTER);
+        wrapper.setVisible(false);
+        wrapper.setPickOnBounds(false);
+        wrapper.getStylesheets().add(
+                getClass().getResource("/styles/menu.css").toExternalForm()
+        );
+    }
+
+    public StackPane getView() {
+        return wrapper;
+    }
+
+    @Override
+    public void show() {
+        this.active = true;
+        wrapper.setVisible(true);
+        buttonManager.setSelectedIndex(0);
+    }
+
+    @Override
+    public void hide() {
+        this.active = false;
+       wrapper.setVisible(false);
+        buttonManager.setSelectedIndex(-1); // clear selection
     }
 
     @Override
@@ -38,100 +77,19 @@ public class PauseTable extends UIComponent {
     }
 
     @Override
-    public void render(GraphicsContext gc, double width, double height) {
-        if (!active) {
-            return;
-        }
-
-        double boxWidth = 400;
-        double boxHeight = 250;
-        double boxX = (width - boxWidth) / 2;
-        double boxY = (height - boxHeight) / 2;
-
-        // Overlay
-        gc.setFill(Color.rgb(0, 0, 0, 0.85));
-        gc.fillRoundRect(boxX, boxY, boxWidth, boxHeight, 15, 15); // Bo góc
-        gc.setStroke(Color.WHITE);
-        gc.strokeRoundRect(boxX, boxY, boxWidth, boxHeight, 15, 15);
-
-        //Drawing title
-        double titleX = boxX + 50;
-        double titleY = boxY + 45;
-        title.activate(titleX, titleY);
-        title.render(gc);
-
-        //Buttons
-        gc.setFont(optionFont);
-        gc.setTextAlign(TextAlignment.LEFT);
-
-        for (int i = 0; i < options.length; i++) {
-            double optionY = boxY + 90 + (i * 30);
-
-            if (i == selectedIndex) {
-                // Đánh dấu tùy chọn đang được chọn
-                gc.setFill(Color.YELLOW);
-                gc.fillText("> " + options[i], boxX + 40, optionY);
-            } else {
-                // Các tùy chọn khác
-                gc.setFill(Color.WHITE);
-                gc.fillText(options[i], boxX + 40, optionY);
-            }
-        }
+    public void render(javafx.scene.canvas.GraphicsContext gc, double width, double height) {
     }
 
     @Override
     public void handleInput(KeyCode code) {
-        if (!active) {
-            return;
-        }
+        if (!active) return;
 
         switch (code) {
-            case UP:
-                // Di chuyển lựa chọn lên
-                selectedIndex--;
-                if (selectedIndex < 0) {
-                    selectedIndex = options.length - 1;
-                }
-                // (Tùy chọn) Thêm âm thanh "bíp" ở đây
-                break;
-
-            case DOWN:
-                // Di chuyển lựa chọn xuống
-                selectedIndex++;
-                if (selectedIndex >= options.length) {
-                    selectedIndex = 0;
-                }
-                // (Tùy chọn) Thêm âm thanh "bíp" ở đây
-                break;
-
-            case ENTER:
-            case SPACE:
-                // Thực thi cheat
-                executeCheat();
-                // (Tùy chọn) Thêm âm thanh "chọn" ở đây
-                break;
-
-            case ESCAPE:
-            case F1:
-                // Đóng cheat table
-                hide();
-                break;
-        }
-    }
-
-    private void executeCheat() {
-        String selectedOption = options[selectedIndex];
-
-
-
-        switch (selectedOption) {
-            case "Resume":
-                hide();
-            case "Back Without Save":
-                gameManager.backToMenu();
-            case "Save And Quit":
-                gameManager.saveGame();
-                gameManager.backToMenu();
+            case UP -> buttonManager.navigateUp();
+            case DOWN -> buttonManager.navigateDown();
+            case ENTER -> buttonManager.activateSelected();
+            case ESCAPE, F1 -> hide();
+            default -> {}
         }
     }
 }

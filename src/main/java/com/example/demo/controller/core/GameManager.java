@@ -30,7 +30,9 @@ import javafx.animation.PauseTransition;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import org.slf4j.Logger;
@@ -442,21 +444,24 @@ public class GameManager extends Pane {
         });
     }
 
-    private void SetupPause () {
+    private void SetupPause() {
+        pauseTable = new PauseTable(this);
+
+        StackPane view = pauseTable.getView();
+        view.prefWidthProperty().bind(widthProperty());
+        view.prefHeightProperty().bind(heightProperty());
+        getChildren().add(view);
+        pauseTable.hide();
         setOnKeyPressed(e -> {
             KeyCode code = e.getCode();
-            if (code == null) return;
-            pauseTable = new PauseTable(this);
-            this.uiManager.add(this.pauseTable);
-
-            // Phím F1 de mo pause
             if (code == KeyCode.F1) {
                 pauseTable.show();
                 e.consume();
-                return;
             }
         });
     }
+
+
 
 
     private void gameFinished() { // TODO: cheat menu uses this to trigger win condition

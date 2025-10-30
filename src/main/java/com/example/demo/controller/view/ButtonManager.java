@@ -322,4 +322,26 @@ public class ButtonManager {
         selectedIndex = 0;
         lastSelectedIndex = -1;
     }
+
+
+    public void navigateUp() {
+        if (buttons.isEmpty()) return;
+        selectedIndex = (selectedIndex - 1 + buttons.size()) % buttons.size();
+        updateSelectionVisuals();
+        if (onSelectionChanged != null) onSelectionChanged.run();
+    }
+
+    public void navigateDown() {
+        if (buttons.isEmpty()) return;
+        selectedIndex = (selectedIndex + 1) % buttons.size();
+        updateSelectionVisuals();
+        if (onSelectionChanged != null) onSelectionChanged.run();
+    }
+
+    public void activateSelected() {
+        if (selectedIndex >= 0 && selectedIndex < buttons.size()) {
+            buttons.get(selectedIndex).fire();
+        }
+    }
+
 }
