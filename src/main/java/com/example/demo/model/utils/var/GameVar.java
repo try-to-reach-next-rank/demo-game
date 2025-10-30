@@ -115,4 +115,10 @@ public final class GameVar {
     public static final double TRANSITION_HALF_FACTOR   = 2.0;
     public static final double TRANSITION_OPACITY_FULL  = 1.0;
     public static final Color  TRANSITION_DEFAULT_COLOR = Color.BLACK;
+
+    // PARALLAX
+    public static final double PARALLAX_FRAME_DURATION = 0.2; // seconds per frame (5 FPS)
+    public static final boolean PARALLAX_PRESERVE_RATIO = false;
+    public static final boolean PARALLAX_SMOOTH_SCALING = true;
+    public static final double PARALLAX_Y_OFFSET = 0.0;
 }

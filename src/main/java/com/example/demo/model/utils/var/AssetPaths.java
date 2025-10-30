@@ -38,5 +38,9 @@ public final class AssetPaths {
     public static final String SFX_GAME_OVER      = "/sounds/game_over.wav";
     public static final String SFX_POWER_UP       = "/sounds/power_up.wav";
     public static final String SFX_EXPLOSION_HIT  = "/sounds/explosion_hit.wav";
+
+    // DIALOGUE
+    public static final String EGG = "/images/egg.png";
+    public static final String BALL = "/images/Ball.png";
 }
 

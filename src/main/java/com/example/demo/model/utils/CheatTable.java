@@ -2,6 +2,7 @@ package com.example.demo.model.utils;
 
 import com.example.demo.controller.core.GameController;
 import com.example.demo.model.core.effects.GlowTextEffect;
+import com.example.demo.model.utils.var.UtilVar;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -45,20 +46,18 @@ public class CheatTable extends UIComponent {
             return;
         }
 
-        double boxWidth = 400;
-        double boxHeight = 250;
-        double boxX = (width - boxWidth) / 2;
-        double boxY = (height - boxHeight) / 2;
+        double boxX = (width - UtilVar.BOX_WIDTH) / 2;
+        double boxY = (height - UtilVar.BOX_HEIGHT) / 2;
 
         // Overlay
-        gc.setFill(Color.rgb(0, 0, 0, 0.85));
-        gc.fillRoundRect(boxX, boxY, boxWidth, boxHeight, 15, 15); // Bo góc
+        gc.setFill(Color.rgb(0, 0, 0, UtilVar.BOX_OPACITY));
+        gc.fillRoundRect(boxX, boxY, UtilVar.BOX_WIDTH, UtilVar.BOX_HEIGHT, 15, 15); // Bo góc
         gc.setStroke(Color.WHITE);
-        gc.strokeRoundRect(boxX, boxY, boxWidth, boxHeight, 15, 15);
+        gc.strokeRoundRect(boxX, boxY, UtilVar.BOX_WIDTH, UtilVar.BOX_HEIGHT, 15, 15);
 
         //Drawing title
-        double titleX = boxX + 50;
-        double titleY = boxY + 45;
+        double titleX = boxX + UtilVar.TITLE_OFFSET_X;
+        double titleY = boxY + UtilVar.TITLE_OFFSET_Y;
         title.activate(titleX, titleY);
         title.render(gc);
 
@@ -67,16 +66,16 @@ public class CheatTable extends UIComponent {
         gc.setTextAlign(TextAlignment.LEFT);
 
         for (int i = 0; i < options.length; i++) {
-            double optionY = boxY + 90 + (i * 30);
+            double optionY = boxY + UtilVar.OPTION_START_Y + (i * UtilVar.OPTION_SPACING);
 
             if (i == selectedIndex) {
                 // Đánh dấu tùy chọn đang được chọn
                 gc.setFill(Color.YELLOW);
-                gc.fillText("> " + options[i], boxX + 40, optionY);
+                gc.fillText("> " + options[i], boxX + UtilVar.TITLE_OFFSET_X, optionY);
             } else {
                 // Các tùy chọn khác
                 gc.setFill(Color.WHITE);
-                gc.fillText(options[i], boxX + 40, optionY);
+                gc.fillText(options[i], boxX + UtilVar.TITLE_OFFSET_X, optionY);
             }
         }
     }
