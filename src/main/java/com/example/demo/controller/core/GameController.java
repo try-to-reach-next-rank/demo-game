@@ -8,6 +8,7 @@ import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
 
+import com.example.demo.model.utils.var.AssetPaths;
 import com.example.demo.model.utils.var.GameVar;
 import com.example.demo.model.utils.CheatTable;
 import com.example.demo.model.utils.var.GlobalVar;
@@ -57,7 +58,7 @@ public class GameController extends Pane {
     private PowerUpSystem powerUpSystem;
     private Renderer renderer;
     private LoadTransition loadTransition;
-    private final TransitionEffect transitionEffect = new TransitionEffect(2.0); // 1.5s duration
+    private final TransitionEffect transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
     private CheatTable cheatTable;
 
     // === SLOT & NEW GAME FLAGS ===
@@ -73,12 +74,12 @@ public class GameController extends Pane {
 
     public void setCurrentSlot(int slotNumber) {
         this.currentSlotNumber = slotNumber;
-        System.out.println("[GameManager] Current Slot: " + this.currentSlotNumber);
+        log.info("[GameManager] Current Slot: {}", slotNumber);
     }
 
     public void setNewGame(boolean isNewGame) {
         this.isNewGame = isNewGame;
-        System.out.println("[GameManager] Is New Game: " + this.isNewGame);
+        log.info("[GameManager] Is New Game: {}", isNewGame);
     }
 
     // -------------------------------------------------------------------------
@@ -92,18 +93,13 @@ public class GameController extends Pane {
         getChildren().add(canvas);
         setFocusTraversable(true);
         requestFocus();
-        //initGame();
     }
 
     // -------------------------------------------------------------------------
     //  Game Initialization
     // -------------------------------------------------------------------------
 
-
     public void initGame() {
-        // --- Load all resources ---
-
-
         // --- Create base entities (Model layer) ---
         Paddle paddle = new Paddle();
         Ball ball = new Ball(paddle);
@@ -137,10 +133,8 @@ public class GameController extends Pane {
                 collisionManager
         ));
 
-
         renderables.add(renderer);                                               // then the world
         renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
-
 
         // --- Setup parallax for level 2 ---
         if (world.getCurrentLevel() == GameVar.START_LEVEL) {
@@ -171,18 +165,16 @@ public class GameController extends Pane {
     //  Level Management
     // -------------------------------------------------------------------------
 
-
     private void loadLevel(int level) { // TODO: put this in map
         loadTransition.startLevel(level);
     }
-
 
     public void loadNextLevel() {
         int currentLevel = world.getCurrentLevel();
         int nextLevel = currentLevel + 1;
 
-        if (nextLevel > 3) {
-            nextLevel = 1; // Quay vòng
+        if (nextLevel > GameVar.MAX_LEVEL) {
+            nextLevel = GameVar.MIN_LEVEL;
         }
 
         world.setCurrentLevel(nextLevel); // Giả sử GameWorld có hàm này
@@ -193,8 +185,8 @@ public class GameController extends Pane {
         int currentLevel = world.getCurrentLevel();
         int prevLevel = currentLevel - 1;
 
-        if (prevLevel < 1) {
-            prevLevel = 3; // Quay vòng
+        if (prevLevel < GameVar.MIN_LEVEL) {
+            prevLevel = GameVar.MAX_LEVEL;
         }
 
         world.setCurrentLevel(prevLevel);
@@ -206,21 +198,15 @@ public class GameController extends Pane {
     // -------------------------------------------------------------------------
 
     private void saveGame() {
-
         log.info("Bắt đầu lưu game...");
-        // construct gameState để thu thập toàn bộ trạng thái game
-
         GameState gameState = new GameState(world);
-
         SaveDataRepository repository = new SaveDataRepository();
         repository.saveSlot(currentSlotNumber, gameState);
         System.out.println("[GameManager] Save complete!");
     }
 
     private void loadGame() {
-
         log.info("[GameManager] Loading from slot " + currentSlotNumber + "...");
-
         SaveDataRepository repository = new SaveDataRepository();
         GameState loadedState = repository.loadSlot(currentSlotNumber);
 
@@ -229,7 +215,6 @@ public class GameController extends Pane {
             log.info("Tải game thành công!");
         } else {
             log.info("Không có file lưu hoặc file lỗi.");
-
         }
     }
 
@@ -254,7 +239,7 @@ public class GameController extends Pane {
 
         // SECTION 3: Apply Relationships
         if (ball.isStuck()) {
-            ball.alignWithPaddle(10, 1.0);
+            ball.alignWithPaddle(GameVar.BALL_OFFSET_Y, GameVar.BALL_ALIGN_LERP_FACTOR);
         }
 
         // Falling Power-Ups
@@ -284,12 +269,17 @@ public class GameController extends Pane {
     // -------------------------------------------------------------------------
 
     private void initParallax() {
-        parallaxSystem = new ParallaxSystem(world, 0.15, 8.0, new double[] {1.0, 0.6, 0.35, 0.2});
+        parallaxSystem = new ParallaxSystem(
+                world,
+                GameVar.PARALLAX_BASE_SPEED,
+                GameVar.PARALLAX_DEPTH,
+                GameVar.PARALLAX_SPEED_LAYERS
+        );
 
-        parallaxSystem.addLayer(new ParallaxLayer("/images/layer1.png", 0.25));
-        parallaxSystem.addLayer(new ParallaxLayer("/images/layer2.png", 0.5));
-        parallaxSystem.addLayer(new ParallaxLayer("/images/layer3.png", 0.75));
-        parallaxSystem.addLayer(new ParallaxLayer("/images/layer4.png", 1.0));
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER1, GameVar.PARALLAX_SPEED_LAYERS[3]));
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER2, GameVar.PARALLAX_SPEED_LAYERS[2]));
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER3, GameVar.PARALLAX_SPEED_LAYERS[1]));
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER4, GameVar.PARALLAX_SPEED_LAYERS[0]));
     }
 
     // -------------------------------------------------------------------------
@@ -307,7 +297,7 @@ public class GameController extends Pane {
                 double deltaTime = (now - lastTime) / 1e9;
                 lastTime = now;
 
-                if (deltaTime > 0.05) deltaTime = 0.05;
+                if (deltaTime > GameVar.MAX_DELTA_TIME) deltaTime = GameVar.MAX_DELTA_TIME;
 
                 update(deltaTime);
                 render();
@@ -433,13 +423,6 @@ public class GameController extends Pane {
                 new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.EGG, "Round two? Let's go!"),
                 new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Bring it on!")
         });
-    }
-
-    private void stopGame() { // TODO: pause uses this
-        inGame = false;
-        if (timer != null) timer.stop();
-        Sound.getInstance().stopMusic();
-        EffectRenderer.getInstance().clear();
     }
 
     // -------------------------------------------------------------------------

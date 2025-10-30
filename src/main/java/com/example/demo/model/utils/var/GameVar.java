@@ -5,11 +5,19 @@ import static com.example.demo.model.utils.var.GlobalVar.HEIGHT;
 import static com.example.demo.model.utils.var.GlobalVar.WIDTH;
 
 public final class GameVar {
-    public static final int START_LEVEL = 1;
-    public static final int MAXPOWER    = 5;
-    public static final int MINPOWER    = 1;
 
     private GameVar() {}
+    // GAME
+    public static final int START_LEVEL = 1;
+    public static final int MAX_LEVEL = 3;
+    public static final int MIN_LEVEL = 1;
+    public static final double MAX_DELTA_TIME = 0.05;
+    public static final double TRANSITION_DURATION = 2.0;
+
+    // PARALLAX
+    public static final double PARALLAX_BASE_SPEED = 0.15;
+    public static final double PARALLAX_DEPTH = 8.0;
+    public static final double[] PARALLAX_SPEED_LAYERS = {1.0, 0.6, 0.35, 0.2};
 
     // PADDLE
     public static final int INIT_PADDLE_X = WIDTH / 2 - 50;
@@ -25,6 +33,8 @@ public final class GameVar {
     public static final int MAXHEALTH_OF_BRICKS = 5;
     public static final int WIDTH_OF_BRICKS     = 30;
     public static final int HEIGHT_OF_BRICKS    = 16;
+    public static final int MAXPOWER    = 5;
+    public static final int MINPOWER    = 1;
 
     // POWER UP
     public static final String ACCELERATE   = "ACCELERATE";

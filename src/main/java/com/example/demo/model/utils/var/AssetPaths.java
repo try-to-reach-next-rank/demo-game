@@ -2,6 +2,11 @@ package com.example.demo.model.utils.var;
 
 public final class AssetPaths {
     private AssetPaths() {}
+    // PARALLAX
+    public static final String LAYER1 = "/images/layer1.png";
+    public static final String LAYER2 = "/images/layer2.png";
+    public static final String LAYER3 = "/images/layer3.png";
+    public static final String LAYER4 = "/images/layer4.png";
 
     // BALL & PADDLE
     public static final String BALL_IMAGE   = "/images/Ball.png";

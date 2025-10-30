@@ -22,7 +22,6 @@ public class MapController {
         if (level == 1) matrix = MapData.createMap1Matrix();
         else if (level == 2) matrix = MapData.createMap2Matrix();
         else if (level == 3) matrix = MapData.createMap3Matrix();
-//       else matrix = MapData.createRandomMatrix();
 
         return loadMapFromMatrix(matrix);
     }

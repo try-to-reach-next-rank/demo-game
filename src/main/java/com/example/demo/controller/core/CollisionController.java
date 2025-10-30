@@ -4,6 +4,7 @@ import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.gameobjects.GameObject;
+import com.example.demo.model.utils.var.GameVar;
 import com.example.demo.model.utils.var.GlobalVar;
 import com.example.demo.model.utils.Sound;
 import com.example.demo.model.utils.Vector2D;
@@ -88,7 +89,7 @@ public class CollisionController implements Updatable {
             long now = System.currentTimeMillis();
             if (now > nextPaddleSoundTime) {
                 Sound.getInstance().playSound("paddle_hit");
-                nextPaddleSoundTime = now + PADDLE_SOUND_COOLDOWN;
+                nextPaddleSoundTime = now + GameVar.PADDLE_SOUND_COOLDOWN;
             }
         }
 
