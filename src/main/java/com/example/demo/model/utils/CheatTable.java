@@ -46,14 +46,14 @@ public class CheatTable extends UIComponent {
             return;
         }
 
-        double boxX = (width - UtilVar.BOX_WIDTH) / 2;
-        double boxY = (height - UtilVar.BOX_HEIGHT) / 2;
+        double boxX = (width - UtilVar.CHEAT_BOX_WIDTH) / 2;
+        double boxY = (height - UtilVar.CHEAT_BOX_HEIGHT) / 2;
 
         // Overlay
-        gc.setFill(Color.rgb(0, 0, 0, UtilVar.BOX_OPACITY));
-        gc.fillRoundRect(boxX, boxY, UtilVar.BOX_WIDTH, UtilVar.BOX_HEIGHT, 15, 15); // Bo góc
+        gc.setFill(Color.rgb(0, 0, 0, UtilVar.CHEAT_BOX_OPACITY));
+        gc.fillRoundRect(boxX, boxY, UtilVar.CHEAT_BOX_WIDTH, UtilVar.CHEAT_BOX_HEIGHT, UtilVar.BOX_CORNER_RADIUS, UtilVar.BOX_CORNER_RADIUS); // Bo góc
         gc.setStroke(Color.WHITE);
-        gc.strokeRoundRect(boxX, boxY, UtilVar.BOX_WIDTH, UtilVar.BOX_HEIGHT, 15, 15);
+        gc.strokeRoundRect(boxX, boxY, UtilVar.CHEAT_BOX_WIDTH, UtilVar.CHEAT_BOX_HEIGHT, UtilVar.BOX_CORNER_RADIUS, UtilVar.BOX_CORNER_RADIUS);
 
         //Drawing title
         double titleX = boxX + UtilVar.TITLE_OFFSET_X;
@@ -71,11 +71,11 @@ public class CheatTable extends UIComponent {
             if (i == selectedIndex) {
                 // Đánh dấu tùy chọn đang được chọn
                 gc.setFill(Color.YELLOW);
-                gc.fillText("> " + options[i], boxX + UtilVar.TITLE_OFFSET_X, optionY);
+                gc.fillText("> " + options[i], boxX + UtilVar.OPTION_OFFSET_X, optionY);
             } else {
                 // Các tùy chọn khác
                 gc.setFill(Color.WHITE);
-                gc.fillText(options[i], boxX + UtilVar.TITLE_OFFSET_X, optionY);
+                gc.fillText(options[i], boxX + UtilVar.OPTION_OFFSET_X, optionY);
             }
         }
     }

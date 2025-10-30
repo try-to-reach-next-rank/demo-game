@@ -29,7 +29,7 @@ public final class UtilVar {
     public static final double BOUNCE_DECAY = 1.5;
 
     // CHEAT MENU
-    public static final double BOX_WIDTH = 400;
+    public static final double CHEAT_BOX_WIDTH = 400;
     public static final double CHEAT_BOX_HEIGHT = 250;
     public static final double BOX_CORNER_RADIUS = 15;
     public static final double CHEAT_BOX_OPACITY = 0.85;
