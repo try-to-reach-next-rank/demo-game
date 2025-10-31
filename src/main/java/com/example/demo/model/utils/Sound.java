@@ -34,6 +34,7 @@ public class Sound {
 
     /**
      * Get cached music keys list. This avoids creating new ArrayList on every call.
+     * The cache is automatically invalidated when needed via invalidateMusicCache().
      */
     private List<String> getMusicKeys() {
         if (cachedMusicKeys == null) {
@@ -43,7 +44,9 @@ public class Sound {
     }
 
     /**
-     * Invalidate the cached music keys when music assets change
+     * Invalidate the cached music keys when music assets change.
+     * This should be called by AssetManager after loading new music assets.
+     * The cache will be rebuilt on the next getMusicKeys() call.
      */
     public void invalidateMusicCache() {
         cachedMusicKeys = null;
