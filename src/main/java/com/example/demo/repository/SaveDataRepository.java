@@ -3,6 +3,8 @@ package com.example.demo.repository;
 import com.example.demo.controller.core.SaveManager;
 import com.example.demo.model.state.GameState;
 import com.example.demo.model.state.BrickData;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,6 +16,7 @@ import java.time.ZoneId;
 import java.util.List;
 
 public class SaveDataRepository {
+    private static final Logger log = LoggerFactory.getLogger(SaveDataRepository.class);
     private static final String SAVE_DIR = "src\\main\\resources\\Saves\\";
 
     public SaveDataRepository() {
@@ -25,11 +28,10 @@ public class SaveDataRepository {
             Path savePath = Paths.get(SAVE_DIR);
             if (!Files.exists(savePath)) {
                 Files.createDirectories(savePath);
-                System.out.println("[SaveDataRepository] Created save directory: " + SAVE_DIR);
+                log.info("Created save directory: {}", SAVE_DIR);
             }
         } catch (IOException e) {
-            System.err.println("[SaveDataRepository] Failed to create save directory!");
-            e.printStackTrace();
+            log.error("Failed to create save directory!", e);
         }
     }
 
@@ -44,7 +46,7 @@ public class SaveDataRepository {
 
     public GameState loadSlot(int slotNumber) {
         if (!slotExists(slotNumber)) {
-            System.out.println("[SaveDataRepository] Slot " + slotNumber + " does not exist.");
+            log.debug("Slot {} does not exist.", slotNumber);
             return null;
         }
 
@@ -52,7 +54,7 @@ public class SaveDataRepository {
         GameState state = SaveManager.load(path, GameState.class);
 
         if (state != null) {
-            System.out.println("[SaveDataRepository] Loaded slot " + slotNumber + " successfully.");
+            log.info("Loaded slot {} successfully.", slotNumber);
         }
 
         return state;
@@ -70,14 +72,14 @@ public class SaveDataRepository {
 
     public void saveSlot(int slotNumber, GameState state) {
         if (state == null) {
-            System.err.println("[SaveDataRepository] Cannot save null GameState!");
+            log.error("Cannot save null GameState!");
             return;
         }
 
         String path = getSlotPath(slotNumber);
         SaveManager.save(state, path);
 
-        System.out.println("[SaveDataRepository] Saved slot " + slotNumber);
+        log.info("Saved slot {}", slotNumber);
     }
 
     public boolean deleteSlot(int slotNumber) {
@@ -86,13 +88,12 @@ public class SaveDataRepository {
             boolean deleted = Files.deleteIfExists(path);
 
             if (deleted) {
-                System.out.println("[SaveDataRepository] Deleted slot " + slotNumber);
+                log.info("Deleted slot {}", slotNumber);
             }
 
             return deleted;
         } catch (IOException e) {
-            System.err.println("[SaveDataRepository] Failed to delete slot " + slotNumber);
-            e.printStackTrace();
+            log.error("Failed to delete slot {}", slotNumber, e);
             return false;
         }
     }
@@ -107,8 +108,7 @@ public class SaveDataRepository {
             FileTime fileTime = Files.getLastModifiedTime(path);
             return LocalDateTime.ofInstant(fileTime.toInstant(), ZoneId.systemDefault());
         } catch (IOException e) {
-            System.err.println("[SaveDataRepository] Failed to get last modified time for slot " + slotNumber);
-            e.printStackTrace();
+            log.error("Failed to get last modified time for slot {}", slotNumber, e);
             return null;
         }
     }

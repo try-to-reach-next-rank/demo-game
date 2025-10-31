@@ -117,9 +117,12 @@ public class CollisionManager implements Updatable {
     private void handleBallBrickCollisions(Ball ball, Brick[] bricks) {
         if (bricks == null) return;
 
+        boolean stillIntersecting = false;
         for (Brick brick : bricks) {
             if (brick.isDestroyed()) continue;
             if (!ball.getBounds().intersects(brick.getBounds())) continue;
+            
+            stillIntersecting = true;
             if (ball.getLastBrick() == brick) continue;
 
             // delegate to BrickSystem to apply damage, explosion, and power-up drop
@@ -140,10 +143,8 @@ public class CollisionManager implements Updatable {
             break;
         }
 
-        for (Brick brick : bricks){
-            if (ball.getBounds().intersects(brick.getBounds())){
-                break;
-            }
+        // Only clear lastBrick if ball is no longer intersecting any brick
+        if (!stillIntersecting) {
             ball.setLastBrick(null);
         }
     }

@@ -2,6 +2,8 @@ package com.example.demo.controller.core;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,6 +13,7 @@ import java.nio.file.Paths;
  * sử dụng thư viện Gson của Google để chuyển đổi đối tượng Java sang Json và ngược lại.
  */
 public class SaveManager {
+    private static final Logger log = LoggerFactory.getLogger(SaveManager.class);
     // một đối tượng Gson duy nhất được tạo ra cho cả chương trình
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -27,10 +30,9 @@ public class SaveManager {
 
             Files.writeString(path, jsonString);
 
-            System.out.println("Successfully saved data to " + fileName);
+            log.debug("Successfully saved data to {}", fileName);
         } catch (Exception e) {
-            System.err.println("Error: Failed to save data to " + fileName);
-            e.printStackTrace();
+            log.error("Failed to save data to {}", fileName, e);
         }
     }
 
@@ -51,7 +53,7 @@ public class SaveManager {
             Path path = Paths.get(fileName);
 
             if (!Files.exists(path)) {
-                System.out.println("Save file not found: " + fileName + ". Returning null.");
+                log.debug("Save file not found: {}. Returning null.", fileName);
                 return null;
             }
 
@@ -59,11 +61,10 @@ public class SaveManager {
 
             T loadedObject = gson.fromJson(jsonString, classType);
 
-            System.out.println("Successfully loaded data from " + fileName);
+            log.debug("Successfully loaded data from {}", fileName);
             return loadedObject;
         } catch (Exception e) {
-            System.err.println("Error: Failed to load data from " + fileName);
-            e.printStackTrace();
+            log.error("Failed to load data from {}", fileName, e);
             return null;
         }
     }

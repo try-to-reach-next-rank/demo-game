@@ -6,10 +6,13 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
 public class Sound {
+    private static final Logger log = LoggerFactory.getLogger(Sound.class);
     // Singleton instance
     private static final Sound instance = new Sound();
 
@@ -23,7 +26,27 @@ public class Sound {
     private boolean musicEnabled = true;
     private boolean effectEnabled = true;
 
+    // Cache for music keys to avoid repeated ArrayList allocations
+    private List<String> cachedMusicKeys = null;
+
     private Sound() {
+    }
+
+    /**
+     * Get cached music keys list. This avoids creating new ArrayList on every call.
+     */
+    private List<String> getMusicKeys() {
+        if (cachedMusicKeys == null) {
+            cachedMusicKeys = new ArrayList<>(AssetManager.getInstance().getMusics().keySet());
+        }
+        return cachedMusicKeys;
+    }
+
+    /**
+     * Invalidate the cached music keys when music assets change
+     */
+    public void invalidateMusicCache() {
+        cachedMusicKeys = null;
     }
 
     public static Sound getInstance(){
@@ -97,7 +120,7 @@ public class Sound {
 
         Media media = AssetManager.getInstance().getMusic(name);
         if (media == null) {
-            System.err.println("Couldn't find music with name: " + name);
+            log.warn("Couldn't find music with name: {}", name);
             return;
         }
 
@@ -106,7 +129,7 @@ public class Sound {
         currentMusicPlayer.setOnEndOfMedia(() -> playNextMusic());
         currentMusicPlayer.play();
 
-        currentTrackIndex = new ArrayList<>(AssetManager.getInstance().getMusics().keySet()).indexOf(name);
+        currentTrackIndex = getMusicKeys().indexOf(name);
     }
 
     public void playMusic(String name, double timeInMilliseconds) {
@@ -119,7 +142,7 @@ public class Sound {
 
         Media media = AssetManager.getInstance().getMusic(name);
         if (media == null) {
-            System.err.println("Couldn't find music with name: " + name);
+            log.warn("Couldn't find music with name: {}", name);
            // playRandomMusic();
             return;
         }
@@ -136,7 +159,7 @@ public class Sound {
         });
 
         // Cập nhật lại trackIndex
-        this.currentTrackIndex = new ArrayList<>(AssetManager.getInstance().getMusics().keySet()).indexOf(name);
+        this.currentTrackIndex = getMusicKeys().indexOf(name);
     }
 
     public void loopMusic(String name) {
@@ -144,7 +167,7 @@ public class Sound {
 
         Media media = AssetManager.getInstance().getMusic(name);
         if (media == null) {
-            System.err.println("Couldn't find music to loop with name: " + name);
+            log.warn("Couldn't find music to loop with name: {}", name);
             return;
         }
 
@@ -153,7 +176,7 @@ public class Sound {
         currentMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         currentMusicPlayer.play();
 
-        currentTrackIndex = new ArrayList<>(AssetManager.getInstance().getMusics().keySet()).indexOf(name);
+        currentTrackIndex = getMusicKeys().indexOf(name);
     }
 
     public void stopMusic(){
@@ -188,7 +211,7 @@ public class Sound {
     }
 
     public void playNextMusic(){
-        List<String> musicKey = new ArrayList<>(AssetManager.getInstance().getMusics().keySet());
+        List<String> musicKey = getMusicKeys();
         if(musicKey.isEmpty()) return;
 
         currentTrackIndex = (currentTrackIndex + 1) % musicKey.size();
@@ -197,7 +220,7 @@ public class Sound {
     }
 
     public void playRandomMusic(){
-        List<String> musicKey = new ArrayList<>(AssetManager.getInstance().getMusics().keySet());
+        List<String> musicKey = getMusicKeys();
         if(musicKey.isEmpty()) return;
 
         Collections.shuffle(musicKey);
@@ -212,7 +235,7 @@ public class Sound {
 
         AudioClip clip = AssetManager.getInstance().getSound(name);
         if (clip == null) {
-            System.err.println("Couldn't find sfx according to its name: " + name);
+            log.warn("Couldn't find sfx according to its name: {}", name);
         } else {
             clip.setVolume(effectVolume); // THÊM: set volume
             clip.play();
@@ -224,7 +247,7 @@ public class Sound {
 
         AudioClip clip = AssetManager.getInstance().getSound(name);
         if (clip == null) {
-            System.err.println("Couldn't find sfx to loop with name: " + name);
+            log.warn("Couldn't find sfx to loop with name: {}", name);
             return;
         }
 
@@ -239,7 +262,7 @@ public class Sound {
             clip.stop();
             clip.setCycleCount(1);
         } else {
-            System.err.println("Couldn't find sfx to stop with name: " + name);
+            log.warn("Couldn't find sfx to stop with name: {}", name);
         }
     }
 
@@ -278,7 +301,7 @@ public class Sound {
     }
 
     public String getCurrentTrackName() {
-        List<String> musicKey = new ArrayList<>(AssetManager.getInstance().getMusics().keySet());
+        List<String> musicKey = getMusicKeys();
         if (currentTrackIndex >= 0 && currentTrackIndex < musicKey.size()) {
             return musicKey.get(currentTrackIndex);
         }
