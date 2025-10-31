@@ -3,13 +3,10 @@ package com.example.demo.controller.core;
 import com.example.demo.controller.map.LoadLevel;
 import com.example.demo.controller.map.LoadTransition;
 import com.example.demo.controller.map.MapManager;
-import com.example.demo.controller.view.AssetManager;
-import com.example.demo.controller.map.MenuControll;
+
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
-import com.example.demo.model.map.MapData;
-import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
 
@@ -26,11 +23,11 @@ import com.example.demo.repository.SaveDataRepository;
 import com.example.demo.view.*;
 import com.example.demo.model.map.ParallaxLayer;
 import javafx.animation.AnimationTimer;
-import javafx.animation.PauseTransition;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -119,6 +116,7 @@ public class GameManager extends Pane {
         // --- Load all resources ---
 
 
+
         // --- Create base entities (Model layer) ---
         Paddle paddle = new Paddle();
         Ball ball = new Ball(paddle);
@@ -137,8 +135,17 @@ public class GameManager extends Pane {
         loadTransition = new LoadTransition(world, transitionEffect, loadLevel, dialogueSystem);
 
         // --- Load map and build bricks/walls ---
-        loadLevel(world.getCurrentLevel());
-        brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
+        // --- Đã chia làm 2 dựa trên flag isNewGame
+        if (isNewGame) {
+            // NEW GAME: Load level với transition đầy đủ
+            loadLevel(world.getCurrentLevel());
+            brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
+        } else {
+            // LOAD GAME: Load map structure trước, sau đó apply state
+            loadLevel.loadForSavedGame(world.getCurrentLevel()); // Chỉ load walls + brick structure
+            brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
+            loadGame(); // Apply saved state lên map đã load
+        }
 
         // --- Create managers (controllers) ---
         collisionManager = new CollisionManager(world, ballSystem, brickSystem, powerUpSystem);
@@ -251,10 +258,11 @@ public class GameManager extends Pane {
 
 
     public void applyState(GameState loadedState) {
-        // SECTION 1: Setup Level
-        loadLevel(loadedState.getCurrentLevel());
 
-        // SECTION 2: Apply Entity States
+        // không loadTransition các thứ nữa , chỉ apply State thôi , còn chỉ newGame mới load Transition
+        world.setCurrentLevel(loadedState.getCurrentLevel());
+
+        // Apply entity states từ save file
         Ball ball = world.getBall();
         Paddle paddle = world.getPaddle();
         Brick[] bricks = world.getBricks();
@@ -268,6 +276,7 @@ public class GameManager extends Pane {
                 bricks[id].applyState(brickData);
             }
         }
+
 
         // SECTION 3: Apply Relationships
         if (ball.isStuck()) {

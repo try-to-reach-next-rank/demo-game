@@ -27,4 +27,15 @@ public class LoadLevel {
 
         return  mapData;
     }
+
+    // chỉ load level, không reset render
+    public MapData loadForSavedGame(int level) {
+        MapData mapData = mapManager.loadMap(level);
+
+        world.getWalls().clear();
+        world.getWalls().addAll(mapData.getWalls());
+        world.setBricks(mapData.getBricks().toArray(new Brick[0]));
+
+        return mapData;
+    }
 }

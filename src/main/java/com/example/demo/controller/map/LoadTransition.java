@@ -29,18 +29,20 @@ public class LoadTransition {
         this.dialogueSystem = dialogueSystem;
     }
 
+    // không start dialog 2 lần nữa, không còn exception , exveption trước đó là chưa kịp nạp đã gọi
     public void startLevel(int level) {
         inGame = false;
         transitionEffect.start(
                 () -> {
                     MapData mapData = levelLoader.load(level);
                     brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
+                    log.info("Loaded map: {} with {} bricks", level, mapData.getBricks().size());
                 },
                 () -> {
                     inGame = true;
-                    MapData mapData = levelLoader.load(level);
-                    log.info("Loaded map: {} with {} bricks", level, mapData.getBricks().size());
-                    dialogueSystem.start();
+                    if (dialogueSystem != null) {
+                        dialogueSystem.start();
+                    }
                 }
         );
     }
