@@ -11,6 +11,7 @@ import com.example.demo.model.utils.GlobalVar;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +21,7 @@ public class Renderer implements Renderable {
     private int brickRevealCounter = 0;
     private final int brickRevealInterval = 5;
     private int currentRevealTick = 0;
+    private boolean reveal = true;
 
     public Renderer(GameWorld world) {
         this.world = world;
@@ -27,14 +29,23 @@ public class Renderer implements Renderable {
 
     @Override
     public void render(GraphicsContext gc) {
-
         currentRevealTick++;
-        if (currentRevealTick >= brickRevealInterval) {
-            currentRevealTick = 0;
+        if (reveal) {
+            if (currentRevealTick >= brickRevealInterval) {
+                currentRevealTick = 0;
+                Brick[] bricks = world.getBricks();
+                if (bricks != null && brickRevealCounter < bricks.length) {
+                    revealedBricks.add(bricks[brickRevealCounter]);
+                    brickRevealCounter++;
+                }
+            }
+        } else {
+            // Instant reveal for loaded game
             Brick[] bricks = world.getBricks();
-            if (bricks != null && brickRevealCounter < bricks.length) {
-                revealedBricks.add(bricks[brickRevealCounter]);
-                brickRevealCounter++;
+            if (bricks != null) {
+                revealedBricks.clear();
+                revealedBricks.addAll(Arrays.asList(bricks));
+                brickRevealCounter = bricks.length;
             }
         }
 
@@ -83,5 +94,9 @@ public class Renderer implements Renderable {
         revealedBricks.clear();
         brickRevealCounter = 0;
         currentRevealTick = 0;
+    }
+
+    public void setReveal(boolean reveal) {
+        this.reveal = reveal;
     }
 }
