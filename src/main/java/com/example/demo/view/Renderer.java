@@ -84,4 +84,19 @@ public class Renderer implements Renderable {
         brickRevealCounter = 0;
         currentRevealTick = 0;
     }
+
+    public void setReveal(boolean reveal) {
+        if (reveal) {
+            reset();
+        } else {
+            // Reveal all bricks immediately
+            Brick[] bricks = world.getBricks();
+            if (bricks != null) {
+                for (Brick brick : bricks) {
+                    revealedBricks.add(brick);
+                }
+                brickRevealCounter = bricks.length;
+            }
+        }
+    }
 }
