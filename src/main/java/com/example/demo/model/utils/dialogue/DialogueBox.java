@@ -81,6 +81,17 @@ public class DialogueBox extends UIComponent {
         Sound.getInstance().loopSound("dialogue-sound");
     }
 
+    public void resumeDialogue() {
+        if (active && !lineComplete) {
+            // Resume sound nếu câu chưa hoàn thành
+            Sound.getInstance().loopSound("dialogue-sound");
+        }
+    }
+
+    public boolean isLineInProgress() {
+        return active && !lineComplete;
+    }
+
     @Override
     public void update(double deltaTime) {
         if (!active || lines == null || currentLine >= lines.length) return;

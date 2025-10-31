@@ -405,6 +405,7 @@ public class GameManager extends Pane {
         inGame = false;
         if (timer != null) timer.stop();
         Sound.getInstance().pauseMusic();
+        Sound.getInstance().stopAllSounds();
         EffectRenderer.getInstance().clear();
     }
 
@@ -412,6 +413,9 @@ public class GameManager extends Pane {
         if (!inGame) {
             inGame = true;
             if (timer != null) timer.start();
+            if (dialogueBox.isActive() && dialogueBox.isLineInProgress()) {
+                dialogueBox.resumeDialogue();
+            }
             Sound.getInstance().resumeMusic();
             log.info("[GameManager] Game resumed");
         }

@@ -90,7 +90,7 @@ public class PauseTable extends UIComponent {
             case UP -> buttonManager.navigateUp();
             case DOWN -> buttonManager.navigateDown();
             case ENTER -> buttonManager.activateSelected();
-            case ESCAPE, F1 -> hide();
+            case F1 -> hide();
             default -> {}
         }
     }
