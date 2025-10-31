@@ -54,6 +54,7 @@ public class PauseTable extends UIComponent {
         );
     }
 
+
     public StackPane getView() {
         return wrapper;
     }

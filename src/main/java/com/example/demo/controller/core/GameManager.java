@@ -169,19 +169,22 @@ public class GameManager extends Pane {
             initParallax();
         }
 
+        //set up PauseTable o day;
+        setupPauseTable();
+
         Sound.getInstance().playRandomMusic();
 
         // --- LOAD GAME if not New Game ---
         if (isNewGame) {
             dialogueSystem = new DialogueSystem("/Dialogue/intro.txt", dialogueBox);
-            setupSecretCodeEasterEgg();
+            setupKeyHandling();
             uiManager.add(dialogueBox);
             dialogueSystem.start();
         }
         else {
             dialogueSystem = new DialogueSystem("/Dialogue/continue.txt", dialogueBox);
             loadGame();
-            setupSecretCodeEasterEgg();
+            setupKeyHandling();
             uiManager.add(dialogueBox);
             dialogueSystem.start();
         }
@@ -398,85 +401,6 @@ public class GameManager extends Pane {
     //  Misc
     // -------------------------------------------------------------------------
 
-    private void setupSecretCodeEasterEgg() {
-
-        /** Phần này là pause Menu
-         *
-         */
-
-
-        pauseTable = new PauseTable(this);
-
-        StackPane view = pauseTable.getView();
-        view.prefWidthProperty().bind(widthProperty());
-        view.prefHeightProperty().bind(heightProperty());
-        getChildren().add(view);
-        pauseTable.hide();
-
-        setOnKeyPressed(e -> {
-            KeyCode code = e.getCode();
-            if (code == null) return;
-
-            // Phím `~` (BACK_QUOTE) bây giờ CHỈ dùng để MỞ menu
-            if (code == KeyCode.BACK_QUOTE) {
-                if (cheatTable != null) {
-                    cheatTable.show(); // Chỉ mở
-                }
-                else {
-                    log.info("(Cheat menu not unlocked yet)");
-                }
-                e.consume();
-                return;
-            }
-
-            if (code == KeyCode.F5) {
-                saveGame();
-                return;
-            }
-            if (code == KeyCode.F9) {
-                loadGame();
-                return;
-            }
-            if(code == KeyCode.F1) {
-                pauseTable.show();
-                stopGame();
-            }
-
-
-
-
-            // Logic cho secret code
-            String key = code.getName().toUpperCase();
-            log.info(key);
-            keySequence.append(key);
-            if (keySequence.length() > SECRET_CODE.length()) {
-                keySequence.delete(0, keySequence.length() - SECRET_CODE.length());
-            }
-
-            if (keySequence.toString().equals(SECRET_CODE)) {
-
-                if (this.cheatTable == null) {
-                    log.info("!!! CHEAT MENU UNLOCKED !!!");
-                    this.cheatTable = new CheatTable(this);
-                    this.uiManager.add(this.cheatTable); // THÊM VÀO UIMANAGER
-                }
-
-                dialogueBox.start(new DialogueBox.DialogueLine[]{
-                        new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.EGG, "You found the secret!"),
-                        new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Cheat menu unlocked. Press ~ to open.")
-                });
-
-                keySequence.setLength(0);
-                return;
-            }
-
-        });
-    }
-
-
-
-
-
 
     private void gameFinished() { // TODO: cheat menu uses this to trigger win condition
         gc.setFill(Color.BLACK);
@@ -511,6 +435,76 @@ public class GameManager extends Pane {
 
     public void backToMenu() {
         onBackToMenu.run();
+    }
+
+    private void setupKeyHandling() {
+        setOnKeyPressed(e -> {
+            KeyCode code = e.getCode();
+            if (code == null) return;
+
+            if (handlePauseKey(code)) {
+                e.consume();
+                return;
+            }
+
+            if (handleEasterEggKey(code)) {
+                e.consume();
+            }
+        });
+    }
+
+    private boolean handlePauseKey(KeyCode code) {
+        if (code == KeyCode.F1) {
+            pauseTable.show();
+            stopGame();
+            return true;
+
+        }
+        return false;
+    }
+
+    private boolean handleEasterEggKey(KeyCode code) {
+        if (code == KeyCode.BACK_QUOTE) {
+            if (cheatTable != null) {
+                cheatTable.show();
+            } else {
+                log.info("(Cheat menu not unlocked yet)");
+            }
+            return true;
+        }
+        String key = code.getName().toUpperCase();
+        log.info(key);
+        keySequence.append(key);
+        if (keySequence.length() > SECRET_CODE.length()) {
+            keySequence.delete(0, keySequence.length() - SECRET_CODE.length());
+        }
+
+        if (keySequence.toString().equals(SECRET_CODE)) {
+
+            if (this.cheatTable == null) {
+                log.info("!!! CHEAT MENU UNLOCKED !!!");
+                this.cheatTable = new CheatTable(this);
+                this.uiManager.add(this.cheatTable); // THÊM VÀO UIMANAGER
+            }
+
+            dialogueBox.start(new DialogueBox.DialogueLine[]{
+                    new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.EGG, "You found the secret!"),
+                    new DialogueBox.DialogueLine(DialogueBox.DialogueLine.Speaker.BALL, "Cheat menu unlocked. Press ~ to open.")
+            });
+
+            keySequence.setLength(0);
+            return true;
+        }
+        return false;
+    }
+
+    private void setupPauseTable() {
+        pauseTable = new PauseTable(this);
+        uiManager.add(pauseTable);
+        StackPane view = pauseTable.getView();
+        view.prefWidthProperty().bind(widthProperty());
+        view.prefHeightProperty().bind(heightProperty());
+        getChildren().add(view);
     }
 
     // -------------------------------------------------------------------------
