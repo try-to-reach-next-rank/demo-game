@@ -137,14 +137,16 @@ public class GameManager extends Pane {
         // --- Load map and build bricks/walls ---
         // --- Đã chia làm 2 dựa trên flag isNewGame
         if (isNewGame) {
+            System.out.println(" [initGame] load level (IS NEW GAME): " + world.getCurrentLevel());
             // NEW GAME: Load level với transition đầy đủ
             loadLevel(world.getCurrentLevel());
             brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
         } else {
             // LOAD GAME: Load map structure trước, sau đó apply state
+            loadGame();
+            System.out.println(" [initGame] load level (IS NOT NEW GAME): " + world.getCurrentLevel());
             loadLevel.loadForSavedGame(world.getCurrentLevel()); // Chỉ load walls + brick structure
             brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
-            loadGame(); // Apply saved state lên map đã load
         }
 
         // --- Create managers (controllers) ---
@@ -164,10 +166,13 @@ public class GameManager extends Pane {
         renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
 
 
+        System.out.println(" world.getCurrentLevel(): " + world.getCurrentLevel() +
+                "GameVar.START_LEVEL == " + GameVar.START_LEVEL);
+
         // --- Setup parallax for level 2 ---
-        if (world.getCurrentLevel() == GameVar.START_LEVEL) {
+       // if (world.getCurrentLevel() == GameVar.START_LEVEL) {
             initParallax();
-        }
+      //  }
 
         //set up PauseTable o day;
         setupPauseTable();
