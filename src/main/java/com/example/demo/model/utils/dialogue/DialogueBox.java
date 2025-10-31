@@ -197,16 +197,16 @@ public class DialogueBox extends UIComponent {
         double curY = y;
 
         for (String word : words) {
-            String testLine = line + word + " ";
+            StringBuilder testLine = new StringBuilder(line).append(word).append(" ");
 
             // Measure width using JavaFX Text node
-            Text helper = new Text(testLine);
+            Text helper = new Text(testLine.toString());
             helper.setFont(font);
             double testWidth = helper.getLayoutBounds().getWidth();
 
             if (testWidth > maxWidth && line.length() > 0) {
                 gc.fillText(line.toString(), x, curY);
-                line = new StringBuilder(word + " ");
+                line = new StringBuilder().append(word).append(" ");
                 curY += lineHeight;
             } else {
                 line.append(word).append(" ");
