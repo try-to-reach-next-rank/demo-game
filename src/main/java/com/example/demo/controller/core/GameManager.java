@@ -104,7 +104,6 @@ public class GameManager extends Pane {
         getChildren().add(canvas);
         setFocusTraversable(true);
         requestFocus();
-        //initGame();
     }
 
     // -------------------------------------------------------------------------
@@ -137,14 +136,13 @@ public class GameManager extends Pane {
         // --- Load map and build bricks/walls ---
         // --- Đã chia làm 2 dựa trên flag isNewGame
         if (isNewGame) {
-            System.out.println(" [initGame] load level (IS NEW GAME): " + world.getCurrentLevel());
             // NEW GAME: Load level với transition đầy đủ
             loadLevel(world.getCurrentLevel());
             brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
         } else {
             // LOAD GAME: Load map structure trước, sau đó apply state
-            loadGame();
-            System.out.println(" [initGame] load level (IS NOT NEW GAME): " + world.getCurrentLevel());
+            loadGame(); // Apply saved state lên map đã load
+            renderer.setReveal(isNewGame);
             loadLevel.loadForSavedGame(world.getCurrentLevel()); // Chỉ load walls + brick structure
             brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
         }
@@ -165,14 +163,9 @@ public class GameManager extends Pane {
         renderables.add(renderer);                                               // then the world
         renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
 
-
-        System.out.println(" world.getCurrentLevel(): " + world.getCurrentLevel() +
-                "GameVar.START_LEVEL == " + GameVar.START_LEVEL);
-
-        // --- Setup parallax for level 2 ---
-       // if (world.getCurrentLevel() == GameVar.START_LEVEL) {
+        //if (world.getCurrentLevel() == GameVar.START_LEVEL) {
             initParallax();
-      //  }
+        //}
 
         //set up PauseTable o day;
         setupPauseTable();
@@ -180,19 +173,12 @@ public class GameManager extends Pane {
         Sound.getInstance().playRandomMusic();
 
         // --- LOAD GAME if not New Game ---
-        if (isNewGame) {
-            dialogueSystem = new DialogueSystem("/Dialogue/intro.txt", dialogueBox);
-            setupKeyHandling();
-            uiManager.add(dialogueBox);
-            dialogueSystem.start();
-        }
-        else {
-            dialogueSystem = new DialogueSystem("/Dialogue/continue.txt", dialogueBox);
-            //loadGame();
-            setupKeyHandling();
-            uiManager.add(dialogueBox);
-            dialogueSystem.start();
-        }
+        String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
+        dialogueSystem = new DialogueSystem(dialoguePath, dialogueBox);
+
+        setupKeyHandling();
+        uiManager.add(dialogueBox);
+        dialogueSystem.start();
 
         loop();
     }
@@ -215,7 +201,7 @@ public class GameManager extends Pane {
             nextLevel = 1; // Quay vòng
         }
 
-        world.setCurrentLevel(nextLevel); // Giả sử GameWorld có hàm này
+        world.setCurrentLevel(nextLevel);
         loadLevel(nextLevel);
     }
 
@@ -236,12 +222,8 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     public void saveGame() {
-
         log.info("Bắt đầu lưu game...");
-        // construct gameState để thu thập toàn bộ trạng thái game
-
         GameState gameState = new GameState(world);
-
         log.info("=> Chuẩn bị lưu - Nhạc: '{}', Thời gian: {} ms",
                 gameState.getCurrentTrackName(),
                 String.format("%.0f", gameState.getCurrentTrackTime()));
@@ -273,18 +255,13 @@ public class GameManager extends Pane {
 
 
     public void applyState(GameState loadedState) {
-
-        // không loadTransition các thứ nữa , chỉ apply State thôi , còn chỉ newGame mới load Transition
         world.setCurrentLevel(loadedState.getCurrentLevel());
         Sound.getInstance().playMusic(loadedState.getCurrentTrackName(), loadedState.getCurrentTrackTime());
 
         // Apply entity states từ save file
-        Ball ball = world.getBall();
-        Paddle paddle = world.getPaddle();
+        world.getPaddle().applyState(loadedState.getPaddleData());
+        world.getBall().applyState(loadedState.getBallData());
         Brick[] bricks = world.getBricks();
-
-        paddle.applyState(loadedState.getPaddleData());
-        ball.applyState(loadedState.getBallData());
 
         for (BrickData brickData : loadedState.getBricksData()) {
             int id = brickData.getId();
@@ -293,10 +270,9 @@ public class GameManager extends Pane {
             }
         }
 
-
         // SECTION 3: Apply Relationships
-        if (ball.isStuck()) {
-            ball.alignWithPaddle(10, 1.0);
+        if (world.getBall().isStuck()) {
+            world.getBall().alignWithPaddle(10, 1.0);
         }
 
         // Falling Power-Ups
