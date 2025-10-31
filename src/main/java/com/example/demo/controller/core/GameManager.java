@@ -183,7 +183,7 @@ public class GameManager extends Pane {
         }
         else {
             dialogueSystem = new DialogueSystem("/Dialogue/continue.txt", dialogueBox);
-            loadGame();
+            //loadGame();
             setupKeyHandling();
             uiManager.add(dialogueBox);
             dialogueSystem.start();
@@ -237,6 +237,10 @@ public class GameManager extends Pane {
 
         GameState gameState = new GameState(world);
 
+        log.info("=> Chuẩn bị lưu - Nhạc: '{}', Thời gian: {} ms",
+                gameState.getCurrentTrackName(),
+                String.format("%.0f", gameState.getCurrentTrackTime()));
+
         SaveDataRepository repository = new SaveDataRepository();
         repository.saveSlot(currentSlotNumber, gameState);
         System.out.println("[GameManager] Save complete!");
@@ -251,6 +255,9 @@ public class GameManager extends Pane {
         GameState loadedState = repository.loadSlot(currentSlotNumber);
 
         if (loadedState != null) {
+            log.info("=> Đã tải từ file - Nhạc: '{}', Thời gian: {} ms",
+                    loadedState.getCurrentTrackName(),
+                    String.format("%.0f", loadedState.getCurrentTrackTime()));
             applyState(loadedState);
             log.info("Tải game thành công!");
         } else {
@@ -264,6 +271,7 @@ public class GameManager extends Pane {
 
         // không loadTransition các thứ nữa , chỉ apply State thôi , còn chỉ newGame mới load Transition
         world.setCurrentLevel(loadedState.getCurrentLevel());
+        Sound.getInstance().playMusic(loadedState.getCurrentTrackName(), loadedState.getCurrentTrackTime());
 
         // Apply entity states từ save file
         Ball ball = world.getBall();
@@ -415,7 +423,7 @@ public class GameManager extends Pane {
     private void stopGame() { // TODO: pause uses this
         inGame = false;
         if (timer != null) timer.stop();
-        Sound.getInstance().stopMusic();
+        Sound.getInstance().pauseMusic();
         EffectRenderer.getInstance().clear();
     }
 

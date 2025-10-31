@@ -5,6 +5,7 @@ import com.example.demo.model.menu.SettingsModel;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 import java.util.*;
 
@@ -106,6 +107,36 @@ public class Sound {
         currentMusicPlayer.play();
 
         currentTrackIndex = new ArrayList<>(AssetManager.getInstance().getMusics().keySet()).indexOf(name);
+    }
+
+    public void playMusic(String name, double timeInMilliseconds) {
+        if (name == null || name.isEmpty()) {
+            playRandomMusic();
+            return;
+        }
+
+        stopMusic();
+
+        Media media = AssetManager.getInstance().getMusic(name);
+        if (media == null) {
+            System.err.println("Couldn't find music with name: " + name);
+           // playRandomMusic();
+            return;
+        }
+
+        currentMusicPlayer = new MediaPlayer(media);
+        currentMusicPlayer.setVolume(musicEnabled ? musicVolume : 0.0); // SỬA: thay 0.5
+        currentMusicPlayer.setOnEndOfMedia(() -> playNextMusic());
+
+        currentMusicPlayer.setOnReady(() -> {
+            if (timeInMilliseconds > 0) {
+                currentMusicPlayer.seek(Duration.millis(timeInMilliseconds));
+            }
+            currentMusicPlayer.play();
+        });
+
+        // Cập nhật lại trackIndex
+        this.currentTrackIndex = new ArrayList<>(AssetManager.getInstance().getMusics().keySet()).indexOf(name);
     }
 
     public void loopMusic(String name) {
@@ -221,6 +252,14 @@ public class Sound {
     }
 
     // ============ GETTERS (OPTIONAL - để debug) ============
+
+    public double getCurrentMusicTime() {
+        if (currentMusicPlayer != null) {
+            return currentMusicPlayer.getCurrentTime().toMillis();
+        }
+        return 0;
+    }
+
 
     public double getMusicVolume() {
         return musicVolume;
