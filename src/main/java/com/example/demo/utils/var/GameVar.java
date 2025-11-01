@@ -1,8 +1,8 @@
-package com.example.demo.model.utils.var;
-import javafx.scene.paint.Color;
+package com.example.demo.utils.var;
+import static com.example.demo.utils.var.GlobalVar.HEIGHT;
+import static com.example.demo.utils.var.GlobalVar.WIDTH;
 
-import static com.example.demo.model.utils.var.GlobalVar.HEIGHT;
-import static com.example.demo.model.utils.var.GlobalVar.WIDTH;
+import javafx.scene.paint.Color;
 
 public final class GameVar {
 

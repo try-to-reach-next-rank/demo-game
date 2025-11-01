@@ -4,10 +4,10 @@ import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
 import com.example.demo.model.core.Wall;
-import com.example.demo.model.utils.GameRandom;
-import com.example.demo.model.utils.var.GameVar;
-import com.example.demo.model.utils.var.GlobalVar;
-import com.example.demo.model.utils.Vector2D;
+import com.example.demo.utils.GameRandom;
+import com.example.demo.utils.Vector2D;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
 
 public class BallSystem implements Updatable {
     private final Ball ball;

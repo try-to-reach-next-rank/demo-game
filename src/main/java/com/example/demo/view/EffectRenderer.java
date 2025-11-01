@@ -9,8 +9,8 @@ import java.util.Map;
 import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.core.VisualEffect;
 import com.example.demo.model.core.effects.AnimatedEffect;
+import com.example.demo.utils.var.GameVar;
 
-import com.example.demo.model.utils.var.GameVar;
 import javafx.scene.canvas.GraphicsContext;
 
 public class EffectRenderer {

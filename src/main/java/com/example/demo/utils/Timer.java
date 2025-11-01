@@ -1,4 +1,4 @@
-package com.example.demo.model.utils;
+package com.example.demo.utils;
 
 public class Timer {
     private double duration;

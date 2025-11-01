@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.example.demo.engine.AssetLoader;
-import com.example.demo.model.utils.Animation;
-import com.example.demo.model.utils.var.AssetPaths;
-import com.example.demo.model.utils.var.GameVar;
+import com.example.demo.utils.Animation;
+import com.example.demo.utils.var.AssetPaths;
+import com.example.demo.utils.var.GameVar;
 
 import javafx.scene.image.Image;
 

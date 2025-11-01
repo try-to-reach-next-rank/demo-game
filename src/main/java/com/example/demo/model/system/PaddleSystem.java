@@ -2,8 +2,8 @@ package com.example.demo.model.system;
 
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Paddle;
-import com.example.demo.model.utils.var.GameVar;
-import com.example.demo.model.utils.var.GlobalVar;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
 
 public class PaddleSystem implements Updatable {
     private final Paddle paddle;

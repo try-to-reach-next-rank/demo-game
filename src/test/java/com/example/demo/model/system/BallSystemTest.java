@@ -2,7 +2,8 @@ package com.example.demo.model.system;
 
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
-import com.example.demo.model.utils.Vector2D;
+import com.example.demo.utils.Vector2D;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

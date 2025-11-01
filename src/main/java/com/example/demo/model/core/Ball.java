@@ -2,8 +2,8 @@ package com.example.demo.model.core;
 
 import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BallData;
-import com.example.demo.model.utils.var.GameVar;
-import com.example.demo.model.utils.Vector2D;
+import com.example.demo.utils.Vector2D;
+import com.example.demo.utils.var.GameVar;
 
 public class Ball extends ImageObject {
     private final double baseSpeed = GameVar.BASE_SPEED_BALL;

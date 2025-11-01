@@ -1,7 +1,5 @@
 package com.example.demo.controller.view;
 
-import com.example.demo.model.utils.var.AssetPaths;
-import com.example.demo.model.utils.var.GameVar;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
@@ -17,6 +15,9 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.demo.utils.var.AssetPaths;
+import com.example.demo.utils.var.GameVar;
 
 /**
  * ThemeManager quản lý background (animated hoặc gradient) và resources chung

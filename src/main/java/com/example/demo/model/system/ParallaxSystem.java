@@ -4,8 +4,9 @@ import com.example.demo.engine.Renderable;
 import com.example.demo.engine.Updatable;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.map.ParallaxLayer;
-import com.example.demo.model.utils.var.GlobalVar;
-import com.example.demo.model.utils.var.GameVar;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
+
 import javafx.scene.canvas.GraphicsContext;
 import java.util.ArrayList;
 import java.util.List;

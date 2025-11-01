@@ -3,8 +3,8 @@ package com.example.demo.controller.map;
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.Wall;
 import com.example.demo.model.map.MapData;
-import com.example.demo.model.utils.GameRandom;
-import com.example.demo.model.utils.var.GameVar;
+import com.example.demo.utils.GameRandom;
+import com.example.demo.utils.var.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;
 
 import java.util.ArrayList;

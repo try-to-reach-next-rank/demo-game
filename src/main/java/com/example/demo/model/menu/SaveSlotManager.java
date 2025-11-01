@@ -1,7 +1,7 @@
 package com.example.demo.model.menu;
 
-import com.example.demo.model.utils.var.GlobalVar;
 import com.example.demo.repository.SaveDataRepository;
+import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.controller.core.SaveController;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.example.demo.model.core;
 
 import com.example.demo.engine.Effect;
-import com.example.demo.model.utils.Timer;
+import com.example.demo.utils.Timer;
 
 import javafx.scene.canvas.GraphicsContext;
 

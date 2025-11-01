@@ -7,8 +7,8 @@ import java.util.Objects;
 import javafx.scene.image.Image;
 
 import com.example.demo.engine.AssetLoader;
+import com.example.demo.utils.var.AssetPaths;
 
-import com.example.demo.model.utils.var.AssetPaths;
 import javafx.scene.image.Image;
 
 public class ImageAssets implements AssetLoader {

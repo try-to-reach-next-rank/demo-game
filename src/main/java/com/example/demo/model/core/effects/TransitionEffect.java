@@ -1,6 +1,7 @@
 package com.example.demo.model.core.effects;
 
-import com.example.demo.model.utils.var.GameVar;
+import com.example.demo.utils.var.GameVar;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 

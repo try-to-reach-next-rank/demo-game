@@ -7,15 +7,14 @@ import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
-
-import com.example.demo.model.utils.var.AssetPaths;
-import com.example.demo.model.utils.var.GameVar;
-import com.example.demo.model.utils.CheatTable;
-import com.example.demo.model.utils.var.GlobalVar;
-import com.example.demo.model.utils.Sound;
-import com.example.demo.model.utils.dialogue.DialogueBox;
-import com.example.demo.model.utils.dialogue.DialogueSystem;
 import com.example.demo.repository.SaveDataRepository;
+import com.example.demo.utils.CheatTable;
+import com.example.demo.utils.Sound;
+import com.example.demo.utils.dialogue.DialogueBox;
+import com.example.demo.utils.dialogue.DialogueSystem;
+import com.example.demo.utils.var.AssetPaths;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.*;
 import com.example.demo.model.map.ParallaxLayer;
 import javafx.animation.AnimationTimer;
@@ -28,10 +27,10 @@ import javafx.scene.text.Font;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.example.demo.utils.var.GlobalVar.SECRET_CODE;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.demo.model.utils.var.GlobalVar.SECRET_CODE;
 
 public class GameController extends Pane {
 

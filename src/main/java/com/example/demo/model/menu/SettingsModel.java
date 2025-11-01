@@ -5,10 +5,11 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import com.example.demo.model.state.SettingsState;
-import com.example.demo.controller.core.SaveController;
-import com.example.demo.model.utils.Sound;
+import com.example.demo.utils.Sound;
 
-import static com.example.demo.model.utils.var.GlobalVar.SETTINGS_FILE_PATH;
+import static com.example.demo.utils.var.GlobalVar.SETTINGS_FILE_PATH;
+
+import com.example.demo.controller.core.SaveController;
 
 
 public class SettingsModel {

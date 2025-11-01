@@ -1,4 +1,4 @@
-package com.example.demo.model.utils.var;
+package com.example.demo.utils.var;
 
 public final class GlobalVar {
     // Private constructor to prevent initialization

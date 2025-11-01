@@ -1,7 +1,5 @@
-package com.example.demo.model.utils.dialogue;
+package com.example.demo.utils.dialogue;
 
-import com.example.demo.model.utils.var.AssetPaths;
-import com.example.demo.model.utils.var.UtilVar;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -10,7 +8,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import com.example.demo.model.assets.AssetManager;
-import com.example.demo.model.utils.Sound;
+import com.example.demo.utils.Sound;
+import com.example.demo.utils.var.AssetPaths;
+import com.example.demo.utils.var.UtilVar;
+
 import javafx.scene.text.Text;
 
 public class DialogueBox extends UIComponent {

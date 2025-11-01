@@ -1,8 +1,8 @@
-package com.example.demo.model.utils;
+package com.example.demo.utils;
 
 import com.example.demo.controller.core.GameController;
 import com.example.demo.model.core.effects.GlowTextEffect;
-import com.example.demo.model.utils.var.UtilVar;
+import com.example.demo.utils.var.UtilVar;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;

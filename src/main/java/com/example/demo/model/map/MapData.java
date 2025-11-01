@@ -2,8 +2,8 @@ package com.example.demo.model.map;
 
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.Wall;
-import com.example.demo.model.utils.var.GameVar;
-import com.example.demo.model.utils.var.GlobalVar;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
 
 import java.util.*;
 

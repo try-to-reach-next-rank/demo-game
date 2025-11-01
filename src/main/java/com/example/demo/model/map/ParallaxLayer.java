@@ -2,8 +2,9 @@ package com.example.demo.model.map;
 
 import com.example.demo.engine.Renderable;
 import com.example.demo.engine.Updatable;
-import com.example.demo.model.utils.var.GameVar;
-import com.example.demo.model.utils.var.GlobalVar;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 

@@ -1,4 +1,4 @@
-package com.example.demo.model.utils;
+package com.example.demo.utils;
 
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
