@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.controller.core.SaveManager;
+import com.example.demo.controller.core.SaveController;
 import com.example.demo.model.state.GameState;
 import com.example.demo.model.state.BrickData;
 
@@ -49,7 +49,7 @@ public class SaveDataRepository {
         }
 
         String path = getSlotPath(slotNumber);
-        GameState state = SaveManager.load(path, GameState.class);
+        GameState state = SaveController.load(path, GameState.class);
 
         if (state != null) {
             System.out.println("[SaveDataRepository] Loaded slot " + slotNumber + " successfully.");
@@ -75,7 +75,7 @@ public class SaveDataRepository {
         }
 
         String path = getSlotPath(slotNumber);
-        SaveManager.save(state, path);
+        SaveController.save(state, path);
 
         System.out.println("[SaveDataRepository] Saved slot " + slotNumber);
     }

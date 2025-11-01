@@ -1,8 +1,9 @@
 package com.example.demo.model.menu;
 
 import com.example.demo.repository.SaveDataRepository;
+import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.model.state.BrickData;
-import com.example.demo.controller.core.SaveManager;
+import com.example.demo.controller.core.SaveController;
 import java.util.List;
 import java.util.Arrays;
 
@@ -30,8 +31,8 @@ public class SaveSlotManager {
      */
     public void loadAllSlots() {
         System.out.println("[SaveSlotManager] Loading all slots...");
-        slot1 = loadSlot(1);
-        slot2 = loadSlot(2);
+        slot1 = loadSlot(GlobalVar.SAVE_SLOT_1);
+        slot2 = loadSlot(GlobalVar.SAVE_SLOT_2);
         System.out.println("[SaveSlotManager] Slot 1: " + slot1);
         System.out.println("[SaveSlotManager] Slot 2: " + slot2);
     }
@@ -58,12 +59,13 @@ public class SaveSlotManager {
      * Lấy slot theo number
      */
     public SaveSlot getSlot(int slotNumber) {
-        if (slotNumber == 1) {
-            return slot1;
-        } else if (slotNumber == 2) {
-            return slot2;
-        } else {
-            throw new IllegalArgumentException("Invalid slot number: " + slotNumber);
+        switch (slotNumber) {
+            case GlobalVar.SAVE_SLOT_1:
+                return slot1;
+            case GlobalVar.SAVE_SLOT_2:
+                return slot2;
+            default:
+                throw new IllegalArgumentException(GlobalVar.SAVE_INVALID_SLOT_MSG + slotNumber);
         }
     }
 
@@ -80,11 +82,11 @@ public class SaveSlotManager {
     public void reloadSlot(int slotNumber) {
         System.out.println("[SaveSlotManager] Reloading slot " + slotNumber + "...");
 
-        if (slotNumber == 1) {
-            slot1 = loadSlot(1);
+        if (slotNumber == GlobalVar.SAVE_SLOT_1) {
+            slot1 = loadSlot(GlobalVar.SAVE_SLOT_1);
             System.out.println("[SaveSlotManager] Slot 1 reloaded: " + slot1);
-        } else if (slotNumber == 2) {
-            slot2 = loadSlot(2);
+        } else if (slotNumber == GlobalVar.SAVE_SLOT_2) {
+            slot2 = loadSlot(GlobalVar.SAVE_SLOT_2);
             System.out.println("[SaveSlotManager] Slot 2 reloaded: " + slot2);
         } else {
             throw new IllegalArgumentException("Invalid slot number: " + slotNumber);

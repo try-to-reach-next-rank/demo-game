@@ -1,4 +1,4 @@
-package com.example.demo.controller.view;
+package com.example.demo.model.assets;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,9 +6,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.example.demo.engine.AssetLoader;
-import com.example.demo.model.assets.AnimationAssets;
-import com.example.demo.model.assets.ImageAssets;
-import com.example.demo.model.assets.SoundAssets;
 import com.example.demo.utils.Animation;
 
 import javafx.scene.image.Image;

@@ -1,9 +1,9 @@
 package com.example.demo.view;
 
-import com.example.demo.controller.SlotSelectionController;
-import com.example.demo.controller.Stage;
-import com.example.demo.controller.view.ThemeManager;
-import com.example.demo.controller.view.ButtonManager;
+import com.example.demo.controller.view.ThemeController;
+import com.example.demo.engine.Stage;
+import com.example.demo.controller.view.ButtonController;
+import com.example.demo.controller.view.SlotSelectionController;
 import com.example.demo.model.menu.SaveSlot;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,8 +28,8 @@ import java.util.List;
  */
 public class SlotSelectionView implements Stage {
     private final SlotSelectionController controller;
-    private final ThemeManager themeManager;
-    private final ButtonManager buttonManager;
+    private final ThemeController themeManager;
+    private final ButtonController buttonManager;
 
     private static StackPane rootStack = null;
     private final VBox uiBox;
@@ -52,12 +52,12 @@ public class SlotSelectionView implements Stage {
         );
 
         // 1. Setup theme
-        this.themeManager = new ThemeManager();
-        ThemeManager.setupBackground(rootStack);
-        ThemeManager.applyCss(rootStack);
+        this.themeManager = new ThemeController();
+        ThemeController.setupBackground(rootStack);
+        ThemeController.applyCss(rootStack);
 
         // 2. Setup buttons
-        this.buttonManager = new ButtonManager(themeManager.getHandImage());
+        this.buttonManager = new ButtonController(themeManager.getHandImage());
         buildUI();
 
         // 3. Stack layout

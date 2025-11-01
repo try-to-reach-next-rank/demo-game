@@ -6,8 +6,10 @@ import java.util.Objects;
 
 import javafx.scene.image.Image;
 
-import com.example.demo.controller.view.AssetManager;
 import com.example.demo.engine.AssetLoader;
+import com.example.demo.utils.var.AssetPaths;
+
+import javafx.scene.image.Image;
 
 public class ImageAssets implements AssetLoader {
     @Override
@@ -23,31 +25,28 @@ public class ImageAssets implements AssetLoader {
     private static final Map<String, String> ASSETS = new HashMap<>();
 
     static {
-        // --- Images ---
         // Ball image
-        ASSETS.put("ball", "/images/Ball.png");
+        ASSETS.put("ball", AssetPaths.BALL_IMAGE);
         
         // Paddle image
-        ASSETS.put("paddle", "/images/Paddle.png");
+        ASSETS.put("paddle", AssetPaths.PADDLE_IMAGE);
         
         // Bricks images
-        ASSETS.put("steel_bricks", "/images/bricks/SteelBricks.png");
-        ASSETS.put("bricks_1", "/images/bricks/Bricks.png");
-        ASSETS.put("bricks_2", "/images/bricks/Bricks2.png");
-        ASSETS.put("bricks_3", "/images/bricks/Bricks3.png");
-        ASSETS.put("bricks_4", "/images/bricks/Bricks4.png");
-        ASSETS.put("bricks_5", "/images/bricks/Bricks5.png");
+        ASSETS.put("steel_bricks", AssetPaths.STEEL_BRICKS_IMAGE);
+        ASSETS.put("bricks_1", AssetPaths.BRICKS_1_IMAGE);
+        ASSETS.put("bricks_2", AssetPaths.BRICKS_2_IMAGE);
+        ASSETS.put("bricks_3", AssetPaths.BRICKS_3_IMAGE);
+        ASSETS.put("bricks_4", AssetPaths.BRICKS_4_IMAGE);
+        ASSETS.put("bricks_5", AssetPaths.BRICKS_5_IMAGE);
         
         // Wall image
-        ASSETS.put("wall_side", "/images/wall/Wall.png");
-        ASSETS.put("wall_top", "/images/wall/WallRotated.png");
+        ASSETS.put("wall_side", AssetPaths.WALL_SIDE_IMAGE);
+        ASSETS.put("wall_top", AssetPaths.WALL_TOP_IMAGE);
 
-        
-        // --- Sprite sheet ---
         // Explosion sprite sheet
-        ASSETS.put("explosion_spritesheet", "/images/explosion/Explosion.png");
+        ASSETS.put("explosion_spritesheet", AssetPaths.EXPLOSION_SPRITESHEET);
 
         // Power up sprite sheet
-        ASSETS.put("powerup_spritesheet", "/images/powerup/PowerUps.png");
+        ASSETS.put("powerup_spritesheet", AssetPaths.POWERUP_SPRITESHEET);
     };
 }

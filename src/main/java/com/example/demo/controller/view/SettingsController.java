@@ -3,11 +3,11 @@ package com.example.demo.controller.view;
 import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.menu.SettingsModel;
 
-public class SettingsControllers {
+public class SettingsController {
     private final SettingsModel model;
     private final MenuModel menuModel;
 
-    public SettingsControllers(SettingsModel model, MenuModel menuModel) {
+    public SettingsController(SettingsModel model, MenuModel menuModel) {
         this.model = model;
         this.menuModel = menuModel;
     }

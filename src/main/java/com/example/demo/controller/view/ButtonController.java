@@ -23,7 +23,7 @@ import java.util.Map;
  * ButtonManager quản lý buttons với hand animations, hover effects,
  * keyboard navigation và pulse animations
  */
-public class ButtonManager {
+public class ButtonController {
     private final List<Button> buttons = new ArrayList<>();
     private final List<ImageView> leftHands = new ArrayList<>();
     private final List<ImageView> rightHands = new ArrayList<>();
@@ -35,7 +35,7 @@ public class ButtonManager {
     private Image handImage;
     private Runnable onSelectionChanged; // callback khi selection thay đổi (để play sound)
 
-    public ButtonManager(Image handImage) {
+    public ButtonController(Image handImage) {
         this.handImage = handImage;
     }
 

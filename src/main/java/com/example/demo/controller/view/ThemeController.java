@@ -16,10 +16,13 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.demo.utils.var.AssetPaths;
+import com.example.demo.utils.var.GameVar;
+
 /**
  * ThemeManager quản lý background (animated hoặc gradient) và resources chung
  */
-public class ThemeManager {
+public class ThemeController {
     private static final List<Image> bgFrames = new ArrayList<>();
     private static final ImageView bgView = new ImageView();
     private static Timeline bgTimeline;
@@ -27,13 +30,10 @@ public class ThemeManager {
     private static Duration bgFrameDuration = Duration.millis(140);
 
     private Image handImage = null;
-    private static String cssPath = "/styles/menu.css";
 
-    private static final int DEFAULT_BG_FRAMES = 6;
-
-    public ThemeManager() {
-        loadHandImage("/images/hand.png");
-        loadBgFrames("/images/bg/frame_", DEFAULT_BG_FRAMES);
+    public ThemeController() {
+        loadHandImage(AssetPaths.HAND);
+        loadBgFrames("/images/bg/frame_", GameVar.DEFAULT_BG_FRAMES);
     }
 
     // -------------------------
@@ -89,8 +89,6 @@ public class ThemeManager {
     private static void setupAnimatedBackground(StackPane rootStack) {
         bgView.setPreserveRatio(false);
         bgView.setImage(bgFrames.get(0));
-
-        // Bind size to container
         bgView.fitWidthProperty().bind(rootStack.widthProperty());
         bgView.fitHeightProperty().bind(rootStack.heightProperty());
 
@@ -114,7 +112,6 @@ public class ThemeManager {
 
         bgRegion.prefWidthProperty().bind(rootStack.widthProperty());
         bgRegion.prefHeightProperty().bind(rootStack.heightProperty());
-
         rootStack.getChildren().add(0, bgRegion);
         StackPane.setAlignment(bgRegion, Pos.CENTER);
     }
@@ -153,7 +150,7 @@ public class ThemeManager {
      */
     public static void applyCss(Region node) {
         try {
-            String css = ThemeManager.class.getResource(cssPath).toExternalForm();
+            String css = ThemeController.class.getResource(AssetPaths.CSS_PATH_MENU).toExternalForm();
             node.getStylesheets().add(css);
         } catch (Exception e) {
             System.err.println("[ThemeManager] Failed to load CSS: " + e.getMessage());
@@ -166,28 +163,5 @@ public class ThemeManager {
 
     public Image getHandImage() {
         return handImage;
-    }
-
-    public void setBgFrameDuration(Duration duration) {
-        if (duration != null && !duration.equals(bgFrameDuration)) {
-            bgFrameDuration = duration;
-            if (bgTimeline != null && bgTimeline.getStatus() == javafx.animation.Animation.Status.RUNNING) {
-                startBgAnimation();
-            }
-        }
-    }
-
-    public void registerBgFrames(List<Image> frames) {
-        bgFrames.clear();
-        if (frames != null) {
-            bgFrames.addAll(frames);
-        }
-        if (!bgFrames.isEmpty()) {
-            startBgAnimation();
-        }
-    }
-
-    public void setCssPath(String path) {
-        this.cssPath = path;
     }
 }

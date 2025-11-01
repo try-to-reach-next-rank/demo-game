@@ -1,6 +1,6 @@
 package com.example.demo.model.core.gameobjects;
 
-import com.example.demo.controller.view.AssetManager;
+import com.example.demo.model.assets.AssetManager;
 
 import javafx.scene.image.Image;
 

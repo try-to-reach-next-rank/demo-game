@@ -4,17 +4,18 @@ import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.gameobjects.GameObject;
-import com.example.demo.utils.GlobalVar;
-import com.example.demo.utils.Sound;
-import com.example.demo.utils.Vector2D;
 import com.example.demo.model.system.BallSystem;
 import com.example.demo.model.system.BrickSystem;
 import com.example.demo.model.system.PowerUpSystem;
+import com.example.demo.utils.Sound;
+import com.example.demo.utils.Vector2D;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.EffectRenderer;
 
-import java.util.List;
+import static com.example.demo.utils.var.GameVar.PADDLE_SOUND_COOLDOWN;
 
-import static com.example.demo.utils.GameVar.PADDLE_SOUND_COOLDOWN;
+import java.util.List;
 
 /**
  * CollisionManager detects collisions and delegates resolution
@@ -22,7 +23,7 @@ import static com.example.demo.utils.GameVar.PADDLE_SOUND_COOLDOWN;
  *
  * It no longer directly mutates the models.
  */
-public class CollisionManager implements Updatable {
+public class CollisionController implements Updatable {
     private long nextPaddleSoundTime = 0L;
 
     private final GameWorld world;
@@ -30,7 +31,7 @@ public class CollisionManager implements Updatable {
     private final BrickSystem brickSystem;
     private final PowerUpSystem powerUpSystem;
 
-    public CollisionManager(GameWorld world, BallSystem ballSystem,
+    public CollisionController(GameWorld world, BallSystem ballSystem,
                             BrickSystem brickSystem, PowerUpSystem powerUpSystem) {
         this.world = world;
         this.ballSystem = ballSystem;
@@ -88,7 +89,7 @@ public class CollisionManager implements Updatable {
             long now = System.currentTimeMillis();
             if (now > nextPaddleSoundTime) {
                 Sound.getInstance().playSound("paddle_hit");
-                nextPaddleSoundTime = now + PADDLE_SOUND_COOLDOWN;
+                nextPaddleSoundTime = now + GameVar.PADDLE_SOUND_COOLDOWN;
             }
         }
 
@@ -106,10 +107,10 @@ public class CollisionManager implements Updatable {
 
             // simple effect (View layer responsibility)
             EffectRenderer.getInstance().spawn(
-                    "explosion2",
+                    GameVar.EXPLOSION2_EFFECT_KEY,
                     ball.getX() + ball.getWidth() / 2,
                     ball.getY() + ball.getHeight() / 2,
-                    1.0
+                    GameVar.EFFECT_DURATION
             );
         }
     }

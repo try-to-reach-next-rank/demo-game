@@ -1,6 +1,8 @@
 package com.example.demo.model.core.effects;
 
 import com.example.demo.model.core.VisualEffect;
+import com.example.demo.utils.var.GameVar;
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -26,31 +28,31 @@ public class GlowTextEffect extends VisualEffect {
         super();
 
         title = new Text("Arkanoid");
-        title.setFont(Font.font(48));
+        title.setFont(Font.font(GameVar.GLOW_FONT_SIZE));
 
-        offset = new SimpleDoubleProperty(0);
+        offset = new SimpleDoubleProperty(GameVar.GLOW_OFFSET_START);
 
         // Bind gradient to offset
         title.fillProperty().bind(
                 Bindings.createObjectBinding(() -> {
                     double start = offset.get();
                     return new LinearGradient(
-                            start, 0, start + 1.0, 0, true, CycleMethod.REPEAT,
-                            new Stop(0.0, Color.web("#555555")),
-                            new Stop(0.30, Color.web("#555555")),
-                            new Stop(0.40, Color.web("#00b8ff")),
-                            new Stop(0.50, Color.web("#ffffff")),
-                            new Stop(0.60, Color.web("#00b8ff")),
-                            new Stop(0.70, Color.web("#555555")),
-                            new Stop(1.0, Color.web("#555555"))
+                            start, 0, start + GameVar.GLOW_OFFSET_END, 0, true, CycleMethod.REPEAT,
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[0], GameVar.GLOW_COLOR_BASE),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[1], GameVar.GLOW_COLOR_BASE),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[2], GameVar.GLOW_COLOR_CYAN),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[3], GameVar.GLOW_COLOR_HIGHLIGHT),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[4], GameVar.GLOW_COLOR_CYAN),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[5], GameVar.GLOW_COLOR_BASE),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[6], GameVar.GLOW_COLOR_BASE)
                     );
                 }, offset)
         );
 
         // Setup animation
         shimmer = new Timeline(
-                new KeyFrame(Duration.ZERO, new KeyValue(offset, 0)),
-                new KeyFrame(Duration.seconds(2.5), new KeyValue(offset, 1))
+                new KeyFrame(Duration.ZERO, new KeyValue(offset, GameVar.GLOW_OFFSET_START)),
+                new KeyFrame(Duration.seconds(GameVar.GLOW_ANIMATION_DURATION), new KeyValue(offset, GameVar.GLOW_OFFSET_END))
         );
         shimmer.setCycleCount(Animation.INDEFINITE);
     }
@@ -61,29 +63,30 @@ public class GlowTextEffect extends VisualEffect {
         this.title = title;
         title.setFont(font);
 
-        offset = new SimpleDoubleProperty(0);
+        offset = new SimpleDoubleProperty(GameVar.GLOW_OFFSET_START);
 
         // Bind gradient to offset
         title.fillProperty().bind(
                 Bindings.createObjectBinding(() -> {
                     double start = offset.get();
                     return new LinearGradient(
-                            start, 0, start + 1.0, 0, true, CycleMethod.REPEAT,
-                            new Stop(0.0, Color.web("#555555")),
-                            new Stop(0.30, Color.web("#555555")),
-                            new Stop(0.40, Color.web("#00b8ff")),
-                            new Stop(0.50, Color.web("#ffffff")),
-                            new Stop(0.60, Color.web("#00b8ff")),
-                            new Stop(0.70, Color.web("#555555")),
-                            new Stop(1.0, Color.web("#555555"))
+                            start, 0, start + GameVar.GLOW_OFFSET_END, 0,
+                            true, CycleMethod.REPEAT,
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[0], GameVar.GLOW_COLOR_BASE),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[1], GameVar.GLOW_COLOR_BASE),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[2], GameVar.GLOW_COLOR_CYAN),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[3], GameVar.GLOW_COLOR_HIGHLIGHT),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[4], GameVar.GLOW_COLOR_CYAN),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[5], GameVar.GLOW_COLOR_BASE),
+                            new Stop(GameVar.GLOW_GRADIENT_STOPS[6], GameVar.GLOW_COLOR_BASE)
                     );
                 }, offset)
         );
 
         // Setup animation
         shimmer = new Timeline(
-                new KeyFrame(Duration.ZERO, new KeyValue(offset, 0)),
-                new KeyFrame(Duration.seconds(2.5), new KeyValue(offset, 1))
+                new KeyFrame(Duration.ZERO, new KeyValue(offset, GameVar.GLOW_OFFSET_START)),
+                new KeyFrame(Duration.seconds(GameVar.GLOW_ANIMATION_DURATION), new KeyValue(offset, GameVar.GLOW_OFFSET_END))
         );
         shimmer.setCycleCount(Animation.INDEFINITE);
     }
@@ -120,7 +123,6 @@ public class GlowTextEffect extends VisualEffect {
         gc.setFont(title.getFont());
         gc.setFill(title.getFill());
         gc.fillText(title.getText(), 0, 0);
-
         gc.restore();
     }
 

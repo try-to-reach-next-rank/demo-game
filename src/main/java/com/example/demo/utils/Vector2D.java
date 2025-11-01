@@ -50,5 +50,4 @@ public class Vector2D {
                 y - 2 * dot * normal.y
         );
     }
-
 }

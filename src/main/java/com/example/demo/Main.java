@@ -1,17 +1,17 @@
 package com.example.demo;
 
-
-import com.example.demo.controller.SlotSelectionController;
-import com.example.demo.controller.view.AssetManager;
-import com.example.demo.controller.core.GameManager;
-import com.example.demo.controller.map.MenuControll;
-import com.example.demo.controller.view.SettingsControllers;
+import com.example.demo.controller.core.GameController;
+import com.example.demo.controller.map.MenuController;
+import com.example.demo.controller.view.SettingsController;
+import com.example.demo.controller.view.SlotSelectionController;
+import com.example.demo.model.assets.AssetManager;
+import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.menu.SettingsModel;
 import com.example.demo.model.state.GameState;
-import com.example.demo.utils.GlobalVar;
 import com.example.demo.utils.Input;
 import com.example.demo.utils.Sound;
+import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.MenuView;
 import com.example.demo.view.SlotSelectionView;
 import com.example.demo.view.ui.SettingsView;
@@ -25,7 +25,7 @@ public class Main extends Application {
     private MenuModel menuModel;
     private SettingsModel settingsModel;
 
-    private GameManager gameManager;
+    private GameController gameController;
     private MenuView menuView;
     private SettingsView settingsView;
     private SlotSelectionView slotSelectionView;
@@ -47,8 +47,8 @@ public class Main extends Application {
         initSlotSelection();
 
         // --- Khởi tạo Controllers ---
-        MenuControll menuController = new MenuControll(menuModel);
-        SettingsControllers settingsController = new SettingsControllers(settingsModel, menuModel);
+        MenuController menuController = new MenuController(menuModel);
+        SettingsController settingsController = new SettingsController(settingsModel, menuModel);
 
         // --- Khởi tạo Views ---
         menuView = new MenuView(menuController);
@@ -145,26 +145,26 @@ public class Main extends Application {
     }
 
     private void showGame() {
-        Input input = new Input(gameManager.getPaddle(), gameManager.getBall());
+        Input input = new Input(gameController.getPaddle(), gameController.getBall());
 
-        mainRoot.getChildren().add(gameManager);
+        mainRoot.getChildren().add(gameController);
 
         mainScene.setOnKeyPressed(e -> {
-            if (gameManager.getUIManager().hasActiveUI()) {
-                gameManager.getUIManager().handleInput(e.getCode());
+            if (gameController.getUIManager().hasActiveUI()) {
+                gameController.getUIManager().handleInput(e.getCode());
             } else {
                 input.handleKeyPressed(e.getCode());
             }
         });
 
         mainScene.setOnKeyReleased(e -> {
-            if (!gameManager.getUIManager().hasActiveUI()) {
+            if (!gameController.getUIManager().hasActiveUI()) {
                 input.handleKeyReleased(e.getCode());
             }
         });
 
 
-        gameManager.requestFocus();
+        gameController.requestFocus();
     }
 
     // -------------------------------------------------------------------------
@@ -174,13 +174,13 @@ public class Main extends Application {
     private void startNewGame(int slotNumber) {
         System.out.println("=== STARTING NEW GAME in slot " + slotNumber + " ===");
 
-        gameManager = new GameManager();
-        gameManager.setNewGame(true);           // ← Đánh dấu New Game
-        gameManager.setCurrentSlot(slotNumber);
-        gameManager.setOnBackToMenu(() -> {
+        gameController = new GameController();
+        gameController.setNewGame(true);           // ← Đánh dấu New Game
+        gameController.setCurrentSlot(slotNumber);
+        gameController.setOnBackToMenu(() -> {
             menuModel.setCurrentScreen(MenuModel.Screen.MENU);
         });
-        gameManager.initGame();
+        gameController.initGame();
 
 
         menuModel.setCurrentScreen(MenuModel.Screen.PLAY);
@@ -189,12 +189,12 @@ public class Main extends Application {
     private void continueGame(int slotNumber, GameState gameState) {
         System.out.println("=== LOADING GAME from slot " + slotNumber + " ===");
 
-        gameManager = new GameManager();
-        gameManager.setNewGame(false);          // ← Đánh dấu Load Game
-        gameManager.setCurrentSlot(slotNumber); // ← Set slot
-        gameManager.setOnBackToMenu(() -> menuModel.setCurrentScreen(MenuModel.Screen.MENU));
-        gameManager.initGame();
-        gameManager.applyState(gameState);      // ← Apply saved state
+        gameController = new GameController();
+        gameController.setNewGame(false);          // ← Đánh dấu Load Game
+        gameController.setCurrentSlot(slotNumber); // ← Set slot
+        gameController.setOnBackToMenu(() -> menuModel.setCurrentScreen(MenuModel.Screen.MENU));
+        gameController.initGame();
+        gameController.applyState(gameState);      // ← Apply saved state
 
         menuModel.setCurrentScreen(MenuModel.Screen.PLAY);
     }

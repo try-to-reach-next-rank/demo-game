@@ -1,9 +1,9 @@
 package com.example.demo.utils;
 
-import com.example.demo.controller.core.GameManager;
-import com.example.demo.controller.view.ButtonManager;
+import com.example.demo.controller.core.GameController;
+import com.example.demo.controller.view.ButtonController;
 import com.example.demo.view.ui.UIComponent;
-import com.example.demo.controller.view.ThemeManager;
+import com.example.demo.controller.view.ThemeController;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
@@ -11,15 +11,15 @@ import javafx.scene.layout.VBox;
 
 
 public class PauseTable extends UIComponent {
-    private final ButtonManager buttonManager;
+    private final ButtonController buttonController;
     private final VBox container;
-    private final ThemeManager themeManager;
+    private final ThemeController themeController;
     private final StackPane wrapper;
 
-    public PauseTable(GameManager gameManager) {
+    public PauseTable(GameController gameController) {
 
-        this.themeManager = new ThemeManager();
-        this.buttonManager = new ButtonManager(themeManager.getHandImage());
+        this.themeController = new ThemeController();
+        this.buttonController = new ButtonController(themeController.getHandImage());
 
 
         container = new VBox(16);
@@ -27,21 +27,21 @@ public class PauseTable extends UIComponent {
         container.setStyle("-fx-background-color: rgba(0,0,0,0.8); -fx-padding: 30; -fx-background-radius: 15;");
 
 
-        container.getChildren().add(buttonManager.createButtonRow("Resume", e -> {
+        container.getChildren().add(buttonController.createButtonRow("Resume", e -> {
             hide();
-            gameManager.resumeGame();
+            gameController.resumeGame();
             System.out.println("Resume game");
         }));
 
-        container.getChildren().add(buttonManager.createButtonRow("Back Without Save", e -> {
+        container.getChildren().add(buttonController.createButtonRow("Back Without Save", e -> {
             System.out.println("Back Without Save");
-            gameManager.backToMenu();
+            gameController.backToMenu();
         }));
 
-        container.getChildren().add(buttonManager.createButtonRow("Save And Quit", e -> {
+        container.getChildren().add(buttonController.createButtonRow("Save And Quit", e -> {
             System.out.println("Save And Quit");
-            gameManager.saveGame();
-            gameManager.backToMenu();
+            gameController.saveGame();
+            gameController.backToMenu();
         }));
 
 
@@ -63,14 +63,14 @@ public class PauseTable extends UIComponent {
     public void show() {
         this.active = true;
         wrapper.setVisible(true);
-        buttonManager.setSelectedIndex(0);
+        buttonController.setSelectedIndex(0);
     }
 
     @Override
     public void hide() {
         this.active = false;
        wrapper.setVisible(false);
-        buttonManager.setSelectedIndex(-1); // clear selection
+        buttonController.setSelectedIndex(-1); // clear selection
     }
 
     @Override
@@ -87,9 +87,9 @@ public class PauseTable extends UIComponent {
         if (!active) return;
 
         switch (code) {
-            case UP -> buttonManager.navigateUp();
-            case DOWN -> buttonManager.navigateDown();
-            case ENTER -> buttonManager.activateSelected();
+            case UP -> buttonController.navigateUp();
+            case DOWN -> buttonController.navigateDown();
+            case ENTER -> buttonController.activateSelected();
             case F1 -> hide();
             default -> {}
         }

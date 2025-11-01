@@ -3,9 +3,10 @@ package com.example.demo.model.assets;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.demo.controller.view.AssetManager;
 import com.example.demo.engine.AssetLoader;
 import com.example.demo.utils.Animation;
+import com.example.demo.utils.var.AssetPaths;
+import com.example.demo.utils.var.GameVar;
 
 import javafx.scene.image.Image;
 
@@ -35,56 +36,76 @@ public class AnimationAssets implements AssetLoader {
     static {
         // --- Explosion spritesheet ---
         ASSETS.put(
-            "explosion1", 
-            AnimationData.builder("explosion_spritesheet", 96, 96, 24)
-                .loop(false)
-                .renderSize(64, 64)
-                .rows(0)
+            GameVar.EXPLOSION1_EFFECT_KEY,
+            AnimationData.builder(GameVar.EXPLOSION_SHEET_KEY,
+                    GameVar.EXPLOSION1_FRAME_WIDTH,
+                    GameVar.EXPLOSION1_FRAME_HEIGHT,
+                    GameVar.EXPLOSION1_TOTAL_FRAMES)
+                .loop(GameVar.EXPLOSION1_LOOP)
+                .renderSize(GameVar.EXPLOSION1_RENDER_WIDTH, GameVar.EXPLOSION1_RENDER_HEIGHT)
+                .rows(GameVar.EXPLOSION1_ROW)
+                .duration(GameVar.EXPLOSION1_DURATION)
         );
 
         ASSETS.put(
-            "explosion2", 
-            AnimationData.builder("explosion_spritesheet", 96, 96, 32)
-                .loop(false)
-                .renderSize(32, 32)
-                .rows(1)
+            GameVar.EXPLOSION2_EFFECT_KEY,
+            AnimationData.builder(GameVar.EXPLOSION_SHEET_KEY,
+                    GameVar.EXPLOSION2_FRAME_WIDTH,
+                    GameVar.EXPLOSION2_FRAME_HEIGHT,
+                    GameVar.EXPLOSION2_TOTAL_FRAMES)
+                .loop(GameVar.EXPLOSION2_LOOP)
+                .renderSize(GameVar.EXPLOSION2_RENDER_WIDTH, GameVar.EXPLOSION2_RENDER_HEIGHT)
+                .rows(GameVar.EXPLOSION2_ROW)
+                .duration(GameVar.EXPLOSION2_DURATION)
         );
 
         // --- Power up spritesheet ---
         ASSETS.put(
-            "powerup_accelerate", 
-            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
-                .loop(true)
-                .renderSize(32, 16)
-                .rows(0)
-                .duration(5.0)
+            GameVar.POWERUP_ACC_EFFECT_KEY,
+            AnimationData.builder(GameVar.POWERUP_SHEET_KEY,
+                            GameVar.POWERUP_FRAME_WIDTH,
+                            GameVar.POWERUP_FRAME_HEIGHT,
+                            GameVar.POWERUP_TOTAL_FRAMES)
+                    .loop(GameVar.POWERUP_LOOP)
+                    .renderSize(GameVar.POWERUP_RENDER_WIDTH, GameVar.POWERUP_RENDER_HEIGHT)
+                    .rows(GameVar.POWERUP_ACCELERATE_ROW)
+                    .duration(GameVar.POWERUP_ACCELERATE_DURATION)
         );
 
         ASSETS.put(
-            "powerup_stronger", 
-            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
-                .loop(true)
-                .renderSize(32, 16)
-                .rows(1)
-                .duration(2.0)
+            GameVar.POWERUP_STRONGER_EFFECT_KEY,
+            AnimationData.builder(GameVar.POWERUP_SHEET_KEY,
+                            GameVar.POWERUP_FRAME_WIDTH,
+                            GameVar.POWERUP_FRAME_HEIGHT,
+                            GameVar.POWERUP_TOTAL_FRAMES)
+                    .loop(GameVar.POWERUP_LOOP)
+                    .renderSize(GameVar.POWERUP_RENDER_WIDTH, GameVar.POWERUP_RENDER_HEIGHT)
+                    .rows(GameVar.POWERUP_STRONGER_ROW)
+                    .duration(GameVar.POWERUP_STRONGER_DURATION)
         );
 
         ASSETS.put(
-            "powerup_stoptime", 
-            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
-                .loop(true)
-                .renderSize(32, 16)
-                .rows(2)
-                .duration(10.0)
+            GameVar.POWERUP_STOP_TIME_EFFECT_KEY,
+            AnimationData.builder(GameVar.POWERUP_SHEET_KEY,
+                    GameVar.POWERUP_FRAME_WIDTH,
+                    GameVar.POWERUP_FRAME_HEIGHT,
+                    GameVar.POWERUP_TOTAL_FRAMES)
+                .loop(GameVar.POWERUP_LOOP)
+                .renderSize(GameVar.POWERUP_RENDER_WIDTH, GameVar.POWERUP_RENDER_HEIGHT)
+                .rows(GameVar.POWERUP_STOPTIME_ROW)
+                .duration(GameVar.POWERUP_STOPTIME_DURATION)
         );
 
         ASSETS.put(
-            "powerup_biggerpaddle", 
-            AnimationData.builder("powerup_spritesheet", 32, 16, 8)
-                .loop(true)
-                .renderSize(32, 16)
-                .rows(3)
-                .duration(1.0)
+            GameVar.POWERUP_BIGGER_PADDLE_EFFECT_KEY,
+            AnimationData.builder(GameVar.POWERUP_SHEET_KEY,
+                    GameVar.POWERUP_FRAME_WIDTH,
+                    GameVar.POWERUP_FRAME_HEIGHT,
+                    GameVar.POWERUP_TOTAL_FRAMES)
+                .loop(GameVar.POWERUP_LOOP)
+                .renderSize(GameVar.POWERUP_RENDER_WIDTH, GameVar.POWERUP_RENDER_HEIGHT)
+                .rows(GameVar.POWERUP_BIGGERPADDLE_ROW)
+                .duration(GameVar.POWERUP_BIGGERPADDLE_DURATION)
         );
     };
 

@@ -1,7 +1,8 @@
 package com.example.demo.model.assets;
 
-import com.example.demo.controller.view.AssetManager;
 import com.example.demo.engine.AssetLoader;
+import com.example.demo.utils.var.AssetPaths;
+
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 
@@ -22,20 +23,20 @@ public class SoundAssets implements AssetLoader {
 
     static {
         // --- Music ---
-        MUSIC_ASSETS.put("Hametsu-no-Ringo", "/sounds/Hametsu-no-Ringo.mp3");
-        MUSIC_ASSETS.put("An-Impromptu-Piece", "/sounds/An-Impromptu-Piece.mp3");
-        MUSIC_ASSETS.put("Gerty-on-a-Rainy-Day", "/sounds/Gerty-on-a-Rainy-Day.mp3");
-        MUSIC_ASSETS.put("You-Far-Away", "/sounds/You-Far-Away.mp3");
-        MUSIC_ASSETS.put("Engraved-Star", "/sounds/Engraved-Star.mp3");
+        MUSIC_ASSETS.put("Hametsu-no-Ringo", AssetPaths.MUSIC_HAMETSU_NO_RINGO);
+        MUSIC_ASSETS.put("An-Impromptu-Piece", AssetPaths.MUSIC_AN_IMPROMPTU_PIECE);
+        MUSIC_ASSETS.put("Gerty-on-a-Rainy-Day", AssetPaths.MUSIC_GERTY_ON_A_RAINY_DAY);
+        MUSIC_ASSETS.put("You-Far-Away", AssetPaths.MUSIC_YOU_FAR_AWAY);
+        MUSIC_ASSETS.put("Engraved-Star", AssetPaths.MUSIC_ENGRAVED_STAR);
 
         // --- Sound effects ---
-        SFX_ASSETS.put("dialogue-sound", "/sounds/dialogue-sound.wav");
-        SFX_ASSETS.put("brick_hit", "/sounds/brick_hit.wav");
-        SFX_ASSETS.put("paddle_hit", "/sounds/paddle_hit.wav");
-        SFX_ASSETS.put("wall_hit", "/sounds/wall_hit.wav");
-        SFX_ASSETS.put("game_over", "/sounds/game_over.wav");
-        SFX_ASSETS.put("power_up", "/sounds/power_up.wav");
-        SFX_ASSETS.put("explosion_hit", "/sounds/explosion_hit.wav");
+        SFX_ASSETS.put("dialogue-sound", AssetPaths.SFX_DIALOGUE_SOUND);
+        SFX_ASSETS.put("brick_hit", AssetPaths.SFX_BRICK_HIT);
+        SFX_ASSETS.put("paddle_hit", AssetPaths.SFX_PADDLE_HIT);
+        SFX_ASSETS.put("wall_hit", AssetPaths.SFX_WALL_HIT);
+        SFX_ASSETS.put("game_over", AssetPaths.SFX_GAME_OVER);
+        SFX_ASSETS.put("power_up", AssetPaths.SFX_POWER_UP);
+        SFX_ASSETS.put("explosion_hit", AssetPaths.SFX_EXPLOSION_HIT);
     }
 
     private void loadAssets(AssetManager manager, Map<String, String> assets, SoundType type) {
