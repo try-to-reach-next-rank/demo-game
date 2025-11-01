@@ -1,6 +1,4 @@
-package com.example.demo.model.utils;
-
-import java.util.Objects;
+package com.example.demo.utils;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

@@ -1,5 +1,6 @@
 package com.example.demo.model.utils;
 
+import com.example.demo.utils.Vector2D;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

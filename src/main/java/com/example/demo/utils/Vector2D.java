@@ -1,4 +1,4 @@
-package com.example.demo.model.utils;
+package com.example.demo.utils;
 
 public class Vector2D {
     public double x,y;

@@ -1,7 +1,5 @@
 package com.example.demo.model.core.effects;
 
-import com.example.demo.model.utils.Animation;
-
 public class ExplosionEffect extends AnimatedEffect {
 
     public ExplosionEffect(String animKey) {

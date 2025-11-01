@@ -1,7 +1,7 @@
 package com.example.demo.model.core;
 
 import com.example.demo.model.core.gameobjects.AnimatedObject;
-import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.utils.GlobalVar;
 
 public class PowerUp extends AnimatedObject {
     private final String type;

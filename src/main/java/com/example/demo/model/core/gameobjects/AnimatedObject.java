@@ -1,7 +1,7 @@
 package com.example.demo.model.core.gameobjects;
 
 import com.example.demo.controller.view.AssetManager;
-import com.example.demo.model.utils.Animation;
+import com.example.demo.utils.Animation;
 
 public abstract class AnimatedObject extends GameObject {
     protected String animKey;

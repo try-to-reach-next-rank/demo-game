@@ -9,7 +9,7 @@ import com.example.demo.engine.AssetLoader;
 import com.example.demo.model.assets.AnimationAssets;
 import com.example.demo.model.assets.ImageAssets;
 import com.example.demo.model.assets.SoundAssets;
-import com.example.demo.model.utils.Animation;
+import com.example.demo.utils.Animation;
 
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;

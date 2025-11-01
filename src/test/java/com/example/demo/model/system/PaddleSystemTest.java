@@ -1,7 +1,7 @@
 package com.example.demo.model.system;
 
-import com.example.demo.model.utils.GameVar;
-import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.utils.GameVar;
+import com.example.demo.utils.GlobalVar;
 import com.example.demo.model.core.Paddle;
 import org.junit.jupiter.api.Test;
 

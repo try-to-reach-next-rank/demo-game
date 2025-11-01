@@ -1,4 +1,4 @@
-package com.example.demo.model.utils.dialogue;
+package com.example.demo.utils.dialogue;
 
 import com.example.demo.controller.view.AssetManager;
 import com.example.demo.view.ui.UIComponent;
@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import com.example.demo.model.utils.Sound;
+import com.example.demo.utils.Sound;
 import javafx.scene.text.Text;
 
 public class DialogueBox extends UIComponent {

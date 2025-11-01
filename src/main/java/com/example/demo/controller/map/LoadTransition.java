@@ -4,7 +4,7 @@ import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.map.MapData;
 import com.example.demo.model.system.BrickSystem;
-import com.example.demo.model.utils.dialogue.DialogueSystem;
+import com.example.demo.utils.dialogue.DialogueSystem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

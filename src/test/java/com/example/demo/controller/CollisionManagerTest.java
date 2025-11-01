@@ -6,9 +6,9 @@ import com.example.demo.model.core.Brick;
 import com.example.demo.model.system.BallSystem;
 import com.example.demo.model.system.BrickSystem;
 import com.example.demo.model.system.PowerUpSystem;
-import com.example.demo.model.utils.GameVar;
-import com.example.demo.model.utils.GlobalVar;
-import com.example.demo.model.utils.Vector2D;
+import com.example.demo.utils.GameVar;
+import com.example.demo.utils.GlobalVar;
+import com.example.demo.utils.Vector2D;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;

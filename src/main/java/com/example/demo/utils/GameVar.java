@@ -1,5 +1,5 @@
-package com.example.demo.model.utils;
-import static com.example.demo.model.utils.GlobalVar.*;
+package com.example.demo.utils;
+import static com.example.demo.utils.GlobalVar.*;
 
 public class GameVar {
     public static final int START_LEVEL = 1;

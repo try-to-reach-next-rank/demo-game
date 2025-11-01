@@ -7,7 +7,6 @@ import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.Paddle;
 import com.example.demo.model.core.PowerUp;
 import com.example.demo.model.core.Wall;
-import com.example.demo.model.utils.GlobalVar;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 

@@ -4,9 +4,9 @@ import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.gameobjects.GameObject;
-import com.example.demo.model.utils.GlobalVar;
-import com.example.demo.model.utils.Sound;
-import com.example.demo.model.utils.Vector2D;
+import com.example.demo.utils.GlobalVar;
+import com.example.demo.utils.Sound;
+import com.example.demo.utils.Vector2D;
 import com.example.demo.model.system.BallSystem;
 import com.example.demo.model.system.BrickSystem;
 import com.example.demo.model.system.PowerUpSystem;
@@ -14,7 +14,7 @@ import com.example.demo.view.EffectRenderer;
 
 import java.util.List;
 
-import static com.example.demo.model.utils.GameVar.PADDLE_SOUND_COOLDOWN;
+import static com.example.demo.utils.GameVar.PADDLE_SOUND_COOLDOWN;
 
 /**
  * CollisionManager detects collisions and delegates resolution

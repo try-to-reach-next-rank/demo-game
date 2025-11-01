@@ -6,9 +6,9 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import com.example.demo.model.state.SettingsState;
 import com.example.demo.controller.core.SaveManager;
-import com.example.demo.model.utils.Sound;
+import com.example.demo.utils.Sound;
 
-import static com.example.demo.model.utils.GlobalVar.SETTINGS_FILE_PATH;
+import static com.example.demo.utils.GlobalVar.SETTINGS_FILE_PATH;
 
 
 public class SettingsModel {

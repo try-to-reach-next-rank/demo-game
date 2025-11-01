@@ -2,8 +2,8 @@ package com.example.demo.model.map;
 
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.Wall;
-import com.example.demo.model.utils.GameVar;
-import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.utils.GameVar;
+import com.example.demo.utils.GlobalVar;
 
 import java.util.*;
 
@@ -23,8 +23,6 @@ public class MapData {
     public List<Wall> getWalls() {
         return walls;
     }
-
-    private final Random rand = new Random();
 
     // ---------------------------------------------------------------------
     //  Main Entry

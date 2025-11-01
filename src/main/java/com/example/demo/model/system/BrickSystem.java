@@ -4,9 +4,9 @@ import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.utils.GameRandom;
-import com.example.demo.model.utils.GameVar;
-import com.example.demo.model.utils.Sound;
+import com.example.demo.utils.GameRandom;
+import com.example.demo.utils.GameVar;
+import com.example.demo.utils.Sound;
 import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.view.EffectRenderer;
 

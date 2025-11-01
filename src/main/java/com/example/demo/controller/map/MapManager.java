@@ -3,8 +3,8 @@ package com.example.demo.controller.map;
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.Wall;
 import com.example.demo.model.map.MapData;
-import com.example.demo.model.utils.GameRandom;
-import com.example.demo.model.utils.GameVar;
+import com.example.demo.utils.GameRandom;
+import com.example.demo.utils.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
  * based on predefined map matrices. It now uses BrickTextureProvider and the new Brick data model.
  */
 public class MapManager {
-
+    private final List<Brick> bricks = new ArrayList<>();
 
     public MapData loadMap(int level) {
         int[][] matrix = new int[0][];
@@ -28,7 +28,7 @@ public class MapManager {
     }
 
     public MapData loadMapFromMatrix(int[][] matrix) {
-        List<Brick> bricks = new ArrayList<>();
+        bricks.clear();
         List<Wall> walls = MapData.createBoundaryWalls();
 
         // --- Total width of one full row of bricks (for centering) ---

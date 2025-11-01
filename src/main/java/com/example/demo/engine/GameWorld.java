@@ -2,7 +2,7 @@ package com.example.demo.engine;
 
 import com.example.demo.model.core.*;
 import com.example.demo.model.system.PowerUpSystem;
-import com.example.demo.model.utils.GameVar;
+import com.example.demo.utils.GameVar;
 import com.example.demo.view.EffectRenderer;
 
 import java.util.ArrayList;
