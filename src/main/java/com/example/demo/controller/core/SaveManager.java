@@ -15,7 +15,10 @@ import java.nio.file.Paths;
 public class SaveManager {
     private static final Logger log = LoggerFactory.getLogger(SaveManager.class);
     // một đối tượng Gson duy nhất được tạo ra cho cả chương trình
-    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final Gson gson = new GsonBuilder()
+            .excludeFieldsWithoutExposeAnnotation()
+            .setPrettyPrinting()
+            .create();
 
     /**
      *  Lưu một đối tượng Java bất kỳ vào một file dưới định dạng chuỗi JSON.
