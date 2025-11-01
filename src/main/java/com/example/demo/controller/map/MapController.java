@@ -15,7 +15,7 @@ import java.util.List;
  * based on predefined map matrices. It now uses BrickTextureProvider and the new Brick data model.
  */
 public class MapController {
-
+    private final List<Brick> bricks = new ArrayList<>();
 
     public MapData loadMap(int level) {
         int[][] matrix = new int[0][];
@@ -27,7 +27,7 @@ public class MapController {
     }
 
     public MapData loadMapFromMatrix(int[][] matrix) {
-        List<Brick> bricks = new ArrayList<>();
+        bricks.clear();
         List<Wall> walls = MapData.createBoundaryWalls();
 
         // --- Total width of one full row of bricks (for centering) ---

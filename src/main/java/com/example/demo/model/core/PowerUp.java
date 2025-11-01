@@ -4,7 +4,7 @@ import com.example.demo.model.core.gameobjects.AnimatedObject;
 import com.example.demo.utils.var.GlobalVar;
 
 public class PowerUp extends AnimatedObject {
-    private final String type;
+    private String type;
     private boolean visible;
     private final double fallSpeed = 150.0;
     private boolean active = false;
@@ -60,6 +60,13 @@ public class PowerUp extends AnimatedObject {
     public boolean isVisible() { return visible; }
     public void setVisible(boolean visible) { this.visible = visible; }
     public String getType() { return type; }
+    public void reset(String type) {
+        this.type = type;
+        setPosition(0,0);
+        setVisible(false);
+        active = false;
+        expireAt = 1000;
+    }
 
     @Override
     public boolean isStatic() {

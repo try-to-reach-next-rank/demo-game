@@ -273,7 +273,7 @@ public class GameController extends Pane {
         // Falling Power-Ups
         world.getPowerUps().clear();
         for (PowerUpData powerUpData : loadedState.getPowerUpsData()) {
-            PowerUp p = new PowerUp(powerUpData.getType());
+            PowerUp p = ThePool.PowerUpPool.acquire(powerUpData.getType());
             p.setPosition(powerUpData.getX(), powerUpData.getY());
             p.setVisible(powerUpData.isVisible());
             world.getPowerUps().add(p);

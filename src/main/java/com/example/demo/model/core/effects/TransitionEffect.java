@@ -63,8 +63,4 @@ public class TransitionEffect {
     }
 
     public boolean isActive() { return active; }
-
-    public double getCurrentAlpha() {
-        return alpha;
-    }
 }

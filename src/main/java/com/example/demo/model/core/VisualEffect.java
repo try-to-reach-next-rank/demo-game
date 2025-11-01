@@ -10,8 +10,16 @@ public abstract class VisualEffect implements Effect {
     protected boolean active;
     protected final Timer timer;
     protected double durationSeconds;
+    protected String effectKey;
 
     public VisualEffect() {
+        this.active = false;
+        this.timer = new Timer();
+        this.durationSeconds = 100000.0;
+    }
+
+    public VisualEffect(String effectKey) {
+        this.effectKey = effectKey;
         this.active = false;
         this.timer = new Timer();
         this.durationSeconds = 100000.0;
@@ -63,4 +71,8 @@ public abstract class VisualEffect implements Effect {
     }
 
     public abstract VisualEffect clone();
+
+    public String getName() {
+        return effectKey;
+    }
 }

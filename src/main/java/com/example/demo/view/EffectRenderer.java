@@ -5,20 +5,19 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
-import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.core.VisualEffect;
 import com.example.demo.model.core.effects.AnimatedEffect;
-import com.example.demo.utils.var.GameVar;
 
+import com.example.demo.utils.ObjectPool;
 import javafx.scene.canvas.GraphicsContext;
 
 public class EffectRenderer {
-    private final AssetManager assetManager = AssetManager.getInstance();
     private static final EffectRenderer instance = new EffectRenderer();
 
     private final List<VisualEffect> activeEffects = new ArrayList<>();
-    private final Map<String, VisualEffect> allEffectsMap = new HashMap<>();
+    private final Map<String, ObjectPool<VisualEffect>> effectPools = new HashMap<>();
 
     private EffectRenderer() {
         init();
@@ -29,19 +28,19 @@ public class EffectRenderer {
     }
 
     private void init() {
-        add(GameVar.EXPLOSION1_EFFECT_KEY, new AnimatedEffect(GameVar.EXPLOSION1_EFFECT_KEY));
-        add(GameVar.EXPLOSION2_EFFECT_KEY, new AnimatedEffect(GameVar.EXPLOSION2_EFFECT_KEY));
+        registerEffect("explosion1", () -> new AnimatedEffect("explosion1"));
+        registerEffect("explosion2", () -> new AnimatedEffect("explosion2"));
+    }
+
+    private void registerEffect(String name, Supplier<VisualEffect> creator) {
+        effectPools.put(name, new ObjectPool<>(creator, 10));
     }
 
     public void spawn(String name, double x, double y, double duration) {
-        VisualEffect template = allEffectsMap.get(name);
-        if (template == null) {
-            // Log here
-            return;
-        }
+        ObjectPool<VisualEffect> pool = effectPools.get(name);
+        if (pool == null) return;
 
-        VisualEffect effect = template.clone();
-
+        VisualEffect effect = pool.acquire();
         effect.activate(x, y, duration);
         activeEffects.add(effect);
     }
@@ -53,6 +52,8 @@ public class EffectRenderer {
             effect.update(deltaTime);
             if (!effect.isActive()) {
                 it.remove();
+                ObjectPool<VisualEffect> pool = effectPools.get(effect.getName());
+                if (pool != null) pool.release(effect);
             }
         }
     }
@@ -64,16 +65,11 @@ public class EffectRenderer {
     }
 
     public void clear() {
-        activeEffects.clear();
-
-        for (VisualEffect effect : allEffectsMap.values()) {
-            if (effect.isActive()) {
-                effect.deactivate();
-            }
+        for (VisualEffect e : activeEffects) {
+            e.deactivate();
+            ObjectPool<VisualEffect> pool = effectPools.get(e.getName());
+            if (pool != null) pool.release(e);
         }
-    }
-
-    private void add(String effectKey, VisualEffect effect) {
-        allEffectsMap.put(effectKey, effect);
+        activeEffects.clear();
     }
 }
