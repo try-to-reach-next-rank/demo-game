@@ -16,9 +16,8 @@ import java.util.Set;
 
 public class Renderer implements Renderable {
     private final GameWorld world;
-    private Set<Brick> revealedBricks = new HashSet<>();
+    private final Set<Brick> revealedBricks = new HashSet<>();
     private int brickRevealCounter = 0;
-    private final int brickRevealInterval = 5;
     private int currentRevealTick = 0;
     private boolean reveal = true;
 
@@ -32,6 +31,7 @@ public class Renderer implements Renderable {
         currentRevealTick++;
 
         if (reveal) {
+            int brickRevealInterval = 5;
             if (currentRevealTick >= brickRevealInterval) {
                 currentRevealTick = 0;
                 Brick[] bricks = world.getBricks();

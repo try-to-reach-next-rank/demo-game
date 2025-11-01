@@ -1,10 +1,11 @@
-package com.example.demo.view;
+package com.example.demo.view.ui;
 
 import com.example.demo.controller.view.ThemeController;
 import com.example.demo.engine.Stage;
 import com.example.demo.controller.view.ButtonController;
 import com.example.demo.controller.view.SlotSelectionController;
 import com.example.demo.model.menu.SaveSlot;
+import com.example.demo.view.SlotComponent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;

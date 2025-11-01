@@ -20,7 +20,6 @@ import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.*;
 import com.example.demo.model.map.ParallaxLayer;
 import javafx.animation.AnimationTimer;
-
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -55,7 +54,6 @@ public class GameController extends Pane {
     private final DialogueBox dialogueBox = new DialogueBox();
 
     private final MapController mapManager = new MapController();
-    private DialogueSystem dialogueSystem;
     private ParallaxSystem parallaxSystem;
     private LoadTransition loadTransition;
     private final TransitionEffect transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
@@ -121,7 +119,7 @@ public class GameController extends Pane {
         LoadLevel loadLevel = new LoadLevel(mapManager, world, renderer);
 
         String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
-        dialogueSystem = new DialogueSystem(dialoguePath, dialogueBox);
+        DialogueSystem dialogueSystem = new DialogueSystem(dialoguePath, dialogueBox);
         loadTransition = new LoadTransition(world, transitionEffect, loadLevel, dialogueSystem);
 
         // --- Load map and build bricks/walls ---

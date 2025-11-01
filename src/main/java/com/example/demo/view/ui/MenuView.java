@@ -1,4 +1,4 @@
-package com.example.demo.view;
+package com.example.demo.view.ui;
 
 import com.example.demo.controller.view.ButtonController;
 import com.example.demo.controller.map.MenuController;
