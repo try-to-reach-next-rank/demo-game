@@ -13,6 +13,7 @@ public class GameResources {
         }
 
         public static void release(PowerUp p) {
+            p.deactivate();
             pool.release(p);
         }
     }

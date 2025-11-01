@@ -10,7 +10,7 @@ public class AnimatedEffect extends VisualEffect {
     private Animation animation;
 
     public AnimatedEffect(String animKey) {
-        super();
+        super(animKey);
         this.animKey = animKey;
         this.animation = AssetManager.getInstance().getAnimation(animKey);
     }

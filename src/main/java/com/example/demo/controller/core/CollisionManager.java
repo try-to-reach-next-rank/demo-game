@@ -13,6 +13,7 @@ import com.example.demo.model.system.BrickSystem;
 import com.example.demo.model.system.PowerUpSystem;
 import com.example.demo.view.EffectRenderer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.demo.utils.GameVar.PADDLE_SOUND_COOLDOWN;
@@ -25,11 +26,11 @@ import static com.example.demo.utils.GameVar.PADDLE_SOUND_COOLDOWN;
  */
 public class CollisionManager implements Updatable {
     private long nextPaddleSoundTime = 0L;
-
     private final GameWorld world;
     private final BallSystem ballSystem;
     private final BrickSystem brickSystem;
     private final PowerUpSystem powerUpSystem;
+    private final List<PowerUp> toRemove = new ArrayList<>();
 
     public CollisionManager(GameWorld world, BallSystem ballSystem,
                             BrickSystem brickSystem, PowerUpSystem powerUpSystem) {
@@ -64,6 +65,7 @@ public class CollisionManager implements Updatable {
         if (ball.getBounds().getMaxY() > GlobalVar.BOTTOM_EDGE) {
             Sound.getInstance().playSound("game_over");
             ballSystem.resetBall(ball); // delegate to BallSystem
+            powerUpSystem.reset();
         }
     }
 
@@ -71,7 +73,10 @@ public class CollisionManager implements Updatable {
         if (powerUps == null) return;
 
         for (PowerUp p : powerUps) {
-            if (!p.isVisible() || p.hasExpired()) GameResources.PowerUpPool.release(p);
+            if (!p.isVisible() || p.hasExpired()) {
+                GameResources.PowerUpPool.release(p);
+                toRemove.add(p);
+            }
             if (p.getBounds().intersects(paddle.getBounds())) {
                 powerUpSystem.activate(p); // delegate to PowerUpSystem
                 p.setVisible(false);
@@ -80,6 +85,7 @@ public class CollisionManager implements Updatable {
                 p.setVisible(false);
             }
         }
+        powerUps.removeAll(toRemove);
     }
 
     private void handleBallPaddleCollision(Ball ball, Paddle paddle) {

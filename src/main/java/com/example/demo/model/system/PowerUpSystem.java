@@ -25,7 +25,7 @@ public class PowerUpSystem implements Updatable {
 
     public void activate(PowerUp powerUp) {
         if (powerUp == null) return;
-        powerUp.activate(5000);
+        powerUp.activate(3000);
         activePowerUps.add(powerUp);
 
         switch (powerUp.getType()) {
@@ -33,7 +33,7 @@ public class PowerUpSystem implements Updatable {
             case GameVar.STRONGER -> ball.setStronger(true);
             case GameVar.STOPTIME -> ball.setStopTime(true);
             case GameVar.BIGGERPADDLE -> paddle.setBiggerPaddle(true);
-         }
+        }
     }
 
     @Override
