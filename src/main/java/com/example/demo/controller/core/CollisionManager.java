@@ -4,6 +4,7 @@ import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.gameobjects.GameObject;
+import com.example.demo.utils.GameResources;
 import com.example.demo.utils.GlobalVar;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.Vector2D;
@@ -70,7 +71,7 @@ public class CollisionManager implements Updatable {
         if (powerUps == null) return;
 
         for (PowerUp p : powerUps) {
-            if (!p.isVisible()) continue;
+            if (!p.isVisible() || p.hasExpired()) GameResources.PowerUpPool.release(p);
             if (p.getBounds().intersects(paddle.getBounds())) {
                 powerUpSystem.activate(p); // delegate to PowerUpSystem
                 p.setVisible(false);

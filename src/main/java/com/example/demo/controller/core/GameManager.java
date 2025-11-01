@@ -10,11 +10,8 @@ import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
 
-import com.example.demo.utils.CheatTable;
-import com.example.demo.utils.PauseTable;
+import com.example.demo.utils.*;
 
-import com.example.demo.utils.GlobalVar;
-import com.example.demo.utils.Sound;
 import com.example.demo.utils.dialogue.DialogueBox;
 import com.example.demo.utils.dialogue.DialogueSystem;
 import com.example.demo.repository.SaveDataRepository;
@@ -276,7 +273,7 @@ public class GameManager extends Pane {
         // Falling Power-Ups
         world.getPowerUps().clear();
         for (PowerUpData powerUpData : loadedState.getPowerUpsData()) {
-            PowerUp p = new PowerUp(powerUpData.getType());
+            PowerUp p = GameResources.PowerUpPool.acquire(powerUpData.getType());
             p.setPosition(powerUpData.getX(), powerUpData.getY());
             p.setVisible(powerUpData.isVisible());
             world.getPowerUps().add(p);
@@ -399,7 +396,7 @@ public class GameManager extends Pane {
         });
     }
 
-    private void stopGame() { // TODO: pause uses this
+    private void stopGame() {
         inGame = false;
         if (timer != null) timer.stop();
         Sound.getInstance().pauseMusic();
