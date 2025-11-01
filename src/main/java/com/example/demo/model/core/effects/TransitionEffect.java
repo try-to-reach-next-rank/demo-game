@@ -3,7 +3,7 @@ package com.example.demo.model.core.effects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class TransitionEffect {
+public class TransitionEffect { // TODO: extends from visual effect
 
     private double duration;
     private double time;
@@ -61,8 +61,4 @@ public class TransitionEffect {
     }
 
     public boolean isActive() { return active; }
-
-    public double getCurrentAlpha() {
-        return alpha;
-    }
 }
