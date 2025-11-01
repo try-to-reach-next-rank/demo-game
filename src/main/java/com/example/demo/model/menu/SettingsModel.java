@@ -5,10 +5,11 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import com.example.demo.model.state.SettingsState;
-import com.example.demo.controller.core.SaveManager;
 import com.example.demo.utils.Sound;
 
-import static com.example.demo.utils.GlobalVar.SETTINGS_FILE_PATH;
+import static com.example.demo.utils.var.GlobalVar.SETTINGS_FILE_PATH;
+
+import com.example.demo.controller.core.SaveController;
 
 
 public class SettingsModel {
@@ -45,12 +46,12 @@ public class SettingsModel {
         state.setEffectEnabled(isEffectEnabled());
 
         // Use the SaveManager to write the state to a file
-        SaveManager.save(state, SETTINGS_FILE_PATH);
+        SaveController.save(state, SETTINGS_FILE_PATH);
     }
 
     public void loadSettings() {
         // Use the SaveManager to load the state from a file
-        SettingsState state = SaveManager.load(SETTINGS_FILE_PATH, SettingsState.class);
+        SettingsState state = SaveController.load(SETTINGS_FILE_PATH, SettingsState.class);
 
         // If the file exists, apply the settings
         if (state != null) {

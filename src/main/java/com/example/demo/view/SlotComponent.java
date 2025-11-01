@@ -1,6 +1,6 @@
 package com.example.demo.view;
 
-import com.example.demo.controller.view.ButtonManager;
+import com.example.demo.controller.view.ButtonController;
 import com.example.demo.model.menu.SaveSlot;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.view.ui.UIComponent;

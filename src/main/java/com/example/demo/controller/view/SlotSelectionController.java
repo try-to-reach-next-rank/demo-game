@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.view;
 
 import com.example.demo.model.menu.SaveSlot;
 import com.example.demo.model.menu.SaveSlotManager;

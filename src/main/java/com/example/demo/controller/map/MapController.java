@@ -4,7 +4,7 @@ import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.Wall;
 import com.example.demo.model.map.MapData;
 import com.example.demo.utils.GameRandom;
-import com.example.demo.utils.GameVar;
+import com.example.demo.utils.var.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;
 
 import java.util.ArrayList;
@@ -14,21 +14,20 @@ import java.util.List;
  * MapManager is responsible for constructing the initial game world (bricks + walls)
  * based on predefined map matrices. It now uses BrickTextureProvider and the new Brick data model.
  */
-public class MapManager {
-    private final List<Brick> bricks = new ArrayList<>();
+public class MapController {
+
 
     public MapData loadMap(int level) {
         int[][] matrix = new int[0][];
         if (level == 1) matrix = MapData.createMap1Matrix();
         else if (level == 2) matrix = MapData.createMap2Matrix();
         else if (level == 3) matrix = MapData.createMap3Matrix();
-//       else matrix = MapData.createRandomMatrix();
 
         return loadMapFromMatrix(matrix);
     }
 
     public MapData loadMapFromMatrix(int[][] matrix) {
-        bricks.clear();
+        List<Brick> bricks = new ArrayList<>();
         List<Wall> walls = MapData.createBoundaryWalls();
 
         // --- Total width of one full row of bricks (for centering) ---

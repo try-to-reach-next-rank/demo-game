@@ -1,6 +1,6 @@
 package com.example.demo.utils;
 
-import com.example.demo.controller.view.AssetManager;
+import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.menu.SettingsModel;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;

@@ -1,9 +1,9 @@
 package com.example.demo.view.graphics;
 
-import com.example.demo.utils.GameVar;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.demo.utils.var.GameVar;
 
 public class BrickTextureProvider {
     private static final int MAX_HEALTH = GameVar.MAXHEALTH_OF_BRICKS;

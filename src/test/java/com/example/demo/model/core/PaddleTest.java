@@ -1,7 +1,8 @@
 package com.example.demo.model.core;
 
-import com.example.demo.utils.GameVar;
 import org.junit.jupiter.api.Test;
+
+import com.example.demo.utils.var.GameVar;
 
 import static org.junit.jupiter.api.Assertions.*;
 

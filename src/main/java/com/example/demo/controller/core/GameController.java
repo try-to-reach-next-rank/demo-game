@@ -1,10 +1,8 @@
 package com.example.demo.controller.core;
 
-import com.example.demo.controller.map.LoadLevel;
-import com.example.demo.controller.map.LoadTransition;
-import com.example.demo.controller.map.MapManager;
-
+import com.example.demo.controller.map.MapController;
 import com.example.demo.engine.*;
+import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.state.*;
@@ -13,11 +11,17 @@ import com.example.demo.model.system.*;
 import com.example.demo.utils.CheatTable;
 import com.example.demo.utils.PauseTable;
 
-import com.example.demo.utils.GlobalVar;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.dialogue.DialogueBox;
 import com.example.demo.utils.dialogue.DialogueSystem;
 import com.example.demo.repository.SaveDataRepository;
+import com.example.demo.utils.CheatTable;
+import com.example.demo.utils.Sound;
+import com.example.demo.utils.dialogue.DialogueBox;
+import com.example.demo.utils.dialogue.DialogueSystem;
+import com.example.demo.utils.var.AssetPaths;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.*;
 import com.example.demo.model.map.ParallaxLayer;
 import javafx.animation.AnimationTimer;
@@ -33,12 +37,12 @@ import javafx.scene.text.Font;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.example.demo.utils.var.GlobalVar.SECRET_CODE;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.demo.utils.GlobalVar.SECRET_CODE;
-
-public class GameManager extends Pane {
+public class GameController extends Pane {
 
     private AnimationTimer timer;
     private final GraphicsContext gc;
@@ -46,7 +50,7 @@ public class GameManager extends Pane {
     // === MODEL ===
     private final GameWorld world = new GameWorld();
 
-    private static final Logger log = LoggerFactory.getLogger(GameManager.class);
+    private static final Logger log = LoggerFactory.getLogger(GameController.class);
 
     // === SYSTEMS ===
     private final List<Updatable> updatables = new ArrayList<>();
@@ -55,15 +59,15 @@ public class GameManager extends Pane {
     private final UIManager uiManager = new UIManager();
     private final DialogueBox dialogueBox = new DialogueBox();
 
-    private final MapManager mapManager = new MapManager();
-    private CollisionManager collisionManager;
+    private final MapController mapManager = new MapController();
+    private CollisionController collisionManager;
     private BrickSystem brickSystem;
     private DialogueSystem dialogueSystem;
     private ParallaxSystem parallaxSystem;
     private PowerUpSystem powerUpSystem;
     private Renderer renderer;
     private LoadTransition loadTransition;
-    private final TransitionEffect transitionEffect = new TransitionEffect(2.0); // 1.5s duration
+    private final TransitionEffect transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
     private CheatTable cheatTable;
     private PauseTable pauseTable;
 
@@ -83,19 +87,19 @@ public class GameManager extends Pane {
 
     public void setCurrentSlot(int slotNumber) {
         this.currentSlotNumber = slotNumber;
-        System.out.println("[GameManager] Current Slot: " + this.currentSlotNumber);
+        log.info("[GameManager] Current Slot: {}", slotNumber);
     }
 
     public void setNewGame(boolean isNewGame) {
         this.isNewGame = isNewGame;
-        System.out.println("[GameManager] Is New Game: " + this.isNewGame);
+        log.info("[GameManager] Is New Game: {}", isNewGame);
     }
 
     // -------------------------------------------------------------------------
     //  Constructor
     // -------------------------------------------------------------------------
 
-    public GameManager() {
+    public GameController() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
         Canvas canvas = new Canvas(GlobalVar.WIDTH, GlobalVar.HEIGHT);
         gc = canvas.getGraphicsContext2D();
@@ -108,12 +112,7 @@ public class GameManager extends Pane {
     //  Game Initialization
     // -------------------------------------------------------------------------
 
-
     public void initGame() {
-        // --- Load all resources ---
-
-
-
         // --- Create base entities (Model layer) ---
         Paddle paddle = new Paddle();
         Ball ball = new Ball(paddle);
@@ -146,7 +145,7 @@ public class GameManager extends Pane {
         }
 
         // --- Create managers (controllers) ---
-        collisionManager = new CollisionManager(world, ballSystem, brickSystem, powerUpSystem);
+        collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
 
         // --- Register update systems ---
         updatables.addAll(List.of(
@@ -157,13 +156,13 @@ public class GameManager extends Pane {
                 collisionManager
         ));
 
-
         renderables.add(renderer);                                               // then the world
         renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
 
-        //if (world.getCurrentLevel() == GameVar.START_LEVEL) {
+        // --- Setup parallax for level 2 ---
+        if (world.getCurrentLevel() == GameVar.START_LEVEL) {
             initParallax();
-        //}
+        }
 
         //set up PauseTable o day;
         setupPauseTable();
@@ -185,18 +184,16 @@ public class GameManager extends Pane {
     //  Level Management
     // -------------------------------------------------------------------------
 
-
-    private void loadLevel(int level) { // TODO: put this in map\
+    private void loadLevel(int level) { // TODO: put this in map
         loadTransition.startLevel(level);
     }
-
 
     public void loadNextLevel() {
         int currentLevel = world.getCurrentLevel();
         int nextLevel = currentLevel + 1;
 
-        if (nextLevel > 3) {
-            nextLevel = 1; // Quay vòng
+        if (nextLevel > GameVar.MAX_LEVEL) {
+            nextLevel = GameVar.MIN_LEVEL;
         }
 
         world.setCurrentLevel(nextLevel);
@@ -207,8 +204,8 @@ public class GameManager extends Pane {
         int currentLevel = world.getCurrentLevel();
         int prevLevel = currentLevel - 1;
 
-        if (prevLevel < 1) {
-            prevLevel = 3; // Quay vòng
+        if (prevLevel < GameVar.MIN_LEVEL) {
+            prevLevel = GameVar.MAX_LEVEL;
         }
 
         world.setCurrentLevel(prevLevel);
@@ -233,9 +230,7 @@ public class GameManager extends Pane {
 
 
     private void loadGame() {
-
         log.info("[GameManager] Loading from slot " + currentSlotNumber + "...");
-
         SaveDataRepository repository = new SaveDataRepository();
         GameState loadedState = repository.loadSlot(currentSlotNumber);
 
@@ -247,19 +242,21 @@ public class GameManager extends Pane {
             log.info("Tải game thành công!");
         } else {
             log.info("Không có file lưu hoặc file lỗi.");
-
         }
     }
 
 
     public void applyState(GameState loadedState) {
+        // SECTION 1: Setup Level
         world.setCurrentLevel(loadedState.getCurrentLevel());
         Sound.getInstance().playMusic(loadedState.getCurrentTrackName(), loadedState.getCurrentTrackTime());
 
-        // Apply entity states từ save file
-        world.getPaddle().applyState(loadedState.getPaddleData());
-        world.getBall().applyState(loadedState.getBallData());
+        // SECTION 2: Apply Entity States
+        Ball ball = world.getBall();
+        Paddle paddle = world.getPaddle();
         Brick[] bricks = world.getBricks();
+        paddle.applyState(loadedState.getPaddleData());
+        ball.applyState(loadedState.getBallData());
 
         for (BrickData brickData : loadedState.getBricksData()) {
             int id = brickData.getId();
@@ -269,8 +266,8 @@ public class GameManager extends Pane {
         }
 
         // SECTION 3: Apply Relationships
-        if (world.getBall().isStuck()) {
-            world.getBall().alignWithPaddle(10, 1.0);
+        if (ball.isStuck()) {
+            ball.alignWithPaddle(GameVar.BALL_OFFSET_Y, GameVar.BALL_ALIGN_LERP_FACTOR);
         }
 
         // Falling Power-Ups
@@ -300,12 +297,17 @@ public class GameManager extends Pane {
     // -------------------------------------------------------------------------
 
     private void initParallax() {
-        parallaxSystem = new ParallaxSystem(world, 0.15, 8.0, new double[] {1.0, 0.6, 0.35, 0.2});
+        parallaxSystem = new ParallaxSystem(
+                world,
+                GameVar.PARALLAX_BASE_SPEED,
+                GameVar.PARALLAX_DEPTH,
+                GameVar.PARALLAX_SPEED_LAYERS
+        );
 
-        parallaxSystem.addLayer(new ParallaxLayer("/images/layer1.png", 0.25));
-        parallaxSystem.addLayer(new ParallaxLayer("/images/layer2.png", 0.5));
-        parallaxSystem.addLayer(new ParallaxLayer("/images/layer3.png", 0.75));
-        parallaxSystem.addLayer(new ParallaxLayer("/images/layer4.png", 1.0));
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER1, GameVar.PARALLAX_SPEED_LAYERS[3]));
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER2, GameVar.PARALLAX_SPEED_LAYERS[2]));
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER3, GameVar.PARALLAX_SPEED_LAYERS[1]));
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER4, GameVar.PARALLAX_SPEED_LAYERS[0]));
     }
 
     // -------------------------------------------------------------------------
@@ -323,7 +325,7 @@ public class GameManager extends Pane {
                 double deltaTime = (now - lastTime) / 1e9;
                 lastTime = now;
 
-                if (deltaTime > 0.05) deltaTime = 0.05;
+                if (deltaTime > GameVar.MAX_DELTA_TIME) deltaTime = GameVar.MAX_DELTA_TIME;
 
                 update(deltaTime);
                 render();

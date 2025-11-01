@@ -1,8 +1,9 @@
 package com.example.demo.model.system;
 
-import com.example.demo.utils.GameVar;
-import com.example.demo.utils.GlobalVar;
 import com.example.demo.model.core.Paddle;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;

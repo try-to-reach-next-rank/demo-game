@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 /**
  * sử dụng thư viện Gson của Google để chuyển đổi đối tượng Java sang Json và ngược lại.
  */
-public class SaveManager {
+public class SaveController {
     // một đối tượng Gson duy nhất được tạo ra cho cả chương trình
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

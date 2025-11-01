@@ -1,13 +1,17 @@
 package com.example.demo.utils.dialogue;
 
-import com.example.demo.controller.view.AssetManager;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+
+import com.example.demo.model.assets.AssetManager;
 import com.example.demo.utils.Sound;
+import com.example.demo.utils.var.AssetPaths;
+import com.example.demo.utils.var.UtilVar;
+
 import javafx.scene.text.Text;
 
 public class DialogueBox extends UIComponent {
@@ -47,23 +51,22 @@ public class DialogueBox extends UIComponent {
 
     public DialogueBox() {
         var am = AssetManager.getInstance();
-        var eggImg = am.getImage("/images/egg.png");
-        var ballImg = am.getImage("/images/Ball.png");
+        var eggImg = am.getImage(AssetPaths.EGG);
+        var ballImg = am.getImage(AssetPaths.BALL);
 
         if (eggImg != null) eggImage = eggImg;
         else {
-            var eggUrl = getClass().getResource("/images/egg.png");
-            if (eggUrl != null) eggImage = new Image(eggUrl.toExternalForm(), 130, 130, true, true);
+            var eggUrl = getClass().getResource(AssetPaths.EGG);
+            if (eggUrl != null) eggImage = new Image(eggUrl.toExternalForm(), UtilVar.CHARACTER_IMG_SIZE, UtilVar.CHARACTER_IMG_SIZE, true, true);
         }
 
         if (ballImg != null) ballImage = ballImg;
         else {
-            var ballUrl = getClass().getResource("/images/Ball.png");
-            if (ballUrl != null) ballImage = new Image(ballUrl.toExternalForm(), 130, 130, true, true);
+            var ballUrl = getClass().getResource(AssetPaths.BALL);
+            if (ballUrl != null) ballImage = new Image(ballUrl.toExternalForm(), UtilVar.CHARACTER_IMG_SIZE, UtilVar.CHARACTER_IMG_SIZE, true, true);
         }
 
-        // Use a cached font from AssetManager (or fallback)
-        this.font = am.getFont("Verdana", 20);
+        this.font = am.getFont("Verdana", UtilVar.FONT_SIZE);
     }
 
     public void start(DialogueLine[] lines) {
@@ -100,11 +103,10 @@ public class DialogueBox extends UIComponent {
         timePerChar += deltaTime;
 
         // typewriter effect
-        double typeSpeed = 0.03;
         if (!lineComplete) {
-            while (timePerChar >= typeSpeed && charIndex < line.text.length()) {
+            while (timePerChar >= UtilVar.TYPE_SPEED && charIndex < line.text.length()) {
                 displayedText += line.text.charAt(charIndex++);
-                timePerChar -= typeSpeed;
+                timePerChar -= UtilVar.TYPE_SPEED;
             }
             if (charIndex >= line.text.length()) {
                 lineComplete = true;
@@ -113,8 +115,10 @@ public class DialogueBox extends UIComponent {
         }
 
         // simple bounce animation for active speaker
-        timer += deltaTime * 5;
-        double bob = Math.sin(timer * Math.PI * 3) * 12 * Math.exp(-timer * 1.5);
+        timer += deltaTime * UtilVar.BOUNCE_FREQUENCY;
+        double bob = Math.sin(timer * Math.PI * 3)
+                * UtilVar.BOUNCE_AMPLITUDE
+                * Math.exp(-timer * UtilVar.BOUNCE_DECAY);
         if (line.speaker == DialogueLine.Speaker.EGG) {
             eggY = !lineComplete ? bob : 0;
             ballY = 0;
@@ -128,22 +132,22 @@ public class DialogueBox extends UIComponent {
     public void render(GraphicsContext gc, double width, double height) {
         if (!active || lines == null || currentLine >= lines.length) return;
 
-        double boxH = 160;
-        double margin = 40;
+        double boxH = UtilVar.BOX_HEIGHT;
+        double margin = UtilVar.BOX_MARGIN;
         DialogueLine line = lines[currentLine];
 
         // box
-        gc.setFill(Color.rgb(0, 0, 0, 0.7));
+        gc.setFill(Color.rgb(0, 0, 0, UtilVar.BOX_OPACITY));
         gc.fillRect(margin, height - boxH - margin, width - margin * 2, boxH);
 
         // characters
         if (eggImage != null) {
             gc.setGlobalAlpha(line.speaker == DialogueLine.Speaker.EGG ? 1.0 : 0.4);
-            gc.drawImage(eggImage, width - 180, height - boxH - 140 + eggY);
+            gc.drawImage(eggImage, width - UtilVar.EGG_OFFSET_X, height - boxH - UtilVar.EGG_OFFSET_Y + eggY);
         }
         if (ballImage != null) {
             gc.setGlobalAlpha(line.speaker == DialogueLine.Speaker.BALL ? 1.0 : 0.4);
-            gc.drawImage(ballImage, 50, height - boxH - 160 + ballY);
+            gc.drawImage(ballImage, UtilVar.BALL_OFFSET_X, height - boxH - UtilVar.BALL_OFFSET_Y + ballY);
         }
         gc.setGlobalAlpha(1.0);
 
@@ -154,10 +158,7 @@ public class DialogueBox extends UIComponent {
         gc.setFill(Color.WHITE);
         gc.setFont(font);
 
-// Text box padding
-        double textPadding = 20;
-        double textMaxWidth = width - margin * 2 - 200; // leaves room for images
-
+        double textMaxWidth = width - margin * 2 - UtilVar.TEXT_SIDE_GAP;
         double textY = height - boxH - margin + 60;
         double textX = (line.speaker == DialogueLine.Speaker.BALL)
                 ? margin + 160
@@ -167,7 +168,6 @@ public class DialogueBox extends UIComponent {
         drawWrappedText(gc, displayedText, textX, textY, textMaxWidth, 26);
 
     }
-
 
     @Override
     public void handleInput(KeyCode code) {

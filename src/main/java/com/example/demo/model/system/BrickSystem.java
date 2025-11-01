@@ -5,8 +5,8 @@ import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.PowerUp;
 import com.example.demo.utils.GameRandom;
-import com.example.demo.utils.GameVar;
 import com.example.demo.utils.Sound;
+import com.example.demo.utils.var.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.view.EffectRenderer;
 
@@ -69,8 +69,8 @@ public class BrickSystem implements Updatable {
      * Spawns a power-up at the destroyed brick's location.
      */
     private void maybeSpawnPowerUp(Brick brick) {
-        if (random.nextInt(100) < 99) { // 30% chance
-            PowerUp powerUp = new PowerUp(GameVar.powerUps[GameRandom.nextInt(4)]);
+        if (random.nextInt(100) < GameVar.POWERUP_SPAWN_CHANCE) {
+            PowerUp powerUp = new PowerUp(GameVar.powerUps[GameRandom.nextInt(GameVar.powerUps.length)]);
             powerUp.dropFrom(brick);
             powerUps.add(powerUp);
         }
@@ -82,6 +82,6 @@ public class BrickSystem implements Updatable {
     private void spawnDestructionEffect(Brick brick) {
         double centerX = brick.getX() + brick.getWidth() / 2;
         double centerY = brick.getY() + brick.getHeight();
-        EffectRenderer.getInstance().spawn("explosion1", centerX, centerY, 0.5);
+        EffectRenderer.getInstance().spawn(GameVar.EXPLOSION1_EFFECT_KEY, centerX, centerY, GameVar.EFFECT_DURATION);
     }
 }

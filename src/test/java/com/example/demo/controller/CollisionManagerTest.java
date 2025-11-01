@@ -1,13 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.controller.core.CollisionManager;
+import com.example.demo.controller.core.CollisionController;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.system.BallSystem;
 import com.example.demo.model.system.BrickSystem;
 import com.example.demo.model.system.PowerUpSystem;
-import com.example.demo.utils.GameVar;
-import com.example.demo.utils.GlobalVar;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.utils.Vector2D;
 import org.junit.jupiter.api.Test;
 
@@ -19,10 +19,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Unit tests for CollisionManager.
+ * Unit tests for CollisionController.
  *
  * Strategy:
- * - Construct a CollisionManager with a null GameWorld (we call its private handlers directly via reflection).
+ * - Construct a CollisionController with a null GameWorld (we call its private handlers directly via reflection).
  * - Provide lightweight "spy" subclasses of BallSystem, BrickSystem and PowerUpSystem to observe delegations.
  * - Use real Ball / Paddle / Brick / PowerUp where possible so tests follow the style of existing tests.
  *
@@ -34,11 +34,11 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * Note: tests avoid asserting static side-effects (Sound, EffectRenderer) and focus on logical delegation / state changes.
  */
-class CollisionManagerTest {
+class CollisionControllerTest {
 
-    // Utility to invoke private methods on CollisionManager
-    private Object invokePrivate(CollisionManager cm, String methodName, Class<?>[] paramTypes, Object... args) throws Exception {
-        Method m = CollisionManager.class.getDeclaredMethod(methodName, paramTypes);
+    // Utility to invoke private methods on CollisionController
+    private Object invokePrivate(CollisionController cm, String methodName, Class<?>[] paramTypes, Object... args) throws Exception {
+        Method m = CollisionController.class.getDeclaredMethod(methodName, paramTypes);
         m.setAccessible(true);
         return m.invoke(cm, args);
     }
@@ -64,7 +64,7 @@ class CollisionManagerTest {
         BrickSystem brickSystem = new BrickSystem(new Brick[0], new ArrayList<>());
         PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, new ArrayList<>());
 
-        CollisionManager cm = new CollisionManager(null, spyBallSystem, brickSystem, powerUpSystem);
+        CollisionController cm = new CollisionController(null, spyBallSystem, brickSystem, powerUpSystem);
 
         // Act: invoke private handler directly
         invokePrivate(cm, "handleBallFloorCollision", new Class[]{Ball.class}, ball);
@@ -105,7 +105,7 @@ class CollisionManagerTest {
         BallSystem ballSystem = new BallSystem(ball, paddle);
         BrickSystem brickSystem = new BrickSystem(new Brick[0], new ArrayList<>());
 
-        CollisionManager cm = new CollisionManager(null, ballSystem, brickSystem, spyPowerUpSystem);
+        CollisionController cm = new CollisionController(null, ballSystem, brickSystem, spyPowerUpSystem);
 
         // Pre-check
         assertTrue(powerUp.isVisible());
@@ -135,7 +135,7 @@ class CollisionManagerTest {
         BallSystem ballSystem = new BallSystem(ball, paddle);
         BrickSystem brickSystem = new BrickSystem(new Brick[0], new ArrayList<>());
 
-        CollisionManager cm = new CollisionManager(null, ballSystem, brickSystem, powerUpSystem);
+        CollisionController cm = new CollisionController(null, ballSystem, brickSystem, powerUpSystem);
 
         // Act
         invokePrivate(cm, "handlePaddlePowerUpCollisions", new Class[]{Paddle.class, List.class}, paddle, worldPowerUps);
@@ -166,7 +166,7 @@ class CollisionManagerTest {
         BrickSystem brickSystem = new BrickSystem(new Brick[0], new ArrayList<>());
         PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, new ArrayList<>());
 
-        CollisionManager cm = new CollisionManager(null, spyBallSystem, brickSystem, powerUpSystem);
+        CollisionController cm = new CollisionController(null, spyBallSystem, brickSystem, powerUpSystem);
 
         // Ensure ball is not stuck so sound/cooldown branch can run (we don't assert sound)
         ball.setStuck(false);
@@ -215,7 +215,7 @@ class CollisionManagerTest {
         BallSystem ballSystem = new BallSystem(ball, paddle);
         PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, new ArrayList<>());
 
-        CollisionManager cm = new CollisionManager(null, ballSystem, spyBrickSystem, powerUpSystem);
+        CollisionController cm = new CollisionController(null, ballSystem, spyBrickSystem, powerUpSystem);
 
         // Ensure precondition: intersects
         assertTrue(ball.getBounds().intersects(brick.getBounds()), "Ball and brick must intersect before collision");
@@ -263,7 +263,7 @@ class CollisionManagerTest {
         BallSystem ballSystem = new BallSystem(ball, paddle);
         PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, new ArrayList<>());
 
-        CollisionManager cm = new CollisionManager(null, ballSystem, spyBrickSystem, powerUpSystem);
+        CollisionController cm = new CollisionController(null, ballSystem, spyBrickSystem, powerUpSystem);
 
         double beforeX = ball.getVelocity().x;
         double beforeY = ball.getVelocity().y;

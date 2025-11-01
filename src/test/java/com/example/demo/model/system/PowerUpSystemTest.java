@@ -3,7 +3,8 @@ package com.example.demo.model.system;
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
 import com.example.demo.model.core.PowerUp;
-import com.example.demo.utils.GameVar;
+import com.example.demo.utils.var.GameVar;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

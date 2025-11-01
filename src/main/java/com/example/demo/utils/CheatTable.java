@@ -1,7 +1,8 @@
 package com.example.demo.utils;
 
-import com.example.demo.controller.core.GameManager;
+import com.example.demo.controller.core.GameController;
 import com.example.demo.model.core.effects.GlowTextEffect;
+import com.example.demo.utils.var.UtilVar;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -11,7 +12,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
 public class CheatTable extends UIComponent {
-    private final GameManager gameManager;
+    private final GameController gameController;
     private final GlowTextEffect title;
     // Danh sách các tùy chọn cheat
     private final String[] options = {
@@ -28,8 +29,8 @@ public class CheatTable extends UIComponent {
     private final Font titleFont = new Font("Verdana", 24);
     private final Font optionFont = new Font("Verdana", 18);
 
-    public CheatTable(GameManager gameManager) {
-        this.gameManager = gameManager;
+    public CheatTable(GameController gameController) {
+        this.gameController = gameController;
         Text cheatMenuText = new Text("CHEAT MENU");
         this.title = new GlowTextEffect(cheatMenuText, titleFont);
     }
@@ -45,20 +46,18 @@ public class CheatTable extends UIComponent {
             return;
         }
 
-        double boxWidth = 400;
-        double boxHeight = 250;
-        double boxX = (width - boxWidth) / 2;
-        double boxY = (height - boxHeight) / 2;
+        double boxX = (width - UtilVar.CHEAT_BOX_WIDTH) / 2;
+        double boxY = (height - UtilVar.CHEAT_BOX_HEIGHT) / 2;
 
         // Overlay
-        gc.setFill(Color.rgb(0, 0, 0, 0.85));
-        gc.fillRoundRect(boxX, boxY, boxWidth, boxHeight, 15, 15); // Bo góc
+        gc.setFill(Color.rgb(0, 0, 0, UtilVar.CHEAT_BOX_OPACITY));
+        gc.fillRoundRect(boxX, boxY, UtilVar.CHEAT_BOX_WIDTH, UtilVar.CHEAT_BOX_HEIGHT, UtilVar.BOX_CORNER_RADIUS, UtilVar.BOX_CORNER_RADIUS); // Bo góc
         gc.setStroke(Color.WHITE);
-        gc.strokeRoundRect(boxX, boxY, boxWidth, boxHeight, 15, 15);
+        gc.strokeRoundRect(boxX, boxY, UtilVar.CHEAT_BOX_WIDTH, UtilVar.CHEAT_BOX_HEIGHT, UtilVar.BOX_CORNER_RADIUS, UtilVar.BOX_CORNER_RADIUS);
 
         //Drawing title
-        double titleX = boxX + 50;
-        double titleY = boxY + 45;
+        double titleX = boxX + UtilVar.TITLE_OFFSET_X;
+        double titleY = boxY + UtilVar.TITLE_OFFSET_Y;
         title.activate(titleX, titleY);
         title.render(gc);
 
@@ -67,16 +66,16 @@ public class CheatTable extends UIComponent {
         gc.setTextAlign(TextAlignment.LEFT);
 
         for (int i = 0; i < options.length; i++) {
-            double optionY = boxY + 90 + (i * 30);
+            double optionY = boxY + UtilVar.OPTION_START_Y + (i * UtilVar.OPTION_SPACING);
 
             if (i == selectedIndex) {
                 // Đánh dấu tùy chọn đang được chọn
                 gc.setFill(Color.YELLOW);
-                gc.fillText("> " + options[i], boxX + 40, optionY);
+                gc.fillText("> " + options[i], boxX + UtilVar.OPTION_OFFSET_X, optionY);
             } else {
                 // Các tùy chọn khác
                 gc.setFill(Color.WHITE);
-                gc.fillText(options[i], boxX + 40, optionY);
+                gc.fillText(options[i], boxX + UtilVar.OPTION_OFFSET_X, optionY);
             }
         }
     }
@@ -128,19 +127,19 @@ public class CheatTable extends UIComponent {
 
         switch (selectedOption) {
             case "Toggle Stop Time":
-                gameManager.getBall().toggleStopTime();
+                gameController.getBall().toggleStopTime();
                 break;
             case "Toggle Accelerated":
-                gameManager.getBall().toggleAccelerated();
+                gameController.getBall().toggleAccelerated();
                 break;
             case "Toggle Stronger":
-                gameManager.getBall().toggleStronger();
+                gameController.getBall().toggleStronger();
                 break;
             case "Load Next Map":
-                gameManager.loadNextLevel();
+                gameController.loadNextLevel();
                 break;
             case "Load Previous Map":
-                gameManager.loadPreviousLevel();
+                gameController.loadPreviousLevel();
                 break;
         }
     }

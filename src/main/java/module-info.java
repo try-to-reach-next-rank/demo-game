@@ -26,4 +26,5 @@ module com.example.demo {
     exports com.example.demo.controller.core;
     exports com.example.demo.controller.map;
     exports com.example.demo.controller.view;
+    exports com.example.demo.utils.var;
 }
