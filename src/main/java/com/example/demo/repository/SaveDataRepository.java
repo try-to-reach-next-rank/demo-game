@@ -3,6 +3,8 @@ package com.example.demo.repository;
 import com.example.demo.controller.core.SaveController;
 import com.example.demo.model.state.GameState;
 import com.example.demo.model.state.BrickData;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,6 +17,7 @@ import java.util.List;
 
 public class SaveDataRepository {
     private static final String SAVE_DIR = "src\\main\\resources\\Saves\\";
+    private static final Logger log = LoggerFactory.getLogger(SaveDataRepository.class);
 
     public SaveDataRepository() {
         createSaveDirectoryIfNotExists();
@@ -25,7 +28,7 @@ public class SaveDataRepository {
             Path savePath = Paths.get(SAVE_DIR);
             if (!Files.exists(savePath)) {
                 Files.createDirectories(savePath);
-                System.out.println("[SaveDataRepository] Created save directory: " + SAVE_DIR);
+                SaveDataRepository.log.info("[SaveDataRepository] Created save directory: {}", SAVE_DIR);
             }
         } catch (IOException e) {
             System.err.println("[SaveDataRepository] Failed to create save directory!");
@@ -44,7 +47,7 @@ public class SaveDataRepository {
 
     public GameState loadSlot(int slotNumber) {
         if (!slotExists(slotNumber)) {
-            System.out.println("[SaveDataRepository] Slot " + slotNumber + " does not exist.");
+            log.info("Slot {} does not exist.", slotNumber);
             return null;
         }
 
@@ -52,7 +55,7 @@ public class SaveDataRepository {
         GameState state = SaveController.load(path, GameState.class);
 
         if (state != null) {
-            System.out.println("[SaveDataRepository] Loaded slot " + slotNumber + " successfully.");
+            log.info("Loaded slot {} successfully.", slotNumber);
         }
 
         return state;
@@ -77,7 +80,7 @@ public class SaveDataRepository {
         String path = getSlotPath(slotNumber);
         SaveController.save(state, path);
 
-        System.out.println("[SaveDataRepository] Saved slot " + slotNumber);
+        log.info("Saved slot {}", slotNumber);
     }
 
     public boolean deleteSlot(int slotNumber) {
@@ -86,7 +89,7 @@ public class SaveDataRepository {
             boolean deleted = Files.deleteIfExists(path);
 
             if (deleted) {
-                System.out.println("[SaveDataRepository] Deleted slot " + slotNumber);
+                log.info("[SaveDataRepository] Deleted slot {}", slotNumber);
             }
 
             return deleted;

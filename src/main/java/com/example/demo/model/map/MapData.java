@@ -49,7 +49,6 @@ public class MapData {
             walls.add(new Wall(Wall.Side.TOP, i * GameVar.HEIGHT_OF_WALLS, 0,
                     GameVar.WIDTH_OF_WALLS, GameVar.HEIGHT_OF_WALLS));
         }
-        System.out.println("Walls created: " + walls.size());
         return walls;
     }
 

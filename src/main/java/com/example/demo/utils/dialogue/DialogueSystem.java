@@ -1,5 +1,8 @@
 package com.example.demo.utils.dialogue;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,6 +13,7 @@ import java.util.ArrayList;
  * -> gọi DialogueBox để hiển thị hội thoại
  */
 public class DialogueSystem {
+    private static final Logger log = LoggerFactory.getLogger(DialogueSystem.class);
     private DialogueLoader loader;      // đọc file kịch bản.
     private DialogueBox dialogueBox;    // hiển thị hội thoại
 
@@ -26,7 +30,7 @@ public class DialogueSystem {
      * Tải và xử lý một file txt.
      */
     public void loadDialogue(String filePath) {
-        System.out.println("Loading script from:  " + filePath);
+        DialogueSystem.log.info("Loading script from:  {}", filePath);
         loader = new DialogueLoader(filePath);
         pendingLines.clear(); // Xóa các dòng lệnh cũ nếu có
         loadAllLines();

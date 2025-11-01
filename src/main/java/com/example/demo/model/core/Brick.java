@@ -3,7 +3,6 @@ package com.example.demo.model.core;
 import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.view.graphics.BrickTextureProvider;
-import javafx.scene.image.Image;
 
 /**
  * Pure data class representing a brick in the game.

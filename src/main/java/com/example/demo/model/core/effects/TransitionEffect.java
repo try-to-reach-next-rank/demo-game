@@ -7,15 +7,14 @@ import javafx.scene.paint.Color;
 
 public class TransitionEffect {
 
-    private double duration;
+    private final double duration;
     private double time;
     private boolean active;
     private boolean midpointReached;
-    private double alpha;
 
     private Runnable onMidpoint;
     private Runnable onEnd;
-    private Color color = GameVar.TRANSITION_DEFAULT_COLOR;
+    private final Color color = GameVar.TRANSITION_DEFAULT_COLOR;
 
     public TransitionEffect(double durationSeconds) {
         this.duration = Math.max(GameVar.TRANSITION_MIN_DURATION, durationSeconds);
@@ -50,7 +49,7 @@ public class TransitionEffect {
         if (!active) return;
 
         double half = duration / GameVar.TRANSITION_HALF_FACTOR;
-        alpha = (time < half)
+        double alpha = (time < half)
                 ? (time / half)
                 : (1 - (time - half) / half);
 

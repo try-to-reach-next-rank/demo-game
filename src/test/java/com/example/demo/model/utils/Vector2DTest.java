@@ -3,8 +3,6 @@ package com.example.demo.model.utils;
 import com.example.demo.utils.Vector2D;
 import org.junit.jupiter.api.Test;
 
-import com.example.demo.utils.Vector2D;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Vector2DTest {

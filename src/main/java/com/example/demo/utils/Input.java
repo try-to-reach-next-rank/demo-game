@@ -4,9 +4,6 @@ import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
 import javafx.scene.input.KeyCode;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Input {
     private final Paddle paddle;
     private final Ball ball;

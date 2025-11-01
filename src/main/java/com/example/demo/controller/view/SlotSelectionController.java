@@ -4,10 +4,13 @@ import com.example.demo.model.menu.SaveSlot;
 import com.example.demo.model.menu.SaveSlotManager;
 import com.example.demo.model.state.GameState;
 import com.example.demo.repository.SaveDataRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class SlotSelectionController {
+    private static final Logger log = LoggerFactory.getLogger(SlotSelectionController.class);
     private final SaveSlotManager slotManager;
     private final SaveDataRepository repository;
 
@@ -41,18 +44,18 @@ public class SlotSelectionController {
 
     // Actions
     public void handleNewGame(int slotNumber) {
-        System.out.println("[SlotSelectionController] Starting new game in slot " + slotNumber);
+        log.info("Starting new game in slot {}", slotNumber);
         if (onStartGame != null) {
             onStartGame.startGame(slotNumber, null);  // ← null = New Game
         }
     }
 
     public void handleContinueGame(int slotNumber) {
-        System.out.println("[SlotSelectionController] Loading game from slot " + slotNumber);
+        log.info("Loading game from slot {}", slotNumber);
         GameState gameState = repository.loadSlot(slotNumber);
 
         if (gameState == null) {
-            System.err.println("[SlotSelectionController] Failed to load slot " + slotNumber);
+            SlotSelectionController.log.info("Failed to load slot {}", slotNumber);
             return;
         }
 
@@ -62,17 +65,17 @@ public class SlotSelectionController {
     }
 
     public void handleDeleteSlot(int slotNumber) {
-        System.out.println("[SlotSelectionController] Deleting slot " + slotNumber);
+        log.info("Deleting slot {}", slotNumber);
         boolean deleted = repository.deleteSlot(slotNumber);
 
         if (deleted) {
             slotManager.reloadSlot(slotNumber);
-            System.out.println("[SlotSelectionController] Slot " + slotNumber + " deleted");
+            log.info("Slot {} deleted", slotNumber);
         }
     }
 
     public void handleBackToMenu() {
-        System.out.println("[SlotSelectionController] Back to menu");
+        log.info("Back to menu");
         if (onBackToMenu != null) {
             onBackToMenu.run();
         }
@@ -81,7 +84,4 @@ public class SlotSelectionController {
     public void refreshSlots() {
         slotManager.reloadAll();
     }
-
-
-
 }

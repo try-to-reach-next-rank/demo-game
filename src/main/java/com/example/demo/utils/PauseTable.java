@@ -30,16 +30,13 @@ public class PauseTable extends UIComponent {
         container.getChildren().add(buttonController.createButtonRow("Resume", e -> {
             hide();
             gameController.resumeGame();
-            System.out.println("Resume game");
         }));
 
         container.getChildren().add(buttonController.createButtonRow("Back Without Save", e -> {
-            System.out.println("Back Without Save");
             gameController.backToMenu();
         }));
 
         container.getChildren().add(buttonController.createButtonRow("Save And Quit", e -> {
-            System.out.println("Save And Quit");
             gameController.saveGame();
             gameController.backToMenu();
         }));

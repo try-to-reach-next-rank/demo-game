@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.example.demo.engine.AssetLoader;
 import com.example.demo.utils.Animation;
-import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GameVar;
 
 import javafx.scene.image.Image;
@@ -110,15 +109,14 @@ public class AnimationAssets implements AssetLoader {
     };
 
     private static class AnimationData {
-        private String    imageKey;
-        private double    frameWidth;
-        private double    frameHeight;
-        private int       totalFrames;
+        private final String    imageKey;
+        private final double    frameWidth;
+        private final double    frameHeight;
+        private final int       totalFrames;
         private double    renderWidth;
         private double    renderHeight;
         private double    durationSeconds = 1.0; // Default Animation run 1 sec
         private int       rows            = 0;
-        private int       startFrameIndex = 0;
         private boolean   loop            = false;
 
         private AnimationData(String imageKey, double frameWidth, double frameHeight, int totalFrames) {
@@ -150,11 +148,6 @@ public class AnimationAssets implements AssetLoader {
 
         private AnimationData duration(double durationSeconds) {
             this.durationSeconds = durationSeconds;
-            return this;
-        }
-
-        private AnimationData startFrame(int index) {
-            this.startFrameIndex = index;
             return this;
         }
     }

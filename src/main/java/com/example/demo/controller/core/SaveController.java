@@ -2,6 +2,8 @@ package com.example.demo.controller.core;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,6 +15,7 @@ import java.nio.file.Paths;
 public class SaveController {
     // một đối tượng Gson duy nhất được tạo ra cho cả chương trình
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final Logger log = LoggerFactory.getLogger(SaveController.class);
 
     /**
      *  Lưu một đối tượng Java bất kỳ vào một file dưới định dạng chuỗi JSON.
@@ -27,7 +30,7 @@ public class SaveController {
 
             Files.writeString(path, jsonString);
 
-            System.out.println("Successfully saved data to " + fileName);
+            SaveController.log.info("Successfully saved data to {}", fileName);
         } catch (Exception e) {
             System.err.println("Error: Failed to save data to " + fileName);
             e.printStackTrace();
@@ -51,7 +54,7 @@ public class SaveController {
             Path path = Paths.get(fileName);
 
             if (!Files.exists(path)) {
-                System.out.println("Save file not found: " + fileName + ". Returning null.");
+                log.info("Save file not found: {}. Returning null.", fileName);
                 return null;
             }
 
@@ -59,7 +62,7 @@ public class SaveController {
 
             T loadedObject = gson.fromJson(jsonString, classType);
 
-            System.out.println("Successfully loaded data from " + fileName);
+            log.info("Successfully loaded data from {}", fileName);
             return loadedObject;
         } catch (Exception e) {
             System.err.println("Error: Failed to load data from " + fileName);

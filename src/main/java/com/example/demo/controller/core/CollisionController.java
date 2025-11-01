@@ -13,8 +13,6 @@ import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.EffectRenderer;
 
-import static com.example.demo.utils.var.GameVar.PADDLE_SOUND_COOLDOWN;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -15,6 +15,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GameVar;
@@ -27,36 +28,36 @@ public class ThemeController {
     private static final ImageView bgView = new ImageView();
     private static Timeline bgTimeline;
     private static int bgFrameIndex = 0;
-    private static Duration bgFrameDuration = Duration.millis(140);
+    private static final Duration bgFrameDuration = Duration.millis(140);
 
     private Image handImage = null;
 
     public ThemeController() {
-        loadHandImage(AssetPaths.HAND);
-        loadBgFrames("/images/bg/frame_", GameVar.DEFAULT_BG_FRAMES);
+        loadHandImage();
+        loadBgFrames();
     }
 
     // -------------------------
     // Resource Loading
     // -------------------------
 
-    private void loadHandImage(String resourcePath) {
+    private void loadHandImage() {
         try {
-            var url = getClass().getResource(resourcePath);
+            var url = getClass().getResource(AssetPaths.HAND);
             if (url != null) {
                 handImage = new Image(url.toExternalForm(), true);
             } else {
-                System.err.println("[ThemeManager] hand image not found at " + resourcePath);
+                System.err.println("[ThemeManager] hand image not found at " + AssetPaths.HAND);
             }
         } catch (Exception ex) {
             System.err.println("[ThemeManager] error loading hand image: " + ex.getMessage());
         }
     }
 
-    private void loadBgFrames(String basePath, int count) {
+    private void loadBgFrames() {
         bgFrames.clear();
-        for (int i = 0; i < count; i++) {
-            String path = basePath + i + ".png";
+        for (int i = 0; i < GameVar.DEFAULT_BG_FRAMES; i++) {
+            String path = "/images/bg/frame_" + i + ".png";
             try {
                 var url = getClass().getResource(path);
                 if (url != null) {
@@ -88,11 +89,11 @@ public class ThemeController {
 
     private static void setupAnimatedBackground(StackPane rootStack) {
         bgView.setPreserveRatio(false);
-        bgView.setImage(bgFrames.get(0));
+        bgView.setImage(bgFrames.getFirst());
         bgView.fitWidthProperty().bind(rootStack.widthProperty());
         bgView.fitHeightProperty().bind(rootStack.heightProperty());
 
-        rootStack.getChildren().add(0, bgView);
+        rootStack.getChildren().addFirst(bgView);
         StackPane.setAlignment(bgView, Pos.CENTER);
 
         startBgAnimation();
@@ -112,7 +113,7 @@ public class ThemeController {
 
         bgRegion.prefWidthProperty().bind(rootStack.widthProperty());
         bgRegion.prefHeightProperty().bind(rootStack.heightProperty());
-        rootStack.getChildren().add(0, bgRegion);
+        rootStack.getChildren().addFirst(bgRegion);
         StackPane.setAlignment(bgRegion, Pos.CENTER);
     }
 
@@ -125,7 +126,7 @@ public class ThemeController {
         if (bgTimeline != null) bgTimeline.stop();
 
         bgFrameIndex = 0;
-        bgView.setImage(bgFrames.get(0));
+        bgView.setImage(bgFrames.getFirst());
 
         bgTimeline = new Timeline(new KeyFrame(bgFrameDuration, e -> {
             bgFrameIndex = (bgFrameIndex + 1) % bgFrames.size();
@@ -150,7 +151,7 @@ public class ThemeController {
      */
     public static void applyCss(Region node) {
         try {
-            String css = ThemeController.class.getResource(AssetPaths.CSS_PATH_MENU).toExternalForm();
+            String css = Objects.requireNonNull(ThemeController.class.getResource(AssetPaths.CSS_PATH_MENU)).toExternalForm();
             node.getStylesheets().add(css);
         } catch (Exception e) {
             System.err.println("[ThemeManager] Failed to load CSS: " + e.getMessage());

@@ -2,7 +2,6 @@ package com.example.demo.controller.core;
 
 import com.example.demo.controller.map.MapController;
 import com.example.demo.engine.*;
-import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.state.*;
@@ -15,10 +14,6 @@ import com.example.demo.utils.Sound;
 import com.example.demo.utils.dialogue.DialogueBox;
 import com.example.demo.utils.dialogue.DialogueSystem;
 import com.example.demo.repository.SaveDataRepository;
-import com.example.demo.utils.CheatTable;
-import com.example.demo.utils.Sound;
-import com.example.demo.utils.dialogue.DialogueBox;
-import com.example.demo.utils.dialogue.DialogueSystem;
 import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
@@ -60,12 +55,8 @@ public class GameController extends Pane {
     private final DialogueBox dialogueBox = new DialogueBox();
 
     private final MapController mapManager = new MapController();
-    private CollisionController collisionManager;
-    private BrickSystem brickSystem;
     private DialogueSystem dialogueSystem;
     private ParallaxSystem parallaxSystem;
-    private PowerUpSystem powerUpSystem;
-    private Renderer renderer;
     private LoadTransition loadTransition;
     private final TransitionEffect transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
     private CheatTable cheatTable;
@@ -87,12 +78,12 @@ public class GameController extends Pane {
 
     public void setCurrentSlot(int slotNumber) {
         this.currentSlotNumber = slotNumber;
-        log.info("[GameManager] Current Slot: {}", slotNumber);
+        log.info("Current Slot: {}", slotNumber);
     }
 
     public void setNewGame(boolean isNewGame) {
         this.isNewGame = isNewGame;
-        log.info("[GameManager] Is New Game: {}", isNewGame);
+        log.info("Is New Game: {}", isNewGame);
     }
 
     // -------------------------------------------------------------------------
@@ -122,16 +113,20 @@ public class GameController extends Pane {
         // --- Create core systems (Controller layer) ---
         BallSystem ballSystem = new BallSystem(ball, paddle);
         PaddleSystem paddleSystem = new PaddleSystem(paddle);
-        this.powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
+        PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
 
-        world.setPowerUpSystem(this.powerUpSystem);
+        world.setPowerUpSystem(powerUpSystem);
 
-        this.renderer = new Renderer(world);
+        Renderer renderer = new Renderer(world);
         LoadLevel loadLevel = new LoadLevel(mapManager, world, renderer);
+
+        String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
+        dialogueSystem = new DialogueSystem(dialoguePath, dialogueBox);
         loadTransition = new LoadTransition(world, transitionEffect, loadLevel, dialogueSystem);
 
         // --- Load map and build bricks/walls ---
         // --- Đã chia làm 2 dựa trên flag isNewGame
+        BrickSystem brickSystem;
         if (isNewGame) {
             // NEW GAME: Load level với transition đầy đủ
             loadLevel(world.getCurrentLevel());
@@ -145,7 +140,7 @@ public class GameController extends Pane {
         }
 
         // --- Create managers (controllers) ---
-        collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
+        CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
 
         // --- Register update systems ---
         updatables.addAll(List.of(
@@ -168,10 +163,6 @@ public class GameController extends Pane {
         setupPauseTable();
 
         Sound.getInstance().playRandomMusic();
-
-        // --- LOAD GAME if not New Game ---
-        String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
-        dialogueSystem = new DialogueSystem(dialoguePath, dialogueBox);
 
         setupKeyHandling();
         uiManager.add(dialogueBox);
@@ -225,12 +216,12 @@ public class GameController extends Pane {
 
         SaveDataRepository repository = new SaveDataRepository();
         repository.saveSlot(currentSlotNumber, gameState);
-        System.out.println("[GameManager] Save complete!");
+        log.info("Save complete!");
     }
 
 
     private void loadGame() {
-        log.info("[GameManager] Loading from slot " + currentSlotNumber + "...");
+        log.info("Loading from slot {}...", currentSlotNumber);
         SaveDataRepository repository = new SaveDataRepository();
         GameState loadedState = repository.loadSlot(currentSlotNumber);
 
@@ -417,7 +408,7 @@ public class GameController extends Pane {
                 dialogueBox.resumeDialogue();
             }
             Sound.getInstance().resumeMusic();
-            log.info("[GameManager] Game resumed");
+            log.info("Game resumed");
         }
     }
 

@@ -3,33 +3,14 @@ package com.example.demo.controller.map;
 import com.example.demo.model.menu.MenuModel;
 import javafx.application.Platform;
 
-public class MenuController {
-
-    private final MenuModel model;
-
-    public MenuController(MenuModel model) {
-        this.model = model;
-    }
-
-    public void isPlaying(){
-        model.setCurrentScreen(MenuModel.Screen.PLAY);
-        System.out.println("playing");
-    }
+public record MenuController(MenuModel model) {
 
     public void isSelecting() {
         model.setCurrentScreen(MenuModel.Screen.SELECT);
-        System.out.println("Select profile");
-    }
-
-
-    public void isPause() {
-        model.setCurrentScreen(MenuModel.Screen.PAUSE);
-        System.out.println("Just Pausing");
     }
 
     public void isSettings() {
         model.setCurrentScreen(MenuModel.Screen.SETTINGS);
-        System.out.println("Just Settings");
     }
 
     public void isExit() {

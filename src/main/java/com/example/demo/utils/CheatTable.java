@@ -123,8 +123,6 @@ public class CheatTable extends UIComponent {
     private void executeCheat() {
         String selectedOption = options[selectedIndex];
 
-        System.out.println("Executing cheat: " + selectedOption);
-
         switch (selectedOption) {
             case "Toggle Stop Time":
                 gameController.getBall().toggleStopTime();

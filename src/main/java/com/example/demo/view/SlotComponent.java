@@ -1,15 +1,12 @@
 package com.example.demo.view;
 
-import com.example.demo.controller.view.ButtonController;
 import com.example.demo.model.menu.SaveSlot;
 import com.example.demo.model.state.BrickData;
-import com.example.demo.view.ui.UIComponent;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;

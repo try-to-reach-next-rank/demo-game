@@ -118,3 +118,104 @@
 19:52:14.579 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
 19:52:15.587 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
 19:52:16.597 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:13:05.867 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - [GameManager] Is New Game: true
+20:13:05.869 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - [GameManager] Current Slot: 1
+20:13:07.035 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 62
+20:13:08.034 INFO  [JavaFX Application Thread] c.example.demo.view.LoadTransition - Loaded map: 1 with 124 bricks
+20:13:08.047 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:13:09.073 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:13:10.082 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:13:11.089 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:13:12.097 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:13:13.105 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:13:14.114 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:13:15.121 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:13:16.145 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:13:17.154 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:13:18.162 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:13:19.169 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:13:19.536 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:13:19.846 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:13:20.140 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:13:20.177 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:13:20.365 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:13:20.652 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:13:21.185 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:13:21.463 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - RIGHT
+20:13:21.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:21.997 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:22.149 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:22.193 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:13:22.764 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:23.201 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:13:23.598 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - RIGHT
+20:13:23.756 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:24.079 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:24.210 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:13:24.279 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:24.447 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:24.580 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:24.700 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:25.216 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:25.217 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:13:25.413 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:25.597 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:25.748 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:25.913 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:26.080 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - LEFT
+20:13:26.225 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:13:27.233 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:23:09.276 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+20:23:14.809 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+20:23:14.960 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+20:23:14.960 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+20:23:15.051 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+20:23:16.068 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 62
+20:23:17.070 INFO  [JavaFX Application Thread] c.example.demo.view.LoadTransition - Loaded map: 1 with 124 bricks
+20:23:17.086 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:23:18.095 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:23:19.102 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:24:41.412 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+20:24:44.774 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+20:24:44.919 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+20:24:44.919 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+20:24:44.992 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+20:24:46.030 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:24:47.013 INFO  [JavaFX Application Thread] c.example.demo.view.LoadTransition - Loaded map: 1 with 124 bricks
+20:24:47.074 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:24:48.089 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 63
+20:24:49.096 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:24:49.143 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:24:49.509 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:24:49.877 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:24:50.103 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:24:50.244 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:24:50.758 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:24:51.111 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:24:52.119 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:26:07.170 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+20:26:09.710 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+20:26:09.863 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+20:26:09.863 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+20:26:09.972 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+20:26:11.014 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:26:12.016 INFO  [JavaFX Application Thread] c.example.demo.view.LoadTransition - Loaded map: 1 with 124 bricks
+20:26:12.026 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:26:13.056 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:30:05.056 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+20:30:06.998 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+20:30:07.156 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+20:30:07.156 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+20:30:07.163 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+20:30:08.277 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 62
+20:30:09.274 INFO  [JavaFX Application Thread] c.example.demo.view.LoadTransition - Loaded map: 1 with 124 bricks
+20:30:09.274 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+20:30:10.282 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:30:11.291 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 59
+20:30:11.705 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:30:12.069 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:30:12.298 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+20:30:12.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:30:12.736 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:30:13.062 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
+20:30:13.306 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61

@@ -2,6 +2,8 @@ package com.example.demo.utils.var;
 
 public final class AssetPaths {
     private AssetPaths() {}
+    // GAME
+    public static final String ICON = "/images/icon.png";
     // THEME
     public static final String CSS_PATH_MENU = "/styles/menu.css";
     public static final String HAND = "/images/hand.png";

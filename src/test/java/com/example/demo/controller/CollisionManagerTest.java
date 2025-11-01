@@ -37,10 +37,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class CollisionControllerTest {
 
     // Utility to invoke private methods on CollisionController
-    private Object invokePrivate(CollisionController cm, String methodName, Class<?>[] paramTypes, Object... args) throws Exception {
+    private void invokePrivate(CollisionController cm, String methodName, Class<?>[] paramTypes, Object... args) throws Exception {
         Method m = CollisionController.class.getDeclaredMethod(methodName, paramTypes);
         m.setAccessible(true);
-        return m.invoke(cm, args);
+        m.invoke(cm, args);
     }
 
     @Test

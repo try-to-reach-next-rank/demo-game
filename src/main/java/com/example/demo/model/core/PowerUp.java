@@ -2,8 +2,11 @@ package com.example.demo.model.core;
 
 import com.example.demo.model.core.gameobjects.AnimatedObject;
 import com.example.demo.utils.var.GlobalVar;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PowerUp extends AnimatedObject {
+    private static final Logger log = LoggerFactory.getLogger(PowerUp.class);
     private String type;
     private boolean visible;
     private final double fallSpeed = 150.0;
@@ -12,7 +15,7 @@ public class PowerUp extends AnimatedObject {
 
     public PowerUp(String type) {
         super("powerup_" + type.toLowerCase() , 0, 0);
-        System.out.println("Type: " + type);
+        PowerUp.log.info("Type: {}", type);
         this.type = type;
     }
 

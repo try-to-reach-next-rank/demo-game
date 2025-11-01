@@ -10,10 +10,13 @@ import com.example.demo.utils.Sound;
 import static com.example.demo.utils.var.GlobalVar.SETTINGS_FILE_PATH;
 
 import com.example.demo.controller.core.SaveController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class SettingsModel {
 
+    private static final Logger log = LoggerFactory.getLogger(SettingsModel.class);
     // Audio settings
     private final DoubleProperty musicVolume = new SimpleDoubleProperty(1.0);
     private final DoubleProperty effectVolume = new SimpleDoubleProperty(1.0);
@@ -36,7 +39,7 @@ public class SettingsModel {
     }
 
     public void saveSettings() {
-        System.out.println("Saving settings...");
+        log.info("Saving settings...");
         SettingsState state = new SettingsState();
 
         // Get the current values from the properties
@@ -55,15 +58,12 @@ public class SettingsModel {
 
         // If the file exists, apply the settings
         if (state != null) {
-            System.out.println("Loading settings...");
             setMusicVolume(state.getMusicVolume());
             setEffectVolume(state.getEffectVolume());
             setMusicEnabled(state.isMusicEnabled());
             setEffectEnabled(state.isEffectEnabled());
         } else {
-            System.out.println("No settings file found. Using default settings.");
-            // Optional: You could save the default settings on the first run
-            // saveSettings();
+            SettingsModel.log.info("No settings file found. Using default settings.");
         }
     }
 
