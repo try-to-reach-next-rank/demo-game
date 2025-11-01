@@ -10,15 +10,13 @@ import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
 
-import com.example.demo.model.utils.GameVar;
+import com.example.demo.utils.CheatTable;
+import com.example.demo.utils.PauseTable;
 
-import com.example.demo.model.utils.CheatTable;
-import com.example.demo.model.utils.PauseTable;
-
-import com.example.demo.model.utils.GlobalVar;
-import com.example.demo.model.utils.Sound;
-import com.example.demo.model.utils.dialogue.DialogueBox;
-import com.example.demo.model.utils.dialogue.DialogueSystem;
+import com.example.demo.utils.GlobalVar;
+import com.example.demo.utils.Sound;
+import com.example.demo.utils.dialogue.DialogueBox;
+import com.example.demo.utils.dialogue.DialogueSystem;
 import com.example.demo.repository.SaveDataRepository;
 import com.example.demo.view.*;
 import com.example.demo.model.map.ParallaxLayer;
@@ -38,7 +36,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.demo.model.utils.GlobalVar.SECRET_CODE;
+import static com.example.demo.utils.GlobalVar.SECRET_CODE;
 
 public class GameManager extends Pane {
 
