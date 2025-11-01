@@ -1,37 +1,39 @@
 {
   "currentLevel": 1,
+  "currentTrackName": "Gerty-on-a-Rainy-Day",
+  "currentTrackTime": 21090.748299000003,
   "paddleData": {
-    "x": 12.0,
+    "x": 250.0,
     "y": 770.0
   },
   "ballData": {
-    "x": 51.29556087333836,
-    "y": 429.55639466713274,
-    "velocityX": 0.0,
-    "velocityY": -1.0,
-    "isStuck": false
+    "x": 284.0,
+    "y": 755.9999507811916,
+    "velocityX": -0.9308043911555433,
+    "velocityY": -0.3655176950649017,
+    "isStuck": true
   },
   "powerUpsData": [],
   "activePowerUpsData": [],
   "bricksData": [
     {
       "id": 0,
-      "health": 4,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 1,
-      "health": 2,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 2,
-      "health": 2,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 3,
-      "health": 2,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -56,37 +58,37 @@
     },
     {
       "id": 8,
-      "health": 4,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 9,
-      "health": 4,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 10,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 11,
-      "health": 2,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 12,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 13,
-      "health": 2,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 14,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
@@ -96,7 +98,7 @@
     },
     {
       "id": 16,
-      "health": 2,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -106,42 +108,42 @@
     },
     {
       "id": 18,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 19,
-      "health": 2,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 20,
-      "health": 2,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 21,
-      "health": 2,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 22,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 23,
-      "health": 5,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 24,
-      "health": 3,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 25,
-      "health": 2,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -156,42 +158,42 @@
     },
     {
       "id": 28,
-      "health": 2,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 29,
-      "health": 4,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 30,
-      "health": 5,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 31,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 32,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 33,
-      "health": 5,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 34,
-      "health": 4,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 35,
-      "health": 4,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -201,57 +203,57 @@
     },
     {
       "id": 37,
-      "health": 2,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 38,
-      "health": 1,
-      "isDestroyed": false
-    },
-    {
-      "id": 39,
       "health": 5,
       "isDestroyed": false
     },
     {
-      "id": 40,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 41,
-      "health": 2,
-      "isDestroyed": false
-    },
-    {
-      "id": 42,
-      "health": 2,
-      "isDestroyed": false
-    },
-    {
-      "id": 43,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 44,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 45,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 46,
+      "id": 39,
       "health": 1,
       "isDestroyed": false
     },
     {
-      "id": 47,
+      "id": 40,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 41,
       "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 42,
+      "health": 4,
+      "isDestroyed": false
+    },
+    {
+      "id": 43,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 44,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 45,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 46,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 47,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -261,32 +263,32 @@
     },
     {
       "id": 49,
-      "health": 5,
-      "isDestroyed": false
-    },
-    {
-      "id": 50,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 51,
-      "health": 2,
-      "isDestroyed": false
-    },
-    {
-      "id": 52,
       "health": 1,
       "isDestroyed": false
     },
     {
+      "id": 50,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 51,
+      "health": 3,
+      "isDestroyed": false
+    },
+    {
+      "id": 52,
+      "health": 4,
+      "isDestroyed": false
+    },
+    {
       "id": 53,
-      "health": 2,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 54,
-      "health": 2,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -296,7 +298,7 @@
     },
     {
       "id": 56,
-      "health": 5,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -311,37 +313,37 @@
     },
     {
       "id": 59,
-      "health": 3,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 60,
-      "health": 5,
-      "isDestroyed": false
-    },
-    {
-      "id": 61,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 62,
-      "health": 1,
-      "isDestroyed": false
-    },
-    {
-      "id": 63,
       "health": 2,
       "isDestroyed": false
     },
     {
-      "id": 64,
+      "id": 61,
+      "health": 1,
+      "isDestroyed": false
+    },
+    {
+      "id": 62,
       "health": 3,
       "isDestroyed": false
     },
     {
+      "id": 63,
+      "health": 5,
+      "isDestroyed": false
+    },
+    {
+      "id": 64,
+      "health": 5,
+      "isDestroyed": false
+    },
+    {
       "id": 65,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -351,47 +353,47 @@
     },
     {
       "id": 67,
-      "health": 2,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 68,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 69,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 70,
-      "health": 2,
-      "isDestroyed": false
-    },
-    {
-      "id": 71,
-      "health": 1,
-      "isDestroyed": false
-    },
-    {
-      "id": 72,
       "health": 3,
       "isDestroyed": false
     },
     {
-      "id": 73,
+      "id": 69,
+      "health": 5,
+      "isDestroyed": false
+    },
+    {
+      "id": 70,
+      "health": 5,
+      "isDestroyed": false
+    },
+    {
+      "id": 71,
       "health": 2,
       "isDestroyed": false
     },
     {
+      "id": 72,
+      "health": 2,
+      "isDestroyed": false
+    },
+    {
+      "id": 73,
+      "health": 5,
+      "isDestroyed": false
+    },
+    {
       "id": 74,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 75,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -401,57 +403,57 @@
     },
     {
       "id": 77,
-      "health": 2,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 78,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 79,
-      "health": 4,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 80,
-      "health": 1,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 81,
-      "health": 4,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 82,
-      "health": 2,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 83,
-      "health": 2,
-      "isDestroyed": false
-    },
-    {
-      "id": 84,
       "health": 4,
       "isDestroyed": false
     },
     {
+      "id": 84,
+      "health": 5,
+      "isDestroyed": false
+    },
+    {
       "id": 85,
-      "health": 3,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 86,
-      "health": 3,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 87,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -461,7 +463,7 @@
     },
     {
       "id": 89,
-      "health": 3,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -471,37 +473,37 @@
     },
     {
       "id": 91,
-      "health": 2,
-      "isDestroyed": false
-    },
-    {
-      "id": 92,
       "health": 4,
       "isDestroyed": false
     },
     {
+      "id": 92,
+      "health": 2,
+      "isDestroyed": false
+    },
+    {
       "id": 93,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 94,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 95,
-      "health": 5,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 96,
-      "health": 3,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 97,
-      "health": 3,
+      "health": 1,
       "isDestroyed": false
     },
     {
@@ -511,7 +513,7 @@
     },
     {
       "id": 99,
-      "health": 5,
+      "health": 4,
       "isDestroyed": false
     },
     {
@@ -521,37 +523,37 @@
     },
     {
       "id": 101,
-      "health": 5,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 102,
-      "health": 2,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 103,
-      "health": 1,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 104,
-      "health": 2,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 105,
-      "health": 4,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 106,
-      "health": 1,
+      "health": 4,
       "isDestroyed": false
     },
     {
       "id": 107,
-      "health": 2,
+      "health": 5,
       "isDestroyed": false
     },
     {
@@ -561,47 +563,47 @@
     },
     {
       "id": 109,
-      "health": 3,
-      "isDestroyed": false
-    },
-    {
-      "id": 110,
-      "health": 3,
-      "isDestroyed": false
-    },
-    {
-      "id": 111,
-      "health": 4,
-      "isDestroyed": false
-    },
-    {
-      "id": 112,
       "health": 5,
       "isDestroyed": false
     },
     {
-      "id": 113,
+      "id": 110,
+      "health": 2,
+      "isDestroyed": false
+    },
+    {
+      "id": 111,
+      "health": 2,
+      "isDestroyed": false
+    },
+    {
+      "id": 112,
       "health": 4,
+      "isDestroyed": false
+    },
+    {
+      "id": 113,
+      "health": 1,
       "isDestroyed": false
     },
     {
       "id": 114,
-      "health": 4,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 115,
-      "health": 3,
+      "health": 5,
       "isDestroyed": false
     },
     {
       "id": 116,
-      "health": 3,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 117,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
@@ -611,12 +613,12 @@
     },
     {
       "id": 119,
-      "health": 5,
+      "health": 2,
       "isDestroyed": false
     },
     {
       "id": 120,
-      "health": 5,
+      "health": 2,
       "isDestroyed": false
     },
     {
@@ -626,12 +628,12 @@
     },
     {
       "id": 122,
-      "health": 1,
+      "health": 3,
       "isDestroyed": false
     },
     {
       "id": 123,
-      "health": 2,
+      "health": 4,
       "isDestroyed": false
     }
   ]
