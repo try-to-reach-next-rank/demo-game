@@ -220,7 +220,8 @@ class CollisionControllerTest {
         // Ensure precondition: intersects
         assertTrue(ball.getBounds().intersects(brick.getBounds()), "Ball and brick must intersect before collision");
 
-        Vector2D before = ball.getVelocity();
+        double beforeX = ball.getVelocity().x;
+        double beforeY = ball.getVelocity().y;
 
         // Act
         invokePrivate(cm, "handleBallBrickCollisions", new Class[]{Ball.class, Brick[].class}, ball, bricks);
@@ -229,8 +230,8 @@ class CollisionControllerTest {
         assertTrue(brickHit.get(), "onBallHitBrick should be called for intersecting brick");
 
         Vector2D after = ball.getVelocity();
-        assertEquals(-before.x, after.x, 1e-6, "Ball x-velocity should be inverted on side collision");
-        assertEquals(before.y, after.y, 1e-6, "Ball y-velocity should remain unchanged on side collision");
+        assertEquals(-beforeX, after.x, 1e-6, "Ball x-velocity should be inverted on side collision");
+        assertEquals(beforeY, after.y, 1e-6, "Ball y-velocity should remain unchanged on side collision");
     }
 
     @Test
