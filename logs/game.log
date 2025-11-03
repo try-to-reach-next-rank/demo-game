@@ -219,3 +219,11 @@
 20:30:12.736 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
 20:30:13.062 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - ENTER
 20:30:13.306 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+13:33:52.288 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+13:33:55.697 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+13:33:55.854 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+13:33:55.854 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:33:55.858 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+13:33:57.109 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+13:33:58.106 INFO  [JavaFX Application Thread] c.example.demo.view.LoadTransition - Loaded map: 1 with 124 bricks
+13:33:58.107 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 58

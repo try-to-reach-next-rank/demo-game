@@ -102,17 +102,11 @@ public class GameController extends Pane {
     // -------------------------------------------------------------------------
 
     public void initGame() {
-        // --- Create base entities (Model layer) ---
-        Paddle paddle = new Paddle();
-        Ball ball = new Ball(paddle);
-        world.setPaddle(paddle);
-        world.setBall(ball);
+        world.init();
 
-        // --- Create core systems (Controller layer) ---
-        BallSystem ballSystem = new BallSystem(ball, paddle);
-        PaddleSystem paddleSystem = new PaddleSystem(paddle);
-        PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, world.getPowerUps());
-
+        BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
+        PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
+        PowerUpSystem powerUpSystem = new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps());
         world.setPowerUpSystem(powerUpSystem);
 
         Renderer renderer = new Renderer(world);
@@ -130,8 +124,7 @@ public class GameController extends Pane {
             loadLevel(world.getCurrentLevel());
             brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
         } else {
-            // LOAD GAME: Load map structure trước, sau đó apply state
-            loadGame(); // Apply saved state lên map đã load
+            loadGame();
             renderer.setReveal(isNewGame);
             loadLevel.loadForSavedGame(world.getCurrentLevel()); // Chỉ load walls + brick structure
             brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
@@ -140,14 +133,9 @@ public class GameController extends Pane {
         // --- Create managers (controllers) ---
         CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
 
-        // --- Register update systems ---
-        updatables.addAll(List.of(
-                paddleSystem,
-                ballSystem,
-                powerUpSystem,
-                brickSystem,
-                collisionManager
-        ));
+        world.clearUpdatables();
+        List.of(ballSystem, paddleSystem, powerUpSystem, brickSystem, collisionManager)
+                        .forEach(world::registerUpdatable);
 
         renderables.add(renderer);                                               // then the world
         renderables.add((gc) -> uiManager.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT)); // UI last
@@ -336,25 +324,18 @@ public class GameController extends Pane {
     // -------------------------------------------------------------------------
 
     private void update(double deltaTime) {
-        // Always update transition effect and UI
         transitionEffect.update(deltaTime);
         uiManager.update(deltaTime);
 
-        // Only skip gameplay logic, not transitions
         if (!inGame || uiManager.hasActiveUI()) return;
 
-
-        // Continue updating gameplay systems
         if (parallaxSystem != null)
             parallaxSystem.update(deltaTime);
 
-        for (Updatable system : updatables)
-            system.update(deltaTime);
-
+        world.update(deltaTime);
 
         EffectRenderer.getInstance().update(deltaTime);
     }
-
 
     private void render() {
         gc.clearRect(0, 0, GlobalVar.WIDTH, GlobalVar.HEIGHT);

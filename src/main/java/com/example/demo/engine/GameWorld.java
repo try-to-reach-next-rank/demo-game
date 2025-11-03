@@ -21,6 +21,7 @@ public class GameWorld {
     private final List<Wall> walls = new ArrayList<>();
     private int currentLevel = GameVar.START_LEVEL;
     private PowerUpSystem powerUpSystem;
+    private final List<Updatable> updatables = new ArrayList<>();
 
     public PowerUpSystem getPowerUpSystem() {
         return powerUpSystem;
@@ -45,6 +46,7 @@ public class GameWorld {
 
     public int getCurrentLevel() { return currentLevel; }
     public void setCurrentLevel(int level) { this.currentLevel = level; }
+    public List<Updatable> getUpdatables() { return updatables; }
 
     // convenience reset helper
     public void resetForNewLevel() {
@@ -52,5 +54,33 @@ public class GameWorld {
         if (ball != null) ball.resetState();
         if (paddle != null) paddle.resetState();
         EffectRenderer.getInstance().clear();
+    }
+
+    public void init() {
+        paddle = new Paddle();
+        ball = new Ball(paddle);
+
+        powerUps.clear();
+        walls.clear();
+
+        bricks = new Brick[0];
+    }
+
+    public void update(double deltaTime) {
+        for (Updatable u : updatables) {
+            u.update(deltaTime);
+        }
+    }
+
+    // --- Register an updatable system ---
+    public void registerUpdatable(Updatable system) {
+        if (!updatables.contains(system)) {
+            updatables.add(system);
+        }
+    }
+
+    // --- Clear all updatables ---
+    public void clearUpdatables() {
+        updatables.clear();
     }
 }
