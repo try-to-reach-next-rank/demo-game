@@ -1,10 +1,10 @@
 package com.example.demo.view.ui;
 
 import com.example.demo.controller.view.SettingsController;
-import com.example.demo.controller.view.ButtonController;
 import com.example.demo.controller.view.ThemeController;
 import com.example.demo.engine.Stage;
 
+import com.example.demo.model.menu.ButtonManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -18,7 +18,7 @@ import javafx.scene.text.Text;
 public class SettingsView implements Stage {
     private final SettingsController controller;
     private final ThemeController themeManager;
-    private final ButtonController buttonManager;
+    private final ButtonManager buttonManager;
     private final StackPane rootStack;
     private final VBox uiBox;
 
@@ -35,7 +35,7 @@ public class SettingsView implements Stage {
         themeManager.applyCss(rootStack);
 
         // Setup buttons
-        this.buttonManager = new ButtonController(themeManager.getHandImage());
+        this.buttonManager = new ButtonManager(themeManager.getHandImage());
         buildUI();
 
         rootStack.getChildren().add(uiBox);

@@ -11,7 +11,6 @@ import com.example.demo.model.state.GameState;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GlobalVar;
-import com.example.demo.view.GameView;
 import com.example.demo.view.ui.MenuView;
 import com.example.demo.view.ui.SlotSelectionView;
 import com.example.demo.view.ui.SettingsView;

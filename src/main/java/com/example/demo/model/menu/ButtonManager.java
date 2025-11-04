@@ -1,4 +1,4 @@
-package com.example.demo.controller.view;
+package com.example.demo.model.menu;
 
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
@@ -23,7 +23,7 @@ import java.util.Map;
  * ButtonManager quản lý buttons với hand animations, hover effects,
  * keyboard navigation và pulse animations
  */
-public class ButtonController {
+public class ButtonManager {
     private final List<Button> buttons = new ArrayList<>();
     private final List<ImageView> leftHands = new ArrayList<>();
     private final List<ImageView> rightHands = new ArrayList<>();
@@ -32,10 +32,10 @@ public class ButtonController {
     private int selectedIndex = 0;
     private int lastSelectedIndex = -1;
 
-    private Image handImage;
+    private final Image handImage;
     private Runnable onSelectionChanged; // callback khi selection thay đổi (để play sound)
 
-    public ButtonController(Image handImage) {
+    public ButtonManager(Image handImage) {
         this.handImage = handImage;
     }
 

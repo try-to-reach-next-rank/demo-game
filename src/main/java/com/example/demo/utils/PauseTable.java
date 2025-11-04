@@ -1,7 +1,7 @@
 package com.example.demo.utils;
 
 import com.example.demo.controller.core.GameController;
-import com.example.demo.controller.view.ButtonController;
+import com.example.demo.model.menu.ButtonManager;
 import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.ui.UIComponent;
 import com.example.demo.controller.view.ThemeController;
@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 
 
 public class PauseTable extends UIComponent {
-    private final ButtonController buttonController;
+    private final ButtonManager buttonController;
     private final VBox container;
     private final ThemeController themeController;
     private final StackPane wrapper;
@@ -21,7 +21,7 @@ public class PauseTable extends UIComponent {
     public PauseTable(GameController gameController) {
         this.gameController = gameController;
         this.themeController = new ThemeController();
-        this.buttonController = new ButtonController(themeController.getHandImage());
+        this.buttonController = new ButtonManager(themeController.getHandImage());
 
         container = new VBox(16);
         container.setAlignment(Pos.CENTER);
