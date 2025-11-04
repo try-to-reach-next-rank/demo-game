@@ -30,8 +30,6 @@ public class CoreView {
             parallaxSystem.render(gc);
         }
 
-        setupBrickReveal();
-
         drawBall(gc);
         drawPaddle(gc);
         drawBricks(gc);

@@ -42,7 +42,9 @@ public class LoadTransition {
         transitionEffect.start(
                 // midpoint callback: load level & register systems
                 () -> {
+                    gameView.getCoreView().reset();
                     MapData mapData = levelLoader.load(level);
+                    world.clearUpdatables();
 
                     BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
                     PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
