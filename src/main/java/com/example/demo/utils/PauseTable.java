@@ -16,8 +16,10 @@ public class PauseTable extends UIComponent {
     private final VBox container;
     private final ThemeController themeController;
     private final StackPane wrapper;
+    private final GameController gameController;
 
     public PauseTable(GameController gameController) {
+        this.gameController = gameController;
         this.themeController = new ThemeController();
         this.buttonController = new ButtonController(themeController.getHandImage());
 
@@ -28,7 +30,6 @@ public class PauseTable extends UIComponent {
         container.getChildren().addAll(
                 buttonController.createButtonRow("Resume", e -> {
                     hide();
-                    gameController.resumeGame();
                 }),
                 buttonController.createButtonRow("Back Without Save", e -> gameController.backToMenu()),
                 buttonController.createButtonRow("Save And Quit", e -> {
@@ -56,13 +57,15 @@ public class PauseTable extends UIComponent {
         this.active = true;
         wrapper.setVisible(true);
         buttonController.setSelectedIndex(0);
+        gameController.pauseGame();
     }
 
     @Override
     public void hide() {
         this.active = false;
-       wrapper.setVisible(false);
+        wrapper.setVisible(false);
         buttonController.setSelectedIndex(-1); // clear selection
+        gameController.resumeGame();
     }
 
     @Override

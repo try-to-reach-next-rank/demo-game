@@ -39,6 +39,7 @@ public class GameController extends Pane {
     private int currentSlotNumber = -1;
     private boolean isNewGame = true;
     private boolean inGame = true;
+    private boolean paused = false;
 
     private Runnable onBackToMenu;
 
@@ -96,6 +97,7 @@ public class GameController extends Pane {
         loadTransition.startLevel(world.getCurrentLevel());
         loop();
     }
+
     public void loadLevel(int level) {
         world.setCurrentLevel(level);
         loadTransition.startLevel(level);
@@ -166,21 +168,25 @@ public class GameController extends Pane {
     }
 
     private void update(double deltaTime) {
-        world.update(deltaTime);
-        view.update(deltaTime);
-        if (!view.getUiView().hasActiveUI()) {
-            inputGame.update();
+        if (!paused) {
+            world.update(deltaTime);
+            if (!view.getUiView().hasActiveUI()) {
+                inputGame.update();
+            }
         }
+        view.update(deltaTime);
+    }
+
+    public void pauseGame() {
+        paused = true;
     }
 
     public void resumeGame() {
-        if (!inGame) {
-            inGame = true;
-            if (timer != null) timer.start();
-            view.getUiView().getDialogueBox().resumeDialogue();
-            Sound.getInstance().resumeMusic();
-            log.info("Game resumed");
-        }
+        paused = false;
+        if (timer != null) timer.start();
+        view.getUiView().getDialogueBox().resumeDialogue();
+        Sound.getInstance().resumeMusic();
+        log.info("Game resumed");
     }
 
     public void onKeyPressed(KeyCode code) {
@@ -202,10 +208,6 @@ public class GameController extends Pane {
 
     public Ball getBall() {
         return world.getBall();
-    }
-
-    public GameWorld getWorld() {
-        return world;
     }
 
     public void backToMenu() {

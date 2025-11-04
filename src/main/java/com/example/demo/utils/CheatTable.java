@@ -48,12 +48,14 @@ public class CheatTable extends UIComponent {
     public void show() {
         active = true;
         wrapper.setVisible(true);
+        gameController.pauseGame();
     }
 
     @Override
     public void hide() {
         active = false;
         wrapper.setVisible(false);
+        gameController.resumeGame();
     }
 
     @Override
