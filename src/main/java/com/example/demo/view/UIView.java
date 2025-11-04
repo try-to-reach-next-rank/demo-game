@@ -4,6 +4,7 @@ import com.example.demo.controller.core.GameController;
 import com.example.demo.utils.CheatTable;
 import com.example.demo.utils.PauseTable;
 import com.example.demo.utils.dialogue.DialogueBox;
+import com.example.demo.utils.dialogue.DialogueSystem;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -15,12 +16,14 @@ public class UIView {
     private final CheatTable cheatTable;
     private final StackPane root;
     private final DialogueBox dialogueBox;
+    private DialogueSystem dialogueSystem;
 
     public UIView(GameController gameController) {
         this.uiManager = new UIManager();
         this.pauseTable = new PauseTable(gameController);
         this.cheatTable = new CheatTable(gameController);
         this.dialogueBox = new DialogueBox();
+        this.dialogueSystem = new DialogueSystem("/Dialogue/intro.txt", dialogueBox);
 
         root = new StackPane();
         root.getChildren().addAll(
@@ -60,9 +63,20 @@ public class UIView {
         cheatTable.show();
     }
 
-    public void showDialogue(DialogueBox.DialogueLine[] lines) {
-        hideAll();
-        dialogueBox.start(lines);
+    public void loadDialogue(String path) {
+        this.dialogueSystem = new DialogueSystem(path, dialogueBox);
+    }
+
+    public void startDialogue() {
+        if (dialogueSystem != null) {
+            dialogueSystem.start();
+        }
+    }
+
+    public void resumeDialogue() {
+        if (dialogueBox != null) {
+            dialogueBox.resumeDialogue();
+        }
     }
 
     public void hideAll() {
@@ -81,18 +95,6 @@ public class UIView {
 
     private UIComponent[] getAllUI() {
         return new UIComponent[]{pauseTable, cheatTable, dialogueBox};
-    }
-
-    public PauseTable getPauseTable() {
-        return pauseTable;
-    }
-
-    public CheatTable getCheatTable() {
-        return cheatTable;
-    }
-
-    public DialogueBox getDialogueBox() {
-        return dialogueBox;
     }
 
     public boolean hasActiveUI() {

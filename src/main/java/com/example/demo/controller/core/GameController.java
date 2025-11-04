@@ -4,6 +4,7 @@ import com.example.demo.controller.map.MapController;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
+import com.example.demo.model.map.MapData;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
 
@@ -33,9 +34,6 @@ public class GameController extends Pane {
     // === CONTROLLERS ===
     private final MapController mapManager = new MapController();
     private final SaveController saveController = new SaveController();
-    private LoadTransition loadTransition;
-    private final TransitionEffect transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
-    private DialogueSystem dialogueSystem;
 
     private int currentSlotNumber = -1;
     private boolean isNewGame = true;
@@ -69,12 +67,8 @@ public class GameController extends Pane {
 
         LoadLevel loadLevel = new LoadLevel(mapManager, world, view);
 
-        if (dialogueSystem == null) {
-            String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
-            dialogueSystem = new DialogueSystem(dialoguePath, view.getUiView().getDialogueBox());
-        }
-
-        loadTransition = new LoadTransition(world, transitionEffect, loadLevel, dialogueSystem, view, this);
+        String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
+        view.getUiView().loadDialogue(dialoguePath);
 
         if (isNewGame) {
             loadLevel.load(world.getCurrentLevel());
@@ -102,15 +96,38 @@ public class GameController extends Pane {
 
         inputGame = new Input(world.getPaddle(), world.getBall());
         setupKeyHandling();
-        loadTransition.startLevel(world.getCurrentLevel());
+        view.startTransition(
+                () -> setupLevel(world.getCurrentLevel()),
+                () -> setInGame(true)
+        );
         loop();
     }
 
     // ========== Level Management -> Delegate to MapController ==========
+    private void setupLevel(int level) {
+        view.getCoreView().reset();
+        MapData mapData = new LoadLevel(mapManager, world, view).load(level);
+        world.clearUpdatables();
+
+        BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
+        PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
+        PowerUpSystem powerUpSystem = world.getPowerUpSystem();
+        BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
+        CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
+
+        List.of(ballSystem, paddleSystem, powerUpSystem, brickSystem, collisionManager)
+                .forEach(world::registerUpdatable);
+
+        view.reset();
+        log.info("Loaded level {}", level);
+    }
 
     public void loadLevel(int level) {
         world.setCurrentLevel(level);
-        loadTransition.startLevel(level);
+        view.startTransition(
+                () -> setupLevel(level),
+                () -> setInGame(true)
+        );
     }
 
     public void loadNextLevel() {
@@ -195,7 +212,7 @@ public class GameController extends Pane {
     public void resumeGame() {
         paused = false;
         if (timer != null) timer.start();
-        view.getUiView().getDialogueBox().resumeDialogue();
+        view.getUiView().resumeDialogue();
         Sound.getInstance().resumeMusic();
         log.info("Game resumed");
     }
@@ -244,8 +261,6 @@ public class GameController extends Pane {
     }
 
     public void startIntroDialogue() {
-        if (dialogueSystem != null) {
-            dialogueSystem.start();
-        }
+        view.getUiView().startDialogue();
     }
 }
