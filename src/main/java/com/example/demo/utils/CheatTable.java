@@ -2,10 +2,12 @@ package com.example.demo.utils;
 
 import com.example.demo.controller.core.GameController;
 import com.example.demo.model.core.effects.GlowTextEffect;
+import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.UtilVar;
 import com.example.demo.view.ui.UIComponent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -14,7 +16,8 @@ import javafx.scene.text.TextAlignment;
 public class CheatTable extends UIComponent {
     private final GameController gameController;
     private final GlowTextEffect title;
-    // Danh sách các tùy chọn cheat
+    private final StackPane wrapper;
+
     private final String[] options = {
             "Toggle Stop Time",
             "Toggle Accelerated",
@@ -24,8 +27,6 @@ public class CheatTable extends UIComponent {
     };
 
     private int selectedIndex = 0;
-
-    // Fonts để vẽ
     private final Font titleFont = new Font("Verdana", 24);
     private final Font optionFont = new Font("Verdana", 18);
 
@@ -33,6 +34,26 @@ public class CheatTable extends UIComponent {
         this.gameController = gameController;
         Text cheatMenuText = new Text("CHEAT MENU");
         this.title = new GlowTextEffect(cheatMenuText, titleFont);
+
+        wrapper = new StackPane();
+        wrapper.setPickOnBounds(false);
+        wrapper.setVisible(false);
+    }
+
+    public StackPane getView() {
+        return wrapper;
+    }
+
+    @Override
+    public void show() {
+        active = true;
+        wrapper.setVisible(true);
+    }
+
+    @Override
+    public void hide() {
+        active = false;
+        wrapper.setVisible(false);
     }
 
     @Override
@@ -134,9 +155,11 @@ public class CheatTable extends UIComponent {
                 gameController.getBall().toggleStronger();
                 break;
             case "Load Next Map":
+                hide();
                 gameController.loadNextLevel();
                 break;
             case "Load Previous Map":
+                hide();
                 gameController.loadPreviousLevel();
                 break;
         }

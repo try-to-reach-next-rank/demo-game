@@ -8,9 +8,9 @@ public class Input {
     private final Paddle paddle;
     private final Ball ball;
 
-    private KeyCode lastPressed = null;
     private boolean leftHeld = false;
     private boolean rightHeld = false;
+    private KeyCode lastPressed = null;
 
     public Input(Paddle paddle, Ball ball) {
         this.paddle = paddle;
@@ -18,35 +18,53 @@ public class Input {
     }
 
     public void handleKeyPressed(KeyCode code) {
-        if (code == KeyCode.LEFT) {
-            leftHeld = true;
-            lastPressed = KeyCode.LEFT;
-            paddle.setDirection(-1);
-        } else if (code == KeyCode.RIGHT) {
-            rightHeld = true;
-            lastPressed = KeyCode.RIGHT;
-            paddle.setDirection(1);
-        } else if (code == KeyCode.SPACE && ball.isStuck()) {
-            ball.release();
+        switch (code) {
+            case LEFT -> {
+                leftHeld = true;
+                lastPressed = KeyCode.LEFT;
+            }
+            case RIGHT -> {
+                rightHeld = true;
+                lastPressed = KeyCode.RIGHT;
+            }
+            case SPACE -> {
+                if (ball.isStuck()) ball.release();
+            }
         }
+        updatePaddleDirection();
     }
 
     public void handleKeyReleased(KeyCode code) {
-        if (code == KeyCode.LEFT) leftHeld = false;
-        else if (code == KeyCode.RIGHT) rightHeld = false;
+        switch (code) {
+            case LEFT -> leftHeld = false;
+            case RIGHT -> rightHeld = false;
+        }
 
         if (code == lastPressed) {
-            // Revert to the other key if it’s still held
-            if (leftHeld && !rightHeld) {
-                lastPressed = KeyCode.LEFT;
-                paddle.setDirection(-1);
-            } else if (rightHeld && !leftHeld) {
-                lastPressed = KeyCode.RIGHT;
-                paddle.setDirection(1);
-            } else {
-                lastPressed = null;
-                paddle.setDirection(0);
-            }
+            if (leftHeld && !rightHeld) lastPressed = KeyCode.LEFT;
+            else if (rightHeld && !leftHeld) lastPressed = KeyCode.RIGHT;
+            else lastPressed = null;
         }
+
+        updatePaddleDirection();
+    }
+
+    private void updatePaddleDirection() {
+        if (lastPressed == KeyCode.LEFT && leftHeld) {
+            paddle.setDirection(-1);
+        } else if (lastPressed == KeyCode.RIGHT && rightHeld) {
+            paddle.setDirection(1);
+        } else if (leftHeld) {
+            paddle.setDirection(-1);
+        } else if (rightHeld) {
+            paddle.setDirection(1);
+        } else {
+            paddle.setDirection(0);
+        }
+    }
+
+    public void update() {
+        // Always keep the paddle moving according to held keys and lastPressed
+        updatePaddleDirection();
     }
 }

@@ -1,33 +1,51 @@
 package com.example.demo.view;
 
 import com.example.demo.engine.GameWorld;
-import com.example.demo.engine.Renderable;
-import com.example.demo.model.core.Ball;
-import com.example.demo.model.core.Brick;
-import com.example.demo.model.core.Paddle;
-import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.core.Wall;
+import com.example.demo.model.core.*;
+import com.example.demo.model.map.ParallaxLayer;
+import com.example.demo.model.system.ParallaxSystem;
+import com.example.demo.utils.var.AssetPaths;
+import com.example.demo.utils.var.GameVar;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Renderer implements Renderable {
+public class CoreView {
     private final GameWorld world;
+    private final GraphicsContext gc;
     private final Set<Brick> revealedBricks = new HashSet<>();
     private int brickRevealCounter = 0;
     private int currentRevealTick = 0;
     private boolean reveal = true;
+    private ParallaxSystem parallaxSystem;
 
-    public Renderer(GameWorld world) {
+    public CoreView(GraphicsContext gc, GameWorld world) {
+        this.gc = gc;
         this.world = world;
     }
-
-    @Override
     public void render(GraphicsContext gc) {
+        if (parallaxSystem != null) {
+            parallaxSystem.render(gc);
+        }
 
+        setupBrickReveal();
+
+        drawBall(gc);
+        drawPaddle(gc);
+        drawBricks(gc);
+        drawPowerUps(gc);
+        drawWalls(gc);
+        EffectRenderer.getInstance().render(gc);
+    }
+
+    public void update(double deltaTime) {
+        parallaxSystem.update(deltaTime);
+        setupBrickReveal();
+    }
+
+    private void setupBrickReveal() {
         currentRevealTick++;
 
         if (reveal) {
@@ -48,22 +66,21 @@ public class Renderer implements Renderable {
                 brickRevealCounter = bricks.length;
             }
         }
+    }
 
-        // 1. Draw Ball
+    private void drawBall(GraphicsContext gc) {
         Ball ball = world.getBall();
-        if (ball != null) {
-            Image ballImage = ball.getImage();
-            gc.drawImage(ballImage, ball.getX(), ball.getY(), ball.getWidth(), ball.getHeight());
-        }
+        if (ball != null)
+            gc.drawImage(ball.getImage(), ball.getX(), ball.getY(), ball.getWidth(), ball.getHeight());
+    }
 
-        // 2. Draw Paddle
+    private void drawPaddle(GraphicsContext gc) {
         Paddle paddle = world.getPaddle();
-        if (paddle != null) {
-            Image paddleImage = paddle.getImage();
-            gc.drawImage(paddleImage, paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight());
-        }
+        if (paddle != null)
+            gc.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight());
+    }
 
-        // 3. Draw Bricks
+    private void drawBricks(GraphicsContext gc) {
         Brick[] bricks = world.getBricks();
         if (bricks != null) {
             for (Brick brick : bricks) {
@@ -73,21 +90,20 @@ public class Renderer implements Renderable {
                 }
             }
         }
+    }
 
-        // 4. Draw PowerUps
+    private void drawPowerUps(GraphicsContext gc) {
         for (PowerUp p : world.getPowerUps()) {
             if (p.isVisible()) {
                 p.getAnimation().render(gc, p.getX(), p.getY(), p.getWidth(), p.getHeight());
             }
         }
+    }
 
-        // 5. Draw Walls
+    private void drawWalls(GraphicsContext gc) {
         for (Wall wall : world.getWalls()) {
             gc.drawImage(wall.getImage(), wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight());
         }
-
-        // 6. Draw Effects (delegated to the singleton EffectRenderer)
-        EffectRenderer.getInstance().render(gc);
     }
 
     public void reset() {
@@ -96,7 +112,21 @@ public class Renderer implements Renderable {
         currentRevealTick = 0;
     }
 
-    public void setReveal(boolean reveal) {
-        this.reveal = reveal;
+    public void initParallax() {
+        parallaxSystem = new ParallaxSystem(
+                world,
+                GameVar.PARALLAX_BASE_SPEED,
+                GameVar.PARALLAX_DEPTH,
+                GameVar.PARALLAX_SPEED_LAYERS
+        );
+
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER1, GameVar.PARALLAX_SPEED_LAYERS[3]));
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER2, GameVar.PARALLAX_SPEED_LAYERS[2]));
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER3, GameVar.PARALLAX_SPEED_LAYERS[1]));
+        parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER4, GameVar.PARALLAX_SPEED_LAYERS[0]));
+    }
+
+    public GameWorld getWorld() {
+        return world;
     }
 }

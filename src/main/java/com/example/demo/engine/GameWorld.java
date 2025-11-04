@@ -1,18 +1,18 @@
 package com.example.demo.engine;
 
 import com.example.demo.model.core.*;
+import com.example.demo.model.state.ActivePowerUpData;
+import com.example.demo.model.state.BrickData;
+import com.example.demo.model.state.GameState;
+import com.example.demo.model.state.PowerUpData;
 import com.example.demo.model.system.PowerUpSystem;
+import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
-import com.example.demo.view.EffectRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Small aggregate that contains references to the current world objects.
- * Keeps managers decoupled from GameManager's internals.
- */
 public class GameWorld {
     private Ball ball;
     private Paddle paddle;
@@ -53,7 +53,6 @@ public class GameWorld {
         powerUps.clear();
         if (ball != null) ball.resetState();
         if (paddle != null) paddle.resetState();
-        EffectRenderer.getInstance().clear();
     }
 
     public void init() {
@@ -82,5 +81,50 @@ public class GameWorld {
     // --- Clear all updatables ---
     public void clearUpdatables() {
         updatables.clear();
+    }
+
+    public void applyState(GameState loadedState) {
+        // SECTION 1: Setup Level
+        setCurrentLevel(loadedState.getCurrentLevel());
+        Sound.getInstance().playMusic(loadedState.getCurrentTrackName(), loadedState.getCurrentTrackTime());
+
+        // SECTION 2: Apply Entity States
+        Ball ball = getBall();
+        Paddle paddle = getPaddle();
+        Brick[] bricks = getBricks();
+        paddle.applyState(loadedState.getPaddleData());
+        ball.applyState(loadedState.getBallData());
+
+        for (BrickData data : loadedState.getBricksData()) {
+            if (data.getId() >= 0 && data.getId() < bricks.length) {
+                bricks[data.getId()].applyState(data);
+            }
+        }
+
+        // SECTION 3: Apply Relationships
+        if (ball.isStuck()) {
+            ball.alignWithPaddle(GameVar.BALL_OFFSET_Y, GameVar.BALL_ALIGN_LERP_FACTOR);
+        }
+
+        // Falling Power-Ups
+        getPowerUps().clear();
+        for (PowerUpData powerUpData : loadedState.getPowerUpsData()) {
+            PowerUp p = ThePool.PowerUpPool.acquire(powerUpData.getType());
+            p.setPosition(powerUpData.getX(), powerUpData.getY());
+            p.setVisible(powerUpData.isVisible());
+            getPowerUps().add(p);
+        }
+
+        // Active Power-ups
+        PowerUpSystem currentPowerUpSystem = getPowerUpSystem();
+        if (currentPowerUpSystem != null) {
+            currentPowerUpSystem.reset();
+
+            if (loadedState.getActivePowerUpsData() != null) {
+                for (ActivePowerUpData activeData : loadedState.getActivePowerUpsData()) {
+                    currentPowerUpSystem.activateFromSave(activeData);
+                }
+            }
+        }
     }
 }

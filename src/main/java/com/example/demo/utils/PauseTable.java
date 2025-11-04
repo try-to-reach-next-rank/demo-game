@@ -2,6 +2,7 @@ package com.example.demo.utils;
 
 import com.example.demo.controller.core.GameController;
 import com.example.demo.controller.view.ButtonController;
+import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.ui.UIComponent;
 import com.example.demo.controller.view.ThemeController;
 import javafx.geometry.Pos;
@@ -17,40 +18,34 @@ public class PauseTable extends UIComponent {
     private final StackPane wrapper;
 
     public PauseTable(GameController gameController) {
-
         this.themeController = new ThemeController();
         this.buttonController = new ButtonController(themeController.getHandImage());
-
 
         container = new VBox(16);
         container.setAlignment(Pos.CENTER);
         container.setStyle("-fx-background-color: rgba(0,0,0,0.8); -fx-padding: 30; -fx-background-radius: 15;");
 
-
-        container.getChildren().add(buttonController.createButtonRow("Resume", e -> {
-            hide();
-            gameController.resumeGame();
-        }));
-
-        container.getChildren().add(buttonController.createButtonRow("Back Without Save", e -> {
-            gameController.backToMenu();
-        }));
-
-        container.getChildren().add(buttonController.createButtonRow("Save And Quit", e -> {
-            gameController.saveGame();
-            gameController.backToMenu();
-        }));
-
+        container.getChildren().addAll(
+                buttonController.createButtonRow("Resume", e -> {
+                    hide();
+                    gameController.resumeGame();
+                }),
+                buttonController.createButtonRow("Back Without Save", e -> gameController.backToMenu()),
+                buttonController.createButtonRow("Save And Quit", e -> {
+                    gameController.saveGame();
+                    gameController.backToMenu();
+                })
+        );
 
         wrapper = new StackPane(container);
-        wrapper.setAlignment(Pos.CENTER);
         wrapper.setVisible(false);
-        wrapper.setPickOnBounds(false);
+        wrapper.setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
+        wrapper.setAlignment(Pos.CENTER);
+        wrapper.setPickOnBounds(true);
         wrapper.getStylesheets().add(
                 getClass().getResource("/styles/menu.css").toExternalForm()
         );
     }
-
 
     public StackPane getView() {
         return wrapper;

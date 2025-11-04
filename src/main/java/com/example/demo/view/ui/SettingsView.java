@@ -15,7 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class SettingsView  implements Stage {
+public class SettingsView implements Stage {
     private final SettingsController controller;
     private final ThemeController themeManager;
     private final ButtonController buttonManager;
