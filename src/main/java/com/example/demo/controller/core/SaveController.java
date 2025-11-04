@@ -1,5 +1,8 @@
 package com.example.demo.controller.core;
 
+import com.example.demo.engine.GameWorld;
+import com.example.demo.model.state.GameState;
+import com.example.demo.repository.SaveDataRepository;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.slf4j.Logger;
@@ -16,6 +19,11 @@ public class SaveController {
     // một đối tượng Gson duy nhất được tạo ra cho cả chương trình
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final Logger log = LoggerFactory.getLogger(SaveController.class);
+    private final SaveDataRepository repository;
+
+    public SaveController() {
+        this.repository = new SaveDataRepository();
+    }
 
     /**
      *  Lưu một đối tượng Java bất kỳ vào một file dưới định dạng chuỗi JSON.
@@ -70,34 +78,38 @@ public class SaveController {
             return null;
         }
     }
+
+    public void saveGame(GameWorld world, int slotNumber) {
+        log.info("Saving game to slot {}...", slotNumber);
+        GameState state = new GameState(world);
+        repository.saveSlot(slotNumber, state);
+        log.info("Save complete.");
+    }
+
+    public GameState loadGame(int slotNumber) {
+        log.info("Loading from slot {}...", slotNumber);
+        GameState loaded = repository.loadSlot(slotNumber);
+
+        if (loaded != null) {
+            log.info("Loaded successfully!");
+        } else {
+            log.warn("No valid save found.");
+        }
+
+        return loaded;
+    }
+
     /**
-     * Ví dụ cách dùng
-     * public class PlayerData {
-     *     // Các biến thành viên (fields)
-     *     private String playerName;
-     *     private int score;
-     *     private int level;
-     *     private static final int MAX_LEVEL = 99; // Biến static
-     *     private transient boolean isInvincible;  // Biến transient (tạm thời)
-     *
-     *     // Constructor, getters, setters...
-     *
-     *     public void addScore(int points) { // Đây là một phương thức (method)
-     *         this.score += points;
-     *     }
-     * }
-     * PlayerData player1 = new PlayerData();
-     * player1.setPlayerName("Phuc");
-     * player1.setScore(1000);
-     * player1.setLevel(5);
-     * player1.setInvincible(true); // Gán giá trị cho biến transient
-     *
-     * {
-     *   "playerName": "Phuc",
-     *   "score": 1000,
-     *   "level": 5
-     * }
-     *
-     * các thứ ko được lưu, static, methods, transient( bảo với gson đừng lưu biến này)
+     * Check if slot exists
      */
+    public boolean slotExists(int slotNumber) {
+        return repository.slotExists(slotNumber);
+    }
+
+    /**
+     * Delete save slot
+     */
+    public boolean deleteSlot(int slotNumber) {
+        return repository.deleteSlot(slotNumber);
+    }
 }

@@ -30,8 +30,9 @@ public class GameController extends Pane {
     private final GameView view;
     private AnimationTimer timer;
     private Input inputGame;
-
+    // === CONTROLLERS ===
     private final MapController mapManager = new MapController();
+    private final SaveController saveController = new SaveController();
     private LoadTransition loadTransition;
     private final TransitionEffect transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
     private DialogueSystem dialogueSystem;
@@ -42,6 +43,10 @@ public class GameController extends Pane {
     private boolean paused = false;
 
     private Runnable onBackToMenu;
+
+    // ========== NEW: Level Completion Check Throttling ==========
+    private static final double LEVEL_CHECK_INTERVAL = 3.0; // Check every 3 seconds
+    private double levelCheckTimer = 0.0;
 
     public GameController() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
@@ -74,7 +79,10 @@ public class GameController extends Pane {
         if (isNewGame) {
             loadLevel.load(world.getCurrentLevel());
         } else {
-            loadGame();
+            GameState loaded = saveController.loadGame(currentSlotNumber);
+            if (loaded != null) {
+                world.applyState(loaded);
+            }
             loadLevel.loadForSavedGame(world.getCurrentLevel());
         }
 
@@ -98,45 +106,40 @@ public class GameController extends Pane {
         loop();
     }
 
+    // ========== Level Management -> Delegate to MapController ==========
+
     public void loadLevel(int level) {
         world.setCurrentLevel(level);
         loadTransition.startLevel(level);
     }
 
     public void loadNextLevel() {
-        int nextLevel = world.getCurrentLevel() + 1;
-        if (nextLevel > GameVar.MAX_LEVEL) nextLevel = GameVar.MIN_LEVEL;
+        int nextLevel = mapManager.getNextLevel(world.getCurrentLevel());
         loadLevel(nextLevel);
     }
 
     public void loadPreviousLevel() {
-        int prevLevel = world.getCurrentLevel() - 1;
-        if (prevLevel < GameVar.MIN_LEVEL) prevLevel = GameVar.MAX_LEVEL;
+        int prevLevel = mapManager.getPreviousLevel(world.getCurrentLevel());
         loadLevel(prevLevel);
     }
 
+    // ========== Save/Load -> Delegate to SaveController ==========
+
     public void saveGame() {
-        log.info("Saving game...");
-        GameState state = new GameState(world);
-        new SaveDataRepository().saveSlot(currentSlotNumber, state);
-        log.info("Save complete.");
-    }
-
-    private void loadGame() {
-        log.info("Loading from slot {}...", currentSlotNumber);
-        SaveDataRepository repo = new SaveDataRepository();
-        GameState loaded = repo.loadSlot(currentSlotNumber);
-
-        if (loaded != null) {
-            applyState(loaded);
-            log.info("Loaded successfully!");
-        } else {
-            log.warn("No valid save found.");
-        }
+        saveController.saveGame(world, currentSlotNumber);  // ← CHANGED
     }
 
     public void applyState(GameState loadedState) {
         world.applyState(loadedState);
+    }
+
+    // ========== Auto Level Progression ==========
+
+    private void checkLevelCompletion() {
+        if (world.isLevelComplete()) {
+            log.info("Level complete! Remaining bricks: {}", world.getRemainingBricksCount());
+            loadNextLevel();
+        }
     }
 
     private void loop() {
@@ -170,6 +173,14 @@ public class GameController extends Pane {
     private void update(double deltaTime) {
         if (!paused) {
             world.update(deltaTime);
+
+            // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
+            levelCheckTimer += deltaTime;
+            if (levelCheckTimer >= LEVEL_CHECK_INTERVAL) {
+                checkLevelCompletion();
+                levelCheckTimer = 0.0; // Reset timer
+            }
+
             if (!view.getUiView().hasActiveUI()) {
                 inputGame.update();
             }

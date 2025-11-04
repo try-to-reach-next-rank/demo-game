@@ -8,12 +8,15 @@ import com.example.demo.model.state.PowerUpData;
 import com.example.demo.model.system.PowerUpSystem;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class GameWorld {
+    private static final Logger log = LoggerFactory.getLogger(GameWorld.class);
     private Ball ball;
     private Paddle paddle;
     private Brick[] bricks = new Brick[0];
@@ -47,6 +50,29 @@ public class GameWorld {
     public int getCurrentLevel() { return currentLevel; }
     public void setCurrentLevel(int level) { this.currentLevel = level; }
     public List<Updatable> getUpdatables() { return updatables; }
+
+    // ========== NEW: Brick Counting Methods ==========
+
+    public int getRemainingBricksCount() {
+        if (bricks == null || bricks.length == 0) {
+            return 0;
+        }
+
+        int count = 0;
+        for (Brick brick : bricks) {
+            // Only count bricks that are:
+            // 1. Not destroyed
+            // 2. Not indestructible (health != Integer.MAX_VALUE)
+            if (!brick.isDestroyed() && brick.getHealth() != Integer.MAX_VALUE) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public boolean isLevelComplete() {
+        return getRemainingBricksCount() == 0;
+    }
 
     // convenience reset helper
     public void resetForNewLevel() {
