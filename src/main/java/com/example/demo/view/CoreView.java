@@ -42,6 +42,7 @@ public class CoreView {
 
     public void update(double deltaTime) {
         parallaxSystem.update(deltaTime);
+        EffectRenderer.getInstance().update(deltaTime);
         setupBrickReveal();
     }
 
