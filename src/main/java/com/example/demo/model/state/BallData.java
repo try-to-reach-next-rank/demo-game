@@ -1,6 +1,6 @@
 package com.example.demo.model.state;
 
-import com.example.demo.model.core.Ball;
+import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.state.gameobjectdata.GameObjectData;
 import com.example.demo.model.state.gameobjectdata.ImageObjectData;
 

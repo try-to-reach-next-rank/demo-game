@@ -2,7 +2,10 @@ package com.example.demo.controller.core;
 
 import com.example.demo.controller.core.CollisionController;
 import com.example.demo.model.core.*;
-import com.example.demo.model.core.Brick;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Brick;
+import com.example.demo.model.core.entities.Paddle;
+import com.example.demo.model.core.entities.PowerUp;
 import com.example.demo.model.system.BallSystem;
 import com.example.demo.model.system.BrickSystem;
 import com.example.demo.model.system.PowerUpSystem;

@@ -32,6 +32,7 @@ public abstract class ImageObject<T extends ImageObjectData> extends GameObject<
 
     public String getImageKey() { return this.imageKey; }
     public Image getImage() { return this.image; }
-    public abstract void applyState(T ImageObjectData);
 
+    @Override
+    public abstract void applyState(T ImageObjectData);
 }

@@ -2,7 +2,7 @@ package com.example.demo.view;
 
 import com.example.demo.controller.map.MapController;
 import com.example.demo.engine.GameWorld;
-import com.example.demo.model.core.Brick;
+import com.example.demo.model.core.entities.Brick;
 import com.example.demo.model.map.MapData;
 
 public class LoadLevel {

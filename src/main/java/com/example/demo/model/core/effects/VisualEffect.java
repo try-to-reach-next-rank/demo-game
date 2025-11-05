@@ -1,4 +1,4 @@
-package com.example.demo.model.core;
+package com.example.demo.model.core.effects;
 
 import com.example.demo.engine.Effect;
 import com.example.demo.utils.Timer;

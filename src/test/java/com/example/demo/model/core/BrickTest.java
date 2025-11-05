@@ -2,6 +2,8 @@ package com.example.demo.model.core;
 
 import org.junit.jupiter.api.Test;
 
+import com.example.demo.model.core.entities.Brick;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BrickTest {

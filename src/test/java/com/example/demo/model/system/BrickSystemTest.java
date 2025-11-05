@@ -1,8 +1,9 @@
 package com.example.demo.model.system;
 
-import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.core.Brick;
 import org.junit.jupiter.api.Test;
+
+import com.example.demo.model.core.entities.Brick;
+import com.example.demo.model.core.entities.PowerUp;
 
 import java.util.ArrayList;
 import java.util.List;

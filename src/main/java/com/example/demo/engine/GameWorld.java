@@ -1,6 +1,11 @@
 package com.example.demo.engine;
 
 import com.example.demo.model.core.*;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Brick;
+import com.example.demo.model.core.entities.Paddle;
+import com.example.demo.model.core.entities.PowerUp;
+import com.example.demo.model.core.entities.Wall;
 import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.state.ActivePowerUpData;
 import com.example.demo.model.state.BrickData;

@@ -1,10 +1,10 @@
 package com.example.demo.model.state;
 
-import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.state.gameobjectdata.AnimationedObjectData;
+import com.example.demo.model.core.entities.PowerUp;
+import com.example.demo.model.state.gameobjectdata.AnimatedObjectData;
 import com.example.demo.model.state.gameobjectdata.GameObjectData;
 
-public class PowerUpData extends AnimationedObjectData {
+public class PowerUpData extends AnimatedObjectData {
     private String type;
     private boolean visible;
 

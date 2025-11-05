@@ -1,7 +1,7 @@
 package com.example.demo.controller.map;
 
-import com.example.demo.model.core.Brick;
-import com.example.demo.model.core.Wall;
+import com.example.demo.model.core.entities.Brick;
+import com.example.demo.model.core.entities.Wall;
 import com.example.demo.model.map.MapData;
 import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.var.GameVar;

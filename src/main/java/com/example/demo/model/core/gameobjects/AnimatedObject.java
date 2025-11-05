@@ -1,10 +1,10 @@
 package com.example.demo.model.core.gameobjects;
 
 import com.example.demo.model.assets.AssetManager;
-import com.example.demo.model.state.gameobjectdata.AnimationedObjectData;
+import com.example.demo.model.state.gameobjectdata.AnimatedObjectData;
 import com.example.demo.utils.Animation;
 
-public abstract class AnimatedObject<T extends AnimationedObjectData> extends GameObject<T> {
+public abstract class AnimatedObject<T extends AnimatedObjectData> extends GameObject<T> {
     protected String animKey;
     protected Animation animation;
 
@@ -39,5 +39,7 @@ public abstract class AnimatedObject<T extends AnimationedObjectData> extends Ga
 
     public String getAnimationKey() { return this.animKey; }
     public Animation getAnimation() { return this.animation; }
+
+    @Override
     public abstract void applyState(T AnimationObjectData);
 }

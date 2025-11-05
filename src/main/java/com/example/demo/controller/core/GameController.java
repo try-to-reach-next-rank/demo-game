@@ -4,6 +4,8 @@ import com.example.demo.controller.map.MapController;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.model.state.*;
 import com.example.demo.model.system.*;
 

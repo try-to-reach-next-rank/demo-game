@@ -2,6 +2,8 @@ package com.example.demo.view;
 
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.*;
+import com.example.demo.model.core.effects.VisualEffect;
+import com.example.demo.model.core.entities.Brick;
 import com.example.demo.model.core.gameobjects.AnimatedObject;
 import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.core.gameobjects.ImageObject;

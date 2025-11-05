@@ -1,5 +1,6 @@
 package com.example.demo.model.core;
 
+import com.example.demo.model.core.entities.PowerUp;
 import com.example.demo.utils.ObjectPool;
 import com.example.demo.utils.var.GameVar;
 

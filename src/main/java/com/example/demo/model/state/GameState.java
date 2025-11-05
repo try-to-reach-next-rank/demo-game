@@ -1,8 +1,8 @@
 package com.example.demo.model.state;
 
 import com.example.demo.engine.GameWorld; // Import GameWorld
-import com.example.demo.model.core.Brick;
-import com.example.demo.model.core.PowerUp;
+import com.example.demo.model.core.entities.Brick;
+import com.example.demo.model.core.entities.PowerUp;
 import com.example.demo.model.system.PowerUpSystem;
 import com.example.demo.utils.Sound;
 
