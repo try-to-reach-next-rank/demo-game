@@ -2,7 +2,9 @@ package com.example.demo.model.map;
 
 import com.example.demo.engine.Renderable;
 import com.example.demo.engine.Updatable;
-import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -23,7 +25,6 @@ public class ParallaxLayer implements Updatable, Renderable {
     private final List<Image> frames;
     private int currentFrameIndex = 0;
     private double timeSinceLastFrame = 0.0;
-    private static final double FRAME_DURATION = 0.2; // 5 FPS
 
     public ParallaxLayer(String imagePath, double ratio) {
         this.scrollRatio = ratio;
@@ -32,19 +33,13 @@ public class ParallaxLayer implements Updatable, Renderable {
         this.wrapWidth = this.frames.get(0).getWidth();
     }
 
-    public ParallaxLayer(String[] imagePaths, double ratio) {
-        this.scrollRatio = ratio;
-        this.frames = new ArrayList<>();
-        for (String path : imagePaths) {
-            this.frames.add(loadImage(path));
-        }
-        this.wrapWidth = this.frames.get(0).getWidth();
-    }
-
     private Image loadImage(String path) {
         return new Image(
                 Objects.requireNonNull(getClass().getResourceAsStream(path)),
-                GlobalVar.WIDTH, GlobalVar.HEIGHT, false, true
+                GlobalVar.WIDTH,
+                GlobalVar.HEIGHT,
+                GameVar.PARALLAX_PRESERVE_RATIO,
+                GameVar.PARALLAX_SMOOTH_SCALING
         );
     }
 
@@ -52,9 +47,9 @@ public class ParallaxLayer implements Updatable, Renderable {
     public void update(double deltaTime) {
         if (frames.size() <= 1) return;
         timeSinceLastFrame += deltaTime;
-        if (timeSinceLastFrame >= FRAME_DURATION) {
+        if (timeSinceLastFrame >= GameVar.PARALLAX_FRAME_DURATION) {
             currentFrameIndex = (currentFrameIndex + 1) % frames.size();
-            timeSinceLastFrame -= FRAME_DURATION;
+            timeSinceLastFrame -= GameVar.PARALLAX_FRAME_DURATION;
         }
     }
 
@@ -67,23 +62,15 @@ public class ParallaxLayer implements Updatable, Renderable {
         double drawX = xOffset % imgWidth;
         if (drawX > 0) drawX -= imgWidth;
 
-        gc.drawImage(frame, drawX, 0);
-        gc.drawImage(frame, drawX + imgWidth, 0);
+        gc.drawImage(frame, drawX, GameVar.PARALLAX_Y_OFFSET);
+        gc.drawImage(frame, drawX + imgWidth, GameVar.PARALLAX_FRAME_DURATION);
     }
 
     public void setXOffset(double offset) {
         this.xOffset = offset;
     }
 
-    public void setWrapWidth(double wrapWidth) {
-        this.wrapWidth = wrapWidth;
-    }
-
     public double getWrapWidth() {
         return wrapWidth;
-    }
-
-    public double getScrollRatio() {
-        return scrollRatio;
     }
 }

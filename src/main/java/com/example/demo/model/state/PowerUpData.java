@@ -1,24 +1,19 @@
 package com.example.demo.model.state;
 
 import com.example.demo.model.core.PowerUp;
+import com.example.demo.model.state.gameobjectdata.AnimationedObjectData;
+import com.example.demo.model.state.gameobjectdata.GameObjectData;
 
-public class PowerUpData {
-    private double x;
-    private double y;
+public class PowerUpData extends AnimationedObjectData {
     private String type;
     private boolean visible;
 
-    public PowerUpData() {}
-
     public PowerUpData(PowerUp powerUp) {
-        this.x = powerUp.getX();
-        this.y = powerUp.getY();
+        super(powerUp);
         this.type = powerUp.getType();
         this.visible = powerUp.isVisible();
     }
 
-    public double getX() { return x; }
-    public double getY() { return y; }
     public String getType() { return type; }
     public boolean isVisible() { return visible; }
 }

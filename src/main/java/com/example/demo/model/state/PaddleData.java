@@ -1,18 +1,12 @@
 package com.example.demo.model.state;
 
 import com.example.demo.model.core.Paddle;
+import com.example.demo.model.state.gameobjectdata.GameObjectData;
+import com.example.demo.model.state.gameobjectdata.ImageObjectData;
 
-public class PaddleData {
-    private double x;
-    private double y;
-
-    public PaddleData() {}
+public class PaddleData extends ImageObjectData {
 
     public PaddleData(Paddle paddle) {
-        this.x = paddle.getX();
-        this.y = paddle.getY();
+       super(paddle);
     }
-
-    public double getX() { return x; }
-    public double getY() { return y; }
 }

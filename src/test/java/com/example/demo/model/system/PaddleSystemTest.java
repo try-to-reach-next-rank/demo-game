@@ -1,9 +1,12 @@
 package com.example.demo.model.system;
 
-import com.example.demo.model.utils.GameVar;
-import com.example.demo.model.utils.GlobalVar;
 import com.example.demo.model.core.Paddle;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
+
 import org.junit.jupiter.api.Test;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -70,28 +73,19 @@ class PaddleSystemTest {
 
     @Test
     void reset_callsPaddleResetState() {
-        // Arrange: create a test subclass to observe resetState() call
-        class TestPaddle extends Paddle {
-            boolean resetCalled = false;
+        // Arrange
+        AtomicBoolean resetCalled = new AtomicBoolean(false);
 
+        Paddle paddle = new Paddle() {
             @Override
             public void resetState() {
-                super.resetState();
-                resetCalled = true;
+                resetCalled.set(true); // đánh dấu là hàm được gọi
             }
+        };
 
-            boolean wasResetCalled() {
-                return resetCalled;
-            }
-        }
-
-        TestPaddle paddle = new TestPaddle();
         PaddleSystem system = new PaddleSystem(paddle);
-
-        // Act
         system.reset();
-
-        // Assert
-        assertTrue(paddle.wasResetCalled(), "PaddleSystem.reset() should call paddle.resetState()");
+        assertTrue(resetCalled.get(), "PaddleSystem.reset() should call paddle.resetState()");
     }
+
 }

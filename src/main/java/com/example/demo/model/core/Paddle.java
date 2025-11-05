@@ -1,15 +1,16 @@
 package com.example.demo.model.core;
 
+import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.PaddleData;
-import com.example.demo.model.utils.GameVar;
+import com.example.demo.utils.var.GameVar;
 
-public class Paddle extends GameObject {
+public class Paddle extends ImageObject<PaddleData> {
     private int direction;          // -1 = left, 0 = stop, 1 = right
     private final double speed = GameVar.BASE_SPEED_PADDLE;   // base speed (pixels/second)
     private boolean biggerPaddle;
 
     public Paddle() {
-        super("/images/Paddle.png", GameVar.INIT_PADDLE_X, GameVar.INIT_PADDLE_Y);
+        super("paddle", GameVar.INIT_PADDLE_X, GameVar.INIT_PADDLE_Y);
         resetState();
     }
 
@@ -32,5 +33,4 @@ public class Paddle extends GameObject {
 
     public boolean getBiggerPaddle() { return this.biggerPaddle; }
     public void setBiggerPaddle(boolean biggerPaddle){ this.biggerPaddle = biggerPaddle; }
-
 }

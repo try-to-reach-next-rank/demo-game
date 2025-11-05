@@ -1,8 +1,10 @@
 package com.example.demo.view.ui;
 
-import com.example.demo.controller.SettingsControllers;
-import com.example.demo.controller.ButtonManager;
-import com.example.demo.controller.ThemeManager;
+import com.example.demo.controller.view.SettingsController;
+import com.example.demo.controller.view.ThemeController;
+import com.example.demo.engine.Stage;
+
+import com.example.demo.model.menu.ButtonManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -13,14 +15,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class SettingsView {
-    private final SettingsControllers controller;
-    private final ThemeManager themeManager;
+public class SettingsView implements Stage {
+    private final SettingsController controller;
+    private final ThemeController themeManager;
     private final ButtonManager buttonManager;
     private final StackPane rootStack;
     private final VBox uiBox;
 
-    public SettingsView(SettingsControllers controller) {
+    public SettingsView(SettingsController controller) {
         this.controller = controller;
         this.rootStack = new StackPane();
         this.uiBox = new VBox(20);
@@ -28,7 +30,7 @@ public class SettingsView {
         this.uiBox.setAlignment(Pos.CENTER);
 
         // Setup theme
-        this.themeManager = new ThemeManager();
+        this.themeManager = new ThemeController();
         themeManager.setupBackground(rootStack);
         themeManager.applyCss(rootStack);
 
@@ -40,7 +42,8 @@ public class SettingsView {
         StackPane.setAlignment(uiBox, Pos.CENTER);
     }
 
-    private void buildUI() {
+    @Override
+     public void buildUI() {
         Text title = new Text("Audio Settings");
         title.setFont(Font.font(34));
         title.setFill(Color.WHITE);
@@ -53,7 +56,6 @@ public class SettingsView {
                 "Back to Menu",
                 e -> controller.backToMenu()
         );
-
         uiBox.getChildren().addAll(title, settingsGrid, backRow);
     }
 

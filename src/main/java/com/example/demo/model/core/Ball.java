@@ -1,11 +1,11 @@
 package com.example.demo.model.core;
 
+import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BallData;
-import com.example.demo.controller.AssetManager;
-import com.example.demo.model.utils.GameVar;
-import com.example.demo.model.utils.Vector2D;
+import com.example.demo.utils.Vector2D;
+import com.example.demo.utils.var.GameVar;
 
-public class Ball extends GameObject {
+public class Ball extends ImageObject<BallData> {
     private final double baseSpeed = GameVar.BASE_SPEED_BALL;
     private boolean stuck;
     private Vector2D velocity;
@@ -16,44 +16,44 @@ public class Ball extends GameObject {
     private boolean stopTime;
     private double elapsedTime = 0;
 
+    private Brick lastBrick;
+
     public Ball(Paddle paddle) {
-        super(AssetManager.getInstance().getImage("ball"), GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
+        super("ball", GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
         this.paddle = paddle;
         resetState();
     }
 
     public void toggleStopTime() {
         this.stopTime = !this.stopTime;
-        System.out.println("toggle Stop Time - Is the ball stop: " + this.stopTime);
     }
 
     public void toggleAccelerated() {
         this.accelerated = !this.accelerated;
-        System.out.println("toggle Accelerated - Is the ball accelerated: " + this.accelerated);
     }
 
     public void toggleStronger() {
         this.stronger = !this.stronger;
-        System.out.println("toggle Stronger - Is the ball stronger: " + this.stronger);
     }
 
 
     public void resetState() {
-        alignWithPaddle(10, 1.0);
+        alignWithPaddle(GameVar.BALL_OFFSET_Y, GameVar.BALL_ALIGN_LERP_FACTOR);
         stuck = true;
         accelerated = false;
         stronger = false;
-        velocity = new Vector2D(0, -1);
+        velocity = new Vector2D(GameVar.BALL_INIT_DIR_X, GameVar.BALL_INIT_DIR_Y);
     }
 
     public void release() {
         if (stuck) {
             stuck = false;
-            setVelocity(0, -1);
+            setVelocity(GameVar.BALL_INIT_DIR_X, GameVar.BALL_INIT_DIR_Y);
         }
     }
 
     // Thêm vào lớp Ball.java
+    @Override
     public void applyState(BallData data) {
         if (data == null) return;
         this.setPosition(data.getX(), data.getY());
@@ -109,4 +109,10 @@ public class Ball extends GameObject {
     public double getElapsedTime(){ return elapsedTime; }
     public void setElapsedTime(double x){ elapsedTime = x; }
 
+    public Brick getLastBrick(){
+        return lastBrick;
+    }
+    public void setLastBrick(Brick brick){
+        lastBrick = brick;
+    }
 }

@@ -5,7 +5,7 @@ import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
 import com.example.demo.model.core.PowerUp;
 import com.example.demo.model.state.ActivePowerUpData;
-import com.example.demo.model.utils.GameVar;
+import com.example.demo.utils.var.GameVar;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,7 +25,7 @@ public class PowerUpSystem implements Updatable {
 
     public void activate(PowerUp powerUp) {
         if (powerUp == null) return;
-        powerUp.activate(5000);
+        powerUp.activate(GameVar.POWERUP_ACTIVATE_DURATION);
         activePowerUps.add(powerUp);
 
         switch (powerUp.getType()) {
@@ -42,6 +42,7 @@ public class PowerUpSystem implements Updatable {
             for (PowerUp p : worldPowerUps) {
                 if (p.isVisible()) {
                     p.fall(deltaTime);
+                    p.updateAnimation(deltaTime);
                 }
             }
         }

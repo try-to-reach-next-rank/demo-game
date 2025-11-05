@@ -2,8 +2,7 @@ package com.example.demo.model.system;
 
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
-import com.example.demo.model.utils.Vector2D;
-import com.example.demo.model.utils.GameVar;
+import com.example.demo.utils.Vector2D;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -75,6 +74,7 @@ class BallSystemTest {
         Paddle paddle = new Paddle();
         // place paddle at known coordinates
         paddle.setPosition(100.0, 300.0);
+        paddle.setWidth(30);
 
         Ball ball = new Ball(paddle);
         // place ball centered above paddle so hitPos ~ 0.5 and resulting angle should be ~90 degrees
@@ -99,7 +99,8 @@ class BallSystemTest {
         Vector2D v = ball.getVelocity();
         // For a center hit (hitPos ~ 0.5) the computed angle in code is 90 degrees,
         // so cos(90deg) ~= 0 and -sin(90deg) ~= -1 -> velocity approx (0, -1)
-        assertEquals(0.0, v.x, 1e-3, "Velocity.x should be approximately 0 for center hit");
+
         assertEquals(-1.0, v.y, 1e-3, "Velocity.y should be approximately -1 for center hit");
+        assertEquals(0.0, v.x, 1e-3, "Velocity.x should be approximately 0 for center hit");
     }
 }

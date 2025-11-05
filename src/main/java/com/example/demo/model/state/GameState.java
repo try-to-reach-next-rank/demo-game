@@ -1,16 +1,18 @@
 package com.example.demo.model.state;
 
 import com.example.demo.engine.GameWorld; // Import GameWorld
+import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.system.PowerUpSystem;
-import com.example.demo.model.utils.GameVar;
+import com.example.demo.utils.Sound;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameState {
     private int currentLevel;
+    private String currentTrackName;
+    private double currentTrackTime;
     // có thể thêm score và lives ở đây nếu cần
     // private int score;
     // private int lives;
@@ -36,6 +38,11 @@ public class GameState {
         this.currentLevel = world.getCurrentLevel();
         this.paddleData = new PaddleData(world.getPaddle());
         this.ballData = new BallData(world.getBall());
+
+        // Laays nhạc và thwofi gian
+        Sound soundManager = Sound.getInstance();
+        this.currentTrackName = soundManager.getCurrentTrackName();
+        this.currentTrackTime = soundManager.getCurrentMusicTime();
 
         // Power-ups
         this.powerUpsData = new ArrayList<>();
@@ -111,6 +118,22 @@ public class GameState {
 
     public void setActivePowerUpsData(List<ActivePowerUpData> activePowerUpsData) {
         this.activePowerUpsData = activePowerUpsData;
+    }
+
+    public double getCurrentTrackTime() {
+        return currentTrackTime;
+    }
+
+    public void setCurrentTrackTime(double currentTrackTime) {
+        this.currentTrackTime = currentTrackTime;
+    }
+
+    public String getCurrentTrackName() {
+        return currentTrackName;
+    }
+
+    public void setCurrentTrackName(String currentTrackName) {
+        this.currentTrackName = currentTrackName;
     }
 
     public int getCurrentLevel() { return currentLevel; }

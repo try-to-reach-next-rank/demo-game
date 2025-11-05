@@ -2,20 +2,20 @@ package com.example.demo.model.system;
 
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
+import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.core.bricks.Brick;
-import com.example.demo.model.utils.GameRandom;
-import com.example.demo.model.utils.GameVar;
-import com.example.demo.model.utils.Sound;
+import com.example.demo.utils.GameRandom;
+import com.example.demo.utils.Sound;
+import com.example.demo.utils.var.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.view.EffectRenderer;
-import javafx.scene.image.Image;
 
 import java.util.List;
 import java.util.Random;
 
 /**
  * Handles brick damage, explosion propagation, and power-up spawning.
+ * TODO: Add handle reveal bricks in here
  */
 public class BrickSystem implements Updatable {
     private final Brick[] bricks;
@@ -35,10 +35,10 @@ public class BrickSystem implements Updatable {
     /**
      * Handles a collision between a ball and a brick.
      */
-    public void onBallHitBrick(Ball ball, Brick brick) {
+    public void onBallHitBrick(Brick brick, Ball ball) {
         if (brick.isDestroyed()) return;
-
-        applyDamage(brick);
+        if (ball == null) return;
+        applyDamage(brick, ball.isStronger());
 
         // Check destruction and trigger effects
         if (brick.isDestroyed()) {
@@ -50,39 +50,19 @@ public class BrickSystem implements Updatable {
     /**
      * Applies damage to a brick and updates its texture.
      */
-    public void applyDamage(Brick brick) {
+    public void applyDamage(Brick brick, boolean isStronger) {
         if (brick.getHealth() == Integer.MAX_VALUE) return;
-        int health = brick.getHealth() - 1;
+        int power = (isStronger) ? GameVar.MAXPOWER : GameVar.MINPOWER;
+        int health = brick.getHealth() - power;
         brick.setHealth(health);
 
         if (health <= 0) {
             brick.setDestroyed(true);
-            notifyBrickDestroyed(brick);
+            // Sound.getInstance().playSound("brick_break"); TODO: maybe add brick break sound
         } else {
-            notifyBrickDamaged(brick, health);
-        }
-    }
-
-    protected void notifyBrickDestroyed(Brick brick) {
-        if (isFxInitialized()) {
-            // Sound.getInstance().playSound("brick_break");
-        }
-    }
-
-    protected void notifyBrickDamaged(Brick brick, int health) {
-        if (isFxInitialized()) {
-            Image newTexture = BrickTextureProvider.getTextureForHealth(health);
-            brick.setImage(newTexture);
+            String newImageKey = BrickTextureProvider.getTextureForHealth(health);
+            brick.setImageKey(newImageKey);
             Sound.getInstance().playSound("brick_hit");
-        }
-    }
-
-    private boolean isFxInitialized() {
-        try {
-            javafx.application.Platform.runLater(() -> {});
-            return true;
-        } catch (IllegalStateException e) {
-            return false;
         }
     }
 
@@ -90,8 +70,8 @@ public class BrickSystem implements Updatable {
      * Spawns a power-up at the destroyed brick's location.
      */
     private void maybeSpawnPowerUp(Brick brick) {
-        if (random.nextInt(100) < 99) { // 30% chance
-            PowerUp powerUp = new PowerUp(GameVar.powerUps[GameRandom.nextInt(4)]);
+        if (random.nextInt(100) < GameVar.POWERUP_SPAWN_CHANCE) {
+            PowerUp powerUp = new PowerUp(GameVar.powerUps[GameRandom.nextInt(GameVar.powerUps.length)]);
             powerUp.dropFrom(brick);
             powerUps.add(powerUp);
         }
@@ -103,29 +83,6 @@ public class BrickSystem implements Updatable {
     private void spawnDestructionEffect(Brick brick) {
         double centerX = brick.getX() + brick.getWidth() / 2;
         double centerY = brick.getY() + brick.getHeight();
-        if (isFxInitialized()) {
-            EffectRenderer.getInstance().spawn("explosion1", centerX, centerY, 5);
-        }
-    }
-
-    /**
-     * Applies explosion logic from a source brick.
-     */
-    public void handleExplosion(Brick sourceBrick) {
-        double cx = sourceBrick.getX() + sourceBrick.getWidth() / 2;
-        double cy = sourceBrick.getY() + sourceBrick.getHeight() / 2;
-        double radius = sourceBrick.getWidth() * 2.5;
-
-        for (Brick other : bricks) {
-            if (other == sourceBrick || other.isDestroyed()) continue;
-
-            double ocx = other.getX() + other.getWidth() / 2;
-            double ocy = other.getY() + other.getHeight() / 2;
-            double distance = Math.sqrt(Math.pow(cx - ocx, 2) + Math.pow(cy - ocy, 2));
-
-            if (distance <= radius) {
-                applyDamage(other);
-            }
-        }
+        EffectRenderer.getInstance().spawn(GameVar.EXPLOSION1_EFFECT_KEY, centerX, centerY, GameVar.EFFECT_DURATION);
     }
 }

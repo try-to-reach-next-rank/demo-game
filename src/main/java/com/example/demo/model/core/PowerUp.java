@@ -1,29 +1,32 @@
 package com.example.demo.model.core;
 
-import com.example.demo.model.core.bricks.Brick;
-import com.example.demo.model.utils.GlobalVar;
+import com.example.demo.model.core.gameobjects.AnimatedObject;
+import com.example.demo.model.state.PowerUpData;
+import com.example.demo.utils.var.GlobalVar;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class PowerUp extends GameObject {
-    private final String type;
-    private boolean visible;
+public class PowerUp extends AnimatedObject<PowerUpData> {
+    private static final Logger log = LoggerFactory.getLogger(PowerUp.class);
+    private String type;
     private final double fallSpeed = 150.0;
     private boolean active = false;
     private long expireAt = -1;
 
     public PowerUp(String type) {
-        super("/images/fastup.png", 0, 0);
+        super("powerup_" + type.toLowerCase() , 0, 0);
+        PowerUp.log.info("Type: {}", type);
         this.type = type;
     }
 
     public void dropFrom(Brick brick) {
-        setPosition(brick.getX(), brick.getY());
+        setPosition(brick.getX() + brick.getWidth() / 2, brick.getY() + brick.getHeight() / 2);
         visible = true;
     }
 
     public void fall(double deltaTime) {
         if (!visible) return;
         y += fallSpeed * deltaTime;
-        setPosition(x, y);
         if (y > GlobalVar.HEIGHT) visible = false;
     }
 
@@ -57,7 +60,15 @@ public class PowerUp extends GameObject {
     }
 
     public void deactivate() { active = false; }
-    public boolean isVisible() { return visible; }
-    public void setVisible(boolean visible) { this.visible = visible; }
     public String getType() { return type; }
+    public void reset(String type) {
+        this.type = type;
+        setPosition(0,0);
+        setVisible(false);
+        active = false;
+        expireAt = 1000;
+    }
+
+    @Override
+    public void applyState(PowerUpData AnimationObjectData) {}
 }

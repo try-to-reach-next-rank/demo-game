@@ -4,12 +4,17 @@ import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
 import com.example.demo.model.core.Wall;
-import com.example.demo.model.utils.GameRandom;
-import com.example.demo.model.utils.GlobalVar;
-import com.example.demo.model.utils.Vector2D;
+import com.example.demo.utils.GameRandom;
+import com.example.demo.utils.Vector2D;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BallSystem implements Updatable {
     private final Ball ball;
+    private final List<Ball> balls = new ArrayList<>();
     private final Paddle paddle;
 
     public BallSystem(Ball ball, Paddle paddle) {
@@ -21,12 +26,12 @@ public class BallSystem implements Updatable {
     public void update(double deltaTime) {
         if (ball.isStopTime()) {
             ball.setElapsedTime(ball.getElapsedTime() + deltaTime);
-            if (ball.getElapsedTime() >= 0.5) {
+            if (ball.getElapsedTime() >= GameVar.BALL_ELAPSED_TIME) {
                 ball.setElapsedTime(0);
                 double angle = GameRandom.nextDouble() * 2 * Math.PI;
                 double vx = Math.cos(angle);
                 double vy = Math.sin(angle);
-                if (ball.getY() >= paddle.getY() - 100) {
+                if (ball.getY() >= paddle.getY() - GameVar.BALL_PADDLE_OFFSET_Y) {
                     vy = -Math.abs(vy);
                 }
                 ball.setVelocity(vx, vy);
@@ -36,12 +41,12 @@ public class BallSystem implements Updatable {
 
         if (ball.isStuck()) {
             // Keep the ball above the paddle
-            ball.alignWithPaddle(0, 0.1);
+            ball.alignWithPaddle(GameVar.BALL_ALIGN_WITH_PADDLE_OFFSET_Y, GameVar.BALL_ALIGN_WITH_PADDLE_LERPFACTOR);
             return;
         }
 
         double currentSpeed = ball.getBaseSpeed();
-        if (ball.isAccelerated()) currentSpeed *= 1.5;
+        if (ball.isAccelerated()) currentSpeed *= GameVar.BALL_ACCELERATION_FACTOR;
 
         Vector2D step = ball.getVelocity().normalize().multiply(currentSpeed * deltaTime);
         double newX = ball.getX() + step.x;
@@ -65,7 +70,7 @@ public class BallSystem implements Updatable {
         double paddleLPos = paddle.getBounds().getMinX();
         double ballCenterX = ball.getBounds().getMinX() + ball.getWidth() / 2.0;
         double hitPos = (ballCenterX - paddleLPos) / paddle.getWidth();
-        double angle = Math.toRadians(150 * (1 - hitPos) + 30 * hitPos);
+        double angle = Math.toRadians(GameVar.BALL_BOUNCE_ANGLE_LEFT * (1 - hitPos) + GameVar.BALL_BOUNCE_ANGLE_RIGHT * hitPos);
         ball.setVelocity(Math.cos(angle), -Math.sin(angle));
     }
 
