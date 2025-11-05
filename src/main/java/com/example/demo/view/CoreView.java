@@ -3,12 +3,15 @@ package com.example.demo.view;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.gameobjects.AnimatedObject;
+import com.example.demo.model.core.gameobjects.AnimationBatchUpdate;
 import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.map.ParallaxLayer;
 import com.example.demo.model.system.ParallaxSystem;
 import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.Arrays;
@@ -24,6 +27,9 @@ public class CoreView {
     private int currentRevealTick = 0;
     private boolean reveal = true;
     private ParallaxSystem parallaxSystem;
+    private final Rectangle2D viewport = new Rectangle2D(
+            0,0, GlobalVar.WIDTH, GlobalVar.HEIGHT
+    );
 
     public CoreView(GraphicsContext gc, GameWorld world) {
         this.gc = gc;
@@ -42,6 +48,7 @@ public class CoreView {
     public void update(double deltaTime) {
         parallaxSystem.update(deltaTime);
         EffectRenderer.getInstance().update(deltaTime);
+        AnimationBatchUpdate.getInstance().updateAll(deltaTime);
         setupBrickReveal();
     }
 
@@ -54,12 +61,19 @@ public class CoreView {
     private void renderAllObjects(GraphicsContext gc) {
         List<GameObject> objects = world.getAllObjects();
         if (objects == null) {
-            // Log here
             return;
         }
 
         for (GameObject obj : objects) {
             if (obj == null || !obj.isVisible()) continue;
+
+            double x = obj.getX();
+            double y = obj.getY();
+            double w = obj.getWidth();
+            double h = obj.getHeight();
+
+            if (!isInView(x, y, w, h)) continue;
+
             drawObject(gc, obj);
         }
     }
@@ -104,13 +118,17 @@ public class CoreView {
 
     private void drawBricks(GraphicsContext gc) {
         Brick[] bricks = world.getBricks();
-        if (bricks != null) {
-            for (Brick brick : bricks) {
-                if (revealedBricks.contains(brick) && !brick.isDestroyed()) {
-                    gc.drawImage(brick.getImage(), brick.getX(), brick.getY(),
-                            brick.getWidth(), brick.getHeight());
-                }
-            }
+        if (bricks == null) return;
+
+        for (Brick brick : bricks) {
+            if (brick.isDestroyed()) continue;
+            if (!revealedBricks.contains(brick)) continue;
+
+            if (!isInView(brick.getX(), brick.getY(), brick.getWidth(), brick.getHeight()))
+                continue;
+
+            gc.drawImage(brick.getImage(), brick.getX(), brick.getY(),
+                    brick.getWidth(), brick.getHeight());
         }
     }
 
@@ -132,5 +150,9 @@ public class CoreView {
         parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER2, GameVar.PARALLAX_SPEED_LAYERS[2]));
         parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER3, GameVar.PARALLAX_SPEED_LAYERS[1]));
         parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER4, GameVar.PARALLAX_SPEED_LAYERS[0]));
+    }
+
+    private boolean isInView(double x, double y, double width, double height) {
+        return viewport.intersects(x, y, width, height);
     }
 }
