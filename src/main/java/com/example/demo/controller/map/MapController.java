@@ -6,6 +6,8 @@ import com.example.demo.model.map.MapData;
 import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
  * based on predefined map matrices. It now uses BrickTextureProvider and the new Brick data model.
  */
 public class MapController {
+    private static final Logger log = LoggerFactory.getLogger(MapController.class);
     private final List<Brick> bricks = new ArrayList<>();
 
     public MapData loadMap(int level) {
@@ -48,5 +51,21 @@ public class MapController {
         }
         return new MapData(bricks, walls);
     }
-
+    // ========== NEW: Level Navigation ==========
+    public int getNextLevel(int currentLevel) {
+        int nextLevel = currentLevel + 1;
+        if (nextLevel > GameVar.MAX_LEVEL) {
+            nextLevel = GameVar.MIN_LEVEL;
+        }
+        log.info("Next level: {} -> {}", currentLevel, nextLevel);
+        return nextLevel;
+    }
+    public int getPreviousLevel(int currentLevel) {
+        int prevLevel = currentLevel - 1;
+        if (prevLevel < GameVar.MIN_LEVEL) {
+            prevLevel = GameVar.MAX_LEVEL;
+        }
+        log.info("Previous level: {} -> {}", currentLevel, prevLevel);
+        return prevLevel;
+    }
 }

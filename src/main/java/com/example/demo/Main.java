@@ -8,7 +8,6 @@ import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.menu.SettingsModel;
 import com.example.demo.model.state.GameState;
-import com.example.demo.utils.Input;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GlobalVar;
@@ -148,25 +147,7 @@ public class Main extends Application {
     }
 
     private void showGame() {
-        Input input = new Input(gameController.getPaddle(), gameController.getBall());
-
-        mainRoot.getChildren().add(gameController);
-
-        mainScene.setOnKeyPressed(e -> {
-            if (gameController.getUIManager().hasActiveUI()) {
-                gameController.getUIManager().handleInput(e.getCode());
-            } else {
-                input.handleKeyPressed(e.getCode());
-            }
-        });
-
-        mainScene.setOnKeyReleased(e -> {
-            if (!gameController.getUIManager().hasActiveUI()) {
-                input.handleKeyReleased(e.getCode());
-            }
-        });
-
-
+        mainRoot.getChildren().setAll(gameController);
         gameController.requestFocus();
     }
 
@@ -181,8 +162,12 @@ public class Main extends Application {
         gameController.setOnBackToMenu(() -> {
             menuModel.setCurrentScreen(MenuModel.Screen.MENU);
         });
-        gameController.initGame();
 
+        mainRoot.getChildren().setAll(gameController);
+        gameController.initGame();
+        gameController.requestFocus();
+
+        gameController.startIntroDialogue();
 
         menuModel.setCurrentScreen(MenuModel.Screen.PLAY);
     }
@@ -194,8 +179,12 @@ public class Main extends Application {
         gameController.setNewGame(false);          // ← Đánh dấu Load Game
         gameController.setCurrentSlot(slotNumber); // ← Set slot
         gameController.setOnBackToMenu(() -> menuModel.setCurrentScreen(MenuModel.Screen.MENU));
+
         gameController.initGame();
         gameController.applyState(gameState);      // ← Apply saved state
+
+        mainRoot.getChildren().setAll(gameController);
+        gameController.requestFocus();
 
         menuModel.setCurrentScreen(MenuModel.Screen.PLAY);
     }

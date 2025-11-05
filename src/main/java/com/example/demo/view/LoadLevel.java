@@ -8,12 +8,12 @@ import com.example.demo.model.map.MapData;
 public class LoadLevel {
     private final MapController mapManager;
     private final GameWorld world;
-    private final Renderer renderer;
+    private final GameView gameView;
 
-    public LoadLevel(MapController mapManager, GameWorld world, Renderer renderer) {
+    public LoadLevel(MapController mapManager, GameWorld world, GameView gameView) {
         this.mapManager = mapManager;
         this.world = world;
-        this.renderer = renderer;
+        this.gameView = gameView;
     }
 
     public MapData load(int level) {
@@ -23,12 +23,12 @@ public class LoadLevel {
         world.getWalls().addAll(mapData.getWalls());
         world.setBricks(mapData.getBricks().toArray(new Brick[0]));
         world.resetForNewLevel();
-        renderer.reset();
 
-        return  mapData;
+        gameView.reset();
+
+        return mapData;
     }
 
-    // chỉ load level, không reset render
     public void loadForSavedGame(int level) {
         MapData mapData = mapManager.loadMap(level);
 
