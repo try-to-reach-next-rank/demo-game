@@ -1,5 +1,6 @@
 package com.example.demo;
 
+<<<<<<< Updated upstream
 import com.example.demo.controller.GameManager;
 import com.example.demo.controller.MenuControll;
 import com.example.demo.controller.SettingsControllers;
@@ -8,6 +9,15 @@ import com.example.demo.model.map.MenuModel;
 import com.example.demo.model.map.SettingsModel;
 =======
 import com.example.demo.controller.SlotSelectionController;
+=======
+import com.example.demo.controller.core.GameController;
+import com.example.demo.controller.map.MenuController;
+import com.example.demo.controller.view.SettingsController;
+import com.example.demo.controller.view.SlotSelectionController;
+import com.example.demo.controller.view.ThemeController;
+import com.example.demo.model.assets.AssetManager;
+import com.example.demo.model.menu.ButtonManager;
+>>>>>>> Stashed changes
 import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.menu.SettingsModel;
 import com.example.demo.model.state.GameState;
@@ -53,12 +63,18 @@ public class Main extends Application {
         MenuControll menuController = new MenuControll(menuModel);
         SettingsControllers settingsController = new SettingsControllers(settingsModel, menuModel);
 
+        ThemeController themeController = new ThemeController();
+        ButtonManager buttonManager = new ButtonManager(themeController.getHandImage());
         // --- Khởi tạo Views ---
-        menuView = new MenuView(menuController);
+        menuView = new MenuView(menuController,themeController,buttonManager);
         settingsView = new SettingsView(settingsController);
 
         // --- Tạo root chính chứa các màn hình ---
         mainRoot = new StackPane(menuView.getRoot());
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         mainScene = new Scene(mainRoot, GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
         // --- Gắn sự kiện bàn phím cho menu ---

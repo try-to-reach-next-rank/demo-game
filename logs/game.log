@@ -1,0 +1,2 @@
+21:26:04.794 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+21:26:08.437 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Back to menu
