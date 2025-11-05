@@ -36,12 +36,14 @@ public class HandGrabEffect extends VisualEffect {
     private static final int MAX_SHAKES = 5;
     private double shakeOffsetX = 0.0;
     private double shakeOffsetY = 0.0;
+    private double grabY;
+    private double punchY;
 
     private static final double APPROACH_DURATION = 0.5;
     private static final double GRAB_DURATION = 0.3;
-    private static final double PUNCH_DURATION = 0.5;
+    private static final double PUNCH_DURATION = 0.15;
     private static final double RETREAT_DURATION = 0.4;
-    private static final double WINDUP_DURATION = 0.7;
+    private static final double WINDUP_DURATION = 0.08;
     private double windupOffset = 0.0;
 
     private static final double SHAKE_INTENSITY = 8.0;
@@ -68,6 +70,7 @@ public class HandGrabEffect extends VisualEffect {
         this.originalBallY = ball.getY();
 
         ball.setVelocity(0, 0);
+        ball.setHeldByEffect(true);
 
         // Hand starts from top of screen, slightly offset
         this.handX = ball.getX() + ball.getWidth() / 2;
@@ -127,6 +130,8 @@ public class HandGrabEffect extends VisualEffect {
         if (progress >= 1.0) {
             handClosed = true;
             currentPhase = Phase.SHAKE;
+            grabY = handY;
+            punchY = grabY + 100;
             phaseTimer = 0.0;
         } else {
             handClosed = progress > 0.5;
@@ -140,8 +145,6 @@ public class HandGrabEffect extends VisualEffect {
         shakeOffsetX = Math.sin(t) * SHAKE_INTENSITY;
         shakeOffsetY = Math.cos(t * 1.3) * SHAKE_INTENSITY * 0.5;
 
-        // Count shakes
-        phaseTimer += deltaTime;
         if (phaseTimer >= 0.08) { // every 0.08s = about 12Hz shake
             phaseTimer = 0;
             shakeCount++;
@@ -167,25 +170,23 @@ public class HandGrabEffect extends VisualEffect {
         double progress = Math.min(phaseTimer / PUNCH_DURATION, 1.0);
         double eased = easeOutCubic(progress);
 
-        // Forward jab
-        handY = (ball.getY() - HAND_SIZE * 0.3) + eased * 100;
+        handY = grabY - windupOffset + (punchY - (grabY - windupOffset)) * eased;
         handRotation = eased * 20;
 
-        // Midway through punch, actually throw the ball
-        if (progress >= 0.5 && ball != null) {
-            double angle = Math.toRadians(45 + Math.random() * 90); // 45–135°, mostly upward
-            double speed = 450 + Math.random() * 300;
-
-            Vector2D punchVelocity = new Vector2D(
-                    Math.cos(angle) * speed,
-                    -Math.abs(Math.sin(angle)) * speed
-            );
-
-            ball.setStuck(false);
-            ball.setVelocity(punchVelocity);
-        }
-
+        // Punch timing
         if (progress >= 1.0) {
+            if (ball != null && ball.isHeldByEffect()) {
+                double angle = Math.toRadians(45 + Math.random() * 90);
+                double speed = 450 + Math.random() * 300;
+                Vector2D punchVelocity = new Vector2D(
+                        Math.cos(angle) * speed,
+                        -Math.abs(Math.sin(angle)) * speed
+                );
+                ball.setStuck(false);
+                ball.setVelocity(punchVelocity);
+            }
+
+            // transition to retreat
             currentPhase = Phase.RETREAT;
             phaseTimer = 0.0;
             handClosed = false;
@@ -194,13 +195,13 @@ public class HandGrabEffect extends VisualEffect {
 
     private void updateWindup(double deltaTime) {
         double progress = Math.min(phaseTimer / WINDUP_DURATION, 1.0);
-
         double eased = easeOutCubic(progress);
+
         windupOffset = eased * 50;
-        handY = (ball.getY() - HAND_SIZE * 0.3) - windupOffset;
+        handY = grabY - windupOffset;   // windup goes slightly up
         handRotation = -eased * 20;
 
-        if (progress >= 1.0) {
+        if (phaseTimer >= WINDUP_DURATION) {
             currentPhase = Phase.PUNCH;
             phaseTimer = 0.0;
         }
@@ -232,7 +233,7 @@ public class HandGrabEffect extends VisualEffect {
             gc.setGlobalAlpha(alpha);
         }
 
-        gc.translate(handX, handY + HAND_SIZE / 2);
+        gc.translate(handX, handY + HAND_SIZE * 0.7);
         gc.rotate(handRotation);
         gc.scale(handScale, handScale);
 

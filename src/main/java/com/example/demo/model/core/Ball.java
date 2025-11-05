@@ -15,6 +15,7 @@ public class Ball extends ImageObject {
     private boolean stronger;
     private boolean stopTime;
     private double elapsedTime = 0;
+    private boolean beingHeld = false;
 
     private Brick lastBrick;
 
@@ -79,6 +80,8 @@ public class Ball extends ImageObject {
     public boolean isAccelerated() { return accelerated; }
     public void setAccelerated(boolean accelerated) { this.accelerated = accelerated; }
 
+    public boolean isHeldByEffect() { return beingHeld; }
+    public void setHeldByEffect(boolean held) { this.beingHeld = held; }
 
     public boolean isStronger() { return stronger; }
     public void setStronger(boolean stronger){ this.stronger = stronger; }
@@ -105,12 +108,6 @@ public class Ball extends ImageObject {
         setPosition(x, y);
     }
 
-    public Vector2D generateRandomPunchVelocity() {
-        double angle = Math.toRadians(45 + Math.random() * 90); // between 45°–135°
-        double speed = 350 + Math.random() * 150;
-        return new Vector2D(Math.cos(angle) * speed, -Math.abs(Math.sin(angle)) * speed);
-    }
-
     public double getElapsedTime(){ return elapsedTime; }
     public void setElapsedTime(double x){ elapsedTime = x; }
 
@@ -125,5 +122,4 @@ public class Ball extends ImageObject {
     public void setLastBrick(Brick brick){
         lastBrick = brick;
     }
-
 }
