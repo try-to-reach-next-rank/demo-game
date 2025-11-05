@@ -105,6 +105,12 @@ public class Ball extends ImageObject {
         setPosition(x, y);
     }
 
+    public Vector2D generateRandomPunchVelocity() {
+        double angle = Math.toRadians(45 + Math.random() * 90); // between 45°–135°
+        double speed = 350 + Math.random() * 150;
+        return new Vector2D(Math.cos(angle) * speed, -Math.abs(Math.sin(angle)) * speed);
+    }
+
     public double getElapsedTime(){ return elapsedTime; }
     public void setElapsedTime(double x){ elapsedTime = x; }
 

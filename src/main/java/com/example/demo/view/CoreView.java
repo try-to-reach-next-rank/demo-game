@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.controller.view.HandEffectController;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.*;
 import com.example.demo.model.map.ParallaxLayer;
@@ -20,6 +21,7 @@ public class CoreView {
     private int currentRevealTick = 0;
     private boolean reveal = true;
     private ParallaxSystem parallaxSystem;
+    private final HandEffectController handEffectController = HandEffectController.getInstance();
 
     public CoreView(GraphicsContext gc, GameWorld world) {
         this.gc = gc;
@@ -28,6 +30,10 @@ public class CoreView {
     public void render(GraphicsContext gc) {
         if (parallaxSystem != null) {
             parallaxSystem.render(gc);
+        }
+
+        if (handEffectController.isActive()) {
+            handEffectController.getActiveEffect().render(gc);
         }
 
         drawBall(gc);
@@ -41,7 +47,14 @@ public class CoreView {
     public void update(double deltaTime) {
         parallaxSystem.update(deltaTime);
         EffectRenderer.getInstance().update(deltaTime);
+        handEffectController.update(deltaTime);
         setupBrickReveal();
+    }
+
+    public void triggerHandGrab() {
+        if (world.getBall() != null) {
+            handEffectController.triggerHandGrab(world.getBall());
+        }
     }
 
     private void setupBrickReveal() {
@@ -109,6 +122,7 @@ public class CoreView {
         revealedBricks.clear();
         brickRevealCounter = 0;
         currentRevealTick = 0;
+        handEffectController.reset();
     }
 
     public void initParallax() {

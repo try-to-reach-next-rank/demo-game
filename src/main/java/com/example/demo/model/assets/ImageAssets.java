@@ -46,5 +46,8 @@ public class ImageAssets implements AssetLoader {
 
         // Power up sprite sheet
         ASSETS.put("powerup_spritesheet", AssetPaths.POWERUP_SPRITESHEET);
+
+        ASSETS.put("hand_open", AssetPaths.HAND_OPEN);
+        ASSETS.put("hand_closed", AssetPaths.HAND_CLOSED);
     };
 }

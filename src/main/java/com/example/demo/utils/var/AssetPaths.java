@@ -7,6 +7,8 @@ public final class AssetPaths {
     // THEME
     public static final String CSS_PATH_MENU = "/styles/menu.css";
     public static final String HAND = "/images/hand.png";
+    public static final String HAND_OPEN = "/images/hand_closed.png";
+    public static final String HAND_CLOSED = "/images/hand_open.png";
 
     // PARALLAX
     public static final String LAYER1 = "/images/layer1.png";

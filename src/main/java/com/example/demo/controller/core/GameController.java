@@ -219,6 +219,9 @@ public class GameController extends Pane {
 
     public void onKeyPressed(KeyCode code) {
         inputGame.handleKeyPressed(code);
+        if (code == KeyCode.H) {
+            view.getCoreView().triggerHandGrab();
+        }
     }
 
     public void onKeyReleased(KeyCode code) {
