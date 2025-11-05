@@ -27,4 +27,5 @@ module com.example.demo {
     exports com.example.demo.controller.map;
     exports com.example.demo.controller.view;
     exports com.example.demo.utils.var;
+    opens com.example.demo.model.state.gameobjectdata to com.google.gson;
 }

@@ -1,15 +1,16 @@
 package com.example.demo.model.state;
 
 import com.example.demo.model.core.Brick;
+import com.example.demo.model.state.gameobjectdata.GameObjectData;
+import com.example.demo.model.state.gameobjectdata.ImageObjectData;
 
-public class BrickData {
+public class BrickData extends ImageObjectData {
     private int id;
     private int health;
     private boolean isDestroyed;
 
-    public BrickData() {}
-
     public BrickData(int id, Brick brick) {
+        super(brick);
         this.id = id;
         this.health = brick.getHealth();
         this.isDestroyed = brick.isDestroyed();

@@ -3,6 +3,7 @@ package com.example.demo.controller.map;
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.map.MapData;
 import com.example.demo.utils.var.GameVar;
+import com.example.demo.view.graphics.BrickTextureProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +51,7 @@ class MapControllerTest {
         assertEquals(expectedY, b.getY(), 0.001);
         assertTrue(b.getHealth() >= 1 && b.getHealth() <= 5, "Máu của brick loại 1 nằm trong [1..5]");
     }
-    /** test chưa pass vì chưa merge steel bricks
+    // test chưa pass vì chưa merge steel bricks
      @Test
      void testLoadMapFromMatrix_indestructibleBrick_shouldHaveMaxHealth() {
      int[][] matrix = {{2}};
@@ -62,7 +63,7 @@ class MapControllerTest {
      String expectedTexture = BrickTextureProvider.getTextureForHealth(brick.getHealth());
      assertEquals(expectedTexture, brick.getImageKey());
      }
-     **/
+
     @Test
     void testLoadMap_validLevel_shouldReturnNonEmptyData() {
         MapData data = mapManager.loadMap(1);

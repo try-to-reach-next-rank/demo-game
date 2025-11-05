@@ -1,8 +1,13 @@
 package com.example.demo.model.core;
 
 import com.example.demo.model.core.gameobjects.ImageObject;
+import com.example.demo.model.state.WallData;
 
-public class Wall extends ImageObject {
+public class Wall extends ImageObject<WallData> {
+
+    @Override
+    public void applyState(WallData ImageObjectData) {}
+
     public enum Side { LEFT, RIGHT, TOP }
     private final Side side;
 

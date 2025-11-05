@@ -1,9 +1,10 @@
 package com.example.demo.model.core.gameobjects;
 
+import com.example.demo.model.state.gameobjectdata.GameObjectData;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 
-public abstract class GameObject {
+public abstract class GameObject<T extends GameObjectData> {
     protected double x;
     protected double y;
     protected double width;
@@ -71,4 +72,5 @@ public abstract class GameObject {
     }
 
     public abstract boolean isStatic();
+    public abstract void applyState(T GameObjectData);
 }

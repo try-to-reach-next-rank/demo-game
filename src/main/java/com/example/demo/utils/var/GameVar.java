@@ -8,7 +8,7 @@ public final class GameVar {
 
     private GameVar() {}
     // GAME
-    public static final int START_LEVEL = 1;
+    public static final int START_LEVEL = 2;
     public static final int MAX_LEVEL = 3;
     public static final int MIN_LEVEL = 1;
     public static final double MAX_DELTA_TIME = 0.05;

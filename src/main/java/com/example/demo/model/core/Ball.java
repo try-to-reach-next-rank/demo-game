@@ -5,7 +5,7 @@ import com.example.demo.model.state.BallData;
 import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
 
-public class Ball extends ImageObject {
+public class Ball extends ImageObject<BallData> {
     private final double baseSpeed = GameVar.BASE_SPEED_BALL;
     private boolean stuck;
     private Vector2D velocity;
@@ -53,6 +53,7 @@ public class Ball extends ImageObject {
     }
 
     // Thêm vào lớp Ball.java
+    @Override
     public void applyState(BallData data) {
         if (data == null) return;
         this.setPosition(data.getX(), data.getY());

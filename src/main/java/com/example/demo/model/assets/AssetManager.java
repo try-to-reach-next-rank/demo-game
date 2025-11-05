@@ -36,6 +36,7 @@ public class AssetManager {
         return instance;
     }
 
+
     public void loadAll() {
         for (AssetLoader loader : loaders) {
             loader.loadInto(this);

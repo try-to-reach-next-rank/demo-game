@@ -9,8 +9,12 @@ import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BallSystem implements Updatable {
     private final Ball ball;
+    private final List<Ball> balls = new ArrayList<>();
     private final Paddle paddle;
 
     public BallSystem(Ball ball, Paddle paddle) {

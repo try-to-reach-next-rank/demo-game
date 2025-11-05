@@ -40,7 +40,7 @@ public class MapController {
                 double x = GameVar.MATRIX_START_X + c * (GameVar.WIDTH_OF_BRICKS + GameVar.PADDING_X);
                 double y = GameVar.MATRIX_START_Y + r * (GameVar.HEIGHT_OF_BRICKS + GameVar.PADDING_Y);
 
-                int health = (matrix[r][c] == 2) ? Integer.MAX_VALUE : (GameRandom.nextInt(5) + 1);
+                int health = (matrix[r][c] == 2) ? (Integer.MAX_VALUE) : (GameRandom.nextInt(5) + 1);
                 String imageKey = BrickTextureProvider.getTextureForHealth(health);
 
                 bricks.add(new Brick(imageKey, x, y, health));

@@ -2,9 +2,10 @@ package com.example.demo.model.core.gameobjects;
 
 import com.example.demo.model.assets.AssetManager;
 
+import com.example.demo.model.state.gameobjectdata.ImageObjectData;
 import javafx.scene.image.Image;
 
-public abstract class ImageObject extends GameObject {
+public abstract class ImageObject<T extends ImageObjectData> extends GameObject<T> {
     protected String imageKey;
     protected Image image;
 
@@ -31,4 +32,6 @@ public abstract class ImageObject extends GameObject {
 
     public String getImageKey() { return this.imageKey; }
     public Image getImage() { return this.image; }
+    public abstract void applyState(T ImageObjectData);
+
 }

@@ -1,11 +1,12 @@
 package com.example.demo.model.core;
 
 import com.example.demo.model.core.gameobjects.AnimatedObject;
+import com.example.demo.model.state.PowerUpData;
 import com.example.demo.utils.var.GlobalVar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class PowerUp extends AnimatedObject {
+public class PowerUp extends AnimatedObject<PowerUpData> {
     private static final Logger log = LoggerFactory.getLogger(PowerUp.class);
     private String type;
     private boolean visible;
@@ -75,4 +76,7 @@ public class PowerUp extends AnimatedObject {
     public boolean isStatic() {
         return false;
     }
+
+    @Override
+    public void applyState(PowerUpData AnimationObjectData) {}
 }
