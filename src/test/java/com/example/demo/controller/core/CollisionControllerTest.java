@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.core;
 
 import com.example.demo.controller.core.CollisionController;
 import com.example.demo.model.core.*;

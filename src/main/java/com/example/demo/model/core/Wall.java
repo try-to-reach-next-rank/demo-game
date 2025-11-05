@@ -29,9 +29,4 @@ public class Wall extends ImageObject<WallData> {
     public Side getSide() {
         return side;
     }
-
-    @Override
-    public boolean isStatic() {
-        return true;
-    }
 }

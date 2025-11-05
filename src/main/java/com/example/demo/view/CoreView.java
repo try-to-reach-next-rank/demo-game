@@ -2,6 +2,9 @@ package com.example.demo.view;
 
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.*;
+import com.example.demo.model.core.gameobjects.AnimatedObject;
+import com.example.demo.model.core.gameobjects.GameObject;
+import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.map.ParallaxLayer;
 import com.example.demo.model.system.ParallaxSystem;
 import com.example.demo.utils.var.AssetPaths;
@@ -10,6 +13,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class CoreView {
@@ -25,23 +29,54 @@ public class CoreView {
         this.gc = gc;
         this.world = world;
     }
-    public void render(GraphicsContext gc) {
-        if (parallaxSystem != null) {
-            parallaxSystem.render(gc);
-        }
 
-        drawBall(gc);
-        drawPaddle(gc);
+    public void render(GraphicsContext gc) {
+        renderParallax(gc);
+
         drawBricks(gc);
-        drawPowerUps(gc);
-        drawWalls(gc);
-        EffectRenderer.getInstance().render(gc);
+        renderAllObjects(gc);
+        
+        renderEffects(gc);
     }
 
     public void update(double deltaTime) {
         parallaxSystem.update(deltaTime);
         EffectRenderer.getInstance().update(deltaTime);
         setupBrickReveal();
+    }
+
+    private void renderParallax(GraphicsContext gc) {
+        if (parallaxSystem != null) {
+            parallaxSystem.render(gc);
+        }
+    }
+
+    private void renderAllObjects(GraphicsContext gc) {
+        List<GameObject> objects = world.getAllObjects();
+        if (objects == null) {
+            // Log here
+            return;
+        }
+
+        for (GameObject obj : objects) {
+            if (obj == null || !obj.isVisible()) continue;
+            drawObject(gc, obj);
+        }
+    }
+
+    private void drawObject(GraphicsContext gc, GameObject obj) {
+        if (obj instanceof ImageObject imgObj) {
+            gc.drawImage(imgObj.getImage(), imgObj.getX(), imgObj.getY(), imgObj.getWidth(), imgObj.getHeight());
+        }
+        else if (obj instanceof AnimatedObject animObj) {
+            animObj.getAnimation().render(gc, animObj.getX(), animObj.getY(), animObj.getWidth(), animObj.getHeight());
+        }
+    }
+
+    private void renderEffects(GraphicsContext gc) {
+        for (VisualEffect effect : EffectRenderer.getInstance().getActiveEffects()) {
+            effect.render(gc);
+        }
     }
 
     private void setupBrickReveal() {
@@ -67,18 +102,6 @@ public class CoreView {
         }
     }
 
-    private void drawBall(GraphicsContext gc) {
-        Ball ball = world.getBall();
-        if (ball != null)
-            gc.drawImage(ball.getImage(), ball.getX(), ball.getY(), ball.getWidth(), ball.getHeight());
-    }
-
-    private void drawPaddle(GraphicsContext gc) {
-        Paddle paddle = world.getPaddle();
-        if (paddle != null)
-            gc.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight());
-    }
-
     private void drawBricks(GraphicsContext gc) {
         Brick[] bricks = world.getBricks();
         if (bricks != null) {
@@ -91,26 +114,12 @@ public class CoreView {
         }
     }
 
-    private void drawPowerUps(GraphicsContext gc) {
-        for (PowerUp p : world.getPowerUps()) {
-            if (p.isVisible()) {
-                p.getAnimation().render(gc, p.getX(), p.getY(), p.getWidth(), p.getHeight());
-            }
-        }
-    }
-
-    private void drawWalls(GraphicsContext gc) {
-        for (Wall wall : world.getWalls()) {
-            gc.drawImage(wall.getImage(), wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight());
-        }
-    }
-
     public void reset() {
         revealedBricks.clear();
         brickRevealCounter = 0;
         currentRevealTick = 0;
     }
-
+    
     public void initParallax() {
         parallaxSystem = new ParallaxSystem(
                 world,
@@ -123,9 +132,5 @@ public class CoreView {
         parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER2, GameVar.PARALLAX_SPEED_LAYERS[2]));
         parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER3, GameVar.PARALLAX_SPEED_LAYERS[1]));
         parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER4, GameVar.PARALLAX_SPEED_LAYERS[0]));
-    }
-
-    public GameWorld getWorld() {
-        return world;
     }
 }

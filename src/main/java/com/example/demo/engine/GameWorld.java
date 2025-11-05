@@ -1,6 +1,7 @@
 package com.example.demo.engine;
 
 import com.example.demo.model.core.*;
+import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.state.ActivePowerUpData;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.model.state.GameState;
@@ -8,6 +9,7 @@ import com.example.demo.model.state.PowerUpData;
 import com.example.demo.model.system.PowerUpSystem;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,13 +28,9 @@ public class GameWorld {
     private PowerUpSystem powerUpSystem;
     private final List<Updatable> updatables = new ArrayList<>();
 
-    public PowerUpSystem getPowerUpSystem() {
-        return powerUpSystem;
-    }
-
-    public void setPowerUpSystem(PowerUpSystem powerUpSystem) {
-        this.powerUpSystem = powerUpSystem;
-    }
+    // --- Getters / Setters ---
+    public PowerUpSystem getPowerUpSystem() { return powerUpSystem; }
+    public void setPowerUpSystem(PowerUpSystem powerUpSystem) { this.powerUpSystem = powerUpSystem; }
 
     public Ball getBall() { return ball; }
     public void setBall(Ball ball) { this.ball = ball; }
@@ -49,6 +47,7 @@ public class GameWorld {
 
     public int getCurrentLevel() { return currentLevel; }
     public void setCurrentLevel(int level) { this.currentLevel = level; }
+    
     public List<Updatable> getUpdatables() { return updatables; }
 
     // ========== NEW: Brick Counting Methods ==========
@@ -152,5 +151,17 @@ public class GameWorld {
                 }
             }
         }
+    }
+
+    // === NEW: Get all GameObjects in the world ===
+    public List<GameObject> getAllObjects() {
+        List<GameObject> all = new ArrayList<>();
+        if (paddle != null) all.add(paddle);
+        if (ball != null) all.add(ball);
+        // TODO: Improve getAllObjects for bricks
+        // if (bricks != null) for (Brick b : bricks) all.add(b);
+        if (walls != null) all.addAll(walls);
+        if (powerUps != null) all.addAll(powerUps);
+        return all;
     }
 }

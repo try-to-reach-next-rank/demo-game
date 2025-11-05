@@ -94,9 +94,8 @@ public class GameController extends Pane {
         List.of(ballSystem, paddleSystem, powerUpSystem, brickSystem, collisionManager)
                         .forEach(world::registerUpdatable);
 
-        if (world.getCurrentLevel() == GameVar.START_LEVEL) {
-            view.getCoreView().initParallax();
-        }
+        // Init parallax everymap -> fix bugs if use cheatable
+        view.getCoreView().initParallax();
 
         Sound.getInstance().playRandomMusic();
 

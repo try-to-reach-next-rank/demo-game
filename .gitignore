@@ -37,4 +37,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Save games ###
 src/main/resources/Saves/slot_1.json
+src/main/resources/Saves/slot_2.json

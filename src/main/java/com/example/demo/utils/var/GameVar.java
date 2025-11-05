@@ -65,6 +65,11 @@ public final class GameVar {
     public static final String POWERUP_STOP_TIME_EFFECT_KEY = "powerup_stoptime";
     public static final String POWERUP_BIGGER_PADDLE_EFFECT_KEY = "powerup_biggerpaddle";
 
+    // POOL
+    public static final int SMALL_SIZE_POOL  = 20;
+    public static final int MEDIUM_SIZE_POOL = 50;
+    public static final int LARGE_SIZE_POOL  = 100;
+
     // BALL SYSTEM
     public static final double BALL_ELAPSED_TIME = 0.5; // seconds
     public static final double BALL_PADDLE_OFFSET_Y = 100.0;

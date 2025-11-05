@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 public class PowerUp extends AnimatedObject<PowerUpData> {
     private static final Logger log = LoggerFactory.getLogger(PowerUp.class);
     private String type;
-    private boolean visible;
     private final double fallSpeed = 150.0;
     private boolean active = false;
     private long expireAt = -1;
@@ -61,8 +60,6 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
     }
 
     public void deactivate() { active = false; }
-    public boolean isVisible() { return visible; }
-    public void setVisible(boolean visible) { this.visible = visible; }
     public String getType() { return type; }
     public void reset(String type) {
         this.type = type;
@@ -70,11 +67,6 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
         setVisible(false);
         active = false;
         expireAt = 1000;
-    }
-
-    @Override
-    public boolean isStatic() {
-        return false;
     }
 
     @Override

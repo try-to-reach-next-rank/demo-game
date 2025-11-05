@@ -71,6 +71,5 @@ public abstract class GameObject<T extends GameObjectData> {
         return new BoundingBox(x, y, width, height);
     }
 
-    public abstract boolean isStatic();
     public abstract void applyState(T GameObjectData);
 }

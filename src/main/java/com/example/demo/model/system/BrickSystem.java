@@ -15,6 +15,7 @@ import java.util.Random;
 
 /**
  * Handles brick damage, explosion propagation, and power-up spawning.
+ * TODO: Add handle reveal bricks in here
  */
 public class BrickSystem implements Updatable {
     private final Brick[] bricks;

@@ -58,10 +58,8 @@ public class EffectRenderer {
         }
     }
 
-    public void render(GraphicsContext gc) {
-        for (VisualEffect effect : activeEffects) {
-            effect.render(gc);
-        }
+    public List<VisualEffect> getActiveEffects() {
+        return activeEffects;
     }
 
     public void clear() {

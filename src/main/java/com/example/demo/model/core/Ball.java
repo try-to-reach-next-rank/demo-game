@@ -109,16 +109,10 @@ public class Ball extends ImageObject<BallData> {
     public double getElapsedTime(){ return elapsedTime; }
     public void setElapsedTime(double x){ elapsedTime = x; }
 
-    @Override
-    public boolean isStatic() {
-        return false;
-    }
-
     public Brick getLastBrick(){
         return lastBrick;
     }
     public void setLastBrick(Brick brick){
         lastBrick = brick;
     }
-
 }

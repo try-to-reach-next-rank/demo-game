@@ -39,9 +39,9 @@ public class Brick extends ImageObject<BrickData> {
     public boolean isDestroyed() { return destroyed; }
     public void setDestroyed(boolean destroyed) { this.destroyed = destroyed; }
 
+    // For CoreView
     @Override
-    public boolean isStatic() {
-        // TODO: Upgrade this later
-        return false;
+    public boolean isVisible() { 
+        return !isDestroyed(); 
     }
 }
