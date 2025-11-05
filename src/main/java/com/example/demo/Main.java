@@ -4,7 +4,9 @@ import com.example.demo.controller.core.GameController;
 import com.example.demo.controller.map.MenuController;
 import com.example.demo.controller.view.SettingsController;
 import com.example.demo.controller.view.SlotSelectionController;
+import com.example.demo.controller.view.ThemeController;
 import com.example.demo.model.assets.AssetManager;
+import com.example.demo.model.menu.ButtonManager;
 import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.menu.SettingsModel;
 import com.example.demo.model.state.GameState;
@@ -52,12 +54,16 @@ public class Main extends Application {
         MenuController menuController = new MenuController(menuModel);
         SettingsController settingsController = new SettingsController(settingsModel, menuModel);
 
+        // --- Khời tạo thêm chung và button cho bộ 3 nọt game vỉu
+        ThemeController themeController = new ThemeController();
+        ButtonManager buttonManager = new ButtonManager(themeController.getHandImage());
+
         // --- Khởi tạo Views ---
-        menuView = new MenuView(menuController);
+        menuView = new MenuView(menuController, themeController, buttonManager);
         settingsView = new SettingsView(settingsController);
 
         // --- Tạo root chính chứa các màn hình ---
-        mainRoot = new StackPane(MenuView.getRoot());
+        mainRoot = new StackPane(menuView.getRoot());
         mainScene = new Scene(mainRoot, GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
         // --- Gắn sự kiện bàn phím cho menu ---
@@ -124,13 +130,13 @@ public class Main extends Application {
     }
 
     private void showMenu() {
-        mainRoot.getChildren().add(MenuView.getRoot());
+        mainRoot.getChildren().add(menuView.getRoot());
         menuView.enableKeyboard(mainScene);
 
         Sound.getInstance().stopMusic();
         Sound.getInstance().loopMusic("Hametsu-no-Ringo");
 
-        MenuView.getRoot().requestFocus();
+        menuView.getRoot().requestFocus();
     }
 
     private void showSettings() {

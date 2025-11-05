@@ -2,51 +2,49 @@ package com.example.demo.view.ui;
 
 import com.example.demo.controller.map.MenuController;
 import com.example.demo.controller.view.ThemeController;
-import com.example.demo.engine.Stage;
+import com.example.demo.engine.ui.AbstractUIView;
+import com.example.demo.engine.ui.UISelectionController;
 import com.example.demo.model.core.effects.GlowTextEffect;
 import com.example.demo.model.menu.ButtonManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
+import java.util.Arrays;
+import java.util.List;
 
-public class MenuView implements Stage {
+public class MenuView extends AbstractUIView {
     private final MenuController controller;
-    private final ThemeController themeManager;
     private final ButtonManager buttonManager;
-    private static StackPane rootStack = null;
     private final VBox uiBox;
+    private final UISelectionController selectionController;
 
-    public MenuView(MenuController controller) {
+    public MenuView(MenuController controller, ThemeController themeManager, ButtonManager buttonManager) {
+        super(themeManager);
         this.controller = controller;
-        this.rootStack = new StackPane();
+        this.buttonManager = buttonManager;
+
         this.uiBox = new VBox(18);
         this.uiBox.setPadding(new Insets(28));
         this.uiBox.setAlignment(Pos.CENTER);
 
-        // 1. Setup theme
-        this.themeManager = new ThemeController();
-        themeManager.setupBackground(rootStack);
-        themeManager.applyCss(rootStack);
-
-        // 2. Setup buttons
-        this.buttonManager = new ButtonManager(themeManager.getHandImage());
         buildUI();
 
-        // 3. Stack layout
-        rootStack.getChildren().add(uiBox);
+        List<String> options = Arrays.asList("Play", "Settings", "Exit");
+        this.selectionController = new UISelectionController(options);
+        selectionController.setOnConfirm(this::handleConfirm);
+
+        root.getChildren().add(uiBox);
         StackPane.setAlignment(uiBox, Pos.CENTER);
     }
 
     @Override
     public void buildUI() {
         GlowTextEffect glowTitle = new GlowTextEffect();
-        glowTitle.activate(0, 0, 100000); // start shimmering
-
-        Text titleNode = glowTitle.getNode(); // this is the one that glows
+        glowTitle.activate(0, 0, 100000);
+        Text titleNode = glowTitle.getNode();
 
         VBox menuBox = new VBox(28);
         menuBox.setAlignment(Pos.CENTER);
@@ -59,21 +57,52 @@ public class MenuView implements Stage {
         uiBox.getChildren().addAll(titleNode, menuBox);
     }
 
+    // -----------------------------
+    // InputHandler
+    // -----------------------------
     @Override
-    public void enableKeyboard(Scene scene) {
-        // Thêm sound callback nếu muốn
-        buttonManager.setOnSelectionChanged(() -> {
-            // TODO: Sound.playMenuMove();
-        });
-
-        buttonManager.enableKeyboardNavigation(scene);
+    public void handleInput(KeyCode code) {
+        switch (code) {
+            case UP -> moveUp();
+            case DOWN -> moveDown();
+            case ENTER -> confirm();
+            case ESCAPE -> cancel();
+        }
     }
 
-    public static Node getRoot() {
-        return rootStack;
+    // -----------------------------
+    // NavigableUI
+    // -----------------------------
+    @Override
+    public void moveUp() {
+        selectionController.moveUp();
     }
 
-    public void stopBgAnimation() {
-        themeManager.stopBgAnimation();
+    @Override
+    public void moveDown() {
+        selectionController.moveDown();
+    }
+
+    @Override
+    public void moveLeft() {}
+    @Override
+    public void moveRight() {}
+
+    @Override
+    public void confirm() {
+        selectionController.confirm();
+    }
+
+    @Override
+    public void cancel() {
+        // Quay lại nếu có stack stage
+    }
+
+    private void handleConfirm(String option) {
+        switch (option) {
+            case "Play" -> controller.isSelecting();
+            case "Settings" -> controller.isSettings();
+            case "Exit" -> controller.isExit();
+        }
     }
 }
