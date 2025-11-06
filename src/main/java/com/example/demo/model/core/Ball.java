@@ -37,7 +37,6 @@ public class Ball extends ImageObject {
         this.stronger = !this.stronger;
     }
 
-
     public void resetState() {
         alignWithPaddle(GameVar.BALL_OFFSET_Y, GameVar.BALL_ALIGN_LERP_FACTOR);
         stuck = true;
