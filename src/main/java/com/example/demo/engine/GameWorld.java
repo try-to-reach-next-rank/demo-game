@@ -126,12 +126,12 @@ public class GameWorld {
                 bricks[data.getId()].applyState(data);
             }
         }
-
+        /**
         // SECTION 3: Apply Relationships
         if (ball.isStuck()) {
             ball.alignWithPaddle(GameVar.BALL_OFFSET_Y, GameVar.BALL_ALIGN_LERP_FACTOR);
         }
-
+        **/
         // Falling Power-Ups
         getPowerUps().clear();
         for (PowerUpData powerUpData : loadedState.getPowerUpsData()) {

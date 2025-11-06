@@ -9,9 +9,12 @@ import com.example.demo.view.graphics.BrickTextureProvider;
  * Contains only state and basic getters/setters.
  */
 public class Brick extends ImageObject<BrickData> {
+
+    // ===================== Fields =====================
     private int health;
     private boolean destroyed;
 
+    // ===================== Constructor =====================
     public Brick(String imageKey, double x, double y, int health) {
         super(imageKey, x, y);
         this.health = health;
@@ -19,29 +22,31 @@ public class Brick extends ImageObject<BrickData> {
         this.imageKey = imageKey;
     }
 
-    // Thêm vào lớp Brick.java
+    // ===================== State Control  =====================
     @Override
     public void applyState(BrickData data) {
         if (data == null) return;
+
         this.setHealth(data.getHealth());
         this.setDestroyed(data.isDestroyed());
 
-        // Nếu gạch được "hồi sinh", cập nhật lại texture
+        // Nếu gạch được hồi sinh, cập nhật lại texture theo máu
         if (!this.isDestroyed()) {
             String newImageKey = BrickTextureProvider.getTextureForHealth(this.getHealth());
             this.setImageKey(newImageKey);
         }
     }
 
+    // ===================== Getters / Setters =====================
     public int getHealth() { return health; }
     public void setHealth(int health) { this.health = health; }
 
     public boolean isDestroyed() { return destroyed; }
     public void setDestroyed(boolean destroyed) { this.destroyed = destroyed; }
 
+    // ===================== Override Methods =====================
     @Override
     public boolean isStatic() {
-        // TODO: Upgrade this later
-        return false;
+        return false; // TODO: có thể đổi thành true nếu brick không di chuyển
     }
 }

@@ -68,7 +68,7 @@ public final class GameVar {
     // BALL SYSTEM
     public static final double BALL_ELAPSED_TIME = 0.5; // seconds
     public static final double BALL_PADDLE_OFFSET_Y = 100.0;
-    public static final double BALL_ALIGN_WITH_PADDLE_OFFSET_Y = 0.0;
+    public static final double BALL_ALIGN_WITH_PADDLE_OFFSET_Y = 10.0;
     public static final double BALL_ALIGN_WITH_PADDLE_LERPFACTOR = 0.1;
     public static final double BALL_ACCELERATION_FACTOR = 1.5;
     public static final int    BALL_BOUNCE_ANGLE_LEFT = 150;
