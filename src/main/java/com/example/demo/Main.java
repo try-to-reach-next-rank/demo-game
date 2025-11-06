@@ -47,20 +47,24 @@ public class Main extends Application {
         menuModel = new MenuModel();
         SettingsModel settingsModel = new SettingsModel();
 
-        // --- Khởi tạo Slot Selection trước ---
-        initSlotSelection();
 
         // --- Khởi tạo Controllers ---
         MenuController menuController = new MenuController(menuModel);
         SettingsController settingsController = new SettingsController(settingsModel, menuModel);
+        SlotSelectionController slotSelectionController = new SlotSelectionController();
+
 
         // --- Khời tạo thêm chung và button cho bộ 3 nọt game vỉu
         ThemeController themeController = new ThemeController();
         ButtonManager buttonManager = new ButtonManager(themeController.getHandImage());
 
+        // --- Khởi tạo Slot Selection ---
+        initSlotSelection(slotSelectionController);
+
         // --- Khởi tạo Views ---
-        menuView = new MenuView(menuController, themeController, buttonManager);
-        settingsView = new SettingsView(settingsController);
+        menuView = new MenuView(menuController, themeController);
+        settingsView =new SettingsView(settingsController, themeController);
+        slotSelectionView = new SlotSelectionView(slotSelectionController, themeController, buttonManager);
 
         // --- Tạo root chính chứa các màn hình ---
         mainRoot = new StackPane(menuView.getRoot());
@@ -92,11 +96,10 @@ public class Main extends Application {
     //  Slot Selection Initialization
     // -------------------------------------------------------------------------
 
-    private void initSlotSelection() {
-        SlotSelectionController slotSelectionController = new SlotSelectionController();
-        slotSelectionView = new SlotSelectionView(slotSelectionController);
+    private void initSlotSelection(SlotSelectionController slotSelectionController) {
 
         // Setup callback: Quay về menu
+        ;
         slotSelectionController.setOnBackToMenu(() -> {
             menuModel.setCurrentScreen(MenuModel.Screen.MENU);
         });
@@ -130,6 +133,7 @@ public class Main extends Application {
     }
 
     private void showMenu() {
+        System.out.println("gameMenu");
         mainRoot.getChildren().add(menuView.getRoot());
         menuView.enableKeyboard(mainScene);
 
@@ -147,9 +151,9 @@ public class Main extends Application {
 
     private void showSlotSelection() {
         slotSelectionView.refreshSlots();
-        mainRoot.getChildren().add(SlotSelectionView.getRoot());
+        mainRoot.getChildren().add(slotSelectionView.getRoot());
         slotSelectionView.enableKeyboard(mainScene);
-        SlotSelectionView.getRoot().requestFocus();
+        slotSelectionView.getRoot().requestFocus();
     }
 
     private void showGame() {

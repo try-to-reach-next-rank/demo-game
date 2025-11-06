@@ -17,14 +17,16 @@ import java.util.List;
 
 public class MenuView extends AbstractUIView {
     private final MenuController controller;
-    private final ButtonManager buttonManager;
     private final VBox uiBox;
     private final UISelectionController selectionController;
+    private final ButtonManager buttonManager;
 
-    public MenuView(MenuController controller, ThemeController themeManager, ButtonManager buttonManager) {
-        super(themeManager);
+    public MenuView(MenuController controller, ThemeController themeController) {
+        super(themeController);
+        buttonManager = new ButtonManager(themeController.getHandImage());
         this.controller = controller;
-        this.buttonManager = buttonManager;
+
+
 
         this.uiBox = new VBox(18);
         this.uiBox.setPadding(new Insets(28));
