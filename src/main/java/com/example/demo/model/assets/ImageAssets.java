@@ -49,5 +49,7 @@ public class ImageAssets implements AssetLoader {
 
         ASSETS.put("hand_open", AssetPaths.HAND_OPEN);
         ASSETS.put("hand_closed", AssetPaths.HAND_CLOSED);
+        ASSETS.put("cloud_left", AssetPaths.CLOUD_LEFT);
+        ASSETS.put("cloud_right", AssetPaths.CLOUD_RIGHT);
     };
 }

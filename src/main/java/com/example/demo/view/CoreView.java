@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.controller.view.CloudEffectController;
 import com.example.demo.controller.view.HandEffectController;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.*;
@@ -7,6 +8,7 @@ import com.example.demo.model.map.ParallaxLayer;
 import com.example.demo.model.system.ParallaxSystem;
 import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.Arrays;
@@ -22,6 +24,7 @@ public class CoreView {
     private boolean reveal = true;
     private ParallaxSystem parallaxSystem;
     private final HandEffectController handEffectController = HandEffectController.getInstance();
+    private final CloudEffectController cloudEffectController = CloudEffectController.getInstance();
 
     public CoreView(GraphicsContext gc, GameWorld world) {
         this.gc = gc;
@@ -41,6 +44,9 @@ public class CoreView {
         drawBricks(gc);
         drawPowerUps(gc);
         drawWalls(gc);
+        if (cloudEffectController.isActive()) {
+            cloudEffectController.getActiveEffect().render(gc);
+        }
         EffectRenderer.getInstance().render(gc);
     }
 
@@ -48,6 +54,7 @@ public class CoreView {
         parallaxSystem.update(deltaTime);
         EffectRenderer.getInstance().update(deltaTime);
         handEffectController.update(deltaTime);
+        cloudEffectController.update(deltaTime);
         setupBrickReveal();
     }
 
@@ -55,6 +62,10 @@ public class CoreView {
         if (world.getBall() != null) {
             handEffectController.triggerHandGrab(world.getBall());
         }
+    }
+
+    public void triggerCloud() {
+        cloudEffectController.triggerCloudEffect(GlobalVar.WIDTH, GlobalVar.HEIGHT);
     }
 
     private void setupBrickReveal() {

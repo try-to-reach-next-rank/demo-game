@@ -30,7 +30,7 @@ public class HandEffectController {
         }
         activeHandEffect = handPool.acquire();
         activeHandEffect.activateOnBall(ball);
-        registerWithRenderer(activeHandEffect);
+        registerWithRenderer();
     }
 
     /**
@@ -66,7 +66,7 @@ public class HandEffectController {
      * Register effect with EffectRenderer
      * This is a helper method - you may need to modify EffectRenderer
      */
-    private void registerWithRenderer(HandGrabEffect effect) {
+    private void registerWithRenderer() {
         // For now, we'll handle rendering separately
         // You can integrate this with EffectRenderer.getInstance()
     }

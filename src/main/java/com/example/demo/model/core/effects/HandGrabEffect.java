@@ -21,7 +21,6 @@ public class HandGrabEffect extends VisualEffect {
 
     private double handX;
     private double handY;
-    private double handRotation = 90;
     private double screenShake = 0.0;
 
     private static final double HAND_SIZE = 120.0;
