@@ -27,6 +27,9 @@ public class GameWorld {
     private int currentLevel = GameVar.START_LEVEL;
     private PowerUpSystem powerUpSystem;
     private final List<Updatable> updatables = new ArrayList<>();
+    private int currentScore = 0;
+    private int highScore = 0;
+    private int lastAddedScore = 0;
 
     // --- Getters / Setters ---
     public PowerUpSystem getPowerUpSystem() { return powerUpSystem; }
@@ -50,23 +53,24 @@ public class GameWorld {
     
     public List<Updatable> getUpdatables() { return updatables; }
 
-    // ========== NEW: Brick Counting Methods ==========
+    public int getCurrentScore() {
+        return currentScore;
+    }
 
-    public int getRemainingBricksCount() {
-        if (bricks == null || bricks.length == 0) {
-            return 0;
-        }
+    public void setCurrentScore(int currentScore) {
+        this.currentScore = currentScore;
+    }
 
-        int count = 0;
-        for (Brick brick : bricks) {
-            // Only count bricks that are:
-            // 1. Not destroyed
-            // 2. Not indestructible (health != Integer.MAX_VALUE)
-            if (!brick.isDestroyed() && brick.getHealth() != Integer.MAX_VALUE) {
-                count++;
-            }
-        }
-        return count;
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
+    }
+
+    public int getLastAddedScore() {
+        return lastAddedScore;
     }
 
     public boolean isLevelComplete() {
@@ -163,5 +167,30 @@ public class GameWorld {
         if (walls != null) all.addAll(walls);
         if (powerUps != null) all.addAll(powerUps);
         return all;
+    }
+
+    // ADDING SCORE INTO CURRENTSCORE
+    public void addScore(int points, double x, double y) {
+        this.currentScore += points;
+        this.lastAddedScore = points;
+        log.info("Score added: +{}. Total score: {}", points, this.currentScore);
+    }
+
+    // ========== NEW: Brick Counting Methods ==========
+
+    public int getRemainingBricksCount() {
+        if (bricks == null || bricks.length == 0) {
+            return 0;
+        }
+
+        int count = 0;
+        for (Brick brick : bricks) {
+            // Only count bricks that are:
+            // 1. Not destroyed
+            if (!brick.isDestroyed()) {
+                count++;
+            }
+        }
+        return count;
     }
 }

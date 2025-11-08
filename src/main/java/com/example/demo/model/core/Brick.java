@@ -2,6 +2,7 @@ package com.example.demo.model.core;
 
 import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BrickData;
+import com.example.demo.utils.var.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;
 
 /**
@@ -9,6 +10,7 @@ import com.example.demo.view.graphics.BrickTextureProvider;
  * Contains only state and basic getters/setters.
  */
 public class Brick extends ImageObject<BrickData> {
+    private int scoreValue = GameVar.SCOREVALUE;
     private int health;
     private boolean destroyed;
 
@@ -31,6 +33,14 @@ public class Brick extends ImageObject<BrickData> {
             String newImageKey = BrickTextureProvider.getTextureForHealth(this.getHealth());
             this.setImageKey(newImageKey);
         }
+    }
+
+    public int getScoreValue() {
+        return scoreValue;
+    }
+
+    public void setScoreValue(int scoreValue) {
+        this.scoreValue = scoreValue;
     }
 
     public int getHealth() { return health; }

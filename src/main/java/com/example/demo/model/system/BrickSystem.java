@@ -1,5 +1,6 @@
 package com.example.demo.model.system;
 
+import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Brick;
@@ -12,6 +13,7 @@ import com.example.demo.view.EffectRenderer;
 
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
 
 /**
  * Handles brick damage, explosion propagation, and power-up spawning.
@@ -21,6 +23,7 @@ public class BrickSystem implements Updatable {
     private final Brick[] bricks;
     private final List<PowerUp> powerUps;
     private final Random random = new Random();
+    private Consumer<Brick> onBrickDestroyed;
 
     public BrickSystem(Brick[] bricks, List<PowerUp> powerUps) {
         this.bricks = bricks;
@@ -38,12 +41,17 @@ public class BrickSystem implements Updatable {
     public void onBallHitBrick(Brick brick, Ball ball) {
         if (brick.isDestroyed()) return;
         if (ball == null) return;
+
+        int healthBefore = brick.getHealth();
         applyDamage(brick, ball.isStronger());
 
         // Check destruction and trigger effects
-        if (brick.isDestroyed()) {
+        if (brick.isDestroyed() && healthBefore > 0) { // Đảm bảo chỉ trigger 1 lần
             spawnDestructionEffect(brick);
             maybeSpawnPowerUp(brick);
+            if (onBrickDestroyed != null) {
+                onBrickDestroyed.accept(brick);
+            }
         }
     }
 
@@ -84,5 +92,20 @@ public class BrickSystem implements Updatable {
         double centerX = brick.getX() + brick.getWidth() / 2;
         double centerY = brick.getY() + brick.getHeight();
         EffectRenderer.getInstance().spawn(GameVar.EXPLOSION1_EFFECT_KEY, centerX, centerY, GameVar.EFFECT_DURATION);
+    }
+
+    /**
+     * Creates a score popup effect at the brick's location.
+     */
+    private void spawnScorePopupEffect(Brick brick) {
+        String scoreText = "+" + brick.getScoreValue();
+        double centerX = brick.getX() + brick.getWidth() / 2;
+        double centerY = brick.getY() + brick.getHeight() / 2;
+        // Gọi spawn với tham số text
+        EffectRenderer.getInstance().spawn("scorePopup", centerX, centerY, 1.0);
+    }
+
+    public void setOnBrickDestroyed(Consumer<Brick> onBrickDestroyed) {
+        this.onBrickDestroyed = onBrickDestroyed;
     }
 }

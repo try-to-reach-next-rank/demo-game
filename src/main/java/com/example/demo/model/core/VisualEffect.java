@@ -70,6 +70,10 @@ public abstract class VisualEffect implements Effect {
         // Default do nothing
     }
 
+    public void customize(Object... params) {
+        // Mặc định không làm gì cả. Các lớp con sẽ ghi đè nếu cần.
+    }
+
     public abstract VisualEffect clone();
 
     public String getName() {

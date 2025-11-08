@@ -44,8 +44,6 @@ public class GameController extends Pane {
 
     private Runnable onBackToMenu;
 
-    // ========== NEW: Level Completion Check Throttling ==========
-    private static final double LEVEL_CHECK_INTERVAL = 3.0; // Check every 3 seconds
     private double levelCheckTimer = 0.0;
 
     public GameController() {
@@ -88,6 +86,13 @@ public class GameController extends Pane {
 
         BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
 
+        // Thiết lập callback để cộng điểm
+        brickSystem.setOnBrickDestroyed(brick -> {
+            double centerX = brick.getX() + brick.getWidth() / 2;
+            double centerY = brick.getY() + brick.getHeight() / 2;
+            world.addScore(brick.getScoreValue(), centerX, centerY);
+        });
+
         CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
 
         world.clearUpdatables();
@@ -101,7 +106,7 @@ public class GameController extends Pane {
 
         inputGame = new Input(world.getPaddle(), world.getBall());
         setupKeyHandling();
-        loadTransition.startLevel(world.getCurrentLevel());
+        //loadTransition.startLevel(world.getCurrentLevel()); //TODO: delete this thing cause it makes ur game load TWICE!!!
         loop();
     }
 
@@ -175,7 +180,7 @@ public class GameController extends Pane {
 
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;
-            if (levelCheckTimer >= LEVEL_CHECK_INTERVAL) {
+            if (levelCheckTimer >= GameVar.LEVEL_CHECK_INTERVAL) {
                 checkLevelCompletion();
                 levelCheckTimer = 0.0; // Reset timer
             }
