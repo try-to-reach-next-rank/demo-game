@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 public abstract class VisualEffect implements Effect {
     protected double x, y;
     protected boolean active;
+    protected boolean infinite;
     protected final Timer timer;
     protected double durationSeconds;
     protected String effectKey;
@@ -15,19 +16,21 @@ public abstract class VisualEffect implements Effect {
     public VisualEffect() {
         this.active = false;
         this.timer = new Timer();
-        this.durationSeconds = 100000.0;
+        this.durationSeconds = Double.MAX_VALUE;
     }
 
     public VisualEffect(String effectKey) {
         this.effectKey = effectKey;
         this.active = false;
         this.timer = new Timer();
-        this.durationSeconds = 100000.0;
+        this.durationSeconds = Double.MAX_VALUE;
     }
 
     @Override
     public void update(double deltaTime) {
         if (!active) return;
+        if (infinite) return;
+
         timer.update(deltaTime);
         if (timer.isFinished()) deactivate();
     }
@@ -37,7 +40,7 @@ public abstract class VisualEffect implements Effect {
 
     @Override
     public boolean isActive() {
-        return active;
+        return this.active;
     }
 
     @Override
@@ -45,6 +48,15 @@ public abstract class VisualEffect implements Effect {
         timer.reset();
         this.x = x;
         this.y = y;
+
+        if (durationSeconds < 0) {
+            this.infinite = true;
+            this.durationSeconds = Double.MAX_VALUE;
+        } else {
+            this.infinite = false;
+            this.durationSeconds = durationSeconds;
+        }
+
         this.durationSeconds = durationSeconds;
         this.timer.start(durationSeconds);
         this.active = true;
@@ -62,7 +74,7 @@ public abstract class VisualEffect implements Effect {
     @Override
     public void deactivate() {
         if (!active) return;
-        active = false;
+        this.active = false;
         onDeactivate();
     }
 
@@ -73,6 +85,6 @@ public abstract class VisualEffect implements Effect {
     public abstract VisualEffect clone();
 
     public String getName() {
-        return effectKey;
+        return this.effectKey;
     }
 }

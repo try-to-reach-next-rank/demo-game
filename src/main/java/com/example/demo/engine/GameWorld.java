@@ -1,17 +1,14 @@
 package com.example.demo.engine;
 
-import com.example.demo.model.core.*;
-import com.example.demo.model.core.entities.Ball;
-import com.example.demo.model.core.entities.Brick;
-import com.example.demo.model.core.entities.Paddle;
-import com.example.demo.model.core.entities.PowerUp;
-import com.example.demo.model.core.entities.Wall;
+import com.example.demo.controller.system.PowerUpSystem;
+import com.example.demo.model.core.ThePool;
+import com.example.demo.model.core.entities.*;
+import com.example.demo.model.core.factory.*;
 import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.state.ActivePowerUpData;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.model.state.GameState;
 import com.example.demo.model.state.PowerUpData;
-import com.example.demo.model.system.PowerUpSystem;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
 
@@ -29,6 +26,8 @@ public class GameWorld {
     private Brick[] bricks = new Brick[0];
     private final List<PowerUp> powerUps = new ArrayList<>();
     private final List<Wall> walls = new ArrayList<>();
+    // TODO: Use Factory, not entities
+    private final PortalFactory portalFactory = new PortalFactory();
     private int currentLevel = GameVar.START_LEVEL;
     private PowerUpSystem powerUpSystem;
     private final List<Updatable> updatables = new ArrayList<>();
@@ -49,6 +48,9 @@ public class GameWorld {
     public List<PowerUp> getPowerUps() { return powerUps; }
 
     public List<Wall> getWalls() { return walls; }
+
+    public PortalFactory getPortalFactory() { return portalFactory; }
+    public List<Portal> getPortals() { return portalFactory.getPortals(); }
 
     public int getCurrentLevel() { return currentLevel; }
     public void setCurrentLevel(int level) { this.currentLevel = level; }
@@ -90,6 +92,7 @@ public class GameWorld {
         ball = new Ball(paddle);
 
         powerUps.clear();
+        portalFactory.clear();
         walls.clear();
 
         bricks = new Brick[0];
@@ -167,6 +170,7 @@ public class GameWorld {
         // if (bricks != null) for (Brick b : bricks) all.add(b);
         if (walls != null) all.addAll(walls);
         if (powerUps != null) all.addAll(powerUps);
+        if (portalFactory != null) all.addAll(portalFactory.getPortals());
         return all;
     }
 }

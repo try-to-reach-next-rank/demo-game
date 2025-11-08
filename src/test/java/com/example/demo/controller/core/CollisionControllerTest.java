@@ -1,14 +1,14 @@
 package com.example.demo.controller.core;
 
 import com.example.demo.controller.core.CollisionController;
+import com.example.demo.controller.system.BallSystem;
+import com.example.demo.controller.system.BrickSystem;
+import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.core.entities.Brick;
 import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.model.core.entities.PowerUp;
-import com.example.demo.model.system.BallSystem;
-import com.example.demo.model.system.BrickSystem;
-import com.example.demo.model.system.PowerUpSystem;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.utils.Vector2D;
@@ -52,7 +52,7 @@ class CollisionControllerTest {
         Paddle paddle = new Paddle();
         Ball ball = new Ball(paddle);
         // place ball below bottom edge
-        ball.setPosition(0.0, GlobalVar.BOTTOM_EDGE + 10.0);
+        ball.setPosition(0.0, GameVar.MAP_MAX_Y + 10.0);
 
         AtomicBoolean resetCalled = new AtomicBoolean(false);
 
@@ -108,13 +108,13 @@ class CollisionControllerTest {
         BallSystem ballSystem = new BallSystem(ball, paddle);
         BrickSystem brickSystem = new BrickSystem(new Brick[0], new ArrayList<>());
 
-        CollisionController cm = new CollisionController(null, ballSystem, brickSystem, spyPowerUpSystem);
+        CollisionController cl = new CollisionController(null, ballSystem, brickSystem, spyPowerUpSystem);
 
         // Pre-check
         assertTrue(powerUp.isVisible());
 
         // Act
-        invokePrivate(cm, "handlePaddlePowerUpCollisions", new Class[]{Paddle.class, List.class}, paddle, worldPowerUps);
+        invokePrivate(cl, "handlePaddlePowerUpCollisions", new Class[]{Paddle.class, List.class}, paddle, worldPowerUps);
 
         // Assert: activate called and power-up hidden
         assertTrue(activated.get(), "PowerUpSystem.activate should be called when paddle intersects a visible power-up");
@@ -128,7 +128,7 @@ class CollisionControllerTest {
         Ball ball = new Ball(paddle);
 
         PowerUp powerUp = new PowerUp(GameVar.ACCELERATE);
-        powerUp.setPosition(10.0, GlobalVar.BOTTOM_EDGE + 50.0); // below bottom
+        powerUp.setPosition(10.0, GameVar.MAP_MAX_Y + 50.0); // below bottom
         powerUp.setVisible(true);
 
         List<PowerUp> worldPowerUps = new ArrayList<>();

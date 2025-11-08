@@ -32,6 +32,7 @@ public abstract class AnimatedObject<T extends AnimatedObjectData> extends GameO
     public void updateAnimation(double deltaTime) {
         if (animation == null) {
             System.err.println("[WARN] Animation is null, cannot update: " + animKey);
+            return;
         }
 
         animation.update(deltaTime);

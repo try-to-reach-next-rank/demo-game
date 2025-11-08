@@ -2,10 +2,11 @@ package com.example.demo.view;
 
 import com.example.demo.controller.core.CollisionController;
 import com.example.demo.controller.core.GameController;
+import com.example.demo.controller.core.entities.PortalController;
+import com.example.demo.controller.system.*;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.map.MapData;
-import com.example.demo.model.system.*;
 import com.example.demo.utils.dialogue.DialogueSystem;
 
 import org.slf4j.Logger;
@@ -44,16 +45,19 @@ public class LoadTransition {
                 () -> {
                     gameView.getCoreView().reset();
                     MapData mapData = levelLoader.load(level);
+                    
+                    // TODO: JUST CLEAR WORLD
                     world.clearUpdatables();
 
                     BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
                     PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
                     PowerUpSystem powerUpSystem = world.getPowerUpSystem();
                     BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
-                    CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
+                    CollisionController collisionController = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
 
+                    // TODO: IMPLEMENT A NEW CLASS FOR UPDATE ALL System, Controller 
                     world.clearUpdatables();
-                    List.of(ballSystem, paddleSystem, powerUpSystem, brickSystem, collisionManager)
+                    List.of(ballSystem, paddleSystem, powerUpSystem, brickSystem, collisionController)
                             .forEach(world::registerUpdatable);
 
                     // Reset view/UI

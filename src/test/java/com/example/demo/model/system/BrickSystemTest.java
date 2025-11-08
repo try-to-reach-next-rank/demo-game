@@ -2,6 +2,7 @@ package com.example.demo.model.system;
 
 import org.junit.jupiter.api.Test;
 
+import com.example.demo.controller.system.BrickSystem;
 import com.example.demo.model.core.entities.Brick;
 import com.example.demo.model.core.entities.PowerUp;
 

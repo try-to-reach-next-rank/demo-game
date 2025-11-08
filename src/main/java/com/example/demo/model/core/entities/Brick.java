@@ -16,7 +16,6 @@ public class Brick extends ImageObject<BrickData> {
         super(imageKey, x, y);
         this.health = health;
         this.destroyed = false;
-        this.imageKey = imageKey;
     }
 
     // Thêm vào lớp Brick.java
@@ -41,7 +40,7 @@ public class Brick extends ImageObject<BrickData> {
 
     // For CoreView
     @Override
-    public boolean isVisible() { 
-        return !isDestroyed(); 
+    public boolean isVisible() {
+        return super.isVisible() && !isDestroyed(); 
     }
 }

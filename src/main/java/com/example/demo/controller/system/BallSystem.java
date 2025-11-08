@@ -1,4 +1,4 @@
-package com.example.demo.model.system;
+package com.example.demo.controller.system;
 
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.entities.Ball;
@@ -7,7 +7,6 @@ import com.example.demo.model.core.entities.Wall;
 import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
-import com.example.demo.utils.var.GlobalVar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +37,6 @@ public class BallSystem implements Updatable {
             }
         }
 
-
         if (ball.isStuck()) {
             // Keep the ball above the paddle
             ball.alignWithPaddle(GameVar.BALL_ALIGN_WITH_PADDLE_OFFSET_Y, GameVar.BALL_ALIGN_WITH_PADDLE_LERPFACTOR);
@@ -53,7 +51,7 @@ public class BallSystem implements Updatable {
         double newY = ball.getY() + step.y;
 
         // Reset if it falls below the screen
-        if (newY >= GlobalVar.HEIGHT) {
+        if (newY >= GameVar.MAP_MAX_Y) {
             ball.resetState();
             return;
         }

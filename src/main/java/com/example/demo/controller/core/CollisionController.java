@@ -1,21 +1,17 @@
 package com.example.demo.controller.core;
 
+import com.example.demo.controller.system.BallSystem;
+import com.example.demo.controller.system.BrickSystem;
+import com.example.demo.controller.system.PowerUpSystem;
+import com.example.demo.controller.core.entities.*;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
-import com.example.demo.model.core.*;
-import com.example.demo.model.core.entities.Ball;
-import com.example.demo.model.core.entities.Brick;
-import com.example.demo.model.core.entities.Paddle;
-import com.example.demo.model.core.entities.PowerUp;
-import com.example.demo.model.core.entities.Wall;
+import com.example.demo.model.core.ThePool;
+import com.example.demo.model.core.entities.*;
 import com.example.demo.model.core.gameobjects.GameObject;
-import com.example.demo.model.system.BallSystem;
-import com.example.demo.model.system.BrickSystem;
-import com.example.demo.model.system.PowerUpSystem;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
-import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.EffectRenderer;
 
 import java.util.ArrayList;
@@ -36,12 +32,16 @@ public class CollisionController implements Updatable {
     private final PowerUpSystem powerUpSystem;
     private final List<PowerUp> toRemove = new ArrayList<>();
 
+    // TODO: MAKE EVERY ENTITIES LIKE PORTAL
+    private final PortalController portalController;
+
     public CollisionController(GameWorld world, BallSystem ballSystem,
                             BrickSystem brickSystem, PowerUpSystem powerUpSystem) {
         this.world = world;
         this.ballSystem = ballSystem;
         this.brickSystem = brickSystem;
         this.powerUpSystem = powerUpSystem;
+        this.portalController = null;
     }
 
     @Override
@@ -51,6 +51,7 @@ public class CollisionController implements Updatable {
         Brick[] bricks = world.getBricks();
         List<PowerUp> powerUps = world.getPowerUps();
         List<Wall> walls = world.getWalls();
+        List<Portal> portals = world.getPortals();
 
         if (ball == null || paddle == null) return;
 
@@ -59,6 +60,7 @@ public class CollisionController implements Updatable {
         handleBallPaddleCollision(ball, paddle);
         handleBallWallCollisions(ball, walls);
         handleBallBrickCollisions(ball, bricks);
+        handleBallPortalCollisions(ball, portalController);
     }
 
     // ------------------------------------------------------------------------
@@ -66,7 +68,7 @@ public class CollisionController implements Updatable {
     // ------------------------------------------------------------------------
 
     private void handleBallFloorCollision(Ball ball) {
-        if (ball.getBounds().getMaxY() > GlobalVar.BOTTOM_EDGE) {
+        if (ball.getBounds().getMaxY() > GameVar.MAP_MAX_Y) {
             Sound.getInstance().playSound("game_over");
             ballSystem.resetBall(ball); // delegate to BallSystem
             powerUpSystem.reset();
@@ -84,7 +86,7 @@ public class CollisionController implements Updatable {
                 powerUpSystem.activate(p); // delegate to PowerUpSystem
                 p.setVisible(false);
             }
-            if (p.getBounds().getMaxY() > GlobalVar.BOTTOM_EDGE) {
+            if (p.getBounds().getMaxY() > GameVar.MAP_MAX_Y) {
                 p.setVisible(false);
             }
         }
@@ -158,6 +160,11 @@ public class CollisionController implements Updatable {
         }
     }
 
+    private void handleBallPortalCollisions(Ball ball, PortalController portalController) {
+        // TODO: implement handleBallPortalCollisions
+
+    }
+
     // ------------------------------------------------------------------------
     //  Small geometry helpers
     // ------------------------------------------------------------------------
@@ -191,5 +198,4 @@ public class CollisionController implements Updatable {
                 ball.setY(ball.getY() + overlapY);
         }
     }
-
 }

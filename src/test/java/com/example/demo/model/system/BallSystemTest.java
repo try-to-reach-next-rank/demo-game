@@ -1,5 +1,6 @@
 package com.example.demo.model.system;
 
+import com.example.demo.controller.system.BallSystem;
 import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.utils.Vector2D;

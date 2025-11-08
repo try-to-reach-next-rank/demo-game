@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.controller.system.ParallaxSystem;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.VisualEffect;
@@ -8,7 +9,6 @@ import com.example.demo.model.core.gameobjects.AnimatedObject;
 import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.map.ParallaxLayer;
-import com.example.demo.model.system.ParallaxSystem;
 import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GameVar;
 import javafx.scene.canvas.GraphicsContext;

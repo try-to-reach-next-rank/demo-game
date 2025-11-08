@@ -7,6 +7,15 @@ import javafx.scene.paint.Color;
 public final class GameVar {
 
     private GameVar() {}
+    // MAP BOUNDS
+    public static final int MAP_MIN_X = GameVar.WIDTH_OF_WALLS;
+    public static final int MAP_MAX_X = WIDTH - GameVar.WIDTH_OF_WALLS;
+    public static final int MAP_MIN_Y = GameVar.WIDTH_OF_WALLS;
+    public static final int MAP_MAX_Y = HEIGHT;
+
+    public static final int MAP_CENTER_X = WIDTH / 2;
+    public static final int MAP_CENTER_Y = HEIGHT / 2;
+
     // GAME
     public static final int START_LEVEL = 2;
     public static final int MAX_LEVEL = 3;
@@ -20,7 +29,7 @@ public final class GameVar {
     // PARALLAX
     public static final double PARALLAX_BASE_SPEED = 0.15;
     public static final double PARALLAX_DEPTH = 8.0;
-    public static final double[] PARALLAX_SPEED_LAYERS = {1.0, 0.6, 0.35, 0.2};
+    public static final double[] PARALLAX_SPEED_LAYERS = { 1.0, 0.6, 0.35, 0.2 };
 
     // PADDLE
     public static final int INIT_PADDLE_X = WIDTH / 2 - 50;
@@ -44,7 +53,7 @@ public final class GameVar {
     public static final String STRONGER     = "STRONGER";
     public static final String BIGGERPADDLE = "BIGGERPADDLE";
     public static final String STOPTIME     = "STOPTIME";
-    public static final String[] powerUps   = {ACCELERATE, STRONGER, STOPTIME, BIGGERPADDLE};
+    public static final String[] powerUps   = { ACCELERATE, STRONGER, STOPTIME, BIGGERPADDLE};
 
     // BALL
     public static final int INIT_BALL_X = WIDTH / 2 - 10;

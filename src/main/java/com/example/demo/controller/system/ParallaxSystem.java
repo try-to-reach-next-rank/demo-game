@@ -1,4 +1,4 @@
-package com.example.demo.model.system;
+package com.example.demo.controller.system;
 
 import com.example.demo.engine.Renderable;
 import com.example.demo.engine.Updatable;
