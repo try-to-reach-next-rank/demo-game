@@ -36,7 +36,6 @@ public class Ball extends ImageObject<BallData> {
         this.stronger = !this.stronger;
     }
 
-
     public void resetState() {
         alignWithPaddle(GameVar.BALL_OFFSET_Y, GameVar.BALL_ALIGN_LERP_FACTOR);
         stuck = true;
@@ -79,7 +78,6 @@ public class Ball extends ImageObject<BallData> {
 
     public boolean isAccelerated() { return accelerated; }
     public void setAccelerated(boolean accelerated) { this.accelerated = accelerated; }
-
 
     public boolean isStronger() { return stronger; }
     public void setStronger(boolean stronger){ this.stronger = stronger; }

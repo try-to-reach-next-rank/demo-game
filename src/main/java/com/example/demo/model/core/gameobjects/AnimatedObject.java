@@ -27,6 +27,8 @@ public abstract class AnimatedObject<T extends AnimationedObjectData> extends Ga
         this.baseWidth = width;
         this.baseHeight = height;
         applyScale();
+
+        AnimationBatchUpdate.getInstance().register(animation);
     }
 
     public void updateAnimation(double deltaTime) {

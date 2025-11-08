@@ -16,14 +16,19 @@ public abstract class GameObject<T extends GameObjectData> {
 
     protected double scaleX = 1.0;
     protected double scaleY = 1.0;
+    private Bounds cachedBounds;
+    private boolean boundsDirty = true;
 
     public GameObject(double startX, double startY) {
         setPosition(startX, startY);
     }
 
     public void setPosition(double x, double y) {
-        this.x = x;
-        this.y = y;
+        if (this.x != x || this.y != y) {
+            this.x = x;
+            this.y = y;
+            boundsDirty = true;
+        }
     }
 
     public void setScale(double sx, double sy) {
@@ -68,7 +73,11 @@ public abstract class GameObject<T extends GameObjectData> {
     public void setVisible(boolean visible) { this.visible = visible; }
 
     public Bounds getBounds() {
-        return new BoundingBox(x, y, width, height);
+        if (boundsDirty) {
+            cachedBounds = new BoundingBox(x, y, width, height);
+            boundsDirty = false;
+        }
+        return cachedBounds;
     }
 
     public abstract void applyState(T GameObjectData);
