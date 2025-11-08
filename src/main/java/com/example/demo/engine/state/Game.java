@@ -23,4 +23,8 @@ public class Game {
     public Stage getStage() {
         return stage;
     }
+
+    public GameState getCurrentState() {
+        return currentState;
+    }
 }
