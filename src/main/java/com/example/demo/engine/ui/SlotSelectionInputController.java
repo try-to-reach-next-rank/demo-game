@@ -8,7 +8,7 @@ import com.example.demo.view.ui.SlotSelectionView;
 import java.util.List;
 
 
-public class SlotSelectionInputController {
+public class SlotSelectionInputController implements NavigableUI {
 
     private final SlotSelectionController controller;
     private final ButtonManager buttonManager;
