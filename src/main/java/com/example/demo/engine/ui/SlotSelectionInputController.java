@@ -4,7 +4,6 @@ import com.example.demo.controller.view.SlotSelectionController;
 import com.example.demo.model.menu.ButtonManager;
 import com.example.demo.model.menu.SaveSlot;
 import com.example.demo.view.ui.SlotSelectionView;
-import javafx.scene.input.KeyCode;
 
 import java.util.List;
 
@@ -16,67 +15,98 @@ public class SlotSelectionInputController {
     private final SlotSelectionView view;
 
     private int selectedSlotIndex = 0;
-    private int selectedButtonIndex = -1;
+    private int selectedButtonIndex = -1; // -1: Chỉ chọn Slot, >= 0: Chọn Button trong Slot
 
+    // Constructor được giữ nguyên
     public SlotSelectionInputController( SlotSelectionView view, SlotSelectionController controller, ButtonManager buttonManager) {
         this.view = view;
         this.controller = controller;
         this.buttonManager = buttonManager;
     }
 
-    public void handleInput(KeyCode key) {
-        if (selectedButtonIndex == -1) {
-            handleSlotNavigation(key);
-        } else {
-            handleButtonNavigation(key);
-        }
-    }
 
-    private void handleSlotNavigation(KeyCode key) {
+    // ============================================================
+    // NAVIGATION LOGIC (Tận dụng NavigableUI verbs)
+    // ============================================================
+
+    public void moveUp() {
         List<SaveSlot> slots = controller.getAllSlots();
-        switch (key) {
-            case UP -> {
-                selectedSlotIndex = (selectedSlotIndex - 1 + slots.size()) % slots.size();
-                updateVisual();
+        selectedSlotIndex = (selectedSlotIndex - 1 + slots.size()) % slots.size();
+        selectedButtonIndex = -1; // Trở về chế độ chọn Slot khi di chuyển UP/DOWN
+        updateVisual();
+    }
+
+    public void moveDown() {
+        List<SaveSlot> slots = controller.getAllSlots();
+        selectedSlotIndex = (selectedSlotIndex + 1) % slots.size();
+        selectedButtonIndex = -1;
+        updateVisual();
+    }
+
+    public void moveLeft() {
+        int buttonCount = view.getButtonCountInSlot(selectedSlotIndex);
+
+        if (selectedButtonIndex == -1) {
+            // Đang chọn Slot, chuyển sang chọn Button cuối cùng nếu có
+            if (buttonCount > 0) {
+                selectedButtonIndex = buttonCount - 1;
             }
-            case DOWN -> {
-                selectedSlotIndex = (selectedSlotIndex + 1) % slots.size();
-                updateVisual();
+        } else {
+            // Đang chọn Button, di chuyển giữa các Button
+            if (buttonCount > 1) {
+                selectedButtonIndex = (selectedButtonIndex - 1 + buttonCount) % buttonCount;
             }
-            case ENTER -> {
+        }
+        updateVisual();
+    }
+
+    public void moveRight() {
+        int buttonCount = view.getButtonCountInSlot(selectedSlotIndex);
+
+        if (selectedButtonIndex == -1) {
+            // Đang chọn Slot, chuyển sang chọn Button đầu tiên nếu có
+            if (buttonCount > 0) {
                 selectedButtonIndex = 0;
-                updateVisual();
             }
-            case ESCAPE -> controller.handleBackToMenu();
+        } else {
+            // Đang chọn Button, di chuyển giữa các Button
+            if (buttonCount > 1) {
+                selectedButtonIndex = (selectedButtonIndex + 1) % buttonCount;
+            }
+        }
+        updateVisual();
+    }
+
+    public void confirm() {
+        if (selectedButtonIndex != -1) {
+            executeSelectedButton();
+        } else {
+            // Đang chọn Slot: Kích hoạt nút mặc định (thường là nút đầu tiên)
+            int buttonCount = view.getButtonCountInSlot(selectedSlotIndex);
+            if (buttonCount > 0) {
+                // Tạm thời chọn nút đầu tiên và thực thi
+                selectedButtonIndex = 0;
+                executeSelectedButton();
+                selectedButtonIndex = -1; // Quay lại chế độ chọn Slot sau khi thực thi
+            }
         }
     }
 
-    private void handleButtonNavigation(KeyCode key) {
-        int buttonCount = view.getButtonCountInSlot(selectedSlotIndex);
-        switch (key) {
-            case LEFT -> {
-                if (buttonCount > 1) {
-                    selectedButtonIndex = (selectedButtonIndex - 1 + buttonCount) % buttonCount;
-                    updateVisual();
-                }
-            }
-            case RIGHT -> {
-                if (buttonCount > 1) {
-                    selectedButtonIndex = (selectedButtonIndex + 1) % buttonCount;
-                    updateVisual();
-                }
-            }
-            case ENTER -> executeSelectedButton();
-            case ESCAPE -> {
-                selectedButtonIndex = -1;
-                updateVisual();
-            }
+    public void cancel() {
+        if (selectedButtonIndex != -1) {
+            // Hủy chọn nút, trở lại chế độ chọn Slot
+            selectedButtonIndex = -1;
+            updateVisual();
+        } else {
+            // Hủy khi chỉ chọn Slot: Quay về Menu
+            controller.handleBackToMenu();
         }
     }
+
+    // những method update visual và thực thi lệnh
 
     private void updateVisual() {
         if (selectedButtonIndex == -1) {
-            // chỉ chọn theo slot => không button nào được highlight
             buttonManager.setSelectedIndex(-1);
         } else {
             int globalIndex = view.getGlobalButtonIndex(selectedSlotIndex, selectedButtonIndex);

@@ -45,7 +45,6 @@ public class SettingsState implements GameState {
         stage.show();
 
         settingsController.setOnBackToMenu(() -> {
-            System.out.println("DEBUG P2: SettingsState ĐÃ nhận callback BACK TO MENU.");
             mainApp.getStateManager().changeState(new MenuState(mainApp, stage));
         });
 

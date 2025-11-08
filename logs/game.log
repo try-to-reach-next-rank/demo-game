@@ -151,3 +151,173 @@
 15:54:18.184 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 128
 15:54:19.190 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 110
 15:54:20.195 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 103
+17:20:34.835 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+17:20:36.791 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:20:36.795 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:20:36.812 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:20:36.813 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:20:36.973 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:20:36.974 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:20:36.981 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:20:36.983 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:20:37.816 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+17:20:37.818 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:20:37.819 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:20:38.021 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+17:20:38.021 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+17:20:38.024 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+17:20:38.025 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Loading from slot 1...
+17:20:38.027 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:20:38.027 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:20:38.027 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Loaded successfully!
+17:20:39.574 INFO  [JavaFX Application Thread] c.example.demo.view.LoadTransition - Loaded level 2 with 182 bricks
+17:20:39.574 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 87
+17:20:40.578 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 85
+17:20:40.787 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+17:20:40.788 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+17:20:41.582 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 88
+17:20:42.818 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 94
+17:20:43.082 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:20:43.082 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:20:43.085 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:20:43.085 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:20:43.146 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:20:43.146 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:20:43.147 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:20:43.147 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:20:43.860 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 108
+17:20:43.889 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Deleting slot 1
+17:20:43.892 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - [SaveDataRepository] Deleted slot 1
+17:20:43.892 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SaveSlotManager - Reloading slot 1...
+17:20:43.893 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Slot 1 deleted
+17:20:43.896 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:20:43.897 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:20:44.776 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+17:20:44.928 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+17:20:44.928 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+17:20:44.928 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+17:20:45.028 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 97
+17:20:46.245 INFO  [JavaFX Application Thread] c.example.demo.view.LoadTransition - Loaded level 2 with 182 bricks
+17:20:46.246 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 101
+17:20:46.301 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 105
+17:20:47.253 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 95
+17:20:47.316 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 94
+17:20:48.259 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 93
+17:20:48.324 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 93
+17:20:49.231 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+17:20:49.231 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+17:20:49.267 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 93
+17:20:49.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 92
+17:20:50.274 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 83
+17:20:50.340 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 84
+17:20:51.021 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+17:20:51.072 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+17:20:51.073 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+17:20:51.073 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+17:20:51.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 83
+17:20:51.686 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 83
+17:20:52.149 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:20:52.149 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:20:52.153 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:20:52.155 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:20:52.200 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:20:52.200 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:20:52.201 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:20:52.202 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:20:52.608 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 100
+17:20:52.691 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 106
+17:20:53.033 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+17:20:53.036 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:20:53.036 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:20:53.181 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+17:20:53.181 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+17:20:53.181 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+17:20:53.182 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Loading from slot 1...
+17:20:53.182 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:20:53.182 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:20:53.183 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Loaded successfully!
+17:20:54.571 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 107
+17:21:28.844 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+17:21:31.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:21:31.380 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:21:31.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:21:31.388 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:21:31.470 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:21:31.470 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:21:31.472 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:21:31.473 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:21:32.374 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Back to menu
+17:21:33.494 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:21:33.495 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:21:33.500 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:21:33.501 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:21:33.560 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:21:33.560 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:21:33.563 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:21:33.563 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:21:34.153 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Back to menu
+17:21:35.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+17:25:41.372 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+17:25:43.615 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:25:43.617 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:25:43.624 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:25:43.624 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:25:43.705 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:25:43.705 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:25:43.707 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:25:43.707 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:25:44.708 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Back to menu
+17:25:46.710 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:25:46.711 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:25:46.712 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:25:46.713 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:25:46.753 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:25:46.753 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:25:46.755 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:25:46.755 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:25:47.690 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+17:25:47.696 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:25:47.697 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:25:47.903 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+17:25:47.904 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+17:25:47.908 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+17:25:47.909 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Loading from slot 1...
+17:25:47.911 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:25:47.911 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:25:47.911 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Loaded successfully!
+17:25:49.353 INFO  [JavaFX Application Thread] c.example.demo.view.LoadTransition - Loaded level 2 with 182 bricks
+17:25:49.355 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 110
+17:25:49.957 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+17:25:49.958 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+17:25:50.365 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 93
+17:25:51.370 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 85
+17:25:52.021 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+17:25:52.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 88
+17:25:52.771 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+17:25:52.771 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+17:25:53.484 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 89
+17:25:54.712 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 136
+17:25:55.721 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 145
+17:25:56.227 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:25:56.228 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:25:56.230 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:25:56.231 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:25:56.296 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:25:56.296 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:25:56.299 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:25:56.300 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:25:56.839 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 118
+17:25:57.001 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Deleting slot 1
+17:25:57.004 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - [SaveDataRepository] Deleted slot 1
+17:25:57.004 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SaveSlotManager - Reloading slot 1...
+17:25:57.005 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Slot 1 deleted
+17:25:57.010 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+17:25:57.010 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+17:25:57.852 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 83
+17:25:58.469 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Deleting slot 2
+17:25:58.500 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - [SaveDataRepository] Deleted slot 2
+17:25:58.500 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SaveSlotManager - Reloading slot 2...
+17:25:58.500 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Slot 2 deleted
+17:25:58.860 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 111
+17:25:59.869 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 115
+17:26:00.876 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 64

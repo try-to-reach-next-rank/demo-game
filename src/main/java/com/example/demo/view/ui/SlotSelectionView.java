@@ -36,11 +36,10 @@ public class SlotSelectionView extends AbstractUIView {
 
     private final List<SlotComponent> slotComponents = new ArrayList<>();
 
-    public SlotSelectionView( SlotSelectionController controller, ThemeController themeManager, ButtonManager buttonManager) {
+    public SlotSelectionView(SlotSelectionController controller, ThemeController themeManager, ButtonManager buttonManager) {
         super(themeManager);
         this.controller = controller;
         this.buttonManager = new ButtonManager(themeManager.getHandImage());
-        // input controller riêng biệt
         this.inputController = new SlotSelectionInputController(this, controller, buttonManager);
 
         this.uiBox = new VBox(30);
@@ -56,9 +55,7 @@ public class SlotSelectionView extends AbstractUIView {
         StackPane.setAlignment(uiBox, Pos.CENTER);
     }
 
-    // ============================================================
-    // UI BUILDING
-    // ============================================================
+    // build UI
     @Override
     public void buildUI() {
         Text title = new Text("Select Save Slot");
@@ -105,20 +102,8 @@ public class SlotSelectionView extends AbstractUIView {
         }
     }
 
-    // ============================================================
-    // INPUT
-    // ============================================================
-    @Override
-    public void enableKeyboard(Scene scene) {
-        scene.setOnKeyPressed(ev -> {
-            inputController.handleInput(ev.getCode());
-            ev.consume();
-        });
-    }
 
-    // ============================================================
-    // DATA + REFRESH
-    // ============================================================
+    // refreshs + data trong 1 ô
     public void refreshSlots() {
         controller.refreshSlots();
         List<SaveSlot> slots = controller.getAllSlots();
@@ -137,9 +122,7 @@ public class SlotSelectionView extends AbstractUIView {
         inputController.reset();
     }
 
-    // ============================================================
-    // SUPPORT ACCESSORS
-    // ============================================================
+    // get, set để debug
     public List<SaveSlot> getSlots() {
         return controller.getAllSlots();
     }
@@ -165,14 +148,54 @@ public class SlotSelectionView extends AbstractUIView {
         return slotComponents;
     }
 
-    // ============================================================
-    // ABSTRACTUIView METHODS (NOT USED)
-    // ============================================================
-    @Override public void handleInput(javafx.scene.input.KeyCode code) { }
-    @Override public void moveUp() { }
-    @Override public void moveDown() { }
-    @Override public void moveLeft() { }
-    @Override public void moveRight() { }
-    @Override public void confirm() { }
-    @Override public void cancel() { }
+    // key board và ủy quyền xử lí input cho inputController
+    @Override
+    public void enableKeyboard(Scene scene) {
+        scene.setOnKeyPressed(ev -> {
+            handleInput(ev.getCode());
+            ev.consume();
+        });
+    }
+
+    @Override
+    public void handleInput(javafx.scene.input.KeyCode code) {
+        switch (code) {
+            case UP -> moveUp();
+            case DOWN -> moveDown();
+            case LEFT -> moveLeft();
+            case RIGHT -> moveRight();
+            case ENTER -> confirm();
+            case ESCAPE -> cancel();
+        }
+    }
+
+    @Override
+    public void moveUp() {
+        inputController.moveUp();
+    }
+
+    @Override
+    public void moveDown() {
+        inputController.moveDown();
+    }
+
+    @Override
+    public void moveLeft() {
+        inputController.moveLeft();
+    }
+
+    @Override
+    public void moveRight() {
+        inputController.moveRight();
+    }
+
+    @Override
+    public void confirm() {
+        inputController.confirm();
+    }
+
+    @Override
+    public void cancel() {
+        inputController.cancel();
+    }
 }

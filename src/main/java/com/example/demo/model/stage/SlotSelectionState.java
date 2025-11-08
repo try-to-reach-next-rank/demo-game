@@ -49,7 +49,6 @@ public class SlotSelectionState implements GameState {
 
         //  về Menu
         slotSelectionController.setOnBackToMenu(() -> {
-            System.out.println("DEBUG (SlotState): Nhận BACK. Chuyển về MenuState.");
             mainApp.getStateManager().changeState(new MenuState(mainApp, stage));
         });
 
