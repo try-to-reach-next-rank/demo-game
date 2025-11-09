@@ -7,6 +7,8 @@ import com.example.demo.controller.system.PaddleSystem;
 import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
+import com.example.demo.model.core.builder.GameWorldBuilder;
+import com.example.demo.model.core.factory.GameFactory;
 import com.example.demo.model.map.MapData;
 import com.example.demo.model.state.*;
 import com.example.demo.utils.Input;
@@ -26,10 +28,11 @@ import java.util.List;
 public class GameController extends Pane {
     private static final Logger log = LoggerFactory.getLogger(GameController.class);
 
-    private final GameWorld world = new GameWorld();
+    private GameWorld world = new GameWorld();
     private final GameView view;
     private AnimationTimer timer;
     private Input inputGame;
+
     // === CONTROLLERS ===
     private final MapController mapManager = new MapController();
     private final SaveController saveController = new SaveController();
@@ -47,45 +50,26 @@ public class GameController extends Pane {
 
     public GameController() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
+
+        if (isNewGame) {
+            world = GameFactory.createNewGame(mapManager);
+        } else {
+            GameState loaded = saveController.loadGame(currentSlotNumber);
+            world = GameFactory.loadFromState(loaded, mapManager);
+        }
+
         view = new GameView(world, this);
         getChildren().add(view);
 
         setFocusTraversable(true);
         requestFocus();
-
         setupKeyHandling();
     }
 
     public void initGame() {
-        world.init();
-
-        BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
-        PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
-        PowerUpSystem powerUpSystem = new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps());
-        world.setPowerUpSystem(powerUpSystem);
-
-        LoadLevel loadLevel = new LoadLevel(mapManager, world, view);
-
         String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
         view.getUiView().loadDialogue(dialoguePath);
-
-        if (isNewGame) {
-            loadLevel.load(world.getCurrentLevel());
-        } else {
-            GameState loaded = saveController.loadGame(currentSlotNumber);
-            if (loaded != null) {
-                world.applyState(loaded);
-            }
-            loadLevel.loadForSavedGame(world.getCurrentLevel());
-        }
-
-        BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
-
-        CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
-
-        world.clearUpdatables();
-        List.of(ballSystem, paddleSystem, powerUpSystem, brickSystem, collisionManager)
-                        .forEach(world::registerUpdatable);
+        inputGame = new Input(world.getPaddle(), world.getBall());
 
         if (world.getCurrentLevel() == GameVar.START_LEVEL) {
             view.getCoreView().initParallax();
@@ -93,8 +77,6 @@ public class GameController extends Pane {
 
         Sound.getInstance().playRandomMusic();
 
-        inputGame = new Input(world.getPaddle(), world.getBall());
-        setupKeyHandling();
         view.startTransition(
                 () -> setupLevel(world.getCurrentLevel()),
                 () -> setInGame(true)
@@ -104,20 +86,31 @@ public class GameController extends Pane {
 
     // ========== Level Management -> Delegate to MapController ==========
     private void setupLevel(int level) {
-        view.getCoreView().reset();
-        MapData mapData = new LoadLevel(mapManager, world, view).load(level);
+        MapData mapData = mapManager.loadMap(level);
+
+        // Clear and add new map content
+        world.getWalls().clear();
+        world.getWalls().addAll(mapData.walls());
+        world.setBricks(mapData.bricks().toArray(new Brick[0]));
+
+        // Reset any level-specific state in systems
         world.clearUpdatables();
 
+        // Re-register systems
         BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
         PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
-        PowerUpSystem powerUpSystem = world.getPowerUpSystem();
+        PowerUpSystem powerUpSystem = new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps());
         BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
         CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
 
-        List.of(ballSystem, paddleSystem, powerUpSystem, brickSystem, collisionManager)
+        world.setPowerUpSystem(powerUpSystem);
+        List.of(ballSystem, paddleSystem, brickSystem, powerUpSystem, collisionManager)
                 .forEach(world::registerUpdatable);
 
+        // Reset view
         view.reset();
+        view.getCoreView().reset();
+
         log.info("Loaded level {}", level);
     }
 
@@ -152,8 +145,18 @@ public class GameController extends Pane {
     // ========== Auto Level Progression ==========
 
     private void checkLevelCompletion() {
-        if (world.isLevelComplete()) {
-            log.info("Level complete! Remaining bricks: {}", world.getRemainingBricksCount());
+        if (world.getBricks().length == 0) return;
+
+        boolean complete = true;
+        for (var brick : world.getBricks()) {
+            if (!brick.isDestroyed() && brick.getHealth() != Integer.MAX_VALUE) {
+                complete = false;
+                break;
+            }
+        }
+
+        if (complete) {
+            log.info("Level complete!");
             loadNextLevel();
         }
     }

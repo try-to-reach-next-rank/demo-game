@@ -8,13 +8,12 @@ import com.example.demo.view.graphics.BrickTextureProvider;
 public class BrickFactory {
     /**
      * Brick Factory decides brick properties / init logic
-     * @param type type of brick
+     * @param health health to decide the type
      * @param x position x
      * @param y position y
      * @return Brick
      */
-    public static Brick createFromType(int type, double x, double y) {
-        int health = (type == 2) ? Integer.MAX_VALUE : (GameRandom.nextInt(5) + 1);
+    public static Brick createFromType(int health, double x, double y) {
         String imageKey = BrickTextureProvider.getTextureForHealth(health);
 
         return new BrickBuilder()

@@ -4,6 +4,7 @@ import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.Wall;
 import com.example.demo.model.core.factory.BrickFactory;
 import com.example.demo.model.map.MapData;
+import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.var.GameVar;
 
 import java.util.ArrayList;
@@ -30,7 +31,8 @@ public class MapBuilder {
                 double x = GameVar.MATRIX_START_X + c * (GameVar.WIDTH_OF_BRICKS + GameVar.PADDING_X);
                 double y = GameVar.MATRIX_START_Y + r * (GameVar.HEIGHT_OF_BRICKS + GameVar.PADDING_Y);
 
-                bricks.add(BrickFactory.createFromType(type, x, y));
+                int randomHealth = GameRandom.nextInt(5) + 1;
+                bricks.add(BrickFactory.createFromType(randomHealth, x, y));
             }
         }
         return this;
