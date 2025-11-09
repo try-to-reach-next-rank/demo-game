@@ -24,17 +24,6 @@ public class MapData {
         return walls;
     }
 
-    private final Random rand = new Random();
-
-    // ---------------------------------------------------------------------
-    //  Main Entry
-    // ---------------------------------------------------------------------
-
-
-    // ---------------------------------------------------------------------
-    //  Wall Generation
-    // ---------------------------------------------------------------------
-
     public static List<Wall> createBoundaryWalls() {
         List<Wall> walls = new ArrayList<>();
 
@@ -51,7 +40,6 @@ public class MapData {
         }
         return walls;
     }
-
 
     public static int[][] createMap1Matrix() {
         int[][] map = {

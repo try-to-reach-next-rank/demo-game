@@ -1,5 +1,6 @@
 package com.example.demo.model.system;
 
+import com.example.demo.controller.system.PaddleSystem;
 import com.example.demo.model.core.Paddle;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;

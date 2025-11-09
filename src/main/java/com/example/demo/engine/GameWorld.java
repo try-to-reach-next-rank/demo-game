@@ -5,7 +5,7 @@ import com.example.demo.model.state.ActivePowerUpData;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.model.state.GameState;
 import com.example.demo.model.state.PowerUpData;
-import com.example.demo.model.system.PowerUpSystem;
+import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
 import org.slf4j.Logger;

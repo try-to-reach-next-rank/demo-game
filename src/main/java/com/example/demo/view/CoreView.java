@@ -5,7 +5,7 @@ import com.example.demo.controller.view.HandEffectController;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.*;
 import com.example.demo.model.map.ParallaxLayer;
-import com.example.demo.model.system.ParallaxSystem;
+import com.example.demo.controller.system.ParallaxSystem;
 import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;

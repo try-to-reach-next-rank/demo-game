@@ -1,17 +1,16 @@
 package com.example.demo.controller.core;
 
 import com.example.demo.controller.map.MapController;
+import com.example.demo.controller.system.BallSystem;
+import com.example.demo.controller.system.BrickSystem;
+import com.example.demo.controller.system.PaddleSystem;
+import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
-import com.example.demo.model.core.effects.TransitionEffect;
 import com.example.demo.model.map.MapData;
 import com.example.demo.model.state.*;
-import com.example.demo.model.system.*;
-
 import com.example.demo.utils.Input;
 import com.example.demo.utils.Sound;
-import com.example.demo.repository.SaveDataRepository;
-import com.example.demo.utils.dialogue.DialogueSystem;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.*;

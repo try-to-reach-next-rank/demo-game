@@ -2713,3 +2713,36 @@
 13:08:16.523 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
 13:08:17.532 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
 13:08:18.540 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+13:59:57.642 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+13:59:59.600 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+13:59:59.763 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+13:59:59.770 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+13:59:59.770 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:59:59.781 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+14:00:00.868 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+14:00:00.869 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 63
+14:00:01.876 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+14:00:02.883 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+14:00:03.892 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 59
+14:00:04.900 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+14:00:05.908 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+14:00:06.916 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+14:00:07.924 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+14:00:08.932 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+14:00:09.941 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+14:00:10.948 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+14:00:11.956 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+14:00:12.963 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+14:00:12.983 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+14:00:12.984 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+14:00:13.850 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+14:00:13.850 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 1 -> 2
+14:00:13.972 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+14:00:14.851 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+14:00:14.980 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+14:00:15.988 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+14:00:16.996 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+14:00:18.004 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+14:00:19.012 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+14:00:20.020 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+14:00:21.028 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60

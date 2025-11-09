@@ -1,5 +1,6 @@
 package com.example.demo.model.system;
 
+import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
 import com.example.demo.model.core.PowerUp;
