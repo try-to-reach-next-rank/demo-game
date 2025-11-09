@@ -85,4 +85,9 @@ public class BrickSystem implements Updatable {
         double centerY = brick.getY() + brick.getHeight();
         EffectRenderer.getInstance().spawn(GameVar.EXPLOSION1_EFFECT_KEY, centerX, centerY, GameVar.EFFECT_DURATION);
     }
+
+    public void handleCollision(Brick brick, Ball ball) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'handleCollision'");
+    }
 }

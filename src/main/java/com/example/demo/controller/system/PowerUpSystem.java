@@ -102,4 +102,9 @@ public class PowerUpSystem implements Updatable {
     public List<PowerUp> getActivePowerUps() {
         return activePowerUps;
     }
+
+    public void handleCollision(PowerUp powerUp, Paddle paddle2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'handleCollision'");
+    }
 }

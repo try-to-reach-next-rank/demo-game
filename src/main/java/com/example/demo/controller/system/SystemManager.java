@@ -1,39 +1,43 @@
 package com.example.demo.controller.system;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 
+import java.util.*;
+
 public class SystemManager implements Updatable {
     private final GameWorld world;
-    private final List<Updatable> updatables = new ArrayList<>();
+    private final Map<Class<? extends Updatable>, Updatable> systems = new HashMap<>();
 
-    SystemManager(GameWorld world) {
-        this.world = new GameWorld();
-        registerAllUpdatable();
+    public SystemManager(GameWorld world) {
+        this.world = world;
+        registerAllSystems();
     }
 
     @Override
     public void update(double deltaTime) {
-        for (Updatable u : updatables) {
-            u.update(deltaTime);
+        for (Updatable sys : systems.values()) {
+            sys.update(deltaTime);
         }
     }
 
-    private void registerAllUpdatable() {
-        registerUpdatable(new BallSystem(world.getBall(), world.getPaddle()));
-        registerUpdatable(new BrickSystem(world.getBricks(), world.getPowerUps()));
-        registerUpdatable(new PaddleSystem(world.getPaddle()));
-        // registerUpdatable(new ParallaxSystem(world, 0, 0, null));
-        registerUpdatable(new PortalSystem(world.getPortalFactory()));
-        registerUpdatable(new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps()));
+    public <T extends Updatable> T get(Class<T> type) {
+        return type.cast(systems.get(type));
     }
 
-    private void registerUpdatable(Updatable system) {
-        if (!updatables.contains(system)) {
-            updatables.add(system);
-        }
+    public boolean has(Class<? extends Updatable> type) {
+        return systems.containsKey(type);
+    }
+
+    private void registerAllSystems() {
+        register(new BallSystem(world.getBall(), world.getPaddle()));
+        register(new BrickSystem(world.getBricks(), world.getPowerUps()));
+        register(new PaddleSystem(world.getPaddle()));
+        register(new PortalSystem(world.getPortalFactory()));
+        register(new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps()));
+    }
+
+    private <T extends Updatable> void register(T system) {
+        systems.put(system.getClass(), system);
     }
 }

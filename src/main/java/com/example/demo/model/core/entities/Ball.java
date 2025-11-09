@@ -9,18 +9,18 @@ public class Ball extends ImageObject<BallData> {
     private final double baseSpeed = GameVar.BASE_SPEED_BALL;
     private boolean stuck;
     private Vector2D velocity;
-    private final Paddle paddle;
+    // private final Paddle paddle;
 
     private boolean accelerated;
     private boolean stronger;
     private boolean stopTime;
     private double elapsedTime = 0;
 
-    private Brick lastBrick;
+    // private Brick lastBrick;
 
     public Ball(Paddle paddle) {
         super("ball", GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
-        this.paddle = paddle;
+        // this.paddle = paddle;
         resetState();
     }
 
@@ -87,32 +87,15 @@ public class Ball extends ImageObject<BallData> {
     public boolean isStopTime() { return stopTime; }
     public void setStopTime(boolean stopTime) { this.stopTime = stopTime; }
 
-    public void alignWithPaddle(double offsetY, double lerpFactor) {
-        double targetX = paddle.getX() + paddle.getWidth() / 2.0 - getWidth() / 2.0;
-        double targetY = paddle.getY() - getHeight() - offsetY;
-
-        if (lerpFactor >= 1.0) {
-            x = targetX;
-            y = targetY;
-        } else {
-            x += (targetX - x) * lerpFactor;
-            y += (targetY - y) * lerpFactor;
-        }
-
-        double minX = paddle.getX();
-        double maxX = paddle.getX() + paddle.getWidth() - getWidth();
-        if (x < minX) x = minX;
-        if (x > maxX) x = maxX;
-        setPosition(x, y);
-    }
+    
 
     public double getElapsedTime(){ return elapsedTime; }
     public void setElapsedTime(double x){ elapsedTime = x; }
 
-    public Brick getLastBrick(){
-        return lastBrick;
-    }
-    public void setLastBrick(Brick brick){
-        lastBrick = brick;
-    }
+    // public Brick getLastBrick(){
+    //     return lastBrick;
+    // }
+    // public void setLastBrick(Brick brick){
+    //     lastBrick = brick;
+    // }
 }
