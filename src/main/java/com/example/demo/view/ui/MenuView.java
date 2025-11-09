@@ -22,15 +22,14 @@ public class MenuView implements Stage {
 
     public MenuView(MenuController controller) {
         this.controller = controller;
-        this.rootStack = new StackPane();
         this.uiBox = new VBox(18);
         this.uiBox.setPadding(new Insets(28));
         this.uiBox.setAlignment(Pos.CENTER);
 
         // 1. Setup theme
         this.themeManager = new ThemeController();
-        themeManager.setupBackground(rootStack);
-        themeManager.applyCss(rootStack);
+        ThemeController.setupBackground(rootStack);
+        ThemeController.applyCss(rootStack);
 
         // 2. Setup buttons
         this.buttonManager = new ButtonManager(themeManager.getHandImage());

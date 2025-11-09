@@ -44,12 +44,12 @@ public class SlotSelectionView implements Stage {
 
     public SlotSelectionView(SlotSelectionController controller) {
         this.controller = controller;
-        this.rootStack = new StackPane();
+        SlotSelectionView.rootStack = new StackPane();
         this.uiBox = new VBox(30);
         this.uiBox.setPadding(new Insets(40));
         this.uiBox.setAlignment(Pos.CENTER);
         this.slotComponents = new ArrayList<>();
-        this.rootStack.getStylesheets().add(
+        SlotSelectionView.rootStack.getStylesheets().add(
                 getClass().getResource("/styles/slot.css").toExternalForm()
         );
 
@@ -202,6 +202,8 @@ public class SlotSelectionView implements Stage {
             case ESCAPE:
                 controller.handleBackToMenu();
                 break;
+            default:
+                break;
         }
     }
 
@@ -230,6 +232,8 @@ public class SlotSelectionView implements Stage {
             case ESCAPE:
                 selectedButtonIndex = -1;
                 updateSelectionVisuals();
+                break;
+            default:
                 break;
         }
     }

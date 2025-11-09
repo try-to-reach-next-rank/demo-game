@@ -2,7 +2,6 @@ package com.example.demo.view;
 
 import com.example.demo.controller.core.CollisionController;
 import com.example.demo.controller.core.GameController;
-import com.example.demo.controller.core.entities.PortalController;
 import com.example.demo.controller.system.*;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.effects.TransitionEffect;

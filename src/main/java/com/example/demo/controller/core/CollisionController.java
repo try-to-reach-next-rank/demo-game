@@ -2,8 +2,8 @@ package com.example.demo.controller.core;
 
 import com.example.demo.controller.system.BallSystem;
 import com.example.demo.controller.system.BrickSystem;
+import com.example.demo.controller.system.PortalSystem;
 import com.example.demo.controller.system.PowerUpSystem;
-import com.example.demo.controller.core.entities.*;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.ThePool;
@@ -33,7 +33,7 @@ public class CollisionController implements Updatable {
     private final List<PowerUp> toRemove = new ArrayList<>();
 
     // TODO: MAKE EVERY ENTITIES LIKE PORTAL
-    private final PortalController portalController;
+    private final PortalSystem portalSystem;
 
     public CollisionController(GameWorld world, BallSystem ballSystem,
                             BrickSystem brickSystem, PowerUpSystem powerUpSystem) {
@@ -41,7 +41,7 @@ public class CollisionController implements Updatable {
         this.ballSystem = ballSystem;
         this.brickSystem = brickSystem;
         this.powerUpSystem = powerUpSystem;
-        this.portalController = null;
+        this.portalSystem = null;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class CollisionController implements Updatable {
         handleBallPaddleCollision(ball, paddle);
         handleBallWallCollisions(ball, walls);
         handleBallBrickCollisions(ball, bricks);
-        handleBallPortalCollisions(ball, portalController);
+        handleBallPortalCollisions(ball, portalSystem);
     }
 
     // ------------------------------------------------------------------------
@@ -160,7 +160,7 @@ public class CollisionController implements Updatable {
         }
     }
 
-    private void handleBallPortalCollisions(Ball ball, PortalController portalController) {
+    private void handleBallPortalCollisions(Ball ball, PortalSystem portalSystem) {
         // TODO: implement handleBallPortalCollisions
 
     }

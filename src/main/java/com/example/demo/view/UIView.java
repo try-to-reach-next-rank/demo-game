@@ -47,6 +47,7 @@ public class UIView {
         switch (code) {
             case Q -> showPause();
             case BACK_QUOTE -> showCheat();
+            default -> {}
         }
     }
 

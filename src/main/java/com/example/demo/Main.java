@@ -120,6 +120,7 @@ public class Main extends Application {
             case SELECT -> showSlotSelection();  // ← Hiện slot selection
             case PLAY -> showGame();
             case EXIT -> primaryStage.close();
+            default -> {}
         }
     }
 

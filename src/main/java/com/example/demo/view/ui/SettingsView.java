@@ -17,7 +17,7 @@ import javafx.scene.text.Text;
 
 public class SettingsView implements Stage {
     private final SettingsController controller;
-    private final ThemeController themeManager;
+    private final ThemeController themeController;
     private final ButtonManager buttonManager;
     private final StackPane rootStack;
     private final VBox uiBox;
@@ -30,12 +30,12 @@ public class SettingsView implements Stage {
         this.uiBox.setAlignment(Pos.CENTER);
 
         // Setup theme
-        this.themeManager = new ThemeController();
-        themeManager.setupBackground(rootStack);
-        themeManager.applyCss(rootStack);
+        this.themeController = new ThemeController();
+        ThemeController.setupBackground(rootStack);
+        ThemeController.applyCss(rootStack);
 
         // Setup buttons
-        this.buttonManager = new ButtonManager(themeManager.getHandImage());
+        this.buttonManager = new ButtonManager(themeController.getHandImage());
         buildUI();
 
         rootStack.getChildren().add(uiBox);
