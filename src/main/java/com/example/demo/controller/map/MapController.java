@@ -2,6 +2,7 @@ package com.example.demo.controller.map;
 
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.Wall;
+import com.example.demo.model.core.builder.BrickBuilder;
 import com.example.demo.model.map.MapData;
 import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.var.GameVar;
@@ -46,7 +47,14 @@ public class MapController {
                 int health = (matrix[r][c] == 2) ? Integer.MAX_VALUE : (GameRandom.nextInt(5) + 1);
                 String imageKey = BrickTextureProvider.getTextureForHealth(health);
 
-                bricks.add(new Brick(imageKey, x, y, health));
+                Brick brick = new BrickBuilder()
+                                .imageKey(imageKey)
+                                .position(x, y)
+                                .health(health)
+                                .destroyed(false)
+                                .build();
+
+                bricks.add(brick);
             }
         }
         return new MapData(bricks, walls);

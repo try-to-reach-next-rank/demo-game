@@ -49,7 +49,6 @@ public class GameWorld {
 
     public int getCurrentLevel() { return currentLevel; }
     public void setCurrentLevel(int level) { this.currentLevel = level; }
-    public List<Updatable> getUpdatables() { return updatables; }
 
     // ========== NEW: Brick Counting Methods ==========
 

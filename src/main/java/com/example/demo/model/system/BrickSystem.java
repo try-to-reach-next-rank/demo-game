@@ -4,6 +4,7 @@ import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.PowerUp;
+import com.example.demo.model.core.builder.PowerUpBuilder;
 import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
@@ -28,7 +29,7 @@ public class BrickSystem implements Updatable {
 
     @Override
     public void update(double deltaTime) {
-        // Bricks are static — no movement updates
+
     }
 
     /**
@@ -69,11 +70,14 @@ public class BrickSystem implements Updatable {
      * Spawns a power-up at the destroyed brick's location.
      */
     private void maybeSpawnPowerUp(Brick brick) {
-        if (random.nextInt(100) < GameVar.POWERUP_SPAWN_CHANCE) {
-            PowerUp powerUp = new PowerUp(GameVar.powerUps[GameRandom.nextInt(GameVar.powerUps.length)]);
-            powerUp.dropFrom(brick);
-            powerUps.add(powerUp);
-        }
+        random.nextInt(100);
+        PowerUp powerUp = new PowerUpBuilder()
+                            .type(GameVar.powerUps[GameRandom.nextInt(GameVar.powerUps.length)])
+                            .position(brick.getX() + brick.getWidth() / 2, brick.getY() + brick.getHeight() / 2)
+                            .visible(true)
+                            .build();
+
+        powerUps.add(powerUp);
     }
 
     /**
