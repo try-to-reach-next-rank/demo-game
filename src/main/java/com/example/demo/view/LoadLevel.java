@@ -20,8 +20,8 @@ public class LoadLevel {
         MapData mapData = mapManager.loadMap(level);
 
         world.getWalls().clear();
-        world.getWalls().addAll(mapData.getWalls());
-        world.setBricks(mapData.getBricks().toArray(new Brick[0]));
+        world.getWalls().addAll(mapData.walls());
+        world.setBricks(mapData.bricks().toArray(new Brick[0]));
         world.resetForNewLevel();
 
         gameView.reset();
@@ -33,7 +33,7 @@ public class LoadLevel {
         MapData mapData = mapManager.loadMap(level);
 
         world.getWalls().clear();
-        world.getWalls().addAll(mapData.getWalls());
-        world.setBricks(mapData.getBricks().toArray(new Brick[0]));
+        world.getWalls().addAll(mapData.walls());
+        world.setBricks(mapData.bricks().toArray(new Brick[0]));
     }
 }

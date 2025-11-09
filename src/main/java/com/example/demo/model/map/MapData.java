@@ -7,21 +7,10 @@ import com.example.demo.utils.var.GlobalVar;
 
 import java.util.*;
 
-public class MapData {
-    private final List<Brick> bricks;
-    private final List<Wall> walls;
-
+public record MapData(List<Brick> bricks, List<Wall> walls) {
     public MapData(List<Brick> bricks, List<Wall> walls) {
         this.bricks = List.copyOf(bricks); // để tránh thay đổi sau này
         this.walls = List.copyOf(walls);
-    }
-
-    public List<Brick> getBricks() {
-        return bricks;
-    }
-
-    public List<Wall> getWalls() {
-        return walls;
     }
 
     public static List<Wall> createBoundaryWalls() {
@@ -42,7 +31,7 @@ public class MapData {
     }
 
     public static int[][] createMap1Matrix() {
-        int[][] map = {
+        return new int[][]{
                 {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
@@ -63,11 +52,10 @@ public class MapData {
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0}
         };
-        return map;
     }
 
     public static int[][] createMap2Matrix() {
-        int[][] map = {
+        return new int[][]{
                 {0, 0, 0, 2, 1, 1, 1, 2, 0, 0, 2, 1, 1, 1, 2, 0, 0, 0, 0},
                 {0, 0, 2, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 2, 0, 0, 0},
                 {0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0},
@@ -88,11 +76,10 @@ public class MapData {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
         };
-        return map;
     }
 
     public static int[][] createMap3Matrix() {
-        int[][] map = {
+        return new int[][]{
                 {0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0},
                 {0, 0, 2, 1, 1, 2, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2, 0, 0, 0, 0, 0},
                 {0, 0, 2, 1, 1, 2, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2, 0, 0, 0, 0, 0},
@@ -113,7 +100,6 @@ public class MapData {
                 {0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
         };
-        return map;
     }
 }
 
