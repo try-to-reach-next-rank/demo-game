@@ -1,5 +1,6 @@
 package com.example.demo.model.state.highscore;
 
+import com.example.demo.controller.core.SaveController;
 import com.example.demo.utils.Input;
 import com.example.demo.utils.var.GameVar;
 
@@ -11,8 +12,13 @@ import java.util.PriorityQueue;
 public class HighScoreState {
     private static final int CAPACITY = GameVar.HIGHSCORE_CAPACITY;
     private final PriorityQueue<Integer> heap = new PriorityQueue<>();
-
+    private String path = "src/main/resources/Saves/highscores.json";
     public HighScoreState() {
+        giveHighScoreState();
+    }
+
+    public HighScoreState giveHighScoreState() {
+        return SaveController.load(path, HighScoreState.class);
     }
 
     public void addScore(int score) {

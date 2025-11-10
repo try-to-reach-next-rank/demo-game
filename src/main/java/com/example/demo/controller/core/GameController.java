@@ -158,7 +158,7 @@ public class GameController extends Pane {
         if (world.getCurrentScore() > world.getHighScore()) {
             world.setHighScore(world.getCurrentScore());
         }
-        saveController.saveGame(world, currentSlotNumber);
+
         boolean complete = true;
         for (var brick : world.getBricks()) {
             if (!brick.isDestroyed() && brick.getHealth() != Integer.MAX_VALUE) {
@@ -169,6 +169,7 @@ public class GameController extends Pane {
 
         if (complete) {
             log.info("Level complete!");
+            saveController.saveGame(world, currentSlotNumber);
             loadNextLevel();
         }
     }

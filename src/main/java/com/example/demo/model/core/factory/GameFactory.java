@@ -15,6 +15,7 @@ public class GameFactory {
                 .withEntities()
                 .withMap(mapData)
                 .withSystems()
+                .withGameStateRestore() // THÊM DÒNG NÀY
                 .build();
     }
 
@@ -26,6 +27,7 @@ public class GameFactory {
                 .withEntities()
                 .withMap(mapData)
                 .withSystems()
+                .withGameStateRestore() // THÊM DÒNG NÀY
                 .build();
 
         world.applyState(state);

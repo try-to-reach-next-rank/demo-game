@@ -82,6 +82,14 @@ public class GameWorld {
         this.playElapsedSeconds = playElapsedSeconds;
     }
 
+    public void setGameStateRestore(GameStateRestore gameStateRestore) {
+        this.gameStateRestore = gameStateRestore;
+    }
+
+    public GameStateRestore getGameStateRestore() {
+        return gameStateRestore;
+    }
+
     public Ball getBall() { return ball; }
     public void setBall(Ball ball) { this.ball = ball; }
 

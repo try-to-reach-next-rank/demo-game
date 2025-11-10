@@ -99,6 +99,7 @@ public final class GameVar {
 
     // HIGHSCORE
     public static final int HIGHSCORE_CAPACITY = 10;
+    public static final String HIGHSCORE_PATH = "src/main/resources/Saves/highscores.json";
 
     // MAP
     public static final int PADDING_X = 0;

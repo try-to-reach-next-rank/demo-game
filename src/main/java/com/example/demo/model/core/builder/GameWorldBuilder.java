@@ -6,9 +6,11 @@ import com.example.demo.controller.system.BrickSystem;
 import com.example.demo.controller.system.PaddleSystem;
 import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.model.core.Brick;
+import com.example.demo.model.core.ThePool;
 import com.example.demo.model.core.factory.EntityFactory;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.map.MapData;
+import com.example.demo.utils.GameStateRestore;
 
 import java.util.List;
 
@@ -46,6 +48,12 @@ public class GameWorldBuilder {
         List.of(ballSystem, paddleSystem, brickSystem, powerUpSystem, collisionManager)
                 .forEach(world::registerUpdatable);
 
+        return this;
+    }
+
+    public GameWorldBuilder withGameStateRestore() {
+        ThePool pool = new ThePool(); // hoặc inject vào nếu cần
+        world.setGameStateRestore(new GameStateRestore(pool));
         return this;
     }
 
