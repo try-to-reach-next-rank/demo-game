@@ -50,6 +50,12 @@ public class GameView extends Pane {
             controller.onKeyPressed(e.getCode());
         }
 
+        switch (e.getCode()) {
+            case F:
+                coreView.toggleFlip();
+                break;
+        }
+
         e.consume();
     }
 
