@@ -27,7 +27,6 @@ public class GameWorld {
     private final List<PowerUp> powerUps = new ArrayList<>();
     private final List<Wall> walls = new ArrayList<>();
     // TODO: Use Factory, not entities
-    private final PortalFactory portalFactory = new PortalFactory();
     private int currentLevel = GameVar.START_LEVEL;
     private PowerUpSystem powerUpSystem;
     private final List<Updatable> updatables = new ArrayList<>();
@@ -37,6 +36,7 @@ public class GameWorld {
     public void setPowerUpSystem(PowerUpSystem powerUpSystem) { this.powerUpSystem = powerUpSystem; }
 
     public Ball getBall() { return ball; }
+    public List<Ball> getBalls() { return List.of(ball); }
     public void setBall(Ball ball) { this.ball = ball; }
 
     public Paddle getPaddle() { return paddle; }
@@ -48,9 +48,6 @@ public class GameWorld {
     public List<PowerUp> getPowerUps() { return powerUps; }
 
     public List<Wall> getWalls() { return walls; }
-
-    public PortalFactory getPortalFactory() { return portalFactory; }
-    public List<Portal> getPortals() { return portalFactory.getPortals(); }
 
     public int getCurrentLevel() { return currentLevel; }
     public void setCurrentLevel(int level) { this.currentLevel = level; }
@@ -89,31 +86,13 @@ public class GameWorld {
 
     public void init() {
         paddle = new Paddle();
-        ball = new Ball(paddle);
+        ball = new Ball();
+        ball.setStuckPaddle(paddle);
 
         powerUps.clear();
-        portalFactory.clear();
         walls.clear();
 
         bricks = new Brick[0];
-    }
-
-    public void update(double deltaTime) {
-        for (Updatable u : updatables) {
-            u.update(deltaTime);
-        }
-    }
-
-    // --- Register an updatable system ---
-    public void registerUpdatable(Updatable system) {
-        if (!updatables.contains(system)) {
-            updatables.add(system);
-        }
-    }
-
-    // --- Clear all updatables ---
-    public void clearUpdatables() {
-        updatables.clear();
     }
 
     public void applyState(GameState loadedState) {
@@ -132,11 +111,6 @@ public class GameWorld {
             if (data.getId() >= 0 && data.getId() < bricks.length) {
                 bricks[data.getId()].applyState(data);
             }
-        }
-
-        // SECTION 3: Apply Relationships
-        if (ball.isStuck()) {
-            ball.alignWithPaddle(GameVar.BALL_OFFSET_Y, GameVar.BALL_ALIGN_LERP_FACTOR);
         }
 
         // Falling Power-Ups
@@ -170,7 +144,6 @@ public class GameWorld {
         // if (bricks != null) for (Brick b : bricks) all.add(b);
         if (walls != null) all.addAll(walls);
         if (powerUps != null) all.addAll(powerUps);
-        if (portalFactory != null) all.addAll(portalFactory.getPortals());
         return all;
     }
 }

@@ -27,14 +27,15 @@ import java.util.List;
 public class GameController extends Pane {
     private static final Logger log = LoggerFactory.getLogger(GameController.class);
 
-    private final GameWorld world = new GameWorld();
+    private final GameWorld world;
+    private final SystemManager systemManager;
     private final GameView view;
+    private CollisionController collisionController;
     private AnimationTimer timer;
     private Input inputGame;
     // === CONTROLLERS ===
     private final MapController mapManager = new MapController();
     private final SaveController saveController = new SaveController();
-    private LoadTransition loadTransition;
     private final TransitionEffect transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
     private DialogueSystem dialogueSystem;
 
@@ -51,6 +52,9 @@ public class GameController extends Pane {
 
     public GameController() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
+        world = new GameWorld();
+        world.init();
+        this.systemManager = new SystemManager(world);
         view = new GameView(world, this);
         getChildren().add(view);
 
@@ -61,12 +65,10 @@ public class GameController extends Pane {
     }
 
     public void initGame() {
-        world.init();
+        // TODO: FIX THIS
+        world.setPowerUpSystem(systemManager.get(PowerUpSystem.class));
+        collisionController = new CollisionController(world, systemManager);
 
-        BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
-        PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
-        PowerUpSystem powerUpSystem = new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps());
-        world.setPowerUpSystem(powerUpSystem);
 
         LoadLevel loadLevel = new LoadLevel(mapManager, world, view);
 
@@ -74,8 +76,6 @@ public class GameController extends Pane {
             String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
             dialogueSystem = new DialogueSystem(dialoguePath, view.getUiView().getDialogueBox());
         }
-
-        loadTransition = new LoadTransition(world, transitionEffect, loadLevel, dialogueSystem, view, this);
 
         if (isNewGame) {
             loadLevel.load(world.getCurrentLevel());
@@ -87,13 +87,7 @@ public class GameController extends Pane {
             loadLevel.loadForSavedGame(world.getCurrentLevel());
         }
 
-        BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
-
-        CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
-
-        world.clearUpdatables();
-        List.of(ballSystem, paddleSystem, powerUpSystem, brickSystem, collisionManager)
-                        .forEach(world::registerUpdatable);
+        systemManager.clear();
 
         // Init parallax everymap -> fix bugs if use cheatable
         view.getCoreView().initParallax();
@@ -102,7 +96,6 @@ public class GameController extends Pane {
 
         inputGame = new Input(world.getPaddle(), world.getBall());
         setupKeyHandling();
-        loadTransition.startLevel(world.getCurrentLevel());
         loop();
     }
 
@@ -110,7 +103,6 @@ public class GameController extends Pane {
 
     public void loadLevel(int level) {
         world.setCurrentLevel(level);
-        loadTransition.startLevel(level);
     }
 
     public void loadNextLevel() {
@@ -172,7 +164,8 @@ public class GameController extends Pane {
 
     private void update(double deltaTime) {
         if (!paused) {
-            world.update(deltaTime);
+            systemManager.update(deltaTime);
+            collisionController.update(deltaTime);
 
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;

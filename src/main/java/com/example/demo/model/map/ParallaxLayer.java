@@ -66,6 +66,10 @@ public class ParallaxLayer implements Updatable, Renderable {
         gc.drawImage(frame, drawX + imgWidth, GameVar.PARALLAX_FRAME_DURATION);
     }
 
+    public void clear() {
+        // TODO: CLEAR
+    }
+
     public void setXOffset(double offset) {
         this.xOffset = offset;
     }

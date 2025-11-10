@@ -75,7 +75,7 @@ public class GameView extends Pane {
         uiView.update(deltaTime);
     }
 
-    public void setTransitionEffect(TransitionEffect transitionEffect) {
-        this.transitionEffect = transitionEffect;
+    public void startTransition(Runnable onMidpoint, Runnable onEnd) {
+        transitionEffect.start(onMidpoint, onEnd);
     }
 }

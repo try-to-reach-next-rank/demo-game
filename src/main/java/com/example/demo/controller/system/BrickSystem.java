@@ -4,6 +4,7 @@ import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.core.entities.Brick;
 import com.example.demo.model.core.entities.PowerUp;
+import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
@@ -30,6 +31,16 @@ public class BrickSystem implements Updatable {
     @Override
     public void update(double deltaTime) {
         // Bricks are static — no movement updates
+    }
+
+    @Override
+    public void clear() {
+        // TODO: CLEAR
+    }
+
+    public void handleCollision(Brick brick, Ball ball) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'handleCollision'");
     }
 
     /**
@@ -84,10 +95,5 @@ public class BrickSystem implements Updatable {
         double centerX = brick.getX() + brick.getWidth() / 2;
         double centerY = brick.getY() + brick.getHeight();
         EffectRenderer.getInstance().spawn(GameVar.EXPLOSION1_EFFECT_KEY, centerX, centerY, GameVar.EFFECT_DURATION);
-    }
-
-    public void handleCollision(Brick brick, Ball ball) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'handleCollision'");
     }
 }

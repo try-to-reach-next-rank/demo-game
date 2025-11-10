@@ -17,7 +17,7 @@ public class MenuView implements Stage {
     private final MenuController controller;
     private final ThemeController themeManager;
     private final ButtonManager buttonManager;
-    private static StackPane rootStack = null;
+    private static StackPane rootStack = new StackPane();
     private final VBox uiBox;
 
     public MenuView(MenuController controller) {

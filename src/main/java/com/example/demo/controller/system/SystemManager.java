@@ -25,15 +25,20 @@ public class SystemManager implements Updatable {
         return type.cast(systems.get(type));
     }
 
+    public void clear() {
+        for (Updatable sys : systems.values()) {
+            sys.clear();
+        }
+    }
+
     public boolean has(Class<? extends Updatable> type) {
         return systems.containsKey(type);
     }
 
     private void registerAllSystems() {
-        register(new BallSystem(world.getBall(), world.getPaddle()));
+        register(new BallSystem(world.getBalls()));
         register(new BrickSystem(world.getBricks(), world.getPowerUps()));
         register(new PaddleSystem(world.getPaddle()));
-        register(new PortalSystem(world.getPortalFactory()));
         register(new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps()));
     }
 

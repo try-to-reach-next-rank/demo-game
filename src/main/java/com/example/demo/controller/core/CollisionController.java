@@ -4,6 +4,7 @@ import com.example.demo.controller.system.BallSystem;
 import com.example.demo.controller.system.BrickSystem;
 import com.example.demo.controller.system.PortalSystem;
 import com.example.demo.controller.system.PowerUpSystem;
+import com.example.demo.controller.system.SystemManager;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.ThePool;
@@ -23,33 +24,28 @@ import java.util.List;
  *
  * It no longer directly mutates the models.
  */
-public class CollisionController implements Updatable {
+public class CollisionController {
     private final GameWorld world;
-    private final BallSystem ballSystem;
-    private final BrickSystem brickSystem;
-    private final PowerUpSystem powerUpSystem;
     private final List<PowerUp> toRemove = new ArrayList<>();
+    private BallSystem ballSystem;
+    private BrickSystem brickSystem;
+    private PowerUpSystem powerUpSystem;
+    private PortalSystem portalSystem;
 
-    // TODO: MAKE EVERY ENTITIES LIKE PORTAL
-    private final PortalSystem portalSystem;
-
-    public CollisionController(GameWorld world, BallSystem ballSystem,
-                            BrickSystem brickSystem, PowerUpSystem powerUpSystem) {
+    public CollisionController(GameWorld world, SystemManager systemManager) {
         this.world = world;
-        this.ballSystem = ballSystem;
-        this.brickSystem = brickSystem;
-        this.powerUpSystem = powerUpSystem;
-        this.portalSystem = null;
+        this.ballSystem = systemManager.get(BallSystem.class);
+        this.brickSystem = systemManager.get(BrickSystem.class);
+        this.powerUpSystem = systemManager.get(PowerUpSystem.class);
+        this.portalSystem = systemManager.get(PortalSystem.class);
     }
 
-    @Override
     public void update(double deltaTime) {
         Ball ball = world.getBall();
         Paddle paddle = world.getPaddle();
         Brick[] bricks = world.getBricks();
         List<PowerUp> powerUps = world.getPowerUps();
         List<Wall> walls = world.getWalls();
-        List<Portal> portals = world.getPortals();
 
         if (ball == null || paddle == null) return;
 
@@ -58,11 +54,6 @@ public class CollisionController implements Updatable {
         handleBallPaddleCollision(ball, paddle);
         handleBallWallCollisions(ball, walls);
         handleBallBrickCollisions(ball, bricks);
-        handleBallPortalCollisions(ball, portalSystem);
-    }
-
-    public void control() {
-        
     }
 
     // ------------------------------------------------------------------------
@@ -117,22 +108,13 @@ public class CollisionController implements Updatable {
         for (Brick brick : bricks) {
             if (brick.isDestroyed()) continue;
             if (!ball.getBounds().intersects(brick.getBounds())) continue;
-            if (ball.getLastBrick() == brick) continue;
 
             // delegate to BrickSystem to apply damage, explosion, and power-up drop
             brickSystem.onBallHitBrick(brick, ball);
             Sound.getInstance().playSound("brick_hit");
 
             // bounce depending on overlap direction
-            Vector2D v = ball.getVelocity();
-            double overlapX = overlapX(ball, brick);
-            double overlapY = overlapY(ball, brick);
-            boolean fromSide = overlapX <= overlapY;
-            if (ball.isStronger()) continue;
-            if (fromSide) ball.setVelocity(-v.x, v.y);
-            else ball.setVelocity(v.x, -v.y);
-
-            resolveBallBrickOverlap(ball, brick);
+            ballSystem.handleCollision(ball, brick);
 
             break;
         }
@@ -143,19 +125,5 @@ public class CollisionController implements Updatable {
             }
             ball.setLastBrick(null);
         }
-    }
-
-    private void handleBallPortalCollisions(Ball ball, PortalSystem portalSystem) {
-        // TODO: implement handleBallPortalCollisions
-
-    }
-
-    // ------------------------------------------------------------------------
-    //  Small geometry helpers
-    // ------------------------------------------------------------------------
-
-    
-
-    
     }
 }

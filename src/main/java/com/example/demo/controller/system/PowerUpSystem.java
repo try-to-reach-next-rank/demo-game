@@ -63,6 +63,10 @@ public class PowerUpSystem implements Updatable {
         }
     }
 
+    public void clear() {
+        // TODO: CLEAR
+    }
+
     public void reset() {
         // turn off all boolean flags on the game objects
         if (ball != null) {

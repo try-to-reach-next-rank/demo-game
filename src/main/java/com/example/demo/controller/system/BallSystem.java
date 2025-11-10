@@ -16,52 +16,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BallSystem implements Updatable {
-    private final Ball ball;
-    private final List<Ball> balls = new ArrayList<>();
-    // private final Paddle paddle;
+    private final List<Ball> balls;
     private long nextPaddleSoundTime = 0L;
 
-    public BallSystem(Ball ball, Paddle paddle) {
-        this.ball = ball;
-        // this.paddle = paddle;
+    public BallSystem(List<Ball> balls) {
+        this.balls = balls;
     }
 
     @Override
     public void update(double deltaTime) {
-        if (ball.isStopTime()) {
-            ball.setElapsedTime(ball.getElapsedTime() + deltaTime);
-            if (ball.getElapsedTime() >= GameVar.BALL_ELAPSED_TIME) {
-                ball.setElapsedTime(0);
-                double angle = GameRandom.nextDouble() * 2 * Math.PI;
-                double vx = Math.cos(angle);
-                double vy = Math.sin(angle);
-                if (ball.getY() >= paddle.getY() - GameVar.BALL_PADDLE_OFFSET_Y) {
-                    vy = -Math.abs(vy);
-                }
-                ball.setVelocity(vx, vy);
+        for (Ball ball : balls) {
+            if (ball.isStopTime()) {
+                handleStopTime(ball, deltaTime);
+            }
+
+            if (ball.isStuck() && ball.getStuckPaddle() != null) {
+            // if (ball.isStuck()) {
+                alignWithPaddle(ball, 
+                                GameVar.BALL_ALIGN_WITH_PADDLE_OFFSET_Y, 
+                                GameVar.BALL_ALIGN_WITH_PADDLE_LERPFACTOR);
+            } else {
+                updatePosition(ball, deltaTime);
             }
         }
+    }
 
-        if (ball.isStuck()) {
-            // Keep the ball above the paddle
-            ball.alignWithPaddle(GameVar.BALL_ALIGN_WITH_PADDLE_OFFSET_Y, GameVar.BALL_ALIGN_WITH_PADDLE_LERPFACTOR);
-            return;
-        }
-
-        double currentSpeed = ball.getBaseSpeed();
-        if (ball.isAccelerated()) currentSpeed *= GameVar.BALL_ACCELERATION_FACTOR;
-
-        Vector2D step = ball.getVelocity().normalize().multiply(currentSpeed * deltaTime);
-        double newX = ball.getX() + step.x;
-        double newY = ball.getY() + step.y;
-
-        // Reset if it falls below the screen
-        if (newY >= GameVar.MAP_MAX_Y) {
-            ball.resetState();
-            return;
-        }
-
-        ball.setPosition(newX, newY);
+    @Override
+    public void clear() {
+        // TODO: CLEAR
     }
 
     public void resetBall(Ball ball) {
@@ -80,35 +62,70 @@ public class BallSystem implements Updatable {
         }
     }
 
-    public void alignWithPaddle(Paddle padlle, double offsetY, double lerpFactor) {
-        double targetX = paddle.getX() + paddle.getWidth() / 2.0 - getWidth() / 2.0;
-        double targetY = paddle.getY() - getHeight() - offsetY;
+    // --- When ball is stop ---
+    private void handleStopTime(Ball ball, double deltaTime) {
+        Paddle paddle = ball.getStuckPaddle();
+        ball.setElapsedTime(ball.getElapsedTime() + deltaTime);
+        if (ball.getElapsedTime() >= GameVar.BALL_ELAPSED_TIME) {
+            ball.setElapsedTime(0);
+            double angle = GameRandom.nextDouble() * 2 * Math.PI;
+            double vx = Math.cos(angle);
+            double vy = Math.sin(angle);
+            if (ball.getY() >= paddle.getY() - GameVar.BALL_PADDLE_OFFSET_Y) {
+                vy = -Math.abs(vy);
+            }
+            ball.setVelocity(vx, vy);
+        }
+    }
+
+    // --- When ball stuck ---
+    private void alignWithPaddle(Ball ball, double offsetY, double lerpFactor) {
+        Paddle paddle = ball.getStuckPaddle();
+        double targetX = paddle.getX() + paddle.getWidth() / 2.0 - ball.getWidth() / 2.0;
+        double targetY = paddle.getY() - ball.getHeight() - offsetY;
 
         if (lerpFactor >= 1.0) {
-            x = targetX;
-            y = targetY;
+            ball.setX(targetX);
+            ball.setY(targetY);
         } else {
-            x += (targetX - x) * lerpFactor;
-            y += (targetY - y) * lerpFactor;
+            ball.setX(ball.getX() + (targetX - ball.getX()) * lerpFactor);
+            ball.setY(ball.getY() + (targetY - ball.getY()) * lerpFactor);
         }
 
         double minX = paddle.getX();
-        double maxX = paddle.getX() + paddle.getWidth() - getWidth();
-        if (x < minX) x = minX;
-        if (x > maxX) x = maxX;
-        setPosition(x, y);
+        double maxX = paddle.getX() + paddle.getWidth() - ball.getWidth();
+        if (ball.getX() < minX) ball.setX(minX);
+        if (ball.getX() > maxX) ball.setX(maxX);
+    }
+
+    // --- When ball is not stuck
+    private void updatePosition(Ball ball, double deltaTime) {
+        double currentSpeed = ball.getBaseSpeed();
+        if (ball.isAccelerated()) currentSpeed *= GameVar.BALL_ACCELERATION_FACTOR;
+
+        Vector2D step = ball.getVelocity().normalize().multiply(currentSpeed * deltaTime);
+        double newX = ball.getX() + step.x;
+        double newY = ball.getY() + step.y;
+
+        // // Reset if it falls below the screen
+        // if (newY >= GameVar.MAP_MAX_Y) {
+        //     ball.resetState();
+        //     return;
+        // }
+
+        ball.setPosition(newX, newY);
     }
 
     private void handlePaddleCollision(Ball ball, Paddle paddle) {
-        if (!ball.isStuck()) {
-                long now = System.currentTimeMillis();
-                if (now > nextPaddleSoundTime) {
-                    Sound.getInstance().playSound("paddle_hit");
-                    nextPaddleSoundTime = now + GameVar.PADDLE_SOUND_COOLDOWN;
-                }
-            }
+        if (ball.isStuck()) return;
+        
+        long now = System.currentTimeMillis();
+        if (now > nextPaddleSoundTime) {
+            Sound.getInstance().playSound("paddle_hit");
+            nextPaddleSoundTime = now + GameVar.PADDLE_SOUND_COOLDOWN;
+        }
 
-        bounceFromPaddle(paddle);
+        bounceFromPaddle(ball, paddle);
     }
 
     private void handleWallCollision(Ball ball, Wall wall) {
@@ -125,11 +142,21 @@ public class BallSystem implements Updatable {
     }
 
     private void handleBrickCollision(Ball ball, Brick brick) {
+        if (ball.getLastBrick() == brick) return;
+        if (ball.isStronger()) return;
 
+        Vector2D v = ball.getVelocity();
+        double overlapX = overlapX(ball, brick);
+        double overlapY = overlapY(ball, brick);
+        boolean fromSide = overlapX <= overlapY;
+        
+        if (fromSide) ball.setVelocity(-v.x, v.y);
+        else ball.setVelocity(v.x, -v.y);
+
+        resolveBallBrickOverlap(ball, brick);
     }
 
-    private void bounceFromPaddle(Paddle paddle) {
-        Ball ball = this.ball;
+    private void bounceFromPaddle(Ball ball, Paddle paddle) {
         double paddleLPos = paddle.getBounds().getMinX();
         double ballCenterX = ball.getBounds().getMinX() + ball.getWidth() / 2.0;
         double hitPos = (ballCenterX - paddleLPos) / paddle.getWidth();

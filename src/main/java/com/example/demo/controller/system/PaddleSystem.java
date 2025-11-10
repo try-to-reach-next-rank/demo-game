@@ -30,6 +30,10 @@ public class PaddleSystem implements Updatable {
         paddle.setPosition(newX, paddle.getY());
     }
 
+    public void clear() {
+        // TODO: CLEAR
+    }
+
     public void reset() {
         paddle.resetState();
     }

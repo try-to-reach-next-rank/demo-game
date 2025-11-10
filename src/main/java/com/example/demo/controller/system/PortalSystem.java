@@ -22,4 +22,10 @@ public class PortalSystem implements Updatable {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'handleCollision'");
     }
+
+    @Override
+    public void clear() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'clear'");
+    }
 }

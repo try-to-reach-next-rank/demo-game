@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParallaxSystem implements Updatable, Renderable {
-
     private final List<ParallaxLayer> layers = new ArrayList<>();
     private double cameraTargetX = 0.0;
     private double cameraCurrentX = 0.0;
@@ -85,5 +84,10 @@ public class ParallaxSystem implements Updatable, Renderable {
     public void render(GraphicsContext gc) {
         for (ParallaxLayer layer : layers)
             layer.render(gc);
+    }
+
+    @Override
+    public void clear() {
+        // TODO: CLEAR
     }
 }
