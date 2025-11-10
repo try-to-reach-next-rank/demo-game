@@ -1,6 +1,8 @@
 package com.example.demo.view;
 
 import com.example.demo.controller.system.ParallaxSystem;
+import com.example.demo.controller.view.CloudEffectController;
+import com.example.demo.controller.view.HandEffectController;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.VisualEffect;
@@ -11,6 +13,7 @@ import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.map.ParallaxLayer;
 import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.Arrays;
@@ -26,6 +29,10 @@ public class CoreView {
     private int currentRevealTick = 0;
     private boolean reveal = true;
     private ParallaxSystem parallaxSystem;
+    private final HandEffectController handEffectController = HandEffectController.getInstance();
+    private final CloudEffectController cloudEffectController = CloudEffectController.getInstance();
+
+    private boolean flipped = false;
 
     public CoreView(GraphicsContext gc, GameWorld world) {
         this.gc = gc;
@@ -33,17 +40,34 @@ public class CoreView {
     }
 
     public void render(GraphicsContext gc) {
+        gc.save();
+        if (flipped) {
+            gc.translate(0, GlobalVar.HEIGHT);
+            gc.scale(1, -1);
+        }
+
         renderParallax(gc);
 
         drawBricks(gc);
         renderAllObjects(gc);
         
         renderEffects(gc);
+
+        if (handEffectController.isActive()) {
+            handEffectController.getActiveEffect().render(gc);
+        }
+        if (cloudEffectController.isActive()) {
+            cloudEffectController.getActiveEffect().render(gc);
+        }
+
+        gc.restore();
     }
 
     public void update(double deltaTime) {
         parallaxSystem.update(deltaTime);
         EffectRenderer.getInstance().update(deltaTime);
+        handEffectController.update(deltaTime);
+        cloudEffectController.update(deltaTime);
         setupBrickReveal();
     }
 
@@ -76,9 +100,26 @@ public class CoreView {
     }
 
     private void renderEffects(GraphicsContext gc) {
-        for (VisualEffect effect : EffectRenderer.getInstance().getActiveEffects()) {
+        for (VisualEffect effect : EffectRenderer.getInstance().getActiveEffects())
             effect.render(gc);
+    }
+
+    public void setFlipped(boolean flipped) {
+        this.flipped = flipped;
+    }
+
+    public void toggleFlip() {
+        this.flipped = !this.flipped;
+    }
+
+    public void triggerHandGrab() {
+        if (world.getBall() != null) {
+            handEffectController.triggerHandGrab(world.getBall());
         }
+    }
+
+    public void triggerCloud() {
+        cloudEffectController.triggerCloudEffect(GlobalVar.WIDTH, GlobalVar.HEIGHT);
     }
 
     private void setupBrickReveal() {
@@ -120,6 +161,7 @@ public class CoreView {
         revealedBricks.clear();
         brickRevealCounter = 0;
         currentRevealTick = 0;
+        handEffectController.reset();
     }
     
     public void initParallax() {

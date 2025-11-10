@@ -4,7 +4,6 @@ import com.example.demo.controller.core.CollisionController;
 import com.example.demo.controller.system.BallSystem;
 import com.example.demo.controller.system.BrickSystem;
 import com.example.demo.controller.system.PowerUpSystem;
-import com.example.demo.model.core.*;
 import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.core.entities.Brick;
 import com.example.demo.model.core.entities.Paddle;
@@ -50,7 +49,7 @@ class CollisionControllerTest {
     void handleBallFloorCollision_callsResetBall_whenBallBelowBottom() throws Exception {
         // Arrange: create paddle/ball for constructing spy BallSystem
         Paddle paddle = new Paddle();
-        Ball ball = new Ball(paddle);
+        Ball ball = new Ball();
         // place ball below bottom edge
         ball.setPosition(0.0, GameVar.MAP_MAX_Y + 10.0);
 

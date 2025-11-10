@@ -53,18 +53,19 @@ public class GameState {
         }
 
         // Active Power-ups
-        this.activePowerUpsData = new ArrayList<>();
-        PowerUpSystem powerUpSystem = world.getPowerUpSystem();
-        if (powerUpSystem != null) {
-            for (PowerUp activePowerUp : powerUpSystem.getActivePowerUps()) {
-                if (activePowerUp.isActive()) {
-                    ActivePowerUpData activeData = new ActivePowerUpData();
-                    activeData.setType(activePowerUp.getType());
-                    activeData.setRemainingDuration(activePowerUp.getRemainingDuration());
-                    this.activePowerUpsData.add(activeData);
-                }
-            }
-        }
+        // TODO: FOR PU SYS
+        // this.activePowerUpsData = new ArrayList<>();
+        // PowerUpSystem powerUpSystem = world.getPowerUpSystem();
+        // if (powerUpSystem != null) {
+        //     for (PowerUp activePowerUp : powerUpSystem.getActivePowerUps()) {
+        //         if (activePowerUp.isActive()) {
+        //             ActivePowerUpData activeData = new ActivePowerUpData();
+        //             activeData.setType(activePowerUp.getType());
+        //             activeData.setRemainingDuration(activePowerUp.getRemainingDuration());
+        //             this.activePowerUpsData.add(activeData);
+        //         }
+        //     }
+        // }
 
 
         /**

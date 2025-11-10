@@ -1,8 +1,13 @@
 package com.example.demo.model.system;
 
 import com.example.demo.controller.system.BallSystem;
+<<<<<<< HEAD
 import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.core.entities.Paddle;
+=======
+import com.example.demo.model.core.Ball;
+import com.example.demo.model.core.Paddle;
+>>>>>>> 956033a0fce37a1e159409db764b3c5e87238b6a
 import com.example.demo.utils.Vector2D;
 import org.junit.jupiter.api.Test;
 

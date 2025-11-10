@@ -18,7 +18,6 @@ public class Brick extends ImageObject<BrickData> {
         this.destroyed = false;
     }
 
-    // Thêm vào lớp Brick.java
     @Override
     public void applyState(BrickData data) {
         if (data == null) return;
@@ -30,6 +29,18 @@ public class Brick extends ImageObject<BrickData> {
             String newImageKey = BrickTextureProvider.getTextureForHealth(this.getHealth());
             this.setImageKey(newImageKey);
         }
+    }
+
+    public boolean takeDamage(int damage) {
+        if (health == Integer.MAX_VALUE) return false;
+        health -= damage;
+        if (health <= 0) {
+            destroyed = true;
+            return true;
+        }
+
+        setImageKey(BrickTextureProvider.getTextureForHealth(health));
+        return false;
     }
 
     public int getHealth() { return health; }

@@ -3,6 +3,7 @@ import static com.example.demo.utils.var.GlobalVar.HEIGHT;
 import static com.example.demo.utils.var.GlobalVar.WIDTH;
 
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public final class GameVar {
 
@@ -157,7 +158,7 @@ public final class GameVar {
     public static final double POWERUP_BIGGERPADDLE_DURATION = 1.0;
 
     // GLOW TEXT
-    public static final double GLOW_FONT_SIZE = 48.0;
+    public static final Font GLOW_FONT_SIZE = Font.font(48.0);
 
     public static final double GLOW_ANIMATION_DURATION = 2.5;  // seconds
     public static final double GLOW_OFFSET_START       = 0.0;

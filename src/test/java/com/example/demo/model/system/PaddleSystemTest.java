@@ -1,7 +1,11 @@
 package com.example.demo.model.system;
 
 import com.example.demo.controller.system.PaddleSystem;
+<<<<<<< HEAD
 import com.example.demo.model.core.entities.Paddle;
+=======
+import com.example.demo.model.core.Paddle;
+>>>>>>> 956033a0fce37a1e159409db764b3c5e87238b6a
 import com.example.demo.utils.var.GameVar;
 
 import org.junit.jupiter.api.Test;

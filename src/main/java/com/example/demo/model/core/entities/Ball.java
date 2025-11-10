@@ -11,6 +11,7 @@ public class Ball extends ImageObject<BallData> {
     private boolean accelerated;
     private boolean stronger;
     private boolean stopTime;
+    private boolean beingHeld;
     private double elapsedTime = 0;
     private Vector2D velocity;
 
@@ -39,6 +40,7 @@ public class Ball extends ImageObject<BallData> {
         this.accelerated = false;
         this.stronger = false;
         this.stopTime = false;
+        this.beingHeld = false;
         this.elapsedTime = 0.0;
         this.velocity = new Vector2D(GameVar.BALL_INIT_DIR_X, GameVar.BALL_INIT_DIR_Y);
     }
@@ -71,6 +73,9 @@ public class Ball extends ImageObject<BallData> {
 
     public boolean isStopTime() { return stopTime; }
     public void setStopTime(boolean stopTime) { this.stopTime = stopTime; }
+
+    public boolean isHeldByEffect() { return beingHeld; }
+    // public void setHeldByEffect(boolean held) { this.beingHeld = held; }
 
     public double getElapsedTime(){ return this.elapsedTime; }
     public void setElapsedTime(double x){ this.elapsedTime = x; }

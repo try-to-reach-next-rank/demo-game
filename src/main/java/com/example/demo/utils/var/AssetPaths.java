@@ -1,12 +1,17 @@
 package com.example.demo.utils.var;
 
 public final class AssetPaths {
+
     private AssetPaths() {}
     // GAME
     public static final String ICON = "/images/icon.png";
     // THEME
     public static final String CSS_PATH_MENU = "/styles/menu.css";
     public static final String HAND = "/images/hand.png";
+    public static final String HAND_OPEN = "/images/hand_closed.png";
+    public static final String HAND_CLOSED = "/images/hand_open.png";
+    public static final String CLOUD_LEFT = "/images/cloud_left.png";
+    public static final String CLOUD_RIGHT = "/images/cloud_right.png";
 
     // PARALLAX
     public static final String LAYER1 = "/images/layer1.png";

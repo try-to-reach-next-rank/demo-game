@@ -1,5 +1,11 @@
 package com.example.demo.model.system;
 
+<<<<<<< HEAD
+=======
+import com.example.demo.controller.system.BrickSystem;
+import com.example.demo.model.core.PowerUp;
+import com.example.demo.model.core.Brick;
+>>>>>>> 956033a0fce37a1e159409db764b3c5e87238b6a
 import org.junit.jupiter.api.Test;
 
 import com.example.demo.controller.system.BrickSystem;

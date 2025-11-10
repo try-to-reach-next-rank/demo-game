@@ -5,6 +5,8 @@ import com.example.demo.controller.view.ThemeController;
 import com.example.demo.engine.Stage;
 import com.example.demo.model.core.effects.GlowTextEffect;
 import com.example.demo.model.menu.ButtonManager;
+import com.example.demo.utils.var.GameVar;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -42,10 +44,9 @@ public class MenuView implements Stage {
 
     @Override
     public void buildUI() {
-        GlowTextEffect glowTitle = new GlowTextEffect();
-        glowTitle.activate(0, 0, 100000); // start shimmering
+        GlowTextEffect glowTitle = new GlowTextEffect("ARKANOID", GameVar.GLOW_FONT_SIZE);
 
-        Text titleNode = glowTitle.getNode(); // this is the one that glows
+        Node titleNode = glowTitle.createGlowTextNode();
 
         VBox menuBox = new VBox(28);
         menuBox.setAlignment(Pos.CENTER);

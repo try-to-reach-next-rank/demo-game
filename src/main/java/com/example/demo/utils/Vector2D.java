@@ -28,6 +28,13 @@ public class Vector2D {
         return len == 0 ? new Vector2D(0,0) : new Vector2D(x / len, y / len);
     }
 
+    @Override
+    public String toString() {
+        return String.format(
+                "The vector is: %f %f",x,y
+        );
+    }
+
     /**
      * A vector2D when collide with a surface -> tangent stays the same, the parallel to surface is flipped
      * Parallel to surface (into the wall):

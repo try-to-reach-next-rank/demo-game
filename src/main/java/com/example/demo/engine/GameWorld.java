@@ -9,6 +9,8 @@ import com.example.demo.model.state.ActivePowerUpData;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.model.state.GameState;
 import com.example.demo.model.state.PowerUpData;
+import com.example.demo.controller.system.PowerUpSystem;
+import com.example.demo.utils.GameStateRestore;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
 
@@ -24,17 +26,13 @@ public class GameWorld {
     private Ball ball;
     private Paddle paddle;
     private Brick[] bricks = new Brick[0];
-    private final List<PowerUp> powerUps = new ArrayList<>();
-    private final List<Wall> walls = new ArrayList<>();
-    // TODO: Use Factory, not entities
     private int currentLevel = GameVar.START_LEVEL;
-    private PowerUpSystem powerUpSystem;
-    private final List<Updatable> updatables = new ArrayList<>();
+    private GameStateRestore gameStateRestore;
+
+    private final List<Wall> walls = new ArrayList<>();
+    private final List<PowerUp> powerUps = new ArrayList<>();
 
     // --- Getters / Setters ---
-    public PowerUpSystem getPowerUpSystem() { return powerUpSystem; }
-    public void setPowerUpSystem(PowerUpSystem powerUpSystem) { this.powerUpSystem = powerUpSystem; }
-
     public Ball getBall() { return ball; }
     public List<Ball> getBalls() { return List.of(ball); }
     public void setBall(Ball ball) { this.ball = ball; }
@@ -46,93 +44,13 @@ public class GameWorld {
     public void setBricks(Brick[] bricks) { this.bricks = Objects.requireNonNullElse(bricks, new Brick[0]); }
 
     public List<PowerUp> getPowerUps() { return powerUps; }
-
     public List<Wall> getWalls() { return walls; }
 
     public int getCurrentLevel() { return currentLevel; }
     public void setCurrentLevel(int level) { this.currentLevel = level; }
-    
-    public List<Updatable> getUpdatables() { return updatables; }
-
-    // ========== NEW: Brick Counting Methods ==========
-
-    public int getRemainingBricksCount() {
-        if (bricks == null || bricks.length == 0) {
-            return 0;
-        }
-
-        int count = 0;
-        for (Brick brick : bricks) {
-            // Only count bricks that are:
-            // 1. Not destroyed
-            // 2. Not indestructible (health != Integer.MAX_VALUE)
-            if (!brick.isDestroyed() && brick.getHealth() != Integer.MAX_VALUE) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    public boolean isLevelComplete() {
-        return getRemainingBricksCount() == 0;
-    }
-
-    // convenience reset helper
-    public void resetForNewLevel() {
-        powerUps.clear();
-        if (ball != null) ball.resetState();
-        if (paddle != null) paddle.resetState();
-    }
-
-    public void init() {
-        paddle = new Paddle();
-        ball = new Ball();
-        ball.setStuckPaddle(paddle);
-
-        powerUps.clear();
-        walls.clear();
-
-        bricks = new Brick[0];
-    }
 
     public void applyState(GameState loadedState) {
-        // SECTION 1: Setup Level
-        setCurrentLevel(loadedState.getCurrentLevel());
-        Sound.getInstance().playMusic(loadedState.getCurrentTrackName(), loadedState.getCurrentTrackTime());
-
-        // SECTION 2: Apply Entity States
-        Ball ball = getBall();
-        Paddle paddle = getPaddle();
-        Brick[] bricks = getBricks();
-        paddle.applyState(loadedState.getPaddleData());
-        ball.applyState(loadedState.getBallData());
-
-        for (BrickData data : loadedState.getBricksData()) {
-            if (data.getId() >= 0 && data.getId() < bricks.length) {
-                bricks[data.getId()].applyState(data);
-            }
-        }
-
-        // Falling Power-Ups
-        getPowerUps().clear();
-        for (PowerUpData powerUpData : loadedState.getPowerUpsData()) {
-            PowerUp p = ThePool.PowerUpPool.acquire(powerUpData.getType());
-            p.setPosition(powerUpData.getX(), powerUpData.getY());
-            p.setVisible(powerUpData.isVisible());
-            getPowerUps().add(p);
-        }
-
-        // Active Power-ups
-        PowerUpSystem currentPowerUpSystem = getPowerUpSystem();
-        if (currentPowerUpSystem != null) {
-            currentPowerUpSystem.reset();
-
-            if (loadedState.getActivePowerUpsData() != null) {
-                for (ActivePowerUpData activeData : loadedState.getActivePowerUpsData()) {
-                    currentPowerUpSystem.activateFromSave(activeData);
-                }
-            }
-        }
+        gameStateRestore.apply(loadedState, this);
     }
 
     // === NEW: Get all GameObjects in the world ===

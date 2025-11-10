@@ -32,7 +32,7 @@ public class CheatTable extends UIComponent {
 
     public CheatTable(GameController gameController) {
         this.gameController = gameController;
-        Text cheatMenuText = new Text("CHEAT MENU");
+        String cheatMenuText = "CHEAT MENU";
         this.title = new GlowTextEffect(cheatMenuText, titleFont);
 
         wrapper = new StackPane();
@@ -60,7 +60,9 @@ public class CheatTable extends UIComponent {
 
     @Override
     public void update(double deltaTime) {
-
+        if (active) {
+            title.update(deltaTime);
+        }
     }
 
     @Override
