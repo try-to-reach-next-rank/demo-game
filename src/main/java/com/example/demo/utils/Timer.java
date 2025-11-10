@@ -32,4 +32,8 @@ public class Timer {
         elapsed = 0;
         duration = 0;
     }
+
+    public double getElapsed() {
+        return elapsed;
+    }
 }

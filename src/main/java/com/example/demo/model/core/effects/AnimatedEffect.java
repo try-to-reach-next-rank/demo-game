@@ -42,6 +42,11 @@ public class AnimatedEffect extends VisualEffect {
     }
 
     @Override
+    public void customize(Object... params) {
+        // Mặc định không làm gì cả. Các lớp con sẽ ghi đè nếu cần.
+    }
+
+    @Override
     public void onDeactivate() {
         animation.stop();
     }

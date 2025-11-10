@@ -10,6 +10,7 @@ import java.util.function.Supplier;
 import com.example.demo.model.core.VisualEffect;
 import com.example.demo.model.core.effects.AnimatedEffect;
 
+import com.example.demo.model.core.effects.ScorePopupEffect;
 import com.example.demo.utils.ObjectPool;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -30,6 +31,7 @@ public class EffectRenderer {
     private void init() {
         registerEffect("explosion1", () -> new AnimatedEffect("explosion1"));
         registerEffect("explosion2", () -> new AnimatedEffect("explosion2"));
+        registerEffect("scorePopup", () -> new ScorePopupEffect());
     }
 
     private void registerEffect(String name, Supplier<VisualEffect> creator) {

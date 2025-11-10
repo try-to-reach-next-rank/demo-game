@@ -14,6 +14,7 @@ module com.example.demo {
 
     opens com.example.demo to javafx.fxml;
     opens com.example.demo.model.state to com.google.gson;
+    opens com.example.demo.model.state.highscore to com.google.gson;
     //  opens com.example.demo  to com.google.gson;
 
     exports com.example.demo;

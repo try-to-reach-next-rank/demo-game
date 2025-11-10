@@ -2,13 +2,14 @@ package com.example.demo.utils.var;
 import static com.example.demo.utils.var.GlobalVar.HEIGHT;
 import static com.example.demo.utils.var.GlobalVar.WIDTH;
 
+import com.example.demo.model.core.PowerUp;
 import javafx.scene.paint.Color;
 
 public final class GameVar {
 
     private GameVar() {}
     // GAME
-    public static final int START_LEVEL = 2;
+    public static final int START_LEVEL = 1;
     public static final int MAX_LEVEL = 3;
     public static final int MIN_LEVEL = 1;
     public static final double MAX_DELTA_TIME = 0.05;
@@ -34,6 +35,7 @@ public final class GameVar {
 
     // BRICK
     public static final int MAXHEALTH_OF_BRICKS = 5;
+    public static final int SCOREVALUE = 10;
     public static final int WIDTH_OF_BRICKS     = 30;
     public static final int HEIGHT_OF_BRICKS    = 16;
     public static final int MAXPOWER    = 5;
@@ -94,6 +96,9 @@ public final class GameVar {
 
     // POWERUP SYSTEM
     public static final long POWERUP_ACTIVATE_DURATION = 5000;
+
+    // HIGHSCORE
+    public static final int HIGHSCORE_CAPACITY = 10;
 
     // MAP
     public static final int PADDING_X = 0;
@@ -173,4 +178,8 @@ public final class GameVar {
     public static final boolean PARALLAX_PRESERVE_RATIO = false;
     public static final boolean PARALLAX_SMOOTH_SCALING = true;
     public static final double PARALLAX_Y_OFFSET = 0.0;
+
+    // ========== NEW: Level Completion Check Throttling ==========
+    public static final double LEVEL_CHECK_INTERVAL = 3.0; // Check every 3 seconds
+
 }
