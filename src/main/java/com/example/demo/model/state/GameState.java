@@ -13,7 +13,11 @@ public class GameState {
     private int currentLevel;
     private String currentTrackName;
     private double currentTrackTime;
-    // có thể thêm score và lives ở đây nếu cần
+    private int highScore;
+    private int currentScore;
+    private double playElapsedSeconds;
+    private long realHighScore;
+        // có thể thêm score và lives ở đây nếu cần
     // private int score;
     // private int lives;
 
@@ -35,9 +39,14 @@ public class GameState {
     // === CONSTRUCTOR MỚI: Tự động thu thập toàn bộ trạng thái game ===
     public GameState(GameWorld world) {
         // Level, Paddle và Ball
+        this.playElapsedSeconds = world.getPlayElapsedSeconds();
+        this.realHighScore = world.computeRealHighScore();
+        this.currentScore = world.getCurrentScore();
+        this.highScore = world.getHighScore();
         this.currentLevel = world.getCurrentLevel();
         this.paddleData = new PaddleData(world.getPaddle());
         this.ballData = new BallData(world.getBall());
+
 
         // Laays nhạc và thwofi gian
         Sound soundManager = Sound.getInstance();
@@ -75,42 +84,39 @@ public class GameState {
         for (int i = 0; i < bricks.length; i++) {
             this.bricksData.add(new BrickData(i, bricks[i]));
         }
-
-//        Brick[] bricks = world.getBricks();
-//        if(bricks.length > 0) { // TODO: Cần kiểm tra thêm độ dài cột >0 vdu: world.getMapColumn > 0
-//            int mapCols = 21;
-//            int mapRows = 19; // TODO: Cần có hàm để lấy độ dài cột (required) và hàng (optional)
-//
-//            if (bricks.length != mapRows * mapCols) {
-//                System.err.println("CẢNH BÁO: Số lượng brick không khớp với kích thước map! "
-//                        + bricks.length + " vs " + (mapRows * mapCols));
-//                //  không lưu ma trận gạch nếu có lỗi
-//                return;
-//            }
-//
-//            this.bricksHealthMatrix = new int[mapRows][mapCols];
-//
-//            for (int i = 0; i < bricks.length; i++) {
-//                int row = i / mapCols;
-//                int col = i % mapCols;
-//
-//                // Nếu gạch bị phá hủy, máu là 0. Nếu không, lưu health hiện tại.
-//                this.bricksHealthMatrix[row][col] = bricks[i].isDestroyed() ? 0 : bricks[i].getHealth();
-//            }
-//        }
     }
 
-    // Getters và Setters
+    public long getRealHighScore() {
+        return realHighScore;
+    }
 
+    public void setRealHighScore(long realHighScore) {
+        this.realHighScore = realHighScore;
+    }
 
-//    public int[][] getBricksHealthMatrix() {
-//        return bricksHealthMatrix;
-//    }
-//
-//    public void setBricksHealthMatrix(int[][] bricksHealthMatrix) {
-//        this.bricksHealthMatrix = bricksHealthMatrix;
-//    }
+    public double getPlayElapsedSeconds() {
+        return playElapsedSeconds;
+    }
 
+    public void setPlayElapsedSeconds(double playElapsedSeconds) {
+        this.playElapsedSeconds = playElapsedSeconds;
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
+    }
+
+    public int getCurrentScore() {
+        return currentScore;
+    }
+
+    public void setCurrentScore(int currentScore) {
+        this.currentScore = currentScore;
+    }
 
     public List<ActivePowerUpData> getActivePowerUpsData() {
         return activePowerUpsData;

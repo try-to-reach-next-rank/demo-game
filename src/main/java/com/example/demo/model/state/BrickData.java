@@ -7,6 +7,7 @@ import com.example.demo.model.state.gameobjectdata.ImageObjectData;
 public class BrickData extends ImageObjectData {
     private int id;
     private int health;
+    private int initialHealth;
     private boolean isDestroyed;
 
     public BrickData(int id, Brick brick) {
@@ -14,6 +15,7 @@ public class BrickData extends ImageObjectData {
         this.id = id;
         this.health = brick.getHealth();
         this.isDestroyed = brick.isDestroyed();
+        this.initialHealth = brick.getInitialHealth();
     }
 
     public int getId() { return id; }

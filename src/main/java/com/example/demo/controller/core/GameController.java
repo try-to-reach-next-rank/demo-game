@@ -59,6 +59,7 @@ public class GameController extends Pane {
 
     public void initGame() {
         world.init();
+        world.startPlayTimer();
 
         BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
         PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
@@ -76,6 +77,7 @@ public class GameController extends Pane {
 
         if (isNewGame) {
             loadLevel.load(world.getCurrentLevel());
+            world.setCurrentScore(0);
         } else {
             GameState loaded = saveController.loadGame(currentSlotNumber);
             if (loaded != null) {
@@ -84,6 +86,7 @@ public class GameController extends Pane {
             loadLevel.loadForSavedGame(world.getCurrentLevel());
         }
 
+//        world.verifyBrickScores();
         BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
 
         // Thiết lập callback để cộng điểm
@@ -142,6 +145,10 @@ public class GameController extends Pane {
     private void checkLevelCompletion() {
         if (world.isLevelComplete()) {
             log.info("Level complete! Remaining bricks: {}", world.getRemainingBricksCount());
+            if (world.getCurrentScore() > world.getHighScore()) {
+                world.setHighScore(world.getCurrentScore());
+            }
+            saveController.saveGame(world, currentSlotNumber);
             loadNextLevel();
         }
     }
@@ -194,10 +201,12 @@ public class GameController extends Pane {
 
     public void pauseGame() {
         paused = true;
+        world.pausePlayTimer();
     }
 
     public void resumeGame() {
         paused = false;
+        world.resumePlayTimer();
         if (timer != null) timer.start();
         view.getUiView().getDialogueBox().resumeDialogue();
         Sound.getInstance().resumeMusic();

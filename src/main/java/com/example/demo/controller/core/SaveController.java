@@ -2,6 +2,7 @@ package com.example.demo.controller.core;
 
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.state.GameState;
+import com.example.demo.model.state.highscore.HighScoreState;
 import com.example.demo.repository.SaveDataRepository;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,6 +20,7 @@ public class SaveController {
     // một đối tượng Gson duy nhất được tạo ra cho cả chương trình
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final Logger log = LoggerFactory.getLogger(SaveController.class);
+    private static final String HIGHSCORE_FILE = "src/main/resources/Saves/highscores.json";
     private final SaveDataRepository repository;
 
     public SaveController() {
@@ -81,9 +83,18 @@ public class SaveController {
 
     public void saveGame(GameWorld world, int slotNumber) {
         log.info("Saving game to slot {}...", slotNumber);
+
+        // 1) Save full state
         GameState state = new GameState(world);
         repository.saveSlot(slotNumber, state);
+
+        // 2) Save Highscore
+        int scoreToRecord = world.getHighScore();
+        saveHighScores(scoreToRecord);
+
         log.info("Save complete.");
+
+        showHighscores();
     }
 
     public GameState loadGame(int slotNumber) {
@@ -97,6 +108,47 @@ public class SaveController {
         }
 
         return loaded;
+    }
+
+    private void saveHighScores(int score) {
+        if (score <= 0) {
+            log.info("Score <= 0, skip highscore update.");
+            return;
+        }
+
+        HighScoreState hs = load(HIGHSCORE_FILE, HighScoreState.class);
+        if (hs == null) hs = new HighScoreState();
+
+        Integer beforeMin = hs.getMinCurrent();
+        hs.addScore(score);
+        save(hs, HIGHSCORE_FILE);
+
+        // Log bảng xếp hạng sau cập nhật
+        StringBuilder sb = new StringBuilder("[HIGHSCORES TOP]");
+        int rank = 1;
+        for (int s : hs.getScoresDescending()) {
+            sb.append(System.lineSeparator()).append(rank++).append(". ").append(s);
+        }
+        log.info("{} (minBefore={} minAfter={})",
+                sb,
+                beforeMin,
+                hs.getMinCurrent());
+    }
+
+    public HighScoreState loadHighScores() {
+        return load(HIGHSCORE_FILE, HighScoreState.class);
+    }
+
+    public void showHighscores() {
+        HighScoreState hs = loadHighScores();
+        if (hs == null) {
+            log.info("[HIGHSCORES] Chưa có dữ liệu.");
+            return;
+        }
+        int rank = 1;
+        for (int s : hs.getScoresDescending()) {
+            log.info("[HS] {}. {}", rank++, s);
+        }
     }
 
     /**

@@ -2,6 +2,7 @@ package com.example.demo.utils.var;
 import static com.example.demo.utils.var.GlobalVar.HEIGHT;
 import static com.example.demo.utils.var.GlobalVar.WIDTH;
 
+import com.example.demo.model.core.PowerUp;
 import javafx.scene.paint.Color;
 
 public final class GameVar {
@@ -95,6 +96,9 @@ public final class GameVar {
 
     // POWERUP SYSTEM
     public static final long POWERUP_ACTIVATE_DURATION = 5000;
+
+    // HIGHSCORE
+    public static final int HIGHSCORE_CAPACITY = 10;
 
     // MAP
     public static final int PADDING_X = 0;

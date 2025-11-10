@@ -4,21 +4,26 @@ import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Pure data class representing a brick in the game.
  * Contains only state and basic getters/setters.
  */
 public class Brick extends ImageObject<BrickData> {
-    private int scoreValue = GameVar.SCOREVALUE;
+    private int scoreValue;
     private int health;
+    private final int initialHealth;
     private boolean destroyed;
 
     public Brick(String imageKey, double x, double y, int health) {
         super(imageKey, x, y);
         this.health = health;
+        this.initialHealth = health;
         this.destroyed = false;
         this.imageKey = imageKey;
+        this.scoreValue = calculateScore(initialHealth);
     }
 
     // Thêm vào lớp Brick.java
@@ -33,6 +38,17 @@ public class Brick extends ImageObject<BrickData> {
             String newImageKey = BrickTextureProvider.getTextureForHealth(this.getHealth());
             this.setImageKey(newImageKey);
         }
+    }
+
+    private int calculateScore(int initialHealth) {
+        if (initialHealth == Integer.MAX_VALUE) return 0; // gạch bất tử
+        if (initialHealth <= 0) return 0;
+        // cách tính điểm: 1->10,2->20,...5->50 (score = health * 10)
+        return initialHealth * 10;
+    }
+
+    public int getInitialHealth() {
+        return initialHealth;
     }
 
     public int getScoreValue() {

@@ -31,7 +31,47 @@ public class GameWorld {
     private int highScore = 0;
     private int lastAddedScore = 0;
 
+    // TIMER PLAY
+    private double playElapsedSeconds = 0.0;
+    private boolean playTimerRunning = false;
+
+    public void startPlayTimer() {
+        playElapsedSeconds = 0.0;
+        playTimerRunning = true;
+    }
+
+    public void pausePlayTimer() {
+        playTimerRunning = false;
+    }
+
+    public void resumePlayTimer() {
+        playTimerRunning = true;
+    }
+
+    private void updatePlayTime(double deltaTime) {
+        if (playTimerRunning) {
+            playElapsedSeconds += deltaTime;
+        }
+    }
+
+    public long computeRealHighScore() {
+        double remaining = 100.0 - playElapsedSeconds;
+        if (remaining < 0) remaining = 0;
+        if (highScore <= 0) return 0;
+        double value = remaining * highScore;
+        return (long)Math.round(value);
+    }
+
     // --- Getters / Setters ---
+
+    public double getPlayElapsedSeconds() {
+        return playElapsedSeconds;
+    }
+
+    public void setPlayElapsedSeconds(double playElapsedSeconds) {
+        this.playElapsedSeconds = playElapsedSeconds;
+    }
+
     public PowerUpSystem getPowerUpSystem() { return powerUpSystem; }
     public void setPowerUpSystem(PowerUpSystem powerUpSystem) { this.powerUpSystem = powerUpSystem; }
 
@@ -95,6 +135,7 @@ public class GameWorld {
     }
 
     public void update(double deltaTime) {
+        updatePlayTime(deltaTime);
         for (Updatable u : updatables) {
             u.update(deltaTime);
         }
@@ -113,6 +154,14 @@ public class GameWorld {
     }
 
     public void applyState(GameState loadedState) {
+
+        // SECTION 0: Scores and time play
+        setPlayElapsedSeconds(Math.round( loadedState.getPlayElapsedSeconds()));
+        setHighScore(loadedState.getHighScore());
+        setCurrentScore(loadedState.getCurrentScore());
+        lastAddedScore = 0;
+
+
         // SECTION 1: Setup Level
         setCurrentLevel(loadedState.getCurrentLevel());
         Sound.getInstance().playMusic(loadedState.getCurrentTrackName(), loadedState.getCurrentTrackTime());
@@ -173,7 +222,10 @@ public class GameWorld {
     public void addScore(int points, double x, double y) {
         this.currentScore += points;
         this.lastAddedScore = points;
-        log.info("Score added: +{}. Total score: {}", points, this.currentScore);
+        if (this.currentScore > this.highScore) {
+            this.highScore = this.currentScore; // cập nhật highScore
+        }
+        log.info("[SCORES] currentScore={} | highScore={}", currentScore, highScore);
     }
 
     // ========== NEW: Brick Counting Methods ==========
@@ -192,5 +244,30 @@ public class GameWorld {
             }
         }
         return count;
+    }
+
+    public void verifyBrickScores() {
+        int errors = 0;
+        for (int i = 0; i < bricks.length; i++) {
+            Brick b = bricks[i];
+            int expected;
+            if (b.getInitialHealth() == Integer.MAX_VALUE) {
+                expected = 0;
+            } else if (b.getInitialHealth() <= 0) {
+                expected = 0;
+            } else {
+                expected = b.getInitialHealth() * 10;
+            }
+            int actual = b.getScoreValue();
+            if (actual != expected) {
+                log.warn("[BRICK SCORE MISMATCH] index={} initialHealth={} expectedScore={} actualScore={}",
+                        i, b.getInitialHealth(), expected, actual);
+                errors++;
+            } else {
+                // Có thể bật khi debug chi tiết:
+                // log.info("[BRICK SCORE OK] index={} health={} score={}", i, b.getInitialHealth(), actual);
+            }
+        }
+        log.info("[VERIFY BRICKS] totalBricks={} mismatches={}", bricks.length, errors);
     }
 }
