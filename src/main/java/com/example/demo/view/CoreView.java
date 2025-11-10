@@ -26,11 +26,20 @@ public class CoreView {
     private final HandEffectController handEffectController = HandEffectController.getInstance();
     private final CloudEffectController cloudEffectController = CloudEffectController.getInstance();
 
+    private boolean flipped = false;
+
     public CoreView(GraphicsContext gc, GameWorld world) {
         this.gc = gc;
         this.world = world;
     }
     public void render(GraphicsContext gc) {
+        gc.save();
+
+        if (flipped) {
+            gc.translate(0, GlobalVar.HEIGHT);
+            gc.scale(1, -1);
+        }
+
         if (parallaxSystem != null) {
             parallaxSystem.render(gc);
         }
@@ -48,6 +57,8 @@ public class CoreView {
             cloudEffectController.getActiveEffect().render(gc);
         }
         EffectRenderer.getInstance().render(gc);
+
+        gc.restore();
     }
 
     public void update(double deltaTime) {
@@ -56,6 +67,14 @@ public class CoreView {
         handEffectController.update(deltaTime);
         cloudEffectController.update(deltaTime);
         setupBrickReveal();
+    }
+
+    public void setFlipped(boolean flipped) {
+        this.flipped = flipped;
+    }
+
+    public void toggleFlip() {
+        this.flipped = !this.flipped;
     }
 
     public void triggerHandGrab() {
