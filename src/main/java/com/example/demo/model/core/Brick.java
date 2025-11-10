@@ -8,7 +8,7 @@ import com.example.demo.view.graphics.BrickTextureProvider;
  * Pure data class representing a brick in the game.
  * Contains only state and basic getters/setters.
  */
-public class Brick extends ImageObject<BrickData> {
+public class Brick extends ImageObject {
     private int health;
     private boolean destroyed;
 
@@ -16,11 +16,8 @@ public class Brick extends ImageObject<BrickData> {
         super(imageKey, x, y);
         this.health = health;
         this.destroyed = false;
-        this.imageKey = imageKey;
     }
 
-    // Thêm vào lớp Brick.java
-    @Override
     public void applyState(BrickData data) {
         if (data == null) return;
         this.setHealth(data.getHealth());
@@ -33,15 +30,27 @@ public class Brick extends ImageObject<BrickData> {
         }
     }
 
+    public boolean takeDamage(int damage) {
+        if (health == Integer.MAX_VALUE) return false;
+        health -= damage;
+        if (health <= 0) {
+            destroyed = true;
+            return true;
+        }
+
+        setImageKey(BrickTextureProvider.getTextureForHealth(health));
+        return false;
+    }
+
     public int getHealth() { return health; }
     public void setHealth(int health) { this.health = health; }
 
     public boolean isDestroyed() { return destroyed; }
     public void setDestroyed(boolean destroyed) { this.destroyed = destroyed; }
 
-    // For CoreView
     @Override
-    public boolean isVisible() { 
-        return !isDestroyed(); 
+    public boolean isStatic() {
+        // TODO: Upgrade this later
+        return false;
     }
 }

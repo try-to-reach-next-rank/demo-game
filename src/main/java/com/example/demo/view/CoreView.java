@@ -1,22 +1,18 @@
 package com.example.demo.view;
 
+import com.example.demo.controller.view.CloudEffectController;
+import com.example.demo.controller.view.HandEffectController;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.*;
-import com.example.demo.model.core.gameobjects.AnimatedObject;
-import com.example.demo.model.core.gameobjects.AnimationBatchUpdate;
-import com.example.demo.model.core.gameobjects.GameObject;
-import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.map.ParallaxLayer;
-import com.example.demo.model.system.ParallaxSystem;
+import com.example.demo.controller.system.ParallaxSystem;
 import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class CoreView {
@@ -27,70 +23,49 @@ public class CoreView {
     private int currentRevealTick = 0;
     private boolean reveal = true;
     private ParallaxSystem parallaxSystem;
-    private final Rectangle2D viewport = new Rectangle2D(
-            0,0, GlobalVar.WIDTH, GlobalVar.HEIGHT
-    );
+    private final HandEffectController handEffectController = HandEffectController.getInstance();
+    private final CloudEffectController cloudEffectController = CloudEffectController.getInstance();
 
     public CoreView(GraphicsContext gc, GameWorld world) {
         this.gc = gc;
         this.world = world;
     }
-
     public void render(GraphicsContext gc) {
-        renderParallax(gc);
+        if (parallaxSystem != null) {
+            parallaxSystem.render(gc);
+        }
 
+        if (handEffectController.isActive()) {
+            handEffectController.getActiveEffect().render(gc);
+        }
+
+        drawBall(gc);
+        drawPaddle(gc);
         drawBricks(gc);
-        renderAllObjects(gc);
-        
-        renderEffects(gc);
+        drawPowerUps(gc);
+        drawWalls(gc);
+        if (cloudEffectController.isActive()) {
+            cloudEffectController.getActiveEffect().render(gc);
+        }
+        EffectRenderer.getInstance().render(gc);
     }
 
     public void update(double deltaTime) {
         parallaxSystem.update(deltaTime);
         EffectRenderer.getInstance().update(deltaTime);
-        AnimationBatchUpdate.getInstance().updateAll(deltaTime);
+        handEffectController.update(deltaTime);
+        cloudEffectController.update(deltaTime);
         setupBrickReveal();
     }
 
-    private void renderParallax(GraphicsContext gc) {
-        if (parallaxSystem != null) {
-            parallaxSystem.render(gc);
+    public void triggerHandGrab() {
+        if (world.getBall() != null) {
+            handEffectController.triggerHandGrab(world.getBall());
         }
     }
 
-    private void renderAllObjects(GraphicsContext gc) {
-        List<GameObject> objects = world.getAllObjects();
-        if (objects == null) {
-            return;
-        }
-
-        for (GameObject obj : objects) {
-            if (obj == null || !obj.isVisible()) continue;
-
-            double x = obj.getX();
-            double y = obj.getY();
-            double w = obj.getWidth();
-            double h = obj.getHeight();
-
-            if (!isInView(x, y, w, h)) continue;
-
-            drawObject(gc, obj);
-        }
-    }
-
-    private void drawObject(GraphicsContext gc, GameObject obj) {
-        if (obj instanceof ImageObject imgObj) {
-            gc.drawImage(imgObj.getImage(), imgObj.getX(), imgObj.getY(), imgObj.getWidth(), imgObj.getHeight());
-        }
-        else if (obj instanceof AnimatedObject animObj) {
-            animObj.getAnimation().render(gc, animObj.getX(), animObj.getY(), animObj.getWidth(), animObj.getHeight());
-        }
-    }
-
-    private void renderEffects(GraphicsContext gc) {
-        for (VisualEffect effect : EffectRenderer.getInstance().getActiveEffects()) {
-            effect.render(gc);
-        }
+    public void triggerCloud() {
+        cloudEffectController.triggerCloudEffect(GlobalVar.WIDTH, GlobalVar.HEIGHT);
     }
 
     private void setupBrickReveal() {
@@ -116,19 +91,41 @@ public class CoreView {
         }
     }
 
+    private void drawBall(GraphicsContext gc) {
+        Ball ball = world.getBall();
+        if (ball != null)
+            gc.drawImage(ball.getImage(), ball.getX(), ball.getY(), ball.getWidth(), ball.getHeight());
+    }
+
+    private void drawPaddle(GraphicsContext gc) {
+        Paddle paddle = world.getPaddle();
+        if (paddle != null)
+            gc.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight());
+    }
+
     private void drawBricks(GraphicsContext gc) {
         Brick[] bricks = world.getBricks();
-        if (bricks == null) return;
+        if (bricks != null) {
+            for (Brick brick : bricks) {
+                if (revealedBricks.contains(brick) && !brick.isDestroyed()) {
+                    gc.drawImage(brick.getImage(), brick.getX(), brick.getY(),
+                            brick.getWidth(), brick.getHeight());
+                }
+            }
+        }
+    }
 
-        for (Brick brick : bricks) {
-            if (brick.isDestroyed()) continue;
-            if (!revealedBricks.contains(brick)) continue;
+    private void drawPowerUps(GraphicsContext gc) {
+        for (PowerUp p : world.getPowerUps()) {
+            if (p.isVisible()) {
+                p.getAnimation().render(gc, p.getX(), p.getY(), p.getWidth(), p.getHeight());
+            }
+        }
+    }
 
-            if (!isInView(brick.getX(), brick.getY(), brick.getWidth(), brick.getHeight()))
-                continue;
-
-            gc.drawImage(brick.getImage(), brick.getX(), brick.getY(),
-                    brick.getWidth(), brick.getHeight());
+    private void drawWalls(GraphicsContext gc) {
+        for (Wall wall : world.getWalls()) {
+            gc.drawImage(wall.getImage(), wall.getX(), wall.getY(), wall.getWidth(), wall.getHeight());
         }
     }
 
@@ -136,8 +133,9 @@ public class CoreView {
         revealedBricks.clear();
         brickRevealCounter = 0;
         currentRevealTick = 0;
+        handEffectController.reset();
     }
-    
+
     public void initParallax() {
         parallaxSystem = new ParallaxSystem(
                 world,
@@ -152,7 +150,7 @@ public class CoreView {
         parallaxSystem.addLayer(new ParallaxLayer(AssetPaths.LAYER4, GameVar.PARALLAX_SPEED_LAYERS[0]));
     }
 
-    private boolean isInView(double x, double y, double width, double height) {
-        return viewport.intersects(x, y, width, height);
+    public GameWorld getWorld() {
+        return world;
     }
 }

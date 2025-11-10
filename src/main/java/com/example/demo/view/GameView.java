@@ -3,6 +3,7 @@ package com.example.demo.view;
 import com.example.demo.controller.core.GameController;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.effects.TransitionEffect;
+import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -29,6 +30,7 @@ public class GameView extends Pane {
 
         this.uiView = new UIView(controller); // if you have UI overlay
         this.coreView = new CoreView(gc, world);
+        transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
         getChildren().add(uiView.getRoot());
     }
 
@@ -75,7 +77,7 @@ public class GameView extends Pane {
         uiView.update(deltaTime);
     }
 
-    public void setTransitionEffect(TransitionEffect transitionEffect) {
-        this.transitionEffect = transitionEffect;
+    public void startTransition(Runnable onMidpoint, Runnable onEnd) {
+        transitionEffect.start(onMidpoint, onEnd);
     }
 }

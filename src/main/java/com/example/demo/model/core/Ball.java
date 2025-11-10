@@ -5,7 +5,7 @@ import com.example.demo.model.state.BallData;
 import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
 
-public class Ball extends ImageObject<BallData> {
+public class Ball extends ImageObject {
     private final double baseSpeed = GameVar.BASE_SPEED_BALL;
     private boolean stuck;
     private Vector2D velocity;
@@ -15,6 +15,7 @@ public class Ball extends ImageObject<BallData> {
     private boolean stronger;
     private boolean stopTime;
     private double elapsedTime = 0;
+    private boolean beingHeld = false;
 
     private Brick lastBrick;
 
@@ -52,7 +53,6 @@ public class Ball extends ImageObject<BallData> {
     }
 
     // Thêm vào lớp Ball.java
-    @Override
     public void applyState(BallData data) {
         if (data == null) return;
         this.setPosition(data.getX(), data.getY());
@@ -78,6 +78,9 @@ public class Ball extends ImageObject<BallData> {
 
     public boolean isAccelerated() { return accelerated; }
     public void setAccelerated(boolean accelerated) { this.accelerated = accelerated; }
+
+    public boolean isHeldByEffect() { return beingHeld; }
+    public void setHeldByEffect(boolean held) { this.beingHeld = held; }
 
     public boolean isStronger() { return stronger; }
     public void setStronger(boolean stronger){ this.stronger = stronger; }
@@ -106,6 +109,11 @@ public class Ball extends ImageObject<BallData> {
 
     public double getElapsedTime(){ return elapsedTime; }
     public void setElapsedTime(double x){ elapsedTime = x; }
+
+    @Override
+    public boolean isStatic() {
+        return false;
+    }
 
     public Brick getLastBrick(){
         return lastBrick;

@@ -1,16 +1,18 @@
 package com.example.demo.controller.core;
 
 import com.example.demo.controller.map.MapController;
+import com.example.demo.controller.system.BallSystem;
+import com.example.demo.controller.system.BrickSystem;
+import com.example.demo.controller.system.PaddleSystem;
+import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
-import com.example.demo.model.core.effects.TransitionEffect;
+import com.example.demo.model.core.builder.GameWorldBuilder;
+import com.example.demo.model.core.factory.GameFactory;
+import com.example.demo.model.map.MapData;
 import com.example.demo.model.state.*;
-import com.example.demo.model.system.*;
-
 import com.example.demo.utils.Input;
 import com.example.demo.utils.Sound;
-import com.example.demo.repository.SaveDataRepository;
-import com.example.demo.utils.dialogue.DialogueSystem;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.*;
@@ -26,16 +28,14 @@ import java.util.List;
 public class GameController extends Pane {
     private static final Logger log = LoggerFactory.getLogger(GameController.class);
 
-    private final GameWorld world = new GameWorld();
+    private GameWorld world = new GameWorld();
     private final GameView view;
     private AnimationTimer timer;
     private Input inputGame;
+
     // === CONTROLLERS ===
     private final MapController mapManager = new MapController();
     private final SaveController saveController = new SaveController();
-    private LoadTransition loadTransition;
-    private final TransitionEffect transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
-    private DialogueSystem dialogueSystem;
 
     private int currentSlotNumber = -1;
     private boolean isNewGame = true;
@@ -50,66 +50,75 @@ public class GameController extends Pane {
 
     public GameController() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
+
+        if (isNewGame) {
+            world = GameFactory.createNewGame(mapManager);
+        } else {
+            GameState loaded = saveController.loadGame(currentSlotNumber);
+            world = GameFactory.loadFromState(loaded, mapManager);
+        }
+
         view = new GameView(world, this);
         getChildren().add(view);
 
         setFocusTraversable(true);
         requestFocus();
-
         setupKeyHandling();
     }
 
     public void initGame() {
-        world.init();
-
-        BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
-        PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
-        PowerUpSystem powerUpSystem = new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps());
-        world.setPowerUpSystem(powerUpSystem);
-
-        LoadLevel loadLevel = new LoadLevel(mapManager, world, view);
-
-        if (dialogueSystem == null) {
-            String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
-            dialogueSystem = new DialogueSystem(dialoguePath, view.getUiView().getDialogueBox());
-        }
-
-        loadTransition = new LoadTransition(world, transitionEffect, loadLevel, dialogueSystem, view, this);
-
-        if (isNewGame) {
-            loadLevel.load(world.getCurrentLevel());
-        } else {
-            GameState loaded = saveController.loadGame(currentSlotNumber);
-            if (loaded != null) {
-                world.applyState(loaded);
-            }
-            loadLevel.loadForSavedGame(world.getCurrentLevel());
-        }
-
-        BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
-
-        CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
-
-        world.clearUpdatables();
-        List.of(ballSystem, paddleSystem, powerUpSystem, brickSystem, collisionManager)
-                        .forEach(world::registerUpdatable);
+        String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
+        view.getUiView().loadDialogue(dialoguePath);
+        inputGame = new Input(world.getPaddle(), world.getBall());
 
         // Init parallax everymap -> fix bugs if use cheatable
         view.getCoreView().initParallax();
 
         Sound.getInstance().playRandomMusic();
 
-        inputGame = new Input(world.getPaddle(), world.getBall());
-        setupKeyHandling();
-        loadTransition.startLevel(world.getCurrentLevel());
+        view.startTransition(
+                () -> setupLevel(world.getCurrentLevel()),
+                () -> setInGame(true)
+        );
         loop();
     }
 
     // ========== Level Management -> Delegate to MapController ==========
+    private void setupLevel(int level) {
+        MapData mapData = mapManager.loadMap(level);
+
+        // Clear and add new map content
+        world.getWalls().clear();
+        world.getWalls().addAll(mapData.walls());
+        world.setBricks(mapData.bricks().toArray(new Brick[0]));
+
+        // Reset any level-specific state in systems
+        world.clearUpdatables();
+
+        // Re-register systems
+        BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
+        PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
+        PowerUpSystem powerUpSystem = new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps());
+        BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
+        CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
+
+        world.setPowerUpSystem(powerUpSystem);
+        List.of(ballSystem, paddleSystem, brickSystem, powerUpSystem, collisionManager)
+                .forEach(world::registerUpdatable);
+
+        // Reset view
+        view.reset();
+        view.getCoreView().reset();
+
+        log.info("Loaded level {}", level);
+    }
 
     public void loadLevel(int level) {
         world.setCurrentLevel(level);
-        loadTransition.startLevel(level);
+        view.startTransition(
+                () -> setupLevel(level),
+                () -> setInGame(true)
+        );
     }
 
     public void loadNextLevel() {
@@ -135,8 +144,18 @@ public class GameController extends Pane {
     // ========== Auto Level Progression ==========
 
     private void checkLevelCompletion() {
-        if (world.isLevelComplete()) {
-            log.info("Level complete! Remaining bricks: {}", world.getRemainingBricksCount());
+        if (world.getBricks().length == 0) return;
+
+        boolean complete = true;
+        for (var brick : world.getBricks()) {
+            if (!brick.isDestroyed() && brick.getHealth() != Integer.MAX_VALUE) {
+                complete = false;
+                break;
+            }
+        }
+
+        if (complete) {
+            log.info("Level complete!");
             loadNextLevel();
         }
     }
@@ -194,13 +213,19 @@ public class GameController extends Pane {
     public void resumeGame() {
         paused = false;
         if (timer != null) timer.start();
-        view.getUiView().getDialogueBox().resumeDialogue();
+        view.getUiView().resumeDialogue();
         Sound.getInstance().resumeMusic();
         log.info("Game resumed");
     }
 
     public void onKeyPressed(KeyCode code) {
         inputGame.handleKeyPressed(code);
+        if (code == KeyCode.H) {
+            view.getCoreView().triggerHandGrab();
+        }
+        else if (code == KeyCode.C) {
+            view.getCoreView().triggerCloud();
+        }
     }
 
     public void onKeyReleased(KeyCode code) {
@@ -243,8 +268,6 @@ public class GameController extends Pane {
     }
 
     public void startIntroDialogue() {
-        if (dialogueSystem != null) {
-            dialogueSystem.start();
-        }
+        view.getUiView().startDialogue();
     }
 }
