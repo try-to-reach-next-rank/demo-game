@@ -1,19 +1,24 @@
 package com.example.demo.controller.view;
 
-import com.example.demo.model.menu.MenuModel;
 import com.example.demo.model.menu.SettingsModel;
+
 
 public class SettingsController {
     private final SettingsModel model;
-    private final MenuModel menuModel;
+    private Runnable onBackToMenu;
 
-    public SettingsController(SettingsModel model, MenuModel menuModel) {
+    public SettingsController(SettingsModel model) {
         this.model = model;
-        this.menuModel = menuModel;
+    }
+
+    public void setOnBackToMenu(Runnable callback) {
+        this.onBackToMenu = callback;
     }
 
     public void backToMenu() {
-        menuModel.setCurrentScreen(MenuModel.Screen.MENU);
+        if (onBackToMenu != null) {
+            onBackToMenu.run();
+        }
     }
 
     public SettingsModel getModel() {

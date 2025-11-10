@@ -2,48 +2,39 @@ package com.example.demo.view.ui;
 
 import com.example.demo.controller.view.SettingsController;
 import com.example.demo.controller.view.ThemeController;
-import com.example.demo.engine.Stage;
-
+import com.example.demo.engine.ui.AbstractUIView;
 import com.example.demo.model.menu.ButtonManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class SettingsView implements Stage {
+public class SettingsView extends AbstractUIView {
     private final SettingsController controller;
-    private final ThemeController themeManager;
-    private final ButtonManager buttonManager;
-    private final StackPane rootStack;
     private final VBox uiBox;
+    private final ButtonManager buttonManager;
 
-    public SettingsView(SettingsController controller) {
+    public SettingsView(SettingsController controller, ThemeController themeManager) {
+        super(themeManager);
+        buttonManager = new ButtonManager(themeManager.getHandImage());
         this.controller = controller;
-        this.rootStack = new StackPane();
         this.uiBox = new VBox(20);
         this.uiBox.setPadding(new Insets(28));
         this.uiBox.setAlignment(Pos.CENTER);
 
-        // Setup theme
-        this.themeManager = new ThemeController();
-        themeManager.setupBackground(rootStack);
-        themeManager.applyCss(rootStack);
-
-        // Setup buttons
-        this.buttonManager = new ButtonManager(themeManager.getHandImage());
         buildUI();
 
-        rootStack.getChildren().add(uiBox);
+        root.getChildren().add(uiBox);
         StackPane.setAlignment(uiBox, Pos.CENTER);
     }
 
     @Override
-     public void buildUI() {
+    public void buildUI() {
         Text title = new Text("Audio Settings");
         title.setFont(Font.font(34));
         title.setFill(Color.WHITE);
@@ -191,13 +182,41 @@ public class SettingsView implements Stage {
         return panel;
     }
 
-    public void enableKeyboard(Scene scene) {
-        buttonManager.enableSingleButtonKeyboard(scene,
-                () -> controller.backToMenu()
-        );
+    @Override
+    public void handleInput(KeyCode keyCode) {
+        if (keyCode == KeyCode.ESCAPE) {
+            controller.backToMenu();
+        }
     }
 
-    public Node getRoot() {
-        return rootStack;
+
+    @Override
+    public void moveUp() {
+
+    }
+
+    @Override
+    public void moveDown() {
+
+    }
+
+    @Override
+    public void moveLeft() {
+
+    }
+
+    @Override
+    public void moveRight() {
+
+    }
+
+    @Override
+    public void confirm() {
+
+    }
+
+    @Override
+    public void cancel() {
+
     }
 }
