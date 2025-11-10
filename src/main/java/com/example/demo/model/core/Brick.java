@@ -2,6 +2,8 @@ package com.example.demo.model.core;
 
 import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BrickData;
+import com.example.demo.model.state.gameobjectdata.GameObjectData;
+import com.example.demo.model.state.gameobjectdata.ImageObjectData;
 import com.example.demo.view.graphics.BrickTextureProvider;
 
 /**
@@ -48,9 +50,18 @@ public class Brick extends ImageObject {
     public boolean isDestroyed() { return destroyed; }
     public void setDestroyed(boolean destroyed) { this.destroyed = destroyed; }
 
-    @Override
     public boolean isStatic() {
         // TODO: Upgrade this later
         return false;
+    }
+
+    @Override
+    public void applyState(ImageObjectData ImageObjectData) {
+
+    }
+
+    @Override
+    public void applyState(GameObjectData GameObjectData) {
+
     }
 }

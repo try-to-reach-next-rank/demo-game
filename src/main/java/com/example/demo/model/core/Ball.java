@@ -2,6 +2,8 @@ package com.example.demo.model.core;
 
 import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BallData;
+import com.example.demo.model.state.gameobjectdata.GameObjectData;
+import com.example.demo.model.state.gameobjectdata.ImageObjectData;
 import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
 
@@ -110,7 +112,6 @@ public class Ball extends ImageObject {
     public double getElapsedTime(){ return elapsedTime; }
     public void setElapsedTime(double x){ elapsedTime = x; }
 
-    @Override
     public boolean isStatic() {
         return false;
     }
@@ -120,5 +121,14 @@ public class Ball extends ImageObject {
     }
     public void setLastBrick(Brick brick){
         lastBrick = brick;
+    }
+
+
+    @Override
+    public void applyState(GameObjectData GameObjectData) {
+    }
+
+    @Override
+    public void applyState(ImageObjectData ImageObjectData) {
     }
 }

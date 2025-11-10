@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Main extends Application {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
-    private GameStateManager stateManager;
+    private GameStateManager stateManager; 
 
     private Stage primaryStage;
 
