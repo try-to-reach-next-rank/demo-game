@@ -84,13 +84,5 @@ public class Brick extends ImageObject<BrickData> {
         return false;
     }
 
-    @Override
-    public void applyState(ImageObjectData ImageObjectData) {
 
-    }
-
-    @Override
-    public void applyState(GameObjectData GameObjectData) {
-
-    }
 }

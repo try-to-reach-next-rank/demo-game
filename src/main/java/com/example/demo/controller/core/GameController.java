@@ -44,6 +44,8 @@ public class GameController extends Pane {
 
     private Runnable onBackToMenu;
 
+    // ========== NEW: Level Completion Check Throttling ==========
+    private static final double LEVEL_CHECK_INTERVAL = 3.0; // Check every 3 seconds
     private double levelCheckTimer = 0.0;
 
     public GameController() {
@@ -51,6 +53,7 @@ public class GameController extends Pane {
 
         if (isNewGame) {
             world = GameFactory.createNewGame(mapManager);
+            world.setCurrentScore(0);
         } else {
             GameState loaded = saveController.loadGame(currentSlotNumber);
             world = GameFactory.loadFromState(loaded, mapManager);
@@ -65,51 +68,10 @@ public class GameController extends Pane {
     }
 
     public void initGame() {
+        world.startPlayTimer();
         String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
         view.getUiView().loadDialogue(dialoguePath);
         inputGame = new Input(world.getPaddle(), world.getBall());
-        world.init();
-        world.startPlayTimer();
-
-        BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
-        PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
-        PowerUpSystem powerUpSystem = new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps());
-        world.setPowerUpSystem(powerUpSystem);
-
-        LoadLevel loadLevel = new LoadLevel(mapManager, world, view);
-
-        if (dialogueSystem == null) {
-            dialogueSystem = new DialogueSystem(dialoguePath, view.getUiView().getDialogueBox());
-        }
-
-        loadTransition = new LoadTransition(world, transitionEffect, loadLevel, dialogueSystem, view, this);
-
-        if (isNewGame) {
-            loadLevel.load(world.getCurrentLevel());
-            world.setCurrentScore(0);
-        } else {
-            GameState loaded = saveController.loadGame(currentSlotNumber);
-            if (loaded != null) {
-                world.applyState(loaded);
-            }
-            loadLevel.loadForSavedGame(world.getCurrentLevel());
-        }
-
-//        world.verifyBrickScores();
-        BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
-
-        // Thiết lập callback để cộng điểm
-        brickSystem.setOnBrickDestroyed(brick -> {
-            double centerX = brick.getX() + brick.getWidth() / 2;
-            double centerY = brick.getY() + brick.getHeight() / 2;
-            world.addScore(brick.getScoreValue(), centerX, centerY);
-        });
-
-        CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
-
-        world.clearUpdatables();
-        List.of(ballSystem, paddleSystem, powerUpSystem, brickSystem, collisionManager)
-                        .forEach(world::registerUpdatable);
 
         // Init parallax everymap -> fix bugs if use cheatable
         view.getCoreView().initParallax();
@@ -120,9 +82,14 @@ public class GameController extends Pane {
                 () -> setupLevel(world.getCurrentLevel()),
                 () -> setInGame(true)
         );
-        inputGame = new Input(world.getPaddle(), world.getBall());
-        setupKeyHandling();
-        //loadTransition.startLevel(world.getCurrentLevel()); //TODO: delete this thing cause it makes ur game load TWICE!!!
+        BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
+
+        // Thiết lập callback để cộng điểm
+        brickSystem.setOnBrickDestroyed(brick -> {
+            double centerX = brick.getX() + brick.getWidth() / 2;
+            double centerY = brick.getY() + brick.getHeight() / 2;
+            world.addScore(brick.getScoreValue(), centerX, centerY);
+        });
         loop();
     }
 
@@ -188,7 +155,10 @@ public class GameController extends Pane {
 
     private void checkLevelCompletion() {
         if (world.getBricks().length == 0) return;
-
+        if (world.getCurrentScore() > world.getHighScore()) {
+            world.setHighScore(world.getCurrentScore());
+        }
+        saveController.saveGame(world, currentSlotNumber);
         boolean complete = true;
         for (var brick : world.getBricks()) {
             if (!brick.isDestroyed() && brick.getHealth() != Integer.MAX_VALUE) {
@@ -197,12 +167,8 @@ public class GameController extends Pane {
             }
         }
 
-        if (world.isLevelComplete()) {
-            log.info("Level complete! Remaining bricks: {}", world.getRemainingBricksCount());
-            if (world.getCurrentScore() > world.getHighScore()) {
-                world.setHighScore(world.getCurrentScore());
-            }
-            saveController.saveGame(world, currentSlotNumber);
+        if (complete) {
+            log.info("Level complete!");
             loadNextLevel();
         }
     }
@@ -241,7 +207,7 @@ public class GameController extends Pane {
 
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;
-            if (levelCheckTimer >= GameVar.LEVEL_CHECK_INTERVAL) {
+            if (levelCheckTimer >= LEVEL_CHECK_INTERVAL) {
                 checkLevelCompletion();
                 levelCheckTimer = 0.0; // Reset timer
             }

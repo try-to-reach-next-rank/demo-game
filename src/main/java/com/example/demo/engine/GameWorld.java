@@ -1,6 +1,7 @@
 package com.example.demo.engine;
 
 import com.example.demo.model.core.*;
+import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.state.ActivePowerUpData;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.model.state.GameState;

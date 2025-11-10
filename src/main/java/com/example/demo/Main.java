@@ -1,39 +1,42 @@
-package com.example.demo;
+    package com.example.demo;
 
-import com.example.demo.model.stage.GameStateManager;
-import com.example.demo.model.assets.AssetManager;
-import com.example.demo.model.stage.MenuState; // Import trạng thái ban đầu
-import com.example.demo.utils.var.AssetPaths;
-import javafx.application.Application;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+    import com.example.demo.controller.core.SaveController;
+    import com.example.demo.model.stage.GameStateManager;
+    import com.example.demo.model.assets.AssetManager;
+    import com.example.demo.model.stage.MenuState; // Import trạng thái ban đầu
+    import com.example.demo.utils.var.AssetPaths;
+    import javafx.application.Application;
+    import javafx.scene.image.Image;
+    import javafx.stage.Stage;
+    import org.slf4j.Logger;
+    import org.slf4j.LoggerFactory;
+    import java.util.Objects;
 
-import java.util.Objects;
 
-public class Main extends Application {
-    private static final Logger log = LoggerFactory.getLogger(Main.class);
+    public class Main extends Application {
+        private static final Logger log = LoggerFactory.getLogger(Main.class);
 
-    private GameStateManager stateManager; 
+        private GameStateManager stateManager;
 
-    private Stage primaryStage;
+        private Stage primaryStage;
 
-    @Override
-    public void start(Stage stage) {
-        this.primaryStage = stage;
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource(AssetPaths.ICON)).toExternalForm()));
-        stage.setTitle("Brick Breaker");
-        stage.setResizable(false);
-        AssetManager.getInstance().loadAll();
-        log.info("All assets loaded.");
+        @Override
+        public void start(Stage stage) {
+            //SaveController saveController = new SaveController();
+            //saveController.showHighscores();
+            this.primaryStage = stage;
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource(AssetPaths.ICON)).toExternalForm()));
+            stage.setTitle("Brick Breaker");
+            stage.setResizable(false);
+            AssetManager.getInstance().loadAll();
+            log.info("All assets loaded.");
 
-        this.stateManager = new GameStateManager(this, stage);
+            this.stateManager = new GameStateManager(this, stage);
 
-        this.stateManager.changeState(new MenuState(this, stage));
+            this.stateManager.changeState(new MenuState(this, stage));
+        }
+
+        public GameStateManager getStateManager() {
+            return this.stateManager;
+        }
     }
-
-    public GameStateManager getStateManager() {
-        return this.stateManager;
-    }
-}

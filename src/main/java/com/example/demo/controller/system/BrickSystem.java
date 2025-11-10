@@ -40,15 +40,12 @@ public class BrickSystem implements Updatable {
         int damage = ball.isStronger() ? GameVar.MAXPOWER : GameVar.MINPOWER;
         boolean destroyed = brick.takeDamage(damage);
 
-        int healthBefore = brick.getHealth();
-        applyDamage(brick, ball.isStronger());
-
-        // Check destruction and trigger effects
-        if (brick.isDestroyed() && healthBefore > 0) { // Đảm bảo chỉ trigger 1 lần
+        if (destroyed) {
             spawnDestructionEffect(brick);
             maybeSpawnPowerUp(brick);
-            if (onBrickDestroyed != null) {
+            if (onBrickDestroyed != null){
                 onBrickDestroyed.accept(brick);
+
             }
         }
     }
