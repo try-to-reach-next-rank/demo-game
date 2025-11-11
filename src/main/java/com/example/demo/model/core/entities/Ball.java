@@ -40,7 +40,7 @@ public class Ball extends ImageObject<BallData> {
         this.stronger = false;
         this.stopTime = false;
         this.elapsedTime = 0.0;
-        this.velocity = new Vector2D(GameVar.BALL_INIT_DIR_X, GameVar.BALL_INIT_DIR_Y);
+        setVelocity(GameVar.BALL_INIT_DIR_X, GameVar.BALL_INIT_DIR_Y);
     }
 
     public void release() {
@@ -86,8 +86,5 @@ public class Ball extends ImageObject<BallData> {
     public void setLastBrick(Brick brick) { this.lastBrick = brick; }
 
     public Paddle getStuckPaddle() { return this.stuckPaddle; }
-    public void setStuckPaddle(Paddle paddle) {
-        this.stuck = true;
-        this.stuckPaddle = paddle;
-    }
+    public void setStuckPaddle(Paddle paddle) { this.stuckPaddle = paddle; }
 }

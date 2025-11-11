@@ -5,16 +5,16 @@ import java.util.List;
 import java.util.Random;
 
 import com.example.demo.model.core.entities.Portal;
+import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.var.GameVar;
 
 public class PortalFactory {
     private final List<Portal> portals = new ArrayList<>();
-    private final Random random = new Random();
 
     public void addPortal(String portalAnimKey) {
         // Random x, y, default duration
-        int x = random.nextInt(GameVar.MAP_MIN_X, GameVar.MAP_MAX_X);
-        int y = random.nextInt(GameVar.MAP_MIN_Y, GameVar.MAP_MAX_Y);
+        int x = GameRandom.nextInt(GameVar.MAP_MIN_X, GameVar.MAP_MAX_X);
+        int y = GameRandom.nextInt(GameVar.MAP_MIN_Y, GameVar.MAP_MAX_Y);
         double lifeTime = 10.0; // default 10 seconds
 
         addPortal(portalAnimKey, x, y, lifeTime);
@@ -39,7 +39,7 @@ public class PortalFactory {
         if (candidates.isEmpty()) return null;
 
         // Random portal in remaining list
-        return candidates.get(random.nextInt(candidates.size()));
+        return candidates.get(GameRandom.nextInt(candidates.size()));
     }
 
     public void clear() {

@@ -31,7 +31,6 @@ public class BallSystem implements Updatable {
             }
 
             if (ball.isStuck() && ball.getStuckPaddle() != null) {
-            // if (ball.isStuck()) {
                 alignWithPaddle(ball, 
                                 GameVar.BALL_ALIGN_WITH_PADDLE_OFFSET_Y, 
                                 GameVar.BALL_ALIGN_WITH_PADDLE_LERPFACTOR);
@@ -62,6 +61,25 @@ public class BallSystem implements Updatable {
         }
     }
 
+    // === CHEAT HANDLERS ===
+    public void toggleStopTime() {
+        for (Ball ball : balls) {
+            ball.toggleStopTime();
+        }
+    }
+
+    public void toggleAccelerated() {
+        for (Ball ball : balls) {
+            ball.toggleAccelerated();
+        }
+    }
+
+    public void toggleStronger() {
+        for (Ball ball : balls) {
+            ball.toggleStronger();
+        }
+    }
+
     // --- When ball is stop ---
     private void handleStopTime(Ball ball, double deltaTime) {
         Paddle paddle = ball.getStuckPaddle();
@@ -84,18 +102,23 @@ public class BallSystem implements Updatable {
         double targetX = paddle.getX() + paddle.getWidth() / 2.0 - ball.getWidth() / 2.0;
         double targetY = paddle.getY() - ball.getHeight() - offsetY;
 
+        double x = ball.getX();
+        double y = ball.getY();
+
         if (lerpFactor >= 1.0) {
-            ball.setX(targetX);
-            ball.setY(targetY);
+            x = targetX;
+            y = targetY;
         } else {
-            ball.setX(ball.getX() + (targetX - ball.getX()) * lerpFactor);
-            ball.setY(ball.getY() + (targetY - ball.getY()) * lerpFactor);
+            x += (targetX - x) * lerpFactor;
+            y += (targetY - y) * lerpFactor;
         }
 
         double minX = paddle.getX();
         double maxX = paddle.getX() + paddle.getWidth() - ball.getWidth();
-        if (ball.getX() < minX) ball.setX(minX);
-        if (ball.getX() > maxX) ball.setX(maxX);
+        if (x < minX) x = minX;
+        if (x > maxX) x = maxX;
+
+        ball.setPosition(x, y);
     }
 
     // --- When ball is not stuck
@@ -107,18 +130,19 @@ public class BallSystem implements Updatable {
         double newX = ball.getX() + step.x;
         double newY = ball.getY() + step.y;
 
-        // // Reset if it falls below the screen
-        // if (newY >= GameVar.MAP_MAX_Y) {
-        //     ball.resetState();
-        //     return;
-        // }
+        // Reset if it falls below the screen
+        if (newY >= GameVar.MAP_MAX_Y) {
+            ball.resetState();
+            return;
+        }
 
         ball.setPosition(newX, newY);
     }
 
     private void handlePaddleCollision(Ball ball, Paddle paddle) {
         if (ball.isStuck()) return;
-        
+        System.out.println("HELLO");
+
         long now = System.currentTimeMillis();
         if (now > nextPaddleSoundTime) {
             Sound.getInstance().playSound("paddle_hit");
@@ -126,6 +150,7 @@ public class BallSystem implements Updatable {
         }
 
         bounceFromPaddle(ball, paddle);
+        ball.setStuckPaddle(paddle);
     }
 
     private void handleWallCollision(Ball ball, Wall wall) {

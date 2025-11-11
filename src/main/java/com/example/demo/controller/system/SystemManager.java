@@ -3,7 +3,8 @@ package com.example.demo.controller.system;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
 
 public class SystemManager implements Updatable {
     private final GameWorld world;
@@ -40,6 +41,7 @@ public class SystemManager implements Updatable {
         register(new BrickSystem(world.getBricks(), world.getPowerUps()));
         register(new PaddleSystem(world.getPaddle()));
         register(new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps()));
+        register(new CollisionSystem(world, this));
     }
 
     private <T extends Updatable> void register(T system) {

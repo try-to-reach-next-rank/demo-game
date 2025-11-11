@@ -1,11 +1,13 @@
 package com.example.demo.controller.core;
 
 import com.example.demo.controller.map.MapController;
-import com.example.demo.controller.system.*;
+import com.example.demo.controller.system.CollisionSystem;
+import com.example.demo.controller.system.PowerUpSystem;
+import com.example.demo.controller.system.SystemManager;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.effects.TransitionEffect;
-import com.example.demo.model.core.entities.Ball;
+// import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.model.state.*;
 import com.example.demo.utils.Input;
@@ -30,7 +32,6 @@ public class GameController extends Pane {
     private final GameWorld world;
     private final SystemManager systemManager;
     private final GameView view;
-    private CollisionController collisionController;
     private AnimationTimer timer;
     private Input inputGame;
     // === CONTROLLERS ===
@@ -54,6 +55,7 @@ public class GameController extends Pane {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
         world = new GameWorld();
         world.init();
+        System.out.println(world);
         this.systemManager = new SystemManager(world);
         view = new GameView(world, this);
         getChildren().add(view);
@@ -67,8 +69,6 @@ public class GameController extends Pane {
     public void initGame() {
         // TODO: FIX THIS
         world.setPowerUpSystem(systemManager.get(PowerUpSystem.class));
-        collisionController = new CollisionController(world, systemManager);
-
 
         LoadLevel loadLevel = new LoadLevel(mapManager, world, view);
 
@@ -87,7 +87,8 @@ public class GameController extends Pane {
             loadLevel.loadForSavedGame(world.getCurrentLevel());
         }
 
-        systemManager.clear();
+        // TODO: ? SHOULD CLEAR ?
+        // systemManager.clear();
 
         // Init parallax everymap -> fix bugs if use cheatable
         view.getCoreView().initParallax();
@@ -116,7 +117,6 @@ public class GameController extends Pane {
     }
 
     // ========== Save/Load -> Delegate to SaveController ==========
-
     public void saveGame() {
         saveController.saveGame(world, currentSlotNumber);  // ← CHANGED
     }
@@ -126,7 +126,6 @@ public class GameController extends Pane {
     }
 
     // ========== Auto Level Progression ==========
-
     private void checkLevelCompletion() {
         if (world.isLevelComplete()) {
             log.info("Level complete! Remaining bricks: {}", world.getRemainingBricksCount());
@@ -165,7 +164,8 @@ public class GameController extends Pane {
     private void update(double deltaTime) {
         if (!paused) {
             systemManager.update(deltaTime);
-            collisionController.update(deltaTime);
+            // CollisionSystem collisionSystem = new CollisionSystem(world, systemManager);
+            // collisionSystem.update(deltaTime);
 
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;
@@ -206,14 +206,6 @@ public class GameController extends Pane {
         setOnKeyReleased(view::handleKeyReleased);
     }
 
-    public Paddle getPaddle() {
-        return world.getPaddle();
-    }
-
-    public Ball getBall() {
-        return world.getBall();
-    }
-
     public void backToMenu() {
         onBackToMenu.run();
     }
@@ -241,4 +233,7 @@ public class GameController extends Pane {
             dialogueSystem.start();
         }
     }
+
+    // TODO: REMOVE THESE TO SRP
+    public SystemManager getSystemManager() { return this.systemManager; }
 }

@@ -146,4 +146,24 @@ public class GameWorld {
         if (powerUps != null) all.addAll(powerUps);
         return all;
     }
+
+    // TODO: FOR TESTING, DELETE LATER
+    public List<GameObject> getObjects() {
+        List<GameObject> all = new ArrayList<>();
+
+        if (paddle != null) all.add(paddle);
+        if (ball != null) all.add(ball);
+
+        if (bricks != null)
+            for (Brick b : bricks)
+                if (b != null) all.add(b);
+
+        if (walls != null && !walls.isEmpty())
+            all.addAll(walls);
+
+        if (powerUps != null && !powerUps.isEmpty())
+            all.addAll(powerUps);
+
+        return all;
+    }
 }

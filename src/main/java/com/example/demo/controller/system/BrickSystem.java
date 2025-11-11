@@ -12,7 +12,6 @@ import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.view.EffectRenderer;
 
 import java.util.List;
-import java.util.Random;
 
 /**
  * Handles brick damage, explosion propagation, and power-up spawning.
@@ -21,7 +20,6 @@ import java.util.Random;
 public class BrickSystem implements Updatable {
     private final Brick[] bricks;
     private final List<PowerUp> powerUps;
-    private final Random random = new Random();
 
     public BrickSystem(Brick[] bricks, List<PowerUp> powerUps) {
         this.bricks = bricks;
@@ -81,7 +79,7 @@ public class BrickSystem implements Updatable {
      * Spawns a power-up at the destroyed brick's location.
      */
     private void maybeSpawnPowerUp(Brick brick) {
-        if (random.nextInt(100) < GameVar.POWERUP_SPAWN_CHANCE) {
+        if (GameRandom.nextInt(100) < GameVar.POWERUP_SPAWN_CHANCE) {
             PowerUp powerUp = new PowerUp(GameVar.powerUps[GameRandom.nextInt(GameVar.powerUps.length)]);
             powerUp.dropFrom(brick);
             powerUps.add(powerUp);

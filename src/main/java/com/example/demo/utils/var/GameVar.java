@@ -17,7 +17,8 @@ public final class GameVar {
     public static final int MAP_CENTER_Y = HEIGHT / 2;
 
     // GAME
-    public static final int START_LEVEL = 2;
+    // TODO: FOR PHUC TEST, FIX START_LEVEL INTO 2
+    public static final int START_LEVEL = 1;
     public static final int MAX_LEVEL = 3;
     public static final int MIN_LEVEL = 1;
     public static final double MAX_DELTA_TIME = 0.05;
@@ -82,7 +83,7 @@ public final class GameVar {
     // BALL SYSTEM
     public static final double BALL_ELAPSED_TIME = 0.5; // seconds
     public static final double BALL_PADDLE_OFFSET_Y = 100.0;
-    public static final double BALL_ALIGN_WITH_PADDLE_OFFSET_Y = 0.0;
+    public static final double BALL_ALIGN_WITH_PADDLE_OFFSET_Y = 0.1;
     public static final double BALL_ALIGN_WITH_PADDLE_LERPFACTOR = 0.1;
     public static final double BALL_ACCELERATION_FACTOR = 1.5;
     public static final int    BALL_BOUNCE_ANGLE_LEFT = 150;
