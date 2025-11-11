@@ -141,7 +141,6 @@ public class BallSystem implements Updatable {
 
     private void handlePaddleCollision(Ball ball, Paddle paddle) {
         if (ball.isStuck()) return;
-        System.out.println("HELLO");
 
         long now = System.currentTimeMillis();
         if (now > nextPaddleSoundTime) {

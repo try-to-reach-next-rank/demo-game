@@ -23,7 +23,11 @@ public class SystemManager implements Updatable {
     }
 
     public <T extends Updatable> T get(Class<T> type) {
-        return type.cast(systems.get(type));
+        Updatable system = systems.get(type);
+        if (system == null) {
+            throw new IllegalStateException("System " + type.getSimpleName() + " is not registered!");
+        }
+        return type.cast(system);
     }
 
     public void clear() {
@@ -41,6 +45,7 @@ public class SystemManager implements Updatable {
         register(new BrickSystem(world.getBricks(), world.getPowerUps()));
         register(new PaddleSystem(world.getPaddle()));
         register(new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps()));
+        register(new PortalSystem());
         register(new CollisionSystem(world, this));
     }
 

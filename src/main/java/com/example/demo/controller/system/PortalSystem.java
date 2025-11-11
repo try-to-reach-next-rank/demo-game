@@ -6,16 +6,17 @@ import com.example.demo.model.core.entities.Portal;
 import com.example.demo.model.core.factory.PortalFactory;
 
 public class PortalSystem implements Updatable {
-    private final PortalFactory portalFactory;
+    // private final PortalFactory portalFactory;
 
-    public PortalSystem(PortalFactory portalFactory) {
-        this.portalFactory = portalFactory;
-    }
+    // public PortalSystem(PortalFactory portalFactory) {
+    //     this.portalFactory = portalFactory;
+    // }
+
+    public PortalSystem() {}
 
     @Override
     public void update(double deltaTime) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        // System.out.println("UNIMPLEMENT UPDATE PORTALSYSTEM");
     }
 
     public void handleCollision(Portal portal, Ball ball) {
@@ -24,8 +25,5 @@ public class PortalSystem implements Updatable {
     }
 
     @Override
-    public void clear() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'clear'");
-    }
+    public void clear() {}
 }

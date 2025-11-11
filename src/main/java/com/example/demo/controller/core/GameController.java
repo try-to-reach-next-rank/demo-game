@@ -55,7 +55,6 @@ public class GameController extends Pane {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
         world = new GameWorld();
         world.init();
-        System.out.println(world);
         this.systemManager = new SystemManager(world);
         view = new GameView(world, this);
         getChildren().add(view);
