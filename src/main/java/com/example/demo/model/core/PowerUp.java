@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 public class PowerUp extends AnimatedObject<PowerUpData> {
     private static final Logger log = LoggerFactory.getLogger(PowerUp.class);
     private String type;
-    private double prevY;
     private final double fallSpeed = 150.0; // TODO: be a constant
     private boolean active = false;
     private long expireAt = -1;
@@ -27,9 +26,7 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
 
     public void fall(double deltaTime) {
         if (!visible) return;
-        prevY = y;  // store previous Y
-        y += fallSpeed * deltaTime;
-        boundsDirty = true;  // ensure bounds update
+        setPosition(getX(), getY() + fallSpeed * deltaTime);
         if (y > GlobalVar.HEIGHT) visible = false;
     }
 
@@ -71,12 +68,6 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
         active = false;
         expireAt = 1000;
     }
-
-    public double getPrevY() {
-        return prevY;
-    }
-
-    public void setPrevY(double y) { this.prevY = y; }
 
     @Override
     public void applyState(PowerUpData AnimationObjectData) {}

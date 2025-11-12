@@ -84,10 +84,9 @@ public class CollisionController implements Updatable {
     }
 
     private void handlePaddlePowerUpCollisions(Paddle paddle, List<PowerUp> powerUps) {
-        if (powerUps == null || powerUps.isEmpty()) return;
+        if (powerUps == null) return;
 
-        toRemove.clear();
-
+        List<PowerUp> toRemove = new ArrayList<>();
         for (PowerUp p : powerUps) {
             if (!p.isVisible() || p.hasExpired()) {
                 ThePool.PowerUpPool.release(p);
@@ -95,31 +94,13 @@ public class CollisionController implements Updatable {
                 continue;
             }
 
-            // Create a swept bounds rectangle spanning previous and current positions
-            double minY = Math.min(p.getPrevY(), p.getY());
-            double sweptHeight = Math.abs(p.getY() - p.getPrevY()) + p.getHeight();
-            Bounds sweptBounds = new BoundingBox(p.getX(), minY, p.getWidth(), sweptHeight);
-
-            // Check collision with paddle
-            if (sweptBounds.intersects(paddle.getBounds())) {
+            if (p.getBounds().intersects(paddle.getBounds())) {
                 powerUpSystem.activate(p);
                 p.setVisible(false);
                 ThePool.PowerUpPool.release(p);
                 toRemove.add(p);
-                continue;
             }
-
-            // Falls out of screen
-            if (p.getY() > GlobalVar.BOTTOM_EDGE) {
-                p.setVisible(false);
-                ThePool.PowerUpPool.release(p);
-                toRemove.add(p);
-            }
-
-            // Update previous Y for next frame
-            p.setPrevY(p.getY());
         }
-
         powerUps.removeAll(toRemove);
     }
 

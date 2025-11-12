@@ -16,9 +16,6 @@ public abstract class GameObject<T extends GameObjectData> {
 
     protected double scaleX = 1.0;
     protected double scaleY = 1.0;
-    private Bounds cachedBounds;
-    public boolean boundsDirty = true;
-
     public GameObject(double startX, double startY) {
         setPosition(startX, startY);
     }
@@ -27,7 +24,6 @@ public abstract class GameObject<T extends GameObjectData> {
         if (this.x != x || this.y != y) {
             this.x = x;
             this.y = y;
-            boundsDirty = true;
         }
     }
 
@@ -58,7 +54,6 @@ public abstract class GameObject<T extends GameObjectData> {
 
         this.x = centerX - width / 2;
         this.y = centerY - height / 2;
-        boundsDirty = true;
     }
 
     public double getX() { return x; }
@@ -66,14 +61,12 @@ public abstract class GameObject<T extends GameObjectData> {
     public void setX(double x) {
         if (this.x != x) {
             this.x = x;
-            boundsDirty = true;
         }
     }
 
     public void setY(double y) {
         if (this.y != y) {
             this.y = y;
-            boundsDirty = true;
         }
     }
     public double getWidth() { return width; }
@@ -85,11 +78,7 @@ public abstract class GameObject<T extends GameObjectData> {
     public void setVisible(boolean visible) { this.visible = visible; }
 
     public Bounds getBounds() {
-        if (boundsDirty) {
-            cachedBounds = new BoundingBox(x, y, width, height);
-            boundsDirty = false;
-        }
-        return cachedBounds;
+        return new BoundingBox(x, y, width, height);
     }
 
     public abstract void applyState(T GameObjectData);
