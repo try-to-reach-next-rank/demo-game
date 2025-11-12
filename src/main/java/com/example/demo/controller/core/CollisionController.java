@@ -12,6 +12,8 @@ import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.EffectRenderer;
+import javafx.geometry.BoundingBox;
+import javafx.geometry.Bounds;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class CollisionController implements Updatable {
     private long nextPaddleSoundTime = 0L;
 
     private final GameWorld world;
+    private boolean ballLost = false;
     private final BallSystem ballSystem;
     private final BrickSystem brickSystem;
     private final PowerUpSystem powerUpSystem;
@@ -61,28 +64,62 @@ public class CollisionController implements Updatable {
     // ------------------------------------------------------------------------
 
     private void handleBallFloorCollision(Ball ball) {
-        if (ball.getBounds().getMaxY() > GlobalVar.BOTTOM_EDGE) {
+        if (ball.isStuck()) {
+            ballLost = false;
+            return;
+        }
+
+        boolean belowFloor = ball.getBounds().getMaxY() > GlobalVar.BOTTOM_EDGE;
+
+        if (belowFloor && !ballLost) {
             Sound.getInstance().playSound("game_over");
-            ballSystem.resetBall(ball); // delegate to BallSystem
+            ballSystem.resetBall(ball);
             powerUpSystem.reset();
+            ballLost = true;
+        }
+
+        if (!belowFloor) {
+            ballLost = false;
         }
     }
 
     private void handlePaddlePowerUpCollisions(Paddle paddle, List<PowerUp> powerUps) {
-        if (powerUps == null) return;
+        if (powerUps == null || powerUps.isEmpty()) return;
+
+        toRemove.clear();
+
         for (PowerUp p : powerUps) {
             if (!p.isVisible() || p.hasExpired()) {
                 ThePool.PowerUpPool.release(p);
                 toRemove.add(p);
+                continue;
             }
-            if (p.getBounds().intersects(paddle.getBounds())) {
-                powerUpSystem.activate(p); // delegate to PowerUpSystem
+
+            // Create a swept bounds rectangle spanning previous and current positions
+            double minY = Math.min(p.getPrevY(), p.getY());
+            double sweptHeight = Math.abs(p.getY() - p.getPrevY()) + p.getHeight();
+            Bounds sweptBounds = new BoundingBox(p.getX(), minY, p.getWidth(), sweptHeight);
+
+            // Check collision with paddle
+            if (sweptBounds.intersects(paddle.getBounds())) {
+                powerUpSystem.activate(p);
                 p.setVisible(false);
+                ThePool.PowerUpPool.release(p);
+                toRemove.add(p);
+                continue;
             }
-            if (p.getBounds().getMaxY() > GlobalVar.BOTTOM_EDGE) {
+
+            // Falls out of screen
+            if (p.getY() > GlobalVar.BOTTOM_EDGE) {
                 p.setVisible(false);
+                ThePool.PowerUpPool.release(p);
+                toRemove.add(p);
             }
+
+            // Update previous Y for next frame
+            p.setPrevY(p.getY());
         }
+
         powerUps.removeAll(toRemove);
     }
 
@@ -186,5 +223,4 @@ public class CollisionController implements Updatable {
                 ball.setY(ball.getY() + overlapY);
         }
     }
-
 }

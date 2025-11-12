@@ -17,7 +17,7 @@ public abstract class GameObject<T extends GameObjectData> {
     protected double scaleX = 1.0;
     protected double scaleY = 1.0;
     private Bounds cachedBounds;
-    private boolean boundsDirty = true;
+    public boolean boundsDirty = true;
 
     public GameObject(double startX, double startY) {
         setPosition(startX, startY);
@@ -58,12 +58,24 @@ public abstract class GameObject<T extends GameObjectData> {
 
         this.x = centerX - width / 2;
         this.y = centerY - height / 2;
+        boundsDirty = true;
     }
 
     public double getX() { return x; }
     public double getY() { return y; }
-    public void setX(double x) { this.x = x; }
-    public void setY(double y) { this.y = y; }
+    public void setX(double x) {
+        if (this.x != x) {
+            this.x = x;
+            boundsDirty = true;
+        }
+    }
+
+    public void setY(double y) {
+        if (this.y != y) {
+            this.y = y;
+            boundsDirty = true;
+        }
+    }
     public double getWidth() { return width; }
     public double getHeight() { return height; }
     public void setWidth(double width) { this.width = width; }
