@@ -18,12 +18,12 @@ import java.util.List;
  * TODO: Add handle reveal bricks in here
  */
 public class BrickSystem implements Updatable {
-    private final Brick[] bricks;
-    private final List<PowerUp> powerUps;
+    private final List<Brick> bricks;
+    private final PowerUpSystem powerUpSystem;
 
-    public BrickSystem(Brick[] bricks, List<PowerUp> powerUps) {
+    public BrickSystem(List<Brick> bricks, SystemManager systemManager) {
         this.bricks = bricks;
-        this.powerUps = powerUps;
+        this.powerUpSystem = systemManager.get(PowerUpSystem.class);
     }
 
     @Override
@@ -36,32 +36,33 @@ public class BrickSystem implements Updatable {
         // TODO: CLEAR
     }
 
-    public void handleCollision(Brick brick, Ball ball) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'handleCollision'");
+    public void handleCollision(Brick brick, GameObject obj) {
+        if (obj instanceof Ball ball) {
+            handleBallCollision(brick, ball);
+        }
     }
 
     /**
      * Handles a collision between a ball and a brick.
      */
-    public void onBallHitBrick(Brick brick, Ball ball) {
+    private void handleBallCollision(Brick brick, Ball ball) {
         if (brick.isDestroyed()) return;
         if (ball == null) return;
-        applyDamage(brick, ball.isStronger());
+        applyDamage(brick, ball);
 
         // Check destruction and trigger effects
         if (brick.isDestroyed()) {
             spawnDestructionEffect(brick);
-            maybeSpawnPowerUp(brick);
+            powerUpSystem.maybeSpawnPowerUp(brick);
         }
     }
 
     /**
      * Applies damage to a brick and updates its texture.
      */
-    public void applyDamage(Brick brick, boolean isStronger) {
+    private void applyDamage(Brick brick, Ball ball) {
         if (brick.getHealth() == Integer.MAX_VALUE) return;
-        int power = (isStronger) ? GameVar.MAXPOWER : GameVar.MINPOWER;
+        int power = (ball.isStronger()) ? GameVar.MAXPOWER : GameVar.MINPOWER;
         int health = brick.getHealth() - power;
         brick.setHealth(health);
 
@@ -72,17 +73,6 @@ public class BrickSystem implements Updatable {
             String newImageKey = BrickTextureProvider.getTextureForHealth(health);
             brick.setImageKey(newImageKey);
             Sound.getInstance().playSound("brick_hit");
-        }
-    }
-
-    /**
-     * Spawns a power-up at the destroyed brick's location.
-     */
-    private void maybeSpawnPowerUp(Brick brick) {
-        if (GameRandom.nextInt(100) < GameVar.POWERUP_SPAWN_CHANCE) {
-            PowerUp powerUp = new PowerUp(GameVar.powerUps[GameRandom.nextInt(GameVar.powerUps.length)]);
-            powerUp.dropFrom(brick);
-            powerUps.add(powerUp);
         }
     }
 

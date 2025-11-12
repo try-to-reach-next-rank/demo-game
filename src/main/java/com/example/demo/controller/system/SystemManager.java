@@ -41,10 +41,10 @@ public class SystemManager implements Updatable {
     }
 
     private void registerAllSystems() {
+        register(new PaddleSystem(world.getPaddles()));
         register(new BallSystem(world.getBalls()));
-        register(new BrickSystem(world.getBricks(), world.getPowerUps()));
-        register(new PaddleSystem(world.getPaddle()));
         register(new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps()));
+        register(new BrickSystem(world.getBrickss(), this));
         register(new PortalSystem());
         register(new CollisionSystem(world, this));
     }

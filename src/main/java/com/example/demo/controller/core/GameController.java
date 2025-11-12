@@ -1,18 +1,12 @@
 package com.example.demo.controller.core;
 
 import com.example.demo.controller.map.MapController;
-import com.example.demo.controller.system.CollisionSystem;
 import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.controller.system.SystemManager;
-import com.example.demo.engine.*;
-import com.example.demo.model.core.*;
-import com.example.demo.model.core.effects.TransitionEffect;
-// import com.example.demo.model.core.entities.Ball;
-import com.example.demo.model.core.entities.Paddle;
-import com.example.demo.model.state.*;
+import com.example.demo.engine.GameWorld;
+import com.example.demo.model.state.GameState;
 import com.example.demo.utils.Input;
 import com.example.demo.utils.Sound;
-import com.example.demo.repository.SaveDataRepository;
 import com.example.demo.utils.dialogue.DialogueSystem;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
@@ -37,7 +31,6 @@ public class GameController extends Pane {
     // === CONTROLLERS ===
     private final MapController mapManager = new MapController();
     private final SaveController saveController = new SaveController();
-    private final TransitionEffect transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
     private DialogueSystem dialogueSystem;
 
     private int currentSlotNumber = -1;
@@ -163,8 +156,6 @@ public class GameController extends Pane {
     private void update(double deltaTime) {
         if (!paused) {
             systemManager.update(deltaTime);
-            // CollisionSystem collisionSystem = new CollisionSystem(world, systemManager);
-            // collisionSystem.update(deltaTime);
 
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;

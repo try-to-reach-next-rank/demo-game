@@ -5,8 +5,8 @@ import com.example.demo.model.state.PaddleData;
 import com.example.demo.utils.var.GameVar;
 
 public class Paddle extends ImageObject<PaddleData> {
-    private int direction;          // -1 = left, 0 = stop, 1 = right
-    private final double speed = GameVar.BASE_SPEED_PADDLE;   // base speed (pixels/second)
+    private int direction;                                   // -1 = left, 0 = stop, 1 = right
+    private final double speed = GameVar.BASE_SPEED_PADDLE;  // base speed (pixels/second)
     private boolean biggerPaddle;
 
     public Paddle() {
@@ -21,6 +21,7 @@ public class Paddle extends ImageObject<PaddleData> {
         biggerPaddle = false;
     }
 
+    @Override
     public void applyState(PaddleData data) {
         if (data == null) return;
         this.setPosition(data.getX(), data.getY());
@@ -32,5 +33,5 @@ public class Paddle extends ImageObject<PaddleData> {
     public double getSpeed() { return speed; }
 
     public boolean getBiggerPaddle() { return this.biggerPaddle; }
-    public void setBiggerPaddle(boolean biggerPaddle){ this.biggerPaddle = biggerPaddle; }
+    public void setBiggerPaddle(boolean biggerPaddle) { this.biggerPaddle = biggerPaddle; }
 }

@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -40,8 +41,10 @@ public class GameWorld {
     public void setBall(Ball ball) { this.ball = ball; }
 
     public Paddle getPaddle() { return paddle; }
+    public List<Paddle> getPaddles() { return List.of(paddle); }
     public void setPaddle(Paddle paddle) { this.paddle = paddle; }
 
+    public List<Brick> getBrickss() { return Arrays.asList(bricks); }
     public Brick[] getBricks() { return bricks; }
     public void setBricks(Brick[] bricks) { this.bricks = Objects.requireNonNullElse(bricks, new Brick[0]); }
 
@@ -125,7 +128,7 @@ public class GameWorld {
         // Active Power-ups
         PowerUpSystem currentPowerUpSystem = getPowerUpSystem();
         if (currentPowerUpSystem != null) {
-            currentPowerUpSystem.reset();
+            // currentPowerUpSystem.reset();
 
             if (loadedState.getActivePowerUpsData() != null) {
                 for (ActivePowerUpData activeData : loadedState.getActivePowerUpsData()) {

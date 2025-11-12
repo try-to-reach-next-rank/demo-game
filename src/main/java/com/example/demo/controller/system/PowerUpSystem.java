@@ -2,9 +2,12 @@ package com.example.demo.controller.system;
 
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Brick;
 import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.model.core.entities.PowerUp;
+import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.state.ActivePowerUpData;
+import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.var.GameVar;
 
 import java.util.ArrayList;
@@ -63,23 +66,39 @@ public class PowerUpSystem implements Updatable {
         }
     }
 
+    @Override
     public void clear() {
         // TODO: CLEAR
+        activePowerUps.clear();
     }
 
-    public void reset() {
-        // turn off all boolean flags on the game objects
-        if (ball != null) {
-            ball.setAccelerated(false);
-            ball.setStronger(false);
-            ball.setStopTime(false);
+    public void handleCollision(PowerUp powerUp, GameObject obj) {
+        if (obj instanceof Paddle paddle) {
+            handlePaddleCollision(powerUp, paddle);
         }
-        if (paddle != null) {
-            paddle.setBiggerPaddle(false);
-        }
+    }
 
-        // clear the internal list of active power-ups
-        activePowerUps.clear();
+    // public void reset() {
+    //     // turn off all boolean flags on the game objects
+    //     if (ball != null) {
+    //         ball.setAccelerated(false);
+    //         ball.setStronger(false);
+    //         ball.setStopTime(false);
+    //     }
+    //     if (paddle != null) {
+    //         paddle.setBiggerPaddle(false);
+    //     }
+
+    //     // clear the internal list of active power-ups
+        
+    // }
+
+    public void maybeSpawnPowerUp(Brick brick) {
+        if (GameRandom.nextInt(100) < GameVar.POWERUP_SPAWN_CHANCE) {
+            PowerUp powerUp = new PowerUp(GameVar.powerUps[GameRandom.nextInt(GameVar.powerUps.length)]);
+            powerUp.dropFrom(brick);
+            worldPowerUps.add(powerUp);
+        }
     }
 
 
@@ -107,8 +126,7 @@ public class PowerUpSystem implements Updatable {
         return activePowerUps;
     }
 
-    public void handleCollision(PowerUp powerUp, Paddle paddle2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'handleCollision'");
+    private void handlePaddleCollision(PowerUp powerUp, Paddle paddle) {
+        
     }
 }

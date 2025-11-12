@@ -45,10 +45,6 @@ public class BallSystem implements Updatable {
         // TODO: CLEAR
     }
 
-    public void resetBall(Ball ball) {
-        ball.resetState();
-    }
-
     public void handleCollision(Ball ball, GameObject obj) {
         if (obj instanceof Paddle paddle) {
             handlePaddleCollision(ball, paddle);
@@ -59,6 +55,10 @@ public class BallSystem implements Updatable {
         else if (obj instanceof Brick brick) {
             handleBrickCollision(ball, brick);
         }
+    }
+
+    public void resetBall(Ball ball) {
+        ball.resetState();
     }
 
     // === CHEAT HANDLERS ===
@@ -156,6 +156,7 @@ public class BallSystem implements Updatable {
         bounceFromWall(ball, wall); // Delegate to BallSystem
         Sound.getInstance().playSound("wall_hit");
 
+        // TODO: SRP
         // Simple effect (View layer responsibility)
         EffectRenderer.getInstance().spawn(
                 GameVar.EXPLOSION2_EFFECT_KEY,
@@ -166,6 +167,7 @@ public class BallSystem implements Updatable {
     }
 
     private void handleBrickCollision(Ball ball, Brick brick) {
+        if (brick.isDestroyed()) return;
         if (ball.getLastBrick() == brick) return;
         if (ball.isStronger()) return;
 

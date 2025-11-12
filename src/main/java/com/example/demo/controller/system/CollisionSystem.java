@@ -96,7 +96,7 @@ public class CollisionSystem implements Updatable {
         if (isPair(a, b, Ball.class, Brick.class)) {
             Ball ball = (a instanceof Ball) ? (Ball) a : (Ball) b;
             Brick brick = (a instanceof Brick) ? (Brick) a : (Brick) b;
-            brickSystem.onBallHitBrick(brick, ball);
+            brickSystem.handleCollision(brick, ball);
             ballSystem.handleCollision(ball, brick);
             return;
         }

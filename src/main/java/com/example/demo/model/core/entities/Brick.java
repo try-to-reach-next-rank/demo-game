@@ -18,7 +18,7 @@ public class Brick extends ImageObject<BrickData> {
         this.destroyed = false;
     }
 
-    // Thêm vào lớp Brick.java
+    // Data saver
     @Override
     public void applyState(BrickData data) {
         if (data == null) return;
