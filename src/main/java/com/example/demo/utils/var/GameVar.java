@@ -38,6 +38,8 @@ public final class GameVar {
     public static final int SCOREVALUE = 10;
     public static final int WIDTH_OF_BRICKS     = 30;
     public static final int HEIGHT_OF_BRICKS    = 16;
+    public static final int WIDTH_OF_BRICK   = 32;
+    public static final int HEIGHT_OF_BRICK    = 16;
     public static final int MAXPOWER    = 5;
     public static final int MINPOWER    = 1;
 

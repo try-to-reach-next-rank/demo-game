@@ -1,6 +1,6 @@
 package com.example.demo.model.map;
 
-import com.example.demo.model.core.Brick;
+import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.Wall;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
@@ -9,7 +9,7 @@ import java.util.*;
 
 public record MapData(List<Brick> bricks, List<Wall> walls) {
     public MapData(List<Brick> bricks, List<Wall> walls) {
-        this.bricks = List.copyOf(bricks); // để tránh thay đổi sau này
+        this.bricks = List.copyOf(bricks);
         this.walls = List.copyOf(walls);
     }
 

@@ -1,10 +1,9 @@
 package com.example.demo.controller.system;
 
-import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
-import com.example.demo.model.core.Brick;
 import com.example.demo.model.core.PowerUp;
+import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.factory.PowerUpFactory;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.view.EffectRenderer;

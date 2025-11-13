@@ -2,13 +2,10 @@ package com.example.demo.model.system;
 
 import com.example.demo.controller.system.BrickSystem;
 import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.core.Brick;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 class BrickSystemTest {

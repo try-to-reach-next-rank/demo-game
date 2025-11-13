@@ -5,7 +5,7 @@ import com.example.demo.controller.system.BallSystem;
 import com.example.demo.controller.system.BrickSystem;
 import com.example.demo.controller.system.PaddleSystem;
 import com.example.demo.controller.system.PowerUpSystem;
-import com.example.demo.model.core.Brick;
+import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.ThePool;
 import com.example.demo.model.core.factory.EntityFactory;
 import com.example.demo.engine.GameWorld;
@@ -20,7 +20,9 @@ public class GameWorldBuilder {
     public GameWorldBuilder withMap(MapData mapData) {
         world.getWalls().clear();
         world.getWalls().addAll(mapData.walls());
-        world.setBricks(mapData.bricks().toArray(new Brick[0]));
+
+        List<Brick> brickList = mapData.bricks();
+        world.setBricks(brickList.toArray(new Brick[0]));
         return this;
     }
 

@@ -1,5 +1,6 @@
 package com.example.demo.model.core;
 
+import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BallData;
 import com.example.demo.model.state.gameobjectdata.GameObjectData;

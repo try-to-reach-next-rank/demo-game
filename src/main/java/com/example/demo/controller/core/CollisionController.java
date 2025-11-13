@@ -3,6 +3,7 @@ package com.example.demo.controller.core;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.*;
+import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.controller.system.BallSystem;
 import com.example.demo.controller.system.BrickSystem;
@@ -12,8 +13,6 @@ import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.EffectRenderer;
-import javafx.geometry.BoundingBox;
-import javafx.geometry.Bounds;
 
 import java.util.ArrayList;
 import java.util.List;

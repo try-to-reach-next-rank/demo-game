@@ -1,6 +1,5 @@
 package com.example.demo.controller.map;
 
-import com.example.demo.model.core.Brick;
 import com.example.demo.model.map.MapData;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;

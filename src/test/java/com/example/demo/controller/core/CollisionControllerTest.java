@@ -1,8 +1,6 @@
 package com.example.demo.controller.core;
 
-import com.example.demo.controller.core.CollisionController;
 import com.example.demo.model.core.*;
-import com.example.demo.model.core.Brick;
 import com.example.demo.controller.system.BallSystem;
 import com.example.demo.controller.system.BrickSystem;
 import com.example.demo.controller.system.PowerUpSystem;

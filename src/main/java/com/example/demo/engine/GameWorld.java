@@ -1,14 +1,11 @@
 package com.example.demo.engine;
 
 import com.example.demo.model.core.*;
+import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.gameobjects.GameObject;
-import com.example.demo.model.state.ActivePowerUpData;
-import com.example.demo.model.state.BrickData;
 import com.example.demo.model.state.GameState;
-import com.example.demo.model.state.PowerUpData;
 import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.utils.GameStateRestore;
-import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

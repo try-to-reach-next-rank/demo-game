@@ -7,6 +7,7 @@ import com.example.demo.controller.system.PaddleSystem;
 import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
+import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.builder.GameWorldBuilder;
 import com.example.demo.model.core.factory.GameFactory;
 import com.example.demo.model.map.MapData;
@@ -85,11 +86,11 @@ public class GameController extends Pane {
         BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
 
         // Thiết lập callback để cộng điểm
-        brickSystem.setOnBrickDestroyed(brick -> {
-            double centerX = brick.getX() + brick.getWidth() / 2;
-            double centerY = brick.getY() + brick.getHeight() / 2;
-            world.addScore(brick.getScoreValue(), centerX, centerY);
-        });
+//        brickSystem.setOnBrickDestroyed(brick -> {
+//            double centerX = brick.getX() + brick.getWidth() / 2;
+//            double centerY = brick.getY() + brick.getHeight() / 2;
+//            world.addScore(brick.getScoreValue(), centerX, centerY);
+//        });
         loop();
     }
 
