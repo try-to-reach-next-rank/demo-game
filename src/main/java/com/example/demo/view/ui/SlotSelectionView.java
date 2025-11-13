@@ -166,6 +166,7 @@ public class SlotSelectionView extends AbstractUIView {
             case RIGHT -> moveRight();
             case ENTER -> confirm();
             case ESCAPE -> cancel();
+            default -> {}
         }
     }
 

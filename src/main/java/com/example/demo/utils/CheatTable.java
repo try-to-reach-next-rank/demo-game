@@ -140,6 +140,8 @@ public class CheatTable extends UIComponent {
                 // Đóng cheat table
                 hide();
                 break;
+            default:
+                break;
         }
     }
 

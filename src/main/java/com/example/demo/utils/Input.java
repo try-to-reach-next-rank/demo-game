@@ -31,6 +31,7 @@ public class Input {
             case SPACE -> {
                 if (ball.isStuck()) ball.release();
             }
+            default -> {}
         }
         updatePaddleDirection();
     }
@@ -39,6 +40,7 @@ public class Input {
         switch (code) {
             case LEFT -> leftHeld = false;
             case RIGHT -> rightHeld = false;
+            default -> {}
         }
 
         if (code == lastPressed) {
