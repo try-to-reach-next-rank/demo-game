@@ -51,10 +51,8 @@ public class Portal extends AnimatedObject<PortalData> {
 
     @Override
     public void applyState(PortalData data) {
-        this.x = data.getX();
-        this.y = data.getY();
+        super.applyState(data);
         this.lifeTime = data.getLifetime();
-        this.setVisible(data.isVisible()); 
         if (data.isActive()) activate(x, y, lifeTime);
         else deactivate();
     }

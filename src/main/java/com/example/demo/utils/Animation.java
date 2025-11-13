@@ -178,4 +178,17 @@ public class Animation {
     public boolean isLoop() {
         return this.loop;
     }
+
+    public int getCurrentFrame() {
+        return currentFrame;
+    }
+
+    // --- Setters ---
+    public void setCurrentFrame(int frame) {
+        if (frame < 0) frame = 0;
+        if (frame >= totalFrames) frame = totalFrames - 1;
+        this.currentFrame = frame;
+        this.elapsedTime = 0.0;
+        this.finished = (currentFrame == totalFrames - 1 && !loop);
+    }
 }

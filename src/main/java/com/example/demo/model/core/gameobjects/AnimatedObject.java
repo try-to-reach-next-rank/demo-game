@@ -44,5 +44,7 @@ public abstract class AnimatedObject<T extends AnimatedObjectData> extends GameO
     public Animation getAnimation() { return this.animation; }
 
     @Override
-    public abstract void applyState(T AnimationObjectData);
+    public void applyState(T data) {
+        super.applyState(data);
+    }
 }

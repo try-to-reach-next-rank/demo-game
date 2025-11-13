@@ -17,15 +17,12 @@ public class Wall extends ImageObject<WallData> {
         }
     }
 
-    private void setSize(double width, double height) {
-        this.width = width;
-        this.height = height;
-    }
-
     public Side getSide() {
         return side;
     }
 
     @Override
-    public void applyState(WallData ImageObjectData) {}
+    public void applyState(WallData data) {
+        super.applyState(data);
+    }
 }

@@ -7,7 +7,7 @@ public class GameObjectData {
     private double y;
     private boolean visible;
 
-    public GameObjectData(GameObject object) {
+    public GameObjectData(GameObject<?> object) {
         this.x = object.getX();
         this.y = object.getY();
         this.visible = object.isVisible();

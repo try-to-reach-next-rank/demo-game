@@ -1,18 +1,18 @@
 package com.example.demo.model.core.entities.bricks;
 
 import com.example.demo.model.assets.AssetManager;
-import com.example.demo.model.core.gameobjects.GameObject;
+import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BrickData;
 import javafx.scene.image.Image;
 
-public abstract class Brick extends GameObject<BrickData> {
+public abstract class Brick extends ImageObject<BrickData> {
     protected int health;
     protected final int initialHealth;
     protected boolean destroyed;
     protected String imageKey;
 
     public Brick(int health, String imageKey, double x, double y, double width, double height) {
-        super(x, y);
+        super(imageKey, x, y);
         this.health = health;
         this.initialHealth = health;
         this.destroyed = false;
@@ -32,7 +32,7 @@ public abstract class Brick extends GameObject<BrickData> {
 
     @Override
     public void applyState(BrickData data) {
-        if (data == null) return;
+        super.applyState(data);
         this.health = data.getHealth();
         this.destroyed = data.isDestroyed();
         // Optionally update imageKey here

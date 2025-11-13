@@ -55,6 +55,8 @@ public class PaddleSystem implements Updatable {
 
     private void handlePowerUpCollision(Paddle paddle, PowerUp powerUp) {
         // TODO: IMPROVE POWERUP FOR THIS
+        
+        
         // powerUp.apply(paddle);
     }
 }

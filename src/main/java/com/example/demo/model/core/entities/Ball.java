@@ -55,8 +55,7 @@ public class Ball extends ImageObject<BallData> {
     // --- Data ---
     @Override
     public void applyState(BallData data) {
-        if (data == null) return;
-        this.setPosition(data.getX(), data.getY());
+        super.applyState(data);
         this.setVelocity(data.getVelocityX(), data.getVelocityY());
         this.setStuck(data.isStuck());
     }

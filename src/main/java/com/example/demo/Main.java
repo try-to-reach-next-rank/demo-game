@@ -23,10 +23,10 @@ public class Main extends Application {
         //SaveController saveController = new SaveController();
         //saveController.showHighscores();
         this.primaryStage = stage;
+        AssetManager.getInstance().loadAll();
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource(AssetPaths.ICON)).toExternalForm()));
         stage.setTitle("Brick Breaker");
         stage.setResizable(false);
-        AssetManager.getInstance().loadAll();
         log.info("All assets loaded.");
 
         this.stateManager = new GameStateManager(this, stage);

@@ -111,21 +111,11 @@ public class GameWorld {
     
     public List<Updatable> getUpdatables() { return updatables; }
 
-    public int getCurrentScore() {
-        return currentScore;
-    }
+    public int getCurrentScore() { return currentScore; }
+    public void setCurrentScore(int currentScore) { this.currentScore = currentScore; }
 
-    public void setCurrentScore(int currentScore) {
-        this.currentScore = currentScore;
-    }
-
-    public int getHighScore() {
-        return highScore;
-    }
-
-    public void setHighScore(int highScore) {
-        this.highScore = highScore;
-    }
+    public int getHighScore() { return highScore; }
+    public void setHighScore(int highScore) { this.highScore = highScore; }
 
     public int getLastAddedScore() {
         return lastAddedScore;

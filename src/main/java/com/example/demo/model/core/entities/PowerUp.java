@@ -12,6 +12,9 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
     private String type;
     private final double fallSpeed = GameVar.BASE_SPEED_POWERUP;
     private boolean active = false;
+    
+    // TODO: MAKE A TIMER FOR PU
+    private double applyDuration;
     private long expireAt = -1;
 
     public PowerUp(String type) {
@@ -64,12 +67,25 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
     public String getType() { return type; }
     public void reset(String type) {
         this.type = type;
-        setPosition(0,0);
-        setVisible(false);
-        active = false;
-        expireAt = 1000;
+        setAnimationKey("powerup_" + type.toLowerCase());
+
+        // Reset visibility and state
+        setVisible(false);     // not yet dropped
+        active = false;        // not active until picked up or triggered
+
+        // Reset position
+        setPosition(0, 0);     // or some default spawn point if needed
+
+        // Reset timers and duration tracking
+        applyDuration = 0;
+        expireAt = -1;
     }
 
+    public double getApplyDurationLeft() { return this.applyDuration; }
+    public void  setApplyDuration(double applyDuration) { this.applyDuration = applyDuration; }
+
     @Override
-    public void applyState(PowerUpData AnimationObjectData) {}
+    public void applyState(PowerUpData data) {
+        super.applyState(data);
+    }
 }

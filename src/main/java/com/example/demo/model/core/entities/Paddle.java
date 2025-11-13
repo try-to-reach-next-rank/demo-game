@@ -7,6 +7,7 @@ import com.example.demo.utils.var.GameVar;
 public class Paddle extends ImageObject<PaddleData> {
     private int direction;                                   // -1 = left, 0 = stop, 1 = right
     private final double speed = GameVar.BASE_SPEED_PADDLE;  // base speed (pixels/second)
+    // TODO: REMOVE THIS FOR PADDLE, ADD IN POWERUP
     private boolean biggerPaddle;
 
     public Paddle() {
@@ -23,8 +24,7 @@ public class Paddle extends ImageObject<PaddleData> {
 
     @Override
     public void applyState(PaddleData data) {
-        if (data == null) return;
-        this.setPosition(data.getX(), data.getY());
+        super.applyState(data);
     }
 
     // Accessors and mutators

@@ -34,5 +34,7 @@ public abstract class ImageObject<T extends ImageObjectData> extends GameObject<
     public Image getImage() { return this.image; }
 
     @Override
-    public abstract void applyState(T ImageObjectData);
+    public void applyState(T data) {
+        super.applyState(data);
+    }
 }
