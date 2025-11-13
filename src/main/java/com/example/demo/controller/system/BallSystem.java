@@ -1,9 +1,9 @@
 package com.example.demo.controller.system;
 
 import com.example.demo.engine.Updatable;
-import com.example.demo.model.core.Ball;
-import com.example.demo.model.core.Paddle;
-import com.example.demo.model.core.Wall;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Paddle;
+import com.example.demo.model.core.entities.Wall;
 import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;

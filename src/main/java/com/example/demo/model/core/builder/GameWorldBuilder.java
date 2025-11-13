@@ -6,7 +6,7 @@ import com.example.demo.controller.system.BrickSystem;
 import com.example.demo.controller.system.PaddleSystem;
 import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.model.core.bricks.Brick;
-import com.example.demo.model.core.ThePool;
+import com.example.demo.model.core.entities.ThePool;
 import com.example.demo.model.core.factory.EntityFactory;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.map.MapData;

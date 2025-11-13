@@ -1,4 +1,4 @@
-package com.example.demo.model.core;
+package com.example.demo.model.core.entities;
 
 import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.gameobjects.ImageObject;
@@ -122,11 +122,6 @@ public class Ball extends ImageObject {
     }
     public void setLastBrick(Brick brick){
         lastBrick = brick;
-    }
-
-
-    @Override
-    public void applyState(GameObjectData GameObjectData) {
     }
 
     @Override

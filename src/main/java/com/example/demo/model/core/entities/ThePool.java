@@ -1,4 +1,4 @@
-package com.example.demo.model.core;
+package com.example.demo.model.core.entities;
 
 import com.example.demo.utils.ObjectPool;
 import com.example.demo.utils.var.GameVar;

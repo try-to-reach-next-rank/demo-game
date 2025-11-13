@@ -1,6 +1,9 @@
 package com.example.demo.controller.core;
 
 import com.example.demo.model.core.*;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Paddle;
+import com.example.demo.model.core.entities.PowerUp;
 import com.example.demo.controller.system.BallSystem;
 import com.example.demo.controller.system.BrickSystem;
 import com.example.demo.controller.system.PowerUpSystem;

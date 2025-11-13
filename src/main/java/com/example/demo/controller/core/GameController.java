@@ -9,6 +9,8 @@ import com.example.demo.engine.*;
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.builder.GameWorldBuilder;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.model.core.factory.GameFactory;
 import com.example.demo.model.map.MapData;
 import com.example.demo.model.state.*;

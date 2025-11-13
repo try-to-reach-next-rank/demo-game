@@ -1,4 +1,4 @@
-package com.example.demo.model.core;
+package com.example.demo.model.core.entities;
 
 import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.gameobjects.AnimatedObject;

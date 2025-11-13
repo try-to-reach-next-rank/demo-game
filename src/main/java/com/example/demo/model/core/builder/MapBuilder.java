@@ -1,8 +1,8 @@
 package com.example.demo.model.core.builder;
 
 import com.example.demo.model.core.bricks.Brick;
-import com.example.demo.model.core.Wall;
 import com.example.demo.model.core.bricks.BrickReg;
+import com.example.demo.model.core.entities.Wall;
 import com.example.demo.model.core.factory.BrickFactory;
 import com.example.demo.model.map.MapData;
 import com.example.demo.utils.var.GameVar;

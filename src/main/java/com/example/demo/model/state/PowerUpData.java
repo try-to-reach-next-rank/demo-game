@@ -1,6 +1,6 @@
 package com.example.demo.model.state;
 
-import com.example.demo.model.core.PowerUp;
+import com.example.demo.model.core.entities.PowerUp;
 import com.example.demo.model.state.gameobjectdata.AnimationedObjectData;
 import com.example.demo.model.state.gameobjectdata.GameObjectData;
 

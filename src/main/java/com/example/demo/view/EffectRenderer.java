@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import com.example.demo.model.core.VisualEffect;
 import com.example.demo.model.core.effects.AnimatedEffect;
 
 import com.example.demo.model.core.effects.ScorePopupEffect;
+import com.example.demo.model.core.effects.VisualEffect;
 import com.example.demo.utils.ObjectPool;
 import javafx.scene.canvas.GraphicsContext;
 

@@ -1,7 +1,7 @@
 package com.example.demo.model.core.factory;
 
-import com.example.demo.model.core.PowerUp;
 import com.example.demo.model.core.builder.PowerUpBuilder;
+import com.example.demo.model.core.entities.PowerUp;
 import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.var.GameVar;
 

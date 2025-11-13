@@ -1,7 +1,8 @@
 package com.example.demo.utils;
 
-import com.example.demo.model.core.Ball;
-import com.example.demo.model.core.Paddle;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Paddle;
+
 import javafx.scene.input.KeyCode;
 
 public class Input {

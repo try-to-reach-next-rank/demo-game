@@ -1,8 +1,7 @@
 package com.example.demo.model.core.effects;
 
 import com.example.demo.model.assets.AssetManager;
-import com.example.demo.model.core.Ball;
-import com.example.demo.model.core.VisualEffect;
+import com.example.demo.model.core.entities.Ball;
 import com.example.demo.utils.Vector2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

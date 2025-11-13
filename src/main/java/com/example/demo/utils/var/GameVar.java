@@ -2,7 +2,8 @@ package com.example.demo.utils.var;
 import static com.example.demo.utils.var.GlobalVar.HEIGHT;
 import static com.example.demo.utils.var.GlobalVar.WIDTH;
 
-import com.example.demo.model.core.PowerUp;
+import com.example.demo.model.core.entities.PowerUp;
+
 import javafx.scene.paint.Color;
 
 public final class GameVar {
