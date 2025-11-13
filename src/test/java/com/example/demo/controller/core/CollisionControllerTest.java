@@ -1,6 +1,5 @@
 package com.example.demo.controller.core;
 
-import com.example.demo.model.core.*;
 import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.model.core.entities.PowerUp;
@@ -20,10 +19,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Unit tests for CollisionController.
+ * Unit tests for CollisionSystem.
  *
  * Strategy:
- * - Construct a CollisionController with a null GameWorld (we call its private handlers directly via reflection).
+ * - Construct a CollisionSystem with a null GameWorld (we call its private handlers directly via reflection).
  * - Provide lightweight "spy" subclasses of BallSystem, BrickSystem and PowerUpSystem to observe delegations.
  * - Use real Ball / Paddle / Brick / PowerUp where possible so tests follow the style of existing tests.
  *
@@ -35,11 +34,11 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * Note: tests avoid asserting static side-effects (Sound, EffectRenderer) and focus on logical delegation / state changes.
  */
-class CollisionControllerTest {
+class CollisionSystemTest {
 
-    // Utility to invoke private methods on CollisionController
-    private void invokePrivate(CollisionController cm, String methodName, Class<?>[] paramTypes, Object... args) throws Exception {
-        Method m = CollisionController.class.getDeclaredMethod(methodName, paramTypes);
+    // Utility to invoke private methods on CollisionSystem
+    private void invokePrivate(CollisionSystem cm, String methodName, Class<?>[] paramTypes, Object... args) throws Exception {
+        Method m = CollisionSystem.class.getDeclaredMethod(methodName, paramTypes);
         m.setAccessible(true);
         m.invoke(cm, args);
     }
@@ -48,9 +47,10 @@ class CollisionControllerTest {
     void handleBallFloorCollision_callsResetBall_whenBallBelowBottom() throws Exception {
         // Arrange: create paddle/ball for constructing spy BallSystem
         Paddle paddle = new Paddle();
-        Ball ball = new Ball(paddle);
+        Ball ball = new Ball();
+        ball.setStuckPaddle(paddle);
         // place ball below bottom edge
-        ball.setPosition(0.0, GlobalVar.BOTTOM_EDGE + 10.0);
+        ball.setPosition(0.0, GameVar.MAP_MAX_Y + 10.0);
 
         AtomicBoolean resetCalled = new AtomicBoolean(false);
 
@@ -65,7 +65,7 @@ class CollisionControllerTest {
         BrickSystem brickSystem = new BrickSystem(new Brick[0], new ArrayList<>());
         PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, new ArrayList<>());
 
-        CollisionController cm = new CollisionController(null, spyBallSystem, brickSystem, powerUpSystem);
+        CollisionSystem cm = new CollisionSystem(null, spyBallSystem, brickSystem, powerUpSystem);
 
         // Act: invoke private handler directly
         invokePrivate(cm, "handleBallFloorCollision", new Class[]{Ball.class}, ball);
@@ -106,13 +106,13 @@ class CollisionControllerTest {
         BallSystem ballSystem = new BallSystem(ball, paddle);
         BrickSystem brickSystem = new BrickSystem(new Brick[0], new ArrayList<>());
 
-        CollisionController cm = new CollisionController(null, ballSystem, brickSystem, spyPowerUpSystem);
+        CollisionSystem cl = new CollisionSystem(null, ballSystem, brickSystem, spyPowerUpSystem);
 
         // Pre-check
         assertTrue(powerUp.isVisible());
 
         // Act
-        invokePrivate(cm, "handlePaddlePowerUpCollisions", new Class[]{Paddle.class, List.class}, paddle, worldPowerUps);
+        invokePrivate(cl, "handlePaddlePowerUpCollisions", new Class[]{Paddle.class, List.class}, paddle, worldPowerUps);
 
         // Assert: activate called and power-up hidden
         assertTrue(activated.get(), "PowerUpSystem.activate should be called when paddle intersects a visible power-up");
@@ -126,7 +126,7 @@ class CollisionControllerTest {
         Ball ball = new Ball(paddle);
 
         PowerUp powerUp = new PowerUp(GameVar.ACCELERATE);
-        powerUp.setPosition(10.0, GlobalVar.BOTTOM_EDGE + 50.0); // below bottom
+        powerUp.setPosition(10.0, GameVar.MAP_MAX_Y + 50.0); // below bottom
         powerUp.setVisible(true);
 
         List<PowerUp> worldPowerUps = new ArrayList<>();
@@ -136,7 +136,7 @@ class CollisionControllerTest {
         BallSystem ballSystem = new BallSystem(ball, paddle);
         BrickSystem brickSystem = new BrickSystem(new Brick[0], new ArrayList<>());
 
-        CollisionController cm = new CollisionController(null, ballSystem, brickSystem, powerUpSystem);
+        CollisionSystem cm = new CollisionSystem(null, ballSystem, brickSystem, powerUpSystem);
 
         // Act
         invokePrivate(cm, "handlePaddlePowerUpCollisions", new Class[]{Paddle.class, List.class}, paddle, worldPowerUps);
@@ -167,7 +167,7 @@ class CollisionControllerTest {
         BrickSystem brickSystem = new BrickSystem(new Brick[0], new ArrayList<>());
         PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, new ArrayList<>());
 
-        CollisionController cm = new CollisionController(null, spyBallSystem, brickSystem, powerUpSystem);
+        CollisionSystem cm = new CollisionSystem(null, spyBallSystem, brickSystem, powerUpSystem);
 
         // Ensure ball is not stuck so sound/cooldown branch can run (we don't assert sound)
         ball.setStuck(false);
@@ -216,7 +216,7 @@ class CollisionControllerTest {
         BallSystem ballSystem = new BallSystem(ball, paddle);
         PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, new ArrayList<>());
 
-        CollisionController cm = new CollisionController(null, ballSystem, spyBrickSystem, powerUpSystem);
+        CollisionSystem cm = new CollisionSystem(null, ballSystem, spyBrickSystem, powerUpSystem);
 
         // Ensure precondition: intersects
         assertTrue(ball.getBounds().intersects(brick.getBounds()), "Ball and brick must intersect before collision");
@@ -265,7 +265,7 @@ class CollisionControllerTest {
         BallSystem ballSystem = new BallSystem(ball, paddle);
         PowerUpSystem powerUpSystem = new PowerUpSystem(ball, paddle, new ArrayList<>());
 
-        CollisionController cm = new CollisionController(null, ballSystem, spyBrickSystem, powerUpSystem);
+        CollisionSystem cm = new CollisionSystem(null, ballSystem, spyBrickSystem, powerUpSystem);
 
         double beforeX = ball.getVelocity().x;
         double beforeY = ball.getVelocity().y;

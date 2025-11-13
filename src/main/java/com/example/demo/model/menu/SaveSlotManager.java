@@ -65,7 +65,7 @@ public class SaveSlotManager {
             case GlobalVar.SAVE_SLOT_2:
                 return slot2;
             default:
-                throw new IllegalArgumentException(GlobalVar.SAVE_INVALID_SLOT_MSG + slotNumber);
+                throw new IllegalArgumentException("Invalid slot number: " + slotNumber);
         }
     }
 

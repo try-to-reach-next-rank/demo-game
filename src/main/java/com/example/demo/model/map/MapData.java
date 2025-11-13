@@ -1,6 +1,6 @@
 package com.example.demo.model.map;
 
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.Brick;
 import com.example.demo.model.core.entities.Wall;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;

@@ -1,7 +1,6 @@
 package com.example.demo.engine;
 
-import com.example.demo.model.core.*;
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.Brick;
 import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.model.core.entities.PowerUp;
@@ -15,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -92,11 +92,14 @@ public class GameWorld {
     }
 
     public Ball getBall() { return ball; }
+    public List<Ball> getBalls() { return List.of(ball); }
     public void setBall(Ball ball) { this.ball = ball; }
 
     public Paddle getPaddle() { return paddle; }
+    public List<Paddle> getPaddles() { return List.of(paddle); }
     public void setPaddle(Paddle paddle) { this.paddle = paddle; }
 
+    public List<Brick> getBrickss() { return Arrays.asList(bricks); }
     public Brick[] getBricks() { return bricks; }
     public void setBricks(Brick[] bricks) { this.bricks = Objects.requireNonNullElse(bricks, new Brick[0]); }
 
@@ -139,31 +142,6 @@ public class GameWorld {
         if (paddle != null) paddle.resetState();
     }
 
-    public void init() {
-        paddle = new Paddle();
-        ball = new Ball(paddle);
-
-        powerUps.clear();
-        walls.clear();
-
-        bricks = new Brick[0];
-    }
-
-    public void update(double deltaTime) {
-        updatePlayTime(deltaTime);
-        for (Updatable u : updatables) {
-            u.update(deltaTime);
-        }
-    }
-
-    // --- Register an updatable system ---
-    public void registerUpdatable(Updatable system) {
-        if (!updatables.contains(system)) {
-            updatables.add(system);
-        }
-    }
-
-    // --- Clear all updatables ---
     public void clearUpdatables() {
         updatables.clear();
     }
@@ -184,6 +162,26 @@ public class GameWorld {
         // if (bricks != null) for (Brick b : bricks) all.add(b);
         if (walls != null) all.addAll(walls);
         if (powerUps != null) all.addAll(powerUps);
+        return all;
+    }
+
+    // TODO: FOR TESTING, DELETE LATER
+    public List<GameObject> getObjects() {
+        List<GameObject> all = new ArrayList<>();
+
+        if (paddle != null) all.add(paddle);
+        if (ball != null) all.add(ball);
+
+        if (bricks != null)
+            for (Brick b : bricks)
+                if (b != null) all.add(b);
+
+        if (walls != null && !walls.isEmpty())
+            all.addAll(walls);
+
+        if (powerUps != null && !powerUps.isEmpty())
+            all.addAll(powerUps);
+
         return all;
     }
 

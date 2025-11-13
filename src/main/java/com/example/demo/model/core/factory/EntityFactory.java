@@ -16,6 +16,8 @@ public class EntityFactory {
     }
 
     public static Ball createBall(Paddle paddle) {
-        return new Ball(paddle);
+        Ball b = new Ball();
+        b.setStuckPaddle(paddle);
+        return b;
     }
 }

@@ -1,9 +1,16 @@
 package com.example.demo.model.system;
 
+<<<<<<< HEAD
 import com.example.demo.controller.system.BrickSystem;
 import com.example.demo.model.core.entities.PowerUp;
 
+=======
+>>>>>>> portal
 import org.junit.jupiter.api.Test;
+
+import com.example.demo.controller.system.BrickSystem;
+import com.example.demo.model.core.entities.Brick;
+import com.example.demo.model.core.entities.PowerUp;
 
 import java.util.ArrayList;
 import java.util.List;

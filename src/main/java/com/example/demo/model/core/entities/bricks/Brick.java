@@ -38,6 +38,12 @@ public abstract class Brick extends GameObject<BrickData> {
         // Optionally update imageKey here
     }
 
+    // For CoreView
+    @Override
+    public boolean isVisible() {
+        return super.isVisible() && !isDestroyed(); 
+    }
+
     public int getInitialHealth() {
         return health;
     }

@@ -1,30 +1,26 @@
 package com.example.demo.model.core.entities;
 
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.Brick;
 import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.BallData;
-import com.example.demo.model.state.gameobjectdata.GameObjectData;
-import com.example.demo.model.state.gameobjectdata.ImageObjectData;
 import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
 
-public class Ball extends ImageObject {
-    private final double baseSpeed = GameVar.BASE_SPEED_BALL;
+public class Ball extends ImageObject<BallData> {
+    private final double BASE_SPEED = GameVar.BASE_SPEED_BALL;
+    private boolean beingHeld;
     private boolean stuck;
-    private Vector2D velocity;
-    private final Paddle paddle;
-
     private boolean accelerated;
     private boolean stronger;
     private boolean stopTime;
     private double elapsedTime = 0;
-    private boolean beingHeld = false;
+    private Vector2D velocity;
 
+    private Paddle stuckPaddle;
     private Brick lastBrick;
 
-    public Ball(Paddle paddle) {
+    public Ball() {
         super("ball", GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
-        this.paddle = paddle;
         resetState();
     }
 
@@ -41,11 +37,12 @@ public class Ball extends ImageObject {
     }
 
     public void resetState() {
-        alignWithPaddle(GameVar.BALL_OFFSET_Y, GameVar.BALL_ALIGN_LERP_FACTOR);
-        stuck = true;
-        accelerated = false;
-        stronger = false;
-        velocity = new Vector2D(GameVar.BALL_INIT_DIR_X, GameVar.BALL_INIT_DIR_Y);
+        this.stuck = true;
+        this.accelerated = false;
+        this.stronger = false;
+        this.stopTime = false;
+        this.elapsedTime = 0.0;
+        setVelocity(GameVar.BALL_INIT_DIR_X, GameVar.BALL_INIT_DIR_Y);
     }
 
     public void release() {
@@ -55,7 +52,8 @@ public class Ball extends ImageObject {
         }
     }
 
-    // Thêm vào lớp Ball.java
+    // --- Data ---
+    @Override
     public void applyState(BallData data) {
         if (data == null) return;
         this.setPosition(data.getX(), data.getY());
@@ -63,68 +61,35 @@ public class Ball extends ImageObject {
         this.setStuck(data.isStuck());
     }
 
-    // Getters and setters
-    public void setStuck(boolean stuck) {
-        this.stuck = stuck;
-    }
-
-    public Vector2D getVelocity() { return velocity; }
-    public void setVelocity(Vector2D v) {
-        this.velocity = v.normalize(); }
-
-    public void setVelocity(double x, double y){
-        this.velocity.x = x;
-        this.velocity.y = y;
-    }
-    public boolean isStuck() { return stuck; }
-    public double getBaseSpeed() { return baseSpeed; }
-
-    public boolean isAccelerated() { return accelerated; }
-    public void setAccelerated(boolean accelerated) { this.accelerated = accelerated; }
-
+    // --- Getters / setters ---
     public boolean isHeldByEffect() { return beingHeld; }
     public void setHeldByEffect(boolean held) { this.beingHeld = held; }
 
-    public boolean isStronger() { return stronger; }
+    public boolean isStuck() { return this.stuck; }
+    public void setStuck(boolean stuck) { this.stuck = stuck; }
+
+    public boolean isAccelerated() { return this.accelerated; }
+    public void setAccelerated(boolean accelerated) { this.accelerated = accelerated; }
+
+    public boolean isStronger() { return this.stronger; }
     public void setStronger(boolean stronger){ this.stronger = stronger; }
 
     public boolean isStopTime() { return stopTime; }
     public void setStopTime(boolean stopTime) { this.stopTime = stopTime; }
 
-    public void alignWithPaddle(double offsetY, double lerpFactor) {
-        double targetX = paddle.getX() + paddle.getWidth() / 2.0 - getWidth() / 2.0;
-        double targetY = paddle.getY() - getHeight() - offsetY;
+    public double getElapsedTime(){ return this.elapsedTime; }
+    public void setElapsedTime(double x){ this.elapsedTime = x; }
 
-        if (lerpFactor >= 1.0) {
-            x = targetX;
-            y = targetY;
-        } else {
-            x += (targetX - x) * lerpFactor;
-            y += (targetY - y) * lerpFactor;
-        }
+    public Vector2D getVelocity() { return velocity; }
+    public void setVelocity(Vector2D v) { this.velocity = v.normalize(); }
+    public void setVelocity(double x, double y){ setVelocity(new Vector2D(x, y)); }
+    
+    public double getBaseSpeed() { return this.BASE_SPEED; }
 
-        double minX = paddle.getX();
-        double maxX = paddle.getX() + paddle.getWidth() - getWidth();
-        if (x < minX) x = minX;
-        if (x > maxX) x = maxX;
-        setPosition(x, y);
-    }
+    // --- Getters / Setters with other object ---
+    public Brick getLastBrick() { return this.lastBrick; }
+    public void setLastBrick(Brick brick) { this.lastBrick = brick; }
 
-    public double getElapsedTime(){ return elapsedTime; }
-    public void setElapsedTime(double x){ elapsedTime = x; }
-
-    public boolean isStatic() {
-        return false;
-    }
-
-    public Brick getLastBrick(){
-        return lastBrick;
-    }
-    public void setLastBrick(Brick brick){
-        lastBrick = brick;
-    }
-
-    @Override
-    public void applyState(ImageObjectData ImageObjectData) {
-    }
+    public Paddle getStuckPaddle() { return this.stuckPaddle; }
+    public void setStuckPaddle(Paddle paddle) { this.stuckPaddle = paddle; }
 }

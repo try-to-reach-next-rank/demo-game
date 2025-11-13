@@ -1,6 +1,6 @@
 package com.example.demo.model.state;
 
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.Brick;
 import com.example.demo.model.state.gameobjectdata.ImageObjectData;
 
 public class BrickData extends ImageObjectData {

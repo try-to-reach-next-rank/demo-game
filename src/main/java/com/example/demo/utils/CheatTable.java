@@ -1,6 +1,7 @@
 package com.example.demo.utils;
 
 import com.example.demo.controller.core.GameController;
+import com.example.demo.controller.system.BallSystem;
 import com.example.demo.model.core.effects.GlowTextEffect;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.UtilVar;
@@ -150,13 +151,13 @@ public class CheatTable extends UIComponent {
 
         switch (selectedOption) {
             case "Toggle Stop Time":
-                gameController.getBall().toggleStopTime();
+                gameController.getSystemManager().get(BallSystem.class).toggleStopTime();
                 break;
             case "Toggle Accelerated":
-                gameController.getBall().toggleAccelerated();
+                gameController.getSystemManager().get(BallSystem.class).toggleAccelerated();
                 break;
             case "Toggle Stronger":
-                gameController.getBall().toggleStronger();
+                gameController.getSystemManager().get(BallSystem.class).toggleStronger();
                 break;
             case "Load Next Map":
                 hide();

@@ -17,7 +17,8 @@ class BallTest {
         // position it somewhere predictable
         paddle.setPosition(100.0, 400.0);
 
-        Ball ball = new Ball(paddle);
+        Ball ball = new Ball();
+        ball.setStuckPaddle(paddle);
 
         assertTrue(ball.isStuck(), "Ball should start stuck after construction/resetState");
         assertEquals(300.0, ball.getBaseSpeed(), 1e-9, "Base speed should match expected constant");

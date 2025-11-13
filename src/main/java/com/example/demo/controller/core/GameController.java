@@ -1,13 +1,9 @@
 package com.example.demo.controller.core;
 
 import com.example.demo.controller.map.MapController;
-import com.example.demo.controller.system.BallSystem;
-import com.example.demo.controller.system.BrickSystem;
-import com.example.demo.controller.system.PaddleSystem;
-import com.example.demo.controller.system.PowerUpSystem;
+import com.example.demo.controller.system.SystemManager;
 import com.example.demo.engine.*;
-import com.example.demo.model.core.*;
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.Brick;
 import com.example.demo.model.core.builder.GameWorldBuilder;
 import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.core.entities.Paddle;
@@ -32,6 +28,8 @@ public class GameController extends Pane {
     private static final Logger log = LoggerFactory.getLogger(GameController.class);
 
     private GameWorld world = new GameWorld();
+    private final SystemManager systemManager;
+
     private final GameView view;
     private AnimationTimer timer;
     private Input inputGame;
@@ -62,6 +60,7 @@ public class GameController extends Pane {
             world = GameFactory.loadFromState(loaded, mapManager);
         }
 
+        systemManager = new SystemManager(world);
         view = new GameView(world, this);
         getChildren().add(view);
 
@@ -85,7 +84,7 @@ public class GameController extends Pane {
                 () -> setupLevel(world.getCurrentLevel()),
                 () -> setInGame(true)
         );
-        BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
+        // BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
 
         // Thiết lập callback để cộng điểm
 //        brickSystem.setOnBrickDestroyed(brick -> {
@@ -108,17 +107,7 @@ public class GameController extends Pane {
         // Reset any level-specific state in systems
         world.clearUpdatables();
 
-        // Re-register systems
-        BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
-        PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
-        PowerUpSystem powerUpSystem = new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps());
-        BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
-        CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
-
-        world.setPowerUpSystem(powerUpSystem);
-        List.of(ballSystem, paddleSystem, brickSystem, powerUpSystem, collisionManager)
-                .forEach(world::registerUpdatable);
-
+        
         // Reset view
         view.reset();
         view.getCoreView().reset();
@@ -145,7 +134,6 @@ public class GameController extends Pane {
     }
 
     // ========== Save/Load -> Delegate to SaveController ==========
-
     public void saveGame() {
         saveController.saveGame(world, currentSlotNumber);  // ← CHANGED
     }
@@ -155,7 +143,6 @@ public class GameController extends Pane {
     }
 
     // ========== Auto Level Progression ==========
-
     private void checkLevelCompletion() {
         if (world.getBricks().length == 0) return;
         if (world.getCurrentScore() > world.getHighScore()) {
@@ -207,7 +194,7 @@ public class GameController extends Pane {
 
     private void update(double deltaTime) {
         if (!paused) {
-            world.update(deltaTime);
+            systemManager.update(deltaTime);
 
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;
@@ -256,14 +243,6 @@ public class GameController extends Pane {
         setOnKeyReleased(view::handleKeyReleased);
     }
 
-    public Paddle getPaddle() {
-        return world.getPaddle();
-    }
-
-    public Ball getBall() {
-        return world.getBall();
-    }
-
     public void backToMenu() {
         onBackToMenu.run();
     }
@@ -288,5 +267,9 @@ public class GameController extends Pane {
 
     public void startIntroDialogue() {
         view.getUiView().startDialogue();
+    }
+
+    public SystemManager getSystemManager() {
+        return this.systemManager;
     }
 }

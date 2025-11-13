@@ -1,5 +1,9 @@
 package com.example.demo.controller.map;
 
+<<<<<<< HEAD
+=======
+import com.example.demo.model.core.entities.Brick;
+>>>>>>> portal
 import com.example.demo.model.map.MapData;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;

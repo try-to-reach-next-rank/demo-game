@@ -1,34 +1,34 @@
 package com.example.demo.model.core.entities;
 
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.Brick;
 import com.example.demo.model.core.gameobjects.AnimatedObject;
 import com.example.demo.model.state.PowerUpData;
-import com.example.demo.utils.var.GlobalVar;
+import com.example.demo.utils.var.GameVar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class PowerUp extends AnimatedObject<PowerUpData> {
     private static final Logger log = LoggerFactory.getLogger(PowerUp.class);
     private String type;
-    private final double fallSpeed = 150.0; // TODO: be a constant
+    private final double fallSpeed = GameVar.BASE_SPEED_POWERUP;
     private boolean active = false;
     private long expireAt = -1;
 
     public PowerUp(String type) {
         super("powerup_" + type.toLowerCase() , 0, 0);
-        PowerUp.log.info("Type: {}", type);
+        log.info("Type: {}", type);
         this.type = type;
     }
 
     public void dropFrom(Brick brick) {
         setPosition(brick.getX() + brick.getWidth() / 2, brick.getY() + brick.getHeight() / 2);
-        visible = true;
+        setVisible(true);
     }
 
     public void fall(double deltaTime) {
-        if (!visible) return;
-        setPosition(getX(), getY() + fallSpeed * deltaTime);
-        if (y > GlobalVar.HEIGHT) visible = false;
+        if (!isVisible()) return;
+        y += fallSpeed * deltaTime;
+        if (y > GameVar.MAP_MAX_Y) setVisible(false);
     }
 
     public void activate(long durationMillis) {
