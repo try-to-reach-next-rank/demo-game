@@ -2,10 +2,7 @@ package com.example.demo.model.assets;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 import com.example.demo.engine.AssetLoader;
 import com.example.demo.utils.Animation;
@@ -48,7 +45,7 @@ public class AssetManager {
          * newFixedThreadPool(): is a factory methods for Executor Service
          */
         ExecutorService executorService = Executors.newFixedThreadPool(
-            Runtime.getRuntime().availableProcessors()
+            Math.max(2, Runtime.getRuntime().availableProcessors())
                 // init a thread pool of the size of the machine availableProcessors
         );
 
@@ -56,23 +53,33 @@ public class AssetManager {
          * Future: represent the result of an asynchronous operation -> check if operation is completed or not
          */
         try {
-            List<Callable<Void>> tasks = loaders.stream()
-                    .<Callable<Void>>map(loader -> () -> {
-                        loader.loadInto(this);
-                        return null;
-                    })
-                    .toList();
+            List<AssetLoader> baseLoaders = List.of(
+                    new ImageAssets()
+            );
 
-            /**
-             * Execute the given tasks, returning a list of Future holding result and status
-             */
-            executorService.invokeAll(tasks);
+            runandWait(executorService, baseLoaders);
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            Thread.currentThread().interrupt();
+            List<AssetLoader> dependentLoaders = List.of(
+                    new AnimationAssets(),
+                    new SoundAssets()
+            );
+            runandWait(executorService, dependentLoaders);
         } finally {
             executorService.shutdown();
+        }
+    }
+
+    private void runandWait(ExecutorService executorService, List<AssetLoader> loaders) {
+        List<? extends Future<?>> futures = loaders.stream()
+                .map(loader -> executorService.submit(() -> loader.loadInto(this)))
+                .toList();
+
+        for (Future<?> f : futures) {
+            try {
+                f.get(); // wait for all loaders in this group
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
