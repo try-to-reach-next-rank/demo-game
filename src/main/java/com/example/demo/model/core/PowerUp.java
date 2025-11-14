@@ -33,13 +33,13 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
 
     public void activate(long durationMillis) {
         active = true;
-        expireAt = System.currentTimeMillis() + durationMillis;
+        expireAt = System.currentTimeMillis() + durationMillis; // ms
     }
 
     public void activateWithRemainingDuration(long remainingDuration) {
         if (remainingDuration > 0) {
             active = true;
-            expireAt = System.currentTimeMillis() + remainingDuration;
+            expireAt = System.currentTimeMillis() + remainingDuration; //ms
         }
     }
 
@@ -47,9 +47,8 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
         if (!isActive()) {
             return 0;
         }
-        // Calculate remaining time, ensuring it's not negative
         long remaining = expireAt - System.currentTimeMillis();
-        return Math.max(0, remaining);
+        return Math.max(0, remaining); //ms
     }
 
     public boolean hasExpired() {
@@ -67,7 +66,7 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
         setPosition(0,0);
         setVisible(false);
         active = false;
-        expireAt = 1000;
+        expireAt = -1;
     }
 
     @Override

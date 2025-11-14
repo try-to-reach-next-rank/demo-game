@@ -4,6 +4,7 @@ import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.Paddle;
 import com.example.demo.model.core.PowerUp;
+import com.example.demo.model.core.ThePool;
 import com.example.demo.model.state.ActivePowerUpData;
 import com.example.demo.utils.var.GameVar;
 
@@ -33,7 +34,7 @@ public class PowerUpSystem implements Updatable {
             case GameVar.STRONGER -> ball.setStronger(true);
             case GameVar.DRUNK -> ball.setDrunk(true);
             case GameVar.BIGGERPADDLE -> paddle.setBiggerPaddle(true);
-         }
+        }
     }
 
     @Override
@@ -50,7 +51,7 @@ public class PowerUpSystem implements Updatable {
         Iterator<PowerUp> it = activePowerUps.iterator();
         while (it.hasNext()) {
             PowerUp p = it.next();
-            if (p.hasExpired()) {
+            if (!p.isActive()) {
                 switch (p.getType()) {
                     case GameVar.ACCELERATE -> ball.setAccelerated(false);
                     case GameVar.STRONGER -> ball.setStronger(false);
@@ -59,6 +60,7 @@ public class PowerUpSystem implements Updatable {
                 }
                 p.deactivate();
                 it.remove();
+                ThePool.PowerUpPool.release(p);
             }
         }
     }
@@ -77,7 +79,6 @@ public class PowerUpSystem implements Updatable {
         // clear the internal list of active power-ups
         activePowerUps.clear();
     }
-
 
     public void activateFromSave(ActivePowerUpData data) {
         // 1. Create a new PowerUp object based on the saved type

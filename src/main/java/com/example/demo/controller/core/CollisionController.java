@@ -97,7 +97,6 @@ public class CollisionController implements Updatable {
                 Sound.getInstance().playSound("power_up");
                 powerUpSystem.activate(p);
                 p.setVisible(false);
-                ThePool.PowerUpPool.release(p);
                 toRemove.add(p);
             }
         }
