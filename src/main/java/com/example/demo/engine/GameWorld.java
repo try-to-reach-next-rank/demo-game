@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class GameWorld {
+    private static final GameWorld instance = new GameWorld();
     private static final Logger log = LoggerFactory.getLogger(GameWorld.class);
     private Ball ball;
     private Paddle paddle;

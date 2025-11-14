@@ -54,6 +54,7 @@ public class MenuView extends AbstractUIView {
         menuBox.getChildren().addAll(
                 buttonManager.createButtonRow("Play", e -> controller.isSelecting()),
                 buttonManager.createButtonRow("Settings", e -> controller.isSettings()),
+                buttonManager.createButtonRow("Achievement", e -> controller.isAchievement()),
                 buttonManager.createButtonRow("Exit", e -> controller.isExit())
         );
 

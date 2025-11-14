@@ -100,27 +100,66 @@ public class ButtonManager {
         return row;
     }
 
-    /**
-     * Tạo single button với hands (cho SettingsView style)
-     */
-    public HBox createSingleButtonRow(String label, EventHandler<ActionEvent> handler) {
-        HBox row = createButtonRow(label, handler);
-        Button button = buttons.get(buttons.size() - 1);
+    public HBox createButtonRowPosition(String label, EventHandler<ActionEvent> handler, float x, float y) {
+        ImageView left = new ImageView();
+        ImageView right = new ImageView();
 
-        // For single button, show hands on hover/focus
+        if (handImage != null) {
+            left.setImage(handImage);
+            right.setImage(handImage);
+            right.setScaleX(-1); // flip horizontally
+        }
+
+        left.setFitWidth(28);
+        left.setFitHeight(28);
+        left.setPreserveRatio(true);
+        left.setVisible(false);
+
+        right.setFitWidth(28);
+        right.setFitHeight(28);
+        right.setPreserveRatio(true);
+        right.setVisible(false);
+
+        Button button = new Button(label);
+        button.setMinWidth(220);
+        button.setFocusTraversable(false);
+        button.setFont(Font.font(18));
+        button.setOnAction(handler);
+
+        // Hover animations
+        addHoverAnimation(button);
+
+        // Mouse interactions để update selection
+        int buttonIndex = buttons.size();
         button.setOnMouseEntered(e -> {
-            selectedIndex = buttons.size() - 1;
+            selectedIndex = buttonIndex;
             updateSelectionVisuals();
-            startPulse(button);
         });
 
         button.setOnMouseExited(e -> {
-            hideHands(buttons.size() - 1);
+            hideHands(buttonIndex);
             stopPulse(button);
+            button.getStyleClass().remove("selected");
         });
+
+        HBox row = new HBox(12);
+        row.setAlignment(Pos.CENTER);
+        row.getChildren().addAll(left, button, right);
+
+        buttons.add(button);
+        leftHands.add(left);
+        rightHands.add(right);
+
+        row.setLayoutX(x);
+        row.setLayoutY(y);
 
         return row;
     }
+
+
+
+
+
 
     // -------------------------
     // Animations
@@ -343,5 +382,5 @@ public class ButtonManager {
             buttons.get(selectedIndex).fire();
         }
     }
-
 }
+

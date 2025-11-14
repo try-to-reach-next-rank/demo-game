@@ -59,6 +59,8 @@ public class MenuState implements GameState {
 
                 case SELECT -> mainApp.getStateManager().changeState(new SlotSelectionState(mainApp, stage));
 
+                case ACHIEVEMENT -> mainApp.getStateManager().changeState(new AchievementState(mainApp, stage));
+
                 case EXIT -> stage.close();
 
             }

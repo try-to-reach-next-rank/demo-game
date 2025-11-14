@@ -13,6 +13,10 @@ public record MenuController(MenuModel model) {
         model.setCurrentScreen(MenuModel.Screen.SETTINGS);
     }
 
+    public void isAchievement() {
+        model.setCurrentScreen(MenuModel.Screen.ACHIEVEMENT);
+    }
+
     public void isExit() {
         model.setCurrentScreen(MenuModel.Screen.EXIT);
         Platform.exit();

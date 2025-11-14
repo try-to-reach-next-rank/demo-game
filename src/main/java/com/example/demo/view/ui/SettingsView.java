@@ -43,7 +43,7 @@ public class SettingsView extends AbstractUIView {
         GridPane settingsGrid = createSettingsGrid();
 
         // Back button
-        HBox backRow = buttonManager.createSingleButtonRow(
+        HBox backRow = buttonManager.createButtonRow(
                 "Back to Menu",
                 e -> controller.backToMenu()
         );
