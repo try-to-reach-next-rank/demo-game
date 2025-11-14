@@ -116,6 +116,7 @@ public class GameController extends Pane {
         } else {
             bricksToLoad = mapData.bricks().toArray(new Brick[0]);
         }
+        world.setBricks(bricksToLoad);
 
         // Reset any level-specific state in systems
         world.clearUpdatables();
