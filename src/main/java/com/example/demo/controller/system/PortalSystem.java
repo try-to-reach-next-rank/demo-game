@@ -38,10 +38,10 @@ public class PortalSystem implements Updatable {
     public void clear() {}
 
     private void handleBallCollision(Portal portal, Ball ball) {
-        // if (!portal.canTeleport()) {
-        //     System.out.println("HEHEHEHEHE");
-        //     return;
-        // }
+         if (!portal.canTeleport()) {
+             System.out.println("HEHEHEHEHE");
+             return;
+         }
 
         System.out.println("BALL: x = " + ball.getX() +  " y = " + ball.getY());
 
@@ -59,7 +59,7 @@ public class PortalSystem implements Updatable {
         double centerY = dest.getY() + dest.getHeight() / 2.0;
 
         // Khoảng cách offset để ra ngoài portal
-        double offsetDistance = Math.max(dest.getWidth(), dest.getHeight()) / 2.0 + 0.1; // +5 pixels tránh collision
+        double offsetDistance = Math.max(dest.getWidth(), dest.getHeight()) + ball.getWidth() + 5;
 
         // Vị trí ball xuất hiện
         double spawnX = centerX + dir.x * offsetDistance;
