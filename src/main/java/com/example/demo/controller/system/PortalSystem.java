@@ -38,12 +38,10 @@ public class PortalSystem implements Updatable {
     public void clear() {}
 
     private void handleBallCollision(Portal portal, Ball ball) {
-         if (!portal.canTeleport()) {
-             System.out.println("HEHEHEHEHE");
-             return;
-         }
-
-        System.out.println("BALL: x = " + ball.getX() +  " y = " + ball.getY());
+        //  if (!portal.canTeleport()) {
+        //      System.out.println("HEHEHEHEHE");
+        //      return;
+        //  }
 
         Portal dest = portalFactory.getRandomDestination(portal);
         if (dest == null) {
@@ -51,25 +49,48 @@ public class PortalSystem implements Updatable {
             return;
         } 
 
-        // Vector hướng của portal
-        Vector2D dir = dest.getDirection().normalize();
+        handleBallPosition(portal, ball); 
 
-        // Tính center portal (bounding box) trước
-        double centerX = dest.getX() + dest.getWidth() / 2.0;
-        double centerY = dest.getY() + dest.getHeight() / 2.0;
+        // portal.setNextTeleportTime(System.currentTimeMillis() + 1000);
+    }
 
-        // Khoảng cách offset để ra ngoài portal
-        double offsetDistance = Math.max(dest.getWidth(), dest.getHeight()) + ball.getWidth() + 5;
+    private void handleBallPosition(Portal portal, Ball ball) {
+        // TODO: Phuc is fully wrong, please help
+        // This is a white flag from phuc
 
-        // Vị trí ball xuất hiện
-        double spawnX = centerX + dir.x * offsetDistance;
-        double spawnY = centerY + dir.y * offsetDistance;
+        Vector2D edge = getPortalEdgePosition(portal);
+        Vector2D dir  = portal.getDirection().normalize();
 
-        ball.setPosition(spawnX, spawnY);
+        double r = ball.getWidth() / 2;
+        double offset = 2.0;
 
-        // Set ball velocity along portal direction
-        ball.setVelocity(dest.getDirection().multiply(ball.getBaseSpeed()));
+        // Tâm ball thẳng hàng ngoài mép portal
+        double cx = edge.x + dir.x * r;
+        double cy = edge.y + dir.y * r;
 
-        portal.setNextTeleportTime(System.currentTimeMillis() + 1000);
+        // Chuyển từ center → top-left
+        ball.setPosition(cx - r, cy - r);
+
+        // Hướng bay ra
+        ball.setVelocity(dir.multiply(ball.getBaseSpeed()));
+    }
+
+
+    private Vector2D getPortalEdgePosition(Portal portal) {
+        double cx = portal.getX() + portal.getWidth() / 2.0;
+        double cy = portal.getY() + portal.getHeight() / 2.0;
+
+        Vector2D dir = portal.getDirection().normalize();
+
+        double halfW = portal.getWidth() / 2.0;
+        double halfH = portal.getHeight() / 2.0;
+
+        // Khoảng cách từ tâm portal đến mép theo hướng dir
+        double edgeOffset = Math.abs(dir.x) * halfW + Math.abs(dir.y) * halfH;
+
+        double ex = cx + dir.x * edgeOffset;
+        double ey = cy + dir.y * edgeOffset;
+
+        return new Vector2D(ex, ey);
     }
 }

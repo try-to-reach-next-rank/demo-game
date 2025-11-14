@@ -37,7 +37,8 @@ public class AnimatedEffect extends VisualEffect {
     public void render(GraphicsContext gc) {
         if (!isActive()) return;
 
-        animation.render(gc, x, y);
+        // Default effect render center
+        animation.renderCenter(gc, x, y);
     }
 
     @Override

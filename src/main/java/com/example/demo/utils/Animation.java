@@ -74,7 +74,28 @@ public class Animation {
         gc.drawImage(
             spriteSheet,
             sx, sy, frameWidth, frameHeight,    // Source
-            x , y , w, h         // Destination
+            x , y , w, h                        // Destination
+        );
+    }
+
+    // Render center
+    public void renderCenter(GraphicsContext gc, double x, double y) {
+        double w = renderWidth > 0 ? renderWidth : frameWidth;
+        double h = renderHeight > 0 ? renderHeight : frameHeight;
+        render(gc, x - w / 2, y - w / 2, w, h);
+    }
+
+    public void renderCenter(GraphicsContext gc, double x, double y, double w, double h) {
+        if (finished) return;
+
+        double sx = currentFrame * frameWidth;
+        double sy = rows * frameHeight;
+
+        // Default render at the center
+        gc.drawImage(
+            spriteSheet,
+            sx, sy, frameWidth, frameHeight,    // Source
+            x - w / 2 , y - h / 2 , w, h        // Destination
         );
     }
 
