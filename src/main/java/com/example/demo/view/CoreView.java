@@ -64,9 +64,6 @@ public class CoreView {
 
         renderEffects(gc);
 
-        gc.fillRect(100, 200, 64, 64);
-        gc.fillRect(500, 200, 64, 64);
-
         gc.restore();
     }
 

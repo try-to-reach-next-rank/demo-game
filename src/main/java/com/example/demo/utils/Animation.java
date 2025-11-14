@@ -74,7 +74,7 @@ public class Animation {
         gc.drawImage(
             spriteSheet,
             sx, sy, frameWidth, frameHeight,    // Source
-            x - w / 2 , y - h / 2, w, h         // Destination
+            x , y , w, h         // Destination
         );
     }
 
