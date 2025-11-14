@@ -52,12 +52,13 @@ public final class AssetPaths {
     public static final String SFX_DIALOGUE_SOUND = "/sounds/dialogue-sound.wav";
     public static final String SFX_BRICK_HIT      = "/sounds/brick_hit.wav";
     public static final String SFX_PADDLE_HIT     = "/sounds/paddle_hit.wav";
-    public static final String SFX_WALL_HIT       = "/sounds/wall_hit.wav";
+    public static final String SFX_WALL_HIT       = "/sounds/wall_hit.mp3";
     public static final String SFX_GAME_OVER      = "/sounds/game_over.wav";
     public static final String SFX_POWER_UP       = "/sounds/power_up.wav";
     public static final String SFX_EXPLOSION_HIT  = "/sounds/explosion_hit.wav";
     public static final String SFX_MENU_SELECTION = "/sounds/menu_selection.wav";
     public static final String SFX_MENU_CONFIRM   = "/sounds/menu_confirm.wav";
+    public static final String SFX_STEEL_HIT      = "/sounds/steel_hit.mp3";
 
     // DIALOGUE
     public static final String EGG = "/images/egg.png";

@@ -66,6 +66,7 @@ public class AssetManager {
             runandWait(executorService, dependentLoaders);
         } finally {
             executorService.shutdown();
+            System.out.println("Sounds in AssetManager: " + AssetManager.getInstance().getSounds().keySet());
         }
     }
 

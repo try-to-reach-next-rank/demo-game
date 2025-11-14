@@ -13,7 +13,7 @@ import java.util.Map;
 public class SoundAssets implements AssetLoader {
     private enum SoundType { MUSIC, SFX }
     private static final Map<String, String> MUSIC_ASSETS = new HashMap<>();
-    private static final Map<String, String> SFX_ASSETS   = new HashMap<>();
+    public static final Map<String, String> SFX_ASSETS   = new HashMap<>();
 
     @Override
     public void loadInto(AssetManager manager) {
@@ -32,6 +32,7 @@ public class SoundAssets implements AssetLoader {
         // --- Sound effects ---
         SFX_ASSETS.put("dialogue-sound", AssetPaths.SFX_DIALOGUE_SOUND);
         SFX_ASSETS.put("brick_hit", AssetPaths.SFX_BRICK_HIT);
+        SFX_ASSETS.put("steel_hit", AssetPaths.SFX_STEEL_HIT);
         SFX_ASSETS.put("paddle_hit", AssetPaths.SFX_PADDLE_HIT);
         SFX_ASSETS.put("wall_hit", AssetPaths.SFX_WALL_HIT);
         SFX_ASSETS.put("game_over", AssetPaths.SFX_GAME_OVER);
@@ -46,7 +47,8 @@ public class SoundAssets implements AssetLoader {
             URL url = getClass().getResource(path);
             if (url == null) {
                 System.err.println("[WARN] Missing sound asset: " + path);
-                return;
+            } else {
+                System.out.println("[INFO] Loaded SFX: " + name + " -> " + url);
             }
 
             switch (type) {

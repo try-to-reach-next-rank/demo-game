@@ -29,7 +29,9 @@ public abstract class Brick extends GameObject<BrickData> {
     public boolean isDestroyed() { return destroyed; }
     public String getImageKey() { return imageKey; }
     public Image getImage() {return AssetManager.getInstance().getImage(imageKey);}
-
+    public String getSound() {
+        return "brick_hit"; // default
+    }
     @Override
     public void applyState(BrickData data) {
         if (data == null) return;

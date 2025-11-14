@@ -16,4 +16,9 @@ public class SteelBrick extends Brick {
     public int getScoreValue() {
         return 0;
     }
+
+    @Override
+    public String getSound() {
+        return "steel_hit";
+    }
 }
