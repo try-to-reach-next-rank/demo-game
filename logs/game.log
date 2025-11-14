@@ -26681,3 +26681,21 @@
 16:38:07.020 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 110
 16:38:07.020 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 40
 16:38:07.177 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+16:47:21.226 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+16:47:21.227 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+16:47:21.228 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+16:47:21.228 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+16:47:21.228 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+16:47:21.228 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 110
+16:47:21.228 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 40
+16:47:21.397 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+16:47:35.263 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+16:49:29.056 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+16:49:29.058 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+16:49:29.058 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+16:49:29.058 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+16:49:29.058 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+16:49:29.058 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 110
+16:49:29.058 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 40
+16:49:29.208 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+16:49:32.266 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json

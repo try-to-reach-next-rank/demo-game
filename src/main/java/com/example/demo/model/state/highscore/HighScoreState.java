@@ -11,14 +11,15 @@ import java.util.PriorityQueue;
 
 public class HighScoreState {
     private static final int CAPACITY = GameVar.HIGHSCORE_CAPACITY;
+    private  static HighScoreState instance;
     private final PriorityQueue<Integer> heap = new PriorityQueue<>();
     private String path = "src/main/resources/Saves/highscores.json";
-    public HighScoreState() {
-        giveHighScoreState();
-    }
 
-    public HighScoreState giveHighScoreState() {
-        return SaveController.load(path, HighScoreState.class);
+    public HighScoreState getInstance() {
+        if(instance == null){
+            return  SaveController.load(path, HighScoreState.class);
+        }
+        return instance;
     }
 
     public void addScore(int score) {
