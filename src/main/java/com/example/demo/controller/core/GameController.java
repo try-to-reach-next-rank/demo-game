@@ -12,6 +12,7 @@ import com.example.demo.model.core.builder.GameWorldBuilder;
 import com.example.demo.model.core.factory.GameFactory;
 import com.example.demo.model.map.MapData;
 import com.example.demo.model.state.*;
+import com.example.demo.utils.BrickFactoryUtil;
 import com.example.demo.utils.Input;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
@@ -24,6 +25,7 @@ import javafx.scene.layout.Pane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class GameController extends Pane {
@@ -48,6 +50,7 @@ public class GameController extends Pane {
     // ========== NEW: Level Completion Check Throttling ==========
     private static final double LEVEL_CHECK_INTERVAL = 3.0; // Check every 3 seconds
     private double levelCheckTimer = 0.0;
+    private GameState loadedState = null;
 
     public GameController() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
@@ -101,7 +104,18 @@ public class GameController extends Pane {
         // Clear and add new map content
         world.getWalls().clear();
         world.getWalls().addAll(mapData.walls());
-        world.setBricks(mapData.bricks().toArray(new Brick[0]));
+
+        Brick[] bricksToLoad;
+        if (loadedState != null && !loadedState.getBricksData().isEmpty()) {
+            // Rebuild bricks from saved BrickData
+            bricksToLoad = new Brick[loadedState.getBricksData().size()];
+            for (BrickData data : loadedState.getBricksData()) {
+                bricksToLoad[data.getId()] = BrickFactoryUtil.createBrickFromData(data);
+            }
+            loadedState = null; // only use once
+        } else {
+            bricksToLoad = mapData.bricks().toArray(new Brick[0]);
+        }
 
         // Reset any level-specific state in systems
         world.clearUpdatables();
@@ -150,6 +164,7 @@ public class GameController extends Pane {
     }
 
     public void applyState(GameState loadedState) {
+        this.loadedState = loadedState;
         world.applyState(loadedState);
     }
 

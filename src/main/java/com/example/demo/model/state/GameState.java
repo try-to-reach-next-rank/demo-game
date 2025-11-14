@@ -4,6 +4,7 @@ import com.example.demo.engine.GameWorld; // Import GameWorld
 import com.example.demo.model.core.PowerUp;
 import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.bricks.SteelBrick;
 import com.example.demo.utils.Sound;
 
 import java.util.ArrayList;
@@ -82,7 +83,9 @@ public class GameState {
         this.bricksData = new ArrayList<>();
         Brick[] bricks = world.getBricks();
         for (int i = 0; i < bricks.length; i++) {
-            this.bricksData.add(new BrickData(i, bricks[i]));
+            Brick brick = bricks[i];
+            String type = brick instanceof SteelBrick ? "STEEL" : "NORMAL";
+            this.bricksData.add(new BrickData(i, brick, type));
         }
     }
 

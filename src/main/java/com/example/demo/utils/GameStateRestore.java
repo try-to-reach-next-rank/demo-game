@@ -24,12 +24,11 @@ public class GameStateRestore {
         world.getPaddle().applyState(state.getPaddleData());
         world.getBall().applyState(state.getBallData());
 
-        Brick[] bricks = world.getBricks();
+        Brick[] restoredBricks = new Brick[state.getBricksData().size()];
         for (BrickData data : state.getBricksData()) {
-            if (data.getId() >= 0 && data.getId() < bricks.length) {
-                bricks[data.getId()].applyState(data);
-            }
+            restoredBricks[data.getId()] = BrickFactoryUtil.createBrickFromData(data);
         }
+        world.setBricks(restoredBricks);
 
         world.getPowerUps().clear();
         for (PowerUpData data : state.getPowerUpsData()) {

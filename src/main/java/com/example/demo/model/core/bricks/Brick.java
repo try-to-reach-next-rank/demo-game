@@ -41,7 +41,7 @@ public abstract class Brick extends GameObject<BrickData> {
     }
 
     public int getInitialHealth() {
-        return health;
+        return initialHealth;
     }
 
     public abstract int getScoreValue();
