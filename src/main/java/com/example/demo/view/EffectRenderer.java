@@ -60,11 +60,7 @@ public class EffectRenderer {
         }
     }
 
-    public void render(GraphicsContext gc) {
-        for (VisualEffect effect : activeEffects) {
-            effect.render(gc);
-        }
-    }
+    public List<VisualEffect> getActiveEffects() { return this.activeEffects; }
 
     public void clear() {
         for (VisualEffect e : activeEffects) {

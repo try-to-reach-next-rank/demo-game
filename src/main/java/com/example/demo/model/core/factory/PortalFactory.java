@@ -9,18 +9,24 @@ import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.var.GameVar;
 
 public class PortalFactory {
-    private final List<Portal> portals = new ArrayList<>();
+    private final List<Portal> portals;
 
-    public void addPortal(String portalAnimKey) {
+    public PortalFactory() {
+        portals = new ArrayList<>();
+    }
+
+    public void createRandom(String portalAnimKey) {
         // Random x, y, default duration
         int x = GameRandom.nextInt(GameVar.MAP_MIN_X, GameVar.MAP_MAX_X);
         int y = GameRandom.nextInt(GameVar.MAP_MIN_Y, GameVar.MAP_MAX_Y);
         double lifeTime = 10.0; // default 10 seconds
 
-        addPortal(portalAnimKey, x, y, lifeTime);
+        System.out.println("Create random portal with x = " + x + " y = " + y);
+
+        create(portalAnimKey, x, y, lifeTime);
     }
 
-    public void addPortal(String portalAnimKey, int x, int y, double lifeTime) {
+    public void create(String portalAnimKey, int x, int y, double lifeTime) {
         Portal portal = new Portal(portalAnimKey);
         portal.activate(x, y, lifeTime);
         portals.add(portal);

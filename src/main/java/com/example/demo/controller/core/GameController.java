@@ -105,8 +105,7 @@ public class GameController extends Pane {
         world.setBricks(mapData.bricks().toArray(new Brick[0]));
 
         // Reset any level-specific state in systems
-        world.clearUpdatables();
-
+        systemManager.clear();
         
         // Reset view
         view.reset();

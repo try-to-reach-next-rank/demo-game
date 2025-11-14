@@ -29,28 +29,13 @@ public class GameWorldBuilder {
     public GameWorldBuilder withEntities() {
         world.setPaddle(EntityFactory.createPaddle());
         world.setBall(EntityFactory.createBall(world.getPaddle()));
+        world.setPortalFactory(EntityFactory.createPortalFactory());
         return this;
     }
 
-    // public GameWorldBuilder withSystems() {
-    //     BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
-    //     PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
-    //     PowerUpSystem powerUpSystem = new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps());
-    //     BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
-    //     CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
-
-    //     world.setPowerUpSystem(powerUpSystem);
-
-    //     // Register systems for updating
-    //     List.of(ballSystem, paddleSystem, brickSystem, powerUpSystem, collisionManager)
-    //             .forEach(world::registerUpdatable);
-
-    //     return this;
-    // }
-
     public GameWorldBuilder withGameStateRestore() {
         ThePool pool = new ThePool(); // hoặc inject vào nếu cần
-        world.setGameStateRestore(new GameStateRestore(pool));
+        // world.setGameStateRestore(new GameStateRestore(pool));
         return this;
     }
 

@@ -40,12 +40,14 @@ public class CollisionSystem implements Updatable {
         List<Brick> bricks = filterObjects(Brick.class);
         List<PowerUp> powerUps = filterObjects(PowerUp.class);
         List<Wall> walls = filterObjects(Wall.class);
+        List<Portal> portals = filterObjects(Portal.class);
 
         // Handle ball collisions
         balls.forEach(ball -> {
             paddles.forEach(paddle -> handleCollision(ball, paddle));
             bricks.forEach(brick -> handleCollision(ball, brick));
             walls.forEach(wall -> handleCollision(ball, wall));
+            portals.forEach(portal -> handleCollision(portal, ball));
         });
 
         // Handle power-up collisions

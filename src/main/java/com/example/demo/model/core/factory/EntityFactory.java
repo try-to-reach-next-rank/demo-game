@@ -1,11 +1,6 @@
 package com.example.demo.model.core.factory;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.example.demo.model.core.entities.Ball;
-import com.example.demo.model.core.entities.Paddle;
-import com.example.demo.model.core.entities.Wall;
+import com.example.demo.model.core.entities.*;
 
 /**
  * Not layout-based: which means no Brick here
@@ -19,5 +14,9 @@ public class EntityFactory {
         Ball b = new Ball();
         b.setStuckPaddle(paddle);
         return b;
+    }
+
+    public static PortalFactory createPortalFactory() {
+        return new PortalFactory();
     }
 }

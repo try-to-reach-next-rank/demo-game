@@ -1,6 +1,7 @@
 package com.example.demo.engine;
 
 import com.example.demo.model.core.entities.bricks.Brick;
+import com.example.demo.model.core.factory.PortalFactory;
 import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.model.core.entities.PowerUp;
@@ -23,13 +24,14 @@ public class GameWorld {
     private Ball ball;
     private Paddle paddle;
     private PowerUpSystem powerUpSystem; // DUPLICATE REMOVED
+    // TODO: PHUC
+    private PortalFactory portalFactory;
     private Brick[] bricks = new Brick[0];
     private int currentLevel = GameVar.START_LEVEL;
-    private GameStateRestore gameStateRestore; // DUPLICATE REMOVED
+    // private GameStateRestore gameStateRestore; // DUPLICATE REMOVED
 
     private final List<Wall> walls = new ArrayList<>();
     private final List<PowerUp> powerUps = new ArrayList<>();
-    private final List<Updatable> updatables = new ArrayList<>();
     private int currentScore = 0;
     private int highScore = 0;
     private int lastAddedScore = 0;
@@ -83,13 +85,13 @@ public class GameWorld {
         this.playElapsedSeconds = playElapsedSeconds;
     }
 
-    public void setGameStateRestore(GameStateRestore gameStateRestore) {
-        this.gameStateRestore = gameStateRestore;
-    }
+    // public void setGameStateRestore(GameStateRestore gameStateRestore) {
+    //     this.gameStateRestore = gameStateRestore;
+    // }
 
-    public GameStateRestore getGameStateRestore() {
-        return gameStateRestore;
-    }
+    // public GameStateRestore getGameStateRestore() {
+    //     return gameStateRestore;
+    // }
 
     public Ball getBall() { return ball; }
     public List<Ball> getBalls() { return List.of(ball); }
@@ -106,11 +108,12 @@ public class GameWorld {
     public List<PowerUp> getPowerUps() { return powerUps; }
     public List<Wall> getWalls() { return walls; }
 
+    public PortalFactory getPortalFactory() { return this.portalFactory; }
+    public void setPortalFactory(PortalFactory pf) { this.portalFactory = pf; } 
+
     public int getCurrentLevel() { return currentLevel; }
     public void setCurrentLevel(int level) { this.currentLevel = level; }
     
-    public List<Updatable> getUpdatables() { return updatables; }
-
     public int getCurrentScore() { return currentScore; }
     public void setCurrentScore(int currentScore) { this.currentScore = currentScore; }
 
@@ -132,12 +135,8 @@ public class GameWorld {
         if (paddle != null) paddle.resetState();
     }
 
-    public void clearUpdatables() {
-        updatables.clear();
-    }
-
     public void applyState(GameState loadedState) {
-        gameStateRestore.apply(loadedState, this);
+        // gameStateRestore.apply(loadedState, this);
     }
     
     // Phương thức `apply` trong `GameStateRestore` (đã loại bỏ từ khối mã gốc) 
@@ -152,6 +151,7 @@ public class GameWorld {
         // if (bricks != null) for (Brick b : bricks) all.add(b);
         if (walls != null) all.addAll(walls);
         if (powerUps != null) all.addAll(powerUps);
+        if (portalFactory != null) all.addAll(portalFactory.getPortals());
         return all;
     }
 
@@ -171,6 +171,9 @@ public class GameWorld {
 
         if (powerUps != null && !powerUps.isEmpty())
             all.addAll(powerUps);
+
+        if (portalFactory != null) 
+            all.addAll(portalFactory.getPortals());
 
         return all;
     }
