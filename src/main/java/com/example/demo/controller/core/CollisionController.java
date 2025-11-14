@@ -94,6 +94,7 @@ public class CollisionController implements Updatable {
             }
 
             if (p.getBounds().intersects(paddle.getBounds())) {
+                Sound.getInstance().playSound("power_up");
                 powerUpSystem.activate(p);
                 p.setVisible(false);
                 ThePool.PowerUpPool.release(p);

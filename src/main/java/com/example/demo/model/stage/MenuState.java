@@ -49,8 +49,11 @@ public class MenuState implements GameState {
         stage.show();
 
         // --- Nhạc nền ---
-        Sound.getInstance().stopMusic();
-        Sound.getInstance().loopMusic("Hametsu-no-Ringo");
+        String currentTrack = Sound.getInstance().getCurrentTrackName();
+        if (currentTrack == null || !currentTrack.equals("Hametsu-no-Ringo")) {
+            Sound.getInstance().stopMusic();
+            Sound.getInstance().loopMusic("Hametsu-no-Ringo");
+        }
 
         // --- Lắng nghe chuyển màn ---
         model.currentScreenProperty().addListener((obs, oldScreen, newScreen) -> {
@@ -70,7 +73,7 @@ public class MenuState implements GameState {
 
     @Override
     public void exit() {
-        Sound.getInstance().stopMusic();
+       //  Sound.getInstance().pauseMusic();
     }
 
     @Override
