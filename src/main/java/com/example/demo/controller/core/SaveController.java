@@ -116,9 +116,7 @@ public class SaveController {
             return;
         }
 
-        HighScoreState hs = load(HIGHSCORE_FILE, HighScoreState.class);
-        if (hs == null) hs = new HighScoreState().getInstance();
-
+        HighScoreState hs = HighScoreState.getInstance();
 
         Integer beforeMin = hs.getMinCurrent();
         hs.addScore(score);
@@ -137,7 +135,7 @@ public class SaveController {
     }
 
     public HighScoreState loadHighScores() {
-        return load(HIGHSCORE_FILE, HighScoreState.class);
+        return HighScoreState.getInstance();
     }
 
     public void showHighscores() {

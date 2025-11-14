@@ -11,7 +11,9 @@ import com.example.demo.model.core.bricks.Brick;
 import com.example.demo.model.core.builder.GameWorldBuilder;
 import com.example.demo.model.core.factory.GameFactory;
 import com.example.demo.model.map.MapData;
+import com.example.demo.model.menu.AchievementModel;
 import com.example.demo.model.state.*;
+import com.example.demo.model.state.highscore.HighScoreState;
 import com.example.demo.utils.BrickFactoryUtil;
 import com.example.demo.utils.Input;
 import com.example.demo.utils.Sound;
@@ -88,12 +90,6 @@ public class GameController extends Pane {
         );
         BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
 
-        // Thiết lập callback để cộng điểm
-//        brickSystem.setOnBrickDestroyed(brick -> {
-//            double centerX = brick.getX() + brick.getWidth() / 2;
-//            double centerY = brick.getY() + brick.getHeight() / 2;
-//            world.addScore(brick.getScoreValue(), centerX, centerY);
-//        });
         loop();
     }
 
@@ -145,6 +141,14 @@ public class GameController extends Pane {
         view.reset();
         view.getCoreView().reset();
 
+        // Thiết lập callback để cộng điểm
+        brickSystem.setOnBrickDestroyed(brick -> {
+            double centerX = brick.getX() + brick.getWidth() / 2;
+            double centerY = brick.getY() + brick.getHeight() / 2;
+            world.addScore(brick.getScoreValue(), centerX, centerY);
+//            log.info("Brick destroyed! +{} points | Total score: {}",
+//                    brick.getScoreValue(), world.getCurrentScore());
+        });
         log.info("Loaded level {}", level);
     }
 
@@ -183,6 +187,7 @@ public class GameController extends Pane {
         if (world.getBricks().length == 0) return;
         if (world.getCurrentScore() > world.getHighScore()) {
             world.setHighScore(world.getCurrentScore());
+            log.info("Updated high score to: {}", world.getHighScore());
         }
 
         boolean complete = true;
@@ -195,8 +200,34 @@ public class GameController extends Pane {
 
         if (complete) {
             log.info("Level complete!");
+            unlockLevelAchievement(world.getCurrentLevel());
             saveController.saveGame(world, currentSlotNumber);
             loadNextLevel();
+        }
+    }
+
+    private void unlockLevelAchievement(int levelNumber) {
+        try {
+            HighScoreState highScoreState = HighScoreState.getInstance();
+            AchievementModel achievementModel = new AchievementModel(highScoreState);
+
+            // Unlock theo level
+            if (levelNumber == 1) {
+                achievementModel.unlockWinLevel1();
+                log.info("🏆 Unlocked achievement: Win Level 1");
+            } else if (levelNumber == 2) {
+                achievementModel.unlockWinLevel2();
+                log.info("🏆 Unlocked achievement: Win Level 2");
+            }
+
+            // Unlock "Win Game" nếu đã thắng hết
+            if (levelNumber >= 2) {
+                achievementModel.unlockWinGame();
+                log.info("🏆 Unlocked achievement: Win Game");
+            }
+
+        } catch (Exception e) {
+            log.error("Failed to unlock achievement for level {}: {}", levelNumber, e.getMessage());
         }
     }
 
