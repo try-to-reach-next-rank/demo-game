@@ -31,7 +31,7 @@ public class Vector2D {
     @Override
     public String toString() {
         return String.format(
-                "The vector is: %f %f",x,y
+            "The vector is: %f %f", x, y
         );
     }
 

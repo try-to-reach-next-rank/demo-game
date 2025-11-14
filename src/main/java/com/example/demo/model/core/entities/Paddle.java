@@ -11,7 +11,8 @@ public class Paddle extends ImageObject<PaddleData> {
     private boolean biggerPaddle;
 
     public Paddle() {
-        super("paddle", GameVar.INIT_PADDLE_X, GameVar.INIT_PADDLE_Y);
+        super(GameVar.INIT_PADDLE_X, GameVar.INIT_PADDLE_Y);
+        setImageKey("paddle");
         resetState();
     }
 

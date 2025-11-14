@@ -43,12 +43,16 @@ public class CollisionSystem implements Updatable {
         List<Portal> portals = filterObjects(Portal.class);
 
         // Handle ball collisions
-        balls.forEach(ball -> {
+        for (Ball ball : balls) {
+            if (ball.isStuck()) {
+                continue; // skip stuck balls
+            }
+
             paddles.forEach(paddle -> handleCollision(ball, paddle));
             bricks.forEach(brick -> handleCollision(ball, brick));
             walls.forEach(wall -> handleCollision(ball, wall));
-            portals.forEach(portal -> handleCollision(portal, ball));
-        });
+            portals.forEach(portal -> handleCollision(ball, portal));
+        }
 
         // Handle power-up collisions
         powerUps.forEach(pu -> paddles.forEach(paddle -> handleCollision(pu, paddle)));
@@ -77,7 +81,7 @@ public class CollisionSystem implements Updatable {
         if (!a.getBounds().intersects(b.getBounds())) return;
 
         // LOG
-        System.out.println("[COLLISIONPHUC] " + a.getClass() + " & " + b.getClass());
+        // System.out.println("[COLLISIONPHUC] " + a.getClass() + " & " + b.getClass());
 
         // BALL - PADDLE
         if (isPair(a, b, Ball.class, Paddle.class)) {

@@ -33,6 +33,32 @@ public class AnimationAssets implements AssetLoader {
     private static final Map<String, AnimationData> ASSETS = new HashMap<>();
     
     static {
+        // --- Default spritesheet ---
+        ASSETS.put(
+            GameVar.DEFAULT_KEY,
+            AnimationData.builder(GameVar.DEFAULT_SHEET_KEY,
+                    GameVar.DEFAULT_FRAME_WIDTH,
+                    GameVar.DEFAULT_FRAME_HEIGHT,
+                    GameVar.DEFAULT_TOTAL_FRAMES)
+                .loop(GameVar.DEFAULT_LOOP)
+                .renderSize(GameVar.DEFAULT_RENDER_WIDTH, GameVar.DEFAULT_RENDER_HEIGHT)
+                .rows(GameVar.DEFAULT_ROW)
+                .duration(GameVar.DEFAULT_DURATION)
+        );
+        
+        // --- Portal spritesheet ---
+        ASSETS.put(
+            GameVar.PORTAL_KEY,
+            AnimationData.builder(GameVar.PORTAL_SHEET_KEY,
+                    GameVar.PORTAL_FRAME_WIDTH,
+                    GameVar.PORTAL_FRAME_HEIGHT,
+                    GameVar.PORTAL_TOTAL_FRAMES)
+                .loop(GameVar.PORTAL_LOOP)
+                .renderSize(GameVar.PORTAL_RENDER_WIDTH, GameVar.PORTAL_RENDER_HEIGHT)
+                .rows(GameVar.PORTAL_ROW)
+                .duration(GameVar.PORTAL_DURATION)
+        );
+
         // --- Explosion spritesheet ---
         ASSETS.put(
             GameVar.EXPLOSION1_EFFECT_KEY,

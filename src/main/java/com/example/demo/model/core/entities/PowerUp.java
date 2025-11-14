@@ -18,7 +18,8 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
     private long expireAt = -1;
 
     public PowerUp(String type) {
-        super("powerup_" + type.toLowerCase() , 0, 0);
+        super(0, 0);
+        setAnimationKey("powerup_" + type.toLowerCase());
         log.info("Type: {}", type);
         this.type = type;
     }

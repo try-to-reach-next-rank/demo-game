@@ -64,6 +64,9 @@ public class CoreView {
 
         renderEffects(gc);
 
+        gc.fillRect(100, 200, 64, 64);
+        gc.fillRect(500, 200, 64, 64);
+
         gc.restore();
     }
 
@@ -169,12 +172,26 @@ public class CoreView {
     }
 
     private void drawObject(GraphicsContext gc, GameObject obj) {
-        if (obj instanceof ImageObject imgObj) {
-            gc.drawImage(imgObj.getImage(), imgObj.getX(), imgObj.getY(), imgObj.getWidth(), imgObj.getHeight());
+        if (obj.getRotation() != 0) {
+            gc.save();
+            double cx = obj.getX() + obj.getWidth()/2;
+            double cy = obj.getY() + obj.getHeight()/2;
+            gc.translate(cx, cy);
+            gc.rotate(obj.getRotation());
+            if (obj instanceof AnimatedObject animObj) {
+                animObj.getAnimation().render(gc, -animObj.getWidth()/2, -animObj.getHeight()/2, animObj.getWidth(), animObj.getHeight());
+            } else if (obj instanceof ImageObject imgObj) {
+                gc.drawImage(imgObj.getImage(), -imgObj.getWidth()/2, -imgObj.getHeight()/2, imgObj.getWidth(), imgObj.getHeight());
+            }
+            gc.restore();
+        } else {
+            if (obj instanceof AnimatedObject animObj) {
+                animObj.getAnimation().render(gc, obj.getX(), obj.getY(), obj.getWidth(), obj.getHeight());
+            } else if (obj instanceof ImageObject imgObj) {
+                gc.drawImage(imgObj.getImage(), obj.getX(), obj.getY(), obj.getWidth(), obj.getHeight());
+            }
         }
-        else if (obj instanceof AnimatedObject animObj) {
-            animObj.getAnimation().render(gc, animObj.getX(), animObj.getY(), animObj.getWidth(), animObj.getHeight());
-        }
+        
     }
 
     private void renderEffects(GraphicsContext gc) {

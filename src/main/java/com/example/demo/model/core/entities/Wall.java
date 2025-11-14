@@ -8,7 +8,9 @@ public class Wall extends ImageObject<WallData> {
     private final Side side;
 
     public Wall(Side side, double x, double y, double width, double height) {
-        super(side == Side.TOP ? "wall_top" : "wall_side", x, y);
+        super(x, y);
+        imageKey = side == Side.TOP ? "wall_top" : "wall_side";
+        setImageKey(imageKey);
         this.side = side;
         if (side == Side.TOP) {
             setSize(height, width);

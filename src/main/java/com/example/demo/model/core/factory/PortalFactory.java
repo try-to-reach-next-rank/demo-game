@@ -6,6 +6,7 @@ import java.util.Random;
 
 import com.example.demo.model.core.entities.Portal;
 import com.example.demo.utils.GameRandom;
+import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
 
 public class PortalFactory {
@@ -16,19 +17,33 @@ public class PortalFactory {
     }
 
     public void createRandom(String portalAnimKey) {
-        // Random x, y, default duration
-        int x = GameRandom.nextInt(GameVar.MAP_MIN_X, GameVar.MAP_MAX_X);
-        int y = GameRandom.nextInt(GameVar.MAP_MIN_Y, GameVar.MAP_MAX_Y);
-        double lifeTime = 10.0; // default 10 seconds
+        Portal temp = new Portal(portalAnimKey);
+        double w = temp.getWidth();
+        double h = temp.getHeight();
 
-        System.out.println("Create random portal with x = " + x + " y = " + y);
+        // Random x, y, default duration
+        int x = GameRandom.nextInt(GameVar.MAP_MIN_X + (int)w, GameVar.MAP_MAX_X - (int)w);
+        int y = GameRandom.nextInt(GameVar.MAP_MIN_Y + (int)h, GameVar.MAP_CENTER_Y - (int)h);
+        double lifeTime = 10.0; // default 10 seconds
 
         create(portalAnimKey, x, y, lifeTime);
     }
 
     public void create(String portalAnimKey, int x, int y, double lifeTime) {
         Portal portal = new Portal(portalAnimKey);
+
+        // Random shooting direction
+        double angle = GameRandom.nextDouble(0, 2 * Math.PI);
+        portal.setDirection(new Vector2D(Math.cos(angle), Math.sin(angle)));
+
         portal.activate(x, y, lifeTime);
+
+        System.out.println(
+            "Portal at x=" + portal.getX() + " y=" + portal.getY() 
+            + " active=" + portal.isActive() 
+            + " visible=" + portal.isVisible() 
+            + " width=" + portal.getWidth() + " height=" + portal.getHeight());
+
         portals.add(portal);
     }
 
@@ -39,13 +54,20 @@ public class PortalFactory {
     // Random destination portal
     public Portal getRandomDestination(Portal src) {
         List<Portal> candidates = portals.stream()
-            .filter(p -> p != src && p.isActive())
+            .filter(p -> p != null && p != src && p.isActive())
             .toList();
 
         if (candidates.isEmpty()) return null;
 
         // Random portal in remaining list
-        return candidates.get(GameRandom.nextInt(candidates.size()));
+        Portal portal = candidates.get(GameRandom.nextInt(candidates.size()));
+        System.out.println(
+            "Portal at x=" + portal.getX() + " y=" + portal.getY() 
+            + " active=" + portal.isActive() 
+            + " visible=" + portal.isVisible() 
+            + " width=" + portal.getWidth() + " height=" + portal.getHeight());
+        
+        return portal;
     }
 
     public void clear() {

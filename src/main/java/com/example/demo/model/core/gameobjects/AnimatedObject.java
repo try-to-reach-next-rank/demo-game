@@ -8,9 +8,9 @@ public abstract class AnimatedObject<T extends AnimatedObjectData> extends GameO
     protected String animKey;
     protected Animation animation;
 
-    public AnimatedObject(String animKey, double startX, double startY) {
+    public AnimatedObject(double startX, double startY) {
         super(startX, startY);
-        setAnimationKey(animKey);
+        setAnimationKey("default");
     }
 
     public void setAnimationKey(String animKey) {

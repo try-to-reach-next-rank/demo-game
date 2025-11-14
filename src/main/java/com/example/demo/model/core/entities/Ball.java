@@ -20,7 +20,8 @@ public class Ball extends ImageObject<BallData> {
     private Brick lastBrick;
 
     public Ball() {
-        super("ball", GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
+        super(GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
+        setImageKey("ball");
         resetState();
     }
 

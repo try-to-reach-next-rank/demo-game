@@ -17,7 +17,7 @@ public abstract class PowerUp extends AnimatedObject<PowerUpData> {
     private boolean active;
     
     public PowerUp(String type) {
-        super("default", 0, 0);
+        super(0, 0);
         this.type = type;
         log.info("Type: {}", type);
 

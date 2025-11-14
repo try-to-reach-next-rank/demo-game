@@ -67,8 +67,10 @@ public abstract class GameObject<T extends GameObjectData> {
         setHeight(height);
     }
 
+    // For coreview
     public boolean isVisible() { return visible; }
     public void setVisible(boolean visible) { this.visible = visible; }
+    public double getRotation() { return 0; } // Default no rotation
 
     public Bounds getBounds() {
         return new BoundingBox(x, y, width, height);

@@ -29,7 +29,7 @@ public class BrickSystem implements Updatable {
 
     @Override
     public void update(double deltaTime) {
-        // Bricks are static — no movement updates
+        bricks.removeIf(Brick::isDestroyed);
     }
 
     @Override
@@ -75,6 +75,11 @@ public class BrickSystem implements Updatable {
         // Destroy, spawn effect + maybe powerup
         spawnDestructionEffect(brick);
         powerUpSystem.maybeSpawnPowerUp(brick);
+        spawnScorePopupEffect(brick);
+
+        if (onBrickDestroyed != null) {
+            onBrickDestroyed.accept(brick); // notify external systems
+        }
     }
 
     /**

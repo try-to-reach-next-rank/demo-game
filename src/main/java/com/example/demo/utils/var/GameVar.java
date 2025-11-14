@@ -70,8 +70,14 @@ public final class GameVar {
     public static final double BALL_INIT_DIR_X   = 0.0;             // Default X velocity direction
     public static final double BALL_INIT_DIR_Y   = -1.0;            // Default Y velocity direction
 
-    // EFFECT
-    public static final double EFFECT_DURATION                  = 0.5;                     // seconds
+    // PORTAL
+    public static final double PORTAL_INIT_DIR_X = 1.0;             // Default X velocity direction
+    public static final double PORTAL_INIT_DIR_Y = 0.0;            // Default Y velocity direction
+
+    // EFFECT KEY
+    public static final double EFFECT_DURATION                  = 0.5;  // seconds
+    public static final String DEFAULT_KEY                      = "default";
+    public static final String PORTAL_KEY                       = "portal";
     public static final String EXPLOSION1_EFFECT_KEY            = "explosion1";
     public static final String EXPLOSION2_EFFECT_KEY            = "explosion2";
     public static final String POWERUP_ACC_EFFECT_KEY           = "powerup_accelerate";
@@ -111,7 +117,6 @@ public final class GameVar {
 
     // HIGHSCORE
     public static final int HIGHSCORE_CAPACITY = 10;
-    public static final String HIGHSCORE_PATH = "src/main/resources/Saves/highscores.json";
 
     // MAP
     public  static final int PADDING_X      = 0;
@@ -126,6 +131,27 @@ public final class GameVar {
     public static final long PADDLE_SOUND_COOLDOWN = 150;  // ms
 
     // ANIMATION ASSETS
+    // DEFAULT
+    public static final String  DEFAULT_SHEET_KEY     = "default";
+    public static final int     DEFAULT_FRAME_WIDTH   = 225;
+    public static final int     DEFAULT_FRAME_HEIGHT  = 225;
+    public static final int     DEFAULT_TOTAL_FRAMES  = 1;
+    public static final int     DEFAULT_ROW           = 0;
+    public static final int     DEFAULT_RENDER_WIDTH  = 64;
+    public static final int     DEFAULT_RENDER_HEIGHT = 64;
+    public static final boolean DEFAULT_LOOP          = true;
+    public static final double  DEFAULT_DURATION      = 1.0;
+
+    public static final String  PORTAL_SHEET_KEY     = "portal_spritesheet";
+    public static final int     PORTAL_FRAME_WIDTH   = 290;
+    public static final int     PORTAL_FRAME_HEIGHT  = 498;
+    public static final int     PORTAL_TOTAL_FRAMES  = 9;
+    public static final int     PORTAL_ROW           = 0;
+    public static final int     PORTAL_RENDER_WIDTH  = 64;
+    public static final int     PORTAL_RENDER_HEIGHT = 64;
+    public static final boolean PORTAL_LOOP          = true;
+    public static final double  PORTAL_DURATION      = 2.0;
+
     public static final String  EXPLOSION_SHEET_KEY      = "explosion_spritesheet";
     public static final int     EXPLOSION1_FRAME_WIDTH   = 96;
     public static final int     EXPLOSION1_FRAME_HEIGHT  = 96;

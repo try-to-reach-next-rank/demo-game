@@ -38,7 +38,7 @@ public class HandGrabEffect extends VisualEffect {
     }
 
     private void loadHandImage() {
-        handImage = AssetManager.getInstance().getImage("hand_open");
+        handImage = AssetManager.getInstance().getImage("hand_punch");
     }
 
     public void activateOnBall(Ball ball) {

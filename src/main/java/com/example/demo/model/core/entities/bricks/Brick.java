@@ -12,7 +12,8 @@ public abstract class Brick extends ImageObject<BrickData> {
     protected String imageKey;
 
     public Brick(int health, String imageKey, double x, double y, double width, double height) {
-        super(imageKey, x, y);
+        super(x, y);
+        setImageKey(imageKey);
         this.health = health;
         this.initialHealth = health;
         this.destroyed = false;
