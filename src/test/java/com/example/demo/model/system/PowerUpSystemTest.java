@@ -102,7 +102,7 @@ class PowerUpSystemTest {
         // Simulate active states
         ball.setAccelerated(true);
         ball.setStronger(true);
-        ball.setStopTime(true);
+        ball.setDrunk(true);
         paddle.setBiggerPaddle(true);
 
         // Put some dummy power-ups into active list
@@ -114,7 +114,7 @@ class PowerUpSystemTest {
         // Pre-check
         assertTrue(ball.isAccelerated());
         assertTrue(ball.isStronger());
-        assertTrue(ball.isStopTime());
+        assertTrue(ball.isDrunk());
         assertTrue(paddle.getBiggerPaddle());
         assertEquals(2, system.getActivePowerUps().size());
 
@@ -124,7 +124,7 @@ class PowerUpSystemTest {
         // Assert: flags cleared and list emptied
         assertFalse(ball.isAccelerated(), "Ball.accelerated should be false after reset");
         assertFalse(ball.isStronger(), "Ball.stronger should be false after reset");
-        assertFalse(ball.isStopTime(), "Ball.stopTime should be false after reset");
+        assertFalse(ball.isDrunk(), "Ball.drunk should be false after reset");
         assertFalse(paddle.getBiggerPaddle(), "Paddle.biggerPaddle should be false after reset");
         assertTrue(system.getActivePowerUps().isEmpty(), "Active power-ups list should be cleared by reset()");
     }

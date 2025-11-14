@@ -16,7 +16,7 @@ public class Ball extends ImageObject {
 
     private boolean accelerated;
     private boolean stronger;
-    private boolean stopTime;
+    private boolean drunk;
     private double elapsedTime = 0;
     private boolean beingHeld = false;
 
@@ -28,8 +28,8 @@ public class Ball extends ImageObject {
         resetState();
     }
 
-    public void toggleStopTime() {
-        this.stopTime = !this.stopTime;
+    public void toggleDrunk() {
+        this.drunk = !this.drunk;
     }
 
     public void toggleAccelerated() {
@@ -88,8 +88,8 @@ public class Ball extends ImageObject {
     public boolean isStronger() { return stronger; }
     public void setStronger(boolean stronger){ this.stronger = stronger; }
 
-    public boolean isStopTime() { return stopTime; }
-    public void setStopTime(boolean stopTime) { this.stopTime = stopTime; }
+    public boolean isDrunk() { return drunk; }
+    public void setDrunk(boolean drunk) { this.drunk = drunk; }
 
     public void alignWithPaddle(double offsetY, double lerpFactor) {
         double targetX = paddle.getX() + paddle.getWidth() / 2.0 - getWidth() / 2.0;

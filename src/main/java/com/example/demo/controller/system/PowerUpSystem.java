@@ -31,7 +31,7 @@ public class PowerUpSystem implements Updatable {
         switch (powerUp.getType()) {
             case GameVar.ACCELERATE -> ball.setAccelerated(true);
             case GameVar.STRONGER -> ball.setStronger(true);
-            case GameVar.STOPTIME -> ball.setStopTime(true);
+            case GameVar.DRUNK -> ball.setDrunk(true);
             case GameVar.BIGGERPADDLE -> paddle.setBiggerPaddle(true);
          }
     }
@@ -54,7 +54,7 @@ public class PowerUpSystem implements Updatable {
                 switch (p.getType()) {
                     case GameVar.ACCELERATE -> ball.setAccelerated(false);
                     case GameVar.STRONGER -> ball.setStronger(false);
-                    case GameVar.STOPTIME -> ball.setStopTime(false);
+                    case GameVar.DRUNK -> ball.setDrunk(false);
                     case GameVar.BIGGERPADDLE -> paddle.setBiggerPaddle(false);
                 }
                 p.deactivate();
@@ -68,7 +68,7 @@ public class PowerUpSystem implements Updatable {
         if (ball != null) {
             ball.setAccelerated(false);
             ball.setStronger(false);
-            ball.setStopTime(false);
+            ball.setDrunk(false);
         }
         if (paddle != null) {
             paddle.setBiggerPaddle(false);
@@ -94,7 +94,7 @@ public class PowerUpSystem implements Updatable {
         switch (powerUp.getType()) {
             case GameVar.ACCELERATE: ball.setAccelerated(true); break;
             case GameVar.STRONGER: ball.setStronger(true); break;
-            case GameVar.STOPTIME: ball.setStopTime(true); break;
+            case GameVar.DRUNK: ball.setDrunk(true); break;
             case GameVar.BIGGERPADDLE: paddle.setBiggerPaddle(true); break;
         }
     }

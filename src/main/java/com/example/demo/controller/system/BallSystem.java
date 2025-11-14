@@ -24,7 +24,7 @@ public class BallSystem implements Updatable {
 
     @Override
     public void update(double deltaTime) {
-        if (ball.isStopTime()) {
+        if (ball.isDrunk()) {
             ball.setElapsedTime(ball.getElapsedTime() + deltaTime);
             if (ball.getElapsedTime() >= GameVar.BALL_ELAPSED_TIME) {
                 ball.setElapsedTime(0);

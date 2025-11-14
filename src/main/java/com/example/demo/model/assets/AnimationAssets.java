@@ -84,15 +84,15 @@ public class AnimationAssets implements AssetLoader {
         );
 
         ASSETS.put(
-            GameVar.POWERUP_STOP_TIME_EFFECT_KEY,
+            GameVar.POWERUP_DRUNK_EFFECT_KEY,
             AnimationData.builder(GameVar.POWERUP_SHEET_KEY,
                     GameVar.POWERUP_FRAME_WIDTH,
                     GameVar.POWERUP_FRAME_HEIGHT,
                     GameVar.POWERUP_TOTAL_FRAMES)
                 .loop(GameVar.POWERUP_LOOP)
                 .renderSize(GameVar.POWERUP_RENDER_WIDTH, GameVar.POWERUP_RENDER_HEIGHT)
-                .rows(GameVar.POWERUP_STOPTIME_ROW)
-                .duration(GameVar.POWERUP_STOPTIME_DURATION)
+                .rows(GameVar.POWERUP_DRUNK_ROW)
+                .duration(GameVar.POWERUP_DRUNK_DURATION)
         );
 
         ASSETS.put(

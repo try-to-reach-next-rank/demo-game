@@ -109,6 +109,7 @@ public class HandGrabEffect extends VisualEffect {
 
             ball.setHeldByEffect(false);
             ball.setVelocity(punchVelocity);
+            ball.setAccelerated(true);
         }
 
         if (phaseTimer >= PUNCH_DURATION) {

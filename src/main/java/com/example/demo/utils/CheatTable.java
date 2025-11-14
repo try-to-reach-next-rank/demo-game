@@ -19,7 +19,7 @@ public class CheatTable extends UIComponent {
     private final StackPane wrapper;
 
     private final String[] options = {
-            "Toggle Stop Time",
+            "Toggle Drunk",
             "Toggle Accelerated",
             "Toggle Stronger",
             "Load Next Map",           // Chuyển map tiếp theo
@@ -147,8 +147,8 @@ public class CheatTable extends UIComponent {
         String selectedOption = options[selectedIndex];
 
         switch (selectedOption) {
-            case "Toggle Stop Time":
-                gameController.getBall().toggleStopTime();
+            case "Toggle Drunk":
+                gameController.getBall().toggleDrunk();
                 break;
             case "Toggle Accelerated":
                 gameController.getBall().toggleAccelerated();

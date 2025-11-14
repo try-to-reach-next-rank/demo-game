@@ -7,6 +7,7 @@ import javafx.scene.paint.Color;
 
 public final class GameVar {
 
+
     private GameVar() {}
     // GAME
     public static final int START_LEVEL = 1;
@@ -47,8 +48,8 @@ public final class GameVar {
     public static final String ACCELERATE   = "ACCELERATE";
     public static final String STRONGER     = "STRONGER";
     public static final String BIGGERPADDLE = "BIGGERPADDLE";
-    public static final String STOPTIME     = "STOPTIME";
-    public static final String[] powerUps   = {ACCELERATE, STRONGER, STOPTIME, BIGGERPADDLE};
+    public static final String DRUNK        = "DRUNK";
+    public static final String[] powerUps   = {ACCELERATE, STRONGER, DRUNK, BIGGERPADDLE};
 
     // BALL
     public static final int INIT_BALL_X = WIDTH / 2 - 10;
@@ -66,7 +67,7 @@ public final class GameVar {
     public static final String EXPLOSION2_EFFECT_KEY = "explosion2";
     public static final String POWERUP_ACC_EFFECT_KEY = "powerup_accelerate";
     public static final String POWERUP_STRONGER_EFFECT_KEY = "powerup_stronger";
-    public static final String POWERUP_STOP_TIME_EFFECT_KEY = "powerup_stoptime";
+    public static final String POWERUP_DRUNK_EFFECT_KEY = "powerup_drunk";
     public static final String POWERUP_BIGGER_PADDLE_EFFECT_KEY = "powerup_biggerpaddle";
 
     // POOL
@@ -75,7 +76,7 @@ public final class GameVar {
     public static final int LARGE_SIZE_POOL  = 100;
 
     // BALL SYSTEM
-    public static final double BALL_ELAPSED_TIME = 0.5; // seconds
+    public static final double BALL_ELAPSED_TIME = 0.2; // seconds
     public static final double BALL_PADDLE_OFFSET_Y = 100.0;
     public static final double BALL_ALIGN_WITH_PADDLE_OFFSET_Y = 0.0;
     public static final double BALL_ALIGN_WITH_PADDLE_LERPFACTOR = 0.1;
@@ -142,7 +143,7 @@ public final class GameVar {
 
     public static final int POWERUP_ACCELERATE_ROW   = 0;
     public static final int POWERUP_STRONGER_ROW     = 1;
-    public static final int POWERUP_STOPTIME_ROW     = 2;
+    public static final int POWERUP_DRUNK_ROW     = 2;
     public static final int POWERUP_BIGGERPADDLE_ROW = 3;
 
     public static final int POWERUP_RENDER_WIDTH  = 32;
@@ -152,7 +153,7 @@ public final class GameVar {
 
     public static final double POWERUP_ACCELERATE_DURATION   = 5.0;
     public static final double POWERUP_STRONGER_DURATION     = 2.0;
-    public static final double POWERUP_STOPTIME_DURATION     = 10.0;
+    public static final double POWERUP_DRUNK_DURATION     = 3.0;
     public static final double POWERUP_BIGGERPADDLE_DURATION = 1.0;
 
     // GLOW TEXT
