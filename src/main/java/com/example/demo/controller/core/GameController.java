@@ -118,6 +118,7 @@ public class GameController extends Pane {
                 .forEach(world::registerUpdatable);
 
         // Reset view
+        view.getCoreView().setLevelLoaded(true);
         view.reset();
         view.getCoreView().reset();
 

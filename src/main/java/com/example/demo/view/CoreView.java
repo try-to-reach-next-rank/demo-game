@@ -23,6 +23,8 @@ public class CoreView {
     private int brickRevealCounter = 0;
     private int currentRevealTick = 0;
     private boolean reveal = true;
+    private boolean levelLoading = false;
+
     private ParallaxSystem parallaxSystem;
     private final HandEffectController handEffectController = HandEffectController.getInstance();
     private final CloudEffectController cloudEffectController = CloudEffectController.getInstance();
@@ -72,6 +74,10 @@ public class CoreView {
 
     public void setFlipped(boolean flipped) {
         this.flipped = flipped;
+    }
+
+    public void setLevelLoaded(boolean loading) {
+        this.levelLoading = loading;
     }
 
     public void toggleFlip() {
@@ -124,6 +130,7 @@ public class CoreView {
     }
 
     private void drawBricks(GraphicsContext gc) {
+        if (!levelLoading) return;
         Brick[] bricks = world.getBricks();
         if (bricks != null) {
             for (Brick brick : bricks) {

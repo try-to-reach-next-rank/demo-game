@@ -1505,3 +1505,629 @@
 10:21:56.179 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
 10:21:57.187 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
 10:21:58.194 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:29:46.653 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+12:29:48.609 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+12:29:48.781 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+12:29:48.786 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+12:29:48.787 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+12:29:48.787 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+12:29:49.847 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+12:29:49.848 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:29:50.854 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:29:51.862 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:29:55.725 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+12:29:57.867 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+12:29:58.054 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+12:29:58.059 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+12:29:58.059 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+12:29:58.059 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+12:29:59.129 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+12:29:59.130 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:30:00.137 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:30:01.145 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:30:02.154 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:30:03.161 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:32:11.915 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+12:32:14.622 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+12:32:14.789 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+12:32:14.794 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+12:32:14.794 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+12:32:14.794 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+12:32:15.877 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+12:32:15.878 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:32:16.885 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:32:17.893 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:32:18.900 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:32:19.909 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:32:20.916 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:32:21.924 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:33:14.254 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+12:33:16.755 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+12:33:17.045 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+12:33:17.055 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+12:33:17.055 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+12:33:17.055 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+12:33:18.125 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+12:33:18.126 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:33:19.133 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:33:20.140 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:33:21.149 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:33:22.157 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:33:23.165 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:33:24.173 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:33:25.180 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:33:26.189 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:33:27.165 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+12:33:27.165 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+12:33:27.196 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:33:28.204 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:33:28.290 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+12:33:28.316 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+12:33:28.316 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+12:33:28.316 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+12:33:28.316 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+12:33:28.375 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.375 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.375 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.375 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.375 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.375 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.375 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.376 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.377 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.385 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.386 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.387 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.389 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.396 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.397 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.398 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.399 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.400 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.400 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:33:28.400 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+12:33:28.400 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+12:33:28.400 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+12:33:28.400 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+12:33:28.400 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 110
+12:33:28.400 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 40
+12:33:29.285 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+12:33:29.286 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+12:33:29.325 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+12:33:29.325 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+12:33:29.328 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 55
+12:33:29.786 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+12:33:29.789 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+12:33:29.789 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+12:33:29.907 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+12:33:29.908 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+12:33:29.908 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+12:33:29.908 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+12:33:30.477 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 62
+12:33:30.957 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+12:33:30.957 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:33:31.501 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:33:31.965 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:33:32.508 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:33:32.972 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61
+12:33:33.516 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
+12:33:33.980 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60
