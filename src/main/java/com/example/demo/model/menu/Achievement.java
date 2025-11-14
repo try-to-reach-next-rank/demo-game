@@ -1,9 +1,11 @@
 package com.example.demo.model.menu;
 
 public class Achievement {
-    private final String name;
-    private final boolean unlocked;
+    private String name;
+    private boolean unlocked;
 
+    public Achievement() {
+    }
 
     public Achievement(String name, boolean unlocked) {
         this.name = name;
@@ -12,4 +14,12 @@ public class Achievement {
 
     public String getName() { return name; }
     public boolean isUnlocked() { return unlocked; }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUnlocked(boolean unlocked) {
+        this.unlocked = unlocked;
+    }
 }

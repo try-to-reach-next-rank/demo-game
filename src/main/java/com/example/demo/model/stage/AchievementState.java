@@ -35,7 +35,7 @@ public class AchievementState implements GameState {
     @Override
     public void enter() {
         // --- Khởi tạo MVC ---
-        HighScoreState highScoreState = new HighScoreState().getInstance();
+        HighScoreState highScoreState = HighScoreState.getInstance();
         AchievementModel achievementModel = new AchievementModel(highScoreState);
 
         achievementController = new AchievementController(achievementModel);
