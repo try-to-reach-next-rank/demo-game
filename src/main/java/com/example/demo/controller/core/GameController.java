@@ -118,6 +118,14 @@ public class GameController extends Pane {
         }
         world.setBricks(bricksToLoad);
 
+        // Reset ball và powerup khi load level mới
+        if (world.getBall() != null) {
+            world.getBall().resetState();
+        }
+        if (world.getPowerUpSystem() != null) {
+            world.getPowerUpSystem().reset();
+        }
+
         // Reset any level-specific state in systems
         world.clearUpdatables();
 

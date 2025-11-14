@@ -99,12 +99,15 @@ public class CoreView {
 
         if (reveal) {
             int brickRevealInterval = 5;
+            int bricksPerTick = 3;  // ← Reveal 3 bricks mỗi lần
             if (currentRevealTick >= brickRevealInterval) {
                 currentRevealTick = 0;
                 Brick[] bricks = world.getBricks();
-                if (bricks != null && brickRevealCounter < bricks.length) {
-                    revealedBricks.add(bricks[brickRevealCounter]);
-                    brickRevealCounter++;
+                if (bricks != null) {
+                    for (int i = 0; i < bricksPerTick && brickRevealCounter < bricks.length; i++) {
+                        revealedBricks.add(bricks[brickRevealCounter]);
+                        brickRevealCounter++;
+                    }
                 }
             }
         } else {
