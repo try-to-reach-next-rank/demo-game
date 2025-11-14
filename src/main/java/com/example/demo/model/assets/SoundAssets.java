@@ -37,6 +37,8 @@ public class SoundAssets implements AssetLoader {
         SFX_ASSETS.put("game_over", AssetPaths.SFX_GAME_OVER);
         SFX_ASSETS.put("power_up", AssetPaths.SFX_POWER_UP);
         SFX_ASSETS.put("explosion_hit", AssetPaths.SFX_EXPLOSION_HIT);
+        SFX_ASSETS.put("menu_selection", AssetPaths.SFX_MENU_SELECTION);
+        SFX_ASSETS.put("menu_confirm", AssetPaths.SFX_MENU_CONFIRM);
     }
 
     private void loadAssets(AssetManager manager, Map<String, String> assets, SoundType type) {

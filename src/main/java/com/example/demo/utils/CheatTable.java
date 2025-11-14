@@ -116,7 +116,7 @@ public class CheatTable extends UIComponent {
                 if (selectedIndex < 0) {
                     selectedIndex = options.length - 1;
                 }
-                // (Tùy chọn) Thêm âm thanh "bíp" ở đây
+                Sound.getInstance().playSound("menu_selection");
                 break;
 
             case DOWN:
@@ -125,14 +125,14 @@ public class CheatTable extends UIComponent {
                 if (selectedIndex >= options.length) {
                     selectedIndex = 0;
                 }
-                // (Tùy chọn) Thêm âm thanh "bíp" ở đây
+                Sound.getInstance().playSound("menu_selection");
                 break;
 
             case ENTER:
             case SPACE:
                 // Thực thi cheat
                 executeCheat();
-                // (Tùy chọn) Thêm âm thanh "chọn" ở đây
+                Sound.getInstance().playSound("menu_confirm");
                 break;
 
             case ESCAPE:

@@ -2,6 +2,8 @@ package com.example.demo.utils.var;
 
 public final class AssetPaths {
 
+
+
     private AssetPaths() {}
     // GAME
     public static final String ICON = "/images/icon.png";
@@ -54,6 +56,8 @@ public final class AssetPaths {
     public static final String SFX_GAME_OVER      = "/sounds/game_over.wav";
     public static final String SFX_POWER_UP       = "/sounds/power_up.wav";
     public static final String SFX_EXPLOSION_HIT  = "/sounds/explosion_hit.wav";
+    public static final String SFX_MENU_SELECTION = "/sounds/menu_selection.wav";
+    public static final String SFX_MENU_CONFIRM   = "/sounds/menu_confirm.wav";
 
     // DIALOGUE
     public static final String EGG = "/images/egg.png";

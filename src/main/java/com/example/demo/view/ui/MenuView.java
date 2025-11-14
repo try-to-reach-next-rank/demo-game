@@ -6,6 +6,7 @@ import com.example.demo.engine.ui.AbstractUIView;
 import com.example.demo.engine.ui.UISelectionController;
 import com.example.demo.model.core.effects.GlowTextEffect;
 import com.example.demo.model.menu.ButtonManager;
+import com.example.demo.utils.Sound;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
@@ -78,11 +79,13 @@ public class MenuView extends AbstractUIView {
     @Override
     public void moveUp() {
         selectionController.moveUp();
+        Sound.getInstance().playSound("menu_selection");
     }
 
     @Override
     public void moveDown() {
         selectionController.moveDown();
+        Sound.getInstance().playSound("menu_selection");
     }
 
     @Override
@@ -93,6 +96,7 @@ public class MenuView extends AbstractUIView {
     @Override
     public void confirm() {
         selectionController.confirm();
+        Sound.getInstance().playSound("menu_confirm");
     }
 
     @Override
