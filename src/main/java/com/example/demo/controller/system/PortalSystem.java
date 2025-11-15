@@ -49,20 +49,17 @@ public class PortalSystem implements Updatable {
             return;
         } 
 
-        handleBallPosition(portal, ball); 
+        handleBallPosition(dest, ball); 
 
         // portal.setNextTeleportTime(System.currentTimeMillis() + 1000);
     }
 
     private void handleBallPosition(Portal portal, Ball ball) {
-        // TODO: Phuc is fully wrong, please help
-        // This is a white flag from phuc
-
         Vector2D edge = getPortalEdgePosition(portal);
+
         Vector2D dir  = portal.getDirection().normalize();
 
-        double r = ball.getWidth() / 2;
-        double offset = 2.0;
+        double r = ball.getWidth() / 2.0;
 
         // Tâm ball thẳng hàng ngoài mép portal
         double cx = edge.x + dir.x * r;

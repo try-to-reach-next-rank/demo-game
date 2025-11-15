@@ -22,8 +22,6 @@ public class Ball extends ImageObject<BallData> {
     public Ball() {
         super(GameVar.INIT_BALL_X, GameVar.INIT_BALL_Y);
         setImageKey("ball");
-        // TODO: FOR TEST PORTAL
-        setSize(32, 32);
         resetState();
     }
 

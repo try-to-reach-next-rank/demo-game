@@ -60,14 +60,7 @@ public class PortalFactory {
         if (candidates.isEmpty()) return null;
 
         // Random portal in remaining list
-        Portal portal = candidates.get(GameRandom.nextInt(candidates.size()));
-        System.out.println(
-            "Portal at x=" + portal.getX() + " y=" + portal.getY() 
-            + " active=" + portal.isActive() 
-            + " visible=" + portal.isVisible() 
-            + " width=" + portal.getWidth() + " height=" + portal.getHeight());
-        
-        return portal;
+        return candidates.get(GameRandom.nextInt(candidates.size()));
     }
 
     public void clear() {
