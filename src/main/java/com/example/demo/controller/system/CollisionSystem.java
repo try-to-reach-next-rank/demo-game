@@ -18,6 +18,7 @@ public class CollisionSystem implements Updatable {
     private BrickSystem brickSystem;
     private PowerUpSystem powerUpSystem;
     private PortalSystem portalSystem;
+    private MovedWallSystem movedWallSystem;
     private final GameWorld world;
     private final SystemManager systemManager;
 
@@ -29,6 +30,7 @@ public class CollisionSystem implements Updatable {
         this.brickSystem = systemManager.get(BrickSystem.class);
         this.powerUpSystem = systemManager.get(PowerUpSystem.class);
         this.portalSystem = systemManager.get(PortalSystem.class);
+        this.movedWallSystem = systemManager.get(MovedWallSystem.class);
     }
 
     @Override
@@ -43,6 +45,7 @@ public class CollisionSystem implements Updatable {
         List<PowerUp> powerUps = filterObjects(PowerUp.class);
         List<Wall> walls = filterObjects(Wall.class);
         List<Portal> portals = filterObjects(Portal.class);
+        List<MovedWall> movedWalls = filterObjects(MovedWall.class);
 
         // Handle ball collisions
         for (Ball ball : balls) {
@@ -61,6 +64,7 @@ public class CollisionSystem implements Updatable {
             bricks.forEach(brick -> handleCollision(ball, brick));
             walls.forEach(wall -> handleCollision(ball, wall));
             portals.forEach(portal -> handleCollision(ball, portal));
+            movedWalls.forEach(mw -> handleCollision(ball, mw));
         }
 
         // Handle power-up collisions
@@ -122,6 +126,14 @@ public class CollisionSystem implements Updatable {
             Ball ball = (a instanceof Ball) ? (Ball) a : (Ball) b;
             Portal portal = (a instanceof Portal) ? (Portal) a : (Portal) b;
             portalSystem.handleCollision(portal, ball);
+            return;
+        }
+
+        // BALL - MOVEDWALL
+        if (isPair(a, b, Ball.class, MovedWall.class)) {
+            Ball ball = (a instanceof Ball) ? (Ball) a : (Ball) b;
+            MovedWall mw = (a instanceof MovedWall) ? (MovedWall) a : (MovedWall) b;
+            ballSystem.handleCollision(ball, mw);
             return;
         }
 

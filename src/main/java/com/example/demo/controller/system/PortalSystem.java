@@ -16,16 +16,17 @@ public class PortalSystem implements Updatable {
         // portalFactory.createRandom("portal");
         // portalFactory.createRandom("portal");
         // portalFactory.createRandom("portal");
-        portalFactory.create("portal", 100, 200, 100.0);
+        portalFactory.create("portal", 100, 200, 5.0);
         portalFactory.create("portal", 500, 200, 100.0);
     }
 
     @Override
     public void update(double deltaTime) {
-        for (Portal p : portalFactory.getPortals()) {
+        portalFactory.getPortals().removeIf(p -> {
             p.updateLifetime(deltaTime);
             p.updateAnimation(deltaTime);
-        }
+            return !p.isActive();
+        });
     }
 
     public void handleCollision(Portal portal, GameObject obj) {
@@ -38,11 +39,6 @@ public class PortalSystem implements Updatable {
     public void clear() {}
 
     private void handleBallCollision(Portal portal, Ball ball) {
-        //  if (!portal.canTeleport()) {
-        //      System.out.println("HEHEHEHEHE");
-        //      return;
-        //  }
-
         Portal dest = portalFactory.getRandomDestination(portal);
         if (dest == null) {
             System.out.println("No available destination portal for teleportation!");
@@ -50,8 +46,6 @@ public class PortalSystem implements Updatable {
         } 
 
         handleBallPosition(dest, ball); 
-
-        // portal.setNextTeleportTime(System.currentTimeMillis() + 1000);
     }
 
     private void handleBallPosition(Portal portal, Ball ball) {

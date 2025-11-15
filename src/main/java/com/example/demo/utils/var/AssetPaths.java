@@ -41,6 +41,9 @@ public final class AssetPaths {
     public static final String WALL_SIDE_IMAGE = "/images/wall/Wall.png";
     public static final String WALL_TOP_IMAGE  = "/images/wall/WallRotated.png";
 
+    // MOVED WALL
+    public static final String MOVED_WALL_IMAGE = "/images/wall/MovedWall.png";
+
     // SPRITESHEETS
     public static final String PORTAL_SPRITESHEET    = "/images/portal/Portals.png"; 
     public static final String POWERUP_SPRITESHEET   = "/images/powerup/PowerUps.png";

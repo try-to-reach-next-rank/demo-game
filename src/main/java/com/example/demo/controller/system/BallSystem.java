@@ -2,6 +2,7 @@ package com.example.demo.controller.system;
 
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.MovedWall;
 import com.example.demo.model.core.entities.bricks.Brick;
 import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.model.core.entities.Wall;
@@ -51,6 +52,9 @@ public class BallSystem implements Updatable {
         } 
         else if (obj instanceof Wall wall) {
             handleWallCollision(ball, wall);
+        }
+        else if (obj instanceof MovedWall mw) {
+            handleMovedWallCollision(ball, mw);
         }
         else if (obj instanceof Brick brick) {
             handleBrickCollision(ball, brick);
@@ -163,6 +167,26 @@ public class BallSystem implements Updatable {
                 ball.getY() + ball.getHeight() / 2,
                 GameVar.EFFECT_DURATION
         );
+    }
+
+    private void handleMovedWallCollision(Ball ball, MovedWall mw) {
+        // TODO: play another sound
+        Sound.getInstance().playSound("wall_hit");
+
+        Vector2D v = ball.getVelocity();
+        
+        // Lấy tâm 2 object
+        double ballCenterY = ball.getY() + ball.getHeight() / 2;
+        double wallCenterY = mw.getY() + mw.getHeight() / 2;
+
+        // Nếu ball ở trên wall → bounce xuống
+        if (ballCenterY < wallCenterY) {
+            ball.setVelocity(v.x, -Math.abs(v.y));
+        }
+        // ball ở dưới → bounce lên
+        else {
+            ball.setVelocity(v.x, Math.abs(v.y));
+        }
     }
 
     private void handleBrickCollision(Ball ball, Brick brick) {

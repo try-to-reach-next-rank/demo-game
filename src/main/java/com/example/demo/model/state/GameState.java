@@ -74,7 +74,6 @@ public class GameState {
             }
         }
 
-
         /**
          * Đây là hàm cũ cái này sẽ tạo dâta dạng 1 chiều khá khó nhìn
          */

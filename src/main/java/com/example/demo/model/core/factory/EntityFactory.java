@@ -19,4 +19,8 @@ public class EntityFactory {
     public static PortalFactory createPortalFactory() {
         return new PortalFactory();
     }
+
+    public static MovedWallFactory createMovedWallFactory() {
+        return new MovedWallFactory();
+    }
 }

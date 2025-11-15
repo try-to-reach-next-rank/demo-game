@@ -30,6 +30,7 @@ public class GameWorldBuilder {
         world.setPaddle(EntityFactory.createPaddle());
         world.setBall(EntityFactory.createBall(world.getPaddle()));
         world.setPortalFactory(EntityFactory.createPortalFactory());
+        world.setMovedWallFactory(EntityFactory.createMovedWallFactory());
         return this;
     }
 

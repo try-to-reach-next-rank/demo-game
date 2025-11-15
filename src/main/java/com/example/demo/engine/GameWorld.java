@@ -2,6 +2,7 @@ package com.example.demo.engine;
 
 import com.example.demo.model.core.entities.bricks.Brick;
 import com.example.demo.model.core.entities.bricks.SteelBrick;
+import com.example.demo.model.core.factory.MovedWallFactory;
 import com.example.demo.model.core.factory.PortalFactory;
 import com.example.demo.model.core.entities.Ball;
 import com.example.demo.model.core.entities.Paddle;
@@ -28,6 +29,7 @@ public class GameWorld {
     private PowerUpSystem powerUpSystem; // DUPLICATE REMOVED
     // TODO: PHUC
     private PortalFactory portalFactory;
+    private MovedWallFactory movedwallFactory;
     private Brick[] bricks = new Brick[0];
     private int currentLevel = GameVar.START_LEVEL;
     // private GameStateRestore gameStateRestore; // DUPLICATE REMOVED
@@ -113,6 +115,9 @@ public class GameWorld {
     public PortalFactory getPortalFactory() { return this.portalFactory; }
     public void setPortalFactory(PortalFactory pf) { this.portalFactory = pf; } 
 
+    public MovedWallFactory getMovedWallFactory() { return this.movedwallFactory; }
+    public void setMovedWallFactory(MovedWallFactory f) { this.movedwallFactory = f; }
+
     public int getCurrentLevel() { return currentLevel; }
     public void setCurrentLevel(int level) { this.currentLevel = level; }
     
@@ -154,6 +159,8 @@ public class GameWorld {
         if (walls != null) all.addAll(walls);
         if (powerUps != null) all.addAll(powerUps);
         if (portalFactory != null) all.addAll(portalFactory.getPortals());
+        if (movedwallFactory != null) all.addAll(movedwallFactory.getMovedWalls());
+
         return all;
     }
 
@@ -176,6 +183,9 @@ public class GameWorld {
 
         if (portalFactory != null) 
             all.addAll(portalFactory.getPortals());
+
+        if (movedwallFactory != null)
+            all.addAll(movedwallFactory.getMovedWalls());
 
         return all;
     }
@@ -234,7 +244,6 @@ public class GameWorld {
         }
         log.info("[VERIFY BRICKS] totalBricks={} mismatches={}", bricks.length, errors);
     }
-
 
     public boolean isWinGame() {
         if (currentLevel == 3 && bricks.length == 0) {

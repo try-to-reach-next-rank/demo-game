@@ -17,6 +17,7 @@ public class Portal extends AnimatedObject<PortalData> {
 
     public Portal(String animKey) {
         super(0, 0);
+        this.animKey = animKey;
         setAnimationKey(animKey);
         this.active = false;
         this.timer = new Timer();

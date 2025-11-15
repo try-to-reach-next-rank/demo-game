@@ -44,6 +44,9 @@ public class ImageAssets implements AssetLoader {
         ASSETS.put("wall_side", AssetPaths.WALL_SIDE_IMAGE);
         ASSETS.put("wall_top", AssetPaths.WALL_TOP_IMAGE);
 
+        // Moved wall image
+        ASSETS.put("moved_wall", AssetPaths.MOVED_WALL_IMAGE);
+
         // Portal sprite sheet
         ASSETS.put("portal_spritesheet", AssetPaths.PORTAL_SPRITESHEET);
 
