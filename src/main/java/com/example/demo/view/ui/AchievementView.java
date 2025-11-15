@@ -8,6 +8,7 @@ import com.example.demo.model.menu.Achievement;
 import com.example.demo.model.menu.ButtonManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -15,6 +16,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 
+import javafx.scene.control.Label;
 import java.util.List;
 import java.util.Objects;
 import java.util.Stack;
@@ -148,7 +150,7 @@ public class AchievementView extends AbstractUIView {
         VBox listBox = new VBox(50);
         listBox.setAlignment(Pos.CENTER);
         for (Achievement a : achievements) {
-            StackPane achievementPane = CreateAchievementBox(a);
+            VBox achievementPane = CreateAchievementBox(a);
             listBox.getChildren().add(achievementPane);
         }
 
@@ -162,35 +164,59 @@ public class AchievementView extends AbstractUIView {
         buttonOverlay.getChildren().addAll(prevBtn, backBtn);
     }
 
-    private StackPane CreateAchievementBox(Achievement achievement) {
-        StackPane pane = new StackPane();
-        pane.setPrefSize(210, 140);
-        pane.setMaxSize(210, 140);
-        pane.setMinSize(210, 140);
+    private VBox CreateAchievementBox(Achievement achievement) {
 
-        ImageView Achive;
+        VBox box = new VBox();
+        box.setPrefSize(150, 100);
+        box.setMinSize(150, 100);
+        box.setMaxSize(150, 100);
+        box.setAlignment(Pos.TOP_CENTER);
+        box.setSpacing(4);
 
-        if(!achievement.isUnlocked()) {
-            Achive  = new ImageView(loockedAchievement);
-        }else{
-            if( "Win Level 1".equals(achievement.getName())) {
+        ImageView Achive = null;
+
+        if (!achievement.isUnlocked()) {
+            Achive = new ImageView(loockedAchievement);
+
+        } else {
+            if ("Win Level 1".equals(achievement.getName())) {
                 Achive = new ImageView(loockedAchievement);
-            }else if ( "Win Level 2".equals(achievement.getName())) {
+            } else if ("Win Level 2".equals(achievement.getName())) {
                 Achive = new ImageView(loockedAchievement);
-            }else if ( "Win Level 3".equals(achievement.getName())) {
+            } else if ("Win Level 3".equals(achievement.getName())) {
                 Achive = new ImageView(loockedAchievement);
-            }else {
+            } else {
                 Achive = new ImageView(loockedAchievement);
             }
         }
-        Achive.setFitWidth(0210);
-        Achive.setFitHeight(140);
+
+        Achive.setFitWidth(150);
+        Achive.setFitHeight(100);
         Achive.setPreserveRatio(false);
         Achive.setSmooth(true);
-        pane.getChildren().add(Achive);
+        Label nameTag;
+        ImageView labelImg = new ImageView(scoreBackground);
+        if(!achievement.isUnlocked()) {
+            nameTag = new Label("?????");
+        }else {
+            nameTag = new Label(achievement.getName());
+        }
+        nameTag.setGraphic(labelImg);
+        nameTag.setContentDisplay(ContentDisplay.CENTER);
+        nameTag.setMaxWidth(Double.MAX_VALUE);
+        nameTag.setAlignment(Pos.CENTER);
+        nameTag.setStyle(
+                "-fx-font-size: 14px;" +
+                        "-fx-text-fill: white;" +
+                        "-fx-background-color: rgba(0, 0, 0, 0.6);" +
+                        "-fx-padding: 4;"
+        );
 
-        return pane;
+        box.getChildren().addAll(Achive, nameTag);
+
+        return box;
     }
+
 
 
    /**

@@ -1240,3 +1240,33 @@
 16:51:59.213 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61  1
 16:52:00.221 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 60  1
 16:52:01.229 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - FPS: 61  1
+17:42:59.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+17:42:59.391 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+17:43:01.009 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+17:43:01.016 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+17:43:01.016 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+17:43:58.234 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+17:43:58.241 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+17:44:00.370 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+17:44:00.374 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+17:44:00.374 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+17:47:21.979 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+17:47:21.987 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+17:47:23.451 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+17:47:23.455 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+17:47:23.455 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+17:48:04.774 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+17:48:04.859 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+17:48:06.898 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:48:06.898 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:48:06.982 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+17:48:06.982 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+17:48:07.600 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Back to menu
+17:48:08.685 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+17:48:08.689 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+17:48:08.689 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+17:49:08.195 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+17:49:08.203 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+17:49:09.760 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+17:49:09.763 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+17:49:09.763 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
