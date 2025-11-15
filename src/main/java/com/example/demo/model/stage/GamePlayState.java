@@ -47,7 +47,9 @@ public class GamePlayState implements GameState {
             gameController.setNewGame(false);
             gameController.initGame();
 
+
             gameController.applyState(loadedGameState);
+            gameController.startIntroDialogue();
         }
 
         // call back về Menu

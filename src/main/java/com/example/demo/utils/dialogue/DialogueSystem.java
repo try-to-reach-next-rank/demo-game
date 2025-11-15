@@ -20,6 +20,7 @@ public class DialogueSystem {
     // Một hàng đợi (Queue) để lưu trữ các dòng lệnh đã xử lý
     private Queue<String> pendingLines;
 
+    public DialogueSystem() {};
     public DialogueSystem(String initialDialogueFile, DialogueBox dialogueBox) {
         this.dialogueBox = dialogueBox;
         this.pendingLines = new LinkedList<>();

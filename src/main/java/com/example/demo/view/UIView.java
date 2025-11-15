@@ -23,7 +23,9 @@ public class UIView {
         this.pauseTable = new PauseTable(gameController);
         this.cheatTable = new CheatTable(gameController);
         this.dialogueBox = new DialogueBox();
-        this.dialogueSystem = new DialogueSystem("/Dialogue/intro.txt", dialogueBox);
+
+        boolean isNewGame = gameController.GetIsNewGame();
+
 
         root = new StackPane();
         root.getChildren().addAll(
@@ -103,4 +105,5 @@ public class UIView {
     }
 
     public StackPane getRoot() {return root;}
+
 }

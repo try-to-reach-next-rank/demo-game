@@ -17,6 +17,7 @@ public class GameView extends Pane {
     private final GameController controller;
     private final UIView uiView;
     private final CoreView coreView;
+    private GameWorld gameWorld;
 
     private TransitionEffect transitionEffect;
 
@@ -31,6 +32,7 @@ public class GameView extends Pane {
         this.uiView = new UIView(controller); // if you have UI overlay
         this.coreView = new CoreView(gc, world);
         transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
+
         getChildren().add(uiView.getRoot());
     }
 
@@ -38,7 +40,8 @@ public class GameView extends Pane {
         gc.clearRect(0, 0, GlobalVar.WIDTH, GlobalVar.HEIGHT);
         coreView.render(gc);
         uiView.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
-        if (transitionEffect != null && transitionEffect.isActive()) {
+        if (transitionEffect != null && transitionEffect.isActive()     ) {
+            //System.out.println("transitionEffect is active" + controller.GetIsNewGame());
             transitionEffect.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
         }
     }

@@ -37,7 +37,7 @@ public class MovedWallFactory {
 
         mw.activate(x, y, lifeTime);
 
-        System.out.println("CREATED MOVED WALL: x = " + mw.getX() + " y = " + mw.getY() + " W = " + mw.getWidth() + " H = " + mw.getHeight());
+        //System.out.println("CREATED MOVED WALL: x = " + mw.getX() + " y = " + mw.getY() + " W = " + mw.getWidth() + " H = " + mw.getHeight());
 
         walls.add(mw);
     }

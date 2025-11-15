@@ -4,9 +4,6 @@ import com.example.demo.controller.map.MapController;
 import com.example.demo.controller.system.SystemManager;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.entities.bricks.Brick;
-import com.example.demo.model.core.builder.GameWorldBuilder;
-import com.example.demo.model.core.entities.Ball;
-import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.model.core.factory.GameFactory;
 import com.example.demo.model.map.MapData;
 import com.example.demo.model.menu.AchievementModel;
@@ -15,6 +12,7 @@ import com.example.demo.model.state.highscore.HighScoreState;
 import com.example.demo.utils.BrickFactoryUtil;
 import com.example.demo.utils.Input;
 import com.example.demo.utils.Sound;
+import com.example.demo.utils.dialogue.DialogueSystem;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
 import com.example.demo.view.*;
@@ -24,9 +22,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class GameController extends Pane {
     private static final Logger log = LoggerFactory.getLogger(GameController.class);
@@ -144,9 +139,17 @@ public class GameController extends Pane {
     public void loadLevel(int level) {
         world.setCurrentLevel(level);
         unlockLevelAchievement(world.getCurrentLevel());
+        AchievementDialogue(world.getCurrentLevel());
+
+        System.out.println("Loaded level " + level);
+
+
         view.startTransition(
                 () -> setupLevel(level),
-                () -> setInGame(true)
+                () -> {
+                    setInGame(true);
+                    startIntroDialogue();
+                }
         );
     }
 
@@ -181,11 +184,17 @@ public class GameController extends Pane {
             world.setHighScore(world.getCurrentScore());
             log.info("Updated high score to: {}", world.getHighScore());
         }
-
+        if(world.getCurrentLevel() < 3) {
             log.info("Level complete!");
             unlockLevelAchievement(world.getCurrentLevel());
+            System.out.println(world.getCurrentLevel());
             saveController.saveGame(world, currentSlotNumber);
             loadNextLevel();
+        }else{
+            log.info("Game  complete!");
+            unlockLevelAchievement(4);
+            saveController.saveGame(world, currentSlotNumber);
+        }
     }
 
     private void unlockLevelAchievement(int levelNumber) {
@@ -194,13 +203,14 @@ public class GameController extends Pane {
             AchievementModel achievementModel = new AchievementModel(highScoreState);
 
             // Unlock theo level
-            if (levelNumber == 1) {
+            if (levelNumber == 2) {
                 achievementModel.unlockWinLevel1();
                 log.info("🏆 Unlocked achievement: Win Level 1");
-            } else if (levelNumber  == 2) {
+            } else if (levelNumber  == 3) {
                 achievementModel.unlockWinLevel2();
                 log.info("🏆 Unlocked achievement: Win Level 2");
-            }else{
+            }
+            if(levelNumber == 4){
                 achievementModel.unlockWinGame();
                 log.info("🏆 Unlocked achievement: Win Game");
             }
@@ -229,7 +239,7 @@ public class GameController extends Pane {
                 fpsTimer += deltaTime;
                 frames++;
                 if (fpsTimer >= 1.0) {
-                    log.info("FPS: {}  {}", frames, world.getCurrentLevel());
+                    //log.info("FPS: {}  {}", frames, world.getCurrentLevel());
                     fpsTimer = 0;
                     frames = 0;
                 }
@@ -312,7 +322,18 @@ public class GameController extends Pane {
         view.getUiView().startDialogue();
     }
 
+    public void AchievementDialogue(int levelNumber) {
+        String dialoguePath =  "/Dialogue/" + levelNumber+ ".txt";
+        System.out.println(dialoguePath);
+        view.getUiView().loadDialogue(dialoguePath);
+    }
+
     public SystemManager getSystemManager() {
         return this.systemManager;
+    }
+
+    public boolean GetIsNewGame() {
+        System.out.println(isNewGame);
+        return this.isNewGame;
     }
 }
