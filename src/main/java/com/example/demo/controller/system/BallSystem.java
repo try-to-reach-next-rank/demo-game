@@ -25,18 +25,11 @@ public class BallSystem implements Updatable {
 
     @Override
     public void update(double deltaTime) {
-        // if (ball.isDrunk()) {
-        //     ball.setElapsedTime(ball.getElapsedTime() + deltaTime);
-        //     if (ball.getElapsedTime() >= GameVar.BALL_ELAPSED_TIME) {
-        //         ball.setElapsedTime(0);
-        //         double angle = GameRandom.nextDouble() * 2 * Math.PI;
-        //         double vx = Math.cos(angle);
-        //         double vy = Math.sin(angle);
-        //         if (ball.getY() >= paddle.getY() - GameVar.BALL_PADDLE_OFFSET_Y) {
-        //             vy = -Math.abs(vy);
-        //         }
-        //         ball.setVelocity(vx, vy);
         for (Ball ball : balls) {
+            if (ball.isDrunk()) {
+                handleBallDrunk(deltaTime, ball);
+            }
+
             if (ball.isStuck() && ball.getStuckPaddle() != null) {
                 alignWithPaddle(ball, 
                                 GameVar.BALL_ALIGN_WITH_PADDLE_OFFSET_Y, 
@@ -84,6 +77,21 @@ public class BallSystem implements Updatable {
     public void toggleStronger() {
         for (Ball ball : balls) {
             ball.toggleStronger();
+        }
+    }
+
+    // --- When ball is drunk ---
+    private void handleBallDrunk(double deltaTime, Ball ball) {
+        ball.setElapsedTime(ball.getElapsedTime() + deltaTime);
+        if (ball.getElapsedTime() >= GameVar.BALL_ELAPSED_TIME) {
+            ball.setElapsedTime(0);
+            double angle = GameRandom.nextDouble() * 2 * Math.PI;
+            double vx = Math.cos(angle);
+            double vy = Math.sin(angle);
+            if (ball.getY() >= ball.getStuckPaddle().getY() - GameVar.BALL_PADDLE_OFFSET_Y) {
+                vy = -Math.abs(vy);
+            }
+            ball.setVelocity(vx, vy);
         }
     }
 

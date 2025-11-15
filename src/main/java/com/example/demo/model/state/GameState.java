@@ -31,18 +31,14 @@ public class GameState {
 
     //private int[][] bricksHealthMatrix; // dạng ma trận máu brick cho dễ nhìn
 
-    // Đọc thấy ngta bảo vẫn nên có constructor rỗng ig
-    public GameState() {
-        powerUpsData = new ArrayList<>();
-        bricksData = new ArrayList<>();
-        activePowerUpsData = new ArrayList<>();
-
-        // New
-        portalsData = new ArrayList<>();
-    }
-
     // === CONSTRUCTOR MỚI: Tự động thu thập toàn bộ trạng thái game ===
     public GameState(GameWorld world) {
+        // Khởi tạo các list
+        this.bricksData = new ArrayList<>();
+        this.powerUpsData = new ArrayList<>();
+        this.activePowerUpsData = new ArrayList<>();
+        this.portalsData = new ArrayList<>();
+
         // Level, Paddle và Ball
         this.playElapsedSeconds = world.getPlayElapsedSeconds();
         this.realHighScore = world.computeRealHighScore();

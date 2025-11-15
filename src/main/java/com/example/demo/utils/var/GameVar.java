@@ -150,7 +150,7 @@ public final class GameVar {
     public static final int     PORTAL_RENDER_WIDTH  = 64;
     public static final int     PORTAL_RENDER_HEIGHT = 64;
     public static final boolean PORTAL_LOOP          = true;
-    public static final double  PORTAL_DURATION      = 2.0;
+    public static final double  PORTAL_DURATION      = 1.0;
 
     public static final String  EXPLOSION_SHEET_KEY      = "explosion_spritesheet";
     public static final int     EXPLOSION1_FRAME_WIDTH   = 96;
