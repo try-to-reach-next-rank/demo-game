@@ -36,7 +36,7 @@ public final class GameVar {
     // PADDLE
     public static final int INIT_PADDLE_X          = WIDTH / 2 - 50;
     public static final int INIT_PADDLE_Y          = HEIGHT - 30;
-    public static final int PADDLE_OFFSET_X_SCREEN = 15;
+    public static final int PADDLE_OFFSET_X_SCREEN = 0;
 
     // WALL
     public static final int WIDTH_OF_WALLS        = 12;

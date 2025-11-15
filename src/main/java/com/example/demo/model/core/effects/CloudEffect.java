@@ -4,7 +4,6 @@ import com.example.demo.model.assets.AssetManager;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 public class CloudEffect extends VisualEffect {
 

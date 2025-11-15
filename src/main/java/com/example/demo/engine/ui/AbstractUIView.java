@@ -31,8 +31,4 @@ public abstract class AbstractUIView implements Stage, InputHandler, NavigableUI
     public StackPane getRoot() {
         return root;
     }
-
-    public void stopBgAnimation() {
-        themeManager.stopBgAnimation();
-    }
 }

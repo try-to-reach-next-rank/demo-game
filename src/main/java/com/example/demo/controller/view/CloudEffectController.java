@@ -2,15 +2,21 @@ package com.example.demo.controller.view;
 
 import com.example.demo.model.core.effects.CloudEffect;
 import com.example.demo.utils.ObjectPool;
+import com.example.demo.utils.Timer;
+import com.example.demo.utils.var.GameVar;
+import com.example.demo.utils.var.GlobalVar;
 
 public class CloudEffectController {
     private static final CloudEffectController instance = new CloudEffectController();
 
     private final ObjectPool<CloudEffect> cloudPool;
     private CloudEffect activeCloudEffect = null;
+    private final Timer spawnTimer;
 
     private CloudEffectController() {
         this.cloudPool = new ObjectPool<>(CloudEffect::new, 2);
+        this.spawnTimer = new Timer();
+        this.spawnTimer.start(20.0); // first cloud after 20 seconds
     }
 
     public static CloudEffectController getInstance() {
@@ -18,22 +24,21 @@ public class CloudEffectController {
     }
 
     /**
-     * Trigger cloud effect manually (e.g., by key press or SwitchBrick)
-     */
-    public void triggerCloudEffect(double screenWidth, double screenHeight) {
-        if (activeCloudEffect != null && activeCloudEffect.isActive()) {
-            return; // already running
-        }
-
-        activeCloudEffect = cloudPool.acquire();
-        activeCloudEffect.activate(screenWidth, screenHeight, 0);
-        registerWithRenderer(activeCloudEffect);
-    }
-
-    /**
      * Update cloud effect state
      */
     public void update(double deltaTime) {
+        spawnTimer.update(deltaTime);
+
+        // Spawn a new cloud automatically if timer finished and no cloud active
+        if (spawnTimer.isFinished() && (activeCloudEffect == null || !activeCloudEffect.isActive())) {
+            activeCloudEffect = cloudPool.acquire();
+            activeCloudEffect.activate(GlobalVar.WIDTH, GlobalVar.HEIGHT, 0);
+            registerWithRenderer(activeCloudEffect);
+
+            spawnTimer.start(20.0); // reset timer for next spawn
+        }
+
+        // Update active cloud
         if (activeCloudEffect != null) {
             activeCloudEffect.update(deltaTime);
 

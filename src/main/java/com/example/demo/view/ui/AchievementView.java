@@ -168,7 +168,7 @@ public class AchievementView extends AbstractUIView {
         pane.setMaxSize(210, 140);
         pane.setMinSize(210, 140);
 
-        ImageView Achive = null;
+        ImageView Achive;
 
         if(!achievement.isUnlocked()) {
             Achive  = new ImageView(loockedAchievement);

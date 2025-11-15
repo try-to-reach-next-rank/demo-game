@@ -95,10 +95,6 @@ public class CoreView {
         }
     }
 
-    public void triggerCloud() {
-        cloudEffectController.triggerCloudEffect(GlobalVar.WIDTH, GlobalVar.HEIGHT);
-    }
-
     private void setupBrickReveal() {
         currentRevealTick++;
 

@@ -51,10 +51,8 @@ public abstract class VisualEffect implements Effect {
 
         if (durationSeconds < 0) {
             this.infinite = true;
-            this.durationSeconds = Double.MAX_VALUE;
         } else {
             this.infinite = false;
-            this.durationSeconds = durationSeconds;
         }
 
         this.durationSeconds = durationSeconds;

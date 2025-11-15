@@ -31,7 +31,7 @@ import java.util.List;
 public class GameController extends Pane {
     private static final Logger log = LoggerFactory.getLogger(GameController.class);
 
-    private GameWorld world = GameWorld.getInstance();
+    private GameWorld world;
     private final SystemManager systemManager;
     private final GameView view;
     private AnimationTimer timer;
@@ -274,9 +274,6 @@ public class GameController extends Pane {
         inputGame.handleKeyPressed(code);
         if (code == KeyCode.H) {
             view.getCoreView().triggerHandGrab();
-        }
-        else if (code == KeyCode.C) {
-            view.getCoreView().triggerCloud();
         }
     }
 

@@ -63,7 +63,6 @@ public class Ball extends ImageObject<BallData> {
     }
 
     // --- Getters / setters ---
-    public boolean isHeldByEffect() { return beingHeld; }
     public void setHeldByEffect(boolean held) { this.beingHeld = held; }
 
     public boolean isStuck() { return this.stuck; }
@@ -89,7 +88,6 @@ public class Ball extends ImageObject<BallData> {
 
     // --- Getters / Setters with other object ---
     public Brick getLastBrick() { return this.lastBrick; }
-    public void setLastBrick(Brick brick) { this.lastBrick = brick; }
 
     public Paddle getStuckPaddle() { return this.stuckPaddle; }
     public void setStuckPaddle(Paddle paddle) { this.stuckPaddle = paddle; }

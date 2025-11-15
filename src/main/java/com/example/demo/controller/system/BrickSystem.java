@@ -110,9 +110,6 @@ public class BrickSystem implements Updatable {
         return count;
     }
 
-    public boolean isLevelComplete() {
-        return getRemainingBricksCount() == 0;
-    }
     /**
      * Creates a score popup effect at the brick's location.
      */
