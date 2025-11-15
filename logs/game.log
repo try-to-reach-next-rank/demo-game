@@ -2941,3 +2941,1014 @@
 21:52:58.983 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
 21:52:58.983 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/2.txt
 21:52:59.970 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+21:59:18.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+21:59:18.944 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+21:59:21.750 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+21:59:21.869 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+21:59:21.870 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+21:59:21.870 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+21:59:22.983 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+21:59:23.461 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+21:59:23.462 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+21:59:24.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+21:59:24.829 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 1 -> 2
+21:59:24.833 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+21:59:24.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+21:59:24.837 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+21:59:24.837 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+21:59:24.837 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/2.txt
+21:59:25.831 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+21:59:27.833 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+21:59:27.833 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+21:59:28.607 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+21:59:28.607 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 2 -> 3
+21:59:28.608 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+21:59:28.609 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+21:59:28.609 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+21:59:28.609 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 2
+21:59:28.610 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/3.txt
+21:59:29.606 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+21:59:33.450 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+21:59:33.451 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+21:59:34.185 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+21:59:34.208 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+21:59:34.209 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+21:59:34.209 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+21:59:34.209 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+21:59:34.209 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+21:59:34.209 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+21:59:34.209 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+21:59:34.209 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+21:59:34.209 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+21:59:34.209 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+21:59:34.209 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+21:59:34.209 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+21:59:34.210 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:02:25.506 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:02:25.513 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:02:27.487 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:02:27.488 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:02:27.548 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:02:27.548 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:02:28.277 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+22:02:28.284 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:02:28.284 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:02:28.429 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+22:02:28.429 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:02:28.431 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:02:29.602 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:02:31.601 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:02:31.603 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:02:31.605 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:02:31.605 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:02:31.605 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:02:31.619 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 1 -> 2
+22:02:31.620 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:02:31.620 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:02:31.620 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:02:31.620 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+22:02:31.621 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/2.txt
+22:02:32.589 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+22:02:50.061 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:02:50.062 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:02:51.401 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:02:51.401 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:04:44.835 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:04:44.835 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:04:44.853 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:04:44.854 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:04:46.791 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+22:04:46.793 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:04:46.793 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:04:46.866 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+22:04:46.866 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:04:46.866 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:04:47.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:04:49.931 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:04:49.932 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:04:49.932 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:04:49.932 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:04:49.932 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:04:49.935 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:04:49.936 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 1 -> 2
+22:04:49.937 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:04:49.937 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:04:49.937 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:04:49.937 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+22:04:49.937 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/2.txt
+22:04:50.928 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+22:04:57.513 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:04:57.513 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:04:59.470 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:04:59.470 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:05:02.318 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:05:02.318 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:05:02.336 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:05:02.336 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:05:32.793 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+22:05:32.794 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:05:32.794 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:05:32.868 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+22:05:32.868 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:05:32.868 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:05:34.033 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:05:36.032 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:05:36.033 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:05:36.034 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:05:36.034 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:05:36.034 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:05:36.036 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:05:36.036 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:05:36.036 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:05:36.036 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:05:36.036 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:05:36.036 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:05:36.036 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:05:36.036 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:05:36.036 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:05:36.036 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:05:36.037 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:05:36.037 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:05:36.037 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:05:36.037 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 1 -> 2
+22:05:36.037 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:05:36.037 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:05:36.037 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:05:36.037 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+22:05:36.037 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/2.txt
+22:05:37.040 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+22:06:38.235 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:06:38.242 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:06:50.694 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:06:50.695 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:06:50.757 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:06:50.757 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:06:51.491 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+22:06:51.493 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:06:51.493 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:06:51.631 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+22:06:51.631 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:06:51.631 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:06:52.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:06:54.828 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:06:54.833 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:06:54.837 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:06:54.837 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:06:54.837 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:06:54.855 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:06:54.856 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:06:54.856 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:06:54.856 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:06:54.856 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:06:54.856 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:06:54.856 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:06:54.856 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:06:54.856 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:06:54.857 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:06:54.857 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:06:54.857 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:06:54.857 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:06:57.834 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:06:57.835 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:06:57.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:06:57.836 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:06:57.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:06:57.842 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:06:57.842 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:06:57.842 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:06:57.842 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:06:57.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:06:57.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:06:57.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:06:57.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:06:57.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:06:57.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:06:57.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:06:57.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:06:57.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:06:59.288 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:06:59.288 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:01.003 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:01.003 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Previous level: 1 -> 3
+22:07:01.004 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:07:01.004 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:07:01.004 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:07:01.005 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 2
+22:07:01.005 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/3.txt
+22:07:01.995 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+22:07:11.927 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:11.927 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:15.650 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:15.650 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 3 -> 1
+22:07:15.650 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:07:15.650 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:07:15.650 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:07:15.650 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/1.txt
+22:07:16.648 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:07:20.232 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:20.232 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:21.689 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:21.689 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 1 -> 2
+22:07:21.690 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:07:21.690 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:07:21.691 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:07:21.691 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+22:07:21.691 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/2.txt
+22:07:22.680 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+22:07:25.202 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:25.202 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:25.772 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:25.772 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 2 -> 3
+22:07:25.773 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:07:25.773 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:07:25.773 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:07:25.774 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 2
+22:07:25.774 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/3.txt
+22:07:26.771 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+22:07:29.102 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:29.103 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:30.313 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:30.313 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:07:47.701 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:07:47.708 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:07:49.044 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:07:49.044 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:07:49.103 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:07:49.103 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:07:50.925 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+22:07:50.927 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:07:50.927 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:07:51.050 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+22:07:51.050 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:07:51.050 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:07:52.295 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:07:54.296 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:07:54.299 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:07:54.300 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:07:54.301 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:07:54.301 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:07:54.314 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:07:54.314 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:07:54.314 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:07:54.314 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:07:54.315 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:07:54.315 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:07:54.315 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:07:54.315 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:07:54.315 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:07:54.315 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:07:54.315 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:07:54.315 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:07:54.315 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:07:57.309 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:07:57.309 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:07:57.310 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:07:57.310 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:07:57.310 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:07:57.313 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:07:57.313 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:07:57.313 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:07:57.313 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:07:57.313 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:07:57.313 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:07:57.313 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:07:57.314 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:07:57.314 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:07:57.314 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:07:57.314 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:07:57.314 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:07:57.314 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:08:00.317 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:08:00.318 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:08:00.318 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:08:00.318 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:08:00.318 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:08:00.321 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:08:00.322 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:08:00.322 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:08:00.322 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:08:00.323 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:08:00.323 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:08:00.323 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:08:00.323 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:08:00.324 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:08:00.324 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:08:00.324 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:08:00.325 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:08:00.325 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:08:03.324 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:08:03.325 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:08:03.326 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:08:03.326 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:08:03.326 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:08:03.329 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:10:12.287 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:10:12.296 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:10:27.413 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:10:27.413 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:10:27.488 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:10:27.488 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:10:38.205 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+22:10:38.207 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:10:38.208 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:10:38.336 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+22:10:38.336 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:10:38.336 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:10:39.451 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:10:41.449 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:10:41.451 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:41.453 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:10:41.453 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:10:41.454 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:10:41.466 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:10:41.466 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:10:41.466 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:10:41.466 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:10:41.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:41.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:10:41.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:10:41.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:10:41.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:10:41.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:10:41.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:10:41.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:10:41.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:10:44.457 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:10:44.458 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:44.459 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:10:44.459 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:10:44.459 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:10:44.466 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:10:44.466 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:10:44.466 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:10:44.466 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:10:44.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:44.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:10:44.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:10:44.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:10:44.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:10:44.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:10:44.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:10:44.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:10:44.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:10:47.462 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:10:47.463 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:47.463 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:10:47.463 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:10:47.463 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:10:47.466 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:10:47.466 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:10:47.466 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:10:47.466 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:10:47.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:47.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:10:47.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:10:47.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:10:47.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:10:47.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:10:47.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:10:47.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:10:47.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:10:50.473 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:10:50.473 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:50.474 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:10:50.474 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:10:50.474 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:10:50.476 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:10:50.476 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:10:50.476 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:10:50.476 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:10:50.477 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:50.477 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:10:50.477 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:10:50.477 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:10:50.477 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:10:50.477 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:10:50.477 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:10:50.477 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:10:50.477 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:10:53.497 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:10:53.498 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:53.498 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:10:53.498 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:10:53.498 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:10:53.501 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:10:53.501 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:10:53.501 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:10:53.501 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:10:53.502 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:53.502 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:10:53.502 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:10:53.502 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:10:53.503 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:10:53.503 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:10:53.503 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:10:53.503 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:10:53.503 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:10:56.504 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:10:56.506 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:56.507 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:10:56.508 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:10:56.508 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:10:56.510 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:10:56.510 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:10:56.510 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:10:56.510 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:10:56.511 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:56.511 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:10:56.511 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:10:56.512 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:10:56.512 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:10:56.512 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:10:56.512 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:10:56.512 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:10:56.512 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:10:59.704 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:10:59.706 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:59.706 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:10:59.706 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:10:59.706 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:10:59.708 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:11:02.711 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:11:02.711 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:02.711 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:11:02.711 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:11:02.711 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:11:02.714 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:11:05.801 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:11:05.802 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:05.803 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:11:05.803 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:11:05.804 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:11:05.805 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:11:05.805 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:11:05.805 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:11:05.805 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:11:05.805 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:05.805 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:11:05.805 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:11:05.805 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:11:05.805 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:11:05.805 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:11:05.806 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:11:05.806 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:11:05.806 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:11:08.809 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:11:08.809 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:08.810 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:11:08.810 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:11:08.810 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:11:08.811 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:11:08.811 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:11:08.811 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:11:08.811 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:11:08.811 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:08.812 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:11:08.812 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:11:08.812 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:11:08.812 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:11:08.812 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:11:08.812 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:11:08.812 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:11:08.812 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:11:11.816 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:11:11.817 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:11.817 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:11:11.817 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:11:11.817 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:11:11.822 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:11:14.825 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:11:14.825 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:14.826 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:11:14.826 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:11:14.826 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:11:14.828 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:11:14.829 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:11:17.833 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:11:17.833 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:17.834 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:11:17.834 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:11:17.834 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:11:17.835 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:11:17.835 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:11:17.835 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:11:17.835 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:11:17.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:17.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:11:17.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:11:17.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:11:17.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:11:17.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:11:17.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:11:17.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:11:17.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:11:20.839 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:11:20.840 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:20.841 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:11:20.841 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:11:20.841 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:11:20.843 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:11:23.849 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:11:23.851 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:23.851 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:11:23.851 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:11:23.852 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:11:23.854 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:11:23.854 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:11:23.854 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:11:23.854 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:11:23.854 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:23.854 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:11:23.854 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:11:23.854 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:11:23.854 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:11:23.855 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:11:23.855 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:11:23.855 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:11:23.855 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:11:27.049 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:11:27.050 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:27.050 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:11:27.050 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:11:27.050 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:11:27.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:11:27.051 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:11:27.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:11:27.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:11:27.052 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:27.052 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:11:27.052 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:11:27.052 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:11:27.052 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:11:27.052 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:11:27.052 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:11:27.052 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:11:27.052 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:11:30.049 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:11:30.049 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:30.049 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:11:30.049 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:11:30.049 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:11:30.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:11:33.049 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:11:33.049 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:33.050 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:11:33.050 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:11:33.050 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:11:33.051 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:12:04.257 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:12:04.265 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:12:05.567 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:12:05.567 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:12:05.639 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:12:05.639 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:12:08.641 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 2
+22:12:08.774 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 2
+22:12:08.774 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+22:12:08.774 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+22:12:09.856 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:12:14.205 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:12:14.205 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:12:15.357 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:12:15.357 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 1 -> 2
+22:12:15.359 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:12:15.361 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:12:15.362 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:12:15.362 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+22:12:15.362 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/2.txt
+22:12:16.368 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+22:12:25.670 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:12:25.671 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:12:26.466 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:12:26.466 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 2 -> 3
+22:12:26.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:12:26.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:12:26.467 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:12:26.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 2
+22:12:26.467 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/3.txt
+22:12:27.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+22:13:25.709 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:13:25.709 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:13:26.504 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 2...
+22:13:26.526 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_2.json
+22:13:26.526 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 2
+22:13:26.526 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:13:26.526 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:13:26.526 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:13:26.528 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:13:26.528 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:13:26.528 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:13:26.528 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:13:26.528 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:13:26.528 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:13:26.528 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:13:26.528 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:13:42.141 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:13:42.141 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:13:42.144 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:13:42.144 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:13:42.171 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:13:42.171 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:13:42.173 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:13:42.173 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:13:44.358 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 2
+22:13:44.361 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:13:44.361 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:13:44.435 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 2
+22:13:44.435 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:13:44.435 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:13:45.539 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:23:49.671 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:23:49.679 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:23:51.317 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:23:51.317 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:23:51.322 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:23:51.322 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:23:51.381 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:23:51.381 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:23:51.383 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:23:51.384 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:23:52.199 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+22:23:52.201 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:23:52.201 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:23:52.363 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+22:23:52.363 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:23:52.364 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:23:53.444 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:23:55.322 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:23:55.322 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:23:56.548 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:23:56.548 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 1 -> 2
+22:23:56.550 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:23:56.552 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:23:56.552 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:23:56.552 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+22:23:56.552 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/2.txt
+22:23:56.674 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+22:23:56.675 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:23:56.676 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:23:56.676 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:23:56.676 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+22:23:56.676 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+22:23:56.692 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+22:23:56.693 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+22:23:56.693 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:23:56.693 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:23:56.693 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:23:56.693 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:23:56.693 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:23:56.693 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:23:56.693 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:23:56.693 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:23:56.693 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:23:56.693 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:23:56.694 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:23:57.552 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+22:23:58.529 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:23:58.529 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:24:06.753 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:24:06.754 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 2 -> 3
+22:24:06.755 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:24:06.756 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+22:24:06.756 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+22:24:06.756 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 2
+22:24:06.756 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/3.txt
+22:24:07.744 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+22:28:48.605 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:28:48.615 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:28:51.100 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:28:51.100 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:28:51.106 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:28:51.106 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:28:51.162 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:28:51.162 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:28:51.164 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:28:51.164 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:28:53.778 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 2
+22:28:53.780 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:28:53.780 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:28:53.931 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 2
+22:28:53.932 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:28:53.936 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:28:55.059 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:29:07.169 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:07.171 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:08.955 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:08.955 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:08.955 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:10.005 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:26.466 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:26.467 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:30.987 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:30.987 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:30.987 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:31.360 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:37.272 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+22:29:37.284 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+22:29:37.285 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+22:29:37.285 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+22:29:37.334 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+22:29:37.334 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+22:29:39.046 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+22:29:39.046 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+22:29:39.124 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+22:29:39.124 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+22:29:40.511 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+22:29:40.511 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+22:29:40.582 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+22:29:40.582 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+22:29:40.583 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+22:29:40.583 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+22:29:40.621 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+22:29:40.621 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+22:29:40.621 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+22:29:40.621 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+22:29:40.711 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+22:29:40.711 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+22:29:40.743 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+22:29:40.744 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+22:29:40.791 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+22:29:40.791 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+22:29:41.125 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:41.125 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:42.165 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:42.166 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:29:43.032 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 2...
+22:29:43.055 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_2.json
+22:29:43.055 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 2
+22:29:43.056 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:29:43.056 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:29:43.059 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:29:43.059 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:29:43.059 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:29:43.059 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:29:43.059 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:29:43.059 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:29:43.059 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:29:43.061 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:29:43.061 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:30:41.454 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:30:41.461 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:30:47.818 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:30:47.818 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:30:47.824 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:30:47.824 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:30:47.875 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:30:47.875 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:30:47.877 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:30:47.877 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:30:49.521 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 2
+22:30:49.526 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:30:49.526 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:30:49.668 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 2
+22:30:49.668 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:30:49.668 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:30:50.757 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:30:58.469 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:30:58.469 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:01.256 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:01.256 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:01.256 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:01.883 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:07.742 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+22:31:07.744 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+22:31:07.796 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+22:31:07.797 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+22:31:08.778 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:08.778 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:10.263 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:10.263 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:11.102 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 2...
+22:31:11.115 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_2.json
+22:31:11.116 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 2
+22:31:11.116 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:31:11.116 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:31:11.117 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:31:11.118 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:31:11.118 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:31:11.118 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:31:11.118 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:31:11.118 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:31:11.119 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:31:11.119 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:31:11.119 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:31:15.592 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:31:15.593 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:31:15.595 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:31:15.595 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:31:15.626 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:31:15.626 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:31:15.629 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:31:15.629 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:31:17.063 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 2
+22:31:17.064 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:31:17.064 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:31:17.141 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 2
+22:31:17.141 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:31:17.141 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:31:18.260 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:31:23.768 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:23.768 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:28.333 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:28.334 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:31:30.544 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 2...
+22:31:30.553 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_2.json
+22:31:30.554 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 2
+22:31:30.554 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:31:30.554 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:31:30.556 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:31:30.556 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:31:30.556 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:31:30.556 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:31:30.556 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:31:30.556 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:31:30.557 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:31:30.557 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:31:30.557 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:33:08.849 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:33:08.856 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:33:11.019 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:33:11.019 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:33:11.024 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:33:11.024 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:33:11.078 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:33:11.078 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:33:11.079 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:33:11.079 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:33:13.333 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 2
+22:33:13.334 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:33:13.335 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:33:13.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 2
+22:33:13.468 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:33:13.469 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:33:14.633 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:33:17.449 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:33:17.449 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:33:19.499 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:33:19.499 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+22:33:23.834 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 2...
+22:33:23.867 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_2.json
+22:33:23.867 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 2
+22:33:23.867 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+22:33:23.867 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+22:33:23.868 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+22:33:23.870 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 910
+22:33:23.870 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 660
+22:33:23.870 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 530
+22:33:23.870 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 410
+22:33:23.870 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 250
+22:33:23.870 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 110
+22:33:23.870 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 40
+22:33:23.870 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 10
+22:33:27.420 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:33:27.421 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:33:27.424 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:33:27.425 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:33:27.457 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:33:27.458 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:33:27.459 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:33:27.459 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:33:28.947 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 2
+22:33:28.948 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:33:28.948 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:33:29.042 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 2
+22:33:29.042 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:33:29.042 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:33:30.151 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:34:10.756 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:34:10.767 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:34:12.326 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:34:12.326 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:34:12.331 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:34:12.331 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:34:12.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:34:12.394 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:34:12.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:34:12.396 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:34:13.753 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 2
+22:34:13.754 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_2.json
+22:34:13.754 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 2 successfully.
+22:34:13.893 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 2
+22:34:13.894 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+22:34:13.894 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+22:34:15.058 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1

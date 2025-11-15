@@ -108,7 +108,7 @@ public class GameController extends Pane {
             bricksToLoad = mapData.bricks().toArray(new Brick[0]);
         }
         world.setBricks(bricksToLoad);
-
+        /*
         // Reset ball và powerup khi load level mới
         if (world.getBall() != null) {
             world.getBall().resetState();
@@ -116,6 +116,8 @@ public class GameController extends Pane {
         if (world.getPowerUpSystem() != null) {
             world.getPowerUpSystem().reset();
         }
+        */
+
 
         // Reset any level-specific state in systems
         systemManager.clear();
@@ -174,27 +176,29 @@ public class GameController extends Pane {
     }
 
     // ========== Auto Level Progression ==========
-    private void checkLevelCompletion() {
-        if (world.getRemainingBricksCount() > 0) {
-            return;
-        }
-
-
+    private boolean checkLevelCompletion() {
         if (world.getCurrentScore() > world.getHighScore()) {
             world.setHighScore(world.getCurrentScore());
             log.info("Updated high score to: {}", world.getHighScore());
         }
+        if (world.getRemainingBricksCount() > 0) {
+            return false;
+        }
+
+
+
         if(world.getCurrentLevel() < 3) {
             log.info("Level complete!");
             unlockLevelAchievement(world.getCurrentLevel());
             System.out.println(world.getCurrentLevel());
             saveController.saveGame(world, currentSlotNumber);
-            loadNextLevel();
+            //loadNextLevel();
         }else{
             log.info("Game  complete!");
             unlockLevelAchievement(4);
             saveController.saveGame(world, currentSlotNumber);
         }
+        return true;
     }
 
     private void unlockLevelAchievement(int levelNumber) {
@@ -255,7 +259,7 @@ public class GameController extends Pane {
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;
             if (levelCheckTimer >= LEVEL_CHECK_INTERVAL) {
-                checkLevelCompletion();
+                    checkLevelCompletion();
                 levelCheckTimer = 0.0; // Reset timer
             }
 
