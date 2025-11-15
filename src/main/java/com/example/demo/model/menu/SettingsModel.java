@@ -17,6 +17,9 @@ import org.slf4j.LoggerFactory;
 public class SettingsModel {
 
     private static final Logger log = LoggerFactory.getLogger(SettingsModel.class);
+
+    private static SettingsModel instance;
+
     // Audio settings
     private final DoubleProperty musicVolume = new SimpleDoubleProperty(1.0);
     private final DoubleProperty effectVolume = new SimpleDoubleProperty(1.0);
@@ -36,6 +39,13 @@ public class SettingsModel {
         effectVolume.addListener((obs, oldVal, newVal) -> saveSettings());
         musicEnabled.addListener((obs, oldVal, newVal) -> saveSettings());
         effectEnabled.addListener((obs, oldVal, newVal) -> saveSettings());
+    }
+
+    public static SettingsModel getInstance() {
+        if (instance == null) {
+            instance = new SettingsModel();
+        }
+        return instance;
     }
 
     public void saveSettings() {

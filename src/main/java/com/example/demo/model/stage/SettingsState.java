@@ -31,7 +31,7 @@ public class SettingsState implements GameState {
     @Override
     public void enter() {
         // --Khởi tạo MVC
-        SettingsModel settingsModel = new SettingsModel();
+        SettingsModel settingsModel = SettingsModel.getInstance();
         ThemeController themeController = new ThemeController();
 
         settingsController = new SettingsController(settingsModel);
