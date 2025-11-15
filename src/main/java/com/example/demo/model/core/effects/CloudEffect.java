@@ -1,7 +1,7 @@
 package com.example.demo.model.core.effects;
 
 import com.example.demo.model.assets.AssetManager;
-import com.example.demo.model.core.VisualEffect;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;

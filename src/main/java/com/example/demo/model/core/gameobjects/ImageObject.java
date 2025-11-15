@@ -9,9 +9,9 @@ public abstract class ImageObject<T extends ImageObjectData> extends GameObject<
     protected String imageKey;
     protected Image image;
 
-    public ImageObject(String imageKey, double startX, double startY) {
+    public ImageObject(double startX, double startY) {
         super(startX, startY);
-        setImageKey(imageKey);
+        setImageKey("default");
     }
     
     public void setImageKey(String imageKey) {
@@ -32,6 +32,10 @@ public abstract class ImageObject<T extends ImageObjectData> extends GameObject<
 
     public String getImageKey() { return this.imageKey; }
     public Image getImage() { return this.image; }
-    public abstract void applyState(T ImageObjectData);
 
+    @Override
+    public void applyState(T data) {
+        super.applyState(data);
+        this.imageKey = data.getImageKey();
+    }
 }

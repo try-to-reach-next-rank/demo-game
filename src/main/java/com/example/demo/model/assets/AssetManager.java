@@ -15,11 +15,11 @@ import javafx.scene.text.Font;
 public class AssetManager {
     private static final AssetManager instance = new AssetManager();
 
-    private final Map<String, Animation> anims = new ConcurrentHashMap<>();
-    private final Map<String, Image> images = new ConcurrentHashMap<>();
+    private final Map<String, Animation> anims  = new ConcurrentHashMap<>();
+    private final Map<String, Image> images     = new ConcurrentHashMap<>();
     private final Map<String, AudioClip> sounds = new ConcurrentHashMap<>();
-    private final Map<String, Media> musics = new ConcurrentHashMap<>();
-    private final Map<String, Font> fonts = new ConcurrentHashMap<>();
+    private final Map<String, Media> musics     = new ConcurrentHashMap<>();
+    private final Map<String, Font> fonts       = new ConcurrentHashMap<>();
 
     private final List<AssetLoader> loaders = List.of(
         

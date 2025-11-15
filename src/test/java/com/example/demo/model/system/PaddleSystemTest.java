@@ -1,12 +1,12 @@
 package com.example.demo.model.system;
 
 import com.example.demo.controller.system.PaddleSystem;
-import com.example.demo.model.core.Paddle;
+import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.utils.var.GameVar;
-import com.example.demo.utils.var.GlobalVar;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,7 +23,7 @@ class PaddleSystemTest {
         paddle.setDirection(1);// move right
 
 
-        PaddleSystem system = new PaddleSystem(paddle);
+        PaddleSystem system = new PaddleSystem(List.of(paddle));
 
         // Act: half a second
         system.update(0.5);
@@ -41,7 +41,7 @@ class PaddleSystemTest {
         paddle.setPosition(GameVar.WIDTH_OF_WALLS - 5.0, GameVar.INIT_PADDLE_Y);
         paddle.setDirection(-1); // move left
 
-        PaddleSystem system = new PaddleSystem(paddle);
+        PaddleSystem system = new PaddleSystem(List.of(paddle));
 
         // Act
         system.update(1.0);
@@ -56,12 +56,12 @@ class PaddleSystemTest {
     void update_clampsToRightBoundary_whenMovementGoesBeyond() {
         // Arrange
         Paddle paddle = new Paddle();
-        double rightLimit = GlobalVar.WIDTH - GameVar.WIDTH_OF_WALLS;
+        double rightLimit = GameVar.MAP_MAX_Y - GameVar.WIDTH_OF_WALLS;
         // start slightly right of right boundary
         paddle.setPosition(rightLimit + 5.0, GameVar.INIT_PADDLE_Y);
         paddle.setDirection(1); // move right
 
-        PaddleSystem system = new PaddleSystem(paddle);
+        PaddleSystem system = new PaddleSystem(List.of(paddle));
 
         // Act
         system.update(1.0);
@@ -84,9 +84,9 @@ class PaddleSystemTest {
             }
         };
 
-        PaddleSystem system = new PaddleSystem(paddle);
-        system.reset();
-        assertTrue(resetCalled.get(), "PaddleSystem.reset() should call paddle.resetState()");
+        PaddleSystem system = new PaddleSystem(List.of(paddle));
+        system.resetPaddle(paddle);
+        assertTrue(resetCalled.get(), "PaddleSystem.resetPaddle() should call paddle.resetState()");
     }
 
 }

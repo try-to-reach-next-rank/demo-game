@@ -1,12 +1,7 @@
 package com.example.demo.model.core.builder;
 
-import com.example.demo.controller.core.CollisionController;
-import com.example.demo.controller.system.BallSystem;
-import com.example.demo.controller.system.BrickSystem;
-import com.example.demo.controller.system.PaddleSystem;
-import com.example.demo.controller.system.PowerUpSystem;
-import com.example.demo.model.core.bricks.Brick;
-import com.example.demo.model.core.ThePool;
+import com.example.demo.model.core.entities.bricks.Brick;
+import com.example.demo.model.core.entities.ThePool;
 import com.example.demo.model.core.factory.EntityFactory;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.map.MapData;
@@ -34,28 +29,14 @@ public class GameWorldBuilder {
     public GameWorldBuilder withEntities() {
         world.setPaddle(EntityFactory.createPaddle());
         world.setBall(EntityFactory.createBall(world.getPaddle()));
-        return this;
-    }
-
-    public GameWorldBuilder withSystems() {
-        BallSystem ballSystem = new BallSystem(world.getBall(), world.getPaddle());
-        PaddleSystem paddleSystem = new PaddleSystem(world.getPaddle());
-        PowerUpSystem powerUpSystem = new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps());
-        BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
-        CollisionController collisionManager = new CollisionController(world, ballSystem, brickSystem, powerUpSystem);
-
-        world.setPowerUpSystem(powerUpSystem);
-
-        // Register systems for updating
-        List.of(ballSystem, paddleSystem, brickSystem, powerUpSystem, collisionManager)
-                .forEach(world::registerUpdatable);
-
+        world.setPortalFactory(EntityFactory.createPortalFactory());
         return this;
     }
 
     public GameWorldBuilder withGameStateRestore() {
         ThePool pool = new ThePool(); // hoặc inject vào nếu cần
-        world.setGameStateRestore(new GameStateRestore(pool));
+        // TODO: CHECK THIS AGAIN
+        // world.setGameStateRestore(new GameStateRestore(pool));
         return this;
     }
 

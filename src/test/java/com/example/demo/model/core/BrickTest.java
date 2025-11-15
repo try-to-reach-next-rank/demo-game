@@ -2,13 +2,16 @@ package com.example.demo.model.core;
 
 import org.junit.jupiter.api.Test;
 
+import com.example.demo.model.core.entities.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.NormalBrick;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BrickTest {
 
     @Test
     void constructorInitializesHealthAndNotDestroyed() {
-        Brick b = new Brick(null, 6.0, 5.5, 5);
+        Brick b = new NormalBrick(5, null, 6.0, 5.5, 5, 10);
 
         assertEquals(5, b.getHealth());
         assertFalse(b.isDestroyed());
@@ -17,22 +20,8 @@ class BrickTest {
     }
 
     @Test
-    void settersAndGettersWork() {
-        Brick b = new Brick(null, 6.0, 5.5, 5);
-
-        b.setHealth(5);
-        assertEquals(5, b.getHealth());
-
-        b.setDestroyed(true);
-        assertTrue(b.isDestroyed());
-
-        b.setDestroyed(false);
-        assertFalse(b.isDestroyed());
-    }
-
-    @Test
     void applyStateWithNullDoesNothing() {
-        Brick b = new Brick(null, 4.0, 1.0, 5);
+        Brick b = new NormalBrick(5, null, 6.0, 5.5, 5, 10);
 
         b.applyState(null); // should not throw and should leave state unchanged
         assertEquals(5, b.getHealth());

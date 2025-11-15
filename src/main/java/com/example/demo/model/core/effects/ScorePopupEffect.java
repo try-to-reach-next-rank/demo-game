@@ -1,6 +1,5 @@
 package com.example.demo.model.core.effects;
 
-import com.example.demo.model.core.VisualEffect;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;

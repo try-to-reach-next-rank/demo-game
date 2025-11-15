@@ -1,12 +1,14 @@
 package com.example.demo.model.system;
 
 import com.example.demo.controller.system.BallSystem;
-import com.example.demo.model.core.Ball;
-import com.example.demo.model.core.Paddle;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Paddle;
 import com.example.demo.utils.Vector2D;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
 
 class BallSystemTest {
 
@@ -18,13 +20,15 @@ class BallSystemTest {
         Paddle paddle = new Paddle();
         paddle.setPosition(200.0, 400.0);
 
-        Ball ball = new Ball(paddle);
-        // put the ball away from paddle so alignWithPaddle will move it
+        Ball ball = new Ball();
+        ball.setStuckPaddle(paddle);
+
+        // Put the ball away from paddle so alignWithPaddle will move it
         ball.setPosition(0.0, 0.0);
         // ensure stuck state
         ball.setStuck(true);
 
-        BallSystem system = new BallSystem(ball, paddle);
+        BallSystem system = new BallSystem(List.of(ball));
 
         // Act
         system.update(0.016); // one frame
@@ -40,8 +44,10 @@ class BallSystemTest {
         Paddle paddle = new Paddle();
         paddle.setPosition(100.0, 300.0);
 
-        Ball ball = new Ball(paddle);
-        // release to make it move
+        Ball ball = new Ball();
+        ball.setStuckPaddle(paddle);
+
+        // Release to make it move
         ball.release();
         assertFalse(ball.isStuck());
 
@@ -49,7 +55,7 @@ class BallSystemTest {
         ball.setVelocity(new Vector2D(1.0, 0.0)); // normalized -> (1,0)
         ball.setPosition(10.0, 20.0);
 
-        BallSystem system = new BallSystem(ball, paddle);
+        BallSystem system = new BallSystem(List.of(ball));
 
         // Act: one second of update without acceleration
         system.update(1.0);
@@ -77,13 +83,15 @@ class BallSystemTest {
         paddle.setPosition(100.0, 300.0);
         paddle.setWidth(30);
 
-        Ball ball = new Ball(paddle);
-        // place ball centered above paddle so hitPos ~ 0.5 and resulting angle should be ~90 degrees
+        Ball ball = new Ball();
+        ball.setStuckPaddle(paddle);
+
+        // Place ball centered above paddle so hitPos ~ 0.5 and resulting angle should be ~90 degrees
         double centerX = paddle.getX() + paddle.getWidth() / 2.0;
         double ballLeftX = centerX - ball.getWidth() / 2.0;
         ball.setPosition(ballLeftX, paddle.getY() - ball.getHeight());
 
-        BallSystem system = new BallSystem(ball, paddle);
+        BallSystem system = new BallSystem(List.of(ball));
 
         // mutate ball state and then reset via resetBall
         ball.setVelocity(new Vector2D(0.5, 0.5));
@@ -95,7 +103,7 @@ class BallSystemTest {
 
         // Now test bounceFromPaddle: release first to allow changing velocity
         // Position ball so center hits center of paddle (we already positioned it)
-        system.bounceFromPaddle(paddle);
+        system.bounceFromPaddle(ball, paddle);
 
         Vector2D v = ball.getVelocity();
         // For a center hit (hitPos ~ 0.5) the computed angle in code is 90 degrees,

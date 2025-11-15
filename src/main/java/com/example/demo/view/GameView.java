@@ -54,6 +54,8 @@ public class GameView extends Pane {
             case F:
                 coreView.toggleFlip();
                 break;
+            default:
+                break;
         }
 
         e.consume();

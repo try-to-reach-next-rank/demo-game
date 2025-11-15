@@ -1,8 +1,8 @@
 package com.example.demo.utils;
 
-import com.example.demo.model.core.bricks.Brick;
-import com.example.demo.model.core.bricks.NormalBrick;
-import com.example.demo.model.core.bricks.SteelBrick;
+import com.example.demo.model.core.entities.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.NormalBrick;
+import com.example.demo.model.core.entities.bricks.SteelBrick;
 import com.example.demo.model.state.BrickData;
 
 public class BrickFactoryUtil {

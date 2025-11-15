@@ -1,11 +1,14 @@
 package com.example.demo.controller.system;
 
 import com.example.demo.engine.Updatable;
-import com.example.demo.model.core.Ball;
-import com.example.demo.model.core.Paddle;
-import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.core.ThePool;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Paddle;
+import com.example.demo.model.core.entities.PowerUp;
+import com.example.demo.model.core.entities.ThePool;
+import com.example.demo.model.core.entities.bricks.Brick;
+import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.state.ActivePowerUpData;
+import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.var.GameVar;
 
 import java.util.ArrayList;
@@ -80,6 +83,42 @@ public class PowerUpSystem implements Updatable {
         activePowerUps.clear();
     }
 
+    @Override
+    public void clear() {
+        // TODO: CLEAR
+        activePowerUps.clear();
+    }
+
+    public void handleCollision(PowerUp powerUp, GameObject obj) {
+        if (obj instanceof Paddle paddle) {
+            handlePaddleCollision(powerUp, paddle);
+        }
+    }
+
+    // public void reset() {
+    //     // turn off all boolean flags on the game objects
+    //     if (ball != null) {
+    //         ball.setAccelerated(false);
+    //         ball.setStronger(false);
+    //         ball.setStopTime(false);
+    //     }
+    //     if (paddle != null) {
+    //         paddle.setBiggerPaddle(false);
+    //     }
+
+    //     // clear the internal list of active power-ups
+        
+    // }
+
+    public void maybeSpawnPowerUp(Brick brick) {
+        if (GameRandom.nextInt(100) < GameVar.POWERUP_SPAWN_CHANCE) {
+            PowerUp powerUp = new PowerUp(GameVar.powerUps[GameRandom.nextInt(GameVar.powerUps.length)]);
+            powerUp.dropFrom(brick);
+            worldPowerUps.add(powerUp);
+        }
+    }
+
+
     public void activateFromSave(ActivePowerUpData data) {
         // 1. Create a new PowerUp object based on the saved type
         PowerUp powerUp = new PowerUp(data.getType());
@@ -102,5 +141,26 @@ public class PowerUpSystem implements Updatable {
 
     public List<PowerUp> getActivePowerUps() {
         return activePowerUps;
+    }
+
+    private void handlePaddleCollision(PowerUp powerUp, Paddle paddle) {
+        if (worldPowerUps == null) return;
+
+        List<PowerUp> toRemove = new ArrayList<>();
+        for (PowerUp p : worldPowerUps) {
+            if (!p.isVisible() || p.hasExpired()) {
+                ThePool.PowerUpPool.release(p);
+                toRemove.add(p);
+                continue;
+            }
+
+            if (p.getBounds().intersects(paddle.getBounds())) {
+                activate(p);
+                p.setVisible(false);
+                ThePool.PowerUpPool.release(p);
+                toRemove.add(p);
+            }
+        }
+        worldPowerUps.removeAll(toRemove);
     }
 }

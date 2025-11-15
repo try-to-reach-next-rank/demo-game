@@ -1,7 +1,7 @@
 package com.example.demo.controller.view;
 
-import com.example.demo.model.core.Ball;
 import com.example.demo.model.core.effects.HandGrabEffect;
+import com.example.demo.model.core.entities.Ball;
 import com.example.demo.utils.ObjectPool;
 
 public class HandEffectController {

@@ -14,7 +14,6 @@ public class GameFactory {
                 .withLevel(GameVar.START_LEVEL)
                 .withEntities()
                 .withMap(mapData)
-                .withSystems()
                 .withGameStateRestore() // THÊM DÒNG NÀY
                 .build();
     }
@@ -26,7 +25,6 @@ public class GameFactory {
                 .withLevel(state.getCurrentLevel())
                 .withEntities()
                 .withMap(mapData)
-                .withSystems()
                 .withGameStateRestore() // THÊM DÒNG NÀY
                 .build();
 

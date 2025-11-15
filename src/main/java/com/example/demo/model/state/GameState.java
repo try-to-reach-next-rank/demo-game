@@ -1,10 +1,10 @@
 package com.example.demo.model.state;
 
-import com.example.demo.engine.GameWorld; // Import GameWorld
-import com.example.demo.model.core.PowerUp;
 import com.example.demo.controller.system.PowerUpSystem;
-import com.example.demo.model.core.bricks.Brick;
-import com.example.demo.model.core.bricks.SteelBrick;
+import com.example.demo.engine.GameWorld;
+import com.example.demo.model.core.entities.PowerUp;
+import com.example.demo.model.core.entities.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.SteelBrick;
 import com.example.demo.utils.Sound;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class GameState {
     private int currentScore;
     private double playElapsedSeconds;
     private long realHighScore;
-        // có thể thêm score và lives ở đây nếu cần
+    // có thể thêm score và lives ở đây nếu cần
     // private int score;
     // private int lives;
 
@@ -27,6 +27,7 @@ public class GameState {
     private List<PowerUpData> powerUpsData;
     private List<ActivePowerUpData> activePowerUpsData;
     private List<BrickData> bricksData;
+    private List<PortalData> portalsData;
 
     //private int[][] bricksHealthMatrix; // dạng ma trận máu brick cho dễ nhìn
 
@@ -35,6 +36,9 @@ public class GameState {
         powerUpsData = new ArrayList<>();
         bricksData = new ArrayList<>();
         activePowerUpsData = new ArrayList<>();
+
+        // New
+        portalsData = new ArrayList<>();
     }
 
     // === CONSTRUCTOR MỚI: Tự động thu thập toàn bộ trạng thái game ===
@@ -55,7 +59,6 @@ public class GameState {
         this.currentTrackTime = soundManager.getCurrentMusicTime();
 
         // Power-ups
-        this.powerUpsData = new ArrayList<>();
         for (PowerUp p : world.getPowerUps()) {
             if (p.isVisible()) {
                 this.powerUpsData.add(new PowerUpData(p));
@@ -63,7 +66,6 @@ public class GameState {
         }
 
         // Active Power-ups
-        this.activePowerUpsData = new ArrayList<>();
         PowerUpSystem powerUpSystem = world.getPowerUpSystem();
         if (powerUpSystem != null) {
             for (PowerUp activePowerUp : powerUpSystem.getActivePowerUps()) {
@@ -80,13 +82,16 @@ public class GameState {
         /**
          * Đây là hàm cũ cái này sẽ tạo dâta dạng 1 chiều khá khó nhìn
          */
-        this.bricksData = new ArrayList<>();
         Brick[] bricks = world.getBricks();
         for (int i = 0; i < bricks.length; i++) {
             Brick brick = bricks[i];
             String type = brick instanceof SteelBrick ? "STEEL" : "NORMAL";
             this.bricksData.add(new BrickData(i, brick, type));
         }
+
+        // TODO: SAVE PORTAL
+        // New for portals
+        // this.portalsData = 
     }
 
     public long getRealHighScore() {

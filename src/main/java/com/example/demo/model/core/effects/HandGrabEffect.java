@@ -1,8 +1,7 @@
 package com.example.demo.model.core.effects;
 
 import com.example.demo.model.assets.AssetManager;
-import com.example.demo.model.core.Ball;
-import com.example.demo.model.core.VisualEffect;
+import com.example.demo.model.core.entities.Ball;
 import com.example.demo.utils.Vector2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -39,7 +38,7 @@ public class HandGrabEffect extends VisualEffect {
     }
 
     private void loadHandImage() {
-        handImage = AssetManager.getInstance().getImage("hand_open");
+        handImage = AssetManager.getInstance().getImage("hand_punch");
     }
 
     public void activateOnBall(Ball ball) {

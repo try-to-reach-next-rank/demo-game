@@ -1,5 +1,6 @@
 package com.example.demo.model.assets;
 
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -12,17 +13,19 @@ import com.example.demo.utils.var.AssetPaths;
 public class ImageAssets implements AssetLoader {
     @Override
     public void loadInto(AssetManager manager) {
-        ASSETS.forEach((key, path) ->
-            manager.addImage(
-                key, 
-                new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)))
-            )
-        );
+        ASSETS.forEach((key, path) -> {
+            InputStream is = getClass().getResourceAsStream(path);
+            if (is == null) System.err.println("Cannot find resource: " + path);
+            else manager.addImage(key, new Image(is));
+        });
     }
 
     private static final Map<String, String> ASSETS = new HashMap<>();
 
     static {
+        // Default
+        ASSETS.put("default", AssetPaths.DEFAULT_IMAGE);
+
         // Ball image
         ASSETS.put("ball", AssetPaths.BALL_IMAGE);
         
@@ -41,6 +44,9 @@ public class ImageAssets implements AssetLoader {
         ASSETS.put("wall_side", AssetPaths.WALL_SIDE_IMAGE);
         ASSETS.put("wall_top", AssetPaths.WALL_TOP_IMAGE);
 
+        // Portal sprite sheet
+        ASSETS.put("portal_spritesheet", AssetPaths.PORTAL_SPRITESHEET);
+
         // Explosion sprite sheet
         ASSETS.put("explosion_spritesheet", AssetPaths.EXPLOSION_SPRITESHEET);
 
@@ -48,7 +54,7 @@ public class ImageAssets implements AssetLoader {
         ASSETS.put("powerup_spritesheet", AssetPaths.POWERUP_SPRITESHEET);
 
         ASSETS.put("hand_open", AssetPaths.HAND_OPEN);
-        ASSETS.put("hand_closed", AssetPaths.HAND_CLOSED);
+        ASSETS.put("hand_punch", AssetPaths.HAND_PUNCH);
         ASSETS.put("cloud_left", AssetPaths.CLOUD_LEFT);
         ASSETS.put("cloud_right", AssetPaths.CLOUD_RIGHT);
     };

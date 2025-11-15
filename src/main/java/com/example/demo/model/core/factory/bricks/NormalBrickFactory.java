@@ -1,7 +1,7 @@
 package com.example.demo.model.core.factory.bricks;
 
-import com.example.demo.model.core.bricks.Brick;
-import com.example.demo.model.core.bricks.NormalBrick;
+import com.example.demo.model.core.entities.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.NormalBrick;
 import com.example.demo.model.core.factory.BrickFactory;
 import com.example.demo.view.graphics.BrickTextureProvider;
 
