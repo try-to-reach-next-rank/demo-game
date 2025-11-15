@@ -1,7 +1,6 @@
 package com.example.demo.model.core.effects;
 
 import com.example.demo.model.assets.AssetManager;
-import com.example.demo.model.core.VisualEffect;
 import com.example.demo.utils.Animation;
 
 import javafx.scene.canvas.GraphicsContext;
@@ -38,7 +37,8 @@ public class AnimatedEffect extends VisualEffect {
     public void render(GraphicsContext gc) {
         if (!isActive()) return;
 
-        animation.render(gc, x, y);
+        // Default effect render center
+        animation.renderCenter(gc, x, y);
     }
 
     @Override

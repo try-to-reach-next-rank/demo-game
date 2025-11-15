@@ -1,9 +1,9 @@
 package com.example.demo.model.system;
 
 import com.example.demo.controller.system.PowerUpSystem;
-import com.example.demo.model.core.Ball;
-import com.example.demo.model.core.Paddle;
-import com.example.demo.model.core.PowerUp;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Paddle;
+import com.example.demo.model.core.entities.PowerUp;
 import com.example.demo.utils.var.GameVar;
 
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,8 @@ class PowerUpSystemTest {
     void activate_accelerate_addsToActiveAndSetsBallAccelerated() {
         // Arrange
         Paddle paddle = new Paddle();
-        Ball ball = new Ball(paddle);
+        Ball ball = new Ball();
+        ball.setStuckPaddle(paddle);
         List<PowerUp> world = new ArrayList<>();
         PowerUpSystem system = new PowerUpSystem(ball, paddle, world);
 
@@ -43,7 +44,8 @@ class PowerUpSystemTest {
     void activate_biggerPaddle_setsPaddleFlagAndAddsToActive() {
         // Arrange
         Paddle paddle = new Paddle();
-        Ball ball = new Ball(paddle);
+        Ball ball = new Ball();
+        ball.setStuckPaddle(paddle);
         List<PowerUp> world = new ArrayList<>();
         PowerUpSystem system = new PowerUpSystem(ball, paddle, world);
 
@@ -64,7 +66,8 @@ class PowerUpSystemTest {
     void update_removesExpiredPowerUp_and_resetsFlags() throws InterruptedException{
         // Arrange
         Paddle paddle = new Paddle();
-        Ball ball = new Ball(paddle);
+        Ball ball = new Ball();
+        ball.setStuckPaddle(paddle);
         List<PowerUp> world = new ArrayList<>();
         PowerUpSystem system = new PowerUpSystem(ball, paddle, world);
 
@@ -95,7 +98,8 @@ class PowerUpSystemTest {
     void reset_clearsAllFlags_and_activeList() {
         // Arrange
         Paddle paddle = new Paddle();
-        Ball ball = new Ball(paddle);
+        Ball ball = new Ball();
+        ball.setStuckPaddle(paddle);
         List<PowerUp> world = new ArrayList<>();
         PowerUpSystem system = new PowerUpSystem(ball, paddle, world);
 

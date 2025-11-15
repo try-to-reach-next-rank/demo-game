@@ -2,9 +2,9 @@ package com.example.demo.utils;
 
 import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.engine.GameWorld;
-import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.core.ThePool;
-import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.Brick;
+import com.example.demo.model.core.entities.PowerUp;
+import com.example.demo.model.core.entities.ThePool;
 import com.example.demo.model.state.ActivePowerUpData;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.model.state.GameState;
@@ -38,12 +38,13 @@ public class GameStateRestore {
             world.getPowerUps().add(p);
         }
 
-        if (world.getPowerUpSystem() != null) {
-            PowerUpSystem system = world.getPowerUpSystem();
-            system.reset();
-            for (ActivePowerUpData d : state.getActivePowerUpsData()) {
-                system.activateFromSave(d);
-            }
-        }
+        // TODO: FIX
+        // if (world.getPowerUpSystem() != null) {
+        //     PowerUpSystem system = world.getPowerUpSystem();
+        //     system.reset();
+        //     for (ActivePowerUpData d : state.getActivePowerUpsData()) {
+        //         system.activateFromSave(d);
+        //     }
+        // }
     }
 }

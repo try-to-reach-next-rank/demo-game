@@ -1,15 +1,17 @@
 package com.example.demo.controller.system;
 
 import com.example.demo.engine.Updatable;
-import com.example.demo.model.core.Ball;
-import com.example.demo.model.core.PowerUp;
-import com.example.demo.model.core.bricks.Brick;
-import com.example.demo.model.core.factory.PowerUpFactory;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.bricks.Brick;
+import com.example.demo.model.core.entities.PowerUp;
+import com.example.demo.model.core.gameobjects.GameObject;
+import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
+import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.view.EffectRenderer;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.function.Consumer;
 
 /**
@@ -17,48 +19,69 @@ import java.util.function.Consumer;
  * TODO: Add handle reveal bricks in here
  */
 public class BrickSystem implements Updatable {
-    private final Brick[] bricks;
-    private final List<PowerUp> powerUps;
-    private final Random random = new Random();
+    private final List<Brick> bricks;
     private Consumer<Brick> onBrickDestroyed;
+    private final PowerUpSystem powerUpSystem;
 
-    public BrickSystem(Brick[] bricks, List<PowerUp> powerUps) {
-        this.bricks = bricks;
-        this.powerUps = powerUps;
+    public BrickSystem(List<Brick> bricks, SystemManager systemManager) {
+        // TODO: FIX THIS
+        this.bricks = new ArrayList<>(bricks);
+        this.powerUpSystem = systemManager.get(PowerUpSystem.class);
     }
 
     @Override
     public void update(double deltaTime) {
-
+        bricks.removeIf(Brick::isDestroyed);
     }
 
-    public void onBallHitBrick(Brick brick, Ball ball) {
-        if (brick.isDestroyed()) return;
-        if (ball == null) return;
+    @Override
+    public void clear() {
+        // TODO: CLEAR
+    }
 
-        int damage = ball.isStronger() ? GameVar.MAXPOWER : GameVar.MINPOWER;
-        boolean destroyed = brick.takeDamage(damage);
-
-        if (destroyed) {
-            spawnDestructionEffect(brick);
-            maybeSpawnPowerUp(brick);
-            if (onBrickDestroyed != null){
-                onBrickDestroyed.accept(brick);
-
-            }
+    public void handleCollision(Brick brick, GameObject obj) {
+        if (obj instanceof Ball ball) {
+            handleBallCollision(brick, ball);
         }
     }
 
     /**
-     * Spawns a power-up at the destroyed brick's location.
+     * Handles a collision between a ball and a brick.
      */
-    private void maybeSpawnPowerUp(Brick brick) {
-        PowerUp powerUp = PowerUpFactory.createRandomPowerUp(
-                brick.getX() + brick.getWidth() / 2,
-                brick.getY() + brick.getHeight() / 2
-        );
+    private void handleBallCollision(Brick brick, Ball ball) {
+        if (brick.isDestroyed()) return;
+        if (ball == null) return;
+        applyDamage(brick, ball);
 
-        powerUps.add(powerUp);
+        // Check destruction and trigger effects
+        if (brick.isDestroyed()) {
+            spawnDestructionEffect(brick);
+            powerUpSystem.maybeSpawnPowerUp(brick);
+        }
+    }
+
+    /**
+     * Applies damage to a brick and updates its texture.
+     */
+    private void applyDamage(Brick brick, Ball ball) {
+        if (brick.getHealth() == Integer.MAX_VALUE) return;
+        int damage = (ball.isStronger()) ? GameVar.MAXPOWER : GameVar.MINPOWER;
+        boolean destroyed = brick.takeDamage(damage);
+
+        // Not destroy, play sound
+        if (!destroyed) {
+            Sound.getInstance().playSound("brick_hit");
+            return;
+        }
+
+        // Destroy, spawn effect + maybe powerup
+        spawnDestructionEffect(brick);
+        powerUpSystem.maybeSpawnPowerUp(brick);
+        spawnScorePopupEffect(brick);
+
+        if (onBrickDestroyed != null) {
+            onBrickDestroyed.accept(brick); // notify external systems
+        }
     }
 
     /**
@@ -71,7 +94,7 @@ public class BrickSystem implements Updatable {
     }
 
     public int getRemainingBricksCount() {
-        if (bricks == null || bricks.length == 0) {
+        if (bricks == null || bricks.size() == 0) {
             return 0;
         }
 

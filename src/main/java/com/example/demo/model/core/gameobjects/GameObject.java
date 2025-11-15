@@ -20,13 +20,6 @@ public abstract class GameObject<T extends GameObjectData> {
         setPosition(startX, startY);
     }
 
-    public void setPosition(double x, double y) {
-        if (this.x != x || this.y != y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-
     public void setScale(double sx, double sy) {
         this.scaleX = sx;
         this.scaleY = sy;
@@ -58,28 +51,35 @@ public abstract class GameObject<T extends GameObjectData> {
 
     public double getX() { return x; }
     public double getY() { return y; }
-    public void setX(double x) {
-        if (this.x != x) {
-            this.x = x;
-        }
+    public void setX(double x) { if (this.x != x) this.x = x; }
+    public void setY(double y) { if (this.y != y) this.y = y; }
+    public void setPosition(double x, double y) {
+        setX(x);
+        setY(y);
     }
 
-    public void setY(double y) {
-        if (this.y != y) {
-            this.y = y;
-        }
-    }
     public double getWidth() { return width; }
     public double getHeight() { return height; }
     public void setWidth(double width) { this.width = width; }
     public void setHeight(double height) { this.height = height; }
+    public void setSize(double width, double height) {
+        setWidth(width);
+        setHeight(height);
+    }
 
+    // For coreview
     public boolean isVisible() { return visible; }
     public void setVisible(boolean visible) { this.visible = visible; }
+    public double getRotation() { return 0; } // Default no rotation
 
     public Bounds getBounds() {
         return new BoundingBox(x, y, width, height);
     }
 
-    public abstract void applyState(T GameObjectData);
+    public void applyState(T data) {
+        if (data == null) return;
+        this.setPosition(data.getX(), data.getY());
+        this.setSize(data.getWidth(), data.getHeight());
+        this.setVisible(data.isVisible());
+    }
 }

@@ -19,8 +19,8 @@ public abstract class AbstractUIView implements Stage, InputHandler, NavigableUI
     }
 
     private void setupTheme() {
-        themeManager.setupBackground(root);
-        themeManager.applyCss(root);
+        ThemeController.setupBackground(root);
+        ThemeController.applyCss(root);
     }
 
     @Override

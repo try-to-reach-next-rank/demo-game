@@ -1,6 +1,6 @@
 package com.example.demo.model.core.builder;
 
-import com.example.demo.model.core.PowerUp;
+import com.example.demo.model.core.entities.PowerUp;
 
 public class PowerUpBuilder {
     private String type;

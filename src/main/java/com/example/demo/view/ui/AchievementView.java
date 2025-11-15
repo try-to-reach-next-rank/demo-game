@@ -203,6 +203,7 @@ public class AchievementView extends AbstractUIView {
             case RIGHT -> { if (showingPage1) controller.nextPage(); }
             case ENTER -> selectionController.confirm();
             case ESCAPE -> controller.backToMenu();
+            default -> {}
         }
     }
 

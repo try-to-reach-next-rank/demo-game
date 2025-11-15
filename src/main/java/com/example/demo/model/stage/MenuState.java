@@ -66,6 +66,7 @@ public class MenuState implements GameState {
 
                 case EXIT -> stage.close();
 
+                default -> {}
             }
         });
     }

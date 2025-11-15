@@ -1,16 +1,16 @@
 package com.example.demo.model.core.gameobjects;
 
 import com.example.demo.model.assets.AssetManager;
-import com.example.demo.model.state.gameobjectdata.AnimationedObjectData;
+import com.example.demo.model.state.gameobjectdata.AnimatedObjectData;
 import com.example.demo.utils.Animation;
 
-public abstract class AnimatedObject<T extends AnimationedObjectData> extends GameObject<T> {
+public abstract class AnimatedObject<T extends AnimatedObjectData> extends GameObject<T> {
     protected String animKey;
     protected Animation animation;
 
-    public AnimatedObject(String animKey, double startX, double startY) {
+    public AnimatedObject(double startX, double startY) {
         super(startX, startY);
-        setAnimationKey(animKey);
+        setAnimationKey("default");
     }
 
     public void setAnimationKey(String animKey) {
@@ -34,6 +34,7 @@ public abstract class AnimatedObject<T extends AnimationedObjectData> extends Ga
     public void updateAnimation(double deltaTime) {
         if (animation == null) {
             System.err.println("[WARN] Animation is null, cannot update: " + animKey);
+            return;
         }
 
         animation.update(deltaTime);
@@ -41,5 +42,11 @@ public abstract class AnimatedObject<T extends AnimationedObjectData> extends Ga
 
     public String getAnimationKey() { return this.animKey; }
     public Animation getAnimation() { return this.animation; }
-    public abstract void applyState(T AnimationObjectData);
+
+    @Override
+    public void applyState(T data) {
+        super.applyState(data);
+        this.animKey = data.getAnimKey();
+        this.animation.setCurrentFrame(data.getCurrentFrame());
+    }
 }

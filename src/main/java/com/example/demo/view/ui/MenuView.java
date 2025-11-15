@@ -71,6 +71,7 @@ public class MenuView extends AbstractUIView {
             case DOWN -> moveDown();
             case ENTER -> confirm();
             case ESCAPE -> cancel();
+            default -> {}
         }
     }
 

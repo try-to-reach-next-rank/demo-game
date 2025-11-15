@@ -1,6 +1,5 @@
 package com.example.demo.model.core.effects;
 
-import com.example.demo.model.core.VisualEffect;
 import com.example.demo.utils.var.GameVar;
 
 import javafx.animation.Animation;

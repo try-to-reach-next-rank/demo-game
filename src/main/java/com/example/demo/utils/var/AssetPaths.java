@@ -6,24 +6,28 @@ public final class AssetPaths {
 
     private AssetPaths() {}
     // GAME
-    public static final String ICON = "/images/icon.png";
+    public static final String ICON = "/images/icon/icon.png";
+
+    // DEFAULT IMAGE
+    public static final String DEFAULT_IMAGE = "/images/default.png";
+
     // THEME
     public static final String CSS_PATH_MENU = "/styles/menu.css";
-    public static final String HAND = "/images/hand.png";
-    public static final String HAND_OPEN = "/images/hand_closed.png";
-    public static final String HAND_CLOSED = "/images/hand_open.png";
-    public static final String CLOUD_LEFT = "/images/cloud_left.png";
-    public static final String CLOUD_RIGHT = "/images/cloud_right.png";
+    public static final String HAND = "/images/menu/hand.png";
+    public static final String HAND_OPEN = "/images/effects/hand_open.png";
+    public static final String HAND_PUNCH = "/images/effects/hand_punch.png";
+    public static final String CLOUD_LEFT = "/images/effects/cloud_left.png";
+    public static final String CLOUD_RIGHT = "/images/effects/cloud_right.png";
 
     // PARALLAX
-    public static final String LAYER1 = "/images/layer1.png";
-    public static final String LAYER2 = "/images/layer2.png";
-    public static final String LAYER3 = "/images/layer3.png";
-    public static final String LAYER4 = "/images/layer4.png";
+    public static final String LAYER1 = "/images/parallax/layer1.png";
+    public static final String LAYER2 = "/images/parallax/layer2.png";
+    public static final String LAYER3 = "/images/parallax/layer3.png";
+    public static final String LAYER4 = "/images/parallax/layer4.png";
 
     // BALL & PADDLE
-    public static final String BALL_IMAGE   = "/images/Ball.png";
-    public static final String PADDLE_IMAGE = "/images/Paddle.png";
+    public static final String BALL_IMAGE   = "/images/ball/Ball.png";
+    public static final String PADDLE_IMAGE = "/images/paddle/Paddle.png";
 
     // BRICKS
     public static final String STEEL_BRICKS_IMAGE = "/images/bricks/SteelBricks.png";
@@ -38,6 +42,7 @@ public final class AssetPaths {
     public static final String WALL_TOP_IMAGE  = "/images/wall/WallRotated.png";
 
     // SPRITESHEETS
+    public static final String PORTAL_SPRITESHEET    = "/images/portal/Portals.png"; 
     public static final String POWERUP_SPRITESHEET   = "/images/powerup/PowerUps.png";
     public static final String EXPLOSION_SPRITESHEET = "/images/explosion/Explosion.png";
 
@@ -61,7 +66,10 @@ public final class AssetPaths {
     public static final String SFX_STEEL_HIT      = "/sounds/steel_hit.mp3";
 
     // DIALOGUE
-    public static final String EGG = "/images/egg.png";
-    public static final String BALL = "/images/Ball.png";
+    public static final String EGG = "/images/dialog/Egg.png";
+    public static final String BALL = "/images/dialog/Ball.png";
+
+    // HIGH SCORE
+    public static final String HIGHSCORE_PATH = "/Saves/highscores.json";
 }
 

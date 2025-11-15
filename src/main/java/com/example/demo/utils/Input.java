@@ -1,7 +1,8 @@
 package com.example.demo.utils;
 
-import com.example.demo.model.core.Ball;
-import com.example.demo.model.core.Paddle;
+import com.example.demo.model.core.entities.Ball;
+import com.example.demo.model.core.entities.Paddle;
+
 import javafx.scene.input.KeyCode;
 
 public class Input {
@@ -30,6 +31,7 @@ public class Input {
             case SPACE -> {
                 if (ball.isStuck()) ball.release();
             }
+            default -> {}
         }
         updatePaddleDirection();
     }
@@ -38,6 +40,7 @@ public class Input {
         switch (code) {
             case LEFT -> leftHeld = false;
             case RIGHT -> rightHeld = false;
+            default -> {}
         }
 
         if (code == lastPressed) {

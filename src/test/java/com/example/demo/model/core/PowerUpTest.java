@@ -2,6 +2,7 @@ package com.example.demo.model.core;
 
 import org.junit.jupiter.api.Test;
 
+import com.example.demo.model.core.entities.PowerUp;
 import com.example.demo.utils.var.GameVar;
 import com.example.demo.utils.var.GlobalVar;
 
