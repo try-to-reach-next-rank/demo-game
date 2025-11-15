@@ -70,7 +70,6 @@ public class GameController extends Pane {
 
     public void initGame() {
         world.startPlayTimer();
-        pauseGame();
         String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
         view.getUiView().loadDialogue(dialoguePath);
         inputGame = new Input(world.getPaddle(), world.getBall());
@@ -259,13 +258,13 @@ public class GameController extends Pane {
     }
 
     private void update(double deltaTime) {
-        if (!paused) {
+        if (!paused && !view.getUiView().isDialogueActive()) {
             systemManager.update(deltaTime);
 
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;
             if (levelCheckTimer >= LEVEL_CHECK_INTERVAL) {
-                    checkLevelCompletion();
+                checkLevelCompletion();
                 levelCheckTimer = 0.0; // Reset timer
             }
 

@@ -35,7 +35,7 @@ public class CloudEffectController {
             activeCloudEffect.activate(GlobalVar.WIDTH, GlobalVar.HEIGHT, 0);
             registerWithRenderer(activeCloudEffect);
 
-            spawnTimer.start(20.0); // reset timer for next spawn
+            spawnTimer.start(50.0); // reset timer for next spawn
         }
 
         // Update active cloud

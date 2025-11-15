@@ -106,4 +106,7 @@ public class UIView {
 
     public StackPane getRoot() {return root;}
 
+    public boolean isDialogueActive() {
+        return dialogueBox.isActive();
+    }
 }
