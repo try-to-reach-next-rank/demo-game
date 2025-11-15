@@ -2,6 +2,7 @@ package com.example.demo.engine;
 
 import com.example.demo.model.core.*;
 import com.example.demo.model.core.bricks.Brick;
+import com.example.demo.model.core.bricks.SteelBrick;
 import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.model.state.GameState;
 import com.example.demo.controller.system.PowerUpSystem;
@@ -205,6 +206,8 @@ public class GameWorld {
         for (Brick brick : bricks) {
             // Only count bricks that are:
             // 1. Not destroyed
+            // 2. Not steel brick
+            if (brick instanceof SteelBrick) continue;
             if (!brick.isDestroyed()) {
                 count++;
             }

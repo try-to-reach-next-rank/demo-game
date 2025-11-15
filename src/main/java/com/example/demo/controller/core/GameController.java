@@ -185,23 +185,20 @@ public class GameController extends Pane {
     // ========== Auto Level Progression ==========
 
     private void checkLevelCompletion() {
-        if (world.getBricks().length == 0) return;
+        if (world.getRemainingBricksCount() > 0) {
+            return;
+        }
+
+
         if (world.getCurrentScore() > world.getHighScore()) {
             world.setHighScore(world.getCurrentScore());
             log.info("Updated high score to: {}", world.getHighScore());
         }
 
-        boolean complete = true;
-        if(world.getRemainingBricksCount() > 0){
-            complete = false;
-        }
-
-        if (complete) {
             log.info("Level complete!");
             unlockLevelAchievement(world.getCurrentLevel());
             saveController.saveGame(world, currentSlotNumber);
             loadNextLevel();
-        }
     }
 
     private void unlockLevelAchievement(int levelNumber) {
@@ -257,7 +254,6 @@ public class GameController extends Pane {
     private void update(double deltaTime) {
         if (!paused) {
             world.update(deltaTime);
-
 
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;
