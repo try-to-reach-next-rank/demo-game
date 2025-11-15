@@ -16,7 +16,7 @@ public class AchievementModel {
     private static final Logger log = LoggerFactory.getLogger(AchievementModel.class);
     private List<Integer> highScores ;
     private List<Achievement> Achievements;
-    //GameWorld gameWorld;
+    GameWorld gameWorld = GameWorld.getInstance();
 
     public AchievementModel(HighScoreState highScoreState) {
         loadHighestScores(highScoreState);

@@ -193,7 +193,7 @@ public class CoreView {
             gc.restore();
         } else {
             if (obj instanceof AnimatedObject animObj) {
-                animObj.getAnimation().render(gc, obj.getX(), obj.getY(), obj.getWidth(), obj.getHeight());
+                animObj.getAnimation().renderCenter(gc, obj.getX(), obj.getY(), obj.getWidth(), obj.getHeight());
             } else if (obj instanceof ImageObject imgObj) {
                 gc.drawImage(imgObj.getImage(), obj.getX(), obj.getY(), obj.getWidth(), obj.getHeight());
             }

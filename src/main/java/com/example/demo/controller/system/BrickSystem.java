@@ -10,6 +10,7 @@ import com.example.demo.utils.var.GameVar;
 import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.view.EffectRenderer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -23,7 +24,8 @@ public class BrickSystem implements Updatable {
     private final PowerUpSystem powerUpSystem;
 
     public BrickSystem(List<Brick> bricks, SystemManager systemManager) {
-        this.bricks = bricks;
+        // TODO: FIX THIS
+        this.bricks = new ArrayList<>(bricks);
         this.powerUpSystem = systemManager.get(PowerUpSystem.class);
     }
 

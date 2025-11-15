@@ -16,6 +16,8 @@ import javafx.scene.text.Text;
 
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Stack;
 
 public class AchievementView extends AbstractUIView {
 
@@ -28,14 +30,17 @@ public class AchievementView extends AbstractUIView {
     private final Pane buttonOverlay;
 
     private boolean showingPage1 = true;
-    private Image scoreBackground;
+    private final Image scoreBackground;
+    private final Image loockedAchievement;
+
 
     public AchievementView(AchievementController controller, ThemeController themeController) {
         super(themeController);
         this.controller = controller;
         this.buttonManager = new ButtonManager(themeController.getHandImage());
 
-        scoreBackground = new Image(getClass().getResourceAsStream("/images/score.png"));
+        scoreBackground = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/score.png")));
+        loockedAchievement = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/locked_achie.png")));
 
         this.uiBox = new VBox(20);
         this.uiBox.setPadding(new Insets(10, 30, 30, 30)); // top = 10 để đẩy lên cao
@@ -72,7 +77,7 @@ public class AchievementView extends AbstractUIView {
         pageTitle.getStyleClass().add("subtitle-text");
         pageTitle.setStyle("-fx-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"); // Tăng size và bold
 
-        VBox scoreBox = new VBox(10); // Spacing giữa các box
+        VBox scoreBox = new VBox(10);
         scoreBox.setAlignment(Pos.CENTER);
 
         final int MAX_BOXES = 10;
@@ -129,6 +134,7 @@ public class AchievementView extends AbstractUIView {
         return pane;
     }
 
+
     /**
      * page 2
      */
@@ -139,14 +145,14 @@ public class AchievementView extends AbstractUIView {
 
         Text pageTitle = new Text("⭐ Achievements");
         pageTitle.getStyleClass().add("subtitle-text");
-
-        VBox listBox = new VBox(10);
+        VBox listBox = new VBox(50);
         listBox.setAlignment(Pos.CENTER);
         for (Achievement a : achievements) {
-            String status = a.isUnlocked() ? "✔️" : "❌";
-            Text item = new Text(status + " " + a.getName());
-            listBox.getChildren().add(item);
+            StackPane achievementPane = CreateAchievementBox(a);
+            listBox.getChildren().add(achievementPane);
         }
+
+
 
         contentBox.getChildren().addAll(pageTitle, listBox);
 
@@ -155,6 +161,37 @@ public class AchievementView extends AbstractUIView {
 
         buttonOverlay.getChildren().addAll(prevBtn, backBtn);
     }
+
+    private StackPane CreateAchievementBox(Achievement achievement) {
+        StackPane pane = new StackPane();
+        pane.setPrefSize(210, 140);
+        pane.setMaxSize(210, 140);
+        pane.setMinSize(210, 140);
+
+        ImageView Achive = null;
+
+        if(!achievement.isUnlocked()) {
+            Achive  = new ImageView(loockedAchievement);
+        }else{
+            if( "Win Level 1".equals(achievement.getName())) {
+                Achive = new ImageView(loockedAchievement);
+            }else if ( "Win Level 2".equals(achievement.getName())) {
+                Achive = new ImageView(loockedAchievement);
+            }else if ( "Win Level 3".equals(achievement.getName())) {
+                Achive = new ImageView(loockedAchievement);
+            }else {
+                Achive = new ImageView(loockedAchievement);
+            }
+        }
+        Achive.setFitWidth(0210);
+        Achive.setFitHeight(140);
+        Achive.setPreserveRatio(false);
+        Achive.setSmooth(true);
+        pane.getChildren().add(Achive);
+
+        return pane;
+    }
+
 
    /**
     * các handle

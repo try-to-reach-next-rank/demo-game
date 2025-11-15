@@ -90,7 +90,7 @@ public class CollisionSystem implements Updatable {
         if (!a.getBounds().intersects(b.getBounds())) return;
 
         // LOG
-        // System.out.println("[COLLISIONPHUC] " + a.getClass() + " & " + b.getClass());
+        System.out.println("[COLLISIONPHUC] " + a.getClass() + " & " + b.getClass());
 
         // BALL - PADDLE
         if (isPair(a, b, Ball.class, Paddle.class)) {
