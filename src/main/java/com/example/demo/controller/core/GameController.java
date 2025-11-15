@@ -33,7 +33,7 @@ import java.util.List;
 public class GameController extends Pane {
     private static final Logger log = LoggerFactory.getLogger(GameController.class);
 
-    private GameWorld world = new GameWorld();
+    private GameWorld world = GameWorld.getInstance();
     private final GameView view;
     private AnimationTimer timer;
     private Input inputGame;
@@ -154,6 +154,7 @@ public class GameController extends Pane {
 
     public void loadLevel(int level) {
         world.setCurrentLevel(level);
+        unlockLevelAchievement(world.getCurrentLevel());
         view.startTransition(
                 () -> setupLevel(level),
                 () -> setInGame(true)
@@ -191,11 +192,8 @@ public class GameController extends Pane {
         }
 
         boolean complete = true;
-        for (var brick : world.getBricks()) {
-            if (!brick.isDestroyed() && brick.getHealth() != Integer.MAX_VALUE) {
-                complete = false;
-                break;
-            }
+        if(world.getRemainingBricksCount() > 0){
+            complete = false;
         }
 
         if (complete) {
@@ -215,13 +213,10 @@ public class GameController extends Pane {
             if (levelNumber == 1) {
                 achievementModel.unlockWinLevel1();
                 log.info("🏆 Unlocked achievement: Win Level 1");
-            } else if (levelNumber == 2) {
+            } else if (levelNumber  == 2) {
                 achievementModel.unlockWinLevel2();
                 log.info("🏆 Unlocked achievement: Win Level 2");
-            }
-
-            // Unlock "Win Game" nếu đã thắng hết
-            if (levelNumber >= 2) {
+            }else{
                 achievementModel.unlockWinGame();
                 log.info("🏆 Unlocked achievement: Win Game");
             }
@@ -250,7 +245,7 @@ public class GameController extends Pane {
                 fpsTimer += deltaTime;
                 frames++;
                 if (fpsTimer >= 1.0) {
-                    log.info("FPS: {}", frames);
+                    log.info("FPS: {}  {}", frames, world.getCurrentLevel());
                     fpsTimer = 0;
                     frames = 0;
                 }
@@ -262,6 +257,7 @@ public class GameController extends Pane {
     private void update(double deltaTime) {
         if (!paused) {
             world.update(deltaTime);
+
 
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;

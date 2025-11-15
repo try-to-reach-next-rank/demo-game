@@ -13,7 +13,7 @@ import javafx.scene.layout.Pane;
 public class GameView extends Pane {
     private final Canvas canvas;
     private final GraphicsContext gc;
-    private final GameWorld world;
+    private final GameWorld world ;
     private final GameController controller;
     private final UIView uiView;
     private final CoreView coreView;

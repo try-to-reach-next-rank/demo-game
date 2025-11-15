@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.engine.GameWorld;
 import com.example.demo.model.stage.GameStateManager;
 import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.stage.MenuState;
@@ -20,8 +21,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        //SaveController saveController = new SaveController();
-        //saveController.showHighscores();
         this.primaryStage = stage;
         AssetManager.getInstance().loadAll();
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource(AssetPaths.ICON)).toExternalForm()));

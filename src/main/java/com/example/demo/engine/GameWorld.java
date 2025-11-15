@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class GameWorld {
-    private static final GameWorld instance = new GameWorld();
+    private static final GameWorld instance = null;
     private static final Logger log = LoggerFactory.getLogger(GameWorld.class);
     private Ball ball;
     private Paddle paddle;
@@ -235,5 +235,20 @@ public class GameWorld {
             }
         }
         log.info("[VERIFY BRICKS] totalBricks={} mismatches={}", bricks.length, errors);
+    }
+
+
+    public boolean isWinGame() {
+        if (currentLevel == 3 && bricks.length == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public static GameWorld getInstance() {
+        if (instance == null) {
+            return new GameWorld();
+        }
+        return instance;
     }
 }
