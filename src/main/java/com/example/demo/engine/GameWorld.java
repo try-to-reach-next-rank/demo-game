@@ -254,7 +254,7 @@ public class GameWorld {
         exploding = true;
         explodeCounter = 0;
         explodeTickCounter = 0;
-        log.info("💥 Start exploding all bricks!");
+        log.info("Start exploding all bricks!");
     }
 
     public void updateExplode() {
@@ -289,7 +289,7 @@ public class GameWorld {
                         exploding = false;
                         explodeCounter = 0;
                         explodeTickCounter = 0;
-                        log.info("✅ All bricks exploded!");
+                        log.info("All bricks exploded!");
                     }
                 }
             }
