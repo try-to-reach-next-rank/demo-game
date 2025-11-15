@@ -70,6 +70,7 @@ public class GameController extends Pane {
 
     public void initGame() {
         world.startPlayTimer();
+        pauseGame();
         String dialoguePath = isNewGame ? "/Dialogue/intro.txt" : "/Dialogue/continue.txt";
         view.getUiView().loadDialogue(dialoguePath);
         inputGame = new Input(world.getPaddle(), world.getBall());
@@ -84,6 +85,7 @@ public class GameController extends Pane {
                 () -> setInGame(true)
         );
         // BrickSystem brickSystem = new BrickSystem(world.getBricks(), world.getPowerUps());
+
 
         loop();
     }
@@ -108,7 +110,7 @@ public class GameController extends Pane {
             bricksToLoad = mapData.bricks().toArray(new Brick[0]);
         }
         world.setBricks(bricksToLoad);
-        /*
+
         // Reset ball và powerup khi load level mới
         if (world.getBall() != null) {
             world.getBall().resetState();
@@ -116,7 +118,6 @@ public class GameController extends Pane {
         if (world.getPowerUpSystem() != null) {
             world.getPowerUpSystem().reset();
         }
-        */
 
 
         // Reset any level-specific state in systems
@@ -192,11 +193,16 @@ public class GameController extends Pane {
             unlockLevelAchievement(world.getCurrentLevel());
             System.out.println(world.getCurrentLevel());
             saveController.saveGame(world, currentSlotNumber);
-            //loadNextLevel();
+            loadNextLevel();
         }else{
             log.info("Game  complete!");
             unlockLevelAchievement(4);
+            AchievementDialogue(4);
+            pauseGame();
+            //timer.stop();
+            startIntroDialogue();
             saveController.saveGame(world, currentSlotNumber);
+
         }
         return true;
     }
@@ -331,6 +337,7 @@ public class GameController extends Pane {
         System.out.println(dialoguePath);
         view.getUiView().loadDialogue(dialoguePath);
     }
+
 
     public SystemManager getSystemManager() {
         return this.systemManager;

@@ -32,7 +32,7 @@ public class GameWorld {
     private MovedWallFactory movedwallFactory;
     private Brick[] bricks = new Brick[0];
     private int currentLevel = GameVar.START_LEVEL;
-    // private GameStateRestore gameStateRestore; // DUPLICATE REMOVED
+    private GameStateRestore gameStateRestore; // DUPLICATE REMOVED
 
     private final List<Wall> walls = new ArrayList<>();
     private final List<PowerUp> powerUps = new ArrayList<>();
@@ -89,13 +89,13 @@ public class GameWorld {
         this.playElapsedSeconds = playElapsedSeconds;
     }
 
-    // public void setGameStateRestore(GameStateRestore gameStateRestore) {
-    //     this.gameStateRestore = gameStateRestore;
-    // }
+     public void setGameStateRestore(GameStateRestore gameStateRestore) {
+         this.gameStateRestore = gameStateRestore;
+     }
 
-    // public GameStateRestore getGameStateRestore() {
-    //     return gameStateRestore;
-    // }
+     public GameStateRestore getGameStateRestore() {
+         return gameStateRestore;
+     }
 
     public Ball getBall() { return ball; }
     public List<Ball> getBalls() { return List.of(ball); }
@@ -143,7 +143,7 @@ public class GameWorld {
     }
 
     public void applyState(GameState loadedState) {
-        // gameStateRestore.apply(loadedState, this);
+         gameStateRestore.apply(loadedState, this);
     }
     
     // Phương thức `apply` trong `GameStateRestore` (đã loại bỏ từ khối mã gốc) 

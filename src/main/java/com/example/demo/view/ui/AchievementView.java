@@ -34,6 +34,8 @@ public class AchievementView extends AbstractUIView {
     private boolean showingPage1 = true;
     private final Image scoreBackground;
     private final Image loockedAchievement;
+    private final Image wingameimg;
+    private final Image eastereggimg;
 
 
     public AchievementView(AchievementController controller, ThemeController themeController) {
@@ -43,6 +45,8 @@ public class AchievementView extends AbstractUIView {
 
         scoreBackground = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/score.png")));
         loockedAchievement = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/locked_achie.png")));
+        wingameimg = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/wingame.png")));
+        eastereggimg = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/easteregg.png")));
 
         this.uiBox = new VBox(20);
         this.uiBox.setPadding(new Insets(10, 30, 30, 30)); // top = 10 để đẩy lên cao
@@ -183,10 +187,10 @@ public class AchievementView extends AbstractUIView {
                 Achive = new ImageView(loockedAchievement);
             } else if ("Win Level 2".equals(achievement.getName())) {
                 Achive = new ImageView(loockedAchievement);
-            } else if ("Win Level 3".equals(achievement.getName())) {
-                Achive = new ImageView(loockedAchievement);
+            } else if ("Win Game".equals(achievement.getName())) {
+                Achive = new ImageView(wingameimg);
             } else {
-                Achive = new ImageView(loockedAchievement);
+                Achive = new ImageView(eastereggimg);
             }
         }
 

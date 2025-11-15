@@ -37,7 +37,7 @@ public class GameWorldBuilder {
     public GameWorldBuilder withGameStateRestore() {
         ThePool pool = new ThePool(); // hoặc inject vào nếu cần
         // TODO: CHECK THIS AGAIN
-        // world.setGameStateRestore(new GameStateRestore(pool));
+         world.setGameStateRestore(new GameStateRestore(pool));
         return this;
     }
 
