@@ -95,21 +95,6 @@ public class PowerUpSystem implements Updatable {
         }
     }
 
-    // public void reset() {
-    //     // turn off all boolean flags on the game objects
-    //     if (ball != null) {
-    //         ball.setAccelerated(false);
-    //         ball.setStronger(false);
-    //         ball.setStopTime(false);
-    //     }
-    //     if (paddle != null) {
-    //         paddle.setBiggerPaddle(false);
-    //     }
-
-    //     // clear the internal list of active power-ups
-        
-    // }
-
     public void maybeSpawnPowerUp(Brick brick) {
         if (GameRandom.nextInt(100) < GameVar.POWERUP_SPAWN_CHANCE) {
             PowerUp powerUp = new PowerUp(GameVar.powerUps[GameRandom.nextInt(GameVar.powerUps.length)]);
@@ -117,7 +102,6 @@ public class PowerUpSystem implements Updatable {
             worldPowerUps.add(powerUp);
         }
     }
-
 
     public void activateFromSave(ActivePowerUpData data) {
         // 1. Create a new PowerUp object based on the saved type
@@ -157,7 +141,6 @@ public class PowerUpSystem implements Updatable {
             if (p.getBounds().intersects(paddle.getBounds())) {
                 activate(p);
                 p.setVisible(false);
-                ThePool.PowerUpPool.release(p);
                 toRemove.add(p);
             }
         }
