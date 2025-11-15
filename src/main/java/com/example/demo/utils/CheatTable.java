@@ -23,6 +23,7 @@ public class CheatTable extends UIComponent {
             "Toggle Drunk",
             "Toggle Accelerated",
             "Toggle Stronger",
+            "Explode All Bricks",
             "Load Next Map",           // Chuyển map tiếp theo
             "Load Previous Map"        // Quay lại map trước
     };
@@ -158,6 +159,10 @@ public class CheatTable extends UIComponent {
                 break;
             case "Toggle Stronger":
                 gameController.getSystemManager().get(BallSystem.class).toggleStronger();
+                break;
+            case "Explode All Bricks":
+                gameController.explodeAllBricks();
+                hide();
                 break;
             case "Load Next Map":
                 hide();

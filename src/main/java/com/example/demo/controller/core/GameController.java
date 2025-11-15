@@ -261,6 +261,7 @@ public class GameController extends Pane {
         if (!paused && !view.getUiView().isDialogueActive()) {
             systemManager.update(deltaTime);
 
+            world.updateExplode();
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;
             if (levelCheckTimer >= LEVEL_CHECK_INTERVAL) {
@@ -345,5 +346,9 @@ public class GameController extends Pane {
     public boolean GetIsNewGame() {
         System.out.println(isNewGame);
         return this.isNewGame;
+    }
+
+    public void explodeAllBricks() {
+        world.startExplodeAllBricks();
     }
 }

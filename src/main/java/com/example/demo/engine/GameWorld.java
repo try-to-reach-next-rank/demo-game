@@ -40,6 +40,11 @@ public class GameWorld {
     private int highScore = 0;
     private int lastAddedScore = 0;
 
+    // explode all bricks
+    private boolean exploding = false;
+    private int explodeCounter = 0;
+    private int explodeTickCounter = 0;
+
     // TIMER PLAY
     private double playElapsedSeconds = 0.0;
     private boolean playTimerRunning = false;
@@ -244,6 +249,53 @@ public class GameWorld {
         }
         log.info("[VERIFY BRICKS] totalBricks={} mismatches={}", bricks.length, errors);
     }
+
+    public void startExplodeAllBricks() {
+        exploding = true;
+        explodeCounter = 0;
+        explodeTickCounter = 0;
+        log.info("💥 Start exploding all bricks!");
+    }
+
+    public void updateExplode() {
+        explodeTickCounter++;
+
+        if (exploding) {
+            int explodeInterval = 3;       // Mỗi 3 tick (giống reveal = 5)
+            int bricksPerTick = 5;         // Nổ 5 gạch mỗi lần (giống reveal = 3)
+
+            if (explodeTickCounter >= explodeInterval) {
+                explodeTickCounter = 0;
+
+                if (bricks != null) {
+                    for (int i = 0; i < bricksPerTick && explodeCounter < bricks.length; i++) {
+                        Brick brick = bricks[explodeCounter];
+
+                        if (brick != null && !brick.isDestroyed()) {
+                            // Cộng điểm
+                            double centerX = brick.getX() + brick.getWidth() / 2;
+                            double centerY = brick.getY() + brick.getHeight() / 2;
+                            addScore(brick.getScoreValue(), centerX, centerY);
+
+                            // Phá gạch
+                            brick.takeDamage(brick.getHealth());
+                        }
+
+                        explodeCounter++;
+                    }
+
+                    // Khi nổ hết
+                    if (explodeCounter >= bricks.length) {
+                        exploding = false;
+                        explodeCounter = 0;
+                        explodeTickCounter = 0;
+                        log.info("✅ All bricks exploded!");
+                    }
+                }
+            }
+        }
+    }
+
 
     public boolean isWinGame() {
         if (currentLevel == 3 && bricks.length == 0) {
