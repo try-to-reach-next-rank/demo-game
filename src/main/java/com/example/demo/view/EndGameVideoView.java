@@ -20,7 +20,6 @@ import java.net.URL;
 public class EndGameVideoView extends StackPane {
     private static final Logger log = LoggerFactory.getLogger(EndGameVideoView.class);
 
-    private static final String VIDEO_PATH = "videos/end_game.mp4";
 
     private MediaPlayer mediaPlayer;
     private MediaView mediaView;
@@ -31,7 +30,14 @@ public class EndGameVideoView extends StackPane {
         setStyle("-fx-background-color: black;");
 
         try {
-            URL resource = getClass().getResource(VIDEO_PATH);
+            URL resource = getClass().getResource("/videos/end_game.mp4");
+
+            if (resource == null) {
+                log.error("Video file not found: /videos/end_game.mp4");
+                log.error("Skipping video playback. Game will continue normally.");
+                return; // Thoát sớm, không crash game
+            }
+
             String mediaUrl = resource.toExternalForm();
             log.info("Video URL: {}", mediaUrl);
             Media media = new Media(mediaUrl);
