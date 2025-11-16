@@ -54,10 +54,10 @@ public class ThemeController {
             if (url != null) {
                 handImage = new Image(url.toExternalForm(), true);
             } else {
-                log.info("[ThemeManager] " + LocalDateTime.now() +" hand image not found at " + AssetPaths.HAND);
+                log.error("[ThemeManager] " + LocalDateTime.now() +" hand image not found at " + AssetPaths.HAND);
             }
         } catch (Exception ex) {
-            log.info("[ThemeManager] " + LocalDateTime.now() +" error loading hand image: " + ex.getMessage());
+            log.error("[ThemeManager] " + LocalDateTime.now() +" error loading hand image: " + ex.getMessage());
         }
     }
 
@@ -70,10 +70,10 @@ public class ThemeController {
                 if (url != null) {
                     bgFrames.add(new Image(url.toExternalForm(), true));
                 } else {
-                    log.info("[ThemeManager] " + LocalDateTime.now() + " bg frame missing: " + path);
+                    log.error("[ThemeManager] " + LocalDateTime.now() + " bg frame missing: " + path);
                 }
             } catch (Exception ex) {
-                log.info("[ThemeManager]" + LocalDateTime.now() + " error loading frame " + path + ": " + ex.getMessage());
+                log.error("[ThemeManager]" + LocalDateTime.now() + " error loading frame " + path + ": " + ex.getMessage());
             }
         }
     }
@@ -151,7 +151,7 @@ public class ThemeController {
             String css = Objects.requireNonNull(ThemeController.class.getResource(AssetPaths.CSS_PATH_MENU)).toExternalForm();
             node.getStylesheets().add(css);
         } catch (Exception e) {
-            log.info("[ThemeManager] "+ LocalDateTime.now()+"  Failed to load CSS: " + e.getMessage());
+            log.error("[ThemeManager] "+ LocalDateTime.now()+"  Failed to load CSS: " + e.getMessage());
         }
     }
 
