@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.utils.var.GlobalVar;
+import javafx.application.Platform;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -56,6 +57,7 @@ public class EndGameVideoView extends StackPane {
                 if (onVideoFinished != null) {
                     onVideoFinished.run();
                 }
+                Platform.exit();
             });
 
             mediaPlayer.setOnError(() -> {

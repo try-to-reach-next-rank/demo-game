@@ -27,6 +27,19 @@ public class PortalFactory {
         portals.add(portal);
     }
 
+    public void createRandom(String portalAnimKey) {
+        Portal temp = new Portal(portalAnimKey);
+        double w = temp.getWidth();
+        double h = temp.getHeight();
+
+        // Random x, y, default duration
+        int x = GameRandom.nextInt(GameVar.MAP_MIN_X + (int)w, GameVar.MAP_MAX_X - (int)w);
+        int y = GameRandom.nextInt(GameVar.MAP_MIN_Y + (int)h, GameVar.MAP_CENTER_Y - (int)h);
+        double lifeTime = 10.0; // default 10 seconds
+
+        create(portalAnimKey, x, y, lifeTime);
+    }
+
     public List<Portal> getPortals() {
         return portals;
     }

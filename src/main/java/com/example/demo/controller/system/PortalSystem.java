@@ -13,9 +13,6 @@ public class PortalSystem implements Updatable {
 
     public PortalSystem(PortalFactory portalFactory) {
         this.portalFactory = portalFactory;
-
-        portalFactory.create("portal", 500, 200, -1.0);
-        portalFactory.create("portal", 250, 400, 20.0);
     }
 
     @Override

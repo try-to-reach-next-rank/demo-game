@@ -314,10 +314,14 @@ public class GameController extends Pane {
 
     public void onKeyPressed(KeyCode code) {
         inputGame.handleKeyPressed(code);
-        if (code == KeyCode.H) {
+        if (code == KeyCode.DIGIT0) {
             view.getCoreView().triggerHandGrab();
-        } else if (code == KeyCode.C) {
+        } else if (code == KeyCode.DIGIT1) {
             view.getCoreView().triggerCloud();
+        } else if (code == KeyCode.DIGIT2) {
+            world.getMovedWallFactory().createRandom("wall_top");
+        } else if (code == KeyCode.DIGIT3) {
+            world.getPortalFactory().createRandom("portal");
         }
 
         String keyName = code.getName().toUpperCase();

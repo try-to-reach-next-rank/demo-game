@@ -22,28 +22,20 @@ public class MovedWallSystem implements Updatable {
 
     @Override
     public void update(double deltaTime) {
-        // 1. Spawn mới sau mỗi 10s
-//        spawnTimer.update(deltaTime);
-//        if (spawnTimer.isFinished()) {
-//            factory.createRandom("wall_top");
-//            spawnTimer.reset();
-//            spawnTimer.start(SPAWNINTERVAL);
-//        }
-//
-//        // 2. Update walls
-//        var walls = factory.getMovedWalls();
-//
-//        // Dùng iterator để remove an toàn
-//        walls.removeIf(w -> {
-//            w.updateLifetime(deltaTime);       // 1. kiểm tra sống/chết
-//
-//            if (!w.isActive())
-//                return true;                  // chết -> remove ngay
-//
-//            updateMovement(w, deltaTime);      // 2. còn sống -> update movement
-//
-//            return false;                      // giữ lại
-//        });
+        // 2. Update walls
+        var walls = factory.getMovedWalls();
+
+        // Dùng iterator để remove an toàn
+        walls.removeIf(w -> {
+            w.updateLifetime(deltaTime);       // 1. kiểm tra sống/chết
+
+            if (!w.isActive())
+                return true;                  // chết -> remove ngay
+
+            updateMovement(w, deltaTime);      // 2. còn sống -> update movement
+
+            return false;                      // giữ lại
+        });
     }
 
     @Override
