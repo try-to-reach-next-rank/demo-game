@@ -10,6 +10,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
+import com.example.demo.view.EndGameVideoView;
+import javafx.scene.paint.Color;
+
 public class GameView extends Pane {
     private final Canvas canvas;
     private final GraphicsContext gc;
@@ -21,19 +24,36 @@ public class GameView extends Pane {
 
     private TransitionEffect transitionEffect;
 
+
+    private final EndGameVideoView endGameVideoView;
+    private final Pane blackScreen;
+
     public GameView(GameWorld world, GameController controller) {
         this.world = world;
         this.controller = controller;
 
         this.canvas = new Canvas(GlobalVar.WIDTH, GlobalVar.HEIGHT);
         this.gc = canvas.getGraphicsContext2D();
-        getChildren().add(canvas);
+        // BỎ: getChildren().add(canvas); (Sẽ thêm ở dưới)
 
         this.uiView = new UIView(controller); // if you have UI overlay
         this.coreView = new CoreView(gc, world);
         transitionEffect = new TransitionEffect(GameVar.TRANSITION_DURATION);
 
-        getChildren().add(uiView.getRoot());
+
+        this.endGameVideoView = new EndGameVideoView();
+        this.endGameVideoView.setVisible(false); // Ẩn ban đầu
+
+
+        this.blackScreen = new Pane();
+        this.blackScreen.setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
+        this.blackScreen.setStyle("-fx-background-color: black;");
+        this.blackScreen.setVisible(false); // Ẩn ban đầu
+
+
+        this.endGameVideoView.setOnVideoFinished(this::showBlackScreen);
+
+        getChildren().addAll(canvas, uiView.getRoot(), endGameVideoView, blackScreen);
     }
 
     public void render() {
@@ -41,7 +61,7 @@ public class GameView extends Pane {
         coreView.render(gc);
         uiView.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
         if (transitionEffect != null && transitionEffect.isActive()     ) {
-            //System.out.println("transitionEffect is active" + controller.GetIsNewGame());
+
             transitionEffect.render(gc, GlobalVar.WIDTH, GlobalVar.HEIGHT);
         }
     }
@@ -90,5 +110,36 @@ public class GameView extends Pane {
 
     public void startTransition(Runnable onMidpoint, Runnable onEnd) {
         transitionEffect.start(onMidpoint, onEnd);
+    }
+
+
+
+    /**
+     * Bắt đầu chuỗi sự kiện kết thúc game.
+     * Ẩn game và UI, sau đó phát video.
+     */
+    public void showEndGameSequence() {
+
+        canvas.setVisible(false);
+        uiView.getRoot().setVisible(false);
+
+
+        endGameVideoView.setVisible(true);
+        endGameVideoView.toFront();
+        endGameVideoView.playVideo();
+    }
+
+    /**
+     * Được gọi khi video kết thúc.
+     * Ẩn video và hiển thị màn hình đen.
+     */
+    private void showBlackScreen() {
+
+        endGameVideoView.setVisible(false);
+
+
+        blackScreen.setVisible(true);
+        blackScreen.toFront();
+
     }
 }

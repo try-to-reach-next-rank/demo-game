@@ -52,6 +52,10 @@ public class GameController extends Pane {
     private double levelCheckTimer = 0.0;
     private GameState loadedState = null;
 
+
+    // Cờ này sẽ được bật khi game thắng, để chờ hội thoại kết thúc
+    private boolean isAwaitingEndGameVideo = false;
+
     public GameController() {
         setPrefSize(GlobalVar.WIDTH, GlobalVar.HEIGHT);
 
@@ -64,6 +68,7 @@ public class GameController extends Pane {
         }
 
         systemManager = new SystemManager(world);
+        // TRUYỀN `this` (GameController) VÀO GameView
         view = new GameView(world, this);
         getChildren().add(view);
 
@@ -125,20 +130,12 @@ public class GameController extends Pane {
 
         // Reset any level-specific state in systems
         systemManager.clear();
-        
+
         // Reset view
         view.getCoreView().setLevelLoaded(true);
         view.reset();
         view.getCoreView().reset();
 
-        // Thiết lập callback để cộng điểm
-        // brickSystem.setOnBrickDestroyed(brick -> {
-        //     double centerX = brick.getX() + brick.getWidth() / 2;
-        //     double centerY = brick.getY() + brick.getHeight() / 2;
-        //     world.addScore(brick.getScoreValue(), centerX, centerY);
-//            log.info("Brick destroyed! +{} points | Total score: {}",
-//                    brick.getScoreValue(), world.getCurrentScore());
-        // });
         log.info("Loaded level {}", level);
     }
 
@@ -190,7 +187,6 @@ public class GameController extends Pane {
         }
 
 
-
         if(world.getCurrentLevel() < 3) {
             log.info("Level complete!");
             unlockLevelAchievement(world.getCurrentLevel());
@@ -198,14 +194,18 @@ public class GameController extends Pane {
             saveController.saveGame(world, currentSlotNumber);
             loadNextLevel();
         }else{
-            log.info("Game  complete!");
+
+            if (isAwaitingEndGameVideo) {
+                return true; // Đã kích hoạt, đang chờ hội thoại, không làm gì thêm
+            }
+
+            log.info("Game complete! Bắt đầu hội thoại kết thúc.");
             unlockLevelAchievement(4);
             AchievementDialogue(4);
             pauseGame();
-            //timer.stop();
-            startIntroDialogue();
             saveController.saveGame(world, currentSlotNumber);
-
+            isAwaitingEndGameVideo = true;
+            startIntroDialogue();
         }
         return true;
     }
@@ -264,6 +264,17 @@ public class GameController extends Pane {
     }
 
     private void update(double deltaTime) {
+        // Kiểm tra xem cờ chờ video có được bật VÀ hội thoại đã kết thúc không
+        if (isAwaitingEndGameVideo && !view.getUiView().isDialogueActive()) {
+            isAwaitingEndGameVideo = false;
+
+            log.info("Hội thoại kết thúc. Bắt đầu phát video.");
+            view.showEndGameSequence();
+
+            return;
+        }
+
+
         if (!paused && !view.getUiView().isDialogueActive()) {
             systemManager.update(deltaTime);
 
@@ -271,7 +282,10 @@ public class GameController extends Pane {
             // ← OPTIMIZED: Only check level completion every LEVELCHECKINTERVAL seconds
             levelCheckTimer += deltaTime;
             if (levelCheckTimer >= LEVEL_CHECK_INTERVAL) {
-                checkLevelCompletion();
+                // Chỉ kiểm tra khi không chờ video
+                if (!isAwaitingEndGameVideo) {
+                    checkLevelCompletion();
+                }
                 levelCheckTimer = 0.0; // Reset timer
             }
 
@@ -281,6 +295,7 @@ public class GameController extends Pane {
         }
         view.update(deltaTime);
     }
+
 
     public void pauseGame() {
         paused = true;

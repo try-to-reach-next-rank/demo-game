@@ -5,7 +5,7 @@ public final class GlobalVar {
     private GlobalVar() {}
 
     public static final int     WIDTH       = 600;
-    public static final int     HEIGHT      = 600;
+    public static final int     HEIGHT      = 800;
 
     public static final double  FPS         = 60.0;
     public static final String  SECRET_CODE = "PHUC";

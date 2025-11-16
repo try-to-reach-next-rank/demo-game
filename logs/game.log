@@ -591,3 +591,673 @@
 12:56:05.389 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:56:05.389852200 bg frame missing: /images/bg/frame_3.png
 12:56:05.390 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:56:05.390846900 bg frame missing: /images/bg/frame_4.png
 12:56:05.390 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:56:05.390846900 bg frame missing: /images/bg/frame_5.png
+13:14:16.761 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:14:16.762 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:14:16.772 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:14:16.804 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:14:16.804427600 bg frame missing: /images/bg/frame_0.png
+13:14:16.805 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:14:16.805404200 bg frame missing: /images/bg/frame_1.png
+13:14:16.805 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:14:16.805404200 bg frame missing: /images/bg/frame_2.png
+13:14:16.805 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:14:16.805404200 bg frame missing: /images/bg/frame_3.png
+13:14:16.805 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:14:16.805404200 bg frame missing: /images/bg/frame_4.png
+13:14:16.805 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:14:16.805404200 bg frame missing: /images/bg/frame_5.png
+13:14:19.834 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:14:19.834 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:14:19.932 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:14:19.932 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:14:20.973 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:14:20.981 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:14:20.982 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:14:21.255 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không tìm thấy tệp video: videos/end_game.mp4
+13:14:21.255 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Video file not found: videos/end_game.mp4
+13:14:21.256 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:14:21.258 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:14:21.258 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:14:22.670 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+13:14:26.064 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/5.txt
+13:14:26.072 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:14:26.079 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+13:14:26.080 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+13:14:28.564 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+13:14:28.565 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+13:14:29.987 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+13:14:29.987 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 1 -> 2
+13:14:29.988 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:14:29.989 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+13:14:29.989 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+13:14:29.994 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src/main/resources/Saves/achievement.json
+13:14:29.994 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Saved achievements to file:src/main/resources/Saves/achievement.json
+13:14:29.994 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - 🏆 Achievement unlocked: Win Level 1
+13:14:29.994 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+13:14:29.995 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/2.txt
+13:14:30.986 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+13:14:31.479 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+13:14:31.480 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+13:14:36.764 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+13:14:36.764 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 2 -> 3
+13:14:36.764 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:14:36.765 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+13:14:36.765 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+13:14:36.766 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src/main/resources/Saves/achievement.json
+13:14:36.766 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Saved achievements to file:src/main/resources/Saves/achievement.json
+13:14:36.766 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - 🏆 Achievement unlocked: Win Level 2
+13:14:36.766 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 2
+13:14:36.766 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/3.txt
+13:14:37.754 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:14:43.283 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+13:14:43.284 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+13:14:45.009 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - Start exploding all bricks!
+13:14:45.010 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+13:14:45.034 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=30 | highScore=30
+13:14:45.035 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=50 | highScore=50
+13:14:45.035 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=100 | highScore=100
+13:14:45.035 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=150 | highScore=150
+13:14:45.035 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=180 | highScore=180
+13:14:45.062 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=210 | highScore=210
+13:14:45.062 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=220 | highScore=220
+13:14:45.062 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=220 | highScore=220
+13:14:45.062 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=260 | highScore=260
+13:14:45.062 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=270 | highScore=270
+13:14:45.085 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=290 | highScore=290
+13:14:45.086 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=320 | highScore=320
+13:14:45.086 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=330 | highScore=330
+13:14:45.086 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=350 | highScore=350
+13:14:45.086 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=350 | highScore=350
+13:14:45.117 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=370 | highScore=370
+13:14:45.117 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=400 | highScore=400
+13:14:45.117 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=450 | highScore=450
+13:14:45.117 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=480 | highScore=480
+13:14:45.117 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=500 | highScore=500
+13:14:45.150 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=540 | highScore=540
+13:14:45.151 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=560 | highScore=560
+13:14:45.151 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=600 | highScore=600
+13:14:45.151 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=640 | highScore=640
+13:14:45.151 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=650 | highScore=650
+13:14:45.182 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=690 | highScore=690
+13:14:45.182 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=690 | highScore=690
+13:14:45.182 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=720 | highScore=720
+13:14:45.183 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=770 | highScore=770
+13:14:45.183 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=770 | highScore=770
+13:14:45.213 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=780 | highScore=780
+13:14:45.214 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=790 | highScore=790
+13:14:45.214 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=830 | highScore=830
+13:14:45.214 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=840 | highScore=840
+13:14:45.214 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=880 | highScore=880
+13:14:45.245 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=910 | highScore=910
+13:14:45.246 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=940 | highScore=940
+13:14:45.246 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=990 | highScore=990
+13:14:45.246 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1000 | highScore=1000
+13:14:45.246 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1050 | highScore=1050
+13:14:45.291 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1090 | highScore=1090
+13:14:45.292 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1120 | highScore=1120
+13:14:45.292 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1120 | highScore=1120
+13:14:45.292 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1160 | highScore=1160
+13:14:45.292 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1170 | highScore=1170
+13:14:45.325 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1200 | highScore=1200
+13:14:45.326 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1240 | highScore=1240
+13:14:45.326 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1260 | highScore=1260
+13:14:45.326 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1310 | highScore=1310
+13:14:45.326 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1320 | highScore=1320
+13:14:45.374 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1370 | highScore=1370
+13:14:45.375 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1370 | highScore=1370
+13:14:45.375 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1370 | highScore=1370
+13:14:45.375 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1400 | highScore=1400
+13:14:45.376 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1450 | highScore=1450
+13:14:45.405 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1480 | highScore=1480
+13:14:45.406 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1480 | highScore=1480
+13:14:45.406 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1520 | highScore=1520
+13:14:45.407 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1540 | highScore=1540
+13:14:45.407 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1540 | highScore=1540
+13:14:45.437 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1540 | highScore=1540
+13:14:45.438 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1560 | highScore=1560
+13:14:45.438 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1610 | highScore=1610
+13:14:45.439 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1620 | highScore=1620
+13:14:45.439 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1660 | highScore=1660
+13:14:45.470 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1700 | highScore=1700
+13:14:45.471 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1700 | highScore=1700
+13:14:45.472 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1720 | highScore=1720
+13:14:45.472 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1750 | highScore=1750
+13:14:45.472 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1760 | highScore=1760
+13:14:45.501 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1810 | highScore=1810
+13:14:45.502 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1850 | highScore=1850
+13:14:45.503 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1880 | highScore=1880
+13:14:45.503 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1930 | highScore=1930
+13:14:45.503 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1930 | highScore=1930
+13:14:45.550 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1980 | highScore=1980
+13:14:45.551 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2000 | highScore=2000
+13:14:45.552 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2010 | highScore=2010
+13:14:45.552 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2020 | highScore=2020
+13:14:45.552 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2030 | highScore=2030
+13:14:45.596 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2040 | highScore=2040
+13:14:45.597 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2060 | highScore=2060
+13:14:45.597 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2090 | highScore=2090
+13:14:45.597 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2100 | highScore=2100
+13:14:45.597 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2150 | highScore=2150
+13:14:45.630 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2180 | highScore=2180
+13:14:45.630 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2230 | highScore=2230
+13:14:45.630 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2280 | highScore=2280
+13:14:45.631 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2330 | highScore=2330
+13:14:45.632 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2380 | highScore=2380
+13:14:45.662 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2400 | highScore=2400
+13:14:45.662 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2440 | highScore=2440
+13:14:45.662 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2440 | highScore=2440
+13:14:45.662 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2440 | highScore=2440
+13:14:45.662 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2450 | highScore=2450
+13:14:45.705 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2470 | highScore=2470
+13:14:45.705 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2490 | highScore=2490
+13:14:45.705 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2490 | highScore=2490
+13:14:45.706 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2530 | highScore=2530
+13:14:45.706 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2540 | highScore=2540
+13:14:45.741 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2570 | highScore=2570
+13:14:45.742 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2610 | highScore=2610
+13:14:45.742 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2630 | highScore=2630
+13:14:45.742 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2670 | highScore=2670
+13:14:45.742 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2690 | highScore=2690
+13:14:45.773 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2730 | highScore=2730
+13:14:45.774 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2760 | highScore=2760
+13:14:45.774 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2780 | highScore=2780
+13:14:45.774 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2780 | highScore=2780
+13:14:45.774 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2780 | highScore=2780
+13:14:45.805 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2790 | highScore=2790
+13:14:45.806 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2830 | highScore=2830
+13:14:45.806 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2830 | highScore=2830
+13:14:45.806 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2850 | highScore=2850
+13:14:45.806 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2890 | highScore=2890
+13:14:45.837 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2930 | highScore=2930
+13:14:45.838 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2970 | highScore=2970
+13:14:45.838 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3000 | highScore=3000
+13:14:45.838 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3050 | highScore=3050
+13:14:45.838 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3070 | highScore=3070
+13:14:45.853 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3070 | highScore=3070
+13:14:45.853 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3120 | highScore=3120
+13:14:45.853 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3160 | highScore=3160
+13:14:45.853 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3160 | highScore=3160
+13:14:45.853 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3160 | highScore=3160
+13:14:45.879 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3200 | highScore=3200
+13:14:45.879 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3200 | highScore=3200
+13:14:45.879 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3240 | highScore=3240
+13:14:45.879 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3240 | highScore=3240
+13:14:45.879 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3250 | highScore=3250
+13:14:45.901 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3290 | highScore=3290
+13:14:45.901 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3290 | highScore=3290
+13:14:45.901 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3310 | highScore=3310
+13:14:45.901 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3320 | highScore=3320
+13:14:45.901 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3340 | highScore=3340
+13:14:45.917 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3370 | highScore=3370
+13:14:45.917 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3400 | highScore=3400
+13:14:45.917 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3430 | highScore=3430
+13:14:45.917 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3430 | highScore=3430
+13:14:45.918 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3460 | highScore=3460
+13:14:45.942 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3510 | highScore=3510
+13:14:45.942 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3520 | highScore=3520
+13:14:45.943 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3540 | highScore=3540
+13:14:45.943 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3540 | highScore=3540
+13:14:45.943 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3590 | highScore=3590
+13:14:45.962 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3640 | highScore=3640
+13:14:45.962 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3640 | highScore=3640
+13:14:45.962 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3660 | highScore=3660
+13:14:45.962 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3700 | highScore=3700
+13:14:45.962 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3730 | highScore=3730
+13:14:45.981 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3740 | highScore=3740
+13:14:45.982 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3750 | highScore=3750
+13:14:45.982 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - All bricks exploded!
+13:14:48.845 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game  complete!
+13:14:48.846 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:14:48.848 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+13:14:48.848 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+13:14:48.850 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src/main/resources/Saves/achievement.json
+13:14:48.851 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Saved achievements to file:src/main/resources/Saves/achievement.json
+13:14:48.851 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - 🏆 Achievement unlocked: Win Game
+13:14:48.851 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Game
+13:14:48.851 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/4.txt
+13:14:48.852 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+13:14:48.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+13:14:48.890 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+13:14:48.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:14:48.893 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src/main/resources/Saves/highscores.json
+13:14:48.894 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HIGHSCORES TOP]
+1. 3750
+2. 3500
+3. 910
+4. 660
+5. 530
+6. 410
+7. 250
+8. 110
+9. 40
+10. 10 (minBefore=10 minAfter=10)
+13:14:48.894 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+13:14:48.896 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:14:48.896 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 3750
+13:14:48.896 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 3500
+13:14:48.896 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 910
+13:14:48.897 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 660
+13:14:48.897 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 530
+13:14:48.897 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 410
+13:14:48.897 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 250
+13:14:48.897 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 110
+13:14:48.897 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 9. 40
+13:14:48.897 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 10
+13:15:53.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:15:53.938 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:15:53.949 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:15:54.011 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:15:54.011159 bg frame missing: /images/bg/frame_0.png
+13:15:54.011 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:15:54.011159 bg frame missing: /images/bg/frame_1.png
+13:15:54.012 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:15:54.012163500 bg frame missing: /images/bg/frame_2.png
+13:15:54.012 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:15:54.012163500 bg frame missing: /images/bg/frame_3.png
+13:15:54.012 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:15:54.012163500 bg frame missing: /images/bg/frame_4.png
+13:15:54.012 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:15:54.012163500 bg frame missing: /images/bg/frame_5.png
+13:15:58.090 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:15:58.090 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:15:58.218 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:15:58.260 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:15:59.826 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:15:59.831 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:15:59.831 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:16:00.079 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không tìm thấy tệp video: videos/end_game.mp4
+13:16:00.079 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Video file not found: videos/end_game.mp4
+13:16:00.081 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:16:00.081 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:16:00.082 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:16:01.450 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:16:05.819 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game  complete!
+13:16:05.824 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:16:05.832 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+13:16:05.833 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+13:16:05.834 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Game
+13:16:05.835 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/4.txt
+13:16:05.837 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+13:16:05.897 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+13:16:05.897 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+13:16:05.898 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+13:16:05.898 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+13:16:05.898 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:16:05.899 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 3750
+13:16:05.899 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 3500
+13:16:05.899 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 910
+13:16:05.899 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 660
+13:16:05.899 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 530
+13:16:05.899 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 410
+13:16:05.900 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 250
+13:16:05.900 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 110
+13:16:05.900 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 9. 40
+13:16:05.900 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 10
+13:20:25.754 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:20:25.755 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:20:25.764 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:20:25.797 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:20:25.796199 bg frame missing: /images/bg/frame_0.png
+13:20:25.797 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:20:25.797197600 bg frame missing: /images/bg/frame_1.png
+13:20:25.797 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:20:25.797197600 bg frame missing: /images/bg/frame_2.png
+13:20:25.797 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:20:25.797197600 bg frame missing: /images/bg/frame_3.png
+13:20:25.797 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:20:25.797197600 bg frame missing: /images/bg/frame_4.png
+13:20:25.798 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:20:25.798196200 bg frame missing: /images/bg/frame_5.png
+13:20:27.496 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:20:27.496 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:20:27.611 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:20:27.612 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:20:28.407 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:20:28.415 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:20:28.416 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:20:28.636 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không tìm thấy tệp video: videos/end_game.mp4
+13:20:28.638 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Video file not found: videos/end_game.mp4
+13:20:28.640 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:20:28.640 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:20:28.642 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:20:30.006 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:20:33.817 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game complete! Bắt đầu hội thoại kết thúc.
+13:20:33.825 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:20:33.835 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+13:20:33.836 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+13:20:33.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Game
+13:20:33.837 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/4.txt
+13:20:33.839 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+13:20:33.882 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+13:20:33.882 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+13:20:33.882 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+13:20:33.883 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+13:20:33.884 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:20:33.885 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 3750
+13:20:33.885 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 3500
+13:20:33.885 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 910
+13:20:33.885 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 660
+13:20:33.885 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 530
+13:20:33.885 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 410
+13:20:33.886 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 250
+13:20:33.886 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 110
+13:20:33.886 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 9. 40
+13:20:33.886 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 10
+13:20:37.636 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Hội thoại kết thúc. Bắt đầu phát video.
+13:21:38.099 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:21:38.102 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:21:38.119 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:21:38.163 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:21:38.162467 bg frame missing: /images/bg/frame_0.png
+13:21:38.163 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:21:38.163482200 bg frame missing: /images/bg/frame_1.png
+13:21:38.164 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:21:38.164500200 bg frame missing: /images/bg/frame_2.png
+13:21:38.164 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:21:38.164500200 bg frame missing: /images/bg/frame_3.png
+13:21:38.164 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:21:38.164500200 bg frame missing: /images/bg/frame_4.png
+13:21:38.165 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:21:38.164500200 bg frame missing: /images/bg/frame_5.png
+13:21:40.068 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:21:40.069 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:21:40.174 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:21:40.174 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:21:40.961 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:21:40.969 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:21:40.969 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:21:41.226 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không tìm thấy tệp video: videos/end_game.mp4
+13:21:41.226 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Video file not found: videos/end_game.mp4
+13:21:41.230 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:21:41.231 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:21:41.233 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:21:42.594 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:21:57.795 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game complete! Bắt đầu hội thoại kết thúc.
+13:21:57.806 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:21:57.831 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+13:21:57.833 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+13:21:57.833 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Game
+13:21:57.834 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/4.txt
+13:21:57.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+13:21:57.877 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+13:21:57.877 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+13:21:57.878 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+13:21:57.878 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+13:21:57.879 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:21:57.879 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 3750
+13:21:57.879 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 3500
+13:21:57.879 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 910
+13:21:57.879 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 660
+13:21:57.880 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 530
+13:21:57.880 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 410
+13:21:57.880 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 250
+13:21:57.880 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 110
+13:21:57.880 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 9. 40
+13:21:57.880 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 10
+13:22:01.012 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Hội thoại kết thúc. Bắt đầu phát video.
+13:22:57.031 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:22:57.033 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:22:57.043 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:22:57.081 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:22:57.080989700 bg frame missing: /images/bg/frame_0.png
+13:22:57.081 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:22:57.081929 bg frame missing: /images/bg/frame_1.png
+13:22:57.081 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:22:57.081929 bg frame missing: /images/bg/frame_2.png
+13:22:57.081 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:22:57.081929 bg frame missing: /images/bg/frame_3.png
+13:22:57.081 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:22:57.081929 bg frame missing: /images/bg/frame_4.png
+13:22:57.082 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:22:57.082961400 bg frame missing: /images/bg/frame_5.png
+13:22:59.016 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:22:59.016 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:22:59.109 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:22:59.110 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:23:00.307 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:23:00.312 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:23:00.312 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:23:00.538 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không tìm thấy tệp video: videos/end_game.mp4
+13:23:00.539 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Video file not found: videos/end_game.mp4
+13:23:00.541 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:23:00.541 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:23:00.541 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:23:01.972 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:23:07.286 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game complete! Bắt đầu hội thoại kết thúc.
+13:23:07.293 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:23:07.301 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+13:23:07.302 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+13:23:07.302 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Game
+13:23:07.303 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/4.txt
+13:23:07.305 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+13:23:07.358 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+13:23:07.358 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+13:23:07.359 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+13:23:07.359 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+13:23:07.360 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:23:07.360 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 3750
+13:23:07.360 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 3500
+13:23:07.361 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 910
+13:23:07.361 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 660
+13:23:07.361 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 530
+13:23:07.361 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 410
+13:23:07.361 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 250
+13:23:07.361 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 110
+13:23:07.361 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 9. 40
+13:23:07.362 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 10
+13:23:09.541 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Hội thoại kết thúc. Bắt đầu phát video.
+13:23:37.638 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:23:37.642 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:23:37.664 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:23:37.726 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:23:37.725137100 bg frame missing: /images/bg/frame_0.png
+13:23:37.726 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:23:37.726709300 bg frame missing: /images/bg/frame_1.png
+13:23:37.726 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:23:37.726709300 bg frame missing: /images/bg/frame_2.png
+13:23:37.726 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:23:37.726709300 bg frame missing: /images/bg/frame_3.png
+13:23:37.728 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:23:37.728284 bg frame missing: /images/bg/frame_4.png
+13:23:37.728 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:23:37.728284 bg frame missing: /images/bg/frame_5.png
+13:23:39.531 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:23:39.532 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:23:39.632 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:23:39.632 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:23:40.352 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:23:40.357 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:23:40.357 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:23:40.609 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không tìm thấy tệp video: videos/end_game.mp4
+13:23:40.610 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Video file not found: videos/end_game.mp4
+13:23:40.612 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:23:40.613 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:23:40.614 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:23:41.938 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:24:25.053 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:24:25.054 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:24:25.064 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:24:25.101 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:24:25.101912600 bg frame missing: /images/bg/frame_0.png
+13:24:25.102 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:24:25.102913700 bg frame missing: /images/bg/frame_1.png
+13:24:25.102 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:24:25.102913700 bg frame missing: /images/bg/frame_2.png
+13:24:25.102 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:24:25.102913700 bg frame missing: /images/bg/frame_3.png
+13:24:25.103 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:24:25.103914400 bg frame missing: /images/bg/frame_4.png
+13:24:25.103 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:24:25.103914400 bg frame missing: /images/bg/frame_5.png
+13:24:26.786 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:24:26.786 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:24:26.887 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:24:26.887 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:24:27.615 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:24:27.620 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:24:27.621 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:24:27.842 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không tìm thấy tệp video: /videos/end_game.mp4
+13:24:27.844 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Video file not found: /videos/end_game.mp4
+13:24:27.848 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:24:27.848 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:24:27.851 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:24:29.305 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:26:01.020 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:26:01.021 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:26:01.037 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:26:01.079 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:26:01.078307500 bg frame missing: /images/bg/frame_0.png
+13:26:01.079 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:26:01.079306400 bg frame missing: /images/bg/frame_1.png
+13:26:01.080 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:26:01.079306400 bg frame missing: /images/bg/frame_2.png
+13:26:01.080 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:26:01.080304700 bg frame missing: /images/bg/frame_3.png
+13:26:01.080 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:26:01.080304700 bg frame missing: /images/bg/frame_4.png
+13:26:01.081 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:26:01.081308400 bg frame missing: /images/bg/frame_5.png
+13:26:02.513 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:26:02.514 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:26:02.587 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:26:02.587 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:26:03.333 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:26:03.340 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:26:03.340 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:26:03.477 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không tìm thấy tệp video: /videos/end_game.mp4
+13:26:03.477 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Video file not found: /videos/end_game.mp4
+13:26:03.478 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:26:03.478 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:26:03.479 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:26:04.771 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:27:18.636 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:27:18.637 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:27:18.644 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:27:18.669 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:27:18.668656900 bg frame missing: /images/bg/frame_0.png
+13:27:18.669 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:27:18.669657100 bg frame missing: /images/bg/frame_1.png
+13:27:18.669 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:27:18.669657100 bg frame missing: /images/bg/frame_2.png
+13:27:18.669 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:27:18.669657100 bg frame missing: /images/bg/frame_3.png
+13:27:18.669 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:27:18.669657100 bg frame missing: /images/bg/frame_4.png
+13:27:18.669 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:27:18.669657100 bg frame missing: /images/bg/frame_5.png
+13:27:19.979 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:27:19.979 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:27:20.048 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:27:20.048 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:27:20.734 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:27:20.740 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:27:20.741 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:27:20.894 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không tìm thấy tệp video: videos/end_game.mp4
+13:27:20.895 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Video file not found: videos/end_game.mp4
+13:27:20.896 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:27:20.896 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:27:20.897 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:27:22.228 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:27:26.884 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game complete! Bắt đầu hội thoại kết thúc.
+13:27:26.886 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:27:26.892 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+13:27:26.892 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+13:27:26.892 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Game
+13:27:26.893 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/4.txt
+13:27:26.895 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+13:27:26.921 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+13:27:26.921 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+13:27:26.921 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+13:27:26.921 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+13:27:26.922 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:27:26.922 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 3750
+13:27:26.922 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 3500
+13:27:26.922 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 910
+13:27:26.922 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 660
+13:27:26.922 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 530
+13:27:26.922 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 410
+13:27:26.922 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 250
+13:27:26.922 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 110
+13:27:26.922 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 9. 40
+13:27:26.922 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 10
+13:27:29.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Hội thoại kết thúc. Bắt đầu phát video.
+13:29:34.028 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:29:34.030 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:29:34.154 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:29:34.210 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:34.210132900 bg frame missing: /images/bg/frame_0.png
+13:29:34.210 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:34.210132900 bg frame missing: /images/bg/frame_1.png
+13:29:34.210 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:34.210132900 bg frame missing: /images/bg/frame_2.png
+13:29:34.210 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:34.210132900 bg frame missing: /images/bg/frame_3.png
+13:29:34.211 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:34.211131 bg frame missing: /images/bg/frame_4.png
+13:29:34.211 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:34.211131 bg frame missing: /images/bg/frame_5.png
+13:29:35.965 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:29:35.965 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:29:36.033 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:29:36.034 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:29:36.705 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:29:36.707 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:29:36.708 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:29:36.877 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không tìm thấy tệp video: videos/end_game.mp4
+13:29:36.877 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Video file not found: videos/end_game.mp4
+13:29:36.880 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:29:36.880 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:29:36.881 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:29:38.263 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:29:53.715 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:29:53.716 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:29:53.722 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:29:53.755 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:53.755332 bg frame missing: /images/bg/frame_0.png
+13:29:53.756 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:53.756287400 bg frame missing: /images/bg/frame_1.png
+13:29:53.756 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:53.756287400 bg frame missing: /images/bg/frame_2.png
+13:29:53.756 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:53.756287400 bg frame missing: /images/bg/frame_3.png
+13:29:53.756 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:53.756287400 bg frame missing: /images/bg/frame_4.png
+13:29:53.756 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:29:53.756287400 bg frame missing: /images/bg/frame_5.png
+13:29:55.127 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:29:55.128 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:29:55.191 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:29:55.192 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:29:55.933 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:29:55.938 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:29:55.938 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:29:56.075 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không tìm thấy tệp video: videos/end_game.mp4
+13:29:56.075 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Video file not found: videos/end_game.mp4
+13:29:56.076 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:29:56.077 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:29:56.078 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:29:57.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:32:15.936 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:32:15.938 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:32:15.945 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:32:15.969 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:32:15.969957500 bg frame missing: /images/bg/frame_0.png
+13:32:15.969 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:32:15.969957500 bg frame missing: /images/bg/frame_1.png
+13:32:15.970 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:32:15.970957100 bg frame missing: /images/bg/frame_2.png
+13:32:15.970 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:32:15.970957100 bg frame missing: /images/bg/frame_3.png
+13:32:15.970 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:32:15.970957100 bg frame missing: /images/bg/frame_4.png
+13:32:15.970 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:32:15.970957100 bg frame missing: /images/bg/frame_5.png
+13:32:17.605 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:32:17.605 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:32:17.676 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:32:17.676 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:32:18.485 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:32:18.489 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:32:18.489 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:32:18.621 INFO  [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Video URL: file:/F:/Baitaplon/demo-game/target/classes/videos/end_game.mp4
+13:32:18.631 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:32:18.631 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:32:18.632 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:32:19.916 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:32:26.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game complete! Bắt đầu hội thoại kết thúc.
+13:32:26.208 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:32:26.218 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+13:32:26.219 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+13:32:26.219 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Game
+13:32:26.229 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/4.txt
+13:32:26.231 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+13:32:26.251 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+13:32:26.251 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+13:32:26.251 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+13:32:26.251 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+13:32:26.251 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:32:26.251 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 3750
+13:32:26.252 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 3500
+13:32:26.252 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 910
+13:32:26.252 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 660
+13:32:26.252 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 530
+13:32:26.252 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 410
+13:32:26.253 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 250
+13:32:26.253 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 110
+13:32:26.253 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 9. 40
+13:32:26.253 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 10
+13:32:28.647 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Hội thoại kết thúc. Bắt đầu phát video.
+13:32:28.648 INFO  [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Bắt đầu phát video kết thúc game.
+13:34:15.737 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+13:34:15.738 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+13:34:15.745 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+13:34:15.766 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:34:15.766148 bg frame missing: /images/bg/frame_0.png
+13:34:15.766 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:34:15.766148 bg frame missing: /images/bg/frame_1.png
+13:34:15.766 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:34:15.766148 bg frame missing: /images/bg/frame_2.png
+13:34:15.766 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:34:15.766148 bg frame missing: /images/bg/frame_3.png
+13:34:15.766 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:34:15.766148 bg frame missing: /images/bg/frame_4.png
+13:34:15.766 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T13:34:15.766148 bg frame missing: /images/bg/frame_5.png
+13:34:18.275 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:34:18.275 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:34:18.340 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:34:18.341 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:34:19.043 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+13:34:19.047 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+13:34:19.047 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+13:34:19.178 INFO  [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Video URL: file:/F:/Baitaplon/demo-game/target/classes/videos/end_game.mp4
+13:34:19.186 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+13:34:19.186 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+13:34:19.187 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+13:34:20.265 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+13:34:22.871 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game complete! Bắt đầu hội thoại kết thúc.
+13:34:22.874 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:34:22.876 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+13:34:22.876 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+13:34:22.876 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Game
+13:34:22.876 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/4.txt
+13:34:22.877 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+13:34:22.888 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+13:34:22.888 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+13:34:22.888 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+13:34:22.888 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 3750
+13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 3500
+13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 910
+13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 660
+13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 530
+13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 410
+13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 250
+13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 110
+13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 9. 40
+13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 10
+13:34:25.244 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Hội thoại kết thúc. Bắt đầu phát video.
+13:34:25.245 INFO  [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Bắt đầu phát video kết thúc game.
