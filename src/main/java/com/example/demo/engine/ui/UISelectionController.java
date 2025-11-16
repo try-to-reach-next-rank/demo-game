@@ -30,7 +30,4 @@ public class UISelectionController {
     public void setOnConfirm(Consumer<String> onConfirm) {
         this.onConfirm = onConfirm;
     }
-
-    public int getIndex() { return index; }
-    public String getSelected() { return options.get(index); }
 }

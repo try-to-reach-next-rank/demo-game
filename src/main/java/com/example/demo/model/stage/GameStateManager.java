@@ -21,14 +21,6 @@ public class GameStateManager {
         gameContext.setState(newState);
     }
 
-    public void setInitialState() {
-        changeState(new MenuState(this.mainApp, this.stage));
-    }
-
-    public Main getMainApp() {
-        return mainApp;
-    }
-
     public Stage getStage() {
         return stage;
     }

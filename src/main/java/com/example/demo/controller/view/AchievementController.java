@@ -57,8 +57,4 @@ public class AchievementController {
     public AchievementModel getModel() {
         return model;
     }
-
-    public int getCurrentPage() {
-        return currentPage;
-    }
 }

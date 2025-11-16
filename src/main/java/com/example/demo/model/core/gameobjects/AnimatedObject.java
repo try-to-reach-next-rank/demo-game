@@ -27,8 +27,6 @@ public abstract class AnimatedObject<T extends AnimatedObjectData> extends GameO
         this.baseWidth = width;
         this.baseHeight = height;
         applyScale();
-
-        AnimationBatchUpdate.getInstance().register(animation);
     }
 
     public void updateAnimation(double deltaTime) {

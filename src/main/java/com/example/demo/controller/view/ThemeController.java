@@ -143,16 +143,6 @@ public class ThemeController {
         bgTimeline.play();
     }
 
-    public void stopBgAnimation() {
-        if (bgTimeline != null) {
-            bgTimeline.stop();
-        }
-    }
-
-    // -------------------------
-    // CSS Management
-    // -------------------------
-
     /**
      * Apply CSS stylesheet cho node
      */
@@ -164,10 +154,6 @@ public class ThemeController {
             log.info("[ThemeManager] "+ LocalDateTime.now()+"  Failed to load CSS: " + e.getMessage());
         }
     }
-
-    // -------------------------
-    // Getters & Setters
-    // -------------------------
 
     public Image getHandImage() {
         return handImage;

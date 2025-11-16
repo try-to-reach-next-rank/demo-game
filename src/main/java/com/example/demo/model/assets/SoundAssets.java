@@ -45,11 +45,6 @@ public class SoundAssets implements AssetLoader {
     private void loadAssets(AssetManager manager, Map<String, String> assets, SoundType type) {
         assets.forEach((name, path) -> {
             URL url = getClass().getResource(path);
-            if (url == null) {
-                System.err.println("[WARN] Missing sound asset: " + path);
-            } else {
-                System.out.println("[INFO] Loaded SFX: " + name + " -> " + url);
-            }
 
             switch (type) {
                 case MUSIC -> manager.addMusic(name, new Media(url.toString()));

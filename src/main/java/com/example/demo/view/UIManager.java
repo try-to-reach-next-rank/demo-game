@@ -48,8 +48,4 @@ public class UIManager {
     public boolean hasActiveUI() {
         return componentList.stream().anyMatch(UIComponent::isActive);
     }
-
-    public boolean contains(UIComponent uiComponent) {
-        return componentList.contains(uiComponent);
-    }
 }

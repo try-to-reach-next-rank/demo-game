@@ -15,6 +15,7 @@ public class CloudEffectController {
 
     private CloudEffectController() {
         this.cloudPool = new ObjectPool<>(CloudEffect::new, 2);
+        // TODO: trigger cloud with C no more timer
         this.spawnTimer = new Timer();
         this.spawnTimer.start(20.0); // first cloud after 20 seconds
     }
@@ -33,7 +34,6 @@ public class CloudEffectController {
         if (spawnTimer.isFinished() && (activeCloudEffect == null || !activeCloudEffect.isActive())) {
             activeCloudEffect = cloudPool.acquire();
             activeCloudEffect.activate(GlobalVar.WIDTH, GlobalVar.HEIGHT, 0);
-            registerWithRenderer(activeCloudEffect);
 
             spawnTimer.start(50.0); // reset timer for next spawn
         }
@@ -61,10 +61,6 @@ public class CloudEffectController {
      */
     public CloudEffect getActiveEffect() {
         return activeCloudEffect;
-    }
-
-    private void registerWithRenderer(CloudEffect effect) {
-        // optional: hook into EffectRenderer if you want it automatically rendered there
     }
 
     public void reset() {

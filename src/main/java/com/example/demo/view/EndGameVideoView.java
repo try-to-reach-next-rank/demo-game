@@ -31,7 +31,7 @@ public class EndGameVideoView extends StackPane {
         setStyle("-fx-background-color: black;");
 
         try {
-            URL resource = getClass().getResource("/videos/end_game.mp4");
+            URL resource = getClass().getResource(VIDEO_PATH);
             String mediaUrl = resource.toExternalForm();
             log.info("Video URL: {}", mediaUrl);
             Media media = new Media(mediaUrl);

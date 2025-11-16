@@ -96,20 +96,4 @@ public class SaveDataRepository {
             return false;
         }
     }
-
-    public LocalDateTime getLastModified(int slotNumber) {
-        if (!slotExists(slotNumber)) {
-            return null;
-        }
-
-        try {
-            Path path = getSlotPath(slotNumber);
-            FileTime fileTime = Files.getLastModifiedTime(path);
-            return LocalDateTime.ofInstant(fileTime.toInstant(), ZoneId.systemDefault());
-        } catch (IOException e) {
-            System.err.println("[SaveDataRepository] Failed to get last modified time for slot " + slotNumber);
-            e.printStackTrace();
-            return null;
-        }
-    }
 }

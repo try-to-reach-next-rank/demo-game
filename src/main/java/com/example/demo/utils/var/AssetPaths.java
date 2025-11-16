@@ -73,7 +73,6 @@ public final class AssetPaths {
     public static final String BALL = "/images/dialog/Ball.png";
 
     // SAVE
-    public static final String SETTINGS_FILE_PATH = "/Saves/settings.json";
-    public static final String HIGHSCORE_PATH = "/Saves/highscores.json";
+    public static final String SETTINGS_FILE_PATH = "src/main/resources/Saves/settings.json";
 }
 

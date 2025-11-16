@@ -193,7 +193,7 @@ public class GameController extends Pane {
             System.out.println(world.getCurrentLevel());
             saveController.saveGame(world, currentSlotNumber);
             loadNextLevel();
-        }else{
+        } else {
 
             if (isAwaitingEndGameVideo) {
                 return true; // Đã kích hoạt, đang chờ hội thoại, không làm gì thêm
@@ -202,6 +202,7 @@ public class GameController extends Pane {
             log.info("Game complete! Bắt đầu hội thoại kết thúc.");
             unlockLevelAchievement(4);
             AchievementDialogue(4);
+            Sound.getInstance().pauseMusic();
             pauseGame();
             saveController.saveGame(world, currentSlotNumber);
             isAwaitingEndGameVideo = true;

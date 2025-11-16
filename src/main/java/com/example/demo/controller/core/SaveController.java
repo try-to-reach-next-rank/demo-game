@@ -93,8 +93,6 @@ public class SaveController {
         saveHighScores(scoreToRecord);
 
         log.info("Save complete.");
-
-        showHighscores();
     }
 
     public GameState loadGame(int slotNumber) {
@@ -132,35 +130,5 @@ public class SaveController {
                 sb,
                 beforeMin,
                 hs.getMinCurrent());
-    }
-
-    public HighScoreState loadHighScores() {
-        return HighScoreState.getInstance();
-    }
-
-    public void showHighscores() {
-        HighScoreState hs = loadHighScores();
-        if (hs == null) {
-            log.info("[HIGHSCORES] Chưa có dữ liệu.");
-            return;
-        }
-        int rank = 1;
-        for (int s : hs.getScoresDescending()) {
-            log.info("[HS] {}. {}", rank++, s);
-        }
-    }
-
-    /**
-     * Check if slot exists
-     */
-    public boolean slotExists(int slotNumber) {
-        return repository.slotExists(slotNumber);
-    }
-
-    /**
-     * Delete save slot
-     */
-    public boolean deleteSlot(int slotNumber) {
-        return repository.deleteSlot(slotNumber);
     }
 }

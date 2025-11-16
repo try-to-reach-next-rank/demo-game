@@ -1,6 +1,5 @@
 package com.example.demo.model.state.highscore;
 
-import com.example.demo.controller.core.GameController;
 import com.example.demo.controller.core.SaveController;
 import com.example.demo.utils.var.GameVar;
 
@@ -25,11 +24,6 @@ public class HighScoreState {
         return instance;
     }
 
-    //Method để reset instance (dùng khi cần reload từ file)
-    public static void resetInstance() {
-        instance = null;
-    }
-
     public void addScore(int score) {
         if (score <= 0) return;
 
@@ -51,16 +45,8 @@ public class HighScoreState {
         return list;
     }
 
-    public PriorityQueue<Integer> getHeap() {
-        return heap;
-    }
-
     public int size() {
         return heap.size();
-    }
-
-    public boolean isFull() {
-        return heap.size() >= CAPACITY;
     }
 
     public Integer getMinCurrent() {

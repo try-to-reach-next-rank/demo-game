@@ -15,8 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PowerUpSystemTest {
 
-    private static final double EPS = 1e-6;
-
     @Test
     void activate_accelerate_addsToActiveAndSetsBallAccelerated() {
         // Arrange

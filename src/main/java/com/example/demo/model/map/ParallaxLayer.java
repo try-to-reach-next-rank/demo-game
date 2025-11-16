@@ -17,7 +17,6 @@ import java.util.Objects;
  * Does NOT use ImageView or scene graph nodes.
  */
 public class ParallaxLayer implements Updatable, Renderable {
-    private final double scrollRatio;
     private double xOffset = 0.0;
     private double wrapWidth;
 
@@ -27,7 +26,6 @@ public class ParallaxLayer implements Updatable, Renderable {
     private double timeSinceLastFrame = 0.0;
 
     public ParallaxLayer(String imagePath, double ratio) {
-        this.scrollRatio = ratio;
         this.frames = new ArrayList<>();
         this.frames.add(loadImage(imagePath));
         this.wrapWidth = this.frames.get(0).getWidth();

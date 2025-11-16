@@ -20,7 +20,6 @@ public class GameView extends Pane {
     private final GameController controller;
     private final UIView uiView;
     private final CoreView coreView;
-    private GameWorld gameWorld;
 
     private TransitionEffect transitionEffect;
 

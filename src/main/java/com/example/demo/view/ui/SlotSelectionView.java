@@ -122,11 +122,6 @@ public class SlotSelectionView extends AbstractUIView {
         inputController.reset();
     }
 
-    // get, set để debug
-    public List<SaveSlot> getSlots() {
-        return controller.getAllSlots();
-    }
-
     public int getGlobalButtonIndex(int slotIdx, int localBtnIdx) {
         int globalIdx = 0;
         List<SaveSlot> slots = controller.getAllSlots();
@@ -142,10 +137,6 @@ public class SlotSelectionView extends AbstractUIView {
         if (slotIdx < 0 || slotIdx >= slots.size()) return 0;
         SaveSlot slot = slots.get(slotIdx);
         return slot.isEmpty() ? 1 : 2;
-    }
-
-    public List<SlotComponent> getSlotComponents() {
-        return slotComponents;
     }
 
     // key board và ủy quyền xử lí input cho inputController

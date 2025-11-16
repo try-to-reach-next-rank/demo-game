@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 
 /**
  * Handles brick damage, explosion propagation, and power-up spawning.
- * TODO: Add handle reveal bricks in here
+ *
  */
 public class BrickSystem implements Updatable {
     private final List<Brick> bricks;
@@ -23,7 +23,6 @@ public class BrickSystem implements Updatable {
     private final PowerUpSystem powerUpSystem;
 
     public BrickSystem(List<Brick> bricks, SystemManager systemManager) {
-        // TODO: FIX THIS
         this.bricks = new ArrayList<>(bricks);
         this.powerUpSystem = systemManager.get(PowerUpSystem.class);
     }
@@ -95,23 +94,6 @@ public class BrickSystem implements Updatable {
         EffectRenderer.getInstance().spawn(GameVar.EXPLOSION1_EFFECT_KEY, centerX, centerY, GameVar.EFFECT_DURATION);
     }
 
-    public int getRemainingBricksCount() {
-        if (bricks == null || bricks.size() == 0) {
-            return 0;
-        }
-
-        int count = 0;
-        for (Brick brick : bricks) {
-            // Only count bricks that are:
-            // 1. Not destroyed
-            // 2. Not indestructible (health != Integer.MAX_VALUE)
-            if (!brick.isDestroyed() && brick.getHealth() != Integer.MAX_VALUE) {
-                count++;
-            }
-        }
-        return count;
-    }
-
     /**
      * Creates a score popup effect at the brick's location.
      */
@@ -121,9 +103,5 @@ public class BrickSystem implements Updatable {
         double centerY = brick.getY() - brick.getHeight() / 2;
         // Gọi spawn với tham số text
         EffectRenderer.getInstance().spawn("scorePopup", centerX, centerY, 1.0, scoreText);
-    }
-
-    public void setOnBrickDestroyed(Consumer<Brick> onBrickDestroyed) {
-        this.onBrickDestroyed = onBrickDestroyed;
     }
 }

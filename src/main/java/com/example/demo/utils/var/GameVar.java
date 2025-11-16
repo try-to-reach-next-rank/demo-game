@@ -16,7 +16,6 @@ public final class GameVar {
     public static final int MAP_MAX_X    = WIDTH - GameVar.WIDTH_OF_WALLS;
     public static final int MAP_MIN_Y    = GameVar.WIDTH_OF_WALLS;
     public static final int MAP_MAX_Y    = HEIGHT;
-    public static final int MAP_CENTER_X = WIDTH / 2;
     public static final int MAP_CENTER_Y = HEIGHT / 2;
 
     // GAME
@@ -94,8 +93,6 @@ public final class GameVar {
 
     // POOL
     public static final int SMALL_SIZE_POOL  = 20;
-    public static final int MEDIUM_SIZE_POOL = 50;
-    public static final int LARGE_SIZE_POOL  = 100;
 
     // BALL SYSTEM
     public static final double BALL_ELAPSED_TIME                 = 0.2;    // seconds

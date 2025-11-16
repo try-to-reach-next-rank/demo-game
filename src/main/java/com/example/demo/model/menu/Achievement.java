@@ -15,10 +15,6 @@ public class Achievement {
     public String getName() { return name; }
     public boolean isUnlocked() { return unlocked; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setUnlocked(boolean unlocked) {
         this.unlocked = unlocked;
     }

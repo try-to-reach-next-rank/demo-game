@@ -29,7 +29,6 @@ public class CloudEffect extends VisualEffect {
     private double y;
 
     private double screenWidth;
-    private double screenHeight;
 
     public CloudEffect() {
         super("cloud_cover");
@@ -45,7 +44,6 @@ public class CloudEffect extends VisualEffect {
     @Override
     public void activate(double screenWidth, double screenHeight, double durationSeconds) {
         this.screenWidth = screenWidth;
-        this.screenHeight = screenHeight;
 
         // Scale height so it sits around bottom 20% of screen
         this.y = screenHeight * 0.8;

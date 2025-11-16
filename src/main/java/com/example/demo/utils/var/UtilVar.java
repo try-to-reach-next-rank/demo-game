@@ -5,13 +5,10 @@ public final class UtilVar {
     // DIALOGUE
         // --- Font and Text ---
     public static final int FONT_SIZE = 20;
-    public static final double LINE_HEIGHT = 26;
-    public static final double TEXT_PADDING = 20;
     public static final double TEXT_SIDE_GAP = 200;
 
         // --- Character Sprite ---
     public static final double CHARACTER_IMG_SIZE = 130;
-    public static final double INACTIVE_ALPHA = 0.4;
     public static final double EGG_OFFSET_X = 180;
     public static final double EGG_OFFSET_Y = 140;
     public static final double BALL_OFFSET_X = 50;

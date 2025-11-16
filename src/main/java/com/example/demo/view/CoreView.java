@@ -77,10 +77,6 @@ public class CoreView {
         setupBrickReveal();
     }
 
-    public void setFlipped(boolean flipped) {
-        this.flipped = flipped;
-    }
-
     public void setLevelLoaded(boolean loading) {
         this.levelLoading = loading;
     }

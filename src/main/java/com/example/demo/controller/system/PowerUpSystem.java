@@ -7,7 +7,6 @@ import com.example.demo.model.core.entities.PowerUp;
 import com.example.demo.model.core.entities.ThePool;
 import com.example.demo.model.core.entities.bricks.Brick;
 import com.example.demo.model.core.gameobjects.GameObject;
-import com.example.demo.model.state.ActivePowerUpData;
 import com.example.demo.utils.GameRandom;
 import com.example.demo.utils.var.GameVar;
 
@@ -89,9 +88,9 @@ public class PowerUpSystem implements Updatable {
         activePowerUps.clear();
     }
 
-    public void handleCollision(PowerUp powerUp, GameObject obj) {
+    public void handleCollision(GameObject obj) {
         if (obj instanceof Paddle paddle) {
-            handlePaddleCollision(powerUp, paddle);
+            handlePaddleCollision(paddle);
         }
     }
 
@@ -103,31 +102,11 @@ public class PowerUpSystem implements Updatable {
         }
     }
 
-    public void activateFromSave(ActivePowerUpData data) {
-        // 1. Create a new PowerUp object based on the saved type
-        PowerUp powerUp = new PowerUp(data.getType());
-
-        // 2. Activate the powerUps with the saved remaining time (in milliseconds)
-        powerUp.activateWithRemainingDuration(data.getRemainingDuration());
-
-        // 3. Add this newly re-created power-up to the live list of active power-ups
-        activePowerUps.add(powerUp);
-
-        // 4. Re-apply the actual game effect
-        //    It checks the type and tells the ball or paddle to change its state.
-        switch (powerUp.getType()) {
-            case GameVar.ACCELERATE: ball.setAccelerated(true); break;
-            case GameVar.STRONGER: ball.setStronger(true); break;
-            case GameVar.DRUNK: ball.setDrunk(true); break;
-            case GameVar.BIGGERPADDLE: paddle.setBiggerPaddle(true); break;
-        }
-    }
-
     public List<PowerUp> getActivePowerUps() {
         return activePowerUps;
     }
 
-    private void handlePaddleCollision(PowerUp powerUp, Paddle paddle) {
+    private void handlePaddleCollision(Paddle paddle) {
         if (worldPowerUps == null) return;
 
         List<PowerUp> toRemove = new ArrayList<>();

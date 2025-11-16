@@ -36,10 +36,6 @@ public class SystemManager implements Updatable {
         }
     }
 
-    public boolean has(Class<? extends Updatable> type) {
-        return systems.containsKey(type);
-    }
-
     private void registerAllSystems() {
         register(new PaddleSystem(world.getPaddles()));
         register(new BallSystem(world.getBalls()));

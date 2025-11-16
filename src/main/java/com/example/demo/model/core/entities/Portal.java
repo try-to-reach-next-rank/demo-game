@@ -1,12 +1,12 @@
 package com.example.demo.model.core.entities;
 
 import com.example.demo.model.core.gameobjects.AnimatedObject;
-import com.example.demo.model.state.PortalData;
+import com.example.demo.model.state.gameobjectdata.AnimatedObjectData;
 import com.example.demo.utils.Timer;
 import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
 
-public class Portal extends AnimatedObject<PortalData> {
+public class Portal extends AnimatedObject<AnimatedObjectData> {
     private boolean active;
     private final Timer timer;
     private double lifeTime;
@@ -51,16 +51,11 @@ public class Portal extends AnimatedObject<PortalData> {
 
     public boolean isActive() { return this.active; }
 
-    public double getLifetime() { return this.lifeTime; }
-
     public Vector2D getDirection() { return direction; }
     public void setDirection(Vector2D direction) { this.direction = direction.normalize(); }
 
     @Override
-    public void applyState(PortalData data) {
+    public void applyState(AnimatedObjectData data) {
         super.applyState(data);
-        this.lifeTime = data.getLifetime();
-        if (data.isActive()) activate(x, y, lifeTime);
-        else deactivate();
     }
 }

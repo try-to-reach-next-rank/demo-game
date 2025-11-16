@@ -91,10 +91,6 @@ public class DialogueBox extends UIComponent {
         }
     }
 
-    public boolean isLineInProgress() {
-        return active && !lineComplete;
-    }
-
     @Override
     public void update(double deltaTime) {
         if (!active || lines == null || currentLine >= lines.length) return;

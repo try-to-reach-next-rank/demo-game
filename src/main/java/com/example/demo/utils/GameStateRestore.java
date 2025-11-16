@@ -1,11 +1,9 @@
 package com.example.demo.utils;
 
-import com.example.demo.controller.system.PowerUpSystem;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.entities.bricks.Brick;
 import com.example.demo.model.core.entities.PowerUp;
 import com.example.demo.model.core.entities.ThePool;
-import com.example.demo.model.state.ActivePowerUpData;
 import com.example.demo.model.state.BrickData;
 import com.example.demo.model.state.GameState;
 import com.example.demo.model.state.PowerUpData;

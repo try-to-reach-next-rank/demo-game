@@ -34,10 +34,6 @@ public class ParallaxSystem implements Updatable, Renderable {
         layers.add(layer);
     }
 
-    public void setDriftSpeed(double driftSpeed) {
-        this.driftSpeed = driftSpeed;
-    }
-
     @Override
     public void update(double deltaTime) {
         if (world == null || world.getPaddle() == null || layers.isEmpty()) return;

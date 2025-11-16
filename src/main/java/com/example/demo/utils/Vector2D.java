@@ -15,10 +15,6 @@ public class Vector2D {
         return new Vector2D(x * scalar, y * scalar);
     }
 
-    public double dot(Vector2D other) {
-        return x * other.x + y * other.y;
-    }
-
     public double length() {
         return Math.sqrt(x * x + y * y);
     }
@@ -32,29 +28,6 @@ public class Vector2D {
     public String toString() {
         return String.format(
             "The vector is: %f %f", x, y
-        );
-    }
-
-    /**
-     * A vector2D when collide with a surface -> tangent stays the same, the parallel to surface is flipped
-     * Parallel to surface (into the wall):
-     *      v1 = (v * n)n
-     * Along the wall:
-     *      v2 = v - v1
-     * => v = v1 + v2
-     *
-     * Reflection:
-     *      r = v2 - v1
-     *        = v - 2 * v1
-     *        = v - 2 * (v * n)n
-     * @param normal the surface vector to calculate the reflection
-     * @return a reflection vector2D
-     */
-    public Vector2D reflect(Vector2D normal) {
-        double dot = this.dot(normal);
-        return new Vector2D(
-                x - 2 * dot * normal.x,
-                y - 2 * dot * normal.y
         );
     }
 

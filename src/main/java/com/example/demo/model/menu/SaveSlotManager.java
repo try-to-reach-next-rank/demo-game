@@ -92,14 +92,6 @@ public class SaveSlotManager {
     }
 
     /**
-     * Check slot empty
-     */
-    public boolean isSlotEmpty(int slotNumber) {
-        SaveSlot slot = getSlot(slotNumber);
-        return slot != null && slot.isEmpty();
-    }
-
-    /**
      * Lấy repository (cho Controller)
      */
     public SaveDataRepository getRepository() {

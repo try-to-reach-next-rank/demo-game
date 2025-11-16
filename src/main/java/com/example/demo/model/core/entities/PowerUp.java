@@ -75,9 +75,6 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
         expireAt = -1;
     }
 
-    public double getApplyDurationLeft() { return this.applyDuration; }
-    public void  setApplyDuration(double applyDuration) { this.applyDuration = applyDuration; }
-
     @Override
     public void applyState(PowerUpData data) {
         super.applyState(data);

@@ -171,19 +171,6 @@ public class Animation {
         play();
     }
 
-    // --- Getters ---
-    public Image getSpriteSheet() {
-        return this.spriteSheet;
-    }
-
-    public double getFrameWidth() {
-        return this.frameWidth;
-    }
-
-    public double getFrameHeight() {
-        return this.frameHeight;
-    }
-
     public double getRenderWidth() {
         return this.renderWidth > 0 ? this.renderWidth : this.frameWidth;
     }

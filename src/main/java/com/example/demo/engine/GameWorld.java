@@ -26,13 +26,12 @@ public class GameWorld {
     private static final Logger log = LoggerFactory.getLogger(GameWorld.class);
     private Ball ball;
     private Paddle paddle;
-    private PowerUpSystem powerUpSystem; // DUPLICATE REMOVED
-    // TODO: PHUC
+    private PowerUpSystem powerUpSystem;
     private PortalFactory portalFactory;
     private MovedWallFactory movedwallFactory;
     private Brick[] bricks = new Brick[0];
     private int currentLevel = GameVar.START_LEVEL;
-    private GameStateRestore gameStateRestore; // DUPLICATE REMOVED
+    private GameStateRestore gameStateRestore;
 
     private final List<Wall> walls = new ArrayList<>();
     private final List<PowerUp> powerUps = new ArrayList<>();
@@ -62,18 +61,12 @@ public class GameWorld {
         playTimerRunning = true;
     }
 
-    private void updatePlayTime(double deltaTime) {
-        if (playTimerRunning) {
-            playElapsedSeconds += deltaTime;
-        }
-    }
-
     public long computeRealHighScore() {
         double remaining = 100.0 - playElapsedSeconds;
         if (remaining < 0) remaining = 0;
         if (highScore <= 0) return 0;
         double value = remaining * highScore;
-        return (long)Math.round(value);
+        return Math.round(value);
     }
 
     // --- Getters / Setters ---
@@ -82,24 +75,13 @@ public class GameWorld {
     public PowerUpSystem getPowerUpSystem() {
         return powerUpSystem;
     }
-    public void setPowerUpSystem(PowerUpSystem powerUpSystem) {
-        this.powerUpSystem = powerUpSystem;
-    }
 
     public double getPlayElapsedSeconds() {
         return playElapsedSeconds;
     }
 
-    public void setPlayElapsedSeconds(double playElapsedSeconds) {
-        this.playElapsedSeconds = playElapsedSeconds;
-    }
-
      public void setGameStateRestore(GameStateRestore gameStateRestore) {
          this.gameStateRestore = gameStateRestore;
-     }
-
-     public GameStateRestore getGameStateRestore() {
-         return gameStateRestore;
      }
 
     public Ball getBall() { return ball; }
@@ -132,14 +114,6 @@ public class GameWorld {
     public int getHighScore() { return highScore; }
     public void setHighScore(int highScore) { this.highScore = highScore; }
 
-    public int getLastAddedScore() {
-        return lastAddedScore;
-    }
-
-    public boolean isLevelComplete() {
-        return getRemainingBricksCount() == 0;
-    }
-
     // convenience reset helper
     public void resetForNewLevel() {
         powerUps.clear();
@@ -150,11 +124,7 @@ public class GameWorld {
     public void applyState(GameState loadedState) {
          gameStateRestore.apply(loadedState, this);
     }
-    
-    // Phương thức `apply` trong `GameStateRestore` (đã loại bỏ từ khối mã gốc) 
-    // sẽ thực hiện phần còn lại của logic khôi phục trạng thái.
 
-    // === NEW: Get all GameObjects in the world ===
     public List<GameObject> getAllObjects() {
         List<GameObject> all = new ArrayList<>();
         if (paddle != null) all.add(paddle);
@@ -202,7 +172,6 @@ public class GameWorld {
         if (this.currentScore > this.highScore) {
             this.highScore = this.currentScore; // cập nhật highScore
         }
-        log.info("[SCORES] currentScore={} | highScore={}", currentScore, highScore);
     }
 
     // ========== NEW: Brick Counting Methods ==========
@@ -223,31 +192,6 @@ public class GameWorld {
             }
         }
         return count;
-    }
-
-    public void verifyBrickScores() {
-        int errors = 0;
-        for (int i = 0; i < bricks.length; i++) {
-            Brick b = bricks[i];
-            int expected;
-            if (b.getInitialHealth() == Integer.MAX_VALUE) {
-                expected = 0;
-            } else if (b.getInitialHealth() <= 0) {
-                expected = 0;
-            } else {
-                expected = b.getInitialHealth() * 10;
-            }
-            int actual = b.getScoreValue();
-            if (actual != expected) {
-                log.warn("[BRICK SCORE MISMATCH] index={} initialHealth={} expectedScore={} actualScore={}",
-                        i, b.getInitialHealth(), expected, actual);
-                errors++;
-            } else {
-                // Có thể bật khi debug chi tiết:
-                // log.info("[BRICK SCORE OK] index={} health={} score={}", i, b.getInitialHealth(), actual);
-            }
-        }
-        log.info("[VERIFY BRICKS] totalBricks={} mismatches={}", bricks.length, errors);
     }
 
     public void startExplodeAllBricks() {
@@ -296,13 +240,6 @@ public class GameWorld {
         }
     }
 
-
-    public boolean isWinGame() {
-        if (currentLevel == 3 && bricks.length == 0) {
-            return true;
-        }
-        return false;
-    }
 
     public static GameWorld getInstance() {
         if (instance == null) {

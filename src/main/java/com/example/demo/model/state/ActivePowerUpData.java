@@ -15,10 +15,6 @@ public class ActivePowerUpData {
         this.type = type;
     }
 
-    public long getRemainingDuration() {
-        return remainingDuration;
-    }
-
     public void setRemainingDuration(long remainingDuration) {
         this.remainingDuration = remainingDuration;
     }

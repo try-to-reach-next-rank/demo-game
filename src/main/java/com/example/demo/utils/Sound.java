@@ -243,14 +243,6 @@ public class Sound {
         }
     }
 
-    // THÊM METHOD MỚI (OPTIONAL - hữu ích khi cleanup)
-    public void stopAllSounds() {
-        for (AudioClip clip : AssetManager.getInstance().getSounds().values()) {
-            clip.stop();
-            clip.setCycleCount(1);
-        }
-    }
-
     // ============ GETTERS (OPTIONAL - để debug) ============
 
     public double getCurrentMusicTime() {
@@ -258,23 +250,6 @@ public class Sound {
             return currentMusicPlayer.getCurrentTime().toMillis();
         }
         return 0;
-    }
-
-
-    public double getMusicVolume() {
-        return musicVolume;
-    }
-
-    public double getEffectVolume() {
-        return effectVolume;
-    }
-
-    public boolean isMusicEnabled() {
-        return musicEnabled;
-    }
-
-    public boolean isEffectEnabled() {
-        return effectEnabled;
     }
 
     public String getCurrentTrackName() {
