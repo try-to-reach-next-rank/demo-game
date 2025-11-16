@@ -8,6 +8,9 @@ public interface Effect {
     
     boolean isActive();
 
+    void customize(Object... params);
     void activate(double x, double y, double durationSeconds);
     void deactivate();
+
+    String getName();
 }

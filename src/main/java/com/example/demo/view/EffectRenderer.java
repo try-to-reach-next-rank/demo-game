@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+import com.example.demo.engine.Effect;
 import com.example.demo.model.core.effects.*;
 import com.example.demo.utils.ObjectPool;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,8 +15,8 @@ import javafx.scene.canvas.GraphicsContext;
 public class EffectRenderer {
     private static final EffectRenderer instance = new EffectRenderer();
 
-    private final List<VisualEffect> activeEffects = new ArrayList<>();
-    private final Map<String, ObjectPool<VisualEffect>> effectPools = new HashMap<>();
+    private final List<Effect> activeEffects = new ArrayList<>();
+    private final Map<String, ObjectPool<Effect>> effectPools = new HashMap<>();
 
     private EffectRenderer() {
         init();
@@ -31,16 +32,16 @@ public class EffectRenderer {
         registerEffect("scorePopup", () -> new ScorePopupEffect("scorePopup"));
     }
 
-    private void registerEffect(String name, Supplier<VisualEffect> creator) {
+    private void registerEffect(String name, Supplier<Effect> creator) {
         effectPools.put(name, new ObjectPool<>(creator, 10));
     }
 
     public void spawn(String name, double x, double y, double duration, Object... params) {
-        ObjectPool<VisualEffect> pool = effectPools.get(name);
+        ObjectPool<Effect> pool = effectPools.get(name);
         if (pool == null) return;
 
-        // Take VisualEffect from pool
-        VisualEffect effect = pool.acquire();
+        // Take effect from pool
+        Effect effect = pool.acquire();
 
         effect.customize(params);
         effect.activate(x, y, duration);
@@ -48,24 +49,24 @@ public class EffectRenderer {
     }
 
     public void update(double deltaTime) {
-        Iterator<VisualEffect> it = activeEffects.iterator();
+        Iterator<Effect> it = activeEffects.iterator();
         while (it.hasNext()) {
-            VisualEffect effect = it.next();
+            Effect effect = it.next();
             effect.update(deltaTime);
             if (!effect.isActive()) {
                 it.remove();
-                ObjectPool<VisualEffect> pool = effectPools.get(effect.getName());
+                ObjectPool<Effect> pool = effectPools.get(effect.getName());
                 if (pool != null) pool.release(effect);
             }
         }
     }
 
-    public List<VisualEffect> getActiveEffects() { return this.activeEffects; }
+    public List<Effect> getActiveEffects() { return this.activeEffects; }
 
     public void clear() {
-        for (VisualEffect e : activeEffects) {
+        for (Effect e : activeEffects) {
             e.deactivate();
-            ObjectPool<VisualEffect> pool = effectPools.get(e.getName());
+            ObjectPool<Effect> pool = effectPools.get(e.getName());
             if (pool != null) pool.release(e);
         }
         activeEffects.clear();

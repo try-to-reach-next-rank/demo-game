@@ -72,12 +72,12 @@ public class Ball extends ImageObject<BallData> {
     public void setAccelerated(boolean accelerated) { this.accelerated = accelerated; }
 
     public boolean isStronger() { return this.stronger; }
-    public void setStronger(boolean stronger){ this.stronger = stronger; }
+    public void setStronger(boolean stronger) { this.stronger = stronger; }
 
     public boolean isDrunk() { return drunk; }
     public void setDrunk(boolean drunk) { this.drunk = drunk; }
 
-    public double getElapsedTime(){ return this.elapsedTime; }
+    public double getElapsedTime() { return this.elapsedTime; }
     public void setElapsedTime(double x){ this.elapsedTime = x; }
 
     public Vector2D getVelocity() { return velocity; }

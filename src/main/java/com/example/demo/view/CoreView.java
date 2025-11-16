@@ -2,21 +2,15 @@ package com.example.demo.view;
 
 import com.example.demo.controller.view.CloudEffectController;
 import com.example.demo.controller.view.HandEffectController;
+import com.example.demo.engine.Effect;
 import com.example.demo.engine.GameWorld;
 import com.example.demo.model.core.entities.bricks.Brick;
-import com.example.demo.model.core.gameobjects.AnimatedObject;
-import com.example.demo.model.core.gameobjects.GameObject;
-import com.example.demo.model.core.gameobjects.ImageObject;
+import com.example.demo.model.core.gameobjects.*;
 import com.example.demo.model.core.effects.VisualEffect;
-import com.example.demo.model.core.entities.Ball;
-import com.example.demo.model.core.entities.Paddle;
-import com.example.demo.model.core.entities.PowerUp;
-import com.example.demo.model.core.entities.Wall;
 import com.example.demo.model.map.ParallaxLayer;
 import com.example.demo.controller.system.ParallaxSystem;
 import com.example.demo.utils.var.AssetPaths;
 import com.example.demo.utils.var.GameVar;
-import com.example.demo.utils.var.GlobalVar;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.Arrays;
@@ -47,7 +41,7 @@ public class CoreView {
         gc.save();
 
         if (flipped) {
-            gc.translate(0, GlobalVar.HEIGHT);
+            gc.translate(0, GameVar.MAP_MAX_Y);
             gc.scale(1, -1);
         }
 
@@ -198,7 +192,7 @@ public class CoreView {
     }
 
     private void renderEffects(GraphicsContext gc) {
-        for (VisualEffect effect : EffectRenderer.getInstance().getActiveEffects()) {
+        for (Effect effect : EffectRenderer.getInstance().getActiveEffects()) {
             effect.render(gc);
         }
     }
