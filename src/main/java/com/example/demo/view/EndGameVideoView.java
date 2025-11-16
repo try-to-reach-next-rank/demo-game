@@ -4,6 +4,7 @@ import com.example.demo.utils.var.GlobalVar;
 import javafx.application.Platform;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import java.nio.file.Paths;
@@ -61,7 +62,11 @@ public class EndGameVideoView extends StackPane {
             });
 
             mediaPlayer.setOnError(() -> {
-                log.error("Lỗi MediaPlayer: {}", mediaPlayer.getError().getMessage());
+                MediaException error = mediaPlayer.getError();
+                log.error("Lỗi MediaPlayer: {}", error.getMessage());
+                log.error("Error Type: {}", error.getType());
+                log.error("Media Source: {}", mediaPlayer.getMedia().getSource());
+
                 if (onVideoFinished != null) {
                     onVideoFinished.run();
                 }

@@ -6,11 +6,11 @@
     },
     {
       "name": "Win Level 2",
-      "unlocked": true
+      "unlocked": false
     },
     {
       "name": "Win Game",
-      "unlocked": true
+      "unlocked": false
     },
     {
       "name": "Easter Egg",
