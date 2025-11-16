@@ -3307,3 +3307,159 @@ java.lang.NullPointerException: Cannot invoke "java.net.URL.toExternalForm()" be
 10. 3470 (minBefore=3100 minAfter=3470)
 22:07:11.653 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
 22:07:20.797 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Hội thoại kết thúc. Bắt đầu phát video.
+22:09:42.147 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:09:42.160 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:09:42.197 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:09:42.196388900 bg frame missing: /images/bg/frame_0.png
+22:09:42.197 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:09:42.197390700 bg frame missing: /images/bg/frame_1.png
+22:09:42.197 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:09:42.197390700 bg frame missing: /images/bg/frame_2.png
+22:09:42.197 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:09:42.197390700 bg frame missing: /images/bg/frame_3.png
+22:09:42.197 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:09:42.197390700 bg frame missing: /images/bg/frame_4.png
+22:09:42.197 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:09:42.197390700 bg frame missing: /images/bg/frame_5.png
+22:09:43.693 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:09:43.693 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:09:43.832 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+22:09:43.832 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+22:09:45.260 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Deleting slot 1
+22:09:45.260 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - [SaveDataRepository] Deleted slot 1
+22:09:45.260 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SaveSlotManager - Reloading slot 1...
+22:09:45.260 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Slot 1 deleted
+22:09:45.772 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+22:09:45.998 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Cannot invoke "java.net.URL.toExternalForm()" because "resource" is null
+java.lang.NullPointerException: Cannot invoke "java.net.URL.toExternalForm()" because "resource" is null
+	at com.example.demo/com.example.demo.view.EndGameVideoView.<init>(EndGameVideoView.java:35)
+	at com.example.demo/com.example.demo.view.GameView.<init>(GameView.java:43)
+	at com.example.demo/com.example.demo.controller.core.GameController.<init>(GameController.java:72)
+	at com.example.demo/com.example.demo.model.stage.GamePlayState.enter(GamePlayState.java:37)
+	at com.example.demo/com.example.demo.engine.state.Game.setState(Game.java:18)
+	at com.example.demo/com.example.demo.model.stage.GameStateManager.changeState(GameStateManager.java:21)
+	at com.example.demo/com.example.demo.model.stage.SlotSelectionState.lambda$enter$1(SlotSelectionState.java:56)
+	at com.example.demo/com.example.demo.controller.view.SlotSelectionController.handleNewGame(SlotSelectionController.java:49)
+	at com.example.demo/com.example.demo.view.ui.SlotSelectionView.lambda$setupSlotButtons$0(SlotSelectionView.java:86)
+	at javafx.base@21.0.6/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.6/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@21.0.6/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.6/javafx.scene.Node.fireEvent(Node.java:8875)
+	at javafx.controls@21.0.6/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@21.0.6/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@21.0.6/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@21.0.6/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@21.0.6/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.6/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.6/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.6/javafx.scene.Scene$MouseHandler.process(Scene.java:3984)
+	at javafx.graphics@21.0.6/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@21.0.6/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2708)
+	at javafx.graphics@21.0.6/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@21.0.6/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.6/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@21.0.6/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.6/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@21.0.6/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@21.0.6/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@21.0.6/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@21.0.6/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+22:09:46.008 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+22:09:46.008 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+22:09:46.009 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+22:09:47.136 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+22:09:53.970 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+22:09:53.998 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+22:22:12.010 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+22:22:12.029 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+22:22:12.083 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:22:12.083332600 bg frame missing: /images/bg/frame_0.png
+22:22:12.084 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:22:12.084333800 bg frame missing: /images/bg/frame_1.png
+22:22:12.084 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:22:12.084844900 bg frame missing: /images/bg/frame_2.png
+22:22:12.084 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:22:12.084844900 bg frame missing: /images/bg/frame_3.png
+22:22:12.084 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:22:12.084844900 bg frame missing: /images/bg/frame_4.png
+22:22:12.085 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T22:22:12.085857 bg frame missing: /images/bg/frame_5.png
+22:22:14.151 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+22:22:14.346 ERROR [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Không thể tải video kết thúc game: Cannot invoke "java.net.URL.toExternalForm()" because "resource" is null
+java.lang.NullPointerException: Cannot invoke "java.net.URL.toExternalForm()" because "resource" is null
+	at com.example.demo/com.example.demo.view.EndGameVideoView.<init>(EndGameVideoView.java:35)
+	at com.example.demo/com.example.demo.view.GameView.<init>(GameView.java:43)
+	at com.example.demo/com.example.demo.controller.core.GameController.<init>(GameController.java:72)
+	at com.example.demo/com.example.demo.model.stage.GamePlayState.enter(GamePlayState.java:37)
+	at com.example.demo/com.example.demo.engine.state.Game.setState(Game.java:18)
+	at com.example.demo/com.example.demo.model.stage.GameStateManager.changeState(GameStateManager.java:21)
+	at com.example.demo/com.example.demo.model.stage.SlotSelectionState.lambda$enter$1(SlotSelectionState.java:56)
+	at com.example.demo/com.example.demo.controller.view.SlotSelectionController.handleNewGame(SlotSelectionController.java:49)
+	at com.example.demo/com.example.demo.view.ui.SlotSelectionView.lambda$setupSlotButtons$0(SlotSelectionView.java:86)
+	at javafx.base@21.0.6/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.6/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@21.0.6/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.6/javafx.scene.Node.fireEvent(Node.java:8875)
+	at javafx.controls@21.0.6/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@21.0.6/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@21.0.6/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@21.0.6/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@21.0.6/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.6/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.6/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.6/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.6/javafx.scene.Scene$MouseHandler.process(Scene.java:3984)
+	at javafx.graphics@21.0.6/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@21.0.6/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2708)
+	at javafx.graphics@21.0.6/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@21.0.6/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.6/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@21.0.6/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.6/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@21.0.6/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@21.0.6/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@21.0.6/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@21.0.6/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+22:22:14.354 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+22:22:14.354 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+22:22:14.355 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+22:22:15.489 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1

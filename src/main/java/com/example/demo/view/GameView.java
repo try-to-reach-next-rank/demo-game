@@ -33,7 +33,6 @@ public class GameView extends Pane {
 
         this.canvas = new Canvas(GlobalVar.WIDTH, GlobalVar.HEIGHT);
         this.gc = canvas.getGraphicsContext2D();
-        // BỎ: getChildren().add(canvas); (Sẽ thêm ở dưới)
 
         this.uiView = new UIView(controller); // if you have UI overlay
         this.coreView = new CoreView(gc, world);

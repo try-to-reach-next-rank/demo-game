@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class GameWorld {
-    private static final GameWorld instance = null;
+    private static GameWorld instance = null;
     private static final Logger log = LoggerFactory.getLogger(GameWorld.class);
     private Ball ball;
     private Paddle paddle;
@@ -243,7 +243,8 @@ public class GameWorld {
 
     public static GameWorld getInstance() {
         if (instance == null) {
-            return new GameWorld();
+            instance = new GameWorld();
+            return instance;
         }
         return instance;
     }

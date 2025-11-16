@@ -138,7 +138,6 @@ public class CollisionSystem implements Updatable {
         // PADDLE - POWERUP
         if (isPair(a, b, Paddle.class, PowerUp.class)) {
             Paddle paddle = (a instanceof Paddle) ? (Paddle) a : (Paddle) b;
-            PowerUp powerUp = (a instanceof PowerUp) ? (PowerUp) a : (PowerUp) b;
             powerUpSystem.handleCollision(paddle);
         }
     }

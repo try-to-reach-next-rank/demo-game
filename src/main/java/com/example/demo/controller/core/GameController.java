@@ -316,6 +316,8 @@ public class GameController extends Pane {
         inputGame.handleKeyPressed(code);
         if (code == KeyCode.H) {
             view.getCoreView().triggerHandGrab();
+        } else if (code == KeyCode.C) {
+            view.getCoreView().triggerCloud();
         }
 
         String keyName = code.getName().toUpperCase();
