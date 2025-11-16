@@ -4,6 +4,7 @@ import com.example.demo.model.core.gameobjects.ImageObject;
 import com.example.demo.model.state.WallData;
 
 public class Wall extends ImageObject<WallData> {
+
     public enum Side { LEFT, RIGHT, TOP }
     private final Side side;
 
