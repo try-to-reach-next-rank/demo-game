@@ -1,5 +1,6 @@
 package com.example.demo.controller.view;
 
+import com.example.demo.controller.core.GameController;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
@@ -12,7 +13,10 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.util.Duration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,11 +28,14 @@ import com.example.demo.utils.var.GameVar;
  * ThemeManager quản lý background (animated hoặc gradient) và resources chung
  */
 public class ThemeController {
+    private static ThemeController instance;
     private static final List<Image> bgFrames = new ArrayList<>();
     private static final ImageView bgView = new ImageView();
     private static Timeline bgTimeline;
     private static int bgFrameIndex = 0;
     private static final Duration bgFrameDuration = Duration.millis(140);
+
+    private static final Logger log = LoggerFactory.getLogger(ThemeController.class);
 
     private Image handImage = null;
 
@@ -47,10 +54,10 @@ public class ThemeController {
             if (url != null) {
                 handImage = new Image(url.toExternalForm(), true);
             } else {
-                System.err.println("[ThemeManager] hand image not found at " + AssetPaths.HAND);
+                log.info("[ThemeManager] " + LocalDateTime.now() +" hand image not found at " + AssetPaths.HAND);
             }
         } catch (Exception ex) {
-            System.err.println("[ThemeManager] error loading hand image: " + ex.getMessage());
+            log.info("[ThemeManager] " + LocalDateTime.now() +" error loading hand image: " + ex.getMessage());
         }
     }
 
@@ -63,10 +70,10 @@ public class ThemeController {
                 if (url != null) {
                     bgFrames.add(new Image(url.toExternalForm(), true));
                 } else {
-                    System.err.println("[ThemeManager] bg frame missing: " + path);
+                    log.info("[ThemeManager] " + LocalDateTime.now() + " bg frame missing: " + path);
                 }
             } catch (Exception ex) {
-                System.err.println("[ThemeManager] error loading frame " + path + ": " + ex.getMessage());
+                log.info("[ThemeManager]" + LocalDateTime.now() + " error loading frame " + path + ": " + ex.getMessage());
             }
         }
     }
@@ -154,7 +161,7 @@ public class ThemeController {
             String css = Objects.requireNonNull(ThemeController.class.getResource(AssetPaths.CSS_PATH_MENU)).toExternalForm();
             node.getStylesheets().add(css);
         } catch (Exception e) {
-            System.err.println("[ThemeManager] Failed to load CSS: " + e.getMessage());
+            log.info("[ThemeManager] "+ LocalDateTime.now()+"  Failed to load CSS: " + e.getMessage());
         }
     }
 
@@ -164,5 +171,10 @@ public class ThemeController {
 
     public Image getHandImage() {
         return handImage;
+    }
+
+    public static ThemeController getInstance() {
+        if(instance == null) instance = new ThemeController();
+        return instance;
     }
 }

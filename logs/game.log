@@ -566,3 +566,28 @@
 12:39:34.715 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
 12:39:34.715 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
 12:39:34.715 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+12:53:44.108 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+12:53:44.109 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+12:53:44.116 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+12:53:44.139 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:53:44.139673400 bg frame missing: /images/bg/frame_0.png
+12:53:44.139 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:53:44.139673400 bg frame missing: /images/bg/frame_1.png
+12:53:44.139 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:53:44.139673400 bg frame missing: /images/bg/frame_2.png
+12:53:44.139 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:53:44.139673400 bg frame missing: /images/bg/frame_3.png
+12:53:44.139 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:53:44.139673400 bg frame missing: /images/bg/frame_4.png
+12:53:44.139 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:53:44.139673400 bg frame missing: /images/bg/frame_5.png
+12:53:46.404 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+12:53:46.413 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+12:53:46.414 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+12:53:52.012 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+12:53:52.012 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+12:53:52.076 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+12:53:52.076 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+12:56:05.356 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+12:56:05.358 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+12:56:05.365 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+12:56:05.389 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:56:05.389852200 bg frame missing: /images/bg/frame_0.png
+12:56:05.389 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:56:05.389852200 bg frame missing: /images/bg/frame_1.png
+12:56:05.389 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:56:05.389852200 bg frame missing: /images/bg/frame_2.png
+12:56:05.389 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:56:05.389852200 bg frame missing: /images/bg/frame_3.png
+12:56:05.390 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:56:05.390846900 bg frame missing: /images/bg/frame_4.png
+12:56:05.390 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T12:56:05.390846900 bg frame missing: /images/bg/frame_5.png

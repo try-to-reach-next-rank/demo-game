@@ -9,11 +9,11 @@ import javafx.scene.layout.StackPane;
 
 
 public abstract class AbstractUIView implements Stage, InputHandler, NavigableUI {
-    protected final ThemeController themeManager;
+    protected final ThemeController themeController;
     protected final StackPane root;
 
-    protected AbstractUIView(ThemeController themeManager) {
-        this.themeManager = themeManager;
+    protected AbstractUIView() {
+        this.themeController = ThemeController.getInstance();
         this.root = new StackPane();
         setupTheme();
     }

@@ -40,9 +40,7 @@ public class AchievementState implements GameState {
 
         achievementController = new AchievementController(achievementModel);
 
-        themeController = new ThemeController();
-
-        achievementView = new AchievementView(achievementController, themeController);
+        achievementView = new AchievementView(achievementController );
 
         // --- Hiển thị trang đầu tiên ---
         achievementView.showPage1(achievementModel.getHighestScores());

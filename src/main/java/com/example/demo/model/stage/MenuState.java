@@ -22,7 +22,6 @@ public class MenuState implements GameState {
     private MenuController controller;
     private MenuView view;
 
-    private ThemeController themeController;
     private Scene scene;
 
     public MenuState(Main mainApp, Stage stage) {
@@ -35,10 +34,9 @@ public class MenuState implements GameState {
     public void enter() {
         // --- Khởi tạo MVC ---
         model = new MenuModel();
-        themeController = new ThemeController();
         controller = new MenuController(model);
 
-        view = new MenuView(controller, themeController); // <-- ĐÃ SỬA
+        view = new MenuView(controller);
 
         // --- Gắn scene ---
         root.getChildren().setAll(view.getRoot());

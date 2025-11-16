@@ -31,12 +31,11 @@ public class SlotSelectionState implements GameState {
     @Override
     public void enter() {
         // --- Khởi tạo MVC
-        ThemeController themeController = new ThemeController();
-        ButtonManager buttonManager = new ButtonManager(themeController.getHandImage());
+
 
         slotSelectionController = new SlotSelectionController();
 
-        SlotSelectionView slotSelectionView = new SlotSelectionView(slotSelectionController, themeController, buttonManager);
+        SlotSelectionView slotSelectionView = new SlotSelectionView(slotSelectionController);
 
         // --- Gắn Scene
         root.getChildren().setAll(slotSelectionView.getRoot());

@@ -38,8 +38,7 @@ public class AchievementView extends AbstractUIView {
     private final Image eastereggimg;
 
 
-    public AchievementView(AchievementController controller, ThemeController themeController) {
-        super(themeController);
+    public AchievementView(AchievementController controller) {
         this.controller = controller;
         this.buttonManager = new ButtonManager(themeController.getHandImage());
 

@@ -19,9 +19,8 @@ public class SettingsView extends AbstractUIView {
     private final VBox uiBox;
     private final ButtonManager buttonManager;
 
-    public SettingsView(SettingsController controller, ThemeController themeManager) {
-        super(themeManager);
-        buttonManager = new ButtonManager(themeManager.getHandImage());
+    public SettingsView(SettingsController controller) {
+        buttonManager = new ButtonManager(themeController.getHandImage());
         this.controller = controller;
         this.uiBox = new VBox(20);
         this.uiBox.setPadding(new Insets(28));

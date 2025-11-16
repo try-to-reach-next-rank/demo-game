@@ -20,7 +20,7 @@ public class PauseTable extends UIComponent {
 
     public PauseTable(GameController gameController) {
         this.gameController = gameController;
-        this.themeController = new ThemeController();
+        this.themeController = ThemeController.getInstance();
         this.buttonController = new ButtonManager(themeController.getHandImage());
 
         container = new VBox(16);

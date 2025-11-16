@@ -22,8 +22,7 @@ public class MenuView extends AbstractUIView {
     private final UISelectionController selectionController;
     private final ButtonManager buttonManager;
 
-    public MenuView(MenuController controller, ThemeController themeController) {
-        super(themeController);
+    public MenuView(MenuController controller) {
         buttonManager = new ButtonManager(themeController.getHandImage());
         this.controller = controller;
 

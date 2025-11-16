@@ -36,10 +36,10 @@ public class SlotSelectionView extends AbstractUIView {
 
     private final List<SlotComponent> slotComponents = new ArrayList<>();
 
-    public SlotSelectionView(SlotSelectionController controller, ThemeController themeManager, ButtonManager buttonManager) {
-        super(themeManager);
+    public SlotSelectionView(SlotSelectionController controller) {
+
         this.controller = controller;
-        this.buttonManager = new ButtonManager(themeManager.getHandImage());
+        this.buttonManager = new ButtonManager(themeController.getHandImage());
         this.inputController = new SlotSelectionInputController(this, controller, buttonManager);
 
         this.uiBox = new VBox(30);

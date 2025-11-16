@@ -32,10 +32,9 @@ public class SettingsState implements GameState {
     public void enter() {
         // --Khởi tạo MVC
         SettingsModel settingsModel = SettingsModel.getInstance();
-        ThemeController themeController = new ThemeController();
 
         settingsController = new SettingsController(settingsModel);
-        settingsView = new SettingsView(settingsController, themeController);
+        settingsView = new SettingsView(settingsController);
 
         // --- Gắn Scene ---
         root.getChildren().setAll(settingsView.getRoot());
