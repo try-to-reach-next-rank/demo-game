@@ -6,18 +6,16 @@ import com.example.demo.model.core.entities.Portal;
 import com.example.demo.model.core.factory.PortalFactory;
 import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.utils.Vector2D;
+import com.example.demo.utils.var.GameVar;
 
 public class PortalSystem implements Updatable {
     private final PortalFactory portalFactory;
 
     public PortalSystem(PortalFactory portalFactory) {
         this.portalFactory = portalFactory;
-        // portalFactory.createRandom("portal");
-        // portalFactory.createRandom("portal");
-        // portalFactory.createRandom("portal");
-        // portalFactory.createRandom("portal");
         portalFactory.create("portal", 100, 200, 5.0);
-        portalFactory.create("portal", 500, 200, 100.0);
+        portalFactory.create("portal", 500, 200, -1.0);
+        portalFactory.create("portal", 250, 400, 20.0);
     }
 
     @Override
@@ -63,7 +61,7 @@ public class PortalSystem implements Updatable {
         ball.setPosition(cx - r, cy - r);
 
         // Hướng bay ra
-        ball.setVelocity(dir.multiply(ball.getBaseSpeed()));
+        ball.setVelocity(dir.rotateRandom(GameVar.SMALL_VELOCITY_OFFSET));
     }
 
 

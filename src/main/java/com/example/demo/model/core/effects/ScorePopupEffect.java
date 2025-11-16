@@ -1,5 +1,8 @@
 package com.example.demo.model.core.effects;
 
+import com.example.demo.model.assets.AssetManager;
+import com.example.demo.utils.var.GameVar;
+
 import javafx.geometry.VPos;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -12,10 +15,11 @@ public class ScorePopupEffect extends VisualEffect {
     private String textToShow;
     private double initialY;
     private double speed = -50.0;
-    private Font font = Font.font("Verdana", FontWeight.BOLD, 22);
+    private Font font;
 
-    public ScorePopupEffect() {
-        super("scorePopup");
+    public ScorePopupEffect(String effectKey) {
+        super(effectKey);
+        this.font = AssetManager.getInstance().getFont("Verdana-Bold", GameVar.SCORE_FONT_SIZE);
     }
 
     @Override
@@ -29,14 +33,13 @@ public class ScorePopupEffect extends VisualEffect {
         if (params.length > 0 && params[0] instanceof String) {
             this.textToShow = (String) params[0];
         } else {
-            this.textToShow = "ERR"; // Mặc định nếu tham số sai
+            this.textToShow = "NULL"; // Mặc định nếu tham số sai
         }
     }
 
     @Override
     public void update(double deltaTime) {
         super.update(deltaTime);
-        if (!isActive()) return;
         this.y = initialY + speed * timer.getElapsed();
     }
 
@@ -64,6 +67,6 @@ public class ScorePopupEffect extends VisualEffect {
 
     @Override
     public VisualEffect clone() {
-        return new ScorePopupEffect();
+        return new ScorePopupEffect(this.effectKey);
     }
 }

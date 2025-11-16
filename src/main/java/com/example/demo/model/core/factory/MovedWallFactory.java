@@ -23,7 +23,7 @@ public class MovedWallFactory {
         // Random x, y, default duration
         int x = GameRandom.nextInt(GameVar.MAP_MIN_X + (int)w, GameVar.MAP_MAX_X - (int)w);
         int y = GameRandom.nextInt(GameVar.MAP_CENTER_Y - (int)h, GameVar.MAP_MAX_Y - (int)h - 50);
-        double lifeTime = 10.0; // default 10 seconds
+        double lifeTime = 2.0; // default 2 seconds
 
         create(imageKey, x, y, lifeTime);
     }

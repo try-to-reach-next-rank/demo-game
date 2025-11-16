@@ -6,9 +6,6 @@ import com.example.demo.utils.Timer;
 import com.example.demo.utils.Vector2D;
 import com.example.demo.utils.var.GameVar;
 
-import javafx.geometry.BoundingBox;
-import javafx.geometry.Bounds;
-
 public class Portal extends AnimatedObject<PortalData> {
     private boolean active;
     private final Timer timer;
@@ -21,12 +18,13 @@ public class Portal extends AnimatedObject<PortalData> {
         setAnimationKey(animKey);
         this.active = false;
         this.timer = new Timer();
-        this.lifeTime = Double.MAX_VALUE;
+        this.lifeTime = -1; // Infinity
         this.direction = new Vector2D(GameVar.PORTAL_INIT_DIR_X, GameVar.PORTAL_INIT_DIR_Y);
     }
 
     public void updateLifetime(double deltaTime) {
         if (!active) return;
+        if (lifeTime < 0) return;
         timer.update(deltaTime);
         if (timer.isFinished()) deactivate();
     }

@@ -10,7 +10,7 @@ public class MovedWall extends ImageObject<ImageObjectData> {
     private boolean active;
     private final Timer timer;
     private double lifeTime;
-    private double speed = 150.0;
+    private double speed = GameVar.MW_BASE_SPEED;
     private Vector2D direction = new Vector2D(1, 0); // mặc định đi ngang
 
     public MovedWall(String imageKey) {

@@ -11,4 +11,3 @@ public class GameRandom {
     public static double nextDouble(double bound) { return RANDOM.nextDouble(bound); }
     public static double nextDouble(double from, double to) { return RANDOM.nextDouble(from, to); }
 }
-

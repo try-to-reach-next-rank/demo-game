@@ -2,9 +2,9 @@ package com.example.demo.utils.var;
 
 public final class AssetPaths {
 
-
-
+    // Private constructor
     private AssetPaths() {}
+
     // GAME
     public static final String ICON = "/images/icon/icon.png";
 
@@ -72,7 +72,8 @@ public final class AssetPaths {
     public static final String EGG = "/images/dialog/Egg.png";
     public static final String BALL = "/images/dialog/Ball.png";
 
-    // HIGH SCORE
+    // SAVE
+    public static final String SETTINGS_FILE_PATH = "/Saves/settings.json";
     public static final String HIGHSCORE_PATH = "/Saves/highscores.json";
 }
 

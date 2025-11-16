@@ -2,12 +2,11 @@ package com.example.demo.controller.system;
 
 import com.example.demo.engine.Updatable;
 import com.example.demo.model.core.entities.Ball;
-import com.example.demo.model.core.entities.bricks.Brick;
+import com.example.demo.model.core.entities.bricks.*;
 import com.example.demo.model.core.entities.PowerUp;
 import com.example.demo.model.core.gameobjects.GameObject;
 import com.example.demo.utils.Sound;
 import com.example.demo.utils.var.GameVar;
-import com.example.demo.view.graphics.BrickTextureProvider;
 import com.example.demo.view.EffectRenderer;
 
 import java.util.ArrayList;
@@ -64,13 +63,16 @@ public class BrickSystem implements Updatable {
      * Applies damage to a brick and updates its texture.
      */
     private void applyDamage(Brick brick, Ball ball) {
-        if (brick.getHealth() == Integer.MAX_VALUE) return;
+        if (brick.getHealth() == Integer.MAX_VALUE) {
+            Sound.getInstance().playSound("steel_hit");
+        }
+
         int damage = (ball.isStronger()) ? GameVar.MAXPOWER : GameVar.MINPOWER;
         boolean destroyed = brick.takeDamage(damage);
 
-        // Not destroy, play sound
+        Sound.getInstance().playSound("brick_hit");
+
         if (!destroyed) {
-            Sound.getInstance().playSound("brick_hit");
             return;
         }
 
@@ -115,10 +117,10 @@ public class BrickSystem implements Updatable {
      */
     private void spawnScorePopupEffect(Brick brick) {
         String scoreText = "+" + brick.getScoreValue();
-        double centerX = brick.getX() + brick.getWidth() / 2;
-        double centerY = brick.getY() + brick.getHeight() / 2;
+        double centerX = brick.getX() - brick.getWidth() / 2;
+        double centerY = brick.getY() - brick.getHeight() / 2;
         // Gọi spawn với tham số text
-        EffectRenderer.getInstance().spawn("scorePopup", centerX, centerY, 1.0);
+        EffectRenderer.getInstance().spawn("scorePopup", centerX, centerY, 1.0, scoreText);
     }
 
     public void setOnBrickDestroyed(Consumer<Brick> onBrickDestroyed) {

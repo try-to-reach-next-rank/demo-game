@@ -26,7 +26,6 @@ public class UIView {
 
         boolean isNewGame = gameController.GetIsNewGame();
 
-
         root = new StackPane();
         root.getChildren().addAll(
                 pauseTable.getView(),

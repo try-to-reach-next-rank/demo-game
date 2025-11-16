@@ -8,8 +8,9 @@ import javafx.scene.paint.Color;
 
 public final class GameVar {
 
-
+    // Private constructor
     private GameVar() {}
+
     // MAP BOUNDS
     public static final int MAP_MIN_X    = GameVar.WIDTH_OF_WALLS;
     public static final int MAP_MAX_X    = WIDTH - GameVar.WIDTH_OF_WALLS;
@@ -33,6 +34,9 @@ public final class GameVar {
     public static final double PARALLAX_DEPTH          = 8.0;
     public static final double[] PARALLAX_SPEED_LAYERS = { 1.0, 0.6, 0.35, 0.2 };
 
+    // VECTOR2D
+    public static final double SMALL_VELOCITY_OFFSET = 1.5;
+
     // PADDLE
     public static final int INIT_PADDLE_X          = WIDTH / 2 - 50;
     public static final int INIT_PADDLE_Y          = HEIGHT - 30;
@@ -43,6 +47,9 @@ public final class GameVar {
     public static final int HEIGHT_OF_WALLS       = 200;
     public static final int N_OF_WALLS_LEFT_RIGHT = HEIGHT / HEIGHT_OF_WALLS;
     public static final int N_OF_WALLS_TOP        = WIDTH / HEIGHT_OF_WALLS;
+
+    // MOVED WALL
+    public static final double MW_BASE_SPEED      = 250.0;
 
     // BRICK
     public static final int MAXHEALTH_OF_BRICKS = 5;
@@ -150,7 +157,7 @@ public final class GameVar {
     public static final int     PORTAL_RENDER_WIDTH  = 64;
     public static final int     PORTAL_RENDER_HEIGHT = 64;
     public static final boolean PORTAL_LOOP          = true;
-    public static final double  PORTAL_DURATION      = 1.0;
+    public static final double  PORTAL_DURATION      = 0.5;
 
     public static final String  EXPLOSION_SHEET_KEY      = "explosion_spritesheet";
     public static final int     EXPLOSION1_FRAME_WIDTH   = 96;
@@ -183,14 +190,16 @@ public final class GameVar {
     public static final int    POWERUP_STRONGER_ROW          = 1;
     public static final int    POWERUP_DRUNK_ROW             = 2;
     public static final int    POWERUP_BIGGERPADDLE_ROW      = 3;
-    public static final double POWERUP_ACCELERATE_DURATION   = 5.0;
-    public static final double POWERUP_STRONGER_DURATION     = 2.0;
-    public static final double POWERUP_DRUNK_DURATION        = 3.0;
-    public static final double POWERUP_BIGGERPADDLE_DURATION = 1.0;
+    public static final double POWERUP_ACCELERATE_DURATION   = 0.5;
+    public static final double POWERUP_STRONGER_DURATION     = 0.5;
+    public static final double POWERUP_DRUNK_DURATION        = 0.5;
+    public static final double POWERUP_BIGGERPADDLE_DURATION = 0.5;
 
-    // GLOW TEXT
+    // TEXT
+    public static final double SCORE_FONT_SIZE = 20;
     public static final double GLOW_FONT_SIZE = 48.0;
 
+    // GLOW TEXT
     public static final double GLOW_ANIMATION_DURATION = 2.5;  // seconds
     public static final double GLOW_OFFSET_START       = 0.0;
     public static final double GLOW_OFFSET_END         = 1.0;

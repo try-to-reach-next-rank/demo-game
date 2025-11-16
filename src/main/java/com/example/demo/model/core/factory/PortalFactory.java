@@ -35,14 +35,7 @@ public class PortalFactory {
         // Random shooting direction
         double angle = GameRandom.nextDouble(0, 2 * Math.PI);
         portal.setDirection(new Vector2D(Math.cos(angle), Math.sin(angle)));
-
         portal.activate(x, y, lifeTime);
-
-        System.out.println(
-            "Portal at x=" + portal.getX() + " y=" + portal.getY() 
-            + " active=" + portal.isActive() 
-            + " visible=" + portal.isVisible() 
-            + " width=" + portal.getWidth() + " height=" + portal.getHeight());
 
         portals.add(portal);
     }

@@ -47,18 +47,10 @@ public class BallSystem implements Updatable {
     }
 
     public void handleCollision(Ball ball, GameObject obj) {
-        if (obj instanceof Paddle paddle) {
-            handlePaddleCollision(ball, paddle);
-        } 
-        else if (obj instanceof Wall wall) {
-            handleWallCollision(ball, wall);
-        }
-        else if (obj instanceof MovedWall mw) {
-            handleMovedWallCollision(ball, mw);
-        }
-        else if (obj instanceof Brick brick) {
-            handleBrickCollision(ball, brick);
-        }
+        if (obj instanceof Paddle paddle) handlePaddleCollision(ball, paddle);
+        else if (obj instanceof Wall wall) handleWallCollision(ball, wall);
+        else if (obj instanceof MovedWall mw) handleMovedWallCollision(ball, mw);
+        else if (obj instanceof Brick brick) handleBrickCollision(ball, brick);
     }
 
     public void resetBall(Ball ball) {
@@ -66,23 +58,9 @@ public class BallSystem implements Updatable {
     }
 
     // === CHEAT HANDLERS ===
-    public void toggleDrunk() {
-        for (Ball ball : balls) {
-            ball.toggleDrunk();
-        }
-    }
-
-    public void toggleAccelerated() {
-        for (Ball ball : balls) {
-            ball.toggleAccelerated();
-        }
-    }
-
-    public void toggleStronger() {
-        for (Ball ball : balls) {
-            ball.toggleStronger();
-        }
-    }
+    public void toggleDrunk() { balls.forEach(Ball::toggleDrunk); }
+    public void toggleAccelerated() { balls.forEach(Ball::toggleAccelerated); }
+    public void toggleStronger() { balls.forEach(Ball::toggleStronger); }
 
     // --- When ball is drunk ---
     private void handleBallDrunk(double deltaTime, Ball ball) {
@@ -173,7 +151,8 @@ public class BallSystem implements Updatable {
         // TODO: play another sound
         Sound.getInstance().playSound("wall_hit");
 
-        Vector2D v = ball.getVelocity();
+        Vector2D v = ball.getVelocity().rotateRandom(GameVar.SMALL_VELOCITY_OFFSET);
+        
         
         // Lấy tâm 2 object
         double ballCenterY = ball.getY() + ball.getHeight() / 2;
@@ -205,7 +184,7 @@ public class BallSystem implements Updatable {
         resolveBallBrickOverlap(ball, brick);
     }
 
-    public void bounceFromPaddle(Ball ball, Paddle paddle) {
+    private void bounceFromPaddle(Ball ball, Paddle paddle) {
         double paddleLPos = paddle.getBounds().getMinX();
         double ballCenterX = ball.getBounds().getMinX() + ball.getWidth() / 2.0;
         double hitPos = (ballCenterX - paddleLPos) / paddle.getWidth();
@@ -214,7 +193,7 @@ public class BallSystem implements Updatable {
     }
 
     private void bounceFromWall(Ball ball, Wall wall) {
-        Vector2D v = ball.getVelocity();
+        Vector2D v = ball.getVelocity().rotateRandom(GameVar.SMALL_VELOCITY_OFFSET);
         switch (wall.getSide()) {
             case LEFT -> ball.setVelocity(Math.abs(v.x), v.y);
             case RIGHT -> ball.setVelocity(-Math.abs(v.x), v.y);

@@ -7,7 +7,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import com.example.demo.model.state.SettingsState;
 import com.example.demo.utils.Sound;
 
-import static com.example.demo.utils.var.GlobalVar.SETTINGS_FILE_PATH;
+import static com.example.demo.utils.var.AssetPaths.SETTINGS_FILE_PATH;
 
 import com.example.demo.controller.core.SaveController;
 import org.slf4j.Logger;

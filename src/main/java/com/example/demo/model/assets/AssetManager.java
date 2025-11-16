@@ -136,7 +136,7 @@ public class AssetManager {
         return musics;
     }
 
-    public Font getFont(String name, int size) {
+    public Font getFont(String name, double size) {
         String key = name + "#" + size;
         return fonts.computeIfAbsent(key, k -> new Font(name, size));
     }

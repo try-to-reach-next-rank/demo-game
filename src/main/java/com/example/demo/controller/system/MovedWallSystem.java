@@ -12,22 +12,22 @@ import com.example.demo.utils.var.GameVar;
 public class MovedWallSystem implements Updatable {
     private final Timer spawnTimer;
     private final MovedWallFactory factory;
-    private final double spawnInterval = 5.0; // 5 seconds
+    private final double SPAWNINTERVAL = 10.0; // 5 seconds
 
     public MovedWallSystem(MovedWallFactory factory) {
         this.spawnTimer = new Timer();
         this.factory = factory;
-        this.spawnTimer.start(spawnInterval); // start the first 5-sec timer
+        this.spawnTimer.start(SPAWNINTERVAL); // start the first 10-sec timer
     }
 
     @Override
     public void update(double deltaTime) {
-        // 1. Spawn mới sau mỗi 5s
+        // 1. Spawn mới sau mỗi 10s
         spawnTimer.update(deltaTime);
         if (spawnTimer.isFinished()) {
-            factory.createRandom("moved_wall");
+            factory.createRandom("wall_top");
             spawnTimer.reset();
-            spawnTimer.start(spawnInterval);
+            spawnTimer.start(SPAWNINTERVAL);
         }
 
         // 2. Update walls

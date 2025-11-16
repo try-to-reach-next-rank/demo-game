@@ -57,4 +57,19 @@ public class Vector2D {
                 y - 2 * dot * normal.y
         );
     }
+
+    // Quay vector theo góc (degree)
+    public Vector2D rotate(double degree) {
+        double rad = Math.toRadians(degree);
+        return new Vector2D(
+            x * Math.cos(rad) - y * Math.sin(rad),
+            x * Math.sin(rad) + y * Math.cos(rad)
+        );
+    }
+
+    // Quay vector ngẫu nhiên ±halfDegree
+    public Vector2D rotateRandom(double halfDegree) {
+        double offset = GameRandom.nextDouble(-halfDegree, halfDegree); // độ
+        return rotate(offset);
+    }
 }

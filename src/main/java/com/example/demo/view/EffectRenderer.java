@@ -7,10 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import com.example.demo.model.core.effects.AnimatedEffect;
-
-import com.example.demo.model.core.effects.ScorePopupEffect;
-import com.example.demo.model.core.effects.VisualEffect;
+import com.example.demo.model.core.effects.*;
 import com.example.demo.utils.ObjectPool;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -31,18 +28,21 @@ public class EffectRenderer {
     private void init() {
         registerEffect("explosion1", () -> new AnimatedEffect("explosion1"));
         registerEffect("explosion2", () -> new AnimatedEffect("explosion2"));
-        registerEffect("scorePopup", () -> new ScorePopupEffect());
+        registerEffect("scorePopup", () -> new ScorePopupEffect("scorePopup"));
     }
 
     private void registerEffect(String name, Supplier<VisualEffect> creator) {
         effectPools.put(name, new ObjectPool<>(creator, 10));
     }
 
-    public void spawn(String name, double x, double y, double duration) {
+    public void spawn(String name, double x, double y, double duration, Object... params) {
         ObjectPool<VisualEffect> pool = effectPools.get(name);
         if (pool == null) return;
 
+        // Take VisualEffect from pool
         VisualEffect effect = pool.acquire();
+
+        effect.customize(params);
         effect.activate(x, y, duration);
         activeEffects.add(effect);
     }
