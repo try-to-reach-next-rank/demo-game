@@ -1,5 +1,6 @@
--text EGG: Hey ball, that's very impressive when you can complete my first challenge!
--text BALL: shut the f**k up and bring me new challenge!
--text EGG: haha, young man, you must be serious now!
--text EGG: but at least, you unlocked your first Achievement!
--text EGG: you can check it in achievement!
+-text EGG: What an crazy ball!
+-text EGG: You can surpass my second challenge ? That's amazing!
+-text BALL: so ez,can you make it a little bit harder ?
+-text EGG: young boy, you have an amazing spirit!
+-text EGG: and now is the final challenge , Gut luk little ball.
+-text EGG: and remember to check your achievement !

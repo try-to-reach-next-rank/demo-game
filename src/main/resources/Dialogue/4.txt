@@ -2,3 +2,6 @@
 -text BALL: shut the f**k up, again and and make me a banh mi trung!
 -text EGG: haha, young man, you must see your achievement!
 -text BALL: what, really?
+-text EGG: for sure, and remember that
+-text EGG: Happiness is not a destination
+-text EGG: Happiness is the journey we are on!

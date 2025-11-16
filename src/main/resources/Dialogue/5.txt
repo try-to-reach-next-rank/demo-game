@@ -1,0 +1,3 @@
+-text EGG: congratulation, you found the secret!
+-text BALL: reward?
+-text EGG: press ~ , you can earn your prize !

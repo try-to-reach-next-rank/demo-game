@@ -17,6 +17,7 @@ public class UIView {
     private final StackPane root;
     private final DialogueBox dialogueBox;
     private DialogueSystem dialogueSystem;
+    GameController gameController;
 
     public UIView(GameController gameController) {
         this.uiManager = new UIManager();
@@ -25,6 +26,7 @@ public class UIView {
         this.dialogueBox = new DialogueBox();
 
         boolean isNewGame = gameController.GetIsNewGame();
+        this.gameController = gameController;
 
         root = new StackPane();
         root.getChildren().addAll(
@@ -50,7 +52,11 @@ public class UIView {
 
         switch (code) {
             case Q -> showPause();
-            case BACK_QUOTE -> showCheat();
+            case BACK_QUOTE -> {
+                if (this.gameController.getAllowToCheat()) {
+                    showCheat();
+                }
+            }
             default -> {}
         }
     }

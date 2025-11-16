@@ -23,6 +23,8 @@ import javafx.scene.layout.Pane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.example.demo.utils.var.GlobalVar.SECRET_CODE;
+
 public class GameController extends Pane {
     private static final Logger log = LoggerFactory.getLogger(GameController.class);
 
@@ -40,8 +42,10 @@ public class GameController extends Pane {
     private boolean isNewGame = true;
     private boolean inGame = true;
     private boolean paused = false;
+    private boolean AllowToCheat = false;
 
     private Runnable onBackToMenu;
+    private final StringBuilder cheatInputBuilder = new StringBuilder();
 
     // ========== NEW: Level Completion Check Throttling ==========
     private static final double LEVEL_CHECK_INTERVAL = 3.0; // Check every 3 seconds
@@ -219,9 +223,11 @@ public class GameController extends Pane {
                 achievementModel.unlockWinLevel2();
                 log.info("🏆 Unlocked achievement: Win Level 2");
             }
-            if(levelNumber == 4){
+            else if(levelNumber == 4){
                 achievementModel.unlockWinGame();
                 log.info("🏆 Unlocked achievement: Win Game");
+            }else {
+                achievementModel.unlockEasterEgg();
             }
 
         } catch (Exception e) {
@@ -295,6 +301,26 @@ public class GameController extends Pane {
         if (code == KeyCode.H) {
             view.getCoreView().triggerHandGrab();
         }
+
+        String keyName = code.getName().toUpperCase();
+
+        if (keyName.length() == 1 && Character.isLetter(keyName.charAt(0))) {
+            cheatInputBuilder.append(keyName);
+
+            if (cheatInputBuilder.length() > SECRET_CODE.length()) {
+                cheatInputBuilder.deleteCharAt(0);
+            }
+
+            if (cheatInputBuilder.toString().equals(SECRET_CODE)) {
+                AchievementDialogue(5);
+                startIntroDialogue();
+                unlockLevelAchievement(5);
+                AllowToCheat = true;
+
+
+                cheatInputBuilder.setLength(0);
+            }
+        }
     }
 
     public void onKeyReleased(KeyCode code) {
@@ -350,5 +376,9 @@ public class GameController extends Pane {
 
     public void explodeAllBricks() {
         world.startExplodeAllBricks();
+    }
+
+    public boolean getAllowToCheat() {
+        return AllowToCheat;
     }
 }

@@ -93,8 +93,6 @@ public class CollisionSystem implements Updatable {
         // No collision
         if (!a.getBounds().intersects(b.getBounds())) return;
 
-        // LOG
-        System.out.println("[COLLISIONSYSTEM] " + a.getClass() + " & " + b.getClass());
 
         // BALL - PADDLE
         if (isPair(a, b, Ball.class, Paddle.class)) {
