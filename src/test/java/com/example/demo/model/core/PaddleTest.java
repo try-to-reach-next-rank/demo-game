@@ -49,7 +49,8 @@ class PaddleTest {
     @Test
     void resetStateResetsScaleAndDirection() {
         Paddle paddle = new Paddle();
-
+        paddle.setBaseHeight(40);
+        paddle.setBaseWidth(40);
         // mutate
         paddle.setDirection(1);
         paddle.setBiggerPaddle(true);
@@ -58,14 +59,13 @@ class PaddleTest {
 
         // reset
         paddle.resetState();
-
-        assertEquals(GameVar.INIT_PADDLE_X, paddle.getX(), 1e-9);
-        assertEquals(GameVar.INIT_PADDLE_Y, paddle.getY(), 1e-9);
+        assertEquals(GameVar.INIT_PADDLE_X + 10, paddle.getX(), 1e-9);
+        assertEquals(GameVar.INIT_PADDLE_Y + 10, paddle.getY(), 1e-9);
         assertEquals(0, paddle.getDirection());
         assertFalse(paddle.getBiggerPaddle());
 
         // width/height should equal base width/height after resetScale()
-        assertEquals(32, paddle.getWidth(), 1e-9);
-        assertEquals(9, paddle.getHeight(), 1e-9);
+        assertEquals(40, paddle.getWidth(), 1e-9);
+        assertEquals(40, paddle.getHeight(), 1e-9);
     }
 }

@@ -2,6 +2,8 @@ module com.example.demo {
     requires javafx.controls;
     requires javafx.fxml;
 
+    opens com.example.demo.controller.core to com.google.gson;
+
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;

@@ -1261,3 +1261,771 @@
 13:34:22.890 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 10
 13:34:25.244 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Hội thoại kết thúc. Bắt đầu phát video.
 13:34:25.245 INFO  [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Bắt đầu phát video kết thúc game.
+15:43:11.323 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save file not found: /Saves/settings.json. Returning null.
+15:43:11.325 INFO  [JavaFX Application Thread] c.e.demo.model.menu.SettingsModel - No settings file found. Using default settings.
+15:43:11.340 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+15:43:11.392 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T15:43:11.391334200 bg frame missing: /images/bg/frame_0.png
+15:43:11.392 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T15:43:11.392332200 bg frame missing: /images/bg/frame_1.png
+15:43:11.392 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T15:43:11.392332200 bg frame missing: /images/bg/frame_2.png
+15:43:11.393 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T15:43:11.393389400 bg frame missing: /images/bg/frame_3.png
+15:43:11.393 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T15:43:11.393389400 bg frame missing: /images/bg/frame_4.png
+15:43:11.394 INFO  [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-16T15:43:11.393389400 bg frame missing: /images/bg/frame_5.png
+15:43:14.984 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 1
+15:43:15.166 INFO  [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Video URL: file:/D:/009/demo-game/target/classes/videos/end_game.mp4
+15:43:15.176 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+15:43:15.176 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+15:43:15.178 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+15:43:16.289 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+15:43:22.449 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:22.471 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:23.683 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:23.684 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:25.509 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:25.509 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:28.225 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:28.226 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:28.245 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:28.245 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:28.302 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:28.302 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:28.302 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:28.302 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:28.302 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:28.302 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:28.365 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:28.365 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:28.427 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:28.428 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:28.469 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:28.469 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:28.469 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:28.470 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:28.485 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:28.485 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:28.547 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:28.548 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:28.607 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:28.607 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:28.629 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:28.630 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:28.677 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:28.677 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:28.805 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:28.806 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:28.886 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:28.887 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:41.218 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:41.218 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:41.295 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:41.295 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:41.302 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:41.302 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:41.419 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:41.421 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:41.503 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:41.503 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:44.045 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:44.045 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:44.469 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:44.469 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:45.891 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:45.891 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:45.968 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:45.968 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:45.968 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:45.968 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:46.002 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:46.002 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:46.037 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:46.037 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:46.080 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:46.080 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:46.593 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:46.593 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:46.593 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:46.593 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:47.238 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:47.238 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:47.329 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:47.329 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:47.329 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:47.329 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:47.517 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:47.517 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:47.580 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:47.580 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:47.622 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:47.622 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:47.663 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:47.663 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:47.697 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:47.697 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:47.996 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:47.996 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:48.078 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:43:48.079 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:48.163 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:48.163 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:43:48.229 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:48.229 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:43:48.655 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:43:48.655 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:44:01.440 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:44:01.440 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+15:44:01.635 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:44:01.635 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:44:28.646 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+15:44:28.646 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+15:44:28.646 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:44:28.646 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:44:44.301 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:44:44.301 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+15:44:46.779 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/5.txt
+15:44:46.795 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:44:46.799 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+15:44:46.799 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+15:44:52.370 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:44:52.370 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:44:55.999 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:44:55.999 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 1 -> 2
+15:44:56.001 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:44:56.001 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+15:44:56.001 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+15:44:56.001 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+15:44:56.001 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/2.txt
+15:44:56.996 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+15:45:18.762 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:45:18.762 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:45:20.183 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:45:20.183 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 2 -> 3
+15:45:20.184 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:45:20.184 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+15:45:20.184 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+15:45:20.184 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 2
+15:45:20.184 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/3.txt
+15:45:21.183 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+15:45:36.894 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:45:36.894 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:45:38.002 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:45:38.004 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 3 -> 1
+15:45:38.004 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:45:38.005 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+15:45:38.005 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+15:45:38.005 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/1.txt
+15:45:38.997 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+15:45:46.808 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:45:46.809 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:45:55.565 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - Start exploding all bricks!
+15:45:55.565 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:45:55.573 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=20 | highScore=20
+15:45:55.573 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=40 | highScore=40
+15:45:55.573 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=70 | highScore=70
+15:45:55.573 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=110 | highScore=110
+15:45:55.573 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=160 | highScore=160
+15:45:55.600 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=170 | highScore=170
+15:45:55.600 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=210 | highScore=210
+15:45:55.600 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=250 | highScore=250
+15:45:55.600 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=300 | highScore=300
+15:45:55.600 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=320 | highScore=320
+15:45:55.620 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=370 | highScore=370
+15:45:55.621 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=390 | highScore=390
+15:45:55.621 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=390 | highScore=390
+15:45:55.621 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=430 | highScore=430
+15:45:55.621 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=470 | highScore=470
+15:45:55.637 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=490 | highScore=490
+15:45:55.637 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=540 | highScore=540
+15:45:55.637 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=570 | highScore=570
+15:45:55.637 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=610 | highScore=610
+15:45:55.637 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=640 | highScore=640
+15:45:55.662 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=650 | highScore=650
+15:45:55.663 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=700 | highScore=700
+15:45:55.663 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=720 | highScore=720
+15:45:55.663 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=750 | highScore=750
+15:45:55.663 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=760 | highScore=760
+15:45:55.684 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=760 | highScore=760
+15:45:55.684 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=780 | highScore=780
+15:45:55.684 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=790 | highScore=790
+15:45:55.684 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=790 | highScore=790
+15:45:55.684 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=810 | highScore=810
+15:45:55.701 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=850 | highScore=850
+15:45:55.701 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=890 | highScore=890
+15:45:55.701 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=940 | highScore=940
+15:45:55.701 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=950 | highScore=950
+15:45:55.701 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=950 | highScore=950
+15:45:55.725 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=960 | highScore=960
+15:45:55.726 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1010 | highScore=1010
+15:45:55.726 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1010 | highScore=1010
+15:45:55.726 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1060 | highScore=1060
+15:45:55.726 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1090 | highScore=1090
+15:45:55.746 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1090 | highScore=1090
+15:45:55.746 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1130 | highScore=1130
+15:45:55.746 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1140 | highScore=1140
+15:45:55.746 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1190 | highScore=1190
+15:45:55.746 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1220 | highScore=1220
+15:45:55.766 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1230 | highScore=1230
+15:45:55.766 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1260 | highScore=1260
+15:45:55.766 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1300 | highScore=1300
+15:45:55.766 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1310 | highScore=1310
+15:45:55.766 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1330 | highScore=1330
+15:45:55.781 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1350 | highScore=1350
+15:45:55.781 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1400 | highScore=1400
+15:45:55.781 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1430 | highScore=1430
+15:45:55.781 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1470 | highScore=1470
+15:45:55.781 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1470 | highScore=1470
+15:45:55.813 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1500 | highScore=1500
+15:45:55.813 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1520 | highScore=1520
+15:45:55.813 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1560 | highScore=1560
+15:45:55.813 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1570 | highScore=1570
+15:45:55.813 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1610 | highScore=1610
+15:45:55.836 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1650 | highScore=1650
+15:45:55.837 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1670 | highScore=1670
+15:45:55.837 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1720 | highScore=1720
+15:45:55.837 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1740 | highScore=1740
+15:45:55.837 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1790 | highScore=1790
+15:45:55.857 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1800 | highScore=1800
+15:45:55.857 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1850 | highScore=1850
+15:45:55.857 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1860 | highScore=1860
+15:45:55.857 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1900 | highScore=1900
+15:45:55.857 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1910 | highScore=1910
+15:45:55.878 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1920 | highScore=1920
+15:45:55.878 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1920 | highScore=1920
+15:45:55.878 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1950 | highScore=1950
+15:45:55.878 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=1990 | highScore=1990
+15:45:55.878 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2030 | highScore=2030
+15:45:55.893 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2060 | highScore=2060
+15:45:55.893 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2090 | highScore=2090
+15:45:55.893 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2090 | highScore=2090
+15:45:55.893 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2110 | highScore=2110
+15:45:55.893 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2130 | highScore=2130
+15:45:55.920 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2180 | highScore=2180
+15:45:55.920 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2220 | highScore=2220
+15:45:55.920 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2230 | highScore=2230
+15:45:55.920 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2280 | highScore=2280
+15:45:55.920 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2300 | highScore=2300
+15:45:55.943 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2310 | highScore=2310
+15:45:55.944 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2360 | highScore=2360
+15:45:55.944 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2380 | highScore=2380
+15:45:55.944 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2400 | highScore=2400
+15:45:55.944 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2420 | highScore=2420
+15:45:55.957 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2470 | highScore=2470
+15:45:55.957 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2490 | highScore=2490
+15:45:55.957 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2500 | highScore=2500
+15:45:55.957 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2540 | highScore=2540
+15:45:55.957 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2560 | highScore=2560
+15:45:55.981 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2570 | highScore=2570
+15:45:55.982 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2580 | highScore=2580
+15:45:55.982 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2610 | highScore=2610
+15:45:55.982 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2620 | highScore=2620
+15:45:55.982 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2620 | highScore=2620
+15:45:56.004 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2620 | highScore=2620
+15:45:56.004 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2640 | highScore=2640
+15:45:56.004 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2640 | highScore=2640
+15:45:56.004 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2670 | highScore=2670
+15:45:56.004 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2670 | highScore=2670
+15:45:56.021 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2680 | highScore=2680
+15:45:56.021 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2730 | highScore=2730
+15:45:56.021 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2730 | highScore=2730
+15:45:56.021 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2750 | highScore=2750
+15:45:56.021 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2760 | highScore=2760
+15:45:56.045 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2770 | highScore=2770
+15:45:56.046 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2820 | highScore=2820
+15:45:56.046 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2830 | highScore=2830
+15:45:56.046 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2840 | highScore=2840
+15:45:56.046 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2840 | highScore=2840
+15:45:56.065 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2890 | highScore=2890
+15:45:56.065 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2890 | highScore=2890
+15:45:56.065 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2940 | highScore=2940
+15:45:56.067 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2940 | highScore=2940
+15:45:56.067 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=2960 | highScore=2960
+15:45:56.086 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3010 | highScore=3010
+15:45:56.086 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3010 | highScore=3010
+15:45:56.086 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3050 | highScore=3050
+15:45:56.086 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3090 | highScore=3090
+15:45:56.086 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - All bricks exploded!
+15:45:56.374 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+15:45:56.374 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:45:56.375 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+15:45:56.375 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+15:45:56.375 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+15:45:56.391 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+15:45:56.391 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+15:45:56.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:45:56.393 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src/main/resources/Saves/highscores.json
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HIGHSCORES TOP]
+1. 3750
+2. 3500
+3. 3090
+4. 910
+5. 660
+6. 530
+7. 410
+8. 250
+9. 110
+10. 40 (minBefore=10 minAfter=40)
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 3750
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 3500
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 3090
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 910
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 660
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 530
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 410
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 250
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 9. 110
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 40
+15:45:56.394 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 1 -> 2
+15:45:56.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:45:56.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+15:45:56.395 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+15:45:56.395 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+15:45:56.395 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/2.txt
+15:45:57.380 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 2
+15:46:01.899 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:46:01.899 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:46:04.707 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - Start exploding all bricks!
+15:46:04.707 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:46:04.725 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3100 | highScore=3100
+15:46:04.725 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3150 | highScore=3150
+15:46:04.725 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3190 | highScore=3190
+15:46:04.725 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3200 | highScore=3200
+15:46:04.725 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3210 | highScore=3210
+15:46:04.741 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3240 | highScore=3240
+15:46:04.741 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3250 | highScore=3250
+15:46:04.741 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3250 | highScore=3250
+15:46:04.741 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3280 | highScore=3280
+15:46:04.741 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3280 | highScore=3280
+15:46:04.766 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3310 | highScore=3310
+15:46:04.767 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3360 | highScore=3360
+15:46:04.767 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3370 | highScore=3370
+15:46:04.767 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3370 | highScore=3370
+15:46:04.767 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3380 | highScore=3380
+15:46:04.787 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3400 | highScore=3400
+15:46:04.787 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3450 | highScore=3450
+15:46:04.787 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3500 | highScore=3500
+15:46:04.787 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3550 | highScore=3550
+15:46:04.787 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3600 | highScore=3600
+15:46:04.805 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3600 | highScore=3600
+15:46:04.805 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3600 | highScore=3600
+15:46:04.805 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3600 | highScore=3600
+15:46:04.805 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3630 | highScore=3630
+15:46:04.805 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3650 | highScore=3650
+15:46:04.829 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3700 | highScore=3700
+15:46:04.829 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3720 | highScore=3720
+15:46:04.829 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3770 | highScore=3770
+15:46:04.829 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3790 | highScore=3790
+15:46:04.829 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3800 | highScore=3800
+15:46:04.850 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3830 | highScore=3830
+15:46:04.850 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3850 | highScore=3850
+15:46:04.850 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3890 | highScore=3890
+15:46:04.850 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3940 | highScore=3940
+15:46:04.850 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=3990 | highScore=3990
+15:46:04.869 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4030 | highScore=4030
+15:46:04.869 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4070 | highScore=4070
+15:46:04.869 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4120 | highScore=4120
+15:46:04.869 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4170 | highScore=4170
+15:46:04.869 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4200 | highScore=4200
+15:46:04.891 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4220 | highScore=4220
+15:46:04.891 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4260 | highScore=4260
+15:46:04.891 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4270 | highScore=4270
+15:46:04.891 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4270 | highScore=4270
+15:46:04.892 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4320 | highScore=4320
+15:46:04.913 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4360 | highScore=4360
+15:46:04.914 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4390 | highScore=4390
+15:46:04.914 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4440 | highScore=4440
+15:46:04.914 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4460 | highScore=4460
+15:46:04.914 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4470 | highScore=4470
+15:46:04.933 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4480 | highScore=4480
+15:46:04.933 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4520 | highScore=4520
+15:46:04.933 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4560 | highScore=4560
+15:46:04.933 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4580 | highScore=4580
+15:46:04.933 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4590 | highScore=4590
+15:46:04.949 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4630 | highScore=4630
+15:46:04.949 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4650 | highScore=4650
+15:46:04.949 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4690 | highScore=4690
+15:46:04.949 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4690 | highScore=4690
+15:46:04.949 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4690 | highScore=4690
+15:46:04.975 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4700 | highScore=4700
+15:46:04.976 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4720 | highScore=4720
+15:46:04.976 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4760 | highScore=4760
+15:46:04.976 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4770 | highScore=4770
+15:46:04.976 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4770 | highScore=4770
+15:46:04.996 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4810 | highScore=4810
+15:46:04.997 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4810 | highScore=4810
+15:46:04.997 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4860 | highScore=4860
+15:46:04.997 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4880 | highScore=4880
+15:46:04.997 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4880 | highScore=4880
+15:46:05.013 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4910 | highScore=4910
+15:46:05.013 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=4960 | highScore=4960
+15:46:05.013 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5010 | highScore=5010
+15:46:05.013 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5020 | highScore=5020
+15:46:05.013 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5050 | highScore=5050
+15:46:05.037 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5080 | highScore=5080
+15:46:05.037 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5080 | highScore=5080
+15:46:05.037 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5110 | highScore=5110
+15:46:05.037 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5150 | highScore=5150
+15:46:05.037 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5150 | highScore=5150
+15:46:05.058 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5200 | highScore=5200
+15:46:05.058 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5240 | highScore=5240
+15:46:05.058 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5260 | highScore=5260
+15:46:05.058 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5290 | highScore=5290
+15:46:05.058 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5340 | highScore=5340
+15:46:05.077 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5370 | highScore=5370
+15:46:05.077 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5390 | highScore=5390
+15:46:05.077 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5410 | highScore=5410
+15:46:05.077 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5420 | highScore=5420
+15:46:05.077 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5430 | highScore=5430
+15:46:05.094 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5430 | highScore=5430
+15:46:05.094 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5480 | highScore=5480
+15:46:05.094 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5500 | highScore=5500
+15:46:05.094 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5510 | highScore=5510
+15:46:05.094 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5530 | highScore=5530
+15:46:05.122 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5580 | highScore=5580
+15:46:05.122 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5600 | highScore=5600
+15:46:05.122 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5640 | highScore=5640
+15:46:05.122 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5690 | highScore=5690
+15:46:05.122 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5730 | highScore=5730
+15:46:05.142 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5760 | highScore=5760
+15:46:05.142 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5770 | highScore=5770
+15:46:05.142 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5780 | highScore=5780
+15:46:05.142 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5830 | highScore=5830
+15:46:05.142 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5850 | highScore=5850
+15:46:05.158 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5890 | highScore=5890
+15:46:05.158 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5890 | highScore=5890
+15:46:05.158 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5910 | highScore=5910
+15:46:05.158 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5940 | highScore=5940
+15:46:05.158 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5950 | highScore=5950
+15:46:05.189 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=5980 | highScore=5980
+15:46:05.189 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6000 | highScore=6000
+15:46:05.189 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6050 | highScore=6050
+15:46:05.189 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6070 | highScore=6070
+15:46:05.189 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6090 | highScore=6090
+15:46:05.206 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6120 | highScore=6120
+15:46:05.206 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6140 | highScore=6140
+15:46:05.206 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6160 | highScore=6160
+15:46:05.206 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6210 | highScore=6210
+15:46:05.206 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6220 | highScore=6220
+15:46:05.231 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6240 | highScore=6240
+15:46:05.232 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6280 | highScore=6280
+15:46:05.232 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6310 | highScore=6310
+15:46:05.232 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6340 | highScore=6340
+15:46:05.232 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6380 | highScore=6380
+15:46:05.253 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6390 | highScore=6390
+15:46:05.253 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6440 | highScore=6440
+15:46:05.253 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6450 | highScore=6450
+15:46:05.253 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6480 | highScore=6480
+15:46:05.253 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6480 | highScore=6480
+15:46:05.269 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6520 | highScore=6520
+15:46:05.269 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6550 | highScore=6550
+15:46:05.269 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6600 | highScore=6600
+15:46:05.269 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6650 | highScore=6650
+15:46:05.269 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6690 | highScore=6690
+15:46:05.294 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6710 | highScore=6710
+15:46:05.294 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6760 | highScore=6760
+15:46:05.294 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6810 | highScore=6810
+15:46:05.294 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6840 | highScore=6840
+15:46:05.294 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6880 | highScore=6880
+15:46:05.315 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6930 | highScore=6930
+15:46:05.315 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6930 | highScore=6930
+15:46:05.315 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6950 | highScore=6950
+15:46:05.315 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6950 | highScore=6950
+15:46:05.315 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6980 | highScore=6980
+15:46:05.333 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=6990 | highScore=6990
+15:46:05.333 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7010 | highScore=7010
+15:46:05.333 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7010 | highScore=7010
+15:46:05.333 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7040 | highScore=7040
+15:46:05.333 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7070 | highScore=7070
+15:46:05.357 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7090 | highScore=7090
+15:46:05.358 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7120 | highScore=7120
+15:46:05.358 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7120 | highScore=7120
+15:46:05.358 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7120 | highScore=7120
+15:46:05.358 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7160 | highScore=7160
+15:46:05.381 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7200 | highScore=7200
+15:46:05.381 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7220 | highScore=7220
+15:46:05.381 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7220 | highScore=7220
+15:46:05.381 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7240 | highScore=7240
+15:46:05.381 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7270 | highScore=7270
+15:46:05.406 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7310 | highScore=7310
+15:46:05.406 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7340 | highScore=7340
+15:46:05.406 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7340 | highScore=7340
+15:46:05.406 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7380 | highScore=7380
+15:46:05.406 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7430 | highScore=7430
+15:46:05.426 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7440 | highScore=7440
+15:46:05.427 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7440 | highScore=7440
+15:46:05.427 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7480 | highScore=7480
+15:46:05.427 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7480 | highScore=7480
+15:46:05.427 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7500 | highScore=7500
+15:46:05.445 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7500 | highScore=7500
+15:46:05.445 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7550 | highScore=7550
+15:46:05.445 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7600 | highScore=7600
+15:46:05.445 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7610 | highScore=7610
+15:46:05.445 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7640 | highScore=7640
+15:46:05.469 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7660 | highScore=7660
+15:46:05.469 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7700 | highScore=7700
+15:46:05.469 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7730 | highScore=7730
+15:46:05.469 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7760 | highScore=7760
+15:46:05.469 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7780 | highScore=7780
+15:46:05.489 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7820 | highScore=7820
+15:46:05.489 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7860 | highScore=7860
+15:46:05.489 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - All bricks exploded!
+15:46:05.711 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Level complete!
+15:46:05.712 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:46:05.712 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+15:46:05.712 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+15:46:05.712 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 1
+15:46:05.712 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+15:46:05.719 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+15:46:05.719 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+15:46:05.719 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src/main/resources/Saves/highscores.json
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HIGHSCORES TOP]
+1. 7860
+2. 3750
+3. 3500
+4. 3090
+5. 910
+6. 660
+7. 530
+8. 410
+9. 250
+10. 110 (minBefore=40 minAfter=110)
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 7860
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 3750
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 3500
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 3090
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 910
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 660
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 530
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 410
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 9. 250
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 110
+15:46:05.720 INFO  [JavaFX Application Thread] c.e.d.controller.map.MapController - Next level: 2 -> 3
+15:46:05.721 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:46:05.721 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+15:46:05.721 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+15:46:05.721 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Level 2
+15:46:05.721 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/3.txt
+15:46:06.704 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 3
+15:46:08.718 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:46:08.718 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:46:10.184 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - Start exploding all bricks!
+15:46:10.184 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+15:46:10.198 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7860 | highScore=7860
+15:46:10.198 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7870 | highScore=7870
+15:46:10.198 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7870 | highScore=7870
+15:46:10.198 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7910 | highScore=7910
+15:46:10.198 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7910 | highScore=7910
+15:46:10.225 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7960 | highScore=7960
+15:46:10.225 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=7980 | highScore=7980
+15:46:10.225 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8000 | highScore=8000
+15:46:10.225 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8030 | highScore=8030
+15:46:10.225 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8070 | highScore=8070
+15:46:10.245 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8070 | highScore=8070
+15:46:10.245 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8070 | highScore=8070
+15:46:10.245 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8090 | highScore=8090
+15:46:10.245 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8090 | highScore=8090
+15:46:10.245 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8140 | highScore=8140
+15:46:10.261 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8140 | highScore=8140
+15:46:10.263 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8190 | highScore=8190
+15:46:10.264 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8230 | highScore=8230
+15:46:10.264 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8270 | highScore=8270
+15:46:10.264 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8300 | highScore=8300
+15:46:10.287 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8310 | highScore=8310
+15:46:10.287 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8360 | highScore=8360
+15:46:10.287 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8360 | highScore=8360
+15:46:10.287 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8370 | highScore=8370
+15:46:10.287 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8390 | highScore=8390
+15:46:10.309 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8400 | highScore=8400
+15:46:10.309 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8430 | highScore=8430
+15:46:10.309 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8450 | highScore=8450
+15:46:10.309 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8450 | highScore=8450
+15:46:10.309 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8460 | highScore=8460
+15:46:10.325 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8480 | highScore=8480
+15:46:10.325 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8480 | highScore=8480
+15:46:10.325 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8480 | highScore=8480
+15:46:10.325 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8480 | highScore=8480
+15:46:10.325 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8520 | highScore=8520
+15:46:10.349 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8550 | highScore=8550
+15:46:10.349 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8560 | highScore=8560
+15:46:10.349 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8570 | highScore=8570
+15:46:10.349 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8580 | highScore=8580
+15:46:10.349 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8580 | highScore=8580
+15:46:10.370 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8590 | highScore=8590
+15:46:10.370 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8620 | highScore=8620
+15:46:10.370 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8670 | highScore=8670
+15:46:10.370 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8720 | highScore=8720
+15:46:10.371 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8730 | highScore=8730
+15:46:10.389 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8780 | highScore=8780
+15:46:10.389 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8790 | highScore=8790
+15:46:10.389 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8830 | highScore=8830
+15:46:10.389 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8850 | highScore=8850
+15:46:10.389 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8900 | highScore=8900
+15:46:10.413 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8920 | highScore=8920
+15:46:10.414 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8920 | highScore=8920
+15:46:10.414 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8970 | highScore=8970
+15:46:10.414 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=8980 | highScore=8980
+15:46:10.414 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9030 | highScore=9030
+15:46:10.453 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9040 | highScore=9040
+15:46:10.453 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9050 | highScore=9050
+15:46:10.453 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9080 | highScore=9080
+15:46:10.454 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9090 | highScore=9090
+15:46:10.454 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9110 | highScore=9110
+15:46:10.502 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9150 | highScore=9150
+15:46:10.502 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9160 | highScore=9160
+15:46:10.502 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9190 | highScore=9190
+15:46:10.502 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9200 | highScore=9200
+15:46:10.502 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9250 | highScore=9250
+15:46:10.531 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9250 | highScore=9250
+15:46:10.531 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9270 | highScore=9270
+15:46:10.531 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9270 | highScore=9270
+15:46:10.531 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9270 | highScore=9270
+15:46:10.531 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9310 | highScore=9310
+15:46:10.550 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9340 | highScore=9340
+15:46:10.550 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9370 | highScore=9370
+15:46:10.550 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9390 | highScore=9390
+15:46:10.550 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9410 | highScore=9410
+15:46:10.550 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9440 | highScore=9440
+15:46:10.572 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9480 | highScore=9480
+15:46:10.572 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9480 | highScore=9480
+15:46:10.572 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9490 | highScore=9490
+15:46:10.572 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9520 | highScore=9520
+15:46:10.572 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9520 | highScore=9520
+15:46:10.593 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9520 | highScore=9520
+15:46:10.594 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9540 | highScore=9540
+15:46:10.594 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9570 | highScore=9570
+15:46:10.594 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9620 | highScore=9620
+15:46:10.594 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9640 | highScore=9640
+15:46:10.613 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9640 | highScore=9640
+15:46:10.613 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9660 | highScore=9660
+15:46:10.613 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9690 | highScore=9690
+15:46:10.613 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9740 | highScore=9740
+15:46:10.613 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9790 | highScore=9790
+15:46:10.629 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9800 | highScore=9800
+15:46:10.629 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9800 | highScore=9800
+15:46:10.629 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9850 | highScore=9850
+15:46:10.629 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9870 | highScore=9870
+15:46:10.629 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9920 | highScore=9920
+15:46:10.656 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9940 | highScore=9940
+15:46:10.656 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=9990 | highScore=9990
+15:46:10.657 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10010 | highScore=10010
+15:46:10.657 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10030 | highScore=10030
+15:46:10.657 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10070 | highScore=10070
+15:46:10.677 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10080 | highScore=10080
+15:46:10.677 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10080 | highScore=10080
+15:46:10.677 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10100 | highScore=10100
+15:46:10.677 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10120 | highScore=10120
+15:46:10.677 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10170 | highScore=10170
+15:46:10.693 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10200 | highScore=10200
+15:46:10.693 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10250 | highScore=10250
+15:46:10.693 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10290 | highScore=10290
+15:46:10.693 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10320 | highScore=10320
+15:46:10.693 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10360 | highScore=10360
+15:46:10.718 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10410 | highScore=10410
+15:46:10.718 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10430 | highScore=10430
+15:46:10.718 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10480 | highScore=10480
+15:46:10.718 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10490 | highScore=10490
+15:46:10.718 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10500 | highScore=10500
+15:46:10.739 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10500 | highScore=10500
+15:46:10.739 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10550 | highScore=10550
+15:46:10.739 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10590 | highScore=10590
+15:46:10.739 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10600 | highScore=10600
+15:46:10.739 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10650 | highScore=10650
+15:46:10.758 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10660 | highScore=10660
+15:46:10.758 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10690 | highScore=10690
+15:46:10.758 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10740 | highScore=10740
+15:46:10.758 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10790 | highScore=10790
+15:46:10.758 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10820 | highScore=10820
+15:46:10.782 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10850 | highScore=10850
+15:46:10.782 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10850 | highScore=10850
+15:46:10.782 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10880 | highScore=10880
+15:46:10.782 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10890 | highScore=10890
+15:46:10.782 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10930 | highScore=10930
+15:46:10.802 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10970 | highScore=10970
+15:46:10.802 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=10990 | highScore=10990
+15:46:10.802 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11020 | highScore=11020
+15:46:10.802 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11070 | highScore=11070
+15:46:10.802 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11100 | highScore=11100
+15:46:10.821 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11150 | highScore=11150
+15:46:10.821 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11190 | highScore=11190
+15:46:10.821 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11220 | highScore=11220
+15:46:10.821 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11260 | highScore=11260
+15:46:10.821 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11280 | highScore=11280
+15:46:10.851 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11310 | highScore=11310
+15:46:10.851 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11330 | highScore=11330
+15:46:10.851 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11380 | highScore=11380
+15:46:10.851 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11380 | highScore=11380
+15:46:10.851 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11410 | highScore=11410
+15:46:10.869 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11460 | highScore=11460
+15:46:10.869 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11470 | highScore=11470
+15:46:10.869 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11480 | highScore=11480
+15:46:10.869 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11510 | highScore=11510
+15:46:10.869 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11510 | highScore=11510
+15:46:10.893 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11550 | highScore=11550
+15:46:10.893 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - [SCORES] currentScore=11560 | highScore=11560
+15:46:10.893 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - All bricks exploded!
+15:46:11.197 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game complete! Bắt đầu hội thoại kết thúc.
+15:46:11.198 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:46:11.199 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+15:46:11.199 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+15:46:11.199 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Game
+15:46:11.199 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/4.txt
+15:46:11.199 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+15:46:11.202 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+15:46:11.202 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+15:46:11.202 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:46:11.202 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src/main/resources/Saves/highscores.json
+15:46:11.202 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HIGHSCORES TOP]
+1. 11560
+2. 7860
+3. 3750
+4. 3500
+5. 3090
+6. 910
+7. 660
+8. 530
+9. 410
+10. 250 (minBefore=110 minAfter=250)
+15:46:11.202 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+15:46:11.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+15:46:11.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 1. 11560
+15:46:11.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 2. 7860
+15:46:11.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 3. 3750
+15:46:11.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 4. 3500
+15:46:11.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 5. 3090
+15:46:11.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 6. 910
+15:46:11.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 7. 660
+15:46:11.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 8. 530
+15:46:11.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 9. 410
+15:46:11.203 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HS] 10. 250
+15:46:18.767 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Hội thoại kết thúc. Bắt đầu phát video.
+15:46:18.767 INFO  [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Bắt đầu phát video kết thúc game.
+16:33:21.449 INFO  [main] c.e.d.controller.core.SaveController - Successfully saved data to test_save.json
+16:33:21.484 INFO  [main] c.e.d.controller.core.SaveController - Successfully saved data to test_save.json
+16:33:21.489 INFO  [main] c.e.d.controller.core.SaveController - Save file not found: non_existing.json. Returning null.
+16:34:00.617 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+16:34:00.638 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+16:34:00.654 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+16:34:00.728 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+16:34:00.822 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+16:34:00.824 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+16:39:22.414 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+16:40:25.329 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+16:40:33.218 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+17:06:46.875 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+17:06:46.903 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+17:06:46.904 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+17:06:46.907 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+17:06:46.910 INFO  [main] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+17:08:39.835 INFO  [main] c.e.d.controller.core.SaveController - Successfully saved data to test_save.json
+17:11:35.033 INFO  [main] c.e.d.controller.core.SaveController - Successfully saved data to test_save.json
+17:11:35.067 INFO  [main] c.e.d.controller.core.SaveController - Successfully saved data to test_save.json
+17:11:35.072 INFO  [main] c.e.d.controller.core.SaveController - Save file not found: non_existing.json. Returning null.
+17:11:58.228 INFO  [main] c.e.d.controller.core.SaveController - Successfully saved data to test_save.json
+17:11:58.264 INFO  [main] c.e.d.controller.core.SaveController - Successfully saved data to test_save.json
+17:11:58.268 INFO  [main] c.e.d.controller.core.SaveController - Save file not found: non_existing.json. Returning null.
+17:14:49.043 INFO  [main] c.e.d.controller.core.SaveController - Successfully saved data to test_save.json
+17:15:41.474 INFO  [main] c.e.d.controller.core.SaveController - Successfully saved data to test_save.json
+17:18:55.248 INFO  [main] c.e.d.controller.core.SaveController - Successfully saved data to test_save.json
+17:18:55.263 INFO  [main] c.e.d.controller.core.SaveController - Successfully loaded data from test_save.json

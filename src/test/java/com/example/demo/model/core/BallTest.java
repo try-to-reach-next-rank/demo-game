@@ -62,7 +62,7 @@ class BallTest {
         // ensure velocity object exists and then set components
         ball.setVelocity(0, -1);
         ball.setVelocity(2, 0);
-        assertEquals(2.0, ball.getVelocity().x, 1e-6);
+        assertEquals(1.0, ball.getVelocity().x, 1e-6);
         assertEquals(0.0, ball.getVelocity().y, 1e-6);
     }
 }

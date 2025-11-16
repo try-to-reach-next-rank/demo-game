@@ -66,6 +66,8 @@ public abstract class GameObject<T extends GameObjectData> {
         setWidth(width);
         setHeight(height);
     }
+    public void setBaseWidth(double baseWidth) {this.baseWidth = baseWidth; }
+    public void setBaseHeight(double baseHeight) {this.baseHeight = baseHeight; }
 
     // For coreview
     public boolean isVisible() { return visible; }

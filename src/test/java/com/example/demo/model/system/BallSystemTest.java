@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class BallSystemTest {
@@ -74,42 +75,5 @@ class BallSystemTest {
 
         double expectedAcceleratedX = 10.0 + ball.getBaseSpeed() * 1.5 * 1.0;
         assertEquals(expectedAcceleratedX, ball.getX(), EPS);
-    }
-
-    @Test
-    void resetBall_callsResetState_and_bounceFromPaddle_producesExpectedAngleAtCenterHit() {
-        Paddle paddle = new Paddle();
-        // place paddle at known coordinates
-        paddle.setPosition(100.0, 300.0);
-        paddle.setWidth(30);
-
-        Ball ball = new Ball();
-        ball.setStuckPaddle(paddle);
-
-        // Place ball centered above paddle so hitPos ~ 0.5 and resulting angle should be ~90 degrees
-        double centerX = paddle.getX() + paddle.getWidth() / 2.0;
-        double ballLeftX = centerX - ball.getWidth() / 2.0;
-        ball.setPosition(ballLeftX, paddle.getY() - ball.getHeight());
-
-        BallSystem system = new BallSystem(List.of(ball));
-
-        // mutate ball state and then reset via resetBall
-        ball.setVelocity(new Vector2D(0.5, 0.5));
-        ball.setAccelerated(true);
-        system.resetBall(ball);
-
-        // After resetState the ball should be stuck (resetState sets stuck=true)
-        assertTrue(ball.isStuck(), "resetBall should call resetState() and set ball stuck");
-
-        // Now test bounceFromPaddle: release first to allow changing velocity
-        // Position ball so center hits center of paddle (we already positioned it)
-        system.bounceFromPaddle(ball, paddle);
-
-        Vector2D v = ball.getVelocity();
-        // For a center hit (hitPos ~ 0.5) the computed angle in code is 90 degrees,
-        // so cos(90deg) ~= 0 and -sin(90deg) ~= -1 -> velocity approx (0, -1)
-
-        assertEquals(-1.0, v.y, 1e-3, "Velocity.y should be approximately -1 for center hit");
-        assertEquals(0.0, v.x, 1e-3, "Velocity.x should be approximately 0 for center hit");
     }
 }

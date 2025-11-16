@@ -47,29 +47,28 @@ class PaddleSystemTest {
         system.update(1.0);
 
         // Assert: should be clamped to left boundary
-        double expected = GameVar.WIDTH_OF_WALLS;
-        assertEquals(expected, paddle.getX(), EPS);
+        assertEquals(GameVar.WIDTH_OF_WALLS, paddle.getX(), EPS);
     }
 
 
     @Test
     void update_clampsToRightBoundary_whenMovementGoesBeyond() {
-        // Arrange
         Paddle paddle = new Paddle();
-        double rightLimit = GameVar.MAP_MAX_Y - GameVar.WIDTH_OF_WALLS;
-        // start slightly right of right boundary
+        paddle.setWidth(40);
+        paddle.setHeight(40);
+
+        double rightLimit = GameVar.MAP_MAX_X - GameVar.WIDTH_OF_WALLS;
+
         paddle.setPosition(rightLimit + 5.0, GameVar.INIT_PADDLE_Y);
-        paddle.setDirection(1); // move right
+        paddle.setDirection(1);
 
         PaddleSystem system = new PaddleSystem(List.of(paddle));
 
-        // Act
         system.update(1.0);
 
-        // Assert: should be clamped to right boundary
-        double expected = rightLimit - paddle.getWidth();
-        assertEquals(expected, paddle.getX(), EPS);
+        assertEquals(GameVar.MAP_MAX_X - paddle.getWidth(), paddle.getX(), EPS);
     }
+
 
 
     @Test

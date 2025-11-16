@@ -20,6 +20,7 @@ public class PowerUp extends AnimatedObject<PowerUpData> {
     public PowerUp(String type) {
         super(0, 0);
         setAnimationKey("powerup_" + type.toLowerCase());
+        setVisible(false);
         log.info("Type: {}", type);
         this.type = type;
     }

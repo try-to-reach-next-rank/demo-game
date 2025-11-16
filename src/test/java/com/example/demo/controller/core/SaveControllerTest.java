@@ -11,8 +11,8 @@ class SaveControllerTest {
     private static final String TEST_FILE = "test_save.json";
 
     public static class PlayerData {
-        @Expose public String name;
-        @Expose public int score;
+        public String name;
+        public int score;
         transient boolean tempFlag; // không lưu
 
         PlayerData(String name, int score, boolean tempFlag) {

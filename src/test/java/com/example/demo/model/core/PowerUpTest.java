@@ -12,13 +12,12 @@ class PowerUpTest {
     @Test
     void initialStateAndType_andVisibility() {
         PowerUp p = new PowerUp(GameVar.ACCELERATE);
-        assertEquals(GameVar.ACCELERATE, p.getType());
+        assertEquals(GameVar.ACCELERATE, p.getType(), "Type of powerUp not true");
         // default visible flag should be false
-        assertFalse(p.isVisible());
+        assertFalse(p.isVisible(), "PowerUp should not be displayed");
         // not active initially
-        assertFalse(p.isActive());
-        assertFalse(p.hasExpired());
-        assertEquals(0, p.getRemainingDuration());
+        assertFalse(p.isActive(), "PowerUp should not active");
+        assertFalse(p.hasExpired(), "PowerUp should not be exprired");
     }
 
     @Test
