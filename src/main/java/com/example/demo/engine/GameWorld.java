@@ -166,7 +166,8 @@ public class GameWorld {
     }
 
     // ADDING SCORE INTO CURRENTSCORE
-    public void addScore(int points, double x, double y) {
+    public void addScore(int points) {
+        log.info("Adding score: {} (current: {}, high: {})", points, currentScore, highScore);
         this.currentScore += points;
         this.lastAddedScore = points;
         if (this.currentScore > this.highScore) {
@@ -216,10 +217,8 @@ public class GameWorld {
                         Brick brick = bricks[explodeCounter];
 
                         if (brick != null && !brick.isDestroyed()) {
-                            // Cộng điểm
-                            double centerX = brick.getX() + brick.getWidth() / 2;
-                            double centerY = brick.getY() + brick.getHeight() / 2;
-                            addScore(brick.getScoreValue(), centerX, centerY);
+
+                            addScore(brick.getScoreValue());
 
                             // Phá gạch
                             brick.takeDamage(brick.getHealth());

@@ -91,3 +91,100 @@
 11:18:05.071 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
 11:18:05.074 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
 11:18:05.074 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+11:48:44.180 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+11:48:44.183 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+11:48:44.208 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:44.208771600 bg frame missing: /images/bg/frame_0.png
+11:48:44.208 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:44.208771600 bg frame missing: /images/bg/frame_1.png
+11:48:44.208 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:44.208771600 bg frame missing: /images/bg/frame_2.png
+11:48:44.209 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:44.209770600 bg frame missing: /images/bg/frame_3.png
+11:48:44.209 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:44.209770600 bg frame missing: /images/bg/frame_4.png
+11:48:44.209 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:44.209770600 bg frame missing: /images/bg/frame_5.png
+11:48:45.222 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+11:48:45.222 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+11:48:45.288 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+11:48:45.288 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+11:48:45.809 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Loading game from slot 1
+11:48:45.811 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+11:48:45.811 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+11:48:45.949 INFO  [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Video URL: file:/F:/Baitaplon/demo-game/target/classes/videos/end_game.mp4
+11:48:45.956 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 1
+11:48:45.956 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: false
+11:48:45.956 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/continue.txt
+11:48:50.892 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game complete! Bắt đầu hội thoại kết thúc.
+11:48:50.896 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+11:48:50.899 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+11:48:50.899 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+11:48:50.903 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src/main/resources/Saves/achievement.json
+11:48:50.903 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Saved achievements to file:src/main/resources/Saves/achievement.json
+11:48:50.903 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - 🏆 Achievement unlocked: Win Game
+11:48:50.903 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - 🏆 Unlocked achievement: Win Game
+11:48:50.904 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/4.txt
+11:48:50.905 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 1...
+11:48:50.919 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_1.json
+11:48:50.919 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 1
+11:48:50.919 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Score <= 0, skip highscore update.
+11:48:50.919 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+11:48:53.378 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+11:48:53.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+11:48:53.388 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Hội thoại kết thúc. Bắt đầu phát video.
+11:48:53.389 INFO  [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Bắt đầu phát video kết thúc game.
+11:48:54.943 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+11:48:54.944 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+11:48:59.287 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+11:48:59.291 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+11:48:59.317 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:59.316025600 bg frame missing: /images/bg/frame_0.png
+11:48:59.317 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:59.317031700 bg frame missing: /images/bg/frame_1.png
+11:48:59.317 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:59.317031700 bg frame missing: /images/bg/frame_2.png
+11:48:59.317 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:59.317031700 bg frame missing: /images/bg/frame_3.png
+11:48:59.317 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:59.317031700 bg frame missing: /images/bg/frame_4.png
+11:48:59.318 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:48:59.317031700 bg frame missing: /images/bg/frame_5.png
+11:49:00.255 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+11:49:00.256 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+11:49:00.327 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+11:49:00.327 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+11:49:01.161 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 2
+11:49:01.294 INFO  [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Video URL: file:/F:/Baitaplon/demo-game/target/classes/videos/end_game.mp4
+11:49:01.301 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 2
+11:49:01.301 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+11:49:01.302 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+11:49:04.843 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: DRUNK
+11:49:04.856 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+11:49:07.692 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+11:49:07.693 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+11:52:47.602 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+11:52:47.609 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+11:52:47.635 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:52:47.635243100 bg frame missing: /images/bg/frame_0.png
+11:52:47.635 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:52:47.635243100 bg frame missing: /images/bg/frame_1.png
+11:52:47.636 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:52:47.635243100 bg frame missing: /images/bg/frame_2.png
+11:52:47.636 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:52:47.636318100 bg frame missing: /images/bg/frame_3.png
+11:52:47.636 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:52:47.636318100 bg frame missing: /images/bg/frame_4.png
+11:52:47.636 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:52:47.636318100 bg frame missing: /images/bg/frame_5.png
+11:52:48.736 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+11:52:48.736 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+11:52:48.818 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+11:52:48.818 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+11:52:49.535 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Starting new game in slot 2
+11:52:49.671 INFO  [JavaFX Application Thread] c.example.demo.view.EndGameVideoView - Video URL: file:/F:/Baitaplon/demo-game/target/classes/videos/end_game.mp4
+11:52:49.677 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Current Slot: 2
+11:52:49.677 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Is New Game: true
+11:52:49.678 INFO  [JavaFX Application Thread] c.e.d.utils.dialogue.DialogueSystem - Loading script from:  /Dialogue/intro.txt
+11:52:50.755 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Loaded level 1
+11:52:55.620 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+11:52:55.632 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - Adding score: 40 (current: 0, high: 0)
+11:52:55.632 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: STRONGER
+11:52:58.468 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: ACCELERATE
+11:52:58.469 INFO  [JavaFX Application Thread] com.example.demo.engine.GameWorld - Adding score: 10 (current: 40, high: 40)
+11:52:58.469 INFO  [JavaFX Application Thread] c.e.demo.model.core.entities.PowerUp - Type: BIGGERPADDLE
+11:53:00.275 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+11:53:00.276 INFO  [JavaFX Application Thread] c.e.d.controller.core.GameController - Game resumed
+11:53:02.190 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Saving game to slot 2...
+11:53:02.210 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src\main\resources\Saves\slot_2.json
+11:53:02.210 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Saved slot 2
+11:53:02.212 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+11:53:02.212 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully saved data to src/main/resources/Saves/highscores.json
+11:53:02.212 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - [HIGHSCORES TOP]
+1. 50 (minBefore=null minAfter=50)
+11:53:02.213 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Save complete.
+11:53:06.231 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+11:53:06.233 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+11:53:06.233 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file

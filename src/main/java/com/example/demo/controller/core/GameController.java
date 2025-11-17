@@ -1,6 +1,7 @@
 package com.example.demo.controller.core;
 
 import com.example.demo.controller.map.MapController;
+import com.example.demo.controller.system.BrickSystem;
 import com.example.demo.controller.system.SystemManager;
 import com.example.demo.engine.*;
 import com.example.demo.model.core.entities.bricks.Brick;
@@ -22,6 +23,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 import static com.example.demo.utils.var.GlobalVar.SECRET_CODE;
 
@@ -102,6 +105,7 @@ public class GameController extends Pane {
     private void setupLevel(int level) {
         MapData mapData = mapManager.loadMap(level);
 
+
         // Clear and add new map content
         world.getWalls().clear();
         world.getWalls().addAll(mapData.walls());
@@ -135,6 +139,8 @@ public class GameController extends Pane {
         view.getCoreView().setLevelLoaded(true);
         view.reset();
         view.getCoreView().reset();
+
+
 
         log.info("Loaded level {}", level);
     }

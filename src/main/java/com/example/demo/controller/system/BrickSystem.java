@@ -27,6 +27,7 @@ public class BrickSystem implements Updatable {
         this.powerUpSystem = systemManager.get(PowerUpSystem.class);
     }
 
+
     @Override
     public void update(double deltaTime) {
         bricks.removeIf(Brick::isDestroyed);
@@ -103,5 +104,9 @@ public class BrickSystem implements Updatable {
         double centerY = brick.getY() - brick.getHeight() / 2;
         // Gọi spawn với tham số text
         EffectRenderer.getInstance().spawn("scorePopup", centerX, centerY, 1.0, scoreText);
+    }
+
+    public void setOnBrickDestroyed(Consumer<Brick> callback) {
+        this.onBrickDestroyed = callback;
     }
 }

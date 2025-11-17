@@ -36,15 +36,24 @@ public class SystemManager implements Updatable {
         }
     }
 
+
     private void registerAllSystems() {
         register(new PaddleSystem(world.getPaddles()));
         register(new BallSystem(world.getBalls()));
         register(new PowerUpSystem(world.getBall(), world.getPaddle(), world.getPowerUps()));
-        register(new BrickSystem(world.getBrickss(), this));
+
+        BrickSystem brickSystem = new BrickSystem(world.getBrickss(), this);
+        // Set callback để cộng điểm khi brick bị phá hủy
+        brickSystem.setOnBrickDestroyed(brick -> {
+            world.addScore(brick.getScoreValue());
+        });
+        register(brickSystem);
+
         register(new MovedWallSystem(world.getMovedWallFactory()));
         register(new PortalSystem(world.getPortalFactory()));
         register(new CollisionSystem(world, this));
     }
+
 
     private <T extends Updatable> void register(T system) {
         systems.put(system.getClass(), system);
