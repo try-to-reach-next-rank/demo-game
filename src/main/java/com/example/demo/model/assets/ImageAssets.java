@@ -60,5 +60,13 @@ public class ImageAssets implements AssetLoader {
         ASSETS.put("hand_punch", AssetPaths.HAND_PUNCH);
         ASSETS.put("cloud_left", AssetPaths.CLOUD_LEFT);
         ASSETS.put("cloud_right", AssetPaths.CLOUD_RIGHT);
+
+        //Achievement
+        ASSETS.put("scoreBackground", AssetPaths.scoreBackground_Path);
+        ASSETS.put("lookedAchievement", AssetPaths.lockedAchievement_Path);
+        ASSETS.put("wingame", AssetPaths.wingameimg_Path);
+        ASSETS.put("easteregg", AssetPaths.eastereggimg_Path);
+        ASSETS.put("winlevel1", AssetPaths.winlevel1_Path);
+        ASSETS.put("winlevel2", AssetPaths.winlevel2_Path);
     };
 }

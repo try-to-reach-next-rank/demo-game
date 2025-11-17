@@ -2,7 +2,7 @@
   "achievements": [
     {
       "name": "Win Level 1",
-      "unlocked": true
+      "unlocked": false
     },
     {
       "name": "Win Level 2",
@@ -14,7 +14,7 @@
     },
     {
       "name": "Easter Egg",
-      "unlocked": true
+      "unlocked": false
     }
   ]
 }

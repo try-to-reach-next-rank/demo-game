@@ -1,0 +1,93 @@
+11:10:04.570 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+11:10:04.580 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+11:10:04.624 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:10:04.624026200 bg frame missing: /images/bg/frame_0.png
+11:10:04.625 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:10:04.625023 bg frame missing: /images/bg/frame_1.png
+11:10:04.625 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:10:04.625023 bg frame missing: /images/bg/frame_2.png
+11:10:04.625 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:10:04.625023 bg frame missing: /images/bg/frame_3.png
+11:10:04.626 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:10:04.626021800 bg frame missing: /images/bg/frame_4.png
+11:10:04.626 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:10:04.626021800 bg frame missing: /images/bg/frame_5.png
+11:10:06.628 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+11:10:06.633 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+11:10:06.633 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+11:11:51.665 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+11:11:51.669 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+11:11:51.693 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:11:51.693487800 bg frame missing: /images/bg/frame_0.png
+11:11:51.693 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:11:51.693487800 bg frame missing: /images/bg/frame_1.png
+11:11:51.693 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:11:51.693487800 bg frame missing: /images/bg/frame_2.png
+11:11:51.694 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:11:51.693487800 bg frame missing: /images/bg/frame_3.png
+11:11:51.694 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:11:51.694490300 bg frame missing: /images/bg/frame_4.png
+11:11:51.694 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:11:51.694490300 bg frame missing: /images/bg/frame_5.png
+11:11:53.008 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+11:11:53.011 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+11:11:53.011 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+11:13:13.680 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+11:13:13.684 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+11:13:13.705 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:13:13.704191800 bg frame missing: /images/bg/frame_0.png
+11:13:13.705 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:13:13.705149700 bg frame missing: /images/bg/frame_1.png
+11:13:13.705 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:13:13.705149700 bg frame missing: /images/bg/frame_2.png
+11:13:13.705 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:13:13.705149700 bg frame missing: /images/bg/frame_3.png
+11:13:13.705 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:13:13.705149700 bg frame missing: /images/bg/frame_4.png
+11:13:13.705 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:13:13.705149700 bg frame missing: /images/bg/frame_5.png
+11:13:16.197 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+11:13:16.197 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+11:13:16.267 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src\main\resources\Saves\slot_1.json
+11:13:16.268 INFO  [JavaFX Application Thread] c.e.d.repository.SaveDataRepository - Loaded slot 1 successfully.
+11:13:18.917 INFO  [JavaFX Application Thread] c.e.d.c.view.SlotSelectionController - Back to menu
+11:13:19.600 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+11:13:19.603 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+11:13:19.603 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+11:14:18.392 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+11:14:18.396 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+11:14:18.428 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:18.428495800 bg frame missing: /images/bg/frame_0.png
+11:14:18.428 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:18.428495800 bg frame missing: /images/bg/frame_1.png
+11:14:18.429 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:18.429498600 bg frame missing: /images/bg/frame_2.png
+11:14:18.429 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:18.429498600 bg frame missing: /images/bg/frame_3.png
+11:14:18.429 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:18.429498600 bg frame missing: /images/bg/frame_4.png
+11:14:18.429 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:18.429498600 bg frame missing: /images/bg/frame_5.png
+11:14:21.831 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+11:14:21.836 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+11:14:21.836 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+11:14:52.465 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+11:14:52.478 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+11:14:52.509 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:52.509797100 bg frame missing: /images/bg/frame_0.png
+11:14:52.509 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:52.509797100 bg frame missing: /images/bg/frame_1.png
+11:14:52.510 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:52.510797500 bg frame missing: /images/bg/frame_2.png
+11:14:52.510 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:52.510797500 bg frame missing: /images/bg/frame_3.png
+11:14:52.510 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:52.510797500 bg frame missing: /images/bg/frame_4.png
+11:14:52.511 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:14:52.511794600 bg frame missing: /images/bg/frame_5.png
+11:14:54.881 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+11:14:54.886 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+11:14:54.886 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+11:15:22.912 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+11:15:22.915 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+11:15:22.939 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:15:22.939744500 bg frame missing: /images/bg/frame_0.png
+11:15:22.939 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:15:22.939744500 bg frame missing: /images/bg/frame_1.png
+11:15:22.939 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:15:22.939744500 bg frame missing: /images/bg/frame_2.png
+11:15:22.939 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:15:22.939744500 bg frame missing: /images/bg/frame_3.png
+11:15:22.939 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:15:22.939744500 bg frame missing: /images/bg/frame_4.png
+11:15:22.939 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:15:22.939744500 bg frame missing: /images/bg/frame_5.png
+11:15:24.120 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+11:15:24.125 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+11:15:24.125 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+11:17:01.441 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+11:17:01.448 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+11:17:01.497 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:17:01.497083600 bg frame missing: /images/bg/frame_0.png
+11:17:01.498 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:17:01.498277600 bg frame missing: /images/bg/frame_1.png
+11:17:01.498 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:17:01.498277600 bg frame missing: /images/bg/frame_2.png
+11:17:01.498 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:17:01.498277600 bg frame missing: /images/bg/frame_3.png
+11:17:01.499 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:17:01.499272700 bg frame missing: /images/bg/frame_4.png
+11:17:01.499 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:17:01.499272700 bg frame missing: /images/bg/frame_5.png
+11:17:07.379 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+11:17:07.382 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+11:17:07.382 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file
+11:18:03.870 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/settings.json
+11:18:03.874 INFO  [JavaFX Application Thread] com.example.demo.Main - All assets loaded.
+11:18:03.895 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:18:03.895401700 bg frame missing: /images/bg/frame_0.png
+11:18:03.896 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:18:03.896400400 bg frame missing: /images/bg/frame_1.png
+11:18:03.896 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:18:03.896400400 bg frame missing: /images/bg/frame_2.png
+11:18:03.896 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:18:03.896400400 bg frame missing: /images/bg/frame_3.png
+11:18:03.896 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:18:03.896400400 bg frame missing: /images/bg/frame_4.png
+11:18:03.896 ERROR [JavaFX Application Thread] c.e.d.c.view.ThemeController - [ThemeManager] 2025-11-17T11:18:03.896400400 bg frame missing: /images/bg/frame_5.png
+11:18:05.071 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/highscores.json
+11:18:05.074 INFO  [JavaFX Application Thread] c.e.d.controller.core.SaveController - Successfully loaded data from src/main/resources/Saves/achievement.json
+11:18:05.074 INFO  [JavaFX Application Thread] c.e.demo.model.menu.AchievementModel - Loaded 4 achievements from file

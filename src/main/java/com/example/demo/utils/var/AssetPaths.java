@@ -74,5 +74,13 @@ public final class AssetPaths {
 
     // SAVE
     public static final String SETTINGS_FILE_PATH = "src/main/resources/Saves/settings.json";
+
+    // Achievement
+    public static final String scoreBackground_Path = "/images/Achievement/score.png";
+    public static final String lockedAchievement_Path = "/images/Achievement/locked_achie.png";
+    public static final String wingameimg_Path = "/images/Achievement/wingame.png";
+    public static final String eastereggimg_Path = "/images/Achievement/easteregg.png";
+    public static final String winlevel1_Path = "/images/Achievement/winlevel1.png";
+    public static final String winlevel2_Path = "/images/Achievement/winlevel2.png";
 }
 

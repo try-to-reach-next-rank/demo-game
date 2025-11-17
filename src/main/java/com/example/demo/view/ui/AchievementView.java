@@ -4,6 +4,7 @@ import com.example.demo.controller.view.AchievementController;
 import com.example.demo.controller.view.ThemeController;
 import com.example.demo.engine.ui.AbstractUIView;
 import com.example.demo.engine.ui.UISelectionController;
+import com.example.demo.model.assets.AssetManager;
 import com.example.demo.model.menu.Achievement;
 import com.example.demo.model.menu.ButtonManager;
 import javafx.geometry.Insets;
@@ -32,20 +33,29 @@ public class AchievementView extends AbstractUIView {
     private final Pane buttonOverlay;
 
     private boolean showingPage1 = true;
+    AssetManager   assetManager;
     private final Image scoreBackground;
     private final Image loockedAchievement;
     private final Image wingameimg;
     private final Image eastereggimg;
+    private final Image winlevel1;
+    private final Image winlevel2;
+
 
 
     public AchievementView(AchievementController controller) {
         this.controller = controller;
         this.buttonManager = new ButtonManager(themeController.getHandImage());
+        assetManager = AssetManager.getInstance();
 
-        scoreBackground = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/score.png")));
-        loockedAchievement = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/locked_achie.png")));
-        wingameimg = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/wingame.png")));
-        eastereggimg = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/easteregg.png")));
+
+        scoreBackground = assetManager.getImage("scoreBackground");
+        loockedAchievement = assetManager.getImage("lookedAchievement");
+        wingameimg = assetManager.getImage("wingame");
+        eastereggimg = assetManager.getImage("easteregg");
+        winlevel1 = assetManager.getImage("winlevel1");
+        winlevel2 = assetManager.getImage("winlevel2");
+
 
         this.uiBox = new VBox(20);
         this.uiBox.setPadding(new Insets(10, 30, 30, 30)); // top = 10 để đẩy lên cao
@@ -183,9 +193,9 @@ public class AchievementView extends AbstractUIView {
 
         } else {
             if ("Win Level 1".equals(achievement.getName())) {
-                Achive = new ImageView(loockedAchievement);
+                Achive = new ImageView(winlevel1);
             } else if ("Win Level 2".equals(achievement.getName())) {
-                Achive = new ImageView(loockedAchievement);
+                Achive = new ImageView(winlevel2);
             } else if ("Win Game".equals(achievement.getName())) {
                 Achive = new ImageView(wingameimg);
             } else {
