@@ -77,6 +77,14 @@ public class GameState {
         }
     }
 
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public int getCurrentScore() {
+        return currentScore;
+    }
+
     public double getCurrentTrackTime() {
         return currentTrackTime;
     }

@@ -16,6 +16,9 @@ public class GameStateRestore {
     }
 
     public void apply(GameState state, GameWorld world) {
+        world.setCurrentScore(state.getCurrentScore());
+        world.setHighScore(state.getHighScore());
+        System.out.println("highscore and current" + world.getHighScore() + " " + world.getCurrentScore());
         world.setCurrentLevel(state.getCurrentLevel());
         Sound.getInstance().playMusic(state.getCurrentTrackName(), state.getCurrentTrackTime());
 

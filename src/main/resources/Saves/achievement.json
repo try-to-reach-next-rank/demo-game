@@ -10,7 +10,7 @@
     },
     {
       "name": "Win Game",
-      "unlocked": true
+      "unlocked": false
     },
     {
       "name": "Easter Egg",
